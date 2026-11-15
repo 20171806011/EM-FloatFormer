@@ -1,0 +1,60 @@
+{
+  "protocol_sha256": "519747e06fd771d4edc38bd47880ca3402517deb447f6a78c7caeae1a313bdc9",
+  "raw_rows": 9450,
+  "summary_rows": 1890,
+  "raw_aggregate_counts_verified": 1890,
+  "separate_per_seed_records_verified": 9450,
+  "checkpoints_verified": 30,
+  "paired_records": 4050,
+  "primary_exploratory_records": 48,
+  "privileged_diagnostic_rows": 1350,
+  "conditions": [
+    "clean",
+    "pa_mild",
+    "pa_strong",
+    "impulse_mild",
+    "impulse_strong",
+    "cpe_mild",
+    "cpe_strong",
+    "adc_mild",
+    "adc_strong"
+  ],
+  "methods": [
+    "clean__log_phase",
+    "clean__raw",
+    "clean__rms_log",
+    "dd_threshold",
+    "dft12",
+    "dft8",
+    "frozen_d",
+    "ls",
+    "mixed__log_phase",
+    "mixed__raw",
+    "mixed__rms_log",
+    "threshold",
+    "threshold_no_align",
+    "train_lmmse"
+  ],
+  "snrs": [
+    0,
+    10,
+    20
+  ],
+  "seeds": [
+    48101,
+    48102,
+    48103,
+    48104,
+    48105
+  ],
+  "bits_per_row": 46080,
+  "bits_per_method_condition_profile_snr": 230400,
+  "test_regime": "purely synthetic passive civil QPSK/OFDM",
+  "frozen_notice": "P2-E/P3-A/P3-A2 untouched",
+  "scalar_mse_note": "scale_aligned_symbol_mse is an uncalibrated logit decision-proxy, NOT a measured RF-EVM",
+  "limitations": [
+    "not independent laboratory replication",
+    "true-channel LMMSE privileged diagnostics added after primary evaluation; not used for training or baseline win",
+    "head-only timing excludes frozen backbone; full path timed independently"
+  ]
+}

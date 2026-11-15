@@ -183,3 +183,15 @@ At 10 dB, long6 BER: new delay model **6.442%**, P2 delay unfold **7.622%**, P2 
 - [New delay-domain model source](p3_models.py)
 - [Complete P3-0/P3-A source, evaluation CSV, checkpoint hashes and independent audit in a single ZIP archive](P3-0_A_source_and_results.zip) (model weights not included; use separate full checkpoint archive)
 - Frozen P2-E results and supplementary P2 results remain unchanged. **P3-B through P3-E have not been started.**
+
+
+## P3-B: isolated non-idealities (2026-11-15; exploratory negative result)
+
+The **P3-B0–B4** purely synthetic, passive civilian 32-tone QPSK/OFDM benchmark is complete. The train-before-evaluation frozen protocol is [`P3B_PROTOCOL.md`](P3B_PROTOCOL.md). Five new seeds (48101–48105) produced 30 lightweight residual heads, evaluated on 5 multipath profiles × 3 SNRs × 9 clean/single-factor non-idealities against seven fixed nonprivileged classical estimators and the frozen P3-A2 D backbone. The trained neural heads did not surpass the **per-cell envelope** of the predeclared classical estimator list in any of 135 scenario cells; this envelope is an after-test descriptive comparator, **not** a deployable selector. No unconditional model superiority or realistic RF performance is claimed.
+
+- [P3-B full evidence report](P3B_REPORT.md) and [scope/limitations](P3B_SCOPE_ADDENDUM.md).
+- PyTorch code: `p3b_time_link.py`, `p3b_receivers.py`, `p3b_train_eval.py`, `test_p3b_link.py`, plus auditable extra diagnostic and report scripts.
+- [P3-B primary exploratory comparisons](p3b_results/primary_exploratory_10db.csv) and [independent integrity audit](p3b_results/independent_audit.json).
+- [P3-B archived raw results (ZIP)](P3B_evidence_2026-11-15.zip), containing all 9,450 raw per-seed evaluation rows, 1,890 aggregate rows, training logs, supplementary privileged-reference diagnostics, hashes and timings; binary model weights remain in the separately distributed full offline archive.
+
+All earlier frozen P2/P3-A reports are unmodified. **P3-C/D/E are not started.**
