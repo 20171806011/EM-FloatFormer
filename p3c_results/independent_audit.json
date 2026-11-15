@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "protocol_sha256": "e1c2f1e0cc8bb0b4a50b515bae40d6daeb62fee8e5ac2974afa3178c9d66371a",
+  "checkpoint_verified": 35,
+  "heads_verified": 30,
+  "frozen_bases_verified": 5,
+  "raw_cells": 6525,
+  "summary_cells": 1305,
+  "case_counts": {
+    "operator": 4320,
+    "input_storage": 1800,
+    "coherent_gain": 405
+  },
+  "sample_training_seeds": 5,
+  "frames_per_seed_scenario": 256,
+  "bits_per_seed_scenario": 15360,
+  "bits_per_five_seed_scenario": 76800,
+  "nonfinite_logits": 0,
+  "nonfinite_input": 0,
+  "reused_fp32_control_agreements": 15,
+  "native_real_autocast_verified": true,
+  "fft_lowprecision_supported": false,
+  "precision_modes": [
+    "fp32",
+    "fp16_realconv",
+    "bf16_realconv"
+  ],
+  "latency_cells": 18,
+  "stress_cells": 6,
+  "csv_sha256": {
+    "raw_by_seed.csv": "edec7c5ba6ce8f60a481ebb7600e4fe6bf8d42d8844ccfc31df6882222f907ae",
+    "summary.csv": "244884fb7af4ae39eeb1e22d636a8b7506ec1a30e56c87c039891a1bea4dc9e6",
+    "representation_stress.csv": "41df474152865ae374194ac7844298105e672f09c770513928d8887a360ce130",
+    "checkpoint_sha256.csv": "760241b21f00fc4a0f909e6b74797e555080e3d3ba80550015f60f84994a147d"
+  },
+  "historical_reports_unchanged": true,
+  "limitation": "Same-code deterministic replay only; CPU lacks native half/bfloat complex FFT; no full low-precision receiver"
+}

@@ -195,3 +195,15 @@ The **P3-B0–B4** purely synthetic, passive civilian 32-tone QPSK/OFDM benchmar
 - [P3-B archived raw results (ZIP)](P3B_evidence_2026-11-15.zip), containing all 9,450 raw per-seed evaluation rows, 1,890 aggregate rows, training logs, supplementary privileged-reference diagnostics, hashes and timings; binary model weights remain in the separately distributed full offline archive.
 
 All earlier frozen P2/P3-A reports are unmodified. **P3-C/D/E are not started.**
+
+
+## P3-C: CPU mixed-precision and IQ-storage numerical audit (2026-11-15)
+
+**Exploratory, receive-only civilian synthetic QPSK/OFDM.** The P3-C protocol was frozen before testing in [`P3C_PROTOCOL.md`](P3C_PROTOCOL.md). All 30 frozen P3-B residual heads and five P3-A2 D backbones were re-evaluated, not retrained, with disjoint new held-out RNGs (five trained seeds). CPU PyTorch 2.10 executes real Conv1d under *actual FP16 or BF16 autocast output dtypes*, but complex FFT/complex arithmetic remain `complex64`/FP32 because this CPU does not support half or bfloat FFT. **This is not a full FP16/BF16 receiver execution claim.**
+
+- Normal-range mixed precision changed relatively few bit decisions and did not show a consistent BER or CPU latency advantage vs FP32.
+- Artificial coherent gain stress demonstrated sharp scale-generalization failure **even under FP32**; this is distinct from half-precision numerical error.
+- Separate FP16/BF16 received-IQ storage and synthetic high-dynamic-range encoding tests show both numerical benefits and counterexamples; finite reconstruction is not sufficient for information fidelity.
+- [`P3C_REPORT.md`](P3C_REPORT.md), [`P3C_SCOPE_ADDENDUM.md`](P3C_SCOPE_ADDENDUM.md), [`P3C_README.md`](P3C_README.md); raw counts, CPU dtype evidence, historical-weight hashes, numerical tests and full results: [`P3C_evidence_2026-11-15.zip`](P3C_evidence_2026-11-15.zip).
+
+Original P2-E, P3-A, P3-A2 and P3-B frozen protocols/results are unchanged. **P3-D and P3-E have not been started.**

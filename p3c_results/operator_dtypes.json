@@ -1,0 +1,89 @@
+[
+  {
+    "mode": "fp32",
+    "conv_dtypes": {
+      "frozen_d.stem": [
+        "torch.float32"
+      ],
+      "frozen_d.conv1": [
+        "torch.float32"
+      ],
+      "frozen_d.conv2": [
+        "torch.float32"
+      ],
+      "frozen_d.out": [
+        "torch.float32"
+      ],
+      "mixed__raw.stem": [
+        "torch.float32"
+      ],
+      "mixed__raw.local": [
+        "torch.float32"
+      ],
+      "mixed__raw.out": [
+        "torch.float32"
+      ]
+    },
+    "fft_output_dtype": "torch.complex64",
+    "logit_dtype": "torch.float32",
+    "note": "native CPU autocast real Conv1d only; FFT remains complex64"
+  },
+  {
+    "mode": "fp16_realconv",
+    "conv_dtypes": {
+      "frozen_d.stem": [
+        "torch.float16"
+      ],
+      "frozen_d.conv1": [
+        "torch.float16"
+      ],
+      "frozen_d.conv2": [
+        "torch.float16"
+      ],
+      "frozen_d.out": [
+        "torch.float16"
+      ],
+      "mixed__raw.stem": [
+        "torch.float16"
+      ],
+      "mixed__raw.local": [
+        "torch.float16"
+      ],
+      "mixed__raw.out": [
+        "torch.float16"
+      ]
+    },
+    "fft_output_dtype": "torch.complex64",
+    "logit_dtype": "torch.float32",
+    "note": "native CPU autocast real Conv1d only; FFT remains complex64"
+  },
+  {
+    "mode": "bf16_realconv",
+    "conv_dtypes": {
+      "frozen_d.stem": [
+        "torch.bfloat16"
+      ],
+      "frozen_d.conv1": [
+        "torch.bfloat16"
+      ],
+      "frozen_d.conv2": [
+        "torch.bfloat16"
+      ],
+      "frozen_d.out": [
+        "torch.bfloat16"
+      ],
+      "mixed__raw.stem": [
+        "torch.bfloat16"
+      ],
+      "mixed__raw.local": [
+        "torch.bfloat16"
+      ],
+      "mixed__raw.out": [
+        "torch.bfloat16"
+      ]
+    },
+    "fft_output_dtype": "torch.complex64",
+    "logit_dtype": "torch.float32",
+    "note": "native CPU autocast real Conv1d only; FFT remains complex64"
+  }
+]
