@@ -12,7 +12,7 @@ import torch
 from p3_models import EquivDelayConv
 from ofdm_baseline import make_batch
 from p3_a_mechanism import (ARMS, METHODS, PROFILES, SEEDS, SNRS, N,
-    EXPECTED_PROTOCOL_SHA256, sha256, load_models, eval_condition)
+    EXPECTED_PROTOCOL_SHA256, sha256, verify_frozen_protocol, load_models, eval_condition)
 
 
 def rows(path):
@@ -21,7 +21,7 @@ def rows(path):
 
 def verify(root,ckpt,frames=768,steps=600,batch=64):
     torch.set_num_threads(4)
-    assert sha256(Path(__file__).with_name('P3_A_MECHANISM_PROTOCOL.md'))==EXPECTED_PROTOCOL_SHA256
+    verify_frozen_protocol(Path(__file__).with_name('P3_A_MECHANISM_PROTOCOL.md'))
     registry=[r for seed in SEEDS for r in rows(root/f'training_seed{seed}.csv')]
     assert len(registry)==20 and len({(x['seed'],x['arm']) for x in registry})==20
     hashes={}

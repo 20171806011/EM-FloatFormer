@@ -8,7 +8,8 @@ from ofdm_baseline import make_batch, estimate_channel, decisions_from_channel
 from p3_models import EquivDelayConv
 from p3_a import dft_threshold
 from p3_a_mechanism import (FactorialDelayConv, init_shared, ARMS, PROFILES,
-                             test_data_seed, N, sha256,EXPECTED_PROTOCOL_SHA256)
+                             test_data_seed, N, verify_frozen_protocol, EXPECTED_PROTOCOL_SHA256,
+                             GITHUB_FROZEN_PROTOCOL_SHA256)
 from pathlib import Path
 
 class MechanismTests(unittest.TestCase):
@@ -18,8 +19,8 @@ class MechanismTests(unittest.TestCase):
         self.b=make_batch(7,N,10,10,'cpu')
 
     def test_protocol_frozen(self):
-        self.assertEqual(sha256(Path(__file__).with_name('P3_A_MECHANISM_PROTOCOL.md')),
-                         EXPECTED_PROTOCOL_SHA256)
+        self.assertIn(verify_frozen_protocol(Path(__file__).with_name('P3_A_MECHANISM_PROTOCOL.md')),
+                      (EXPECTED_PROTOCOL_SHA256,GITHUB_FROZEN_PROTOCOL_SHA256))
 
     def test_same_parameter_shapes_and_pair_init(self):
         models=init_shared(47101)
@@ -89,8 +90,8 @@ class MechanismTests(unittest.TestCase):
         for pos,beta in ARMS.values():
             model=FactorialDelayConv(pos,beta)
             g=model.effective_gate(self.b.yp,self.b.noise_var)
-            self.assertGreaterEqual(float(g.min()),beta-1e-6)
-            self.assertLessEqual(float(g.max()),1.0+1e-6)
+            self.assertGreaterEqual(float(g.detach().min()),beta-1e-6)
+            self.assertLessEqual(float(g.detach().max()),1.0+1e-6)
 
     def test_data_not_used_as_pilot(self):
         for pos,beta in ARMS.values():

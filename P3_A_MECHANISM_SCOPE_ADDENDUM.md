@@ -26,3 +26,5 @@ Original protocol: [`P3_A_MECHANISM_PROTOCOL.md`](P3_A_MECHANISM_PROTOCOL.md), c
 Source: `p3_a_mechanism.py` and `test_p3_a_mechanism.py`; independent record and checkpoint audit: `p3_a_mechanism_audit.py`; figures/report: `p3_a_mechanism_make_report.py`, [`P3_A_MECHANISM_REPORT.md`](P3_A_MECHANISM_REPORT.md); raw data and model-output checks in `p3a2_results/` and the public P3-A2 source/result ZIP. All 20 trained state dictionaries are preserved in the separate full local archive, not checked into public GitHub.
 
 **Status:** The P3-A2 mechanism supplement is complete; P3-B/P3-C/P3-D/P3-E have not been started in this follow-up.
+
+**Byte-exact freeze detail:** the original local protocol snapshot (LF ending) SHA256 is `2955db97ee5203240cb76f30e068f0d12e4bf140909ecd8cdff9a4ae70aadc06`; the pre-training GitHub blob (same content without final LF) SHA256 is `db3721cb5e3511f21d3ea4adafd92810becd2cd3ce0f375eb42057a2e94aab68`. The GitHub frozen protocol was not changed. The replay scripts now recognize these two exact byte variants without relaxing substantive protocol integrity.

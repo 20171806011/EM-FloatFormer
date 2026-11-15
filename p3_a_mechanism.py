@@ -39,6 +39,21 @@ BASELINES=('ls','dft8','dft12','dft_thresh_hard','dft_thresh_soft',
            'lmmse_train3','lmmse_matched_privileged','true_channel_inaccessible')
 METHODS=(*ARMS,*BASELINES)
 EXPECTED_PROTOCOL_SHA256='2955db97ee5203240cb76f30e068f0d12e4bf140909ecd8cdff9a4ae70aadc06'
+GITHUB_FROZEN_PROTOCOL_SHA256='db3721cb5e3511f21d3ea4adafd92810becd2cd3ce0f375eb42057a2e94aab68'
+
+def verify_frozen_protocol(path):
+    """Accept the frozen GitHub upload (no terminal LF) OR exact original local LF.
+
+    The pre-training GitHub connector dropped *only* the terminal newline.
+    This byte-level transport difference cannot change the frozen experiment.
+    Do NOT accept arbitrary edits to the scientific protocol.
+    """
+    raw=Path(path).read_bytes()
+    h=hashlib.sha256(raw).hexdigest()
+    if h==EXPECTED_PROTOCOL_SHA256:return h
+    if h==GITHUB_FROZEN_PROTOCOL_SHA256 and hashlib.sha256(raw+b'\n').hexdigest()==EXPECTED_PROTOCOL_SHA256:
+        return h
+    raise RuntimeError('Frozen P3-A2 protocol content changed')
 
 class FactorialDelayConv(EquivDelayConv):
     """Original 985-param P3 EquivDelayConv with only two controlled factors.
@@ -357,8 +372,7 @@ def main():
     ap.add_argument('--ckpt',type=Path,default=Path('p3a2_checkpoints'))
     ap.add_argument('--out',type=Path,default=Path('p3a2_results'))
     args=ap.parse_args();torch.set_num_threads(4)
-    if sha256(Path(__file__).with_name('P3_A_MECHANISM_PROTOCOL.md'))!=EXPECTED_PROTOCOL_SHA256:
-        raise RuntimeError('Frozen protocol SHA256 mismatch')
+    verify_frozen_protocol(Path(__file__).with_name('P3_A_MECHANISM_PROTOCOL.md'))
     if args.mode=='smoke':
         from test_p3_a_mechanism import run_tests
         run_tests()

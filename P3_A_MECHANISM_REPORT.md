@@ -8,6 +8,8 @@ Protocol: [`P3_A_MECHANISM_PROTOCOL.md`](P3_A_MECHANISM_PROTOCOL.md), GitHub pre
 
 **Main finding:** Both absolute delay coordinates and ability to suppress late taps nearly to zero contribute to the original P3-A network's 12-delay generalization failure. Removing position features (B) and adding a fixed 10% identity floor (C) each reduce 10dB long12/sparse12 BER compared with freshly retrained A; applying both (D) gives the lowest of the four neural BERs. The benefit is **not simply additive** and does **not surpass** the suitable classical hard-threshold DFT on either heldout primary profile. These statements describe the tested network family and five training seeds, not an unconditional causal theory for all radio receivers.
 
+**Byte-level provenance note (post-run tooling audit):** The GitHub pre-training frozen protocol blob has SHA256 `db3721cb5e3511f21d3ea4adafd92810becd2cd3ce0f375eb42057a2e94aab68` without final LF, while the original local training copy has SHA256 `2955db97ee5203240cb76f30e068f0d12e4bf140909ecd8cdff9a4ae70aadc06` with final LF. The files are otherwise byte-for-byte identical; the frozen GitHub protocol remains unchanged, and the replay scripts accept only these exact two byte representations. No experiments or statistical results were changed.
+
 ## Protocol compliance
 
 - Exactly four arms, no hyperparameter sweep: A position+0% floor, B no position+0%, C position+10%, D no position+10%. All use the same nominal **985-parameter** convolutional model (`p3_models.EquivDelayConv`), identical initial weights per seed and shared training batches. With position channels zeroed, **24 stem weights become inactive** but remain stored. The gate is fixed as `g_final=beta+(1-beta)*sigmoid(network_output)` with beta 0 or 0.10.
