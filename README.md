@@ -167,3 +167,15 @@ After the original [P2-E report](P2E_REPORT.md) was frozen, a separate [scope au
 Reproduce supplementary studies using `python p2_supplement.py --phase smoke`, then `--phase S1`, `--phase S2`, `--phase S3` (each runs the separate frozen-seed train/eval workflow). CPU, PyTorch >=2.1, and Matplotlib for the plots. Runs can be split by frozen seed using `--only-seed`; evaluation without it aggregates all checkpoints. Each route trains **new** checkpoints; it never reruns the ten frozen P2-E groups.
 
 **Reminder:** the model and all data are purely synthetic passive civilian OFDM, not a real transmitter/receiver, radar, electronic-warfare system or validated RF foundation model. Models do not uniformly outperform standard DFT/LMMSE signal processing.
+
+
+## P3-0 / P3-A: frozen mathematical audit and delay-domain exploratory study (2026-11-15)
+
+The [P3-0/P3-A protocol](P3_0_A_PROTOCOL.md) was committed **before** training (commit `bce622eddc0d8277c64073033c1248eb035a3803`). This stage has now run 5 **new** training seeds (46001–46005), retraining the older P2 delay-unfolding and equivariant-frequency models alongside a new **985-parameter** U(1)-equivariant delay-domain CNN. All conditions are simulated civilian receive-only QPSK/OFDM with full pilots and ideal synchronization.
+
+At 10 dB, long6 BER: new delay model **6.442%**, P2 delay unfold **7.622%**, P2 equivariant frequency FIR **7.466%**, DFT-8 **5.359%**, noise-calibrated hard-threshold DFT **5.633%**. On unseen long12/sparse12 the new model **fails to generalize** (11.411% / 12.016%). The result is exploratory and **does not** demonstrate superiority over classical methods.
+
+- [Full report, mathematical audit, limitations and reproducibility instructions](P3_0_A_REPORT.md)
+- [New delay-domain model source](p3_models.py)
+- [Complete P3-0/P3-A source, evaluation CSV, checkpoint hashes and independent audit in a single ZIP archive](P3-0_A_source_and_results.zip) (model weights not included; use separate full checkpoint archive)
+- Frozen P2-E results and supplementary P2 results remain unchanged. **P3-B through P3-E have not been started.**
