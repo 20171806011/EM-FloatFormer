@@ -1,0 +1,49 @@
+{
+  "seeds": [
+    404,
+    505,
+    606,
+    707,
+    808
+  ],
+  "steps": 750,
+  "eval_frames": 2048,
+  "profiles": {
+    "train3": [
+      0.72,
+      0.2,
+      0.08
+    ],
+    "equal4": [
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ],
+    "long6": [
+      0.4,
+      0.22,
+      0.15,
+      0.1,
+      0.08,
+      0.05
+    ]
+  },
+  "snrs": [
+    0,
+    10,
+    20
+  ],
+  "cpu_threads": 4,
+  "torch_version": "2.10.0+cpu",
+  "python_version": "3.13.5",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "models": [
+    "circular_cnn__raw_iq_magnitude",
+    "circular_cnn__logamp_phase",
+    "transformer__raw_iq_magnitude",
+    "transformer__logamp_phase"
+  ],
+  "source": "P1-C frozen training settings, novel training seeds and test streams",
+  "method": "receive-only synthetic civilian QPSK / simple Gaussian static multipath"
+}
