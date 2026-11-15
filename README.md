@@ -6,6 +6,41 @@
 
 The central experimental question is whether learned representations of complex baseband samples and particular neural architectures improve decoding under ordinary multipath fading and thermal noise, compared with classical signal processing at known computational cost. We publish negative results alongside positive results.
 
+## P2 completed: Physics-Guided Neural Receiver (2026-11-15)
+
+**P2-A through P2-E have finished** within the original receive-only, synthetic civilian QPSK/OFDM benchmark. Three physical-residual estimators, three IQ encoding paths, mathematically constrained common-phase-equivariant receivers, frozen-weight robustness experiments, and 10 *new* training-seed replication were audited. Results and negative findings are public.
+
+At **10 dB** in *held-out* profiles, with 10 new seeds and **1,310,720 evaluated bits per receiver / profile**:
+
+| Receiver | Unseen equal4 BER | Unseen long6 BER |
+|---|---:|---:|
+| P1 circular CNN/log (38,018 params, freshly retrained) | 6.574% | 8.323% |
+| P2 complex phase-equivariant FIR (2,060 params) | **6.347%** | **7.374%** |
+| Fixed generic 8-tap DFT channel estimate | **5.392%** | **5.336%** |
+| LMMSE with privileged matched test prior | 4.902% | 5.082% |
+
+Prespecified 10-seed exact paired sign-flip tests after Holm correction: **p = 0.00390625 for both** P2-versus-P1 endpoints. **These do not establish P2 superiority over the classical DFT-8 baseline**; fixed support information is powerful in this simulator. The common-phase-equivariant model also **does not guarantee** invariance to data-only phase error, arbitrary resampling, or new physical channels. Findings are limited to idealized pilot/data pairs.
+
+Research protocol and reports: [`P2_PROTOCOL.md`](P2_PROTOCOL.md), [`P2A_REPORT.md`](P2A_REPORT.md), [`P2B_REPORT.md`](P2B_REPORT.md), [`P2C_REPORT.md`](P2C_REPORT.md), [`P2D_REPORT.md`](P2D_REPORT.md), [`P2E_FREEZE.json`](P2E_FREEZE.json), [`P2E_REPORT.md`](P2E_REPORT.md). Audit evidence: [`p2e_results/final_audit.json`](p2e_results/final_audit.json), [`p2e_results/primary_endpoints.json`](p2e_results/primary_endpoints.json), [`p2e_results/ber_by_seed.csv`](p2e_results/ber_by_seed.csv). No attention, MoE or diffusion was added without a measured justification.
+
+### P2 reproduction (Python 3.11+, CPU PyTorch)
+
+```bash
+python -m pip install -r requirements.txt
+python -m unittest test_p2_integrity test_p1d_invariants test_p1e_integrity -v
+python p2_run.py --mode smoke
+# Recreate all P2 exploratory stages, each from the original 3-tap training data:
+python p2_run.py --mode train --names res_point_raw res_local_raw res_unfold p1_cnn_log --seeds 1201 1202 1203 --steps 600 --batch 64 --ckpt p2_checkpoints --out p2a_retrained
+python p2_run.py --mode train --names res_local_raw res_local_log res_local_dual --seeds 1201 1202 1203 --steps 600 --batch 64 --ckpt p2b_checkpoints --out p2b_retrained
+python p2_run.py --mode train --names res_equiv_local --seeds 1201 1202 1203 --steps 600 --batch 64 --ckpt p2_checkpoints --out p2c_retrained
+# Final P2-E: fresh seeds on unchanged train3, and previously frozen endpoints:
+python p2_run.py --mode train --names res_equiv_local p1_cnn_log --seeds 2201 2202 2203 2204 2205 2206 2207 2208 2209 2210 --steps 600 --batch 64 --ckpt p2e_checkpoints --out p2e_retrained
+python p2_run.py --mode eval --names res_equiv_local p1_cnn_log --seeds 2201 2202 2203 2204 2205 2206 2207 2208 2209 2210 --frames 2048 --ckpt p2e_checkpoints --out p2e_recomputed
+python p2_finalize.py
+```
+
+Checkpoints are deliberately excluded from public GitHub; training scripts recreate weights. P2-E statistical results are from **training seeds 2201–2210** and fresh simulator draws, not independent real-hardware replication. The final audit did not test complete FP16/BF16 neural-network execution, sampling-rate generalization, or SDR streaming.
+
 ## Status (2026-11-15)
 
 | Milestone | Description | Evidence |

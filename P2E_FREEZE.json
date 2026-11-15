@@ -1,0 +1,17 @@
+{
+  "phase": "P2-E",
+  "status": "pretest-frozen",
+  "protocol": "P2_PROTOCOL.md",
+  "candidate": "res_equiv_local",
+  "control": "p1_cnn_log",
+  "select_source": "P2D_REPORT.md",
+  "train_seeds": [2201,2202,2203,2204,2205,2206,2207,2208,2209,2210],
+  "train_profile": [0.72,0.20,0.08],
+  "steps":600, "batch":64,"learning_rate":0.002,"eval_frames_per_seed_per_scenario":2048,
+  "primary_endpoints": ["equal4@10dB","long6@10dB"],
+  "effect": "BER(p1_cnn_log)-BER(res_equiv_local), percentage points, positive favors P2",
+  "test": "two-sided exact paired seed-sign-flip; Holm across two endpoints",
+  "test_family": "new seeds; identical simulator; not independent reimplementation",
+  "secondary": "unadjusted exploratory SNR profiles, timing, fixed DFT8, privileged LMMSE reference",
+  "notes": "No changing candidate/hyperparameters after held-out final outcomes are observed."
+}

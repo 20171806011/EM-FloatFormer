@@ -1,0 +1,25 @@
+{
+  "seeds": [
+    2201,
+    2202,
+    2203,
+    2204,
+    2205,
+    2206,
+    2207,
+    2208,
+    2209,
+    2210
+  ],
+  "steps": 600,
+  "batch": 64,
+  "models": [
+    "res_equiv_local",
+    "p1_cnn_log"
+  ],
+  "optimizer": "AdamW",
+  "lr": 0.002,
+  "weight_decay": 0.0001,
+  "gradient_clipping": 1,
+  "note": "all seeds trained serially in three batches, identical frozen protocol"
+}
