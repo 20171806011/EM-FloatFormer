@@ -1,5 +1,9 @@
 # EM-FloatFormer — Synthetic OFDM representation and receiver benchmarks
 
+## P3-A2: controlled mechanism supplement (2026-11-15)
+
+A separately frozen [P3-A2 protocol](P3_A_MECHANISM_PROTOCOL.md) tested removing absolute delay-position inputs and a fixed 10% retention floor, each alone and combined, with 5 fresh seeds and matched synthetic passive QPSK/OFDM samples. On sparse12 at 10 dB, BER went from **12.291%** (A original freshly retrained) to **6.549%** (D combined), but classical hard-threshold DFT still achieved **4.919%**. These results are **exploratory** and do not change P3-A or P2-E reports. See the [full report](P3_A_MECHANISM_REPORT.md), [scope addendum](P3_A_MECHANISM_SCOPE_ADDENDUM.md), [reproduction guide](P3_A2_README.md), [raw counts](p3a2_results/ber_by_seed.csv) and [source/results ZIP](P3-A2_source_and_results.zip).
+
 [中文概述](#中文概述) · [Reproduction](#reproduction) · [Results](#measured-results)
 
 > **Research prototype, not a validated RF foundation model.** This repository contains a receive-only, purely synthetic, civilian QPSK/OFDM benchmark. It contains **no radar, electronic-warfare logic, jammer, transmitting hardware control, weapon targeting, or real traffic data**.

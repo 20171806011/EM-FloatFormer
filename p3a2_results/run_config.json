@@ -1,0 +1,111 @@
+{
+  "protocol_sha256": "2955db97ee5203240cb76f30e068f0d12e4bf140909ecd8cdff9a4ae70aadc06",
+  "seeds": [
+    47101,
+    47102,
+    47103,
+    47104,
+    47105
+  ],
+  "steps": 600,
+  "batch": 64,
+  "frames": 768,
+  "nsc": 32,
+  "training_profile": [
+    0.72,
+    0.2,
+    0.08
+  ],
+  "profiles": {
+    "train3": [
+      0.72,
+      0.2,
+      0.08
+    ],
+    "equal4": [
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ],
+    "long6": [
+      0.4,
+      0.22,
+      0.15,
+      0.1,
+      0.08,
+      0.05
+    ],
+    "long12": [
+      0.35,
+      0.15,
+      0.1,
+      0.08,
+      0.07,
+      0.06,
+      0.05,
+      0.04,
+      0.03,
+      0.025,
+      0.025,
+      0.02
+    ],
+    "sparse12": [
+      0.52,
+      0,
+      0,
+      0,
+      0.3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0.18
+    ]
+  },
+  "snrs": [
+    0,
+    10,
+    20
+  ],
+  "arms": {
+    "A_pos_0": [
+      true,
+      0.0
+    ],
+    "B_no_pos_0": [
+      false,
+      0.0
+    ],
+    "C_pos_10": [
+      true,
+      0.1
+    ],
+    "D_no_pos_10": [
+      false,
+      0.1
+    ]
+  },
+  "methods": [
+    "A_pos_0",
+    "B_no_pos_0",
+    "C_pos_10",
+    "D_no_pos_10",
+    "ls",
+    "dft8",
+    "dft12",
+    "dft_thresh_hard",
+    "dft_thresh_soft",
+    "lmmse_train3",
+    "lmmse_matched_privileged",
+    "true_channel_inaccessible"
+  ],
+  "data_eval_seed_formula": "361000000+seed*1000+profile_idx*100+snr",
+  "train_data_seed_formula": "84300000+seed",
+  "torch_version": "2.10.0+cpu",
+  "python": "3.13.5",
+  "cpu_threads": 4,
+  "notes": "P3-A2 separately frozen exploratory ablation; not P2-E or P3-A retroactive result; simulated passive only"
+}
