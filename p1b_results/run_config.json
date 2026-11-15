@@ -1,0 +1,40 @@
+{
+  "steps": 750,
+  "batch_size": 64,
+  "eval_frames": 2000,
+  "seeds": [
+    101,
+    202,
+    303
+  ],
+  "nsc": 32,
+  "out": "/mnt/data/em_floatformer_phase1/p1b_results",
+  "math_only": false,
+  "parameters": 38594,
+  "device": "cpu",
+  "torch_version": "2.10.0+cpu",
+  "train_channel_profile": [
+    0.72,
+    0.2,
+    0.08
+  ],
+  "test_channel_profiles": {
+    "in_distribution": [
+      0.72,
+      0.2,
+      0.08
+    ],
+    "unseen_four_tap_profile": [
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ]
+  },
+  "sigma": 1.0,
+  "epsilon": 1e-05,
+  "matched_initial_weights": true,
+  "shared_train_and_test_samples": true,
+  "identical_architecture": true,
+  "fixed_classical_training_prior": true
+}

@@ -1,0 +1,49 @@
+{
+  "steps": 750,
+  "batch_size": 64,
+  "eval_frames": 2000,
+  "seeds": [
+    101,
+    202,
+    303
+  ],
+  "nsc": 32,
+  "out": "p1c_results",
+  "smoke": false,
+  "arches": [
+    "token_mlp",
+    "mlp_mixer",
+    "circular_cnn",
+    "transformer"
+  ],
+  "encodings": [
+    "raw_iq_magnitude",
+    "logamp_phase"
+  ],
+  "torch_version": "2.10.0+cpu",
+  "platform": "cpu",
+  "threads": 4,
+  "train_profile": [
+    0.72,
+    0.2,
+    0.08
+  ],
+  "test_profiles": {
+    "in_distribution": [
+      0.72,
+      0.2,
+      0.08
+    ],
+    "unseen_four_tap": [
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ]
+  },
+  "design": "fixed 32 subcarrier, all-pilot, uncoded QPSK",
+  "learning_rate": 0.002,
+  "optimizer": "AdamW",
+  "weight_decay": 0.0001,
+  "note": "no transmitter, radar, EW, adversarial signals or hardware"
+}
