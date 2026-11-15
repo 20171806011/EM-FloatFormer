@@ -207,3 +207,11 @@ All earlier frozen P2/P3-A reports are unmodified. **P3-C/D/E are not started.**
 - [`P3C_REPORT.md`](P3C_REPORT.md), [`P3C_SCOPE_ADDENDUM.md`](P3C_SCOPE_ADDENDUM.md), [`P3C_README.md`](P3C_README.md); raw counts, CPU dtype evidence, historical-weight hashes, numerical tests and full results: [`P3C_evidence_2026-11-15.zip`](P3C_evidence_2026-11-15.zip).
 
 Original P2-E, P3-A, P3-A2 and P3-B frozen protocols/results are unchanged. **P3-D and P3-E have not been started.**
+
+
+## P3-D/P3-E standards bridge — surrogate only (2026-11-15)
+
+A separate [frozen contingency protocol](exploratory/p3de_tdl_surrogate/P3DE_SURROGATE_PROTOCOL.md) was committed **before training** because the isolated CPU runtime could not install **NVIDIA Sionna 2.2** (DNS failure). We separately studied a **static, independent TDL-A/C/D profile-table approximation** using official Sionna v2.2.0 3GPP TR38.901 v19.2 tap delay/power data, ten new training seeds, 1,310,720 bits per method/scenario/SNR, paired classical controls, and a fully disclosed negative result against training-mixture LMMSE. Small neural receivers outperform a *fixed hard-threshold DFT* on two surrogate endpoints, but do **not** outperform the information-matched training-population LMMSE. Full Sionna 2.2 TDL/CDL execution, Sionna-native channel estimators, standardized multi-symbol PHY and Sionna-backed formal P3-E **remain uncompleted**. This result must not be presented as P3-D or P3-E formally concluded.
+
+- [Recorded surrogate results](exploratory/p3de_tdl_surrogate/P3DE_SURROGATE_REPORT.md), [scope and blockers](exploratory/p3de_tdl_surrogate/P3DE_SCOPE_ADDENDUM.md), and [standalone source + raw data](exploratory/p3de_tdl_surrogate/P3DE_source_and_results_2026-11-15.zip).
+- Earlier P2-E, P3-A, P3-A2, P3-B, P3-C frozen experiment files remain unchanged.
