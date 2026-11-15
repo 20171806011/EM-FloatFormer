@@ -154,3 +154,16 @@ P1E_REPORT.md                 P1-E independent new-seed replication report
 这是一个**仅使用代码生成的民用 QPSK/OFDM 被动接收机仿真研究**。P1-A至P1-E均已完成。P1-D 在不重新训练的前提下，检验了多个陌生多径分布、接收 IQ 的低精度存储量化、噪声方差报告偏差及相位漂移。P1-E 重新训练了五个全新随机种子，检验模型架构差异的可重复性，并评估统计显著性和CPU推理成本。
 
 **结论具有明确边界：** 在部分未知信道下 CNN 优于小型 Transformer，但六径测试中 CNN 反而劣于普通 LS；知道测试信道先验的 LMMSE 仍较强。P1-E 的两项预设比较虽然在五个新种子中方向一致，但精确检验经 Holm 校正后 p=0.125，未达到0.05门槛。模型不包含真实无线电硬件、发射控制或军事用途的算法。详细数据和局限性见各阶段报告。
+
+## P2 original-plan alignment supplement (2026-11-15)
+
+After the original [P2-E report](P2E_REPORT.md) was frozen, a separate [scope audit](P2_SCOPE_ALIGNMENT_AUDIT.md) confirmed three originally contemplated controls had not been executed: independent RMS-only/local-RMS encoding, reduced-pilot-density evaluations, and a matched-information mixed-channel training route. The supplementary work is **exploratory**, not a retroactive amendment of the P2-E preregistration or its statistical claims.
+
+- [Frozen supplemental protocol](P2_SUPPLEMENT_PROTOCOL.md) — distinct seeds/training/test distributions, separated from P2-E.
+- [New evidence report](P2_SUPPLEMENT_REPORT.md) — S1 (six IQ encodings), S2 (32/16/8/4 pilot tones), S3 (train3 versus mixed-profile training, finite-training classical covariance), and negative results.
+- [Final scope addendum](P2_FINAL_SCOPE_ADDENDUM.md) — what is now tested, what remains out of scope, and clear distinction from original P2-E confirmation.
+- Code: `p2_supplement.py`, reproducible aggregation `p2_supplement_finalize.py`, numerical/metadata audit `test_p2_supplement_independent.py`; raw measurement data in `p2_supplement/s1_results/`, `s2_results/` and `s3_results/`.
+
+Reproduce supplementary studies using `python p2_supplement.py --phase smoke`, then `--phase S1`, `--phase S2`, `--phase S3` (each runs the separate frozen-seed train/eval workflow). CPU, PyTorch >=2.1, and Matplotlib for the plots. Runs can be split by frozen seed using `--only-seed`; evaluation without it aggregates all checkpoints. Each route trains **new** checkpoints; it never reruns the ten frozen P2-E groups.
+
+**Reminder:** the model and all data are purely synthetic passive civilian OFDM, not a real transmitter/receiver, radar, electronic-warfare system or validated RF foundation model. Models do not uniformly outperform standard DFT/LMMSE signal processing.

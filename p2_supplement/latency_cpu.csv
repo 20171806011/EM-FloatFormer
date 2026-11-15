@@ -1,0 +1,21 @@
+branch,method,batch,reps,median_ms,p95_ms,notes
+s1,rms_global_only,1,100,0.498405,0.875187,neural forward only
+s1,dual_global,1,100,0.4818,0.754315,neural forward only
+s1,rms_local_only,1,100,0.498741,0.688477,neural forward only
+s1,dual_local,1,100,0.498415,0.647114,neural forward only
+s2,sparse_lmmse_train3,1,100,0.031507,0.035874,"8 known tones, CPU method end-to-end from observed pilot (not RF I/O)"
+s2,sparse_dft8_ridge,1,100,0.064322,0.123096,"8 known tones, CPU method end-to-end from observed pilot (not RF I/O)"
+s2,lmmse_plus_equiv_neural,1,100,0.286571,0.561295,"8 known tones, CPU method end-to-end from observed pilot (not RF I/O)"
+s3,res_equiv_local,1,100,0.195389,0.264718,neural forward only
+s3,p1_cnn_log,1,100,0.463948,0.660604,neural forward only
+s3,mixture_empirical_lmmse,1,100,0.051037,0.080722,full-pilot covariance estimator only
+s1,rms_global_only,64,100,2.601886,3.087778,neural forward only
+s1,dual_global,64,100,2.769659,4.479212,neural forward only
+s1,rms_local_only,64,100,2.804412,3.26201,neural forward only
+s1,dual_local,64,100,2.830596,5.134009,neural forward only
+s2,sparse_lmmse_train3,64,100,0.082329,0.12637,"8 known tones, CPU method end-to-end from observed pilot (not RF I/O)"
+s2,sparse_dft8_ridge,64,100,0.124247,0.181944,"8 known tones, CPU method end-to-end from observed pilot (not RF I/O)"
+s2,lmmse_plus_equiv_neural,64,100,0.990746,2.003826,"8 known tones, CPU method end-to-end from observed pilot (not RF I/O)"
+s3,res_equiv_local,64,100,0.85044,1.098173,neural forward only
+s3,p1_cnn_log,64,100,3.14547,3.823456,neural forward only
+s3,mixture_empirical_lmmse,64,100,0.431764,0.576057,full-pilot covariance estimator only
