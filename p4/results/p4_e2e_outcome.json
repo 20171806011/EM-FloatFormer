@@ -1,0 +1,43 @@
+{
+  "suite": "tests.test_p4_e2e",
+  "run": 253,
+  "passed": 245,
+  "failures": [
+    {
+      "test": "tests.e2e.test_tier4_real_workloads.TestTier4RealWorkloads.test_t4_s01_high_speed_train_workload",
+      "reason": "AssertionError: 0.4230769230769231 not less than 0.05"
+    },
+    {
+      "test": "tests.e2e.test_tier4_real_workloads.TestTier4RealWorkloads.test_t4_s03_extreme_cfo_drift_workload",
+      "reason": "AssertionError: 181 != 0"
+    },
+    {
+      "test": "tests.e2e.test_tier4_real_workloads.TestTier4RealWorkloads.test_t4_s05_ultra_sparse_dmrs_deployment_workload",
+      "reason": "AssertionError: 1.4045935013849866 not greater than or equal to 4.0"
+    },
+    {
+      "test": "tests.e2e.test_tier4_real_workloads.TestTier4RealWorkloads.test_t4_s07_ood_channel_generalization_workload",
+      "reason": "AssertionError: True is not false"
+    },
+    {
+      "test": "tests.e2e.test_tier4_real_workloads.TestTier4RealWorkloads.test_t4_s11_mission_critical_coded_transmission_workload",
+      "reason": "AssertionError: 0.060625 not less than 0.01"
+    }
+  ],
+  "errors": [
+    {
+      "test": "tests.e2e.test_tier1_feature_coverage.TestTier1FeatureCoverage.test_t1_f20_protocol_hash_freeze_verification",
+      "reason": "FileNotFoundError: [Errno 2] No such file or directory: 'p4/results/p4d/P4D_FREEZE.json'"
+    },
+    {
+      "test": "tests.e2e.test_tier3_cross_feature.TestTier3CrossFeature.test_t3_p20_f18_f20_factorial_ablation_confirmatory_seeds",
+      "reason": "RuntimeError: Seed 74001 is reserved for confirmation. The 1D development recipe cannot use reserved seeds. A separately frozen 1D protocol is required."
+    },
+    {
+      "test": "tests.e2e.test_tier4_real_workloads.TestTier4RealWorkloads.test_t4_s08_confirmatory_ten_seed_replication_workload",
+      "reason": "FileNotFoundError: [Errno 2] No such file or directory: 'p4/results/p4d/P4D_FREEZE.json'"
+    }
+  ],
+  "skips": [],
+  "seconds": 52.2
+}

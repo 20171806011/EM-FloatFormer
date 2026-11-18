@@ -1,0 +1,4650 @@
+{
+  "role": "Development rehearsal. All 80 one-dimensional cells use the planned budget; the coded component uses only the smoke budget.",
+  "seeds": [
+    71461,
+    71462,
+    71463,
+    71464,
+    71465,
+    71466,
+    71467,
+    71468,
+    71469,
+    71470
+  ],
+  "coded_budget": {
+    "steps": 2,
+    "batch": 4,
+    "microbatch": 2,
+    "eval_batch": 2,
+    "eval_batches": 1
+  },
+  "independently_retrained_factorial_arms": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "coded_audit": {
+    "csv_rows": 150,
+    "contrasts_reproduced": 6
+  },
+  "coded": {
+    "records": [
+      {
+        "seed": 71461,
+        "rows": [
+          {
+            "condition": "id",
+            "method": "emfloatformer2d",
+            "bit_errors": 381,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 785,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 183,
+            "total_bits": 1664,
+            "block_errors": 22,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 597,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 174,
+            "total_bits": 1664,
+            "block_errors": 22,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 588,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d",
+            "bit_errors": 189,
+            "total_bits": 1664,
+            "block_errors": 22,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 612,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d",
+            "bit_errors": 185,
+            "total_bits": 1664,
+            "block_errors": 23,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 596,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "emfloatformer2d",
+            "bit_errors": 517,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 970,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 372,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 793,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 366,
+            "total_bits": 1664,
+            "block_errors": 24,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 795,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d",
+            "bit_errors": 423,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 872,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d",
+            "bit_errors": 419,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 870,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "emfloatformer2d",
+            "bit_errors": 529,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1055,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 436,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 856,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 441,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 853,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d",
+            "bit_errors": 172,
+            "total_bits": 1664,
+            "block_errors": 22,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 579,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d",
+            "bit_errors": 187,
+            "total_bits": 1664,
+            "block_errors": 18,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 568,
+            "total_uncoded_bits": 3328
+          }
+        ],
+        "weights_sha256": "d125f7e1e538f5b432b444f2bbb9aeee520b3de29ed7688a8ab33a2982d22bb7"
+      },
+      {
+        "seed": 71462,
+        "rows": [
+          {
+            "condition": "id",
+            "method": "emfloatformer2d",
+            "bit_errors": 564,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1124,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 160,
+            "total_bits": 1664,
+            "block_errors": 20,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 567,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 173,
+            "total_bits": 1664,
+            "block_errors": 22,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 575,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d",
+            "bit_errors": 149,
+            "total_bits": 1664,
+            "block_errors": 19,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 568,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d",
+            "bit_errors": 170,
+            "total_bits": 1664,
+            "block_errors": 20,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 592,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "emfloatformer2d",
+            "bit_errors": 474,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1082,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 352,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 829,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 350,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 827,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d",
+            "bit_errors": 386,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 873,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d",
+            "bit_errors": 383,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 885,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "emfloatformer2d",
+            "bit_errors": 657,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1265,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 553,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1044,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 554,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1042,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d",
+            "bit_errors": 419,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 804,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d",
+            "bit_errors": 421,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 836,
+            "total_uncoded_bits": 3328
+          }
+        ],
+        "weights_sha256": "f5306d9272cf173d811a4ab492a71e1b28443c94ee01fb0c8cd1207832c9ff70"
+      },
+      {
+        "seed": 71463,
+        "rows": [
+          {
+            "condition": "id",
+            "method": "emfloatformer2d",
+            "bit_errors": 583,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1145,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 196,
+            "total_bits": 1664,
+            "block_errors": 21,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 617,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 186,
+            "total_bits": 1664,
+            "block_errors": 22,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 630,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d",
+            "bit_errors": 193,
+            "total_bits": 1664,
+            "block_errors": 20,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 625,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d",
+            "bit_errors": 204,
+            "total_bits": 1664,
+            "block_errors": 21,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 641,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "emfloatformer2d",
+            "bit_errors": 613,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1161,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 440,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 988,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 445,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 991,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d",
+            "bit_errors": 412,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 926,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d",
+            "bit_errors": 413,
+            "total_bits": 1664,
+            "block_errors": 24,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 937,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "emfloatformer2d",
+            "bit_errors": 574,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1236,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 519,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1060,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 509,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1070,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d",
+            "bit_errors": 273,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 719,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d",
+            "bit_errors": 301,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 755,
+            "total_uncoded_bits": 3328
+          }
+        ],
+        "weights_sha256": "f4f1d148097c1e92652c6fe782a4dda7de26bae3691dd71e908868d04c1f086a"
+      },
+      {
+        "seed": 71464,
+        "rows": [
+          {
+            "condition": "id",
+            "method": "emfloatformer2d",
+            "bit_errors": 483,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 900,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 170,
+            "total_bits": 1664,
+            "block_errors": 13,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 515,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 174,
+            "total_bits": 1664,
+            "block_errors": 14,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 503,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d",
+            "bit_errors": 173,
+            "total_bits": 1664,
+            "block_errors": 13,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 529,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d",
+            "bit_errors": 199,
+            "total_bits": 1664,
+            "block_errors": 13,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 503,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "emfloatformer2d",
+            "bit_errors": 607,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1225,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 477,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 985,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 488,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 992,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d",
+            "bit_errors": 479,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 974,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d",
+            "bit_errors": 517,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 985,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "emfloatformer2d",
+            "bit_errors": 505,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 968,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 455,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 933,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 454,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 934,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d",
+            "bit_errors": 253,
+            "total_bits": 1664,
+            "block_errors": 24,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 663,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d",
+            "bit_errors": 260,
+            "total_bits": 1664,
+            "block_errors": 24,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 645,
+            "total_uncoded_bits": 3328
+          }
+        ],
+        "weights_sha256": "858baa1242919d6d6da639b4d6b8dcd868dfbf6674409dd906a3544fc8d7c131"
+      },
+      {
+        "seed": 71465,
+        "rows": [
+          {
+            "condition": "id",
+            "method": "emfloatformer2d",
+            "bit_errors": 516,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 982,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 260,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 648,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 258,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 647,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d",
+            "bit_errors": 254,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 650,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d",
+            "bit_errors": 260,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 651,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "emfloatformer2d",
+            "bit_errors": 503,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1000,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 394,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 898,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 404,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 897,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d",
+            "bit_errors": 412,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 931,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d",
+            "bit_errors": 398,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 931,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "emfloatformer2d",
+            "bit_errors": 478,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 951,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 333,
+            "total_bits": 1664,
+            "block_errors": 23,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 780,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 323,
+            "total_bits": 1664,
+            "block_errors": 23,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 769,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d",
+            "bit_errors": 264,
+            "total_bits": 1664,
+            "block_errors": 19,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 663,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d",
+            "bit_errors": 262,
+            "total_bits": 1664,
+            "block_errors": 19,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 661,
+            "total_uncoded_bits": 3328
+          }
+        ],
+        "weights_sha256": "7d7c444c56b9f78288c0c8706c1e27333e95675fdb4227c010199cc2b1005ec3"
+      },
+      {
+        "seed": 71466,
+        "rows": [
+          {
+            "condition": "id",
+            "method": "emfloatformer2d",
+            "bit_errors": 497,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 935,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 178,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 578,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 179,
+            "total_bits": 1664,
+            "block_errors": 24,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 588,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d",
+            "bit_errors": 194,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 580,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d",
+            "bit_errors": 202,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 602,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "emfloatformer2d",
+            "bit_errors": 602,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1185,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 571,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1022,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 567,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1025,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d",
+            "bit_errors": 543,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 989,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d",
+            "bit_errors": 529,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1004,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "emfloatformer2d",
+            "bit_errors": 510,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1047,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 457,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 886,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 455,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 880,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d",
+            "bit_errors": 199,
+            "total_bits": 1664,
+            "block_errors": 24,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 629,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d",
+            "bit_errors": 217,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 651,
+            "total_uncoded_bits": 3328
+          }
+        ],
+        "weights_sha256": "5d94699d4e8749108917207b19d09ba72cb314093e6ee432380b6ea6ab958c4e"
+      },
+      {
+        "seed": 71467,
+        "rows": [
+          {
+            "condition": "id",
+            "method": "emfloatformer2d",
+            "bit_errors": 451,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 887,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 278,
+            "total_bits": 1664,
+            "block_errors": 24,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 699,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 278,
+            "total_bits": 1664,
+            "block_errors": 24,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 699,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d",
+            "bit_errors": 284,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 692,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d",
+            "bit_errors": 278,
+            "total_bits": 1664,
+            "block_errors": 24,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 705,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "emfloatformer2d",
+            "bit_errors": 362,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 734,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 164,
+            "total_bits": 1664,
+            "block_errors": 23,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 551,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 172,
+            "total_bits": 1664,
+            "block_errors": 24,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 570,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d",
+            "bit_errors": 272,
+            "total_bits": 1664,
+            "block_errors": 23,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 644,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d",
+            "bit_errors": 267,
+            "total_bits": 1664,
+            "block_errors": 22,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 676,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "emfloatformer2d",
+            "bit_errors": 617,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1229,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 627,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1247,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 630,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1246,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d",
+            "bit_errors": 402,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 835,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d",
+            "bit_errors": 398,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 843,
+            "total_uncoded_bits": 3328
+          }
+        ],
+        "weights_sha256": "ff827fb920bab5fb01f7e9fb2119b882e06a3afede2af6a7765ec5af36263e81"
+      },
+      {
+        "seed": 71468,
+        "rows": [
+          {
+            "condition": "id",
+            "method": "emfloatformer2d",
+            "bit_errors": 529,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1045,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 319,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 774,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 312,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 765,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d",
+            "bit_errors": 325,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 780,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d",
+            "bit_errors": 314,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 774,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "emfloatformer2d",
+            "bit_errors": 682,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1353,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 271,
+            "total_bits": 1664,
+            "block_errors": 23,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 712,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 264,
+            "total_bits": 1664,
+            "block_errors": 23,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 719,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d",
+            "bit_errors": 314,
+            "total_bits": 1664,
+            "block_errors": 24,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 804,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d",
+            "bit_errors": 336,
+            "total_bits": 1664,
+            "block_errors": 24,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 802,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "emfloatformer2d",
+            "bit_errors": 554,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1027,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 521,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1004,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 521,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 999,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d",
+            "bit_errors": 319,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 734,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d",
+            "bit_errors": 355,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 788,
+            "total_uncoded_bits": 3328
+          }
+        ],
+        "weights_sha256": "66f97f3866768bfa91c9d4e904b3685ea4918d3f3aef2351e0fcd6e6bf2a2f01"
+      },
+      {
+        "seed": 71469,
+        "rows": [
+          {
+            "condition": "id",
+            "method": "emfloatformer2d",
+            "bit_errors": 505,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 985,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 282,
+            "total_bits": 1664,
+            "block_errors": 21,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 725,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 297,
+            "total_bits": 1664,
+            "block_errors": 23,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 718,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d",
+            "bit_errors": 293,
+            "total_bits": 1664,
+            "block_errors": 21,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 729,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d",
+            "bit_errors": 282,
+            "total_bits": 1664,
+            "block_errors": 20,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 734,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "emfloatformer2d",
+            "bit_errors": 608,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1153,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 518,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 978,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 508,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 986,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d",
+            "bit_errors": 495,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 974,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d",
+            "bit_errors": 507,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 990,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "emfloatformer2d",
+            "bit_errors": 558,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1067,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 469,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 875,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 492,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 868,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d",
+            "bit_errors": 368,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 761,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d",
+            "bit_errors": 383,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 766,
+            "total_uncoded_bits": 3328
+          }
+        ],
+        "weights_sha256": "67cfd031ca67806ee10c8e0a7189272dd1ba84e57ddc67de1c83a0006e555672"
+      },
+      {
+        "seed": 71470,
+        "rows": [
+          {
+            "condition": "id",
+            "method": "emfloatformer2d",
+            "bit_errors": 344,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 795,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 107,
+            "total_bits": 1664,
+            "block_errors": 13,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 479,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 109,
+            "total_bits": 1664,
+            "block_errors": 12,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 486,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "lmmse_2d",
+            "bit_errors": 106,
+            "total_bits": 1664,
+            "block_errors": 14,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 483,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "id",
+            "method": "idd_pa_2d",
+            "bit_errors": 126,
+            "total_bits": 1664,
+            "block_errors": 15,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 497,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "emfloatformer2d",
+            "bit_errors": 510,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 983,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 358,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 799,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 354,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 806,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "lmmse_2d",
+            "bit_errors": 405,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 829,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_doppler",
+            "method": "idd_pa_2d",
+            "bit_errors": 388,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 825,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "emfloatformer2d",
+            "bit_errors": 534,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1065,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d_fixed",
+            "bit_errors": 507,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 998,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d_fixed",
+            "bit_errors": 506,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 1014,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "lmmse_2d",
+            "bit_errors": 312,
+            "total_bits": 1664,
+            "block_errors": 25,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 766,
+            "total_uncoded_bits": 3328
+          },
+          {
+            "condition": "ood_delay",
+            "method": "idd_pa_2d",
+            "bit_errors": 323,
+            "total_bits": 1664,
+            "block_errors": 26,
+            "total_blocks": 26,
+            "uncoded_bit_errors": 780,
+            "total_uncoded_bits": 3328
+          }
+        ],
+        "weights_sha256": "c73da418b8c560a6423a33ea9cc493f91ecf1843eb7ed70b809f942822d2b527"
+      }
+    ],
+    "primary_tests": [
+      {
+        "condition": "id",
+        "baseline": "lmmse_2d_fixed",
+        "baseline_minus_em_block_errors": [
+          -4,
+          -6,
+          -5,
+          -13,
+          -1,
+          -1,
+          -2,
+          0,
+          -5,
+          -12
+        ],
+        "denominator_per_seed": 26,
+        "mean_bler_reduction": -0.18846153846153846,
+        "exact_p_value": 0.00390625,
+        "holm_p_value": 0.0234375,
+        "reject_at_0_05": true
+      },
+      {
+        "condition": "id",
+        "baseline": "idd_pa_2d_fixed",
+        "baseline_minus_em_block_errors": [
+          -4,
+          -4,
+          -4,
+          -12,
+          0,
+          -2,
+          -2,
+          0,
+          -3,
+          -13
+        ],
+        "denominator_per_seed": 26,
+        "mean_bler_reduction": -0.16923076923076924,
+        "exact_p_value": 0.0078125,
+        "holm_p_value": 0.0390625,
+        "reject_at_0_05": true
+      },
+      {
+        "condition": "ood_doppler",
+        "baseline": "lmmse_2d_fixed",
+        "baseline_minus_em_block_errors": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -3,
+          -3,
+          0,
+          -1
+        ],
+        "denominator_per_seed": 26,
+        "mean_bler_reduction": -0.03076923076923077,
+        "exact_p_value": 0.125,
+        "holm_p_value": 0.5,
+        "reject_at_0_05": false
+      },
+      {
+        "condition": "ood_doppler",
+        "baseline": "idd_pa_2d_fixed",
+        "baseline_minus_em_block_errors": [
+          -2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -2,
+          -3,
+          0,
+          -1
+        ],
+        "denominator_per_seed": 26,
+        "mean_bler_reduction": -0.03076923076923077,
+        "exact_p_value": 0.125,
+        "holm_p_value": 0.5,
+        "reject_at_0_05": false
+      },
+      {
+        "condition": "ood_delay",
+        "baseline": "lmmse_2d_fixed",
+        "baseline_minus_em_block_errors": [
+          -1,
+          0,
+          0,
+          0,
+          -3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "denominator_per_seed": 26,
+        "mean_bler_reduction": -0.015384615384615385,
+        "exact_p_value": 0.5,
+        "holm_p_value": 1.0,
+        "reject_at_0_05": false
+      },
+      {
+        "condition": "ood_delay",
+        "baseline": "idd_pa_2d_fixed",
+        "baseline_minus_em_block_errors": [
+          -1,
+          0,
+          0,
+          0,
+          -3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "denominator_per_seed": 26,
+        "mean_bler_reduction": -0.015384615384615385,
+        "exact_p_value": 0.5,
+        "holm_p_value": 1.0,
+        "reject_at_0_05": false
+      }
+    ],
+    "exact_p_value": 0.00390625,
+    "total_bits": 49920,
+    "total_bit_errors": 15847,
+    "total_blocks": 780,
+    "total_block_errors": 779
+  },
+  "factorial": {
+    "seed_count": 10,
+    "arm_count": 80,
+    "tests": [
+      {
+        "factor": "gauge",
+        "off_minus_on_integer_contrasts": [
+          3487,
+          4095,
+          3684,
+          3504,
+          3850,
+          4144,
+          4092,
+          3518,
+          4359,
+          3227
+        ],
+        "per_seed_denominator": 147456,
+        "mean_ber_reduction": 0.025743272569444444,
+        "raw_p": 0.001953125,
+        "holm_p": 0.005859375
+      },
+      {
+        "factor": "hermitian",
+        "off_minus_on_integer_contrasts": [
+          1463,
+          1391,
+          1032,
+          954,
+          2018,
+          1844,
+          1404,
+          1380,
+          1861,
+          1203
+        ],
+        "per_seed_denominator": 147456,
+        "mean_ber_reduction": 0.009867350260416666,
+        "raw_p": 0.001953125,
+        "holm_p": 0.005859375
+      },
+      {
+        "factor": "joint",
+        "off_minus_on_integer_contrasts": [
+          175,
+          -297,
+          -194,
+          -484,
+          170,
+          -314,
+          -256,
+          -220,
+          -1267,
+          -395
+        ],
+        "per_seed_denominator": 147456,
+        "mean_ber_reduction": -0.0020901150173611113,
+        "raw_p": 0.017578125,
+        "holm_p": 0.017578125
+      }
+    ],
+    "per_seed": [
+      {
+        "seed": 71461,
+        "main_effects": {
+          "F1_gauge": 0.023647732204861105,
+          "F2_hermitian": 0.009921603732638895,
+          "F3_joint": 0.001186794704861091
+        },
+        "unit_gain_main_effects": {
+          "F1_gauge": 0.0006510416666666713,
+          "F2_hermitian": 0.003540039062499986,
+          "F3_joint": 4.069010416664354e-05
+        },
+        "interactions": {
+          "G:H": -0.005974663628472238,
+          "G:J": -0.0012274848090277762,
+          "H:J": -0.00347900390625
+        },
+        "three_way": 0.002868652343750014,
+        "decomposition_valid": true
+      },
+      {
+        "seed": 71462,
+        "main_effects": {
+          "F1_gauge": 0.027770996093749986,
+          "F2_hermitian": 0.009433322482638881,
+          "F3_joint": -0.00201416015625
+        },
+        "unit_gain_main_effects": {
+          "F1_gauge": 0.0016886393229166713,
+          "F2_hermitian": 0.0038045247395833287,
+          "F3_joint": -0.0007527669270833287
+        },
+        "interactions": {
+          "G:H": -0.004428439670138881,
+          "G:J": 0.0005086263020833356,
+          "H:J": -0.0002509223090277832
+        },
+        "three_way": 0.0005357530381944475,
+        "decomposition_valid": true
+      },
+      {
+        "seed": 71463,
+        "main_effects": {
+          "F1_gauge": 0.024983723958333343,
+          "F2_hermitian": 0.006998697916666657,
+          "F3_joint": -0.001315646701388895
+        },
+        "unit_gain_main_effects": {
+          "F1_gauge": 0.00201416015625,
+          "F2_hermitian": 0.00213623046875,
+          "F3_joint": 0.0004679361979166713
+        },
+        "interactions": {
+          "G:H": -0.004150390625,
+          "G:J": 0.0014784071180555663,
+          "H:J": -0.0005018446180555525
+        },
+        "three_way": 0.0006646050347222099,
+        "decomposition_valid": true
+      },
+      {
+        "seed": 71464,
+        "main_effects": {
+          "F1_gauge": 0.02376302083333333,
+          "F2_hermitian": 0.006469726562499986,
+          "F3_joint": -0.0032823350694444614
+        },
+        "unit_gain_main_effects": {
+          "F1_gauge": 0.00016276041666665741,
+          "F2_hermitian": 0.002034505208333315,
+          "F3_joint": -0.000244140625
+        },
+        "interactions": {
+          "G:H": -0.004150390625000014,
+          "G:J": 0.003241644965277783,
+          "H:J": 0.0015462239583333356
+        },
+        "three_way": -0.002075195312500014,
+        "decomposition_valid": true
+      },
+      {
+        "seed": 71465,
+        "main_effects": {
+          "F1_gauge": 0.026109483506944448,
+          "F2_hermitian": 0.013685438368055552,
+          "F3_joint": 0.0011528862847221821
+        },
+        "unit_gain_main_effects": {
+          "F1_gauge": 0.0009765624999999861,
+          "F2_hermitian": 0.003173828124999986,
+          "F3_joint": -2.7755575615628914e-17
+        },
+        "interactions": {
+          "G:H": -0.00880262586805558,
+          "G:J": -0.0008273654513888812,
+          "H:J": -0.002780490451388881
+        },
+        "three_way": 0.0012342664930555525,
+        "decomposition_valid": true
+      },
+      {
+        "seed": 71466,
+        "main_effects": {
+          "F1_gauge": 0.028103298611111105,
+          "F2_hermitian": 0.01250542534722221,
+          "F3_joint": -0.00212944878472221
+        },
+        "unit_gain_main_effects": {
+          "F1_gauge": -0.00012207031250002776,
+          "F2_hermitian": 0.0017903645833333426,
+          "F3_joint": -0.00146484375
+        },
+        "interactions": {
+          "G:H": -0.010104709201388895,
+          "G:J": 0.0007052951388888951,
+          "H:J": -0.00146484375
+        },
+        "three_way": -0.0005289713541666852,
+        "decomposition_valid": true
+      },
+      {
+        "seed": 71467,
+        "main_effects": {
+          "F1_gauge": 0.027750651041666657,
+          "F2_hermitian": 0.009521484375,
+          "F3_joint": -0.001736111111111105
+        },
+        "unit_gain_main_effects": {
+          "F1_gauge": -0.0001424153645833287,
+          "F2_hermitian": 0.0016072591145833287,
+          "F3_joint": 0.0003865559895833287
+        },
+        "interactions": {
+          "G:H": -0.007731119791666671,
+          "G:J": 0.0023871527777777762,
+          "H:J": -0.0005696614583333287
+        },
+        "three_way": 0.00016276041666668517,
+        "decomposition_valid": true
+      },
+      {
+        "seed": 71468,
+        "main_effects": {
+          "F1_gauge": 0.023857964409722238,
+          "F2_hermitian": 0.009358723958333343,
+          "F3_joint": -0.0014919704861111327
+        },
+        "unit_gain_main_effects": {
+          "F1_gauge": 0.0003255208333333426,
+          "F2_hermitian": 0.0033365885416666574,
+          "F3_joint": -4.069010416668517e-05
+        },
+        "interactions": {
+          "G:H": -0.004557291666666671,
+          "G:J": 0.001247829861111105,
+          "H:J": -0.0016682942708333287
+        },
+        "three_way": 0.0006103515625,
+        "decomposition_valid": true
+      },
+      {
+        "seed": 71469,
+        "main_effects": {
+          "F1_gauge": 0.02956136067708333,
+          "F2_hermitian": 0.012620713975694434,
+          "F3_joint": -0.008592393663194448
+        },
+        "unit_gain_main_effects": {
+          "F1_gauge": 0.0006713867187499861,
+          "F2_hermitian": 0.0005900065104166713,
+          "F3_joint": 6.103515624998612e-05
+        },
+        "interactions": {
+          "G:H": -0.011644151475694434,
+          "G:J": 0.009243435329861112,
+          "H:J": 0.006544325086805559
+        },
+        "three_way": -0.00654432508680558,
+        "decomposition_valid": true
+      },
+      {
+        "seed": 71470,
+        "main_effects": {
+          "F1_gauge": 0.021884494357638867,
+          "F2_hermitian": 0.008158365885416657,
+          "F3_joint": -0.0026787651909722376
+        },
+        "unit_gain_main_effects": {
+          "F1_gauge": -0.00018310546875,
+          "F2_hermitian": 0.0017293294270833426,
+          "F3_joint": -0.00067138671875
+        },
+        "interactions": {
+          "G:H": -0.005716959635416657,
+          "G:J": 0.0017835828993055525,
+          "H:J": -0.0009019639756944475
+        },
+        "three_way": -0.0018649631076388673,
+        "decomposition_valid": true
+      }
+    ],
+    "main_effects": {
+      "F1_gauge": 0.02574327256944444,
+      "F2_hermitian": 0.009867350260416661,
+      "F3_joint": -0.0020901150173611217
+    }
+  },
+  "factorial_rows": [
+    {
+      "seed": 71461,
+      "arm_id": 1,
+      "gauge": true,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3202,
+      "bit_errors": 7800,
+      "total_bits": 36864,
+      "ber": 0.21158854166666666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2600,
+          "total_bits": 12288,
+          "ber": 0.21158854166666666
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2600,
+          "total_bits": 12288,
+          "ber": 0.21158854166666666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2600,
+          "total_bits": 12288,
+          "ber": 0.21158854166666666
+        }
+      ],
+      "weights_sha256": "a9120136892efbaaad7c868c5f7ab791b9272bcab02b1e8e14d6c80d45e88202"
+    },
+    {
+      "seed": 71461,
+      "arm_id": 2,
+      "gauge": false,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3138,
+      "bit_errors": 8512,
+      "total_bits": 36864,
+      "ber": 0.2309027777777778,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3154,
+          "total_bits": 12288,
+          "ber": 0.2566731770833333
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2611,
+          "total_bits": 12288,
+          "ber": 0.21248372395833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2747,
+          "total_bits": 12288,
+          "ber": 0.22355143229166666
+        }
+      ],
+      "weights_sha256": "ae29559fb6df34e7b9308c5fdbb54efacb212c6c1d9902f0a822adbc8fa8e212"
+    },
+    {
+      "seed": 71461,
+      "arm_id": 3,
+      "gauge": true,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3170,
+      "bit_errors": 7923,
+      "total_bits": 36864,
+      "ber": 0.21492513020833334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2641,
+          "total_bits": 12288,
+          "ber": 0.21492513020833334
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2641,
+          "total_bits": 12288,
+          "ber": 0.21492513020833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2641,
+          "total_bits": 12288,
+          "ber": 0.21492513020833334
+        }
+      ],
+      "weights_sha256": "fe6ba2fae87a4437740737ccfcc0f5de17b49fc35322866bdd477c5701d4f8cf"
+    },
+    {
+      "seed": 71461,
+      "arm_id": 4,
+      "gauge": true,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3342,
+      "bit_errors": 7776,
+      "total_bits": 36864,
+      "ber": 0.2109375,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2592,
+          "total_bits": 12288,
+          "ber": 0.2109375
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2592,
+          "total_bits": 12288,
+          "ber": 0.2109375
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2592,
+          "total_bits": 12288,
+          "ber": 0.2109375
+        }
+      ],
+      "weights_sha256": "7ec1a42858e98c3233651cdcb67bb699e9508f3981e54ee9ba0c7f38bfff248f"
+    },
+    {
+      "seed": 71461,
+      "arm_id": 5,
+      "gauge": false,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3122,
+      "bit_errors": 8864,
+      "total_bits": 36864,
+      "ber": 0.2404513888888889,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3509,
+          "total_bits": 12288,
+          "ber": 0.2855631510416667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2644,
+          "total_bits": 12288,
+          "ber": 0.21516927083333334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2711,
+          "total_bits": 12288,
+          "ber": 0.22062174479166666
+        }
+      ],
+      "weights_sha256": "a201656388e35203ec09a651047fdc74e90edc36034e48302a91629825f7a7ac"
+    },
+    {
+      "seed": 71461,
+      "arm_id": 6,
+      "gauge": false,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3282,
+      "bit_errors": 8367,
+      "total_bits": 36864,
+      "ber": 0.22696940104166666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3137,
+          "total_bits": 12288,
+          "ber": 0.2552897135416667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2607,
+          "total_bits": 12288,
+          "ber": 0.212158203125
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2623,
+          "total_bits": 12288,
+          "ber": 0.21346028645833334
+        }
+      ],
+      "weights_sha256": "438d13285f6dc545ac10ca1864f13f3df10162f53e9e438adb5b34afb8f706b8"
+    },
+    {
+      "seed": 71461,
+      "arm_id": 7,
+      "gauge": true,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3314,
+      "bit_errors": 7944,
+      "total_bits": 36864,
+      "ber": 0.21549479166666666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2648,
+          "total_bits": 12288,
+          "ber": 0.21549479166666666
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2648,
+          "total_bits": 12288,
+          "ber": 0.21549479166666666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2648,
+          "total_bits": 12288,
+          "ber": 0.21549479166666666
+        }
+      ],
+      "weights_sha256": "fd1cc1215ee726e89a3830f34e79573da94dcc8470535d6c278936960be9e7a7"
+    },
+    {
+      "seed": 71461,
+      "arm_id": 8,
+      "gauge": false,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3266,
+      "bit_errors": 9187,
+      "total_bits": 36864,
+      "ber": 0.2492133246527778,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3898,
+          "total_bits": 12288,
+          "ber": 0.3172200520833333
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2651,
+          "total_bits": 12288,
+          "ber": 0.21573893229166666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2638,
+          "total_bits": 12288,
+          "ber": 0.21468098958333334
+        }
+      ],
+      "weights_sha256": "baafc2156e3390ed6844f5c97e5d5ca4f680e80da4a6911e35b79f7f4efd8d6f"
+    },
+    {
+      "seed": 71462,
+      "arm_id": 1,
+      "gauge": true,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3202,
+      "bit_errors": 8145,
+      "total_bits": 36864,
+      "ber": 0.220947265625,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2715,
+          "total_bits": 12288,
+          "ber": 0.220947265625
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2715,
+          "total_bits": 12288,
+          "ber": 0.220947265625
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2715,
+          "total_bits": 12288,
+          "ber": 0.220947265625
+        }
+      ],
+      "weights_sha256": "4bb84a04c2e7816ee21100089fe9ade2659e82bd628e628b01918dc72abeebdb"
+    },
+    {
+      "seed": 71462,
+      "arm_id": 2,
+      "gauge": false,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3138,
+      "bit_errors": 9044,
+      "total_bits": 36864,
+      "ber": 0.2453342013888889,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3374,
+          "total_bits": 12288,
+          "ber": 0.2745768229166667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2737,
+          "total_bits": 12288,
+          "ber": 0.22273763020833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2933,
+          "total_bits": 12288,
+          "ber": 0.23868815104166666
+        }
+      ],
+      "weights_sha256": "ef847435de91ab12f3c0affeba53376ad5d6fcaae9e7740bcd7be0a69bfe6549"
+    },
+    {
+      "seed": 71462,
+      "arm_id": 3,
+      "gauge": true,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3170,
+      "bit_errors": 8340,
+      "total_bits": 36864,
+      "ber": 0.22623697916666666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2780,
+          "total_bits": 12288,
+          "ber": 0.22623697916666666
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2780,
+          "total_bits": 12288,
+          "ber": 0.22623697916666666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2780,
+          "total_bits": 12288,
+          "ber": 0.22623697916666666
+        }
+      ],
+      "weights_sha256": "eaaa272785d5b2de1319761cb871185befac93954c1f097807dce472eace62e5"
+    },
+    {
+      "seed": 71462,
+      "arm_id": 4,
+      "gauge": true,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3342,
+      "bit_errors": 8100,
+      "total_bits": 36864,
+      "ber": 0.2197265625,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2700,
+          "total_bits": 12288,
+          "ber": 0.2197265625
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2700,
+          "total_bits": 12288,
+          "ber": 0.2197265625
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2700,
+          "total_bits": 12288,
+          "ber": 0.2197265625
+        }
+      ],
+      "weights_sha256": "6d0c41d100767e4900b50f666a8b3e353acd4c8650f40ac9a03cfcb01c99047c"
+    },
+    {
+      "seed": 71462,
+      "arm_id": 5,
+      "gauge": false,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3122,
+      "bit_errors": 9526,
+      "total_bits": 36864,
+      "ber": 0.2584092881944444,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3947,
+          "total_bits": 12288,
+          "ber": 0.3212076822916667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2781,
+          "total_bits": 12288,
+          "ber": 0.226318359375
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2798,
+          "total_bits": 12288,
+          "ber": 0.22770182291666666
+        }
+      ],
+      "weights_sha256": "e9c724772217c8ad6ea70595b43ac260495d2fc6c8548e7edd92ed68c364f351"
+    },
+    {
+      "seed": 71462,
+      "arm_id": 6,
+      "gauge": false,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3282,
+      "bit_errors": 8922,
+      "total_bits": 36864,
+      "ber": 0.24202473958333334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3359,
+          "total_bits": 12288,
+          "ber": 0.2733561197916667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2749,
+          "total_bits": 12288,
+          "ber": 0.22371419270833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2814,
+          "total_bits": 12288,
+          "ber": 0.22900390625
+        }
+      ],
+      "weights_sha256": "713b3f535563164db2509e3a936899aadc15213d581b4a8f83887345c7df54c0"
+    },
+    {
+      "seed": 71462,
+      "arm_id": 7,
+      "gauge": true,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3314,
+      "bit_errors": 8274,
+      "total_bits": 36864,
+      "ber": 0.22444661458333334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2758,
+          "total_bits": 12288,
+          "ber": 0.22444661458333334
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2758,
+          "total_bits": 12288,
+          "ber": 0.22444661458333334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2758,
+          "total_bits": 12288,
+          "ber": 0.22444661458333334
+        }
+      ],
+      "weights_sha256": "8f73d56ad3bd2507ed130d827105cf89e450cf4727f02e3e32d0715544dabb7a"
+    },
+    {
+      "seed": 71462,
+      "arm_id": 8,
+      "gauge": false,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3266,
+      "bit_errors": 9462,
+      "total_bits": 36864,
+      "ber": 0.2566731770833333,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3883,
+          "total_bits": 12288,
+          "ber": 0.3159993489583333
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2769,
+          "total_bits": 12288,
+          "ber": 0.225341796875
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2810,
+          "total_bits": 12288,
+          "ber": 0.22867838541666666
+        }
+      ],
+      "weights_sha256": "78c5ea9d6f990921a24a62160c9c46b0f0894a255ea2807a9890cfe72fdc2e4a"
+    },
+    {
+      "seed": 71463,
+      "arm_id": 1,
+      "gauge": true,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3202,
+      "bit_errors": 8115,
+      "total_bits": 36864,
+      "ber": 0.22013346354166666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2705,
+          "total_bits": 12288,
+          "ber": 0.22013346354166666
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2705,
+          "total_bits": 12288,
+          "ber": 0.22013346354166666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2705,
+          "total_bits": 12288,
+          "ber": 0.22013346354166666
+        }
+      ],
+      "weights_sha256": "7a9c5ea4f32c82c2206c035f01db5ecdc81a251babb993f46a4cdc0eaa3f777f"
+    },
+    {
+      "seed": 71463,
+      "arm_id": 2,
+      "gauge": false,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3138,
+      "bit_errors": 8962,
+      "total_bits": 36864,
+      "ber": 0.2431098090277778,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3296,
+          "total_bits": 12288,
+          "ber": 0.2682291666666667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2732,
+          "total_bits": 12288,
+          "ber": 0.22233072916666666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2934,
+          "total_bits": 12288,
+          "ber": 0.23876953125
+        }
+      ],
+      "weights_sha256": "b1642ed32642a8ca0610fa312949bf4b5a1731a65e8c75d6f1dd425c53b572f0"
+    },
+    {
+      "seed": 71463,
+      "arm_id": 3,
+      "gauge": true,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3170,
+      "bit_errors": 8226,
+      "total_bits": 36864,
+      "ber": 0.22314453125,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2742,
+          "total_bits": 12288,
+          "ber": 0.22314453125
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2742,
+          "total_bits": 12288,
+          "ber": 0.22314453125
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2742,
+          "total_bits": 12288,
+          "ber": 0.22314453125
+        }
+      ],
+      "weights_sha256": "31aac76451ee72e426851aedd4347f25e92e3ae420da83a77b13584344620573"
+    },
+    {
+      "seed": 71463,
+      "arm_id": 4,
+      "gauge": true,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3342,
+      "bit_errors": 8127,
+      "total_bits": 36864,
+      "ber": 0.220458984375,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2709,
+          "total_bits": 12288,
+          "ber": 0.220458984375
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2709,
+          "total_bits": 12288,
+          "ber": 0.220458984375
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2709,
+          "total_bits": 12288,
+          "ber": 0.220458984375
+        }
+      ],
+      "weights_sha256": "a3e09c6db36df04b260c42f8104bb1a0e324317bed8f48ad3190569593fe477f"
+    },
+    {
+      "seed": 71463,
+      "arm_id": 5,
+      "gauge": false,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3122,
+      "bit_errors": 9330,
+      "total_bits": 36864,
+      "ber": 0.2530924479166667,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3808,
+          "total_bits": 12288,
+          "ber": 0.3098958333333333
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2757,
+          "total_bits": 12288,
+          "ber": 0.224365234375
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2765,
+          "total_bits": 12288,
+          "ber": 0.22501627604166666
+        }
+      ],
+      "weights_sha256": "5ef5df6364cf58a86c4b0c12496e9a36bffd20188783cf5f3cb8a5608db16637"
+    },
+    {
+      "seed": 71463,
+      "arm_id": 6,
+      "gauge": false,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3282,
+      "bit_errors": 8816,
+      "total_bits": 36864,
+      "ber": 0.23914930555555555,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3309,
+          "total_bits": 12288,
+          "ber": 0.269287109375
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2749,
+          "total_bits": 12288,
+          "ber": 0.22371419270833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2758,
+          "total_bits": 12288,
+          "ber": 0.22444661458333334
+        }
+      ],
+      "weights_sha256": "c67dfee18e45ef8dec55a23cbd0a99421fde2744b1be5b21bffd8038fcd5a18a"
+    },
+    {
+      "seed": 71463,
+      "arm_id": 7,
+      "gauge": true,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3314,
+      "bit_errors": 8226,
+      "total_bits": 36864,
+      "ber": 0.22314453125,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2742,
+          "total_bits": 12288,
+          "ber": 0.22314453125
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2742,
+          "total_bits": 12288,
+          "ber": 0.22314453125
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2742,
+          "total_bits": 12288,
+          "ber": 0.22314453125
+        }
+      ],
+      "weights_sha256": "4861c578cecfa4d8ff0e14bfb0f2c754248990300acd71d80664680570de0be1"
+    },
+    {
+      "seed": 71463,
+      "arm_id": 8,
+      "gauge": false,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3266,
+      "bit_errors": 9270,
+      "total_bits": 36864,
+      "ber": 0.25146484375,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3740,
+          "total_bits": 12288,
+          "ber": 0.3043619791666667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2759,
+          "total_bits": 12288,
+          "ber": 0.22452799479166666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2771,
+          "total_bits": 12288,
+          "ber": 0.22550455729166666
+        }
+      ],
+      "weights_sha256": "e80928c4dc6c5043cc2d998130d0076024ea82c619216acc92e72c1a6aff80dd"
+    },
+    {
+      "seed": 71464,
+      "arm_id": 1,
+      "gauge": true,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3202,
+      "bit_errors": 8265,
+      "total_bits": 36864,
+      "ber": 0.22420247395833334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2755,
+          "total_bits": 12288,
+          "ber": 0.22420247395833334
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2755,
+          "total_bits": 12288,
+          "ber": 0.22420247395833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2755,
+          "total_bits": 12288,
+          "ber": 0.22420247395833334
+        }
+      ],
+      "weights_sha256": "29ee6a7c8313055a3ddbca29b0e4fd2525447974449524c060ae6beacfddd300"
+    },
+    {
+      "seed": 71464,
+      "arm_id": 2,
+      "gauge": false,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3138,
+      "bit_errors": 9031,
+      "total_bits": 36864,
+      "ber": 0.24498155381944445,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3282,
+          "total_bits": 12288,
+          "ber": 0.26708984375
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2757,
+          "total_bits": 12288,
+          "ber": 0.224365234375
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2992,
+          "total_bits": 12288,
+          "ber": 0.24348958333333334
+        }
+      ],
+      "weights_sha256": "a581a2d72c38b028030bd1446920439f5b6e973d2f66d19f1b5ac85d7baac741"
+    },
+    {
+      "seed": 71464,
+      "arm_id": 3,
+      "gauge": true,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3170,
+      "bit_errors": 8331,
+      "total_bits": 36864,
+      "ber": 0.22599283854166666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2777,
+          "total_bits": 12288,
+          "ber": 0.22599283854166666
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2777,
+          "total_bits": 12288,
+          "ber": 0.22599283854166666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2777,
+          "total_bits": 12288,
+          "ber": 0.22599283854166666
+        }
+      ],
+      "weights_sha256": "516eb76e396ac0ce35cc5893957b2a856ab9f5a4bc66fc4e8fc0b15b1192cc8a"
+    },
+    {
+      "seed": 71464,
+      "arm_id": 4,
+      "gauge": true,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3342,
+      "bit_errors": 8244,
+      "total_bits": 36864,
+      "ber": 0.2236328125,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2748,
+          "total_bits": 12288,
+          "ber": 0.2236328125
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2748,
+          "total_bits": 12288,
+          "ber": 0.2236328125
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2748,
+          "total_bits": 12288,
+          "ber": 0.2236328125
+        }
+      ],
+      "weights_sha256": "430dcbf8cb10b19d70d934367186f47a28aa860ca4b56b14a761bb47051a6d1c"
+    },
+    {
+      "seed": 71464,
+      "arm_id": 5,
+      "gauge": false,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3122,
+      "bit_errors": 9556,
+      "total_bits": 36864,
+      "ber": 0.2592230902777778,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 4005,
+          "total_bits": 12288,
+          "ber": 0.325927734375
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2784,
+          "total_bits": 12288,
+          "ber": 0.2265625
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2767,
+          "total_bits": 12288,
+          "ber": 0.22517903645833334
+        }
+      ],
+      "weights_sha256": "969742cc1400c72a2de9d810fc2c48973161eaf6e10b78fc077ec30bc8df5ef9"
+    },
+    {
+      "seed": 71464,
+      "arm_id": 6,
+      "gauge": false,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3282,
+      "bit_errors": 8924,
+      "total_bits": 36864,
+      "ber": 0.24207899305555555,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3301,
+          "total_bits": 12288,
+          "ber": 0.2686360677083333
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2757,
+          "total_bits": 12288,
+          "ber": 0.224365234375
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2866,
+          "total_bits": 12288,
+          "ber": 0.23323567708333334
+        }
+      ],
+      "weights_sha256": "d7488dc1e90e23ec596847baab51e3c2ec704dab1a00a9b800a9ed73dc0d3212"
+    },
+    {
+      "seed": 71464,
+      "arm_id": 7,
+      "gauge": true,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3314,
+      "bit_errors": 8349,
+      "total_bits": 36864,
+      "ber": 0.22648111979166666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2783,
+          "total_bits": 12288,
+          "ber": 0.22648111979166666
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2783,
+          "total_bits": 12288,
+          "ber": 0.22648111979166666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2783,
+          "total_bits": 12288,
+          "ber": 0.22648111979166666
+        }
+      ],
+      "weights_sha256": "128aedc635bc0edb23b21a5bf2033b664c0750db84426ffed30d2c392ff833ba"
+    },
+    {
+      "seed": 71464,
+      "arm_id": 8,
+      "gauge": false,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3266,
+      "bit_errors": 9182,
+      "total_bits": 36864,
+      "ber": 0.2490776909722222,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3615,
+          "total_bits": 12288,
+          "ber": 0.294189453125
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2773,
+          "total_bits": 12288,
+          "ber": 0.22566731770833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2794,
+          "total_bits": 12288,
+          "ber": 0.22737630208333334
+        }
+      ],
+      "weights_sha256": "1b93f306220ca3b6c86f7db0dcde6a12bf9ac5e919583fe7433a9981f54db1de"
+    },
+    {
+      "seed": 71465,
+      "arm_id": 1,
+      "gauge": true,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3202,
+      "bit_errors": 7941,
+      "total_bits": 36864,
+      "ber": 0.21541341145833334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2647,
+          "total_bits": 12288,
+          "ber": 0.21541341145833334
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2647,
+          "total_bits": 12288,
+          "ber": 0.21541341145833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2647,
+          "total_bits": 12288,
+          "ber": 0.21541341145833334
+        }
+      ],
+      "weights_sha256": "ff325b15ed18b20d632b316ab73deecd5e255895e888caeae8adc160fa5b06be"
+    },
+    {
+      "seed": 71465,
+      "arm_id": 2,
+      "gauge": false,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3138,
+      "bit_errors": 8594,
+      "total_bits": 36864,
+      "ber": 0.2331271701388889,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3165,
+          "total_bits": 12288,
+          "ber": 0.257568359375
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2676,
+          "total_bits": 12288,
+          "ber": 0.2177734375
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2753,
+          "total_bits": 12288,
+          "ber": 0.22403971354166666
+        }
+      ],
+      "weights_sha256": "b147eb7fd959a8138b7cccb78c61038ce8dace48dd8eda6e16a781d1f28d5d19"
+    },
+    {
+      "seed": 71465,
+      "arm_id": 3,
+      "gauge": true,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3170,
+      "bit_errors": 8064,
+      "total_bits": 36864,
+      "ber": 0.21875,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2688,
+          "total_bits": 12288,
+          "ber": 0.21875
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2688,
+          "total_bits": 12288,
+          "ber": 0.21875
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2688,
+          "total_bits": 12288,
+          "ber": 0.21875
+        }
+      ],
+      "weights_sha256": "bcd2f12e77022248f2cf581887ec095a5cc5605c993343a81b87576a128eb6a5"
+    },
+    {
+      "seed": 71465,
+      "arm_id": 4,
+      "gauge": true,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3342,
+      "bit_errors": 7896,
+      "total_bits": 36864,
+      "ber": 0.21419270833333334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2632,
+          "total_bits": 12288,
+          "ber": 0.21419270833333334
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2632,
+          "total_bits": 12288,
+          "ber": 0.21419270833333334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2632,
+          "total_bits": 12288,
+          "ber": 0.21419270833333334
+        }
+      ],
+      "weights_sha256": "4ac25b096f2c614e3b1689b83af209692fc4040fa65eafc220db1b7b16e547d1"
+    },
+    {
+      "seed": 71465,
+      "arm_id": 5,
+      "gauge": false,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3122,
+      "bit_errors": 9275,
+      "total_bits": 36864,
+      "ber": 0.2516004774305556,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3792,
+          "total_bits": 12288,
+          "ber": 0.30859375
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2691,
+          "total_bits": 12288,
+          "ber": 0.218994140625
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2792,
+          "total_bits": 12288,
+          "ber": 0.22721354166666666
+        }
+      ],
+      "weights_sha256": "0403265d0bb7443dc17c01c4114cef86ae60af1ebcc1b03a456ebcccdc4e2ad8"
+    },
+    {
+      "seed": 71465,
+      "arm_id": 6,
+      "gauge": false,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3282,
+      "bit_errors": 8519,
+      "total_bits": 36864,
+      "ber": 0.23109266493055555,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3163,
+          "total_bits": 12288,
+          "ber": 0.2574055989583333
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2669,
+          "total_bits": 12288,
+          "ber": 0.21720377604166666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2687,
+          "total_bits": 12288,
+          "ber": 0.21866861979166666
+        }
+      ],
+      "weights_sha256": "06812e470d88f067eca6a5941f253d0b90bfe17fb26a53e139a031fa2af3ec6f"
+    },
+    {
+      "seed": 71465,
+      "arm_id": 7,
+      "gauge": true,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3314,
+      "bit_errors": 8133,
+      "total_bits": 36864,
+      "ber": 0.22062174479166666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2711,
+          "total_bits": 12288,
+          "ber": 0.22062174479166666
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2711,
+          "total_bits": 12288,
+          "ber": 0.22062174479166666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2711,
+          "total_bits": 12288,
+          "ber": 0.22062174479166666
+        }
+      ],
+      "weights_sha256": "fcb378114cadd87d7eeab6e8f817e89284be7ae76619b1cbb30c5efbe8fa8e8d"
+    },
+    {
+      "seed": 71465,
+      "arm_id": 8,
+      "gauge": false,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3266,
+      "bit_errors": 9496,
+      "total_bits": 36864,
+      "ber": 0.2575954861111111,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 4103,
+          "total_bits": 12288,
+          "ber": 0.3339029947916667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2690,
+          "total_bits": 12288,
+          "ber": 0.21891276041666666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2703,
+          "total_bits": 12288,
+          "ber": 0.219970703125
+        }
+      ],
+      "weights_sha256": "9f32fd7292fa5823667fd18f5f2f5a274b86b8bc4d4c1f9fd1f20f829e6a8a64"
+    },
+    {
+      "seed": 71466,
+      "arm_id": 1,
+      "gauge": true,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3202,
+      "bit_errors": 7959,
+      "total_bits": 36864,
+      "ber": 0.21590169270833334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2653,
+          "total_bits": 12288,
+          "ber": 0.21590169270833334
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2653,
+          "total_bits": 12288,
+          "ber": 0.21590169270833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2653,
+          "total_bits": 12288,
+          "ber": 0.21590169270833334
+        }
+      ],
+      "weights_sha256": "fa3d980bfbe51350d5d19aceb775c620bad13469efab3dca59c0871b0e83c3c6"
+    },
+    {
+      "seed": 71466,
+      "arm_id": 2,
+      "gauge": false,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3138,
+      "bit_errors": 8629,
+      "total_bits": 36864,
+      "ber": 0.2340766059027778,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3114,
+          "total_bits": 12288,
+          "ber": 0.25341796875
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2649,
+          "total_bits": 12288,
+          "ber": 0.215576171875
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2866,
+          "total_bits": 12288,
+          "ber": 0.23323567708333334
+        }
+      ],
+      "weights_sha256": "20f995524fb1d4136c5b4a3a088f89a7d00b72c2014e5a2c7af32d1cc244f114"
+    },
+    {
+      "seed": 71466,
+      "arm_id": 3,
+      "gauge": true,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3170,
+      "bit_errors": 7974,
+      "total_bits": 36864,
+      "ber": 0.21630859375,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2658,
+          "total_bits": 12288,
+          "ber": 0.21630859375
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2658,
+          "total_bits": 12288,
+          "ber": 0.21630859375
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2658,
+          "total_bits": 12288,
+          "ber": 0.21630859375
+        }
+      ],
+      "weights_sha256": "4f5c3c8e5b9ffe19af98b2253567af2ab7da4ca1eb102a18e175edc73bc561c6"
+    },
+    {
+      "seed": 71466,
+      "arm_id": 4,
+      "gauge": true,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3342,
+      "bit_errors": 7833,
+      "total_bits": 36864,
+      "ber": 0.21248372395833334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2611,
+          "total_bits": 12288,
+          "ber": 0.21248372395833334
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2611,
+          "total_bits": 12288,
+          "ber": 0.21248372395833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2611,
+          "total_bits": 12288,
+          "ber": 0.21248372395833334
+        }
+      ],
+      "weights_sha256": "ca9b3162327e414144751568c8772d810e5313e5618585b1dfd8efd00a95c972"
+    },
+    {
+      "seed": 71466,
+      "arm_id": 5,
+      "gauge": false,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3122,
+      "bit_errors": 9428,
+      "total_bits": 36864,
+      "ber": 0.2557508680555556,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 4028,
+          "total_bits": 12288,
+          "ber": 0.3277994791666667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2660,
+          "total_bits": 12288,
+          "ber": 0.21647135416666666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2740,
+          "total_bits": 12288,
+          "ber": 0.22298177083333334
+        }
+      ],
+      "weights_sha256": "9a1c43abf8fe47c6a39b1a1e21563396c7101f34bd113ce466d3e9be4e1c1cc5"
+    },
+    {
+      "seed": 71466,
+      "arm_id": 6,
+      "gauge": false,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3282,
+      "bit_errors": 8490,
+      "total_bits": 36864,
+      "ber": 0.23030598958333334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3113,
+          "total_bits": 12288,
+          "ber": 0.2533365885416667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2627,
+          "total_bits": 12288,
+          "ber": 0.21378580729166666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2750,
+          "total_bits": 12288,
+          "ber": 0.22379557291666666
+        }
+      ],
+      "weights_sha256": "3d0db3920d798d3795d5cef86d22b0e301212d63cd1a0a1b7c530acf0fac0651"
+    },
+    {
+      "seed": 71466,
+      "arm_id": 7,
+      "gauge": true,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3314,
+      "bit_errors": 7995,
+      "total_bits": 36864,
+      "ber": 0.21687825520833334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2665,
+          "total_bits": 12288,
+          "ber": 0.21687825520833334
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2665,
+          "total_bits": 12288,
+          "ber": 0.21687825520833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2665,
+          "total_bits": 12288,
+          "ber": 0.21687825520833334
+        }
+      ],
+      "weights_sha256": "a18c72dd0c989dcd8c74fe403fa411e68492f26135753b047a70af92fbd9ddf7"
+    },
+    {
+      "seed": 71466,
+      "arm_id": 8,
+      "gauge": false,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3266,
+      "bit_errors": 9358,
+      "total_bits": 36864,
+      "ber": 0.2538519965277778,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 4046,
+          "total_bits": 12288,
+          "ber": 0.3292643229166667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2645,
+          "total_bits": 12288,
+          "ber": 0.21525065104166666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2667,
+          "total_bits": 12288,
+          "ber": 0.217041015625
+        }
+      ],
+      "weights_sha256": "24edc116d64a8a7f499559051e89c0d95ee5d36d2fd1433a4d922df3838e3636"
+    },
+    {
+      "seed": 71467,
+      "arm_id": 1,
+      "gauge": true,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3202,
+      "bit_errors": 7971,
+      "total_bits": 36864,
+      "ber": 0.21622721354166666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2657,
+          "total_bits": 12288,
+          "ber": 0.21622721354166666
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2657,
+          "total_bits": 12288,
+          "ber": 0.21622721354166666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2657,
+          "total_bits": 12288,
+          "ber": 0.21622721354166666
+        }
+      ],
+      "weights_sha256": "194a61c90d6942c6ad92ef7cff41f76bb70fef890c3685d11c3e1d345df51f16"
+    },
+    {
+      "seed": 71467,
+      "arm_id": 2,
+      "gauge": false,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3138,
+      "bit_errors": 8803,
+      "total_bits": 36864,
+      "ber": 0.2387966579861111,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3273,
+          "total_bits": 12288,
+          "ber": 0.266357421875
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2653,
+          "total_bits": 12288,
+          "ber": 0.21590169270833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2877,
+          "total_bits": 12288,
+          "ber": 0.234130859375
+        }
+      ],
+      "weights_sha256": "9fe167d01fc9d9ef76e9c349ab2dcf4b767c1c39e749b7c9c1fb1928b62152a8"
+    },
+    {
+      "seed": 71467,
+      "arm_id": 3,
+      "gauge": true,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3170,
+      "bit_errors": 8022,
+      "total_bits": 36864,
+      "ber": 0.21761067708333334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2674,
+          "total_bits": 12288,
+          "ber": 0.21761067708333334
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2674,
+          "total_bits": 12288,
+          "ber": 0.21761067708333334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2674,
+          "total_bits": 12288,
+          "ber": 0.21761067708333334
+        }
+      ],
+      "weights_sha256": "06ec37cb76ef7ba65627c6a9d9e898a6979b3ec1474206793603e2ad49fb69d1"
+    },
+    {
+      "seed": 71467,
+      "arm_id": 4,
+      "gauge": true,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3342,
+      "bit_errors": 7980,
+      "total_bits": 36864,
+      "ber": 0.21647135416666666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2660,
+          "total_bits": 12288,
+          "ber": 0.21647135416666666
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2660,
+          "total_bits": 12288,
+          "ber": 0.21647135416666666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2660,
+          "total_bits": 12288,
+          "ber": 0.21647135416666666
+        }
+      ],
+      "weights_sha256": "44f124542d8c1c31627e43da575814535dd7b04a89e9234c2148370b3cf2979f"
+    },
+    {
+      "seed": 71467,
+      "arm_id": 5,
+      "gauge": false,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3122,
+      "bit_errors": 9412,
+      "total_bits": 36864,
+      "ber": 0.2553168402777778,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 4030,
+          "total_bits": 12288,
+          "ber": 0.3279622395833333
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2681,
+          "total_bits": 12288,
+          "ber": 0.21818033854166666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2701,
+          "total_bits": 12288,
+          "ber": 0.21980794270833334
+        }
+      ],
+      "weights_sha256": "509dbc180be00d5036f069c868b71ed8b6f2120fd492c2bdd2ef3464eec74a6e"
+    },
+    {
+      "seed": 71467,
+      "arm_id": 6,
+      "gauge": false,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3282,
+      "bit_errors": 8624,
+      "total_bits": 36864,
+      "ber": 0.2339409722222222,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3251,
+          "total_bits": 12288,
+          "ber": 0.2645670572916667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2665,
+          "total_bits": 12288,
+          "ber": 0.21687825520833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2708,
+          "total_bits": 12288,
+          "ber": 0.22037760416666666
+        }
+      ],
+      "weights_sha256": "34046583e17fd968fe6d8ebb116405ba4f4b3d6781796420afa5313c9a8a225d"
+    },
+    {
+      "seed": 71467,
+      "arm_id": 7,
+      "gauge": true,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3314,
+      "bit_errors": 8061,
+      "total_bits": 36864,
+      "ber": 0.21866861979166666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2687,
+          "total_bits": 12288,
+          "ber": 0.21866861979166666
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2687,
+          "total_bits": 12288,
+          "ber": 0.21866861979166666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2687,
+          "total_bits": 12288,
+          "ber": 0.21866861979166666
+        }
+      ],
+      "weights_sha256": "3508a2dd1d3b95fa1a03d4fb73a6cf24a006362ae527d041beac1e2cc106aa24"
+    },
+    {
+      "seed": 71467,
+      "arm_id": 8,
+      "gauge": false,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3266,
+      "bit_errors": 9287,
+      "total_bits": 36864,
+      "ber": 0.2519259982638889,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3890,
+          "total_bits": 12288,
+          "ber": 0.3165690104166667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2672,
+          "total_bits": 12288,
+          "ber": 0.21744791666666666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2725,
+          "total_bits": 12288,
+          "ber": 0.22176106770833334
+        }
+      ],
+      "weights_sha256": "7680914d710b0dcd9000912933dc33a8ea4592d7405af87cbe788c907a1bf973"
+    },
+    {
+      "seed": 71468,
+      "arm_id": 1,
+      "gauge": true,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3202,
+      "bit_errors": 7902,
+      "total_bits": 36864,
+      "ber": 0.21435546875,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2634,
+          "total_bits": 12288,
+          "ber": 0.21435546875
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2634,
+          "total_bits": 12288,
+          "ber": 0.21435546875
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2634,
+          "total_bits": 12288,
+          "ber": 0.21435546875
+        }
+      ],
+      "weights_sha256": "03f28f2008072112f3287a393815edf79bbd5aa745ab805d89e3f344e298990f"
+    },
+    {
+      "seed": 71468,
+      "arm_id": 2,
+      "gauge": false,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3138,
+      "bit_errors": 8682,
+      "total_bits": 36864,
+      "ber": 0.23551432291666666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3205,
+          "total_bits": 12288,
+          "ber": 0.2608235677083333
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2653,
+          "total_bits": 12288,
+          "ber": 0.21590169270833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2824,
+          "total_bits": 12288,
+          "ber": 0.22981770833333334
+        }
+      ],
+      "weights_sha256": "90ed889f98b0ce7761f2bfc259be571382e09be117045f6138c14679d95e1951"
+    },
+    {
+      "seed": 71468,
+      "arm_id": 3,
+      "gauge": true,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3170,
+      "bit_errors": 8040,
+      "total_bits": 36864,
+      "ber": 0.21809895833333334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2680,
+          "total_bits": 12288,
+          "ber": 0.21809895833333334
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2680,
+          "total_bits": 12288,
+          "ber": 0.21809895833333334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2680,
+          "total_bits": 12288,
+          "ber": 0.21809895833333334
+        }
+      ],
+      "weights_sha256": "26e567b76428bcbd95a4aa3a051e5157c17433feacc19a541741f454c9c0e447"
+    },
+    {
+      "seed": 71468,
+      "arm_id": 4,
+      "gauge": true,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3342,
+      "bit_errors": 7854,
+      "total_bits": 36864,
+      "ber": 0.21305338541666666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2618,
+          "total_bits": 12288,
+          "ber": 0.21305338541666666
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2618,
+          "total_bits": 12288,
+          "ber": 0.21305338541666666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2618,
+          "total_bits": 12288,
+          "ber": 0.21305338541666666
+        }
+      ],
+      "weights_sha256": "9bccb0e59b6a1c754a8a8ae91931c91934cfc09528ae63ca333d1dcdf3feca7a"
+    },
+    {
+      "seed": 71468,
+      "arm_id": 5,
+      "gauge": false,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3122,
+      "bit_errors": 9111,
+      "total_bits": 36864,
+      "ber": 0.24715169270833334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3738,
+          "total_bits": 12288,
+          "ber": 0.30419921875
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2664,
+          "total_bits": 12288,
+          "ber": 0.216796875
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2709,
+          "total_bits": 12288,
+          "ber": 0.220458984375
+        }
+      ],
+      "weights_sha256": "1ac03162d8c79ce54e5b5799e5d639fd177ab5160e3ffb54df02a831d90e5b1b"
+    },
+    {
+      "seed": 71468,
+      "arm_id": 6,
+      "gauge": false,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3282,
+      "bit_errors": 8497,
+      "total_bits": 36864,
+      "ber": 0.2304958767361111,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3183,
+          "total_bits": 12288,
+          "ber": 0.259033203125
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2643,
+          "total_bits": 12288,
+          "ber": 0.215087890625
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2671,
+          "total_bits": 12288,
+          "ber": 0.21736653645833334
+        }
+      ],
+      "weights_sha256": "88f1ded2746bcfb6bcbc3bb49e0e583d56249f5c31aa9d74bc65fb339afa2f21"
+    },
+    {
+      "seed": 71468,
+      "arm_id": 7,
+      "gauge": true,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3314,
+      "bit_errors": 8070,
+      "total_bits": 36864,
+      "ber": 0.21891276041666666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2690,
+          "total_bits": 12288,
+          "ber": 0.21891276041666666
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2690,
+          "total_bits": 12288,
+          "ber": 0.21891276041666666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2690,
+          "total_bits": 12288,
+          "ber": 0.21891276041666666
+        }
+      ],
+      "weights_sha256": "9e7fe9942bb68aee7d6a4b43d173526854225c1942b607695619eb63bf9244a6"
+    },
+    {
+      "seed": 71468,
+      "arm_id": 8,
+      "gauge": false,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3266,
+      "bit_errors": 9094,
+      "total_bits": 36864,
+      "ber": 0.24669053819444445,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3725,
+          "total_bits": 12288,
+          "ber": 0.3031412760416667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2678,
+          "total_bits": 12288,
+          "ber": 0.21793619791666666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2691,
+          "total_bits": 12288,
+          "ber": 0.218994140625
+        }
+      ],
+      "weights_sha256": "38f4922a17f5775b578d69b444b6d641592c8e46462865ae46b77848b12122a8"
+    },
+    {
+      "seed": 71469,
+      "arm_id": 1,
+      "gauge": true,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3202,
+      "bit_errors": 8220,
+      "total_bits": 36864,
+      "ber": 0.22298177083333334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2740,
+          "total_bits": 12288,
+          "ber": 0.22298177083333334
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2740,
+          "total_bits": 12288,
+          "ber": 0.22298177083333334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2740,
+          "total_bits": 12288,
+          "ber": 0.22298177083333334
+        }
+      ],
+      "weights_sha256": "1edc13e89d9e9820bddd5e8282abf66bc434cb527bae95006a0172dbae4afc03"
+    },
+    {
+      "seed": 71469,
+      "arm_id": 2,
+      "gauge": false,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3138,
+      "bit_errors": 8980,
+      "total_bits": 36864,
+      "ber": 0.2435980902777778,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3317,
+          "total_bits": 12288,
+          "ber": 0.2699381510416667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2758,
+          "total_bits": 12288,
+          "ber": 0.22444661458333334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2905,
+          "total_bits": 12288,
+          "ber": 0.23640950520833334
+        }
+      ],
+      "weights_sha256": "2bf9a3cc935171b09c0822afd0d8c7486d9db450da26f673b8c0764f296e5e21"
+    },
+    {
+      "seed": 71469,
+      "arm_id": 3,
+      "gauge": true,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3170,
+      "bit_errors": 8256,
+      "total_bits": 36864,
+      "ber": 0.22395833333333334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2752,
+          "total_bits": 12288,
+          "ber": 0.22395833333333334
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2752,
+          "total_bits": 12288,
+          "ber": 0.22395833333333334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2752,
+          "total_bits": 12288,
+          "ber": 0.22395833333333334
+        }
+      ],
+      "weights_sha256": "4b962f27134cc2295893575d5b7949df685b3887c906a8afb7d7c7d1b3d46b31"
+    },
+    {
+      "seed": 71469,
+      "arm_id": 4,
+      "gauge": true,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3342,
+      "bit_errors": 8244,
+      "total_bits": 36864,
+      "ber": 0.2236328125,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2748,
+          "total_bits": 12288,
+          "ber": 0.2236328125
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2748,
+          "total_bits": 12288,
+          "ber": 0.2236328125
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2748,
+          "total_bits": 12288,
+          "ber": 0.2236328125
+        }
+      ],
+      "weights_sha256": "f6d11ca99e321e126879a886802dc1e4c8ef1d63c2829357fd91d3494faf0440"
+    },
+    {
+      "seed": 71469,
+      "arm_id": 5,
+      "gauge": false,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3122,
+      "bit_errors": 10357,
+      "total_bits": 36864,
+      "ber": 0.2809516059027778,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 4735,
+          "total_bits": 12288,
+          "ber": 0.3853352864583333
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2765,
+          "total_bits": 12288,
+          "ber": 0.22501627604166666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2857,
+          "total_bits": 12288,
+          "ber": 0.23250325520833334
+        }
+      ],
+      "weights_sha256": "6e3407a28805b8225eda4b817bcc69d101f5d5b6b6de379759b8574a6419a615"
+    },
+    {
+      "seed": 71469,
+      "arm_id": 6,
+      "gauge": false,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3282,
+      "bit_errors": 8805,
+      "total_bits": 36864,
+      "ber": 0.23885091145833334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3303,
+          "total_bits": 12288,
+          "ber": 0.268798828125
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2756,
+          "total_bits": 12288,
+          "ber": 0.22428385416666666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2746,
+          "total_bits": 12288,
+          "ber": 0.22347005208333334
+        }
+      ],
+      "weights_sha256": "3bdfb5bf947626f4934c4db3f11e01b5016dd582da5a28afb736ec423fc82080"
+    },
+    {
+      "seed": 71469,
+      "arm_id": 7,
+      "gauge": true,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3314,
+      "bit_errors": 8280,
+      "total_bits": 36864,
+      "ber": 0.224609375,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2760,
+          "total_bits": 12288,
+          "ber": 0.224609375
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2760,
+          "total_bits": 12288,
+          "ber": 0.224609375
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2760,
+          "total_bits": 12288,
+          "ber": 0.224609375
+        }
+      ],
+      "weights_sha256": "e5bab858514a594b5063598ceaa64c6e4a129d4836df970baf8d66b86378b449"
+    },
+    {
+      "seed": 71469,
+      "arm_id": 8,
+      "gauge": false,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3266,
+      "bit_errors": 9217,
+      "total_bits": 36864,
+      "ber": 0.2500271267361111,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3681,
+          "total_bits": 12288,
+          "ber": 0.299560546875
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2754,
+          "total_bits": 12288,
+          "ber": 0.22412109375
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2782,
+          "total_bits": 12288,
+          "ber": 0.22639973958333334
+        }
+      ],
+      "weights_sha256": "77e73ea2c991117b7503d1a780c81c9e85652201262d7db16f27f539f0fc3a62"
+    },
+    {
+      "seed": 71470,
+      "arm_id": 1,
+      "gauge": true,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3202,
+      "bit_errors": 8205,
+      "total_bits": 36864,
+      "ber": 0.22257486979166666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2735,
+          "total_bits": 12288,
+          "ber": 0.22257486979166666
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2735,
+          "total_bits": 12288,
+          "ber": 0.22257486979166666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2735,
+          "total_bits": 12288,
+          "ber": 0.22257486979166666
+        }
+      ],
+      "weights_sha256": "465ac32a98c95a8101a560c969f6f8c4d89575b297078967292500f0d20e983c"
+    },
+    {
+      "seed": 71470,
+      "arm_id": 2,
+      "gauge": false,
+      "hermitian": true,
+      "joint": true,
+      "width": 8,
+      "parameters": 3138,
+      "bit_errors": 8798,
+      "total_bits": 36864,
+      "ber": 0.23866102430555555,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3290,
+          "total_bits": 12288,
+          "ber": 0.2677408854166667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2725,
+          "total_bits": 12288,
+          "ber": 0.22176106770833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2783,
+          "total_bits": 12288,
+          "ber": 0.22648111979166666
+        }
+      ],
+      "weights_sha256": "219061fa543c03a3a89279f6f73f08bc4c8497587089302da0771c3f7db76618"
+    },
+    {
+      "seed": 71470,
+      "arm_id": 3,
+      "gauge": true,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3170,
+      "bit_errors": 8193,
+      "total_bits": 36864,
+      "ber": 0.22224934895833334,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2731,
+          "total_bits": 12288,
+          "ber": 0.22224934895833334
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2731,
+          "total_bits": 12288,
+          "ber": 0.22224934895833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2731,
+          "total_bits": 12288,
+          "ber": 0.22224934895833334
+        }
+      ],
+      "weights_sha256": "d298908a49d289bb4c41ea04c66f2ee6fe0d3d95f6e51e7009a5adaa6c542fd9"
+    },
+    {
+      "seed": 71470,
+      "arm_id": 4,
+      "gauge": true,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3342,
+      "bit_errors": 8070,
+      "total_bits": 36864,
+      "ber": 0.21891276041666666,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2690,
+          "total_bits": 12288,
+          "ber": 0.21891276041666666
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2690,
+          "total_bits": 12288,
+          "ber": 0.21891276041666666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2690,
+          "total_bits": 12288,
+          "ber": 0.21891276041666666
+        }
+      ],
+      "weights_sha256": "5dced8e7d31ea9fe1b747bbaa872b8381247f4bc99fb086c12c5883d3f81ca80"
+    },
+    {
+      "seed": 71470,
+      "arm_id": 5,
+      "gauge": false,
+      "hermitian": false,
+      "joint": true,
+      "width": 6,
+      "parameters": 3122,
+      "bit_errors": 9345,
+      "total_bits": 36864,
+      "ber": 0.2534993489583333,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3814,
+          "total_bits": 12288,
+          "ber": 0.3103841145833333
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2731,
+          "total_bits": 12288,
+          "ber": 0.22224934895833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2800,
+          "total_bits": 12288,
+          "ber": 0.22786458333333334
+        }
+      ],
+      "weights_sha256": "f5b27ad87d91229593f3292c0ab5921cb447574f6e2a91e8250b75ea13ce0e35"
+    },
+    {
+      "seed": 71470,
+      "arm_id": 6,
+      "gauge": false,
+      "hermitian": true,
+      "joint": false,
+      "width": 10,
+      "parameters": 3282,
+      "bit_errors": 8669,
+      "total_bits": 36864,
+      "ber": 0.2351616753472222,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3261,
+          "total_bits": 12288,
+          "ber": 0.265380859375
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2713,
+          "total_bits": 12288,
+          "ber": 0.22078450520833334
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2695,
+          "total_bits": 12288,
+          "ber": 0.21931966145833334
+        }
+      ],
+      "weights_sha256": "0136640bc35d7da4bd3bba5456f9c773510fa5e6217546508a3717846f54e69c"
+    },
+    {
+      "seed": 71470,
+      "arm_id": 7,
+      "gauge": true,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3314,
+      "bit_errors": 8262,
+      "total_bits": 36864,
+      "ber": 0.22412109375,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 2754,
+          "total_bits": 12288,
+          "ber": 0.22412109375
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2754,
+          "total_bits": 12288,
+          "ber": 0.22412109375
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2754,
+          "total_bits": 12288,
+          "ber": 0.22412109375
+        }
+      ],
+      "weights_sha256": "b9b360a0ceec692bf632045df3d7dd0b2a30f7d8aed829ad62bac7709fd33465"
+    },
+    {
+      "seed": 71470,
+      "arm_id": 8,
+      "gauge": false,
+      "hermitian": false,
+      "joint": false,
+      "width": 8,
+      "parameters": 3266,
+      "bit_errors": 9145,
+      "total_bits": 36864,
+      "ber": 0.2480740017361111,
+      "gains": [
+        {
+          "scale": 0.015625,
+          "bit_errors": 3701,
+          "total_bits": 12288,
+          "ber": 0.3011881510416667
+        },
+        {
+          "scale": 1.0,
+          "bit_errors": 2732,
+          "total_bits": 12288,
+          "ber": 0.22233072916666666
+        },
+        {
+          "scale": 64.0,
+          "bit_errors": 2712,
+          "total_bits": 12288,
+          "ber": 0.220703125
+        }
+      ],
+      "weights_sha256": "c4f546cb529783d64ed19b91b5c4cbc1e26155cc3d57b7c553055fc7ed810469"
+    }
+  ],
+  "history": {
+    "commit": "f878a7363254c6e34bee5f6e278135d74e1d54e0",
+    "file_count": 230,
+    "checkout_sha256": "cc46f3b1649a25d2c3bc76ead5a0a2b9a07450bd4e40d3954b71a0cfdda23a47"
+  }
+}

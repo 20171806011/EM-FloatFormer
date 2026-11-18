@@ -1,0 +1,163 @@
+{
+  "freeze": "c6909f1a09965220e40fb15a76f07d769b5f15a446c04e8664e6cbe51f58bc0c",
+  "summaries": {
+    "fourier_full_73161": {
+      "ood_block_errors": 713,
+      "ood_blocks": 2496,
+      "ood_bit_errors": 4472,
+      "ood_bits": 159744,
+      "s07_id_ber": 0.00013146033653846153,
+      "s07_ood_ber": 0.0018967848557692308,
+      "s07_abs_gap": 0.0017653245192307692,
+      "s07_mean_shift_llr": 0.3845922201871872
+    },
+    "fourier_no_channel_73161": {
+      "ood_block_errors": 450,
+      "ood_blocks": 2496,
+      "ood_bit_errors": 2793,
+      "ood_bits": 159744,
+      "s07_id_ber": 0.0006197415865384615,
+      "s07_ood_ber": 0.00035682091346153844,
+      "s07_abs_gap": 0.00026292067307692306,
+      "s07_mean_shift_llr": 0.07024253904819489
+    },
+    "tap_phase_no_channel_73161": {
+      "ood_block_errors": 235,
+      "ood_blocks": 2496,
+      "ood_bit_errors": 1311,
+      "ood_bits": 159744,
+      "s07_id_ber": 7.512019230769231e-05,
+      "s07_ood_ber": 9.390024038461539e-05,
+      "s07_abs_gap": 1.8780048076923078e-05,
+      "s07_mean_shift_llr": 0.029252242296934128
+    },
+    "fourier_full_73162": {
+      "ood_block_errors": 524,
+      "ood_blocks": 2496,
+      "ood_bit_errors": 3323,
+      "ood_bits": 159744,
+      "s07_id_ber": 5.6340144230769234e-05,
+      "s07_ood_ber": 0.0009014423076923077,
+      "s07_abs_gap": 0.0008451021634615385,
+      "s07_mean_shift_llr": 0.2907151058316231
+    },
+    "fourier_no_channel_73162": {
+      "ood_block_errors": 441,
+      "ood_blocks": 2496,
+      "ood_bit_errors": 2787,
+      "ood_bits": 159744,
+      "s07_id_ber": 0.00046950120192307694,
+      "s07_ood_ber": 0.00048828125,
+      "s07_abs_gap": 1.8780048076923064e-05,
+      "s07_mean_shift_llr": 0.08451717626303434
+    },
+    "tap_phase_no_channel_73162": {
+      "ood_block_errors": 231,
+      "ood_blocks": 2496,
+      "ood_bit_errors": 1311,
+      "ood_bits": 159744,
+      "s07_id_ber": 7.512019230769231e-05,
+      "s07_ood_ber": 9.390024038461539e-05,
+      "s07_abs_gap": 1.8780048076923078e-05,
+      "s07_mean_shift_llr": 0.025344236753880978
+    },
+    "fourier_full_73163": {
+      "ood_block_errors": 615,
+      "ood_blocks": 2496,
+      "ood_bit_errors": 3781,
+      "ood_bits": 159744,
+      "s07_id_ber": 9.390024038461539e-05,
+      "s07_ood_ber": 0.001708984375,
+      "s07_abs_gap": 0.0016150841346153845,
+      "s07_mean_shift_llr": 0.39403359219431877
+    },
+    "fourier_no_channel_73163": {
+      "ood_block_errors": 446,
+      "ood_blocks": 2496,
+      "ood_bit_errors": 2854,
+      "ood_bits": 159744,
+      "s07_id_ber": 0.00046950120192307694,
+      "s07_ood_ber": 0.00046950120192307694,
+      "s07_abs_gap": 0.0,
+      "s07_mean_shift_llr": 0.07465120684355497
+    },
+    "tap_phase_no_channel_73163": {
+      "ood_block_errors": 227,
+      "ood_blocks": 2496,
+      "ood_bit_errors": 1296,
+      "ood_bits": 159744,
+      "s07_id_ber": 7.512019230769231e-05,
+      "s07_ood_ber": 9.390024038461539e-05,
+      "s07_abs_gap": 1.8780048076923078e-05,
+      "s07_mean_shift_llr": 0.02500819507986307
+    },
+    "fourier_pilot_only": {
+      "ood_block_errors": 458,
+      "ood_blocks": 2496,
+      "ood_bit_errors": 2856,
+      "ood_bits": 159744,
+      "s07_id_ber": 0.0006009615384615385,
+      "s07_ood_ber": 0.00037560096153846156,
+      "s07_abs_gap": 0.00022536057692307694,
+      "s07_mean_shift_llr": 0.0
+    },
+    "tap_phase_pilot_only": {
+      "ood_block_errors": 228,
+      "ood_blocks": 2496,
+      "ood_bit_errors": 1309,
+      "ood_bits": 159744,
+      "s07_id_ber": 7.512019230769231e-05,
+      "s07_ood_ber": 9.390024038461539e-05,
+      "s07_abs_gap": 1.8780048076923078e-05,
+      "s07_mean_shift_llr": 0.0
+    }
+  },
+  "contrasts": [
+    {
+      "first": "fourier_no_channel",
+      "second": "fourier_full",
+      "mean_bler_difference": -0.06877670940170941,
+      "conditional_slot_bootstrap_95pct": [
+        -0.08680889423076925,
+        -0.0519464476495727
+      ]
+    },
+    {
+      "first": "tap_phase_no_channel",
+      "second": "fourier_no_channel",
+      "mean_bler_difference": -0.08600427350427352,
+      "conditional_slot_bootstrap_95pct": [
+        -0.10496794871794872,
+        -0.06784188034188034
+      ]
+    },
+    {
+      "first": "tap_phase_no_channel",
+      "second": "tap_phase_pilot_only",
+      "mean_bler_difference": 0.0012019230769230768,
+      "conditional_slot_bootstrap_95pct": [
+        -0.0016025641025641027,
+        0.004006410256410257
+      ]
+    },
+    {
+      "first": "tap_phase_no_channel",
+      "second": "fourier_full",
+      "mean_bler_difference": -0.1547809829059829,
+      "conditional_slot_bootstrap_95pct": [
+        -0.18095619658119658,
+        -0.12980769230769232
+      ]
+    },
+    {
+      "first": "tap_phase_pilot_only",
+      "second": "fourier_pilot_only",
+      "mean_bler_difference": -0.09214743589743589,
+      "conditional_slot_bootstrap_95pct": [
+        -0.1125801282051282,
+        -0.07291666666666667
+      ]
+    }
+  ],
+  "interval_scope": "Descriptive paired 95% slot bootstrap, stratified equally over three delay profiles, conditional on the three fitted networks; no multiplicity adjustment or inference over training initializations."
+}

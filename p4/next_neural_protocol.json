@@ -1,0 +1,22 @@
+{
+  "stage": "P4-B development follow-up to the frozen readout intervention",
+  "training_seeds": [73161, 73162, 73163],
+  "training": {"steps": 120, "batch_size": 8, "profile": "equal4", "threads": 2},
+  "learned_arms": ["fourier_full", "fourier_no_channel", "tap_phase_no_channel"],
+  "pilot_controls": ["fourier_pilot_only", "tap_phase_pilot_only"],
+  "s07_nominee": "tap_phase_no_channel",
+  "s07_legacy_check": "The existing 75-step, seed-2026 benchmark is separate. Its selected candidate is fixed before the new development outcomes.",
+  "mechanism": "First retrain with the Fourier channel correction head identically zero throughout training. Then change this residual-free model's time interpolation. For each tap use the principal two-pilot phase difference, align and equally average the two noisy observations in the rotating frame, and apply positive-part shrinkage. The noise-power proxy is the average across taps of squared differences between the two observed tap magnitudes. Training sees no held-out delay profiles. This candidate is specific to the two-row zero-offset comb-2 pilot geometry. One fixed frequency per delay bin over the slot is a simulator-informed prior.",
+  "conditions": [
+    ["equal4_strong","equal4",0.01,0.0,"strong",18.0],
+    ["doppler005","equal4",0.05,0.02,"strong",18.0],
+    ["long12","long12",0.01,0.0,"strong",18.0],
+    ["sparse12","sparse12",0.01,0.0,"strong",18.0],
+    ["exp16","exp16",0.01,0.0,"strong",18.0],
+    ["s07_id","equal4",0.01,0.0,"mild",20.0],
+    ["s07_ood","exp16",0.01,0.0,"mild",20.0]
+  ],
+  "evaluation": {"batch_size":8,"batches":8,"seed_base":846000,"seed_formula":"seed_base + 10 * condition_index + batch_index; the same slots for every model and training seed"},
+  "endpoints": "Primary descriptive comparison is pooled long12/sparse12/exp16 18 dB coded BLER under paired received slots. Distinguish the learned candidate from both Fourier controls and from its own phase-aware pilot-only control. Report decoded information BER/BLER, denominators by condition and training seed, S07-like 20 dB absolute BER gap, and original S07 gate as a separate diagnostic. No model selection or post-hoc adjustment based on the gate.",
+  "limits": "Three training replicates share one development evaluation panel. Within-slot codewords share fading. No confirmatory p-values. Principal-phase aliasing is possible beyond half a turn between pilots. Tap-magnitude disagreement is a measurement proxy, not known receiver noise or a calibrated PA variance."
+}

@@ -1,0 +1,40 @@
+{
+  "dependencies": {
+    "stage3_spaced.py": "0a051cb522ea49a79f10e66ea90ad8bf74169416e8254cc83e645be910a49d68",
+    "stage3_link_hst.py": "48479b1e83372f8edea0d4c3c183d97cedfd33c61a3864826e39ddf36a0a6cd7",
+    "stage3_link_long.py": "3d5475e8e131d4b8ef3b24bc2703031189294ee8b7155b913f59d830966419f4",
+    "stage3_link.py": "c74aada666e9153f69af841ce0b05b2c8bae4c6639881558496b834a85651c29",
+    "stage3_link_decoder.py": "e7ddbaff0fffba080cb3330e1408e1a5f78d8b026a519a0604a019fecc4aca16",
+    "next_classical.py": "68bbad7fe537f2fe3999101ef958d36ce57dd99e4d3e7d122bf6bd1d7dd1e7c8",
+    "next_neural.py": "4c917ca0e5df818fd95334cad60e2f0b149a1a9252d3afd88870a5b6b9d8df2e",
+    "next_neural_tap_phase_no_channel_73161.pt": "a15acff418554dc03c7a3b52e3d14ba72728a3e600b9a507957c756c08c44149"
+  },
+  "development_seeds": [
+    839101,
+    839102,
+    839103,
+    839104,
+    839105,
+    839106,
+    839107,
+    839108,
+    839109,
+    839110,
+    839111,
+    839112
+  ],
+  "historical_last": 42,
+  "doppler_hz": [
+    833.9102379953802,
+    500.0
+  ],
+  "steps_in_nominal_slot_periods": [
+    1,
+    8
+  ],
+  "conditions": "4 x 14 symbols, 32 tones, 16 CP, 30kHz tone spacing, 15dB, equal4, CFO=0, strong A=1.25, alpha=.5; identical payload, pilots, random QAM permutation and exact receiver noise samples across scheduling choices.",
+  "clock": "One complex gain and Doppler per physical path for the entire elapsed burst. Evaluated sample-by-sample. The transmitter is silent in the 21 unallocated slots. No channel/power redraw or normalization. The spacing is fixed at eight nominal slot periods before observing data.",
+  "codes": "Primary frozen rate 1/2 QC(1664,832), 4 physical codewords each spanning all active slots; control frozen native (128,64), 52 words also spanning the burst. Keep the same existing symbol permutation seed 892311. All arms carry the original 3328 independent information bits and 52 nonoverlapping 64-information-bit packets.",
+  "receiver": "Unchanged frozen first neural replicate 73161 and three independent per-active-slot waveform rounds with cross-slot soft FEC feedback. No realized gain, phase or Doppler in receiver.",
+  "scoring": "Report native-word and 64-information-bit-packet error rates, group-level counts, link duration, active resources and non-finites. Strict native BLER <.05 for both Hz, independently expose packet losses; do not choose arms or spacings based on historical result."
+}

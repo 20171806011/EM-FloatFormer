@@ -1,0 +1,29 @@
+{
+  "study": "P4-C development and P4-D confirmatory one-dimensional 16-QAM factorial",
+  "factors": ["gauge normalization and associated RMSNorm layers", "Hermitian attention including complex RoPE versus affine real attention", "bidirectional pilot/data cross-attention"],
+  "arms": [
+    [true, true, true, 8], [false, true, true, 8],
+    [true, false, true, 6], [true, true, false, 10],
+    [false, false, true, 6], [false, true, false, 10],
+    [true, false, false, 8], [false, false, false, 8]
+  ],
+  "depth": 1, "heads": 2, "subcarriers": 32,
+  "dev_seeds": [71301, 71302, 71303],
+  "confirmatory_seeds": [74001, 74002, 74003, 74004, 74005, 74006, 74007, 74008, 74009, 74010],
+  "initialization": "Use per-seed full Hermitian and real-attention reference networks of each width. Copy matching named tensors of corresponding attention family, then all matching Hermitian reference tensors, including common embeddings, heads and feedforward weights. Fixed-width sensitivity uses width 8 for every arm.",
+  "train": {
+    "profile": "equal4", "steps": 32, "batch_size": 12, "data_seed_offset": 1000,
+    "snr_db_range": [10,30], "pa_cycle": ["strong","mild","clean"],
+    "backbone_lr": 0.005, "gamma_lr": 0.015, "gradient_clip": 2.0,
+    "optimizer": "existing P4-A Adam and cosine schedule, BCE + NMSE + 0.25 * PA residual"
+  },
+  "evaluation": {
+    "data_seed_offset": 2000000, "batch_size": 96, "profile": "equal4",
+    "snr_db": 10.0, "pa": "strong", "gains": [0.015625, 1.0, 64.0],
+    "gain_transform": "multiply pilot/data observations by r and noise variance by r squared; identical symbols and channel draws across gains and arms",
+    "primary": "Uncoded BER pooling the three gains with equal weight. Exact counts, same bits reused at three gains; independent unit is the training/evaluation seed.",
+    "secondary": "Unit-gain BER; all interactions and the fixed-width sensitivity are exploratory."
+  },
+  "statistics": "Three paired factorial main effects. Benefit is mean BER with factor off minus mean BER with factor on, averaging over the other two factors. Development results are descriptive. Future confirmatory use requires upstream gate acceptance and a joint P4-D freeze specifying the final budget and Holm family before the reserved seeds are opened.",
+  "scope": "Effects compare these bundled architecture switches at this compute and simulator setting. Width varies in the matched-parameter study. Exploratory fixed-width runs on the same three development seeds separate sensitivity to the budget choice. No performance sign is an acceptance criterion."
+}

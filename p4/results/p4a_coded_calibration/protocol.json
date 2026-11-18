@@ -1,0 +1,107 @@
+{
+  "name": "P4-A matched coded readout evaluation, independent supplement",
+  "role": "Development follow-up to the interrupted Antigravity LLR calibration. Preserves the signed readout and is separate from the sealed P4-D confirmatory families.",
+  "model_groups": [
+    11,
+    42,
+    101,
+    2026
+  ],
+  "train": {
+    "EMFloatFormer": {
+      "seed_offset": 0,
+      "backbone_lr": 0.008,
+      "gamma_lr": 0.02,
+      "model": "EMFloatFormer(d_model=12,n_heads=2,depth=2,n_sc=32)"
+    },
+    "LocalEquivConv16QAM": {
+      "seed_offset": 1,
+      "backbone_lr": 0.003,
+      "gamma_lr": 0.01,
+      "model": "LocalEquivConv16QAM(width=14,kernel_size=5,depth=2,ffn_dim=12)"
+    },
+    "steps": 240,
+    "batch": 32,
+    "threads": 4,
+    "profile": "equal4",
+    "objective": "Original _train_comparative_model with signed (.035,20) readout, under native P4-A training schedule. All readout alternatives subsequently share identical model weights."
+  },
+  "settings": {
+    "signed": [
+      0.035,
+      20
+    ],
+    "old": [
+      0.05,
+      8
+    ],
+    "old_floor_wide": [
+      0.05,
+      20
+    ],
+    "signed_floor_narrow": [
+      0.035,
+      8
+    ],
+    "signed_floor_mid": [
+      0.035,
+      16
+    ]
+  },
+  "conditions": [
+    [
+      "clean",
+      13
+    ],
+    [
+      "clean",
+      16
+    ],
+    [
+      "mild",
+      14
+    ],
+    [
+      "mild",
+      17
+    ],
+    [
+      "strong",
+      14
+    ],
+    [
+      "strong",
+      17
+    ],
+    [
+      "strong",
+      19
+    ],
+    [
+      "clean",
+      30
+    ],
+    [
+      "mild",
+      30
+    ],
+    [
+      "strong",
+      25
+    ],
+    [
+      "strong",
+      30
+    ]
+  ],
+  "evaluation": {
+    "frames_per_seed_condition": 512,
+    "batch": 32,
+    "wave_seed": "31800000 + group_index*100000 + condition_index*1000 + batch_index",
+    "info_seed": "41200000 + group_index*100000 + condition_index*1000 + batch_index",
+    "channel": "32 tones, 16 CP, static equal4, 4x Rapp oversampling, pilot and payload through original simulator, independent draws across fit groups and conditions; both architectures and all settings share every received sample within group and condition.",
+    "fec": "One actual (128,64) systematic word per frame, 25-iteration normalized min-sum with alpha=.75.",
+    "metrics": "Integer erroneous blocks, decoded info bits, uncoded bits, paired frame failure indicators, summed BCE, max |LLR| and count with |LLR|>8. Descriptive diagnostic. Positive off-minus-on BLER is improvement; report all conditions, signs and ties. Reuse across architectures does not create additional independent frames.",
+    "controls": "Native payload pipeline parity; syndrome, waveform sharing and noiseless soft decoder control; bit-for-bit public signed LLR control for every batch. Reproduce archived 2026 group native uncoded 10/30 dB strong PA counts for both architectures."
+  }
+}

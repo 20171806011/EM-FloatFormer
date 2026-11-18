@@ -1,0 +1,62 @@
+{
+  "title": "Task-adapted S05 2D EM with a pilot-only causal Fourier snapshot",
+  "training": {
+    "seeds": [
+      73511,
+      73512,
+      73513
+    ],
+    "data_rng_offset": 1000000,
+    "steps": 120,
+    "batch": 8,
+    "n_symb": 14,
+    "n_sc": 32,
+    "cp": 16,
+    "profile": "train3",
+    "pilot_symbol": 2,
+    "comb": 4,
+    "snr_db": 20,
+    "normalized_doppler": 0.01,
+    "cfo": 0,
+    "pa": "clean",
+    "loss": "BCE + normalized channel MSE + 0.25 PA residual, unweighted means",
+    "optimizer": "Adam backbone 0.008, gamma 0.02, clip 2, cosine eta_min 0.0008",
+    "model": "EMFloatFormer2D width 16, two heads, two blocks, 3-tap causal DFT pilot prior constant across time.",
+    "selection": "Final update, all three prespecified seeds. No checkpoint selection."
+  },
+  "test": {
+    "fresh_seeds": [
+      85821,
+      85822,
+      85823,
+      85824,
+      85825,
+      85826,
+      85827,
+      85828,
+      85829,
+      85830,
+      85831,
+      85832,
+      85833,
+      85834,
+      85835,
+      85836
+    ],
+    "original_gate_seed": 42,
+    "slots_per_draw": 8,
+    "primary": "Per-slot channel NMSE, averaged before 10log10(nearest LS NMSE / model NMSE). Original >=4 dB requirement; report each replicate and each draw.",
+    "secondary": "Uncoded payload hard bit errors; each full slot has 440*4 decisions.",
+    "controls": "Unwrapped nearest LS, pilot LMMSE, identical static three-tap DFT prior, six-step joint soft MAP, and two-row-trained zero-shot EM.",
+    "interventions": "Zero both directional cross-attention outputs (axial grid/pilot stream still active), or blank received payload grid (distribution-shift diagnostic). Frozen weights."
+  },
+  "source_sha256": {
+    "next_sparse_neural.py": "d3501e631f9e2d508c9c02c7a7c0155cd20d12248a35e92279c3ec29c39668f2",
+    "next_pilots.py": "befca60e06aee5d63d3a3da01d2d3eb5b55247e2711faeb315bbd48884e5b2d3",
+    "slot_2d.py": "5585e25e44b28174b069c3b0bbe990fe19ba4900a7e8802e55300ac3947fb43e",
+    "simulator.py": "a0e722a6cd831e4073e67a92f88559592abd44a8341e023cedc65d6cb6404608",
+    "em_floatformer.py": "9d9609cee6b3da4c2d61168654416a6cf2f3f3c8ddb8c98c6f98469019e1bfaf",
+    "classical_baselines.py": "bf284f49b42478858649ac4221003e46f86b479c9ab79a2456e2da49393d4ffb",
+    "results/p4b_seed2026_state.pt": "a7abfe9ef0b059d1319d8ea770a256e3b1285fa9ad8a7e6eaefba7bdb7711fc0"
+  }
+}

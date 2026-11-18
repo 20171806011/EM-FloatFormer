@@ -1,0 +1,62 @@
+{
+  "study": "P4-B paired classical receiver continuation",
+  "conditions": {
+    "S01": {
+      "n_sc": 32,
+      "profile": "equal4",
+      "fd": 0.027797007933179338,
+      "snr_db": 15.0,
+      "pa_condition": "strong",
+      "gate_slots": 4,
+      "fresh_slots": 16,
+      "synchronize": true
+    },
+    "S02": {
+      "n_sc": 64,
+      "profile": "long12",
+      "fd": 0.005,
+      "snr_db": 18.0,
+      "pa_condition": "mild",
+      "gate_slots": 20,
+      "fresh_slots": 20,
+      "synchronize": true
+    },
+    "S11": {
+      "n_sc": 80,
+      "profile": "equal4",
+      "fd": 0.01,
+      "snr_db": 15.0,
+      "pa_condition": "mild",
+      "gate_slots": 50,
+      "fresh_slots": 50,
+      "synchronize": false
+    }
+  },
+  "fresh_seeds": [
+    86601,
+    86602,
+    86603,
+    86604
+  ],
+  "historical_gate_seed": 42,
+  "development_seed": 86590,
+  "methods": [
+    "legacy",
+    "tap_pilots",
+    "waveform_uncoded_feedback",
+    "waveform_code_feedback",
+    "genie_diagonal_reference"
+  ],
+  "candidate": "waveform_code_feedback. 3 outer iterations. Jointly fit tap amplitudes and phase rates to code-assisted PA waveforms; no access to transmitted labels or realized taps.",
+  "endpoint": "Post-decoder BLER at the unchanged absolute workload thresholds, and paired counts per slot and seed. The unchanged rate-1/2 (128,64) normalized min-sum decoder receives channel LLRs.",
+  "guards": "Original simulation batch layouts and synchronization procedures preserved for each gate; no sender interleaving. S02 additionally requires channel NMSE < .05.",
+  "diagnostic": "genie_diagonal_reference uses true time-varying taps and transmitted waveform only to remove PA/ICI, then applies the same diagonal soft demapper/decoder to the remaining faded observation. It is not eligible for the gates and is not a lower bound on optimal coded reception.",
+  "source_sha256": {
+    "next_classical.py": "68bbad7fe537f2fe3999101ef958d36ce57dd99e4d3e7d122bf6bd1d7dd1e7c8",
+    "next_classical_study.py": "dbdd701a243960bebd1a9cf0aecae1a37ecdd8e07f89220d71872e712f3b227b",
+    "slot_2d.py": "5585e25e44b28174b069c3b0bbe990fe19ba4900a7e8802e55300ac3947fb43e",
+    "simulator.py": "a0e722a6cd831e4073e67a92f88559592abd44a8341e023cedc65d6cb6404608",
+    "classical_baselines.py": "bf284f49b42478858649ac4221003e46f86b479c9ab79a2456e2da49393d4ffb",
+    "refit_pilot_prior.py": "451f7beee469599b65d555654c691907d38b5f391a808a467aaa83d6fa223503"
+  }
+}

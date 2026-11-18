@@ -1,0 +1,1206 @@
+{
+  "scope": "Offline diagnostic. Continuous 56x32-tone burst, CP16, no gaps, fixed native (128,64), short sequential mapping. Same PA, SNR, waveforms, data, noise, CP sync, neural weights, feedback, and list decoder. Twelve pre-existing development seeds from the bounded-tracking study and historical seed 42, all included, two Dopplers paired per seed.",
+  "bound": "Condition on taps and pilots; full linear map from all post-PA/pre-CP samples to all received samples (including CP, intersymbol tails and ICI), with the exact complex noise variance. E||postPA||^2 <= 56*32*f(1), f(p)=p/sqrt(1+(p/A^2)^2), by concavity, oversampled Parseval and in-band projection. Uniform information makes every native coded magnitude bit balanced. Optimize Gaussian mutual information across all singular modes by waterfilling, relaxing pilots, constellation and allowed input covariance. This gives an upper bound for the fixed modulation/coding ensemble, independent of the message and noise realization. A bound above 3328 bits cannot demonstrate achievability.",
+  "fano": "For 52 uniform independent 64-bit words, average word error p of any decoder satisfies 3328-U <= 52*[h2(p)+64*p] by conditional entropy subadditivity, Fano and concavity. It bounds expected word error given this trajectory. It does not bound the realized error count.",
+  "oracle": "Offline copy only. Exact complex taps and Dopplers replace the pilot fit and three feedback channel refits. The neural initializer, demapping approximation, three decoder exchanges, and list decoder remain identical. No payload truth enters either prediction path. Residual oracle errors include noise, finite code/decoder limitations and demapper mismatch; they are not a fundamental irreducible error floor. The paired BLER change is specific to this estimator.",
+  "source_sha256": "2f785909b37a59b735d6c8abe77ebed2b6a6588071af0a7923ff102697d6bcb6",
+  "blind_archive_cells_reproduced": 26,
+  "rows": [
+    {
+      "seed": 42,
+      "doppler_hz": 833.9102379953802,
+      "max_waveform_reconstruction_error": 5.490334606470601e-08,
+      "conditional_mean_tap_power": 0.29465391500165183,
+      "realized_pa_output_power": 0.6667223890962528,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 5796.2041519519435,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1693,
+        "mean_channel_column_energy": 0.4416561899250035,
+        "max_squared_singular_value": 1.9842740158648473
+      },
+      "blind": {
+        "block_errors": 22,
+        "blocks": 52,
+        "information_bit_errors": 227,
+        "information_bits": 3328,
+        "raw_bit_errors": 1088,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          7,
+          7,
+          7,
+          1
+        ],
+        "midpoint_channel_nmse": 0.0026215625184398505
+      },
+      "oracle_taps": {
+        "block_errors": 19,
+        "blocks": 52,
+        "information_bit_errors": 197,
+        "information_bits": 3328,
+        "raw_bit_errors": 1091,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          6,
+          6,
+          6,
+          1
+        ],
+        "midpoint_channel_nmse": 6.119758846978736e-16
+      }
+    },
+    {
+      "seed": 42,
+      "doppler_hz": 500.0,
+      "max_waveform_reconstruction_error": 4.452506291323366e-08,
+      "conditional_mean_tap_power": 0.29465391500165183,
+      "realized_pa_output_power": 0.6667223890962528,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 5677.437542734937,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1675,
+        "mean_channel_column_energy": 0.4416561899250035,
+        "max_squared_singular_value": 1.9899744941951214
+      },
+      "blind": {
+        "block_errors": 25,
+        "blocks": 52,
+        "information_bit_errors": 211,
+        "information_bits": 3328,
+        "raw_bit_errors": 1123,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          7,
+          8,
+          6,
+          4
+        ],
+        "midpoint_channel_nmse": 0.004982149201603873
+      },
+      "oracle_taps": {
+        "block_errors": 23,
+        "blocks": 52,
+        "information_bit_errors": 202,
+        "information_bits": 3328,
+        "raw_bit_errors": 1095,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          8,
+          6,
+          7,
+          2
+        ],
+        "midpoint_channel_nmse": 6.116401378577747e-16
+      }
+    },
+    {
+      "seed": 912501,
+      "doppler_hz": 833.9102379953802,
+      "max_waveform_reconstruction_error": 6.046398855840732e-08,
+      "conditional_mean_tap_power": 0.5046290732666554,
+      "realized_pa_output_power": 0.6706335108147238,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 6908.000234719235,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1734,
+        "mean_channel_column_energy": 0.7563883981709647,
+        "max_squared_singular_value": 3.3997372130788324
+      },
+      "blind": {
+        "block_errors": 1,
+        "blocks": 52,
+        "information_bit_errors": 16,
+        "information_bits": 3328,
+        "raw_bit_errors": 755,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "midpoint_channel_nmse": 0.000377839031526178
+      },
+      "oracle_taps": {
+        "block_errors": 1,
+        "blocks": 52,
+        "information_bit_errors": 8,
+        "information_bits": 3328,
+        "raw_bit_errors": 760,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "midpoint_channel_nmse": 6.376616704127791e-16
+      }
+    },
+    {
+      "seed": 912501,
+      "doppler_hz": 500.0,
+      "max_waveform_reconstruction_error": 6.484746978208908e-08,
+      "conditional_mean_tap_power": 0.5046290732666554,
+      "realized_pa_output_power": 0.6706335108147238,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 7067.379409714845,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1756,
+        "mean_channel_column_energy": 0.7563883981709646,
+        "max_squared_singular_value": 2.9879689047868063
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 697,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 0.0003245574138983709
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 706,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.410737407865467e-16
+      }
+    },
+    {
+      "seed": 912502,
+      "doppler_hz": 833.9102379953802,
+      "max_waveform_reconstruction_error": 6.580992759068687e-08,
+      "conditional_mean_tap_power": 0.8645985348284573,
+      "realized_pa_output_power": 0.6578037511829801,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 8279.193291819322,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1769,
+        "mean_channel_column_energy": 1.2960510640812244,
+        "max_squared_singular_value": 5.661033510608836
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 441,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 0.000318016643176268
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 432,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.743955607850175e-16
+      }
+    },
+    {
+      "seed": 912502,
+      "doppler_hz": 500.0,
+      "max_waveform_reconstruction_error": 6.943705820952301e-08,
+      "conditional_mean_tap_power": 0.8645985348284573,
+      "realized_pa_output_power": 0.6578037511829801,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 8201.41361871272,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1759,
+        "mean_channel_column_energy": 1.296051064081224,
+        "max_squared_singular_value": 5.686946910983616
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 474,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 0.00019700197903242992
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 480,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.425719629291115e-16
+      }
+    },
+    {
+      "seed": 912503,
+      "doppler_hz": 833.9102379953802,
+      "max_waveform_reconstruction_error": 5.189255447030016e-08,
+      "conditional_mean_tap_power": 0.3209982630140573,
+      "realized_pa_output_power": 0.668965163639542,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 5990.750788844787,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1736,
+        "mean_channel_column_energy": 0.48136726776753613,
+        "max_squared_singular_value": 2.127458355213955
+      },
+      "blind": {
+        "block_errors": 7,
+        "blocks": 52,
+        "information_bit_errors": 48,
+        "information_bits": 3328,
+        "raw_bit_errors": 946,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          1,
+          2,
+          3,
+          1
+        ],
+        "midpoint_channel_nmse": 0.0018865513118184116
+      },
+      "oracle_taps": {
+        "block_errors": 6,
+        "blocks": 52,
+        "information_bit_errors": 50,
+        "information_bits": 3328,
+        "raw_bit_errors": 917,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "midpoint_channel_nmse": 6.012721222001057e-16
+      }
+    },
+    {
+      "seed": 912503,
+      "doppler_hz": 500.0,
+      "max_waveform_reconstruction_error": 5.192066723441942e-08,
+      "conditional_mean_tap_power": 0.3209982630140573,
+      "realized_pa_output_power": 0.668965163639542,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 6002.061096526726,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1738,
+        "mean_channel_column_energy": 0.48136726776753597,
+        "max_squared_singular_value": 2.0848856269068254
+      },
+      "blind": {
+        "block_errors": 10,
+        "blocks": 52,
+        "information_bit_errors": 90,
+        "information_bits": 3328,
+        "raw_bit_errors": 981,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          4,
+          5,
+          1,
+          0
+        ],
+        "midpoint_channel_nmse": 0.001228837474023874
+      },
+      "oracle_taps": {
+        "block_errors": 9,
+        "blocks": 52,
+        "information_bit_errors": 96,
+        "information_bits": 3328,
+        "raw_bit_errors": 969,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          3,
+          5,
+          1,
+          0
+        ],
+        "midpoint_channel_nmse": 6.240748703980061e-16
+      }
+    },
+    {
+      "seed": 912504,
+      "doppler_hz": 833.9102379953802,
+      "max_waveform_reconstruction_error": 1.0431574678635857e-07,
+      "conditional_mean_tap_power": 1.2169988612899048,
+      "realized_pa_output_power": 0.664667875360549,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 9221.190247427661,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1784,
+        "mean_channel_column_energy": 1.82394823984411,
+        "max_squared_singular_value": 7.284234338786606
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 271,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 0.00013915146409985678
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 268,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.339180208779276e-16
+      }
+    },
+    {
+      "seed": 912504,
+      "doppler_hz": 500.0,
+      "max_waveform_reconstruction_error": 7.456630312762491e-08,
+      "conditional_mean_tap_power": 1.2169988612899048,
+      "realized_pa_output_power": 0.664667875360549,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 9161.363990839629,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1789,
+        "mean_channel_column_energy": 1.8239482398441098,
+        "max_squared_singular_value": 7.307179987001463
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 268,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 0.00013148573391242297
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 270,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.211730970685374e-16
+      }
+    },
+    {
+      "seed": 912505,
+      "doppler_hz": 833.9102379953802,
+      "max_waveform_reconstruction_error": 6.801808524734299e-08,
+      "conditional_mean_tap_power": 1.07094210333281,
+      "realized_pa_output_power": 0.6635316332396158,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 8644.01687401025,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1776,
+        "mean_channel_column_energy": 1.6052263785572964,
+        "max_squared_singular_value": 6.248974765734617
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 406,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 0.00011254419967825745
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 395,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.572103824701615e-16
+      }
+    },
+    {
+      "seed": 912505,
+      "doppler_hz": 500.0,
+      "max_waveform_reconstruction_error": 7.9353723356407e-08,
+      "conditional_mean_tap_power": 1.07094210333281,
+      "realized_pa_output_power": 0.6635316332396158,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 8624.774002282995,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1776,
+        "mean_channel_column_energy": 1.6052263785572969,
+        "max_squared_singular_value": 6.2650954676403785
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 387,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 8.071757226678458e-05
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 389,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.503390451046811e-16
+      }
+    },
+    {
+      "seed": 912506,
+      "doppler_hz": 833.9102379953802,
+      "max_waveform_reconstruction_error": 6.06393615073128e-08,
+      "conditional_mean_tap_power": 0.4369190965003704,
+      "realized_pa_output_power": 0.6678747962315794,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 6662.3090455459605,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1734,
+        "mean_channel_column_energy": 0.6548216185605141,
+        "max_squared_singular_value": 2.698721001700613
+      },
+      "blind": {
+        "block_errors": 8,
+        "blocks": 52,
+        "information_bit_errors": 56,
+        "information_bits": 3328,
+        "raw_bit_errors": 812,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          1,
+          4,
+          2,
+          1
+        ],
+        "midpoint_channel_nmse": 0.0010440443394718229
+      },
+      "oracle_taps": {
+        "block_errors": 5,
+        "blocks": 52,
+        "information_bit_errors": 29,
+        "information_bits": 3328,
+        "raw_bit_errors": 799,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          4,
+          0,
+          1
+        ],
+        "midpoint_channel_nmse": 6.087240936028111e-16
+      }
+    },
+    {
+      "seed": 912506,
+      "doppler_hz": 500.0,
+      "max_waveform_reconstruction_error": 5.870927924880306e-08,
+      "conditional_mean_tap_power": 0.4369190965003704,
+      "realized_pa_output_power": 0.6678747962315794,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 6718.683581587134,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1741,
+        "mean_channel_column_energy": 0.6548216185605141,
+        "max_squared_singular_value": 2.7074738078837015
+      },
+      "blind": {
+        "block_errors": 3,
+        "blocks": 52,
+        "information_bit_errors": 14,
+        "information_bits": 3328,
+        "raw_bit_errors": 726,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          1,
+          0,
+          2,
+          0
+        ],
+        "midpoint_channel_nmse": 0.0007424320067377197
+      },
+      "oracle_taps": {
+        "block_errors": 3,
+        "blocks": 52,
+        "information_bit_errors": 12,
+        "information_bits": 3328,
+        "raw_bit_errors": 727,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          3,
+          0
+        ],
+        "midpoint_channel_nmse": 6.356384294557001e-16
+      }
+    },
+    {
+      "seed": 912507,
+      "doppler_hz": 833.9102379953802,
+      "max_waveform_reconstruction_error": 6.224387874180324e-08,
+      "conditional_mean_tap_power": 0.5837285355832904,
+      "realized_pa_output_power": 0.6599283596497945,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 7405.454300095107,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1762,
+        "mean_channel_column_energy": 0.8748636691305786,
+        "max_squared_singular_value": 3.657691765645976
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 581,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 0.0004381502960577635
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 585,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.351572024216202e-16
+      }
+    },
+    {
+      "seed": 912507,
+      "doppler_hz": 500.0,
+      "max_waveform_reconstruction_error": 6.061256236889827e-08,
+      "conditional_mean_tap_power": 0.5837285355832904,
+      "realized_pa_output_power": 0.6599283596497945,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 7449.107938315582,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1758,
+        "mean_channel_column_energy": 0.8748636691305782,
+        "max_squared_singular_value": 3.622499802530764
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 547,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 0.00040438049173362005
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 561,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.494171710271283e-16
+      }
+    },
+    {
+      "seed": 912508,
+      "doppler_hz": 833.9102379953802,
+      "max_waveform_reconstruction_error": 7.38802770424127e-08,
+      "conditional_mean_tap_power": 1.0070560774963733,
+      "realized_pa_output_power": 0.6604154516225533,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 8532.73157619396,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1756,
+        "mean_channel_column_energy": 1.5091746140066815,
+        "max_squared_singular_value": 5.745411864372273
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 446,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 0.0002277159309177644
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 445,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.761013302883313e-16
+      }
+    },
+    {
+      "seed": 912508,
+      "doppler_hz": 500.0,
+      "max_waveform_reconstruction_error": 7.059393894164108e-08,
+      "conditional_mean_tap_power": 1.0070560774963733,
+      "realized_pa_output_power": 0.6604154516225533,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 8530.844428005737,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1759,
+        "mean_channel_column_energy": 1.5091746140066813,
+        "max_squared_singular_value": 5.756687629480815
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 403,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 0.00023480771657062891
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 402,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.741180987417345e-16
+      }
+    },
+    {
+      "seed": 912509,
+      "doppler_hz": 833.9102379953802,
+      "max_waveform_reconstruction_error": 6.053667117496391e-08,
+      "conditional_mean_tap_power": 0.49237864216115335,
+      "realized_pa_output_power": 0.656992258333476,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 6720.811783912113,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1703,
+        "mean_channel_column_energy": 0.7382812046837497,
+        "max_squared_singular_value": 3.5231146014583845
+      },
+      "blind": {
+        "block_errors": 10,
+        "blocks": 52,
+        "information_bit_errors": 109,
+        "information_bits": 3328,
+        "raw_bit_errors": 800,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          2,
+          2,
+          0,
+          6
+        ],
+        "midpoint_channel_nmse": 0.0006917712908148827
+      },
+      "oracle_taps": {
+        "block_errors": 10,
+        "blocks": 52,
+        "information_bit_errors": 105,
+        "information_bits": 3328,
+        "raw_bit_errors": 833,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          2,
+          2,
+          0,
+          6
+        ],
+        "midpoint_channel_nmse": 6.810011372951948e-16
+      }
+    },
+    {
+      "seed": 912509,
+      "doppler_hz": 500.0,
+      "max_waveform_reconstruction_error": 6.436909243048827e-08,
+      "conditional_mean_tap_power": 0.49237864216115335,
+      "realized_pa_output_power": 0.656992258333476,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 6709.059365485635,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1700,
+        "mean_channel_column_energy": 0.7382812046837496,
+        "max_squared_singular_value": 3.53799322237749
+      },
+      "blind": {
+        "block_errors": 11,
+        "blocks": 52,
+        "information_bit_errors": 119,
+        "information_bits": 3328,
+        "raw_bit_errors": 835,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          1,
+          3,
+          4,
+          3
+        ],
+        "midpoint_channel_nmse": 0.000311596920663868
+      },
+      "oracle_taps": {
+        "block_errors": 12,
+        "blocks": 52,
+        "information_bit_errors": 121,
+        "information_bits": 3328,
+        "raw_bit_errors": 827,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          1,
+          3,
+          5,
+          3
+        ],
+        "midpoint_channel_nmse": 6.499164731587634e-16
+      }
+    },
+    {
+      "seed": 912510,
+      "doppler_hz": 833.9102379953802,
+      "max_waveform_reconstruction_error": 7.192126319471638e-08,
+      "conditional_mean_tap_power": 1.1564960309980323,
+      "realized_pa_output_power": 0.665830674190436,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 9052.638400700234,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1784,
+        "mean_channel_column_energy": 1.734315861475098,
+        "max_squared_singular_value": 7.40111592995565
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 299,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 7.676387510075898e-05
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 303,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.250103339285354e-16
+      }
+    },
+    {
+      "seed": 912510,
+      "doppler_hz": 500.0,
+      "max_waveform_reconstruction_error": 1.17442522665439e-07,
+      "conditional_mean_tap_power": 1.1564960309980323,
+      "realized_pa_output_power": 0.665830674190436,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 9054.608375226155,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1780,
+        "mean_channel_column_energy": 1.734315861475098,
+        "max_squared_singular_value": 6.979686591276173
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 304,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 0.0001883136249288644
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 301,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.787974621036479e-16
+      }
+    },
+    {
+      "seed": 912511,
+      "doppler_hz": 833.9102379953802,
+      "max_waveform_reconstruction_error": 3.018770824060791e-08,
+      "conditional_mean_tap_power": 0.11088030927945547,
+      "realized_pa_output_power": 0.6632634506868232,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 3830.7656362970233,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1567,
+        "mean_channel_column_energy": 0.16623057081640397,
+        "max_squared_singular_value": 0.8238618997531594
+      },
+      "blind": {
+        "block_errors": 52,
+        "blocks": 52,
+        "information_bit_errors": 955,
+        "information_bits": 3328,
+        "raw_bit_errors": 1822,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "midpoint_channel_nmse": 0.14225692575391147
+      },
+      "oracle_taps": {
+        "block_errors": 52,
+        "blocks": 52,
+        "information_bit_errors": 882,
+        "information_bits": 3328,
+        "raw_bit_errors": 1705,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "midpoint_channel_nmse": 6.434918570592793e-16
+      }
+    },
+    {
+      "seed": 912511,
+      "doppler_hz": 500.0,
+      "max_waveform_reconstruction_error": 3.688852032090979e-08,
+      "conditional_mean_tap_power": 0.11088030927945547,
+      "realized_pa_output_power": 0.6632634506868232,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 3792.058821897626,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1557,
+        "mean_channel_column_energy": 0.16623057081640394,
+        "max_squared_singular_value": 0.828219219291089
+      },
+      "blind": {
+        "block_errors": 52,
+        "blocks": 52,
+        "information_bit_errors": 993,
+        "information_bits": 3328,
+        "raw_bit_errors": 1871,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "midpoint_channel_nmse": 0.13080372746346278
+      },
+      "oracle_taps": {
+        "block_errors": 52,
+        "blocks": 52,
+        "information_bit_errors": 941,
+        "information_bits": 3328,
+        "raw_bit_errors": 1724,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "midpoint_channel_nmse": 6.571844986315867e-16
+      }
+    },
+    {
+      "seed": 912512,
+      "doppler_hz": 833.9102379953802,
+      "max_waveform_reconstruction_error": 6.50742902168027e-08,
+      "conditional_mean_tap_power": 0.90944370341618,
+      "realized_pa_output_power": 0.6645472166211037,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 8552.323580215229,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1774,
+        "mean_channel_column_energy": 1.363638864862862,
+        "max_squared_singular_value": 5.341361989980514
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 355,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 0.0002537730641759702
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 358,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.766767360369099e-16
+      }
+    },
+    {
+      "seed": 912512,
+      "doppler_hz": 500.0,
+      "max_waveform_reconstruction_error": 8.246823847604039e-08,
+      "conditional_mean_tap_power": 0.90944370341618,
+      "realized_pa_output_power": 0.6645472166211037,
+      "ensemble_pa_power_upper": 0.8422714006615114,
+      "capacity_bound": {
+        "upper_information_bits": 8526.235690199666,
+        "payload_information_bits": 3328,
+        "mean_word_error_lower_bound": 0.0,
+        "active_gaussian_modes": 1763,
+        "mean_channel_column_energy": 1.3636388648628617,
+        "max_squared_singular_value": 4.878325466149568
+      },
+      "blind": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 357,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 0.0003125528353413584
+      },
+      "oracle_taps": {
+        "block_errors": 0,
+        "blocks": 52,
+        "information_bit_errors": 0,
+        "information_bits": 3328,
+        "raw_bit_errors": 369,
+        "raw_bits": 6656,
+        "block_errors_per_slot": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "midpoint_channel_nmse": 6.745202578104633e-16
+      }
+    }
+  ]
+}

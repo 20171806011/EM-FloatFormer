@@ -1,0 +1,37 @@
+{
+  "files": {
+    "stage3_link_hst.py": "48479b1e83372f8edea0d4c3c183d97cedfd33c61a3864826e39ddf36a0a6cd7",
+    "stage3_link_long.py": "3d5475e8e131d4b8ef3b24bc2703031189294ee8b7155b913f59d830966419f4",
+    "stage3_link_protocol.json": "6e54abd2c406067b4e52c9b947a770db7cf7c725e8dd9ce6450197a403c92d6d"
+  },
+  "previous_receiver_sources_match": true,
+  "seeds": [
+    902071,
+    902072,
+    902073,
+    42
+  ],
+  "fresh_groups": 4,
+  "fresh_group_seed_offset": 4096,
+  "historical_groups": 1,
+  "mapping_seed": 892311,
+  "doppler_hz": [
+    833.9102379953802,
+    500.0
+  ],
+  "channel_modes": [
+    "native independent slot amplitudes and frequencies",
+    "single continuous trajectory across 56 OFDM symbols"
+  ],
+  "pairing": "Four original native slots, same bits, pilots, SNR and original noise sample per position for every arm. Continuous arm propagates first native tap draw for all time.",
+  "arms": [
+    "short_sequential",
+    "short_spread",
+    "long_slot",
+    "long_slot_spread",
+    "long_burst_spread"
+  ],
+  "short": "unchanged (128,64) iterative EM/BP/OSD receiver",
+  "long": "QC lift factors 13 and 52 of native parity check, RNG 893011 on systematic edge shifts, parity edge shifts zero. Soft sum-product max40/check-syndrome stop, three waveform rounds. No OSD on long words. Rate 1/2.",
+  "metrics": "Native word BLER, native-equivalent 64-information-bit packet loss, BER, raw extrinsic-hard bit counts. Four slots carry 3328 information bits in all arms."
+}

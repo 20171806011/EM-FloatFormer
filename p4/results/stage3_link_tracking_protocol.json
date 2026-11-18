@@ -1,0 +1,125 @@
+{
+  "source_hash": {
+    "stage3_link_tracking_study.py": "95cd25d3dfd8d118ec3528e2bb8c03a016c1fa7f806e50915dc384b232a1bf47",
+    "stage3_link_tracking.py": "9d0721145fc4c11370c7a87961519ae749afe2788f5538c9a9a239c1f9314c2b",
+    "stage3_link_hst.py": "48479b1e83372f8edea0d4c3c183d97cedfd33c61a3864826e39ddf36a0a6cd7",
+    "stage3_link_long.py": "3d5475e8e131d4b8ef3b24bc2703031189294ee8b7155b913f59d830966419f4",
+    "stage3_link_hst_protocol.json": "929afcd10f2b010fae775ffd0b4982da1f2a1a3444b201fabcbe55c83ad17a0b",
+    "stage3_link_protocol.json": "6e54abd2c406067b4e52c9b947a770db7cf7c725e8dd9ce6450197a403c92d6d"
+  },
+  "schedule": [
+    [
+      "fresh",
+      907701
+    ],
+    [
+      "fresh",
+      907702
+    ],
+    [
+      "fresh",
+      907703
+    ],
+    [
+      "fresh",
+      907704
+    ],
+    [
+      "fresh",
+      907705
+    ],
+    [
+      "fresh",
+      907706
+    ],
+    [
+      "fresh",
+      907707
+    ],
+    [
+      "fresh",
+      907708
+    ],
+    [
+      "fresh",
+      907709
+    ],
+    [
+      "fresh",
+      907710
+    ],
+    [
+      "fresh",
+      907711
+    ],
+    [
+      "fresh",
+      907712
+    ],
+    [
+      "paired",
+      902071
+    ],
+    [
+      "paired",
+      906167
+    ],
+    [
+      "paired",
+      910263
+    ],
+    [
+      "paired",
+      914359
+    ],
+    [
+      "paired",
+      902072
+    ],
+    [
+      "paired",
+      906168
+    ],
+    [
+      "paired",
+      910264
+    ],
+    [
+      "paired",
+      914360
+    ],
+    [
+      "paired",
+      902073
+    ],
+    [
+      "paired",
+      906169
+    ],
+    [
+      "paired",
+      910265
+    ],
+    [
+      "paired",
+      914361
+    ],
+    [
+      "historical",
+      42
+    ]
+  ],
+  "hz": [
+    833.9102379953802,
+    500.0
+  ],
+  "arms": [
+    "short_sequential",
+    "short_spread",
+    "long_slot_spread",
+    "long_burst_spread"
+  ],
+  "mapping_seed": 892311,
+  "design": "Only true continuous 56-symbol waveform. Common fractional CFO estimated from all CPs, then 8 known DMRS rows used to fit per-delay sinusoid by 1025-point periodogram, +/-1/4 turn per symbol. Single amplitude/rate per delay refined by waveform likelihood over entire burst, three extrinsic rounds. Same trained EM weights with observation-estimated effective prior, same code/decoders and four-slot maps as stage3_link_hst.",
+  "metrics": "Native codeword errors, 64-bit packet errors, information bit and raw hard LLR errors, evaluation-only channel NMSE after estimated CFO rotation. Threshold 5% coded BLER. Fresh samples then paired then seed42. All arms reported."
+}

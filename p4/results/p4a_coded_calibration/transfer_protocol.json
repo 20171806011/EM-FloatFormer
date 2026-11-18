@@ -1,0 +1,122 @@
+{
+  "study": "P4-B native LDPC paired calibration transfer, development only, version 1",
+  "checkpoint": "p4/results/p4b_seed2026_state.pt",
+  "dependencies_sha256": {
+    "p4/__init__.py": "4bcd5915ee510c0195e024a9e30cb68ca3966436451cc076ab5b8aed202994cd",
+    "p4/slot_2d.py": "04b7fab962d3c79f950d6e53b0fe8bf419aecd2f8e534d6877eb29037b20aa39",
+    "p4/simulator.py": "a0e722a6cd831e4073e67a92f88559592abd44a8341e023cedc65d6cb6404608",
+    "p4/classical_baselines.py": "bf284f49b42478858649ac4221003e46f86b479c9ab79a2456e2da49393d4ffb",
+    "p4/em_floatformer.py": "a6cf7412b5f8411e7f9b34eccd187570dba0310e397e827bb800fd1dd5457bf5",
+    "p4/pilot_prior_probe.py": "0e5e1ed69642d901e9125cec27cccc38ad1ad9614d52230bb87f4d50ac5c4b3d",
+    "p4/results/p4b_coded_bler.json": "71604a82f9ad16b5b0e128bef1ad471ed0378c4f20556f46e12d5973913580d0",
+    "p4/results/p4b_seed2026_state.pt": "a7abfe9ef0b059d1319d8ea770a256e3b1285fa9ad8a7e6eaefba7bdb7711fc0"
+  },
+  "receiver": {
+    "class": "EMFloatFormer2D",
+    "d_model": 16,
+    "n_heads": 2,
+    "depth": 2,
+    "training_seed": 2026,
+    "steps": 120,
+    "batch_size": 8,
+    "training": "original mixed-PA, normalized Doppler cycle, equal4; load archived state unchanged; no retraining",
+    "synchronizer": "p4.slot_2d._synchronize_slot",
+    "input_fields": [
+      "yp_sparse",
+      "y_grid",
+      "pilot_mask",
+      "noise_var"
+    ]
+  },
+  "waveform": {
+    "n_symb": 14,
+    "n_sc": 32,
+    "cp": 16,
+    "oversample": 4,
+    "comb": 2,
+    "profile": "equal4",
+    "fd": 0.01,
+    "cfo": 0,
+    "pa_condition": "strong",
+    "snr_db": [
+      18,
+      22,
+      30
+    ],
+    "slots_per_snr": 64,
+    "slots_per_batch": 4,
+    "codewords_per_slot": 13,
+    "block_code_length": 128,
+    "block_information_length": 64,
+    "code": "_get_default_ldpc(128); frozen P4-B PEG-IRA, graph seed 2026",
+    "decoder": "decode_min_sum, normalized min-sum alpha 0.75, max_iter 25"
+  },
+  "draws": {
+    "waveform_seed_base": 51300000,
+    "waveform_seed_stride_per_snr": 1000,
+    "waveform_seed_rule": "base + stride * zero-based condition index + zero-based batch index",
+    "initialization_seed": 2026,
+    "cpu_threads": 2,
+    "inference": true,
+    "deterministic_algorithms": true
+  },
+  "arms": [
+    {
+      "id": "signed",
+      "variance_floor": 0.035,
+      "tanh_bound": 20.0
+    },
+    {
+      "id": "old",
+      "variance_floor": 0.05,
+      "tanh_bound": 8.0
+    },
+    {
+      "id": "lower_floor_only",
+      "variance_floor": 0.035,
+      "tanh_bound": 8.0
+    },
+    {
+      "id": "wider_bound_only",
+      "variance_floor": 0.05,
+      "tanh_bound": 20.0
+    }
+  ],
+  "implementation": "Evaluate unmodified public forward once per batch. Capture equalized symbols and detached physical noise/distortion variance terms before the additive floor. Rebuild only exact 16-QAM bit LLRs, floor and tanh limit. Demand byte-exact public signed LLRs over the entire grid, exact default counts via original scoring helper, finite arm LLRs, unchanged receiver state. Truth available only to simulator and scorer.",
+  "statistics": {
+    "contrast_pairs": [
+      [
+        "old",
+        "signed"
+      ],
+      [
+        "old",
+        "lower_floor_only"
+      ],
+      [
+        "old",
+        "wider_bound_only"
+      ],
+      [
+        "lower_floor_only",
+        "signed"
+      ],
+      [
+        "wider_bound_only",
+        "signed"
+      ],
+      [
+        "lower_floor_only",
+        "wider_bound_only"
+      ]
+    ],
+    "effect": "first arm minus second BLER, positive benefits second arm",
+    "bootstrap_unit": "resample the 64 slots with replacement within each snr; use the same index matrix for every arm; gaps and intervals are descriptive, conditional on one frozen checkpoint",
+    "bootstrap_replicates": 10000,
+    "bootstrap_base_seed": 51399000,
+    "bootstrap_seed_rule": "base + zero-based condition index",
+    "bootstrap_rng": "numpy.default_rng(PCG64), int64 indices",
+    "quantile": "linear empirical quantile at 0.025/0.975",
+    "outputs": "per-slot block failure masks in transmission order; postdecoder information bit errors and predecoder coded bit errors per slot; per-arm observed counts; discordant blocks and slots, paired BLER difference and bootstrap percentile interval per contrast; no hypothesis tests, independent of confirmatory families"
+  }
+}

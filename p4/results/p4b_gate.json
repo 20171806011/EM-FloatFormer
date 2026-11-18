@@ -1,0 +1,55 @@
+{
+  "stage": "P4-B",
+  "passed": false,
+  "tested_configuration": "Original Gaussian-interpolation EMFloatFormer2D and unchanged E2E performance thresholds. The Fourier-interpolation study is exploratory and does not replace the signed specification.",
+  "p4b_unit_passed": 13,
+  "p4b_e2e_attempted": 65,
+  "p4b_e2e_passed": 60,
+  "failed_workloads": [
+    {
+      "scenario": "S01",
+      "receiver": "2D-IDD-PA",
+      "block_errors": 22,
+      "blocks": 52,
+      "required_bler_below": 0.05
+    },
+    {
+      "scenario": "S03",
+      "receiver": "CP CFO correction and 2D-LMMSE",
+      "residual_phase_degrees": 1.378,
+      "iq_sign_errors": 181,
+      "required_sign_errors": 0,
+      "exact_cfo_sign_errors_same_observations": 96,
+      "exact_cfo_and_channel_sign_errors": 86
+    },
+    {
+      "scenario": "S05",
+      "receiver": "2D-LMMSE relative to nearest-pilot LS",
+      "nmse_gain_db": 1.4045935013849866,
+      "minimum_gain_db": 4.0
+    },
+    {
+      "scenario": "S07",
+      "receiver": "75-step original EMFloatFormer2D",
+      "id_coded_ber": 0.00259165,
+      "ood_coded_ber": 0.16289814,
+      "maximum_absolute_gap": 0.005,
+      "shift_mean_absolute_llr_change_approx": 0.93687
+    },
+    {
+      "scenario": "S11",
+      "receiver": "2D-IDD-PA",
+      "block_errors": 97,
+      "blocks": 1600,
+      "bit_errors": 709,
+      "info_bits": 102400,
+      "required_bler_below": 0.01
+    }
+  ],
+  "full_e2e": {
+    "run": 253,
+    "passed": 245,
+    "assertion_failures": 5,
+    "unmet_confirmatory_dependencies": 3
+  }
+}

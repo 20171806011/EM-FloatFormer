@@ -1,0 +1,77 @@
+{
+  "stage": "S05 development, physical channel iteration with bidirectional pilot/grid attention",
+  "training_seeds": [
+    73651,
+    73652,
+    73653
+  ],
+  "evaluation_seeds": [
+    887201,
+    887202,
+    887203,
+    887204,
+    887205,
+    887206,
+    887207,
+    887208,
+    887209,
+    887210,
+    887211,
+    887212,
+    887213,
+    887214,
+    887215,
+    887216
+  ],
+  "original_gate_seed": 42,
+  "comparable_old_test_seeds": "not used for training",
+  "slot": "14x32, CP16, one eight-tone pilot comb at symbol 2, clean PA, CFO=0, fd=.01, train3, SNR20 dB; iid uncoded Gray 16-QAM",
+  "known_receiver_information": "Observed y, known pilot values and mask, receiver noise variance, design covariance from the fixed three-tap profile and nominal Doppler. Sample taps, symbol labels, actual tap rotations and transmitted payload withheld during inference.",
+  "training": {
+    "steps": 120,
+    "batch_size": 8,
+    "train_rng_offset": 3000000,
+    "lr": 0.002,
+    "eta_min": 0.0002,
+    "clip": 2.0,
+    "optimizer": "Adam cosine, final weights only",
+    "objective": "Signed JointPhysicalLoss2D, BCE + NMSE + 0.25 forward PA consistency (clean PA); target channel/data only in training loss."
+  },
+  "architecture": "pilot-RMS normalized pilot MAP followed by six exact soft-symbol/weighted least-squares updates; two width-12 two-head canonical bidirectional EM blocks read the channel, y, posterior innovation and symbol variance after updates 3 and 6. Their bounded complex corrections are projected onto delay bins 0..2. Recurrent pilot/grid states carry between the two blocks. Shared posterior logits use the P4-A .035 floor and 20*tanh bound.",
+  "arms": "full and cross-disconnected models retrained with paired initialization, optimizer and training frames; full weights evaluated with both cross-attention outputs suppressed; matched zero-correction six-update solver; twelve updates for a computational-depth control; legacy unnormalized MAP6; exact nearest LS.",
+  "gate": "At least 4 dB improvement in pooled mean per-slot NMSE vs nearest LS; report each training seed on 16x8 fresh slots and the untouched historical 8-slot seed-42 draw. Default user-facing checkpoint fixed as first seed. Evaluate any gains over physics explicitly; crossing the 4 dB gate does not assign gains to attention.",
+  "primary_contrasts": "Full vs six-update zero correction, frozen cross-off, retrained cross-off and twelve-update physics. Mean over fits sharing the same slots, descriptive paired intervals conditional on fits. Layer NMSE plus normalized data reconstruction residual. Hard bit counts also reported.",
+  "source_sha256": {
+    "stage3_sparse.py": "f63fcba8c05956b896279a00b93cbcdacd4697f123a02b0fdf905f3695b3bab5",
+    "stage3_sparse_study.py": "e7a2fa0f57bd6a206d290609e91f1012a038d6847adf8176ea94aa0769edd4c5",
+    "next_pilots.py": "6c20ebe0fb3bbbc9c07f4d5833d5cce0605903f965851c238d01181ad4df0ff9",
+    "next_sparse_neural.py": "d3501e631f9e2d508c9c02c7a7c0155cd20d12248a35e92279c3ec29c39668f2",
+    "simulator.py": "a0e722a6cd831e4073e67a92f88559592abd44a8341e023cedc65d6cb6404608",
+    "classical_baselines.py": "bf284f49b42478858649ac4221003e46f86b479c9ab79a2456e2da49393d4ffb",
+    "em_floatformer.py": "a6cf7412b5f8411e7f9b34eccd187570dba0310e397e827bb800fd1dd5457bf5"
+  },
+  "slot_primitives_sha256": {
+    "SlotData": "72c629e400f135400a3954eb58dfc39a4e863dc7e4185631bfc31dee7e78b1ad",
+    "SlotSimulator2D": "899effc4d24956f7a351539f89b4dd90b0c7fba52ed632dd180543b3f021d250",
+    "_draw_slot_taps": "81574cf7ad8f2589204e28d8f6132e5626f71cd70a2d400ff5ce2e04291db1d5",
+    "_apply_continuous_slot_channel": "0b599fd68c31fb308e660c486fcf14b4089c8e0f57596a947177ef5479095e00",
+    "_resolve_pa_params": "d1fd9726f5c7f812b5671fb5e79106057d268a27699459356c5b87919d872916",
+    "get_dmrs_mask": "2f4d096eb51419d7d6568ce9f7cef9cb8edff1f5cd49723122adf08c82d675f6",
+    "get_slot_masks": "07a86fb930c5d40aeb52fb99795c3c5be9d292d2d3148a3ec076dc0b626af021",
+    "_gold_sequence_bits": "58a0507011d72b05c2c2c01ada153bd3c43dff403da10070983a4b49fb6b8274",
+    "generate_dmrs": "6313c5601a39edbbf144669b2d8dcadfcaeb45003a150ca94c8503754a0c84a1",
+    "BidirectionalBlock2D": "e00b5c90a08814c0048457f574fbea59785eb4b52080f88ff795ec3b288d2429",
+    "ComplexRoPE2D": "c50609a18bc2a4970ea8d8cf55cbc3cf933f8b3f6035efb88cbee4503ac10557",
+    "GreenAttention2D": "cd39bd84fea7bd5afd9669a12a2bebaf33a9a53e7d7721bdb2996da11cf85540",
+    "JointPhysicalLoss2D": "61d57f9f279c6e98c8d9555d5b6f45992277c6adaf5bcaa21a79ffff4bdd8bba",
+    "lmmse_2d_interpolate": "829a4d0ecb687078468a4cc4a87ad8b838a437891e7697075e4bd78801719129",
+    "compute_2d_correlation": "22e5c4f426a4ce7e936c40ad53a1a1ce591f46d0d39af9e381b5152a774ddd0e",
+    "_solve_2d_lmmse_core": "11656b77874736418a3148c49600524cab8884f02a5455b8f8ef15263e503d44"
+  },
+  "train3_pdp": [
+    0.72,
+    0.2,
+    0.08
+  ],
+  "torch": "2.12.1+cpu"
+}

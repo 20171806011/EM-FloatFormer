@@ -1,0 +1,140 @@
+{
+  "status": "COMPLETE",
+  "verified": [
+    "frozen source and gate digests",
+    "150 raw CSV records, six independent 1024-sign tests and joint Holm",
+    "ten 600-step final weight hashes and counts, summary and all six directions/magnitudes/p-values",
+    "physical count/retraining completion markers, 80 factorial cells and 240 gain rows",
+    "253 unique fully passing post-formal E2E cases and source identities"
+  ],
+  "awaiting": [],
+  "final_e2e_path": "p4/results/stage3_final_e2e.json",
+  "primary_tests_from_csv": [
+    {
+      "condition": "id",
+      "baseline": "lmmse_2d_fixed",
+      "baseline_minus_em_block_errors": [
+        -15,
+        -2,
+        -1,
+        3,
+        -4,
+        -6,
+        -1,
+        -8,
+        -2,
+        -3
+      ],
+      "denominator_per_seed": 416,
+      "mean_bler_reduction": -0.009375,
+      "exact_p_value": 0.0234375,
+      "holm_p_value": 0.1171875,
+      "reject_at_0_05": false
+    },
+    {
+      "condition": "id",
+      "baseline": "idd_pa_2d_fixed",
+      "baseline_minus_em_block_errors": [
+        -7,
+        -8,
+        -2,
+        1,
+        -6,
+        -11,
+        -4,
+        -8,
+        -7,
+        -3
+      ],
+      "denominator_per_seed": 416,
+      "mean_bler_reduction": -0.013221153846153846,
+      "exact_p_value": 0.00390625,
+      "holm_p_value": 0.0234375,
+      "reject_at_0_05": true
+    },
+    {
+      "condition": "ood_doppler",
+      "baseline": "lmmse_2d_fixed",
+      "baseline_minus_em_block_errors": [
+        -1,
+        -3,
+        1,
+        -7,
+        3,
+        0,
+        -4,
+        4,
+        2,
+        -1
+      ],
+      "denominator_per_seed": 416,
+      "mean_bler_reduction": -0.0014423076923076924,
+      "exact_p_value": 0.65234375,
+      "holm_p_value": 0.65234375,
+      "reject_at_0_05": false
+    },
+    {
+      "condition": "ood_doppler",
+      "baseline": "idd_pa_2d_fixed",
+      "baseline_minus_em_block_errors": [
+        -5,
+        -1,
+        2,
+        -11,
+        -1,
+        -1,
+        -4,
+        2,
+        2,
+        1
+      ],
+      "denominator_per_seed": 416,
+      "mean_bler_reduction": -0.0038461538461538464,
+      "exact_p_value": 0.30859375,
+      "holm_p_value": 0.6171875,
+      "reject_at_0_05": false
+    },
+    {
+      "condition": "ood_delay",
+      "baseline": "lmmse_2d_fixed",
+      "baseline_minus_em_block_errors": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        1,
+        2,
+        1
+      ],
+      "denominator_per_seed": 416,
+      "mean_bler_reduction": 0.0019230769230769232,
+      "exact_p_value": 0.03125,
+      "holm_p_value": 0.125,
+      "reject_at_0_05": false
+    },
+    {
+      "condition": "ood_delay",
+      "baseline": "idd_pa_2d_fixed",
+      "baseline_minus_em_block_errors": [
+        1,
+        2,
+        0,
+        1,
+        -1,
+        0,
+        1,
+        1,
+        2,
+        0
+      ],
+      "denominator_per_seed": 416,
+      "mean_bler_reduction": 0.0016826923076923078,
+      "exact_p_value": 0.09375,
+      "holm_p_value": 0.28125,
+      "reject_at_0_05": false
+    }
+  ]
+}

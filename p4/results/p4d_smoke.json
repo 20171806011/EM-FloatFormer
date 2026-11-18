@@ -1,0 +1,1743 @@
+{
+  "stage": "development smoke only",
+  "budget": {
+    "steps": 2,
+    "batch": 4,
+    "microbatch": 2,
+    "eval_batch": 2,
+    "eval_batches": 1
+  },
+  "seeds": [
+    68321,
+    68322,
+    68323,
+    68324,
+    68325,
+    68326,
+    68327,
+    68328,
+    68329,
+    68330
+  ],
+  "checkpoint_replay_exact": true,
+  "historical_checkout": {
+    "commit": "f878a7363254c6e34bee5f6e278135d74e1d54e0",
+    "file_count": 230,
+    "checkout_sha256": "cc46f3b1649a25d2c3bc76ead5a0a2b9a07450bd4e40d3954b71a0cfdda23a47"
+  },
+  "source_sha256": {
+    "p4/P4D_PROTOCOL.md": "a4f9be1a2b6274ea6b45012ad7cfdf9a9058ac6d8e1ec6df20e13126fff6fec4",
+    "p4/confirmatory_protocol.py": "0bb46dd32ca404bd68be26738e7d1a847945ea422455d678268be21c804e006b",
+    "p4/slot_2d.py": "5585e25e44b28174b069c3b0bbe990fe19ba4900a7e8802e55300ac3947fb43e",
+    "p4/simulator.py": "a0e722a6cd831e4073e67a92f88559592abd44a8341e023cedc65d6cb6404608",
+    "p4/em_floatformer.py": "9d9609cee6b3da4c2d61168654416a6cf2f3f3c8ddb8c98c6f98469019e1bfaf",
+    "p4/classical_baselines.py": "bf284f49b42478858649ac4221003e46f86b479c9ab79a2456e2da49393d4ffb",
+    "PROJECT.md": "f8403bdf4ef32339ef96ffa02d24ac9f8eb8084f7dae513fe9d1adf8df4a9321",
+    "MANIFEST_SHA256.json": "ba391bd586c1dbe09db11e43514511d633eaab8e33b5936c76f2f834383a71bb"
+  },
+  "records": [
+    {
+      "seed": 68321,
+      "freeze": "smoke",
+      "weights_sha256": "1776a4cd2c35df7298a9a4688759568dc6a11043ec7fa97f3e37de999d60086b",
+      "rows": [
+        {
+          "condition": "id",
+          "method": "emfloatformer2d",
+          "bit_errors": 368,
+          "total_bits": 1664,
+          "block_errors": 23,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 788,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 176,
+          "total_bits": 1664,
+          "block_errors": 13,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 544,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 181,
+          "total_bits": 1664,
+          "block_errors": 13,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 538,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d",
+          "bit_errors": 181,
+          "total_bits": 1664,
+          "block_errors": 13,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 537,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d",
+          "bit_errors": 198,
+          "total_bits": 1664,
+          "block_errors": 13,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 550,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "emfloatformer2d",
+          "bit_errors": 515,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 957,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 399,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 873,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 409,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 878,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d",
+          "bit_errors": 422,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 877,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d",
+          "bit_errors": 422,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 877,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "emfloatformer2d",
+          "bit_errors": 549,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1001,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 534,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1025,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 526,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1028,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d",
+          "bit_errors": 340,
+          "total_bits": 1664,
+          "block_errors": 24,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 795,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d",
+          "bit_errors": 373,
+          "total_bits": 1664,
+          "block_errors": 24,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 795,
+          "total_uncoded_bits": 3328
+        }
+      ]
+    },
+    {
+      "seed": 68322,
+      "freeze": "smoke",
+      "weights_sha256": "aa303e223bf7acdb7c8af91a3e3b734a393b96390115f4159d6983d03975a9c5",
+      "rows": [
+        {
+          "condition": "id",
+          "method": "emfloatformer2d",
+          "bit_errors": 503,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1061,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 92,
+          "total_bits": 1664,
+          "block_errors": 14,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 465,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 80,
+          "total_bits": 1664,
+          "block_errors": 14,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 466,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d",
+          "bit_errors": 86,
+          "total_bits": 1664,
+          "block_errors": 12,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 460,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d",
+          "bit_errors": 101,
+          "total_bits": 1664,
+          "block_errors": 16,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 485,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "emfloatformer2d",
+          "bit_errors": 497,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1010,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 226,
+          "total_bits": 1664,
+          "block_errors": 23,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 673,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 236,
+          "total_bits": 1664,
+          "block_errors": 24,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 673,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d",
+          "bit_errors": 324,
+          "total_bits": 1664,
+          "block_errors": 24,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 775,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d",
+          "bit_errors": 330,
+          "total_bits": 1664,
+          "block_errors": 24,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 788,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "emfloatformer2d",
+          "bit_errors": 541,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1154,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 504,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1085,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 497,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1092,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d",
+          "bit_errors": 377,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 833,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d",
+          "bit_errors": 373,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 838,
+          "total_uncoded_bits": 3328
+        }
+      ]
+    },
+    {
+      "seed": 68323,
+      "freeze": "smoke",
+      "weights_sha256": "6b0b95d79d755f55ec223184e04170d37808b215f42ad7e22bc247136b057991",
+      "rows": [
+        {
+          "condition": "id",
+          "method": "emfloatformer2d",
+          "bit_errors": 463,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 975,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 223,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 647,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 214,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 638,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d",
+          "bit_errors": 223,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 644,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d",
+          "bit_errors": 237,
+          "total_bits": 1664,
+          "block_errors": 25,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 646,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "emfloatformer2d",
+          "bit_errors": 537,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1024,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 323,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 738,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 332,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 745,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d",
+          "bit_errors": 404,
+          "total_bits": 1664,
+          "block_errors": 25,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 845,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d",
+          "bit_errors": 378,
+          "total_bits": 1664,
+          "block_errors": 25,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 836,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "emfloatformer2d",
+          "bit_errors": 499,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1000,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 455,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 917,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 454,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 902,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d",
+          "bit_errors": 204,
+          "total_bits": 1664,
+          "block_errors": 21,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 585,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d",
+          "bit_errors": 198,
+          "total_bits": 1664,
+          "block_errors": 21,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 581,
+          "total_uncoded_bits": 3328
+        }
+      ]
+    },
+    {
+      "seed": 68324,
+      "freeze": "smoke",
+      "weights_sha256": "639c623985e6585172a0ff48a38dec9a8d61793caa43604513c346e8bad94ad2",
+      "rows": [
+        {
+          "condition": "id",
+          "method": "emfloatformer2d",
+          "bit_errors": 405,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 858,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 145,
+          "total_bits": 1664,
+          "block_errors": 16,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 514,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 134,
+          "total_bits": 1664,
+          "block_errors": 16,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 505,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d",
+          "bit_errors": 137,
+          "total_bits": 1664,
+          "block_errors": 16,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 513,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d",
+          "bit_errors": 140,
+          "total_bits": 1664,
+          "block_errors": 16,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 504,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "emfloatformer2d",
+          "bit_errors": 462,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 907,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 465,
+          "total_bits": 1664,
+          "block_errors": 25,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 915,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 465,
+          "total_bits": 1664,
+          "block_errors": 25,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 915,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d",
+          "bit_errors": 455,
+          "total_bits": 1664,
+          "block_errors": 25,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 893,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d",
+          "bit_errors": 456,
+          "total_bits": 1664,
+          "block_errors": 25,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 921,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "emfloatformer2d",
+          "bit_errors": 568,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1202,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 445,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 944,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 447,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 938,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d",
+          "bit_errors": 300,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 703,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d",
+          "bit_errors": 307,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 723,
+          "total_uncoded_bits": 3328
+        }
+      ]
+    },
+    {
+      "seed": 68325,
+      "freeze": "smoke",
+      "weights_sha256": "259d22b96ee85ea53920363eee696bc190c2f2942c389274fe4f3dad54ec4ba3",
+      "rows": [
+        {
+          "condition": "id",
+          "method": "emfloatformer2d",
+          "bit_errors": 483,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 923,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 196,
+          "total_bits": 1664,
+          "block_errors": 13,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 631,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 201,
+          "total_bits": 1664,
+          "block_errors": 13,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 636,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d",
+          "bit_errors": 196,
+          "total_bits": 1664,
+          "block_errors": 15,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 630,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d",
+          "bit_errors": 204,
+          "total_bits": 1664,
+          "block_errors": 14,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 634,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "emfloatformer2d",
+          "bit_errors": 568,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1184,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 427,
+          "total_bits": 1664,
+          "block_errors": 25,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 893,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 424,
+          "total_bits": 1664,
+          "block_errors": 25,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 899,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d",
+          "bit_errors": 428,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 891,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d",
+          "bit_errors": 406,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 885,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "emfloatformer2d",
+          "bit_errors": 588,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1086,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 475,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 950,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 474,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 954,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d",
+          "bit_errors": 240,
+          "total_bits": 1664,
+          "block_errors": 25,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 659,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d",
+          "bit_errors": 255,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 670,
+          "total_uncoded_bits": 3328
+        }
+      ]
+    },
+    {
+      "seed": 68326,
+      "freeze": "smoke",
+      "weights_sha256": "02b1dd03c9d4e66637be50f421cb7cdaef605ab3b32ce84d937772a84cc2e99a",
+      "rows": [
+        {
+          "condition": "id",
+          "method": "emfloatformer2d",
+          "bit_errors": 452,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 969,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 244,
+          "total_bits": 1664,
+          "block_errors": 22,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 615,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 234,
+          "total_bits": 1664,
+          "block_errors": 22,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 615,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d",
+          "bit_errors": 246,
+          "total_bits": 1664,
+          "block_errors": 22,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 621,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d",
+          "bit_errors": 253,
+          "total_bits": 1664,
+          "block_errors": 22,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 617,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "emfloatformer2d",
+          "bit_errors": 485,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 907,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 249,
+          "total_bits": 1664,
+          "block_errors": 18,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 682,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 237,
+          "total_bits": 1664,
+          "block_errors": 18,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 665,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d",
+          "bit_errors": 317,
+          "total_bits": 1664,
+          "block_errors": 23,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 758,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d",
+          "bit_errors": 327,
+          "total_bits": 1664,
+          "block_errors": 23,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 747,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "emfloatformer2d",
+          "bit_errors": 591,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1106,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 560,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 989,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 565,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 985,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d",
+          "bit_errors": 275,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 663,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d",
+          "bit_errors": 289,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 692,
+          "total_uncoded_bits": 3328
+        }
+      ]
+    },
+    {
+      "seed": 68327,
+      "freeze": "smoke",
+      "weights_sha256": "a9146da4f92f1cc160d26c45a84f6dc4278aea5b3108690db3e9eac308451523",
+      "rows": [
+        {
+          "condition": "id",
+          "method": "emfloatformer2d",
+          "bit_errors": 501,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1020,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 232,
+          "total_bits": 1664,
+          "block_errors": 23,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 671,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 246,
+          "total_bits": 1664,
+          "block_errors": 24,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 672,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d",
+          "bit_errors": 228,
+          "total_bits": 1664,
+          "block_errors": 25,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 663,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d",
+          "bit_errors": 242,
+          "total_bits": 1664,
+          "block_errors": 24,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 665,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "emfloatformer2d",
+          "bit_errors": 582,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1130,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 362,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 774,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 374,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 772,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d",
+          "bit_errors": 415,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 834,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d",
+          "bit_errors": 420,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 852,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "emfloatformer2d",
+          "bit_errors": 600,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1227,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 527,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1034,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 527,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1027,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d",
+          "bit_errors": 415,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 852,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d",
+          "bit_errors": 443,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 879,
+          "total_uncoded_bits": 3328
+        }
+      ]
+    },
+    {
+      "seed": 68328,
+      "freeze": "smoke",
+      "weights_sha256": "f42f6e99f4f39927bb912482c33cad7c34fb708da6a06c6e3fe6689f4cd39edb",
+      "rows": [
+        {
+          "condition": "id",
+          "method": "emfloatformer2d",
+          "bit_errors": 423,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 839,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 77,
+          "total_bits": 1664,
+          "block_errors": 16,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 501,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 89,
+          "total_bits": 1664,
+          "block_errors": 17,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 523,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d",
+          "bit_errors": 76,
+          "total_bits": 1664,
+          "block_errors": 16,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 501,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d",
+          "bit_errors": 88,
+          "total_bits": 1664,
+          "block_errors": 18,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 525,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "emfloatformer2d",
+          "bit_errors": 491,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1013,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 257,
+          "total_bits": 1664,
+          "block_errors": 21,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 664,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 255,
+          "total_bits": 1664,
+          "block_errors": 21,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 666,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d",
+          "bit_errors": 328,
+          "total_bits": 1664,
+          "block_errors": 22,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 777,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d",
+          "bit_errors": 353,
+          "total_bits": 1664,
+          "block_errors": 22,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 791,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "emfloatformer2d",
+          "bit_errors": 514,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1005,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 518,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 952,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 523,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 966,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d",
+          "bit_errors": 276,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 678,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d",
+          "bit_errors": 289,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 681,
+          "total_uncoded_bits": 3328
+        }
+      ]
+    },
+    {
+      "seed": 68329,
+      "freeze": "smoke",
+      "weights_sha256": "f2a56b4b13cff60ee00dd598c952b5ab0c3292cb177208786fec4b02c6718117",
+      "rows": [
+        {
+          "condition": "id",
+          "method": "emfloatformer2d",
+          "bit_errors": 555,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1126,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 164,
+          "total_bits": 1664,
+          "block_errors": 19,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 583,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 139,
+          "total_bits": 1664,
+          "block_errors": 17,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 572,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d",
+          "bit_errors": 162,
+          "total_bits": 1664,
+          "block_errors": 19,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 581,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d",
+          "bit_errors": 167,
+          "total_bits": 1664,
+          "block_errors": 21,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 571,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "emfloatformer2d",
+          "bit_errors": 527,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1052,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 267,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 687,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 272,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 675,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d",
+          "bit_errors": 313,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 729,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d",
+          "bit_errors": 307,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 723,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "emfloatformer2d",
+          "bit_errors": 598,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1096,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 525,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1048,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 543,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1044,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d",
+          "bit_errors": 312,
+          "total_bits": 1664,
+          "block_errors": 25,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 694,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d",
+          "bit_errors": 312,
+          "total_bits": 1664,
+          "block_errors": 24,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 709,
+          "total_uncoded_bits": 3328
+        }
+      ]
+    },
+    {
+      "seed": 68330,
+      "freeze": "smoke",
+      "weights_sha256": "18c4d418fb3a17173c02bc51510c373f37f56cc60146ca260ea50bc769a52009",
+      "rows": [
+        {
+          "condition": "id",
+          "method": "emfloatformer2d",
+          "bit_errors": 514,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 993,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 260,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 681,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 254,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 688,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "lmmse_2d",
+          "bit_errors": 267,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 685,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "id",
+          "method": "idd_pa_2d",
+          "bit_errors": 263,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 697,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "emfloatformer2d",
+          "bit_errors": 713,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1361,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 458,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 889,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 449,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 883,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "lmmse_2d",
+          "bit_errors": 477,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 932,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_doppler",
+          "method": "idd_pa_2d",
+          "bit_errors": 479,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 928,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "emfloatformer2d",
+          "bit_errors": 581,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 1079,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d_fixed",
+          "bit_errors": 441,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 979,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d_fixed",
+          "bit_errors": 453,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 985,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "lmmse_2d",
+          "bit_errors": 309,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 758,
+          "total_uncoded_bits": 3328
+        },
+        {
+          "condition": "ood_delay",
+          "method": "idd_pa_2d",
+          "bit_errors": 334,
+          "total_bits": 1664,
+          "block_errors": 26,
+          "total_blocks": 26,
+          "uncoded_bit_errors": 775,
+          "total_uncoded_bits": 3328
+        }
+      ]
+    }
+  ],
+  "primary_tests": [
+    {
+      "condition": "id",
+      "baseline": "lmmse_2d_fixed",
+      "baseline_minus_em_block_errors": [
+        -10,
+        -12,
+        0,
+        -10,
+        -13,
+        -4,
+        -3,
+        -10,
+        -7,
+        0
+      ],
+      "denominator_per_seed": 26,
+      "mean_bler_reduction": -0.2653846153846154,
+      "exact_p_value": 0.0078125,
+      "holm_p_value": 0.046875,
+      "reject_at_0_05": true
+    },
+    {
+      "condition": "id",
+      "baseline": "idd_pa_2d_fixed",
+      "baseline_minus_em_block_errors": [
+        -10,
+        -12,
+        0,
+        -10,
+        -13,
+        -4,
+        -2,
+        -9,
+        -9,
+        0
+      ],
+      "denominator_per_seed": 26,
+      "mean_bler_reduction": -0.2653846153846154,
+      "exact_p_value": 0.0078125,
+      "holm_p_value": 0.046875,
+      "reject_at_0_05": true
+    },
+    {
+      "condition": "ood_doppler",
+      "baseline": "lmmse_2d_fixed",
+      "baseline_minus_em_block_errors": [
+        0,
+        -3,
+        0,
+        -1,
+        -1,
+        -8,
+        0,
+        -5,
+        0,
+        0
+      ],
+      "denominator_per_seed": 26,
+      "mean_bler_reduction": -0.06923076923076923,
+      "exact_p_value": 0.0625,
+      "holm_p_value": 0.25,
+      "reject_at_0_05": false
+    },
+    {
+      "condition": "ood_doppler",
+      "baseline": "idd_pa_2d_fixed",
+      "baseline_minus_em_block_errors": [
+        0,
+        -2,
+        0,
+        -1,
+        -1,
+        -8,
+        0,
+        -5,
+        0,
+        0
+      ],
+      "denominator_per_seed": 26,
+      "mean_bler_reduction": -0.06538461538461539,
+      "exact_p_value": 0.0625,
+      "holm_p_value": 0.25,
+      "reject_at_0_05": false
+    },
+    {
+      "condition": "ood_delay",
+      "baseline": "lmmse_2d_fixed",
+      "baseline_minus_em_block_errors": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "denominator_per_seed": 26,
+      "mean_bler_reduction": 0.0,
+      "exact_p_value": 1.0,
+      "holm_p_value": 1.0,
+      "reject_at_0_05": false
+    },
+    {
+      "condition": "ood_delay",
+      "baseline": "idd_pa_2d_fixed",
+      "baseline_minus_em_block_errors": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "denominator_per_seed": 26,
+      "mean_bler_reduction": 0.0,
+      "exact_p_value": 1.0,
+      "holm_p_value": 1.0,
+      "reject_at_0_05": false
+    }
+  ],
+  "exact_p_value": 0.0078125,
+  "total_bits": 49920,
+  "total_bit_errors": 15673,
+  "total_blocks": 780,
+  "total_block_errors": 777
+}

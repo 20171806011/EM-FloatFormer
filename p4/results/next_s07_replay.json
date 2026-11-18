@@ -1,0 +1,90 @@
+{
+  "candidate": "TapPhaseNoChannel",
+  "training_steps": 75,
+  "batch_size": 8,
+  "training_seed": 2026,
+  "workload": {
+    "shortcut_collapse": false,
+    "ber_gap": 0.0,
+    "ber_id": 0.0,
+    "ber_ood": 0.0,
+    "shift_diff": 0.02266770228743553
+  },
+  "counts": {
+    "equal4": {
+      "bit_errors": 0,
+      "bits": 26624,
+      "block_errors": 0,
+      "blocks": 416
+    },
+    "exp16": {
+      "bit_errors": 0,
+      "bits": 26624,
+      "block_errors": 0,
+      "blocks": 416
+    }
+  },
+  "passed_s07": true,
+  "gauge_checks_on_four_exp16_slots": {
+    "torch.complex64": [
+      {
+        "gain": 0.000244140625,
+        "phase": -1.31,
+        "max_llr_error": 3.337860107421875e-06,
+        "decision_flips": 0,
+        "relative_channel_error": 5.8639386679715244e-08
+      },
+      {
+        "gain": 1.0,
+        "phase": 2.07,
+        "max_llr_error": 3.814697265625e-06,
+        "decision_flips": 0,
+        "relative_channel_error": 6.117249284898207e-08
+      },
+      {
+        "gain": 3.7,
+        "phase": 0.57,
+        "max_llr_error": 2.86102294921875e-06,
+        "decision_flips": 0,
+        "relative_channel_error": 5.738488439988032e-08
+      },
+      {
+        "gain": 4096,
+        "phase": 1.13,
+        "max_llr_error": 3.337860107421875e-06,
+        "decision_flips": 0,
+        "relative_channel_error": 6.125373630538888e-08
+      }
+    ],
+    "torch.complex128": [
+      {
+        "gain": 0.000244140625,
+        "phase": -1.31,
+        "max_llr_error": 2.220446049250313e-14,
+        "decision_flips": 0,
+        "relative_channel_error": 2.67553817746809e-16
+      },
+      {
+        "gain": 1.0,
+        "phase": 2.07,
+        "max_llr_error": 2.6645352591003757e-14,
+        "decision_flips": 0,
+        "relative_channel_error": 2.824376270675077e-16
+      },
+      {
+        "gain": 3.7,
+        "phase": 0.57,
+        "max_llr_error": 2.6645352591003757e-14,
+        "decision_flips": 0,
+        "relative_channel_error": 2.703750190573085e-16
+      },
+      {
+        "gain": 4096,
+        "phase": 1.13,
+        "max_llr_error": 1.9984014443252818e-14,
+        "decision_flips": 0,
+        "relative_channel_error": 2.5420865389424094e-16
+      }
+    ]
+  }
+}

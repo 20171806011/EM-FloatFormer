@@ -1,0 +1,66 @@
+{
+  "record_type": "Published transcription of the Antigravity post-mirror verification",
+  "execution_date_utc": "2026-11-18",
+  "source": "worker_verify_1 saved tool results, steps 37, 39, 44, 46, 51, 64, 67 and 70",
+  "unit_suites": [
+    {
+      "suite": "test_p4_0_simulator",
+      "ran": 14,
+      "passed": 14,
+      "result_step": 37
+    },
+    {
+      "suite": "test_p4_a_equivariance",
+      "ran": 53,
+      "passed": 53,
+      "result_step": 51
+    },
+    {
+      "suite": "test_gauge_stress_adversarial",
+      "ran": 5,
+      "passed": 5,
+      "result_step": 44
+    },
+    {
+      "suite": "test_p4_b_2d_fec",
+      "ran": 13,
+      "passed": 13,
+      "result_step": 46
+    },
+    {
+      "suite": "test_stage3_adversarial",
+      "ran": 15,
+      "passed": 15,
+      "result_step": 39
+    }
+  ],
+  "independent_replay": {
+    "command": "python -B -m p4.confirmatory_protocol --replay",
+    "exit_code": 0,
+    "completed_utc": "2026-11-18T04:33:27Z",
+    "two_dimensional_confirmatory_seeds": 10,
+    "independently_retrained_factorial_cells": 80,
+    "matching_pre_and_post_sha256": {
+      "p4/results/p4d/coded_replay.json": "b602c3932d4a70840182bc527599e1eaa0347cf2458db2233318c49bf35668fe",
+      "p4/results/p4d/joint_replay.json": "c4afc306d21ced7e8ebf70bff4f08f0781406fc9cab5b15320c0fe6ca04fa3af",
+      "p4/results/p4d/factorial_replay.json": "a83b84617c0e4bf285318d1f1311b00257320846d889e1ee7dbfdb149f8d3aa9",
+      "p4/results/p4d/summary.json": "f2022563631bc994d055b36b377c9424009aab9fe810e9784782b45fad492c83",
+      "p4/results/p4d/raw_by_seed.csv": "ed5b003c8550c212299df034547fb813372e69f5d829a4d950b05b2bbfbae85c"
+    }
+  },
+  "direct_csv_audit": {
+    "exit_code": 0,
+    "completed_utc": "2026-11-18T04:33:45Z",
+    "raw_rows": 150,
+    "holm_family_contrasts": 6,
+    "artifact": "post_mirror_csv_audit.json",
+    "artifact_sha256": "15682898fc4adb4d2c81deda20bebbf3617d99afb7162ddc83b40b739998f8b1"
+  },
+  "additional_isolated_e2e": {
+    "runner": "p4.stage3_verify",
+    "completed_utc": "2026-11-18T04:35:25Z",
+    "exit_code": 1073807364,
+    "evidence": "One warning about converting a tensor to a scalar appeared. No completion counts or output JSON were found for this invocation. The cause of exit is undetermined.",
+    "published_full_pipeline_output": "../results/stage3_final_e2e.json"
+  }
+}

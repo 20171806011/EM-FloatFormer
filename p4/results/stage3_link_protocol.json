@@ -1,0 +1,48 @@
+{
+  "files": {
+    "stage3_link_study.py": "0881abe6f39243e83724b77fcb65cc06af5e823304db4dff14cb43a4a83bb82d",
+    "stage3_link.py": "c74aada666e9153f69af841ce0b05b2c8bae4c6639881558496b834a85651c29",
+    "stage3_link_decoder.py": "e7ddbaff0fffba080cb3330e1408e1a5f78d8b026a519a0604a019fecc4aca16",
+    "next_neural.py": "4c917ca0e5df818fd95334cad60e2f0b149a1a9252d3afd88870a5b6b9d8df2e",
+    "next_classical.py": "68bbad7fe537f2fe3999101ef958d36ce57dd99e4d3e7d122bf6bd1d7dd1e7c8",
+    "next_interleaving.py": "ef822009a265f94f1123b472671eaf48a5e2d5381538e87a068e7a73c1ac9f72",
+    "pilot_prior_probe.py": "0e5e1ed69642d901e9125cec27cccc38ad1ad9614d52230bb87f4d50ac5c4b3d",
+    "simulator.py": "a0e722a6cd831e4073e67a92f88559592abd44a8341e023cedc65d6cb6404608",
+    "classical_baselines.py": "bf284f49b42478858649ac4221003e46f86b479c9ab79a2456e2da49393d4ffb",
+    "next_neural_tap_phase_no_channel_73161.pt": "a15acff418554dc03c7a3b52e3d14ba72728a3e600b9a507957c756c08c44149"
+  },
+  "core_functions": {
+    "SlotSimulator2D": "899effc4d24956f7a351539f89b4dd90b0c7fba52ed632dd180543b3f021d250",
+    "EMFloatFormer2D": "f4a701ead75c89dbf570571f9971ae66cd225a8a0416feb8ac8b113c0b7f43bf",
+    "_apply_continuous_slot_channel": "0b599fd68c31fb308e660c486fcf14b4089c8e0f57596a947177ef5479095e00",
+    "_draw_slot_taps": "81574cf7ad8f2589204e28d8f6132e5626f71cd70a2d400ff5ce2e04291db1d5",
+    "_synchronize_slot": "d7e399c6fc1952156c0b303b8699af5c01f14500a6f2f0ab48e3f4836d9d317a",
+    "encode_ldpc": "b3a5c8498bd8598e00c3d744147077a9df8ab5b590825c27573ba4c7d69e56ea",
+    "decode_min_sum": "6fea2bb1ebddf5dc69e24f9e9f2c43566579253a2320f1a9b5a11ad3612d7be2",
+    "LDPCMatrix": "8ada03a0d6a51f3157149107f8eb3ab3cf99061ea7140333af0dfccbe07a73f0",
+    "_build_girth6_rate_half_h": "38d11d4ce53e4575e385a486c1daad8f70d2bb7b54b25ff3d374cda5db606f83",
+    "_compute_systematic_generator": "84f0154e97871078265e539645ddc4ba50fe340c5032b0bdbcfc6c6ac3fc275b",
+    "get_slot_masks": "07a86fb930c5d40aeb52fb99795c3c5be9d292d2d3148a3ec076dc0b626af021"
+  },
+  "seeds_in_execution_order": [
+    874121,
+    874122,
+    874123,
+    42
+  ],
+  "permutation_seed": 892311,
+  "scenarios": {
+    "S01_speed": "32 tones, 14 symbols, physical 300km/h at 3GHz, strong A1.25, 15dB, native mapping, CP synchronizer",
+    "S01_text": "identical except literal 500Hz",
+    "S11_native": "legacy generator, 50 conditionally independent per-slot tap draws in two chunks of 25, 80 tones, 300Hz, strong A1.25, 15dB, native mapping",
+    "S11_continuous": "same logical payload and DMRS as S11_native; 50 consecutive slots transmitted as one 700-symbol waveform with one initial per-tap amplitude and Doppler draw, contiguous sample time, and independent AWGN, native mapping",
+    "S11_spread": "same continuous waveform channel and AWGN as S11_continuous; fixed 50-slot QAM permutation before PA, inverse before LDPC; 50-slot receive buffering"
+  },
+  "workload_sizes": "S01 16 fresh slots each / 4 historical. S11 50 slots every run, 102400 information bits.",
+  "targets": {
+    "S01": "BLER < 0.05",
+    "S11": "BLER < 0.01, accounting, finite outputs"
+  },
+  "receiver": "Frozen first EM replicate 73161, three exact 16-symbol marginalization and decoder extrinsic waveform rounds, half-damping and |extrinsic| <=20, BP max20, followed by OSD2 + triples in weakest 16 basis pivots and quads in weakest 8. All results reported. No test-label feedback.",
+  "generator_notes": "S01_speed reproduces historical S01 source waveforms; historical S11_mild A2.25 was not the written workload. S11 uses strong at every point. Continuous and spread arms keep 50-slot payload, power law, rate, pilots and SNR. Continuous draw starts from first original tap vector. Noise seed=seed+46871."
+}

@@ -1,0 +1,539 @@
+{
+  "execution": "Isolated substitution of p4.slot_2d.compute_gauge_anchor, with automatic restoration after each forward/backward. CPU, complex128 receiver inputs, training seed 73161, weights frozen for measurement. No default implementation altered.",
+  "input_gradient_order": [
+    "pilot_tensor",
+    "received_grid"
+  ],
+  "scope": "An exactly zero input derivative is analytically required for the anchor itself inside its floor. Receiver derivatives also include direct pilot and data paths.",
+  "anchor_rows": [
+    {
+      "dtype": "torch.complex64",
+      "scale": 0,
+      "anchor": 9.999999350456404e-39,
+      "original_gradient_finite": false,
+      "proposed_gradient_max_error_from_analytic": 0.0,
+      "nonzero_row_gradient_bit_equal": null
+    },
+    {
+      "dtype": "torch.complex64",
+      "scale": 1e-40,
+      "anchor": 9.999999350456404e-39,
+      "original_gradient_finite": true,
+      "proposed_gradient_max_error_from_analytic": 0.0,
+      "nonzero_row_gradient_bit_equal": true
+    },
+    {
+      "dtype": "torch.complex64",
+      "scale": 1e-36,
+      "anchor": 1.2651581706722067e-36,
+      "original_gradient_finite": true,
+      "proposed_gradient_max_error_from_analytic": 2.277563348504289e-09,
+      "nonzero_row_gradient_bit_equal": true
+    },
+    {
+      "dtype": "torch.complex64",
+      "scale": 1e-08,
+      "anchor": 1.265158111607434e-08,
+      "original_gradient_finite": true,
+      "proposed_gradient_max_error_from_analytic": 1.9071014175940582e-09,
+      "nonzero_row_gradient_bit_equal": true
+    },
+    {
+      "dtype": "torch.complex64",
+      "scale": 1,
+      "anchor": 1.2651580572128296,
+      "original_gradient_finite": true,
+      "proposed_gradient_max_error_from_analytic": 1.8456494180196792e-09,
+      "nonzero_row_gradient_bit_equal": true
+    },
+    {
+      "dtype": "torch.complex64",
+      "scale": 100000000.0,
+      "anchor": 126515808.0,
+      "original_gradient_finite": true,
+      "proposed_gradient_max_error_from_analytic": 1.999045111063909e-09,
+      "nonzero_row_gradient_bit_equal": true
+    },
+    {
+      "dtype": "torch.complex64",
+      "scale": 1e+37,
+      "anchor": 1.2651581456180607e+37,
+      "original_gradient_finite": true,
+      "proposed_gradient_max_error_from_analytic": 1.867818603976673e-09,
+      "nonzero_row_gradient_bit_equal": true
+    },
+    {
+      "dtype": "torch.complex128",
+      "scale": 0,
+      "anchor": 1e-38,
+      "original_gradient_finite": false,
+      "proposed_gradient_max_error_from_analytic": 0.0,
+      "nonzero_row_gradient_bit_equal": null
+    },
+    {
+      "dtype": "torch.complex128",
+      "scale": 1e-40,
+      "anchor": 1e-38,
+      "original_gradient_finite": true,
+      "proposed_gradient_max_error_from_analytic": 0.0,
+      "nonzero_row_gradient_bit_equal": true
+    },
+    {
+      "dtype": "torch.complex128",
+      "scale": 1e-36,
+      "anchor": 1.2651580928879996e-36,
+      "original_gradient_finite": true,
+      "proposed_gradient_max_error_from_analytic": 6.206335383118183e-17,
+      "nonzero_row_gradient_bit_equal": true
+    },
+    {
+      "dtype": "torch.complex128",
+      "scale": 1e-08,
+      "anchor": 1.2651580928879995e-08,
+      "original_gradient_finite": true,
+      "proposed_gradient_max_error_from_analytic": 2.482534153247273e-16,
+      "nonzero_row_gradient_bit_equal": true
+    },
+    {
+      "dtype": "torch.complex128",
+      "scale": 1,
+      "anchor": 1.2651580928879995,
+      "original_gradient_finite": true,
+      "proposed_gradient_max_error_from_analytic": 6.206335383118183e-17,
+      "nonzero_row_gradient_bit_equal": true
+    },
+    {
+      "dtype": "torch.complex128",
+      "scale": 100000000.0,
+      "anchor": 126515809.28879996,
+      "original_gradient_finite": true,
+      "proposed_gradient_max_error_from_analytic": 0.0,
+      "nonzero_row_gradient_bit_equal": true
+    },
+    {
+      "dtype": "torch.complex128",
+      "scale": 1e+37,
+      "anchor": 1.2651580928879994e+37,
+      "original_gradient_finite": true,
+      "proposed_gradient_max_error_from_analytic": 1.2412670766236366e-16,
+      "nonzero_row_gradient_bit_equal": true
+    },
+    {
+      "dtype": "torch.complex128",
+      "scale": 1e-200,
+      "anchor": 1e-38,
+      "original_gradient_finite": true,
+      "proposed_gradient_max_error_from_analytic": 0.0,
+      "nonzero_row_gradient_bit_equal": true
+    },
+    {
+      "dtype": "torch.complex128",
+      "scale": 1e+200,
+      "anchor": 1.2651580928879995e+200,
+      "original_gradient_finite": true,
+      "proposed_gradient_max_error_from_analytic": 6.206335383118183e-17,
+      "nonzero_row_gradient_bit_equal": true
+    }
+  ],
+  "receivers": [
+    {
+      "arm": "fourier_full",
+      "case": "all_zero_no_noise",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        64,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 121,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "fourier_full",
+      "case": "all_zero_noise",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        64,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 121,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "fourier_full",
+      "case": "mixed",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        32,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": true,
+      "parameter_tensors": 121,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "fourier_full",
+      "case": "pilot_erasure",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        32,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": true,
+      "parameter_tensors": 121,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "fourier_full",
+      "case": "ordinary",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 121,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "fourier_full",
+      "case": "scale_1e-8",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 121,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "fourier_full",
+      "case": "scale_1e8",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 121,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "fourier_no_channel",
+      "case": "all_zero_no_noise",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        64,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 119,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "fourier_no_channel",
+      "case": "all_zero_noise",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        64,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 119,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "fourier_no_channel",
+      "case": "mixed",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        32,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": true,
+      "parameter_tensors": 119,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "fourier_no_channel",
+      "case": "pilot_erasure",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        32,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": true,
+      "parameter_tensors": 119,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "fourier_no_channel",
+      "case": "ordinary",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 119,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "fourier_no_channel",
+      "case": "scale_1e-8",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 119,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "fourier_no_channel",
+      "case": "scale_1e8",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 119,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "tap_phase_no_channel",
+      "case": "all_zero_no_noise",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        64,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 119,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "tap_phase_no_channel",
+      "case": "all_zero_noise",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        64,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 119,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "tap_phase_no_channel",
+      "case": "mixed",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        32,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": true,
+      "parameter_tensors": 119,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "tap_phase_no_channel",
+      "case": "pilot_erasure",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        32,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": true,
+      "parameter_tensors": 119,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "tap_phase_no_channel",
+      "case": "ordinary",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 119,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "tap_phase_no_channel",
+      "case": "scale_1e-8",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 119,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    },
+    {
+      "arm": "tap_phase_no_channel",
+      "case": "scale_1e8",
+      "outputs_bit_equal": true,
+      "all_outputs_finite": true,
+      "original_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "proposed_nonfinite_input_entries": [
+        0,
+        0
+      ],
+      "nonzero_companion_row_input_gradients_bit_equal": null,
+      "parameter_tensors": 119,
+      "original_bad_or_missing_parameter_grads": [],
+      "proposed_bad_or_missing_parameter_grads": [],
+      "all_parameter_gradients_bit_equal": true
+    }
+  ]
+}

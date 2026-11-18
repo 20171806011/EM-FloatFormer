@@ -1,0 +1,13 @@
+# The original pre-P4 checkout was frozen with CRLF text. Existing CRLF
+# blobs and binary files follow Git's automatic text detection.
+* text=auto eol=crlf
+
+# The P4 protocols and evidence were signed over raw bytes, with multiple
+# original line-ending styles. Preserve the same bytes on every platform.
+/p4/** -text !eol
+/tests/** -text !eol
+/PROJECT.md -text !eol
+/TEST_INFRA.md -text !eol
+/TEST_READY.md -text !eol
+/.gitattributes -text !eol
+/publication/** -text !eol

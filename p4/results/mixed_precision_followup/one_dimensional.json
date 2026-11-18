@@ -1,0 +1,763 @@
+{
+  "scope": "Development-only one-dimensional F19 numerical diagnostic; no formal outcomes or performance benchmark",
+  "protocol_sha256": "44b5364721b33b2541b508a1d7eb3df51e26610e57b787159bf8edd38a232292",
+  "script_sha256": "1c60f8a34937400135fd1902ec877756b4c7d887007348a61d1a84fa50153ffb",
+  "source_sha256": {
+    "p4/ablation_probing.py": "ebd5c36a7e4122a095fe542d403635810b868eba0694e9dbb04ffa30b4bb7ebd",
+    "p4/factorial.py": "b725bb4f0c1a603dc1061750c5e129d4d87bdf75ae4a3831e4c8058739f511a1",
+    "p4/em_floatformer.py": "a6cf7412b5f8411e7f9b34eccd187570dba0310e397e827bb800fd1dd5457bf5",
+    "p4/classical_baselines.py": "bf284f49b42478858649ac4221003e46f86b479c9ab79a2456e2da49393d4ffb",
+    "p4/simulator.py": "a0e722a6cd831e4073e67a92f88559592abd44a8341e023cedc65d6cb6404608",
+    "p4/p4cd_factorial_protocol.json": "d2c7aef3d4f2a1c153de41acfc1b9c7b5a06853208cff4b1d731b5c9ddf46a88",
+    "p4/results/p4c_mechanism_probes.json": "94d548d774b95a1c4002f5f19c1e0ba87268c8efc6cf88f59cb62785ca397d43",
+    "p4/results/p4c_factorial.json": "6ac7c0f7f2ffd4d5c0ae68d73f153749b50ccfdbf560e54ee78257eb434d777c",
+    "tests/e2e/test_tier1_feature_coverage.py": "f52a18a10f131d14e93c84642506810172289e09b89d02e6ed30226446400873"
+  },
+  "runtime": {
+    "python": "3.12.7",
+    "torch": "2.12.1+cpu",
+    "threads": 1,
+    "device": "cpu"
+  },
+  "weights_sha256": "2268c6b0cbb2119845ad1fc703a9097a1648f10e9ce6ee9a1908570d7b1bd35c",
+  "weight_provenance": "Deterministic development reconstruction; signed archived checkpoint hash unavailable.",
+  "archived_parity": {
+    "matched_factorial_arm_row_exact": true,
+    "trained_attention_all_entries_exact": true,
+    "original_bf16_quantized_input_and_gemm_5_rows_exact": true
+  },
+  "per_frame_group_and_gain": [
+    {
+      "frame_seed": 73510,
+      "frames": 32,
+      "snr_db": 15.0,
+      "gain": 1e-08,
+      "compared_to_signed_reference": {
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 2,
+          "max_abs_llr_difference": 0.18578797578811646,
+          "mean_abs_llr_difference": 0.018543878570199013,
+          "max_lt_0p15": false
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 3,
+          "max_abs_llr_difference": 0.02100849151611328,
+          "mean_abs_llr_difference": 0.002916193101555109,
+          "max_lt_0p15": true
+        }
+      },
+      "nonfinite_output_elements": 0,
+      "within_engine_vs_unit_gain": {
+        "reference": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 1.9073486328125e-06,
+          "mean_abs_llr_difference": 1.9662320482893847e-07,
+          "max_lt_0p15": true
+        },
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.00495147705078125,
+          "mean_abs_llr_difference": 4.992751200916246e-06,
+          "max_lt_0p15": true
+        }
+      }
+    },
+    {
+      "frame_seed": 73510,
+      "frames": 32,
+      "snr_db": 15.0,
+      "gain": 0.000244140625,
+      "compared_to_signed_reference": {
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 2,
+          "max_abs_llr_difference": 0.18578794598579407,
+          "mean_abs_llr_difference": 0.018543871119618416,
+          "max_lt_0p15": false
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 3,
+          "max_abs_llr_difference": 0.021007537841796875,
+          "mean_abs_llr_difference": 0.0029163709841668606,
+          "max_lt_0p15": true
+        }
+      },
+      "nonfinite_output_elements": 0,
+      "within_engine_vs_unit_gain": {
+        "reference": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        }
+      }
+    },
+    {
+      "frame_seed": 73510,
+      "frames": 32,
+      "snr_db": 15.0,
+      "gain": 1,
+      "compared_to_signed_reference": {
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 2,
+          "max_abs_llr_difference": 0.18578794598579407,
+          "mean_abs_llr_difference": 0.018543871119618416,
+          "max_lt_0p15": false
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 3,
+          "max_abs_llr_difference": 0.021007537841796875,
+          "mean_abs_llr_difference": 0.0029163709841668606,
+          "max_lt_0p15": true
+        }
+      },
+      "nonfinite_output_elements": 0,
+      "within_engine_vs_unit_gain": {
+        "reference": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        }
+      }
+    },
+    {
+      "frame_seed": 73510,
+      "frames": 32,
+      "snr_db": 15.0,
+      "gain": 4096,
+      "compared_to_signed_reference": {
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 2,
+          "max_abs_llr_difference": 0.18578794598579407,
+          "mean_abs_llr_difference": 0.018543871119618416,
+          "max_lt_0p15": false
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 3,
+          "max_abs_llr_difference": 0.021007537841796875,
+          "mean_abs_llr_difference": 0.0029163709841668606,
+          "max_lt_0p15": true
+        }
+      },
+      "nonfinite_output_elements": 0,
+      "within_engine_vs_unit_gain": {
+        "reference": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        }
+      }
+    },
+    {
+      "frame_seed": 73510,
+      "frames": 32,
+      "snr_db": 15.0,
+      "gain": 100000000.0,
+      "compared_to_signed_reference": {
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 2,
+          "max_abs_llr_difference": 0.1857883632183075,
+          "mean_abs_llr_difference": 0.01854388788342476,
+          "max_lt_0p15": false
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 3,
+          "max_abs_llr_difference": 0.02100849151611328,
+          "mean_abs_llr_difference": 0.0029132056515663862,
+          "max_lt_0p15": true
+        }
+      },
+      "nonfinite_output_elements": 0,
+      "within_engine_vs_unit_gain": {
+        "reference": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 1.9073486328125e-06,
+          "mean_abs_llr_difference": 2.362921804888174e-07,
+          "max_lt_0p15": true
+        },
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.006365776062011719,
+          "mean_abs_llr_difference": 2.3973074348759837e-05,
+          "max_lt_0p15": true
+        }
+      }
+    },
+    {
+      "frame_seed": 73511,
+      "frames": 32,
+      "snr_db": 15.0,
+      "gain": 1e-08,
+      "compared_to_signed_reference": {
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 4,
+          "max_abs_llr_difference": 0.1357731819152832,
+          "mean_abs_llr_difference": 0.018432926386594772,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.020799636840820312,
+          "mean_abs_llr_difference": 0.0028339966665953398,
+          "max_lt_0p15": true
+        }
+      },
+      "nonfinite_output_elements": 0,
+      "within_engine_vs_unit_gain": {
+        "reference": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 1.9073486328125e-06,
+          "mean_abs_llr_difference": 2.1375106484811113e-07,
+          "max_lt_0p15": true
+        },
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.003842592239379883,
+          "mean_abs_llr_difference": 1.5380141121568158e-05,
+          "max_lt_0p15": true
+        }
+      }
+    },
+    {
+      "frame_seed": 73511,
+      "frames": 32,
+      "snr_db": 15.0,
+      "gain": 0.000244140625,
+      "compared_to_signed_reference": {
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 4,
+          "max_abs_llr_difference": 0.1357746124267578,
+          "mean_abs_llr_difference": 0.018432902172207832,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.02079916000366211,
+          "mean_abs_llr_difference": 0.002836309839040041,
+          "max_lt_0p15": true
+        }
+      },
+      "nonfinite_output_elements": 0,
+      "within_engine_vs_unit_gain": {
+        "reference": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        }
+      }
+    },
+    {
+      "frame_seed": 73511,
+      "frames": 32,
+      "snr_db": 15.0,
+      "gain": 1,
+      "compared_to_signed_reference": {
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 4,
+          "max_abs_llr_difference": 0.1357746124267578,
+          "mean_abs_llr_difference": 0.018432902172207832,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.02079916000366211,
+          "mean_abs_llr_difference": 0.002836309839040041,
+          "max_lt_0p15": true
+        }
+      },
+      "nonfinite_output_elements": 0,
+      "within_engine_vs_unit_gain": {
+        "reference": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        }
+      }
+    },
+    {
+      "frame_seed": 73511,
+      "frames": 32,
+      "snr_db": 15.0,
+      "gain": 4096,
+      "compared_to_signed_reference": {
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 4,
+          "max_abs_llr_difference": 0.1357746124267578,
+          "mean_abs_llr_difference": 0.018432902172207832,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.02079916000366211,
+          "mean_abs_llr_difference": 0.002836309839040041,
+          "max_lt_0p15": true
+        }
+      },
+      "nonfinite_output_elements": 0,
+      "within_engine_vs_unit_gain": {
+        "reference": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        }
+      }
+    },
+    {
+      "frame_seed": 73511,
+      "frames": 32,
+      "snr_db": 15.0,
+      "gain": 100000000.0,
+      "compared_to_signed_reference": {
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 4,
+          "max_abs_llr_difference": 0.1357736587524414,
+          "mean_abs_llr_difference": 0.018432926386594772,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.02079916000366211,
+          "mean_abs_llr_difference": 0.002834141254425049,
+          "max_lt_0p15": true
+        }
+      },
+      "nonfinite_output_elements": 0,
+      "within_engine_vs_unit_gain": {
+        "reference": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 1.9073486328125e-06,
+          "mean_abs_llr_difference": 2.4745742166487616e-07,
+          "max_lt_0p15": true
+        },
+        "original_all_bf16_projections_and_storage": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.0,
+          "mean_abs_llr_difference": 0.0,
+          "max_lt_0p15": true
+        },
+        "mixed_blocks_only": {
+          "bits": 4096,
+          "hard_bit_flips": 0,
+          "max_abs_llr_difference": 0.003839731216430664,
+          "mean_abs_llr_difference": 1.5091394743649289e-05,
+          "max_lt_0p15": true
+        }
+      }
+    }
+  ],
+  "gemm_execution": {
+    "source": "TorchDispatchMode logs actual aten CPU operators; dtype is operand and output dtype, not a hardware accumulator claim.",
+    "trace_covers_forward_passes_per_engine": 10,
+    "original_bf16_real_gemms": 1000,
+    "split_block_projection_names": [
+      "blocks.0.cross_d2p.w_k",
+      "blocks.0.cross_d2p.w_out",
+      "blocks.0.cross_d2p.w_q",
+      "blocks.0.cross_d2p.w_v",
+      "blocks.0.cross_p2d.w_k",
+      "blocks.0.cross_p2d.w_out",
+      "blocks.0.cross_p2d.w_q",
+      "blocks.0.cross_p2d.w_v",
+      "blocks.0.ffn_d_1",
+      "blocks.0.ffn_d_2",
+      "blocks.0.ffn_p_1",
+      "blocks.0.ffn_p_2",
+      "blocks.0.self_attn_d.w_k",
+      "blocks.0.self_attn_d.w_out",
+      "blocks.0.self_attn_d.w_q",
+      "blocks.0.self_attn_d.w_v",
+      "blocks.0.self_attn_p.w_k",
+      "blocks.0.self_attn_p.w_out",
+      "blocks.0.self_attn_p.w_q",
+      "blocks.0.self_attn_p.w_v"
+    ],
+    "split_fp32_projection_names": [
+      "embed.proj_d",
+      "embed.proj_p",
+      "gamma_eff",
+      "head_dist",
+      "head_h"
+    ],
+    "operator_counts": {
+      "original": [
+        {
+          "module": "unlabelled",
+          "operator": "aten.bmm.default",
+          "lhs": "torch.complex128",
+          "rhs": "torch.complex128",
+          "out": "torch.complex128",
+          "calls": 80
+        },
+        {
+          "module": "unlabelled",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 1000
+        },
+        {
+          "module": "unlabelled",
+          "operator": "aten.mm.default",
+          "lhs": "torch.float64",
+          "rhs": "torch.float64",
+          "out": "torch.float64",
+          "calls": 1000
+        }
+      ],
+      "mixed_blocks_only": [
+        {
+          "module": "blocks.0.cross_d2p.w_k",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.cross_d2p.w_out",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.cross_d2p.w_q",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.cross_d2p.w_v",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.cross_p2d.w_k",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.cross_p2d.w_out",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.cross_p2d.w_q",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.cross_p2d.w_v",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.ffn_d_1",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.ffn_d_2",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.ffn_p_1",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.ffn_p_2",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.self_attn_d.w_k",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.self_attn_d.w_out",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.self_attn_d.w_q",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.self_attn_d.w_v",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.self_attn_p.w_k",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.self_attn_p.w_out",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.self_attn_p.w_q",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "blocks.0.self_attn_p.w_v",
+          "operator": "aten.mm.default",
+          "lhs": "torch.bfloat16",
+          "rhs": "torch.bfloat16",
+          "out": "torch.bfloat16",
+          "calls": 40
+        },
+        {
+          "module": "embed.proj_d",
+          "operator": "aten.mm.default",
+          "lhs": "torch.float32",
+          "rhs": "torch.float32",
+          "out": "torch.float32",
+          "calls": 40
+        },
+        {
+          "module": "embed.proj_p",
+          "operator": "aten.mm.default",
+          "lhs": "torch.float32",
+          "rhs": "torch.float32",
+          "out": "torch.float32",
+          "calls": 40
+        },
+        {
+          "module": "gamma_eff",
+          "operator": "aten.mm.default",
+          "lhs": "torch.float32",
+          "rhs": "torch.float32",
+          "out": "torch.float32",
+          "calls": 40
+        },
+        {
+          "module": "head_dist",
+          "operator": "aten.mm.default",
+          "lhs": "torch.float32",
+          "rhs": "torch.float32",
+          "out": "torch.float32",
+          "calls": 40
+        },
+        {
+          "module": "head_h",
+          "operator": "aten.mm.default",
+          "lhs": "torch.float32",
+          "rhs": "torch.float32",
+          "out": "torch.float32",
+          "calls": 40
+        },
+        {
+          "module": "unlabelled",
+          "operator": "aten.bmm.default",
+          "lhs": "torch.complex64",
+          "rhs": "torch.complex64",
+          "out": "torch.complex64",
+          "calls": 80
+        }
+      ]
+    }
+  }
+}

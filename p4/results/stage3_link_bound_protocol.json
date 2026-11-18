@@ -1,0 +1,174 @@
+{
+  "source_hash": {
+    "stage3_link_bound_study.py": "658b174f4ec454d4b46d8df3eca60b9b963c8b8495e9a8da5efbfb3e0d655385",
+    "stage3_link_bound.py": "9fa05353f8288f9f3ed5de11af82f77f9e807aa95e546bc1c036edaf05f6609b",
+    "stage3_link_tracking.py": "9d0721145fc4c11370c7a87961519ae749afe2788f5538c9a9a239c1f9314c2b",
+    "stage3_link_hst.py": "48479b1e83372f8edea0d4c3c183d97cedfd33c61a3864826e39ddf36a0a6cd7",
+    "stage3_link_long.py": "3d5475e8e131d4b8ef3b24bc2703031189294ee8b7155b913f59d830966419f4",
+    "stage3_link_hst_protocol.json": "929afcd10f2b010fae775ffd0b4982da1f2a1a3444b201fabcbe55c83ad17a0b",
+    "stage3_link_protocol.json": "6e54abd2c406067b4e52c9b947a770db7cf7c725e8dd9ce6450197a403c92d6d"
+  },
+  "schedule": [
+    [
+      "fresh",
+      912501
+    ],
+    [
+      "fresh",
+      912502
+    ],
+    [
+      "fresh",
+      912503
+    ],
+    [
+      "fresh",
+      912504
+    ],
+    [
+      "fresh",
+      912505
+    ],
+    [
+      "fresh",
+      912506
+    ],
+    [
+      "fresh",
+      912507
+    ],
+    [
+      "fresh",
+      912508
+    ],
+    [
+      "fresh",
+      912509
+    ],
+    [
+      "fresh",
+      912510
+    ],
+    [
+      "fresh",
+      912511
+    ],
+    [
+      "fresh",
+      912512
+    ],
+    [
+      "paired",
+      907701
+    ],
+    [
+      "paired",
+      907702
+    ],
+    [
+      "paired",
+      907703
+    ],
+    [
+      "paired",
+      907704
+    ],
+    [
+      "paired",
+      907705
+    ],
+    [
+      "paired",
+      907706
+    ],
+    [
+      "paired",
+      907707
+    ],
+    [
+      "paired",
+      907708
+    ],
+    [
+      "paired",
+      907709
+    ],
+    [
+      "paired",
+      907710
+    ],
+    [
+      "paired",
+      907711
+    ],
+    [
+      "paired",
+      907712
+    ],
+    [
+      "paired",
+      902071
+    ],
+    [
+      "paired",
+      906167
+    ],
+    [
+      "paired",
+      910263
+    ],
+    [
+      "paired",
+      914359
+    ],
+    [
+      "paired",
+      902072
+    ],
+    [
+      "paired",
+      906168
+    ],
+    [
+      "paired",
+      910264
+    ],
+    [
+      "paired",
+      914360
+    ],
+    [
+      "paired",
+      902073
+    ],
+    [
+      "paired",
+      906169
+    ],
+    [
+      "paired",
+      910265
+    ],
+    [
+      "paired",
+      914361
+    ],
+    [
+      "historical",
+      42
+    ]
+  ],
+  "hz": [
+    833.9102379953802,
+    500.0
+  ],
+  "arms": [
+    "short_sequential",
+    "short_spread",
+    "long_slot_spread",
+    "long_burst_spread"
+  ],
+  "mapping_seed": 892311,
+  "design": "Only true continuous 56-symbol waveform. Common fractional CFO estimated from all CPs, then 8 known DMRS rows used to fit per-delay sinusoid by 1025-point physically bounded periodogram using maximum Doppler from the declared speed and carrier plus measured common CFO. Per-tap top and separated alternate peak; up to sixteen joint candidates ranked by observed exact uniform 16-QAM mixture under diagonal initial gain plus Bussgang residual noise; constrained subsequent waveform fit. Single amplitude/rate per delay refined by waveform likelihood over entire burst, three extrinsic rounds. Same trained EM weights with observation-estimated effective prior, same code/decoders and four-slot maps as stage3_link_hst.",
+  "metrics": "Native codeword errors, 64-bit packet errors, information bit and raw hard LLR errors, evaluation-only channel NMSE after estimated CFO rotation. Threshold 5% coded BLER. Fresh samples then paired then seed42. All arms reported."
+}
