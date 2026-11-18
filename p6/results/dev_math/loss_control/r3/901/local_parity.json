@@ -1,0 +1,502 @@
+{
+  "recipe": {
+    "chirp": "baseline",
+    "bridge": false,
+    "differential": false,
+    "irc": false,
+    "loss": "brier",
+    "steps": 48
+  },
+  "regime": 3,
+  "pair": 901,
+  "arm": "local_parity",
+  "score": {
+    "bit_errors": 997,
+    "bits": 16384,
+    "info_errors": 52,
+    "info_bits": 8192,
+    "block_errors": 9,
+    "blocks": 128,
+    "channel_error": 894.8864810053815,
+    "channel_energy": 20585.5661240831,
+    "bce_sum": 2332.4944200562886
+  },
+  "checkpoint_sha256": "5619c1bec1d80a626532ef7f50e3fd0378b39c6a48b5c335c6d2b1b8fc4cd376",
+  "initial_sha": "73e8bbf86347c6cfbdb350d8b201a8a59b55f470d53da1f2fc359de4e9aa5e55",
+  "anchor": {
+    "steps": 3,
+    "p6_bit_exact": true,
+    "fixed_max_llr_cfr": [
+      0.0,
+      0.0
+    ],
+    "archived_max_llr_cfr": [
+      0.0,
+      0.0
+    ],
+    "passed": true
+  },
+  "gradients": {
+    "embed": {
+      "active": 144,
+      "size": 144,
+      "finite": true
+    },
+    "project": {
+      "active": 384,
+      "size": 384,
+      "finite": true
+    },
+    "kernel": {
+      "active": 24,
+      "size": 24,
+      "finite": true
+    },
+    "mix": {
+      "active": 256,
+      "size": 256,
+      "finite": true
+    },
+    "read": {
+      "active": 48,
+      "size": 48,
+      "finite": true
+    }
+  },
+  "parameters": 856,
+  "steering": {
+    "pilot_redemap": {
+      "burst_rays": 128,
+      "sums": {
+        "before_steering_count": 128,
+        "before_steering_sum": 121.80193107014942,
+        "before_off_mode_power": 3.224409665385095,
+        "before_edge_02_count": 128,
+        "before_edge_02_sum": 118.05775387057808,
+        "before_edge_03_count": 128,
+        "before_edge_03_sum": 114.3666177151824,
+        "before_edge_13_count": 128,
+        "before_edge_13_sum": 115.55545962709516,
+        "after_steering_count": 128,
+        "after_steering_sum": 121.80670257474199,
+        "after_off_mode_power": 3.214627558493329,
+        "after_edge_02_count": 128,
+        "after_edge_02_sum": 118.05832979647474,
+        "after_edge_03_count": 128,
+        "after_edge_03_sum": 114.36412005977814,
+        "after_edge_13_count": 128,
+        "after_edge_13_sum": 115.55963385127288
+      },
+      "steering_cosine_before": 0.9515775864855424,
+      "remote_phase_cosine_before": 0.9061974771168115,
+      "steering_cosine_after": 0.9516148638651718,
+      "remote_phase_cosine_after": 0.9062033429883484,
+      "true_off_mode_rms_ratio": 0.9984819643995698,
+      "remote_edges": {
+        "02": {
+          "before": 0.9223262021138913,
+          "after": 0.9223307015349589
+        },
+        "03": {
+          "before": 0.8934892008998625,
+          "after": 0.8934696879670168
+        },
+        "13": {
+          "before": 0.9027770283366809,
+          "after": 0.9028096394630694
+        }
+      }
+    },
+    "waveform_solve_1": {
+      "burst_rays": 128,
+      "sums": {
+        "before_steering_count": 128,
+        "before_steering_sum": 126.1515368116722,
+        "before_off_mode_power": 0.8833282450077236,
+        "before_edge_02_count": 128,
+        "before_edge_02_sum": 125.73275024015174,
+        "before_edge_03_count": 128,
+        "before_edge_03_sum": 124.47422147335016,
+        "before_edge_13_count": 128,
+        "before_edge_13_sum": 124.96549198289776,
+        "after_steering_count": 128,
+        "after_steering_sum": 126.15294068608108,
+        "after_off_mode_power": 0.881514666951663,
+        "after_edge_02_count": 128,
+        "after_edge_02_sum": 125.73304204391226,
+        "after_edge_03_count": 128,
+        "after_edge_03_sum": 124.47058844211885,
+        "after_edge_13_count": 128,
+        "after_edge_13_sum": 124.96804100200663
+      },
+      "steering_cosine_before": 0.9855588813411891,
+      "remote_phase_cosine_before": 0.977011624209374,
+      "steering_cosine_after": 0.9855698491100084,
+      "remote_phase_cosine_after": 0.977009561166765,
+      "true_off_mode_rms_ratio": 0.9989729130161645,
+      "remote_edges": {
+        "02": {
+          "before": 0.9822871112511855,
+          "after": 0.9822893909680646
+        },
+        "03": {
+          "before": 0.9724548552605481,
+          "after": 0.9724264722040535
+        },
+        "13": {
+          "before": 0.9762929061163887,
+          "after": 0.9763128203281768
+        }
+      }
+    },
+    "waveform_solve_2": {
+      "burst_rays": 128,
+      "sums": {
+        "before_steering_count": 128,
+        "before_steering_sum": 126.46256118850711,
+        "before_off_mode_power": 0.6997395006402518,
+        "before_edge_02_count": 128,
+        "before_edge_02_sum": 126.27465779167011,
+        "before_edge_03_count": 128,
+        "before_edge_03_sum": 125.24703945283511,
+        "before_edge_13_count": 128,
+        "before_edge_13_sum": 125.40392417449075,
+        "after_steering_count": 128,
+        "after_steering_sum": 126.46352084479793,
+        "after_off_mode_power": 0.6983173148502102,
+        "after_edge_02_count": 128,
+        "after_edge_02_sum": 126.27363645474833,
+        "after_edge_03_count": 128,
+        "after_edge_03_sum": 125.24270660451842,
+        "after_edge_13_count": 128,
+        "after_edge_13_sum": 125.4110930731823
+      },
+      "steering_cosine_before": 0.9879887592852118,
+      "remote_phase_cosine_before": 0.9815771391119688,
+      "steering_cosine_after": 0.9879962565999838,
+      "remote_phase_cosine_after": 0.9815818649282527,
+      "true_off_mode_rms_ratio": 0.9989832579449,
+      "remote_edges": {
+        "02": {
+          "before": 0.9865207639974227,
+          "after": 0.9865127848027213
+        },
+        "03": {
+          "before": 0.9784924957252743,
+          "after": 0.9784586453478001
+        },
+        "13": {
+          "before": 0.979718157613209,
+          "after": 0.9797741646342367
+        }
+      }
+    },
+    "waveform_solve_3": {
+      "burst_rays": 128,
+      "sums": {
+        "before_steering_count": 128,
+        "before_steering_sum": 126.42735633829395,
+        "before_off_mode_power": 0.6739128692732704,
+        "before_edge_02_count": 128,
+        "before_edge_02_sum": 126.20741271593693,
+        "before_edge_03_count": 128,
+        "before_edge_03_sum": 125.10218830203317,
+        "before_edge_13_count": 128,
+        "before_edge_13_sum": 125.19345125596067,
+        "after_steering_count": 128,
+        "after_steering_sum": 126.42845377877117,
+        "after_off_mode_power": 0.67252136028703,
+        "after_edge_02_count": 128,
+        "after_edge_02_sum": 126.20649025355291,
+        "after_edge_03_count": 128,
+        "after_edge_03_sum": 125.09857240663902,
+        "after_edge_13_count": 128,
+        "after_edge_13_sum": 125.19999605835906
+      },
+      "steering_cosine_before": 0.9877137213929215,
+      "remote_phase_cosine_before": 0.980476698630028,
+      "steering_cosine_after": 0.9877222951466498,
+      "remote_phase_cosine_after": 0.9804819237462267,
+      "true_off_mode_rms_ratio": 0.9989670563538191,
+      "remote_edges": {
+        "02": {
+          "before": 0.9859954118432572,
+          "after": 0.9859882051058821
+        },
+        "03": {
+          "before": 0.9773608461096341,
+          "after": 0.9773325969268674
+        },
+        "13": {
+          "before": 0.9780738379371927,
+          "after": 0.9781249692059302
+        }
+      }
+    },
+    "all_waveform_solves": {
+      "burst_rays": 384,
+      "sums": {
+        "before_steering_count": 384,
+        "before_steering_sum": 379.0414543384733,
+        "before_off_mode_power": 2.256980614921246,
+        "before_edge_02_count": 384,
+        "before_edge_02_sum": 378.2148207477588,
+        "before_edge_03_count": 384,
+        "before_edge_03_sum": 374.82344922821846,
+        "before_edge_13_count": 384,
+        "before_edge_13_sum": 375.5628674133492,
+        "after_steering_count": 384,
+        "after_steering_sum": 379.04491530965015,
+        "after_off_mode_power": 2.2523533420889033,
+        "after_edge_02_count": 384,
+        "after_edge_02_sum": 378.2131687522135,
+        "after_edge_03_count": 384,
+        "after_edge_03_sum": 374.8118674532763,
+        "after_edge_13_count": 384,
+        "after_edge_13_sum": 375.579130133548
+      },
+      "steering_cosine_before": 0.9870871206731074,
+      "remote_phase_cosine_before": 0.9796884873171238,
+      "steering_cosine_after": 0.9870961336188806,
+      "remote_phase_cosine_after": 0.9796911166137482,
+      "true_off_mode_rms_ratio": 0.9989743715673667,
+      "remote_edges": {
+        "02": {
+          "before": 0.9849344290306218,
+          "after": 0.9849301269588894
+        },
+        "03": {
+          "before": 0.9761027323651522,
+          "after": 0.976072571492907
+        },
+        "13": {
+          "before": 0.9780283005555969,
+          "after": 0.9780706513894479
+        }
+      }
+    }
+  },
+  "steering_off": {
+    "pilot_redemap": {
+      "burst_rays": 128,
+      "sums": {
+        "before_steering_count": 128,
+        "before_steering_sum": 121.80193107014942,
+        "before_off_mode_power": 3.224409665385095,
+        "before_edge_02_count": 128,
+        "before_edge_02_sum": 118.05775387057808,
+        "before_edge_03_count": 128,
+        "before_edge_03_sum": 114.3666177151824,
+        "before_edge_13_count": 128,
+        "before_edge_13_sum": 115.55545962709516,
+        "after_steering_count": 128,
+        "after_steering_sum": 121.80193107014942,
+        "after_off_mode_power": 3.224409665385095,
+        "after_edge_02_count": 128,
+        "after_edge_02_sum": 118.05775387057808,
+        "after_edge_03_count": 128,
+        "after_edge_03_sum": 114.3666177151824,
+        "after_edge_13_count": 128,
+        "after_edge_13_sum": 115.55545962709516
+      },
+      "steering_cosine_before": 0.9515775864855424,
+      "remote_phase_cosine_before": 0.9061974771168115,
+      "steering_cosine_after": 0.9515775864855424,
+      "remote_phase_cosine_after": 0.9061974771168115,
+      "true_off_mode_rms_ratio": 1.0,
+      "remote_edges": {
+        "02": {
+          "before": 0.9223262021138913,
+          "after": 0.9223262021138913
+        },
+        "03": {
+          "before": 0.8934892008998625,
+          "after": 0.8934892008998625
+        },
+        "13": {
+          "before": 0.9027770283366809,
+          "after": 0.9027770283366809
+        }
+      }
+    },
+    "waveform_solve_1": {
+      "burst_rays": 128,
+      "sums": {
+        "before_steering_count": 128,
+        "before_steering_sum": 126.15063740670007,
+        "before_off_mode_power": 0.8840633958003489,
+        "before_edge_02_count": 128,
+        "before_edge_02_sum": 125.7330164840049,
+        "before_edge_03_count": 128,
+        "before_edge_03_sum": 124.47318783913963,
+        "before_edge_13_count": 128,
+        "before_edge_13_sum": 124.96380175824075,
+        "after_steering_count": 128,
+        "after_steering_sum": 126.15063740670007,
+        "after_off_mode_power": 0.8840633958003489,
+        "after_edge_02_count": 128,
+        "after_edge_02_sum": 125.7330164840049,
+        "after_edge_03_count": 128,
+        "after_edge_03_sum": 124.47318783913963,
+        "after_edge_13_count": 128,
+        "after_edge_13_sum": 124.96380175824075
+      },
+      "steering_cosine_before": 0.9855518547398443,
+      "remote_phase_cosine_before": 0.9770052241702741,
+      "steering_cosine_after": 0.9855518547398443,
+      "remote_phase_cosine_after": 0.9770052241702741,
+      "true_off_mode_rms_ratio": 1.0,
+      "remote_edges": {
+        "02": {
+          "before": 0.9822891912812883,
+          "after": 0.9822891912812883
+        },
+        "03": {
+          "before": 0.9724467799932783,
+          "after": 0.9724467799932783
+        },
+        "13": {
+          "before": 0.9762797012362558,
+          "after": 0.9762797012362558
+        }
+      }
+    },
+    "waveform_solve_2": {
+      "burst_rays": 128,
+      "sums": {
+        "before_steering_count": 128,
+        "before_steering_sum": 126.4618320679686,
+        "before_off_mode_power": 0.7001000230203752,
+        "before_edge_02_count": 128,
+        "before_edge_02_sum": 126.27495217148385,
+        "before_edge_03_count": 128,
+        "before_edge_03_sum": 125.24634068247084,
+        "before_edge_13_count": 128,
+        "before_edge_13_sum": 125.39327168624555,
+        "after_steering_count": 128,
+        "after_steering_sum": 126.4618320679686,
+        "after_off_mode_power": 0.7001000230203752,
+        "after_edge_02_count": 128,
+        "after_edge_02_sum": 126.27495217148385,
+        "after_edge_03_count": 128,
+        "after_edge_03_sum": 125.24634068247084,
+        "after_edge_13_count": 128,
+        "after_edge_13_sum": 125.39327168624555
+      },
+      "steering_cosine_before": 0.9879830630310047,
+      "remote_phase_cosine_before": 0.9815483451567714,
+      "steering_cosine_after": 0.9879830630310047,
+      "remote_phase_cosine_after": 0.9815483451567714,
+      "true_off_mode_rms_ratio": 1.0,
+      "remote_edges": {
+        "02": {
+          "before": 0.9865230638397176,
+          "after": 0.9865230638397176
+        },
+        "03": {
+          "before": 0.9784870365818035,
+          "after": 0.9784870365818035
+        },
+        "13": {
+          "before": 0.9796349350487934,
+          "after": 0.9796349350487934
+        }
+      }
+    },
+    "waveform_solve_3": {
+      "burst_rays": 128,
+      "sums": {
+        "before_steering_count": 128,
+        "before_steering_sum": 126.42667593916292,
+        "before_off_mode_power": 0.6741788414441615,
+        "before_edge_02_count": 128,
+        "before_edge_02_sum": 126.20716413603994,
+        "before_edge_03_count": 128,
+        "before_edge_03_sum": 125.10188315167014,
+        "before_edge_13_count": 128,
+        "before_edge_13_sum": 125.18439819795486,
+        "after_steering_count": 128,
+        "after_steering_sum": 126.42667593916292,
+        "after_off_mode_power": 0.6741788414441615,
+        "after_edge_02_count": 128,
+        "after_edge_02_sum": 126.20716413603994,
+        "after_edge_03_count": 128,
+        "after_edge_03_sum": 125.10188315167014,
+        "after_edge_13_count": 128,
+        "after_edge_13_sum": 125.18439819795486
+      },
+      "steering_cosine_before": 0.9877084057747103,
+      "remote_phase_cosine_before": 0.9804516809522524,
+      "steering_cosine_after": 0.9877084057747103,
+      "remote_phase_cosine_after": 0.9804516809522524,
+      "true_off_mode_rms_ratio": 1.0,
+      "remote_edges": {
+        "02": {
+          "before": 0.985993469812812,
+          "after": 0.985993469812812
+        },
+        "03": {
+          "before": 0.9773584621224229,
+          "after": 0.9773584621224229
+        },
+        "13": {
+          "before": 0.9780031109215224,
+          "after": 0.9780031109215224
+        }
+      }
+    },
+    "all_waveform_solves": {
+      "burst_rays": 384,
+      "sums": {
+        "before_steering_count": 384,
+        "before_steering_sum": 379.0391454138316,
+        "before_off_mode_power": 2.2583422602648855,
+        "before_edge_02_count": 384,
+        "before_edge_02_sum": 378.2151327915287,
+        "before_edge_03_count": 384,
+        "before_edge_03_sum": 374.82141167328064,
+        "before_edge_13_count": 384,
+        "before_edge_13_sum": 375.54147164244114,
+        "after_steering_count": 384,
+        "after_steering_sum": 379.0391454138316,
+        "after_off_mode_power": 2.2583422602648855,
+        "after_edge_02_count": 384,
+        "after_edge_02_sum": 378.2151327915287,
+        "after_edge_03_count": 384,
+        "after_edge_03_sum": 374.82141167328064,
+        "after_edge_13_count": 384,
+        "after_edge_13_sum": 375.54147164244114
+      },
+      "steering_cosine_before": 0.9870811078485198,
+      "remote_phase_cosine_before": 0.979668416759766,
+      "steering_cosine_after": 0.9870811078485198,
+      "remote_phase_cosine_after": 0.979668416759766,
+      "true_off_mode_rms_ratio": 1.0,
+      "remote_edges": {
+        "02": {
+          "before": 0.9849352416446059,
+          "after": 0.9849352416446059
+        },
+        "03": {
+          "before": 0.9760974262325016,
+          "after": 0.9760974262325016
+        },
+        "13": {
+          "before": 0.9779725824021904,
+          "after": 0.9779725824021904
+        }
+      }
+    }
+  },
+  "spatial_off_score": {
+    "bit_errors": 997,
+    "bits": 16384,
+    "info_errors": 52,
+    "info_bits": 8192,
+    "block_errors": 9,
+    "blocks": 128,
+    "channel_error": 894.333682515031,
+    "channel_energy": 20585.5661240831,
+    "bce_sum": 2332.996987604887
+  }
+}

@@ -1,0 +1,911 @@
+{
+  "freeze_sha256": "a2fc3cf10567c6dc393b367c1d0f6bf0f688ce76fdb4f14381bae895897115b4",
+  "pairs": 30,
+  "checkpoints": 60,
+  "arms": [
+    "pure",
+    "parity"
+  ],
+  "scales": [
+    1e-35,
+    0.000244140625,
+    0.00048828125,
+    0.0009765625,
+    0.001953125,
+    0.00390625,
+    0.0078125,
+    0.015625,
+    0.03125,
+    0.0625,
+    0.125,
+    0.25,
+    0.5,
+    1.0,
+    2.0,
+    4.0,
+    8.0,
+    16.0,
+    32.0,
+    64.0,
+    128.0,
+    256.0,
+    512.0,
+    1024.0,
+    2048.0,
+    4096.0,
+    1e+20
+  ],
+  "summary": {
+    "checks": 600,
+    "passed_checks": 599,
+    "coded_flips": 0,
+    "decisions": 35942400,
+    "max_grid_llr_diff": 1.0160761121369433e-12,
+    "worst_llr_case": {
+      "pair": 11,
+      "regime": 2,
+      "arm": "pure",
+      "design": "formal_A",
+      "condition": "degenerate_pilots"
+    },
+    "max_relative_cfr_l2": 2.934748857975241e-14,
+    "passed": false
+  },
+  "failed_cases": [
+    {
+      "regime": 2,
+      "pair": 11,
+      "arm": "pure",
+      "design": "formal_A",
+      "condition": "degenerate_pilots",
+      "coded_flips": 0,
+      "decisions": 124416,
+      "max_grid_llr_diff": 1.0160761121369433e-12,
+      "max_relative_cfr_l2": 2.934748857975241e-14,
+      "phase_seed": 207011956,
+      "scales": [
+        1e-35,
+        0.000244140625,
+        0.00048828125,
+        0.0009765625,
+        0.001953125,
+        0.00390625,
+        0.0078125,
+        0.015625,
+        0.03125,
+        0.0625,
+        0.125,
+        0.25,
+        0.5,
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0,
+        64.0,
+        128.0,
+        256.0,
+        512.0,
+        1024.0,
+        2048.0,
+        4096.0,
+        1e+20
+      ],
+      "finite": true,
+      "passed": false
+    }
+  ],
+  "by_pair": [
+    {
+      "regime": 3,
+      "pair": 6,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 9.237055564881302e-14,
+        "worst_llr_case": {
+          "pair": 6,
+          "regime": 3,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "intact"
+        },
+        "max_relative_cfr_l2": 1.0993591715584238e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "0c259db499b7d45b25c71cba5145cb115ec58a529f9153632b0816a609d905dc",
+        "local": "29bb1441b981d4d4cece0abb797d8f644484c347af1c61afd94e38d70e8c2b3c",
+        "parity": "d5959773ff0c18a18eced3cc2e2cea29ef03179e42ecbe08d262cec4df007c24",
+        "local_parity": "480a7a1235ecfa5967b01d96e393d22fa69ab231ba0c83a269a5933d31847159",
+        "no_gauge": "06cf1c270fc3981d4aa36b0d5b4b0fba514d72431bed91026f43e67d78871d81"
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 7,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 2.0605739337042905e-13,
+        "worst_llr_case": {
+          "pair": 7,
+          "regime": 3,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "degenerate_pilots"
+        },
+        "max_relative_cfr_l2": 2.8210162543936544e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "47d4052255b66b0d30d664f7df36c6a3f48f5a1bddb257f1af1220492b08f14f",
+        "local": "585a54946d4797d5635049f7107deb24021b85922a7d685c796724fb22461098",
+        "parity": "80c469997e72c3616d0d906c655d85655e5beb83e71d4df3a0e3fa4718d74add",
+        "local_parity": "c4c8af53c6e701b5401a6270a20dea9cd02edbaed96c1415807249911a11c3a3",
+        "no_gauge": "c6553f744a95a0a760ffe4f7204f463912d538fc6e542a7361ce287b43723ac8"
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 8,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 1.5631940186722204e-13,
+        "worst_llr_case": {
+          "pair": 8,
+          "regime": 3,
+          "arm": "parity",
+          "design": "formal_A",
+          "condition": "first_pilot_row"
+        },
+        "max_relative_cfr_l2": 1.213506916971005e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "b9d88052150c72979b803a06dfa23c2e9388e1fc7f5d133b3d05d5c5ef5b5e06",
+        "local": "11b2a4dd12bc06c6815e6db40147c66b1b8e589b644fe4f3cf572f1e1c8c8e15",
+        "parity": "ac0d0ebc2e95ce8b5834f2c5fb97b0e0eec67feebde93d39fda474748bc7f147",
+        "local_parity": "cb2176ef7884821ff469c901533db30ac145c0cf7574d34cfce0511d01b7d791",
+        "no_gauge": "15f774a8fdb67e7112849b91a17baa0d07acadfc9cfeac6069826f3b813ea338"
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 9,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 1.9895196601282805e-13,
+        "worst_llr_case": {
+          "pair": 9,
+          "regime": 3,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "last_pilot_row"
+        },
+        "max_relative_cfr_l2": 1.1725484061733718e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "bd4089dc82098ce681e3e3d0dc2bea132a012495dc98f6a9cfa8e60cc742b153",
+        "local": "d7686733754383ec8126752d29cbf56c7cb630d7ee9f107944ccc7c2c8cbc94f",
+        "parity": "987fc1adeaae3fe9aee4eae89931c78a01b03ed0c1670316b47acf80734e0de6",
+        "local_parity": "5201de1c9268fb6e364c907cfdb65150457c9b88e75f86eae1292b8c448b1720",
+        "no_gauge": "98f81528abdba80a8949208e609d6bfc3fe6185b1a839bc884d98d245e746665"
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 10,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 1.1368683772161603e-13,
+        "worst_llr_case": {
+          "pair": 10,
+          "regime": 3,
+          "arm": "parity",
+          "design": "formal_A",
+          "condition": "intact"
+        },
+        "max_relative_cfr_l2": 1.124514968613356e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "658f1c37da68e4759552c246c1cc41f289f0e487da930748a53b0ba4bfb140b3",
+        "local": "2f7ad492da970615837599fd94153ea989261d4ecbf3edd1640fdc30ed0d68af",
+        "parity": "c7b121cff4d11fbc55b3dcfa54e03c2547b712bf9f7e9d060d3465809c019f18",
+        "local_parity": "a43c43f986c45e08549762da197b66ef7be784fd564c5605f5960c12872d6aa2",
+        "no_gauge": "edc3a43e6162fee33baad66a078c957a97cf1a58d4517abfb0b2c723865a69ea"
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 11,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 7.105427357601002e-14,
+        "worst_llr_case": {
+          "pair": 11,
+          "regime": 3,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "intact"
+        },
+        "max_relative_cfr_l2": 1.4021565062488385e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "ce4bc224abeb993fea523d856dd5edbe73f34980d16861acf649d080f0f92a42",
+        "local": "162fca5b19fd7074a740f48f79e095a63988690732ec123fedea552cd02ce7e0",
+        "parity": "3a8622048b4c31824a8306d02a9a7acdedda9ead3958075feccce3fded34d0cf",
+        "local_parity": "67e841d37f5394d94740459ad1caed3bd338550e0858784edf2b7eb2985660b1",
+        "no_gauge": "9dbf15583e32c8ab221248207925d813ff7bedb30970abed577e93a4c453348e"
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 12,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 1.2079226507921703e-13,
+        "worst_llr_case": {
+          "pair": 12,
+          "regime": 3,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "intact"
+        },
+        "max_relative_cfr_l2": 1.5553879449435805e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "de3682f5f3e83c169f4721bf2900bd2054c74ebb3db458d012acd4123b36d26e",
+        "local": "6c594f058440dad20c60dea38f5f04955183b7fc8d4540a18c084dfe7be4d517",
+        "parity": "eda13421c2f474d5407b06048ce75ffd065f9a6efc424e5353387deae2d99306",
+        "local_parity": "4b2327ede7ca8aff9f80565711aa307934bff1c69be440591db0f99df8097a3d",
+        "no_gauge": "aa1cc861226b4bfb555db17fdb15de04577d6b75746f09c85882f1b2b41c290a"
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 13,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 1.7053025658242404e-13,
+        "worst_llr_case": {
+          "pair": 13,
+          "regime": 3,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "last_pilot_row"
+        },
+        "max_relative_cfr_l2": 1.2562934578499295e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "3ad43e590f93a25e8f12426cc1f7a6bb8447bb10835de4452b35d383098c89e6",
+        "local": "a81e9749ef45b5af453ca47e302938cb5f534a98ec6f1770150535f5ca18597f",
+        "parity": "83329ab5f6cb552f884f8bfd5158e4f04a681f1fea8339cc772e36f76d9d0fc6",
+        "local_parity": "7a573afa32b5f5bb129ae4a1c5ca0b164a7683273ff014899a81c9c11d8bed9e",
+        "no_gauge": "d71af7bbb83a797a138831283f9b6adde352071713556260121389f676b4aba0"
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 14,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 1.5631940186722204e-13,
+        "worst_llr_case": {
+          "pair": 14,
+          "regime": 3,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "intact"
+        },
+        "max_relative_cfr_l2": 1.3924040265305568e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "2db7630dc62779203f38df545d81b245ed9fc7a52452dc81112e02ac4a7b5e76",
+        "local": "42f62d2a7e8d7ec71d722029c24fdc2152356d17857937482256f272b648b844",
+        "parity": "fed3c2d533370fc3a596cf7d7f26730dc4f2f34df860b1711f15025163c86e1b",
+        "local_parity": "2ae4b98afc2a88116933d35514c7f5b1ac9db3420a2d8ca629bdec751802e37a",
+        "no_gauge": "16bcd3dad34efa63ce3b32a11ca37717ca61df5d0d11694438840c4bab3cacf8"
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 15,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 6.750155989720952e-14,
+        "worst_llr_case": {
+          "pair": 15,
+          "regime": 3,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "intact"
+        },
+        "max_relative_cfr_l2": 1.381914364982732e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "37e852a7652da0fcbd83ebe6c76b6370e9404ea34da99492cd346ccf59904a43",
+        "local": "34ffd93609cef43e2ef02fadbee10b1100002f494e6dd13386ca43d38835cc7f",
+        "parity": "7e3e062f3cdbb5f793e78910a57837baee6d994e3e587244a426c7f5a499c46b",
+        "local_parity": "47f816c47dccd9b68d6dc9cf22cb76c39e1942166e27fbb0782cf1bc11d964b6",
+        "no_gauge": "ad276184502b34bd93eeca3aefb110c64035c6cf84800678fe58c2bb25374917"
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 6,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 2488320,
+        "max_grid_llr_diff": 3.8191672047105385e-13,
+        "worst_llr_case": {
+          "pair": 6,
+          "regime": 2,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "intact"
+        },
+        "max_relative_cfr_l2": 5.214789479973045e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "5b6bdf7d2210ad389ba3ee047fc3d423dd4bbd4eba36dce0979f9ef667701656",
+        "local": "8bb5763d156a5e569c0bd9d31b2f567d21014c542fb30903e112088100211ca5",
+        "parity": "dd617af9a7b64b6de13d4482bb493034aa2268ff769d8f651deb99a7257f4fa6",
+        "local_parity": "f5a3ac049ecbc567537bc70f3432b8f4ecc2ffe58551f852ab7aeed95e48f888",
+        "no_gauge": "cfa02cb8b7ba0080565bfbd1d12e86afdbc7cca463792b3d47cfdb7b2220deb3"
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 7,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 2488320,
+        "max_grid_llr_diff": 3.979039320256561e-13,
+        "worst_llr_case": {
+          "pair": 7,
+          "regime": 2,
+          "arm": "parity",
+          "design": "formal_A",
+          "condition": "degenerate_pilots"
+        },
+        "max_relative_cfr_l2": 4.864962373588074e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "c0cc26f857df597338ae58d013c3b03fadef1bc713814ac133a2b2f1f296f045",
+        "local": "4fd8fbde01af65f799e544c6e10912b0ab9cfb7f69b38d52bce7fd6294e5ca67",
+        "parity": "15bf6e0f513df36be1912e299367aa82435ebeea91282b12bf1dbc473b53d33b",
+        "local_parity": "b4246efb411b5973b77ebd2da7995168d117f37a2b68ab1ef0450c0793a33f19",
+        "no_gauge": "8a35cecb9f9292c69698d3cfb9fd3ee1aed9eb68e8bd4c94b29328433254a77f"
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 8,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 2488320,
+        "max_grid_llr_diff": 3.8546943414985435e-13,
+        "worst_llr_case": {
+          "pair": 8,
+          "regime": 2,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "degenerate_pilots"
+        },
+        "max_relative_cfr_l2": 5.0151669973919505e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "0224c3db17a89972cc0b787eb38c4137296c8a8196dca8dedaf362267cd3ddce",
+        "local": "ec8660ed79d425537aca6b7797c1c1375153acce6c2e09ee17a030d1975365a8",
+        "parity": "19a07436597668d3e4446c792bccd30b0cd3b6aab53c51a8bfc2443303dae884",
+        "local_parity": "be806ba1311d20d9db38e7c761b020fd85bd83e41280f13743de7d14183dfc1a",
+        "no_gauge": "ce6cbe446a7ca8eef2fd5194151b1dc1c9f87e3676d10bc8f6c7cc3a947462c3"
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 9,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 2488320,
+        "max_grid_llr_diff": 4.369837824924616e-13,
+        "worst_llr_case": {
+          "pair": 9,
+          "regime": 2,
+          "arm": "parity",
+          "design": "formal_A",
+          "condition": "degenerate_pilots"
+        },
+        "max_relative_cfr_l2": 6.706400915827985e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "03c89c30603d28dae4a24fa6e45b561dab1825fd180ae46332add7a84cb0fe6a",
+        "local": "9d5247467a20da5d038fe8db75d7b5bd2a59b80fadb1d20a35454d527e97f224",
+        "parity": "3a19efd5bfd58a54544ca8a2e397baa2e6daa6096cb092c86af3ed00484cc8a8",
+        "local_parity": "3c2518dcc49235c0e4e31ba84ee221e75c74764531906115915c598f9ef2770b",
+        "no_gauge": "2bb4df81bc840d1098d53b1b3a9d0a5f8f60795b6d5caf799ac2ca0ccc5d2fdf"
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 10,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 2488320,
+        "max_grid_llr_diff": 3.979039320256561e-13,
+        "worst_llr_case": {
+          "pair": 10,
+          "regime": 2,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "degenerate_pilots"
+        },
+        "max_relative_cfr_l2": 4.448170100552014e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "a61adadf5ac1e8767ed034c8552ce2d2e19cebad2f1f5657c7136e444409ff35",
+        "local": "4edbcee5ee9747d418329ce838d0d96d2d6b34a3839b75ccd7d815cce6e70714",
+        "parity": "b67b273e1f48f1d8b4a92cf19ed768ef9ed79d4d89a760caa9695cf4d56b616b",
+        "local_parity": "3714a30e3dd556d0922369b316e3a1666f74b876e975b026757e1d724cd7e059",
+        "no_gauge": "7be7e246e8ae2ff1b0aede66c700937995075fa73ab8b81aec6a8c7fe1d918ab"
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 11,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 19,
+        "coded_flips": 0,
+        "decisions": 2488320,
+        "max_grid_llr_diff": 1.0160761121369433e-12,
+        "worst_llr_case": {
+          "pair": 11,
+          "regime": 2,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "degenerate_pilots"
+        },
+        "max_relative_cfr_l2": 2.934748857975241e-14,
+        "passed": false
+      },
+      "checkpoints": {
+        "pure": "1e2d6af1c833952ab4f09fddd5fa922576af83ba518ea9955f0010d6422d782c",
+        "local": "15cb86d31cf5b47f3d59d548d36beaa59fd72d15f1d0327f70390eafaf07f19e",
+        "parity": "cb977eb927ca39a229d2edcb76c509b662ce2f39230c43743841eef34a3e6317",
+        "local_parity": "cf4a7aff286f71268953152e4fba80f18faa389bb64bd92a0ffd17ea2a52aaf5",
+        "no_gauge": "7ca072ce32e2aa15df84f0d0ec55fa652371676ef559f4df7c9da50f10e79652"
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 12,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 2488320,
+        "max_grid_llr_diff": 4.298783551348606e-13,
+        "worst_llr_case": {
+          "pair": 12,
+          "regime": 2,
+          "arm": "parity",
+          "design": "formal_A",
+          "condition": "degenerate_pilots"
+        },
+        "max_relative_cfr_l2": 4.1656277713226565e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "4ed0ffe2099653b5763981a5b458867cb60ff16692a4a899be8f129d19735039",
+        "local": "73e38189dac3b28309bb2c713f8080886fdaebd45111d68b4084b628071f6ef0",
+        "parity": "83dfbf84d934fa541314fc8086c586081d94f7d12128c63548f3cf05d3e478b7",
+        "local_parity": "84b331f16b143768c63af4dd2ef791eec4c13846c262183facb73e7cbfd3e492",
+        "no_gauge": "83494aa6c12025a04147574b6364591ea2b08820e9773c8dcb6c809303487068"
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 13,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 2488320,
+        "max_grid_llr_diff": 2.5579538487363607e-13,
+        "worst_llr_case": {
+          "pair": 13,
+          "regime": 2,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "intact"
+        },
+        "max_relative_cfr_l2": 4.242823566769342e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "aefc22cdd42f7ec1cafed7002355536f197de50473376c988918a3b9675f1f0a",
+        "local": "efcd6d4789af4b15f5fe1fca894946fa78a77215e04f6582ebed9f9259855e37",
+        "parity": "ff93c0b0929b94fcfa2dff0707e1305e831b53de664bd02f59703deeda996bf7",
+        "local_parity": "0fa3b9cd6dbe14b4bb5e921f906e57002362bf2ab6d7668f144a0be639e08a74",
+        "no_gauge": "8ba68c66e2c316ea31a00d695e969b718d19f4355863ec394a49b9d6a1239704"
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 14,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 2488320,
+        "max_grid_llr_diff": 3.3573144264664734e-13,
+        "worst_llr_case": {
+          "pair": 14,
+          "regime": 2,
+          "arm": "parity",
+          "design": "formal_A",
+          "condition": "first_pilot_row"
+        },
+        "max_relative_cfr_l2": 5.357580482583233e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "361aaa7c624911340e0f7e1021eb8406cb56cd3895fcf36cb4fea261a41e82ad",
+        "local": "438ed37db1e1fed502510ef36ca9ed63e242df6d05b52dbacdc784d090ff2e8b",
+        "parity": "ec1c532f1dde49d7304865443d03f4aba5c72986e1febc3afd3bc67f1196a6c9",
+        "local_parity": "df6b11bd74f01b37f295c1d088043ebb9e3c0ff534dd8053dffad19d976f896f",
+        "no_gauge": "cac88e1cbcbb99566a72d2b22bb97dd56fedb2f96bff8f974b4fc8eb76adaba4"
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 15,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 2488320,
+        "max_grid_llr_diff": 3.339550858072471e-13,
+        "worst_llr_case": {
+          "pair": 15,
+          "regime": 2,
+          "arm": "parity",
+          "design": "formal_A",
+          "condition": "degenerate_pilots"
+        },
+        "max_relative_cfr_l2": 4.9835244798150975e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "ad6b5dd383dd05e4ca26a55a73005caa456e91e3d39aa12208c2843ab77cc5aa",
+        "local": "f771bc97a974d519ae5e53e07fcefa00ae39a17951f4667ed812283b333d630d",
+        "parity": "7078bf68dfd63d199df6839e10e09e058f594862a4b5d3f1da3b874e6aa7f372",
+        "local_parity": "9b68b6a6eb1a5b8ff6b9d94f586eb2901b270420081c77ce7b11558e26fb7789",
+        "no_gauge": "6de4c87773fae67ef368670ab416cc2a2c58bae6b145645376d743a1eefd4ee5"
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 11,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 9.947598300641403e-14,
+        "worst_llr_case": {
+          "pair": 11,
+          "regime": 1,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "degenerate_pilots"
+        },
+        "max_relative_cfr_l2": 1.0395903195662467e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "835b1b88ac57edf80e37c9d4cf9d06e912fe8051f08584ad552764e8c64c5627",
+        "local": "f6d886806e76d6c6426e6d70887c966495fdd1b157a53fbc8271932e648fbc90",
+        "parity": "e74d6586868e898e708b61058fa5ca08054df4f4a3aa3e9a75af6a49ddb8d19b",
+        "local_parity": "aefe4bbd0396b92cb93b154da292b6c1ad128d7816941ab24241f0ca1f241ced",
+        "no_gauge": "4fc4846ab90084a2983207f878774bfd88d0a147852fe8250329fbc6e2fcda4f"
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 12,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 1.8474111129762605e-13,
+        "worst_llr_case": {
+          "pair": 12,
+          "regime": 1,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "degenerate_pilots"
+        },
+        "max_relative_cfr_l2": 1.2413365660998457e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "fd6421b550b21499cdca55b937ea9518aa0e2bebac38aa129cb8749ed02a650e",
+        "local": "edd5c8958a36fb6eea88e573f9dce6ac54a8b7403caf145c0aa3b3da1db7b32b",
+        "parity": "d6f332d229b38f9a6ab7343d525fdec3685126bceb48aeded1cd6db56b13ce71",
+        "local_parity": "daa1359e81fc93ebd2c26dd24397987a386abcf9f204d90d352bb921dba7dd58",
+        "no_gauge": "f69e77ecd95c0ec2f5d9ef79fe0c1f11781e450d44bc29667e991b8f32a76809"
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 13,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 6.181721801112872e-13,
+        "worst_llr_case": {
+          "pair": 13,
+          "regime": 1,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "last_pilot_row"
+        },
+        "max_relative_cfr_l2": 2.024024808635895e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "cc91f2e1f235835ace5b52d390faa541e93bc6e39b9fc795637afc4bc07e9c77",
+        "local": "e129697007c3cdcaa9def2aaf1adace53046b869da2b228dc70fd92f8232b1af",
+        "parity": "1f929ef011547d7d25ec14e10359f8cba565cd9695909f19300fda1ea22dc160",
+        "local_parity": "6d52a89687c94e7e289a1a0f65e03893f3d1fff8532ccd6e320bf0650e76e569",
+        "no_gauge": "41c6718050b9414ca523b906c7302b9efbef7c1a474302406f55dbfbd002dd38"
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 14,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 1.5631940186722204e-13,
+        "worst_llr_case": {
+          "pair": 14,
+          "regime": 1,
+          "arm": "parity",
+          "design": "formal_A",
+          "condition": "degenerate_pilots"
+        },
+        "max_relative_cfr_l2": 1.3957514000168017e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "b45cebc083c17592a86b88f5f9f1f79d2ce0976f660a4784f1a566ea4ee81fac",
+        "local": "bf627e95066c982513725d2bf7ebe10f450dafd823d74f2449fe5e4728f597f4",
+        "parity": "1d4c1e58ef4bc120d66cbd40558e1581f2aaa5902e4e3336647092b2b8813f42",
+        "local_parity": "0ddf8d9d53a56c8d0b6ca2fe89bfa979807a7d55b39ddfaa57e2699d0aadbb4f",
+        "no_gauge": "0b336ffa0f415978bde1952bb6ca432b90b9dfe8a4bc160c2979e9fc8bec0ba2"
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 15,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 1.8474111129762605e-13,
+        "worst_llr_case": {
+          "pair": 15,
+          "regime": 1,
+          "arm": "parity",
+          "design": "formal_A",
+          "condition": "last_pilot_row"
+        },
+        "max_relative_cfr_l2": 1.5394019235957664e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "8a9858a211c7822c70bf3374f9515210aa5e16aee452cb3bf45988b1a299d438",
+        "local": "64b4abd0bd8cc172ae66de4a1095d2f389c29b48e15e30e8e5f0f524192bf55e",
+        "parity": "a89c7fe5a6e11d486a8c6dfd13732df347133bd9a2a5beffe66bfb539ecda4b3",
+        "local_parity": "2575735661b687e9f3e08bb6607b3afaf307bafe86d20469630a9422e32ef9ef",
+        "no_gauge": "09825fbb14d0b37fe41e2e5de422d154778578e5adca8410b53024a98ffd28bc"
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 16,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 1.4566126083082054e-13,
+        "worst_llr_case": {
+          "pair": 16,
+          "regime": 1,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "first_pilot_row"
+        },
+        "max_relative_cfr_l2": 1.4698778534387097e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "590d22dfe7665d108e9b6c73bbcf2fee6633dfc40107951f2e174bb22094880c",
+        "local": "ea6ce73c92a35cb71a06dfa9fee4dae2d0d9c812f19a77b04a33c67f4e41709c",
+        "parity": "26d506ae1eb020e2d862709b069997c6d2849bd365b4108db1a7d2e67cb76506",
+        "local_parity": "ca7d9ebfeed5bf902e8e8cc5ead669158f20cf71bf1a14e3859f5f36558accf4",
+        "no_gauge": "093c96c1677dc7960b26726a19a551e1bf6496e6acc21f3cde0942e4345e596b"
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 17,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 9.769962616701378e-14,
+        "worst_llr_case": {
+          "pair": 17,
+          "regime": 1,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "first_pilot_row"
+        },
+        "max_relative_cfr_l2": 1.2729031539261466e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "68fc9c92f1047ac1da3542ac4e7ad59152b4c53c06d48263a127bef0a3437a89",
+        "local": "709841a628104d2741fc24fde08b372802aa11210b8788e2cae6da43ac20840e",
+        "parity": "f0d6d6fd640c20f8479fd632376776914829c85f6db9935558bb9d41173bfb04",
+        "local_parity": "66c78e9f73d236c0f171fbc91c4a6c0cba18429183da1c07312e52ccc08c8681",
+        "no_gauge": "46ca7c01c3209cfb70933b87ab751ac26dcda49f2ed29642baf1c6ed5c0b245c"
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 18,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 1.4210854715202004e-13,
+        "worst_llr_case": {
+          "pair": 18,
+          "regime": 1,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "degenerate_pilots"
+        },
+        "max_relative_cfr_l2": 1.0709469050186297e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "80726534855888222f1cf2cbe1ffede445060409357da0f83decdae31d5236c4",
+        "local": "594cc7fe958f018583b51af108c6699c19cb5e21927fe32acb49563fd55cc12d",
+        "parity": "ccc99339c3e9ebe871a4fba1de2f21998f2aaa5c5819140c247d6a5482284744",
+        "local_parity": "2b302f747ea78c11b6252fab65c0457a4ceecce770a717f952764589729dce30",
+        "no_gauge": "b010320257fb8d835b1d87d3eb033d703e0853f67041d73913855303e36e80c0"
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 19,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 1.4166445794216997e-13,
+        "worst_llr_case": {
+          "pair": 19,
+          "regime": 1,
+          "arm": "pure",
+          "design": "formal_A",
+          "condition": "last_pilot_row"
+        },
+        "max_relative_cfr_l2": 1.8590952684038372e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "2b68fdf5504a1d2b293d9a172f4318898985dd966abc3c3c1bfe00e6cc8df6bf",
+        "local": "b4c4f1c16cca66a8f72a52a68b3876d93d085af11b62bd36a68c48faeda34e99",
+        "parity": "1ca857ef01b1771b94d9230fa3dfe0867c5f34af4baa4267621d1f176185ff4d",
+        "local_parity": "671e26a4ab33148fab228a1b1f2ad59f0fbd54615b4bd08f3c0b73670a578596",
+        "no_gauge": "c214c207760fc9639216869f9d4dcb3262b414eeb1333f4867a7f5c586fc90c8"
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 20,
+      "summary": {
+        "checks": 20,
+        "passed_checks": 20,
+        "coded_flips": 0,
+        "decisions": 552960,
+        "max_grid_llr_diff": 1.7053025658242404e-13,
+        "worst_llr_case": {
+          "pair": 20,
+          "regime": 1,
+          "arm": "parity",
+          "design": "formal_A",
+          "condition": "degenerate_pilots"
+        },
+        "max_relative_cfr_l2": 1.5622129187799133e-15,
+        "passed": true
+      },
+      "checkpoints": {
+        "pure": "b8682bd114f1da16021b2bb19772616f11840b99df629bd11967036d7d2a0773",
+        "local": "e49b92eabbe823c9ef2321fe6ae792823dcb04ba829eb4a64c1d74ab12edf9bb",
+        "parity": "6d318088cacf6fa253cf6f5f4f5d98421da10deba893cb1bcf6ae81b5b0caf51",
+        "local_parity": "0d09e433a9da930547a35fa9ca5d6fe1f94e07447ed2b13871121e28032969d3",
+        "no_gauge": "7a3b871f100696cf0d01bc2e6699c6d437ff2733b9bf562b044d50929c35790d"
+      }
+    }
+  ]
+}

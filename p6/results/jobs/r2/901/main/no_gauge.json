@@ -1,0 +1,94 @@
+{
+  "regime": 2,
+  "pair": 901,
+  "design": "main",
+  "arm": "no_gauge",
+  "snr_db": 9.0,
+  "implementation": "c08d4b9b640898d411657b987b676c6d32ed8c602449521a3e06ac60bc3b1bf0",
+  "wall_seconds": 11.496096200004104,
+  "config": {
+    "depth": 2,
+    "lr": 0.003,
+    "schedule": "constant",
+    "clip": 1.0,
+    "aux_nmse": 0.0
+  },
+  "parameters": 236,
+  "trace": [
+    {
+      "step": 0,
+      "validation_bce": 0.2648570823829301,
+      "train_mean_bce": null,
+      "train_mean_objective": null,
+      "mean_preclip_norm": null,
+      "max_preclip_norm": null,
+      "lr": 0.003,
+      "cumulative_fit_seconds": 0.0
+    },
+    {
+      "step": 16,
+      "validation_bce": 0.254455364400749,
+      "train_mean_bce": 0.2573794717779796,
+      "train_mean_objective": 0.2573794717779796,
+      "mean_preclip_norm": 0.056157242054638894,
+      "max_preclip_norm": 0.13426472403861409,
+      "lr": 0.003,
+      "cumulative_fit_seconds": 2.5346870999783278
+    },
+    {
+      "step": 32,
+      "validation_bce": 0.25391188155154965,
+      "train_mean_bce": 0.25585725056284114,
+      "train_mean_objective": 0.25585725056284114,
+      "mean_preclip_norm": 0.03062251940725719,
+      "max_preclip_norm": 0.0471581779719227,
+      "lr": 0.003,
+      "cumulative_fit_seconds": 5.069050900026923
+    },
+    {
+      "step": 48,
+      "validation_bce": 0.2530875070734549,
+      "train_mean_bce": 0.253160236018753,
+      "train_mean_objective": 0.253160236018753,
+      "mean_preclip_norm": 0.03986053586560225,
+      "max_preclip_norm": 0.086165371119866,
+      "lr": 0.003,
+      "cumulative_fit_seconds": 7.664386899996316
+    },
+    {
+      "step": 64,
+      "validation_bce": 0.2526943504411576,
+      "train_mean_bce": 0.2547760384382884,
+      "train_mean_objective": 0.2547760384382884,
+      "mean_preclip_norm": 0.03671777014463804,
+      "max_preclip_norm": 0.08289379494220876,
+      "lr": 0.003,
+      "cumulative_fit_seconds": 10.12662140003522
+    }
+  ],
+  "rows": {
+    "64": {
+      "bit_errors": 8826,
+      "bits": 73728,
+      "info_errors": 705,
+      "info_bits": 36864,
+      "block_errors": 175,
+      "blocks": 576,
+      "channel_error": 309.2588118015449,
+      "channel_energy": 19980.505226378184,
+      "bce_sum": 19189.321607151738
+    }
+  },
+  "probe": {},
+  "fit_seconds": 10.12662140003522,
+  "train_batch": 4,
+  "scoring_batch_size": 32,
+  "validation_curve_batch_size": 8,
+  "validation_curve_seed": 206901000,
+  "init_seed": 205901900,
+  "train_seed_first": 205901000,
+  "train_seed_last": 205901063,
+  "score_seeds": [
+    206901000
+  ]
+}

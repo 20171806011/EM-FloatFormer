@@ -1,0 +1,70 @@
+{
+  "p5_tests": {
+    "command": [
+      "C:\\qazwsx\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "p5/tests",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "test_backward_at_extreme_gains (test_p5_invariants.Invariants.test_backward_at_extreme_gains) ... ok\ntest_classical_privilege_boundary (test_p5_invariants.Invariants.test_classical_privilege_boundary) ... ok\ntest_cstar_learned_map_and_extremes (test_p5_invariants.Invariants.test_cstar_learned_map_and_extremes) ... ok\ntest_exact_pilot_erasure_and_no_information (test_p5_invariants.Invariants.test_exact_pilot_erasure_and_no_information) ... ok\ntest_ldpc_waterfall_sanity (test_p5_invariants.Invariants.test_ldpc_waterfall_sanity) ... ok\ntest_paired_arms_and_first_step_gradients (test_p5_invariants.Invariants.test_paired_arms_and_first_step_gradients) ... ok\ntest_steering_and_alias_geometry (test_p5_invariants.Invariants.test_steering_and_alias_geometry) ... ok\ntest_zero_step_physics_and_fourier (test_p5_invariants.Invariants.test_zero_step_physics_and_fourier) ... ok\ntest_blind_observable_fields_and_wiener_ici (test_p5_physics.WavefieldPhysicsTests.test_blind_observable_fields_and_wiener_ici) ... ok\ntest_fractional_delay_steering_and_exact_diagonal (test_p5_physics.WavefieldPhysicsTests.test_fractional_delay_steering_and_exact_diagonal) ... ok\ntest_green_target_matches_phase_ensemble (test_p5_physics.WavefieldPhysicsTests.test_green_target_matches_phase_ensemble) ... ok\ntest_ldpc_p4_word_order_and_perfect_soft_decode (test_p5_physics.WavefieldPhysicsTests.test_ldpc_p4_word_order_and_perfect_soft_decode) ... ok\ntest_r2_continuous_chirp_above_within_slot_nyquist (test_p5_physics.WavefieldPhysicsTests.test_r2_continuous_chirp_above_within_slot_nyquist) ... ok\ntest_rapp_saleh_amplitude_and_phase_match_p4 (test_p5_physics.WavefieldPhysicsTests.test_rapp_saleh_amplitude_and_phase_match_p4) ... ok\ntest_static_and_dynamic_integer_paths_against_continuous_p4_stream (test_p5_physics.WavefieldPhysicsTests.test_static_and_dynamic_integer_paths_against_continuous_p4_stream) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 3.504s\n\nOK",
+    "seconds": 6.664351400002488
+  },
+  "p4_publication": {
+    "command": [
+      "C:\\qazwsx\\python.exe",
+      "-B",
+      "-m",
+      "publication.verify_p4"
+    ],
+    "exit": 0,
+    "output": "230 previous checkout files, 116 original frozen files and one redacted archive verified.\n150 coded rows, ten final weight hashes, both Holm families and both test receipts verified.",
+    "seconds": 5.559370100003434
+  },
+  "head": {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit": 0,
+    "output": "8380084c6dece64119ab72f9c3c1c212e154fb17",
+    "seconds": 0.03655389999039471
+  },
+  "diff": {
+    "command": [
+      "git",
+      "diff",
+      "--name-only"
+    ],
+    "exit": 0,
+    "output": "",
+    "seconds": 0.04738730000099167
+  },
+  "staged_diff": {
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--name-only"
+    ],
+    "exit": 0,
+    "output": "",
+    "seconds": 0.030854600001475774
+  },
+  "status": {
+    "command": [
+      "git",
+      "status",
+      "--short"
+    ],
+    "exit": 0,
+    "output": "?? p5/",
+    "seconds": 0.037790600006701425
+  },
+  "passed": true
+}

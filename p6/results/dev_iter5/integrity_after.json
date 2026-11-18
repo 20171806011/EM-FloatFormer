@@ -1,0 +1,59 @@
+{
+  "utc": "2026-11-18T20:31:22.049992+00:00",
+  "before_utc": "2026-11-18T20:16:32.965258+00:00",
+  "baseline_file_sha256": "d64c0f21e8f9ac06b2364b85a28bec0b92efdad1b66209e587d8038ea443e1df",
+  "comparison_scope": "P5/P5-B path sets, sizes and modification times in nanoseconds; archived pair bytes were not read. Tracked worktree and staged contents checked by git diff relative to the baseline commit.",
+  "head": "8380084c6dece64119ab72f9c3c1c212e154fb17",
+  "tracked_count": 617,
+  "staged_changes": "",
+  "tracked_changes": "",
+  "tracked_status": "",
+  "p6_data_sha256": "85ebeb49bdc56a7dcc4961eb16d414c175478ba5640ea742d0d32a95b63aa6b1",
+  "protected": {
+    "p5": {
+      "files": 138,
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "passed": true
+    },
+    "p5b": {
+      "files": 165,
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "passed": true
+    }
+  },
+  "stage1_isolation": {
+    "fit_receipts": 108,
+    "fit_pairs": [
+      901,
+      902,
+      903
+    ],
+    "training_stream": 5,
+    "validation_stream": 6,
+    "green_frame_stream": 8,
+    "green_permutation_stream": 9,
+    "gauge_row_receipts": 480,
+    "first_batch_row_receipts": 90,
+    "legacy_unique_dev_draws": 30,
+    "formal_markers_present": {
+      "PROTOCOL.md": false,
+      "results/freeze.json": false,
+      "results/formal": false,
+      "results/checkpoint_replay.json": false,
+      "results/trained_gauge.json": false,
+      "results/interventions.json": false,
+      "results/latency.json": false,
+      "P6_REPORT.md": false,
+      "results/summary.json": false,
+      "results/checkout_verification.json": false
+    },
+    "gate_passed": false,
+    "passed": true,
+    "basis": "Checked fit initialization/validation and recorded gauge/gradient seeds, routed waveform call sites and legacy draw manifest. Fit runner obtains training and R3 probe draws through unchanged dev_frame/dev_seed, and the diagnostics use the same boundary. Checked absence of the requested formal destinations. Covers recorded runs in this workspace."
+  },
+  "passed": true
+}

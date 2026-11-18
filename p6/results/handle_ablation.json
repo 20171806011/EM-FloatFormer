@@ -1,0 +1,1093 @@
+{
+  "pair": 901,
+  "stream": 6,
+  "frames_per_regime": 32,
+  "steps": 64,
+  "design": "main",
+  "implementation": "c08d4b9b640898d411657b987b676c6d32ed8c602449521a3e06ac60bc3b1bf0",
+  "interpretation": "Each omitted output is zeroed after physical projection at every EM step; subsequent states and predictions are recomputed with the same trained weights. Effects may interact and need not add. The PA intervention also removes the variance term tied to its radial coefficients; variance alone removes the free log-variance output.",
+  "arms": {
+    "1": {
+      "parity": {
+        "score_seeds": [
+          106901000
+        ],
+        "full_replay_passed": true,
+        "all_removed_fixed_check_passed": true,
+        "rows": {
+          "full": {
+            "bit_errors": 1323,
+            "bits": 16384,
+            "info_errors": 62,
+            "info_bits": 8192,
+            "block_errors": 11,
+            "blocks": 128,
+            "channel_error": 443.4561375839526,
+            "channel_energy": 5165.43755473177,
+            "bce_sum": 3100.941954549765,
+            "bler": 0.0859375,
+            "pre_ber": 0.08074951171875,
+            "nmse_db": -10.662564456432488,
+            "bce": 0.1892664767181253
+          },
+          "cpe": {
+            "bit_errors": 1314,
+            "bits": 16384,
+            "info_errors": 68,
+            "info_bits": 8192,
+            "block_errors": 11,
+            "blocks": 128,
+            "channel_error": 439.21495683941123,
+            "channel_energy": 5165.43755473177,
+            "bce_sum": 3111.8245869287166,
+            "bler": 0.0859375,
+            "pre_ber": 0.0802001953125,
+            "nmse_db": -10.704299947285755,
+            "bce": 0.18993069988578593
+          },
+          "delay": {
+            "bit_errors": 1320,
+            "bits": 16384,
+            "info_errors": 59,
+            "info_bits": 8192,
+            "block_errors": 11,
+            "blocks": 128,
+            "channel_error": 442.9575408672138,
+            "channel_energy": 5165.43755473177,
+            "bce_sum": 3093.0444013095785,
+            "bler": 0.0859375,
+            "pre_ber": 0.08056640625,
+            "nmse_db": -10.66745016230269,
+            "bce": 0.18878444832211783
+          },
+          "delta_h": {
+            "bit_errors": 1420,
+            "bits": 16384,
+            "info_errors": 56,
+            "info_bits": 8192,
+            "block_errors": 12,
+            "blocks": 128,
+            "channel_error": 445.1580863808714,
+            "channel_energy": 5165.43755473177,
+            "bce_sum": 3258.874538450542,
+            "bler": 0.09375,
+            "pre_ber": 0.086669921875,
+            "nmse_db": -10.645928488768243,
+            "bce": 0.19890591665347546
+          },
+          "variance": {
+            "bit_errors": 1320,
+            "bits": 16384,
+            "info_errors": 59,
+            "info_bits": 8192,
+            "block_errors": 10,
+            "blocks": 128,
+            "channel_error": 443.1416731902674,
+            "channel_energy": 5165.43755473177,
+            "bce_sum": 3148.812671585145,
+            "bler": 0.078125,
+            "pre_ber": 0.08056640625,
+            "nmse_db": -10.665645225525305,
+            "bce": 0.19218827341217926
+          },
+          "pa_forward_inverse": {
+            "bit_errors": 1308,
+            "bits": 16384,
+            "info_errors": 59,
+            "info_bits": 8192,
+            "block_errors": 9,
+            "blocks": 128,
+            "channel_error": 443.8291912626813,
+            "channel_energy": 5165.43755473177,
+            "bce_sum": 3097.0856125176642,
+            "bler": 0.0703125,
+            "pre_ber": 0.079833984375,
+            "nmse_db": -10.658912527151008,
+            "bce": 0.1890311042796426
+          },
+          "all": {
+            "bit_errors": 1402,
+            "bits": 16384,
+            "info_errors": 49,
+            "info_bits": 8192,
+            "block_errors": 9,
+            "blocks": 128,
+            "channel_error": 437.6766930953824,
+            "channel_energy": 5165.43755473177,
+            "bce_sum": 3275.1542607150723,
+            "bler": 0.0703125,
+            "pre_ber": 0.0855712890625,
+            "nmse_db": -10.719536952702954,
+            "bce": 0.19989955204559767
+          }
+        },
+        "removed_minus_full": {
+          "cpe": {
+            "block_errors": 0,
+            "bit_errors": -9,
+            "bler": 0.0,
+            "pre_ber": -0.00054931640625,
+            "bce": 0.0006642231676606269,
+            "nmse_db": -0.041735490853266555
+          },
+          "delay": {
+            "block_errors": 0,
+            "bit_errors": -3,
+            "bler": 0.0,
+            "pre_ber": -0.00018310546875,
+            "bce": -0.00048202839600747227,
+            "nmse_db": -0.004885705870201207
+          },
+          "delta_h": {
+            "block_errors": 1,
+            "bit_errors": 97,
+            "bler": 0.0078125,
+            "pre_ber": 0.00592041015625,
+            "bce": 0.009639439935350158,
+            "nmse_db": 0.01663596766424469
+          },
+          "variance": {
+            "block_errors": -1,
+            "bit_errors": -3,
+            "bler": -0.0078125,
+            "pre_ber": -0.00018310546875,
+            "bce": 0.0029217966940539575,
+            "nmse_db": -0.0030807690928167375
+          },
+          "pa_forward_inverse": {
+            "block_errors": -2,
+            "bit_errors": -15,
+            "bler": -0.015625,
+            "pre_ber": -0.00091552734375,
+            "bce": -0.00023537243848270606,
+            "nmse_db": 0.0036519292814798376
+          },
+          "all": {
+            "block_errors": -2,
+            "bit_errors": 79,
+            "bler": -0.015625,
+            "pre_ber": 0.00482177734375,
+            "bce": 0.010633075327472374,
+            "nmse_db": -0.05697249627046652
+          }
+        }
+      },
+      "local_parity": {
+        "score_seeds": [
+          106901000
+        ],
+        "full_replay_passed": true,
+        "all_removed_fixed_check_passed": true,
+        "rows": {
+          "full": {
+            "bit_errors": 1322,
+            "bits": 16384,
+            "info_errors": 60,
+            "info_bits": 8192,
+            "block_errors": 10,
+            "blocks": 128,
+            "channel_error": 439.17394288740184,
+            "channel_energy": 5165.43755473177,
+            "bce_sum": 3107.6662685460296,
+            "bler": 0.078125,
+            "pre_ber": 0.0806884765625,
+            "nmse_db": -10.704705510995796,
+            "bce": 0.18967689627356138
+          },
+          "cpe": {
+            "bit_errors": 1318,
+            "bits": 16384,
+            "info_errors": 59,
+            "info_bits": 8192,
+            "block_errors": 10,
+            "blocks": 128,
+            "channel_error": 437.4659400046937,
+            "channel_energy": 5165.43755473177,
+            "bce_sum": 3117.154598952683,
+            "bler": 0.078125,
+            "pre_ber": 0.0804443359375,
+            "nmse_db": -10.721628701010893,
+            "bce": 0.1902560180024831
+          },
+          "delay": {
+            "bit_errors": 1317,
+            "bits": 16384,
+            "info_errors": 57,
+            "info_bits": 8192,
+            "block_errors": 10,
+            "blocks": 128,
+            "channel_error": 438.12842473819967,
+            "channel_energy": 5165.43755473177,
+            "bce_sum": 3098.9143616857773,
+            "bler": 0.078125,
+            "pre_ber": 0.08038330078125,
+            "nmse_db": -10.715056856088323,
+            "bce": 0.18914272227086043
+          },
+          "delta_h": {
+            "bit_errors": 1426,
+            "bits": 16384,
+            "info_errors": 50,
+            "info_bits": 8192,
+            "block_errors": 10,
+            "blocks": 128,
+            "channel_error": 442.36533582504075,
+            "channel_energy": 5165.43755473177,
+            "bce_sum": 3262.1141650662767,
+            "bler": 0.078125,
+            "pre_ber": 0.0870361328125,
+            "nmse_db": -10.673260278071792,
+            "bce": 0.1991036477701585
+          },
+          "variance": {
+            "bit_errors": 1327,
+            "bits": 16384,
+            "info_errors": 59,
+            "info_bits": 8192,
+            "block_errors": 10,
+            "blocks": 128,
+            "channel_error": 438.9211613034064,
+            "channel_energy": 5165.43755473177,
+            "bce_sum": 3159.1296033128965,
+            "bler": 0.078125,
+            "pre_ber": 0.08099365234375,
+            "nmse_db": -10.707205961107968,
+            "bce": 0.19281796895220316
+          },
+          "pa_forward_inverse": {
+            "bit_errors": 1315,
+            "bits": 16384,
+            "info_errors": 59,
+            "info_bits": 8192,
+            "block_errors": 9,
+            "blocks": 128,
+            "channel_error": 439.9626342295177,
+            "channel_energy": 5165.43755473177,
+            "bce_sum": 3100.084084403522,
+            "bler": 0.0703125,
+            "pre_ber": 0.08026123046875,
+            "nmse_db": -10.69691322027301,
+            "bce": 0.18921411647970715
+          },
+          "all": {
+            "bit_errors": 1402,
+            "bits": 16384,
+            "info_errors": 49,
+            "info_bits": 8192,
+            "block_errors": 9,
+            "blocks": 128,
+            "channel_error": 437.6766930953824,
+            "channel_energy": 5165.43755473177,
+            "bce_sum": 3275.1542607150723,
+            "bler": 0.0703125,
+            "pre_ber": 0.0855712890625,
+            "nmse_db": -10.719536952702954,
+            "bce": 0.19989955204559767
+          }
+        },
+        "removed_minus_full": {
+          "cpe": {
+            "block_errors": 0,
+            "bit_errors": -4,
+            "bler": 0.0,
+            "pre_ber": -0.000244140625,
+            "bce": 0.0005791217289217165,
+            "nmse_db": -0.016923190015097234
+          },
+          "delay": {
+            "block_errors": 0,
+            "bit_errors": -5,
+            "bler": 0.0,
+            "pre_ber": -0.00030517578125,
+            "bce": -0.000534174002700949,
+            "nmse_db": -0.010351345092526998
+          },
+          "delta_h": {
+            "block_errors": 0,
+            "bit_errors": 104,
+            "bler": 0.0,
+            "pre_ber": 0.00634765625,
+            "bce": 0.009426751496597108,
+            "nmse_db": 0.03144523292400336
+          },
+          "variance": {
+            "block_errors": 0,
+            "bit_errors": 5,
+            "bler": 0.0,
+            "pre_ber": 0.00030517578125,
+            "bce": 0.0031410726786417764,
+            "nmse_db": -0.002500450112172814
+          },
+          "pa_forward_inverse": {
+            "block_errors": -1,
+            "bit_errors": -7,
+            "bler": -0.0078125,
+            "pre_ber": -0.00042724609375,
+            "bce": -0.00046277979385422885,
+            "nmse_db": 0.007792290722784756
+          },
+          "all": {
+            "block_errors": -1,
+            "bit_errors": 80,
+            "bler": -0.0078125,
+            "pre_ber": 0.0048828125,
+            "bce": 0.010222655772036293,
+            "nmse_db": -0.014831441707158888
+          }
+        }
+      }
+    },
+    "2": {
+      "parity": {
+        "score_seeds": [
+          206901000
+        ],
+        "full_replay_passed": true,
+        "all_removed_fixed_check_passed": true,
+        "rows": {
+          "full": {
+            "bit_errors": 7871,
+            "bits": 73728,
+            "info_errors": 691,
+            "info_bits": 36864,
+            "block_errors": 170,
+            "blocks": 576,
+            "channel_error": 324.78363276617733,
+            "channel_energy": 19980.505226378184,
+            "bce_sum": 17911.270896440306,
+            "bler": 0.2951388888888889,
+            "pre_ber": 0.10675726996527778,
+            "nmse_db": -17.890123304168128,
+            "bce": 0.24293715951118036
+          },
+          "cpe": {
+            "bit_errors": 7835,
+            "bits": 73728,
+            "info_errors": 674,
+            "info_bits": 36864,
+            "block_errors": 170,
+            "blocks": 576,
+            "channel_error": 327.3789545473527,
+            "channel_energy": 19980.505226378184,
+            "bce_sum": 17862.907931331723,
+            "bler": 0.2951388888888889,
+            "pre_ber": 0.10626898871527778,
+            "nmse_db": -17.855557080946507,
+            "bce": 0.24228119481515467
+          },
+          "delay": {
+            "bit_errors": 7875,
+            "bits": 73728,
+            "info_errors": 676,
+            "info_bits": 36864,
+            "block_errors": 169,
+            "blocks": 576,
+            "channel_error": 323.6799829311303,
+            "channel_energy": 19980.505226378184,
+            "bce_sum": 17912.13881924618,
+            "bler": 0.2934027777777778,
+            "pre_ber": 0.1068115234375,
+            "nmse_db": -17.904906230596207,
+            "bce": 0.24294893146764027
+          },
+          "delta_h": {
+            "bit_errors": 8823,
+            "bits": 73728,
+            "info_errors": 700,
+            "info_bits": 36864,
+            "block_errors": 165,
+            "blocks": 576,
+            "channel_error": 350.1224926803873,
+            "channel_energy": 19980.505226378184,
+            "bce_sum": 19321.23469646024,
+            "bler": 0.2864583333333333,
+            "pre_ber": 0.11966959635416667,
+            "nmse_db": -17.56386453839051,
+            "bce": 0.26206101747586047
+          },
+          "variance": {
+            "bit_errors": 7857,
+            "bits": 73728,
+            "info_errors": 670,
+            "info_bits": 36864,
+            "block_errors": 167,
+            "blocks": 576,
+            "channel_error": 323.6057011359621,
+            "channel_energy": 19980.505226378184,
+            "bce_sum": 17826.417802549287,
+            "bler": 0.2899305555555556,
+            "pre_ber": 0.1065673828125,
+            "nmse_db": -17.905903013768867,
+            "bce": 0.24178626576808387
+          },
+          "path_phase": {
+            "bit_errors": 7935,
+            "bits": 73728,
+            "info_errors": 733,
+            "info_bits": 36864,
+            "block_errors": 178,
+            "blocks": 576,
+            "channel_error": 348.4017889205748,
+            "channel_energy": 19980.505226378184,
+            "bce_sum": 18088.64234039662,
+            "bler": 0.3090277777777778,
+            "pre_ber": 0.10762532552083333,
+            "nmse_db": -17.585260892936844,
+            "bce": 0.24534291368810518
+          },
+          "all": {
+            "bit_errors": 8834,
+            "bits": 73728,
+            "info_errors": 684,
+            "info_bits": 36864,
+            "block_errors": 166,
+            "blocks": 576,
+            "channel_error": 352.02016866412043,
+            "channel_energy": 19980.505226378184,
+            "bce_sum": 19361.888814324,
+            "bler": 0.2881944444444444,
+            "pre_ber": 0.11981879340277778,
+            "nmse_db": -17.5403891889996,
+            "bce": 0.26261242423942055
+          }
+        },
+        "removed_minus_full": {
+          "cpe": {
+            "block_errors": 0,
+            "bit_errors": -36,
+            "bler": 0.0,
+            "pre_ber": -0.00048828125,
+            "bce": -0.0006559646960256904,
+            "nmse_db": 0.03456622322162062
+          },
+          "delay": {
+            "block_errors": -1,
+            "bit_errors": 4,
+            "bler": -0.001736111111111105,
+            "pre_ber": 5.4253472222223764e-05,
+            "bce": 1.177195645990503e-05,
+            "nmse_db": -0.014782926428079435
+          },
+          "delta_h": {
+            "block_errors": -5,
+            "bit_errors": 952,
+            "bler": -0.00868055555555558,
+            "pre_ber": 0.012912326388888895,
+            "bce": 0.019123857964680108,
+            "nmse_db": 0.3262587657776166
+          },
+          "variance": {
+            "block_errors": -3,
+            "bit_errors": -14,
+            "bler": -0.005208333333333315,
+            "pre_ber": -0.00018988715277777624,
+            "bce": -0.0011508937430964872,
+            "nmse_db": -0.015779709600739267
+          },
+          "path_phase": {
+            "block_errors": 8,
+            "bit_errors": 64,
+            "bler": 0.013888888888888895,
+            "pre_ber": 0.0008680555555555525,
+            "bce": 0.002405754176924818,
+            "nmse_db": 0.30486241123128366
+          },
+          "all": {
+            "block_errors": -4,
+            "bit_errors": 963,
+            "bler": -0.006944444444444475,
+            "pre_ber": 0.0130615234375,
+            "bce": 0.019675264728240188,
+            "nmse_db": 0.3497341151685269
+          }
+        }
+      },
+      "local_parity": {
+        "score_seeds": [
+          206901000
+        ],
+        "full_replay_passed": true,
+        "all_removed_fixed_check_passed": true,
+        "rows": {
+          "full": {
+            "bit_errors": 7894,
+            "bits": 73728,
+            "info_errors": 689,
+            "info_bits": 36864,
+            "block_errors": 172,
+            "blocks": 576,
+            "channel_error": 349.49007295771895,
+            "channel_energy": 19980.505226378184,
+            "bce_sum": 17964.38705876462,
+            "bler": 0.2986111111111111,
+            "pre_ber": 0.10706922743055555,
+            "nmse_db": -17.571716211848145,
+            "bce": 0.24365759357048367
+          },
+          "cpe": {
+            "bit_errors": 7858,
+            "bits": 73728,
+            "info_errors": 683,
+            "info_bits": 36864,
+            "block_errors": 161,
+            "blocks": 576,
+            "channel_error": 349.41580047576883,
+            "channel_energy": 19980.505226378184,
+            "bce_sum": 17890.73771570611,
+            "bler": 0.2795138888888889,
+            "pre_ber": 0.10658094618055555,
+            "nmse_db": -17.572639258295908,
+            "bce": 0.2426586604235312
+          },
+          "delay": {
+            "bit_errors": 7875,
+            "bits": 73728,
+            "info_errors": 701,
+            "info_bits": 36864,
+            "block_errors": 172,
+            "blocks": 576,
+            "channel_error": 346.97668944818616,
+            "channel_energy": 19980.505226378184,
+            "bce_sum": 17961.442035330263,
+            "bler": 0.2986111111111111,
+            "pre_ber": 0.1068115234375,
+            "nmse_db": -17.603061665401093,
+            "bce": 0.24361764913371126
+          },
+          "delta_h": {
+            "bit_errors": 8834,
+            "bits": 73728,
+            "info_errors": 718,
+            "info_bits": 36864,
+            "block_errors": 168,
+            "blocks": 576,
+            "channel_error": 351.70173957714246,
+            "channel_energy": 19980.505226378184,
+            "bce_sum": 19340.79468107267,
+            "bler": 0.2916666666666667,
+            "pre_ber": 0.11981879340277778,
+            "nmse_db": -17.544319491670894,
+            "bce": 0.2623263167463199
+          },
+          "variance": {
+            "bit_errors": 7889,
+            "bits": 73728,
+            "info_errors": 669,
+            "info_bits": 36864,
+            "block_errors": 163,
+            "blocks": 576,
+            "channel_error": 350.4822139277792,
+            "channel_energy": 19980.505226378184,
+            "bce_sum": 17842.092934693253,
+            "bler": 0.2829861111111111,
+            "pre_ber": 0.10700141059027778,
+            "nmse_db": -17.559404820520495,
+            "bce": 0.24199887335467196
+          },
+          "path_phase": {
+            "bit_errors": 7970,
+            "bits": 73728,
+            "info_errors": 752,
+            "info_bits": 36864,
+            "block_errors": 179,
+            "blocks": 576,
+            "channel_error": 379.78019186977207,
+            "channel_energy": 19980.505226378184,
+            "bce_sum": 18166.807771649026,
+            "bler": 0.3107638888888889,
+            "pre_ber": 0.10810004340277778,
+            "nmse_db": -17.210741560153576,
+            "bce": 0.2464031002014028
+          },
+          "all": {
+            "bit_errors": 8834,
+            "bits": 73728,
+            "info_errors": 684,
+            "info_bits": 36864,
+            "block_errors": 166,
+            "blocks": 576,
+            "channel_error": 352.02016866412043,
+            "channel_energy": 19980.505226378184,
+            "bce_sum": 19361.888814324,
+            "bler": 0.2881944444444444,
+            "pre_ber": 0.11981879340277778,
+            "nmse_db": -17.5403891889996,
+            "bce": 0.26261242423942055
+          }
+        },
+        "removed_minus_full": {
+          "cpe": {
+            "block_errors": -11,
+            "bit_errors": -36,
+            "bler": -0.01909722222222221,
+            "pre_ber": -0.00048828125,
+            "bce": -0.0009989331469524576,
+            "nmse_db": -0.0009230464477631983
+          },
+          "delay": {
+            "block_errors": 0,
+            "bit_errors": -19,
+            "bler": 0.0,
+            "pre_ber": -0.00025770399305555247,
+            "bce": -3.994443677241e-05,
+            "nmse_db": -0.031345453552948044
+          },
+          "delta_h": {
+            "block_errors": -4,
+            "bit_errors": 940,
+            "bler": -0.00694444444444442,
+            "pre_ber": 0.012749565972222224,
+            "bce": 0.018668723175836233,
+            "nmse_db": 0.0273967201772507
+          },
+          "variance": {
+            "block_errors": -9,
+            "bit_errors": -5,
+            "bler": -0.015625,
+            "pre_ber": -6.781684027777624e-05,
+            "bce": -0.0016587202158117043,
+            "nmse_db": 0.012311391327649801
+          },
+          "path_phase": {
+            "block_errors": 7,
+            "bit_errors": 76,
+            "bler": 0.01215277777777779,
+            "pre_ber": 0.0010308159722222238,
+            "bce": 0.002745506630919131,
+            "nmse_db": 0.3609746516945691
+          },
+          "all": {
+            "block_errors": -6,
+            "bit_errors": 940,
+            "bler": -0.010416666666666685,
+            "pre_ber": 0.012749565972222224,
+            "bce": 0.018954830668936884,
+            "nmse_db": 0.031327022848543606
+          }
+        }
+      }
+    },
+    "3": {
+      "parity": {
+        "score_seeds": [
+          306901000
+        ],
+        "full_replay_passed": true,
+        "all_removed_fixed_check_passed": true,
+        "rows": {
+          "full": {
+            "bit_errors": 863,
+            "bits": 16384,
+            "info_errors": 70,
+            "info_bits": 8192,
+            "block_errors": 14,
+            "blocks": 128,
+            "channel_error": 1005.1273341327818,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2080.783625374583,
+            "bler": 0.109375,
+            "pre_ber": 0.05267333984375,
+            "nmse_db": -13.113417313841074,
+            "bce": 0.12700095369717915
+          },
+          "cpe": {
+            "bit_errors": 864,
+            "bits": 16384,
+            "info_errors": 73,
+            "info_bits": 8192,
+            "block_errors": 15,
+            "blocks": 128,
+            "channel_error": 1015.0916746453892,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2097.973503628804,
+            "bler": 0.1171875,
+            "pre_ber": 0.052734375,
+            "nmse_db": -13.070575491499648,
+            "bce": 0.128050140602344
+          },
+          "delay": {
+            "bit_errors": 913,
+            "bits": 16384,
+            "info_errors": 79,
+            "info_bits": 8192,
+            "block_errors": 17,
+            "blocks": 128,
+            "channel_error": 1097.4678504343497,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2252.0020295822733,
+            "bler": 0.1328125,
+            "pre_ber": 0.05572509765625,
+            "nmse_db": -12.731710082969006,
+            "bce": 0.13745129575087117
+          },
+          "delta_h": {
+            "bit_errors": 1041,
+            "bits": 16384,
+            "info_errors": 62,
+            "info_bits": 8192,
+            "block_errors": 12,
+            "blocks": 128,
+            "channel_error": 890.2287708374068,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2424.359816183698,
+            "bler": 0.09375,
+            "pre_ber": 0.06353759765625,
+            "nmse_db": -13.640611891301138,
+            "bce": 0.1479711801869933
+          },
+          "variance": {
+            "bit_errors": 866,
+            "bits": 16384,
+            "info_errors": 67,
+            "info_bits": 8192,
+            "block_errors": 14,
+            "blocks": 128,
+            "channel_error": 1004.3386213349298,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2087.134229384555,
+            "bler": 0.109375,
+            "pre_ber": 0.0528564453125,
+            "nmse_db": -13.116826514505274,
+            "bce": 0.12738856380520966
+          },
+          "pa_forward_inverse": {
+            "bit_errors": 853,
+            "bits": 16384,
+            "info_errors": 69,
+            "info_bits": 8192,
+            "block_errors": 13,
+            "blocks": 128,
+            "channel_error": 1002.8144118369003,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2075.9814754473014,
+            "bler": 0.1015625,
+            "pre_ber": 0.05206298828125,
+            "nmse_db": -13.123422482929827,
+            "bce": 0.12670785372603158
+          },
+          "path_phase": {
+            "bit_errors": 868,
+            "bits": 16384,
+            "info_errors": 72,
+            "info_bits": 8192,
+            "block_errors": 14,
+            "blocks": 128,
+            "channel_error": 1005.136847881567,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2102.144033021506,
+            "bler": 0.109375,
+            "pre_ber": 0.052978515625,
+            "nmse_db": -13.113376207118518,
+            "bce": 0.12830468951547278
+          },
+          "spatial_irc": {
+            "bit_errors": 855,
+            "bits": 16384,
+            "info_errors": 70,
+            "info_bits": 8192,
+            "block_errors": 14,
+            "blocks": 128,
+            "channel_error": 1013.8520690093926,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2081.6207438317338,
+            "bler": 0.109375,
+            "pre_ber": 0.05218505859375,
+            "nmse_db": -13.07588223256743,
+            "bce": 0.1270520473530111
+          },
+          "all": {
+            "bit_errors": 1126,
+            "bits": 16384,
+            "info_errors": 72,
+            "info_bits": 8192,
+            "block_errors": 16,
+            "blocks": 128,
+            "channel_error": 1019.4083294458902,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2648.302164756462,
+            "bler": 0.125,
+            "pre_ber": 0.0687255859375,
+            "nmse_db": -13.052146372113995,
+            "bce": 0.1616395364231239
+          }
+        },
+        "removed_minus_full": {
+          "cpe": {
+            "block_errors": 1,
+            "bit_errors": 1,
+            "bler": 0.0078125,
+            "pre_ber": 6.103515625e-05,
+            "bce": 0.0010491869051648395,
+            "nmse_db": 0.042841822341426194
+          },
+          "delay": {
+            "block_errors": 3,
+            "bit_errors": 50,
+            "bler": 0.0234375,
+            "pre_ber": 0.0030517578125,
+            "bce": 0.010450342053692024,
+            "nmse_db": 0.3817072308720686
+          },
+          "delta_h": {
+            "block_errors": -2,
+            "bit_errors": 178,
+            "bler": -0.015625,
+            "pre_ber": 0.0108642578125,
+            "bce": 0.020970226489814142,
+            "nmse_db": -0.5271945774600635
+          },
+          "variance": {
+            "block_errors": 0,
+            "bit_errors": 3,
+            "bler": 0.0,
+            "pre_ber": 0.00018310546875,
+            "bce": 0.00038761010803051166,
+            "nmse_db": -0.0034092006641994743
+          },
+          "pa_forward_inverse": {
+            "block_errors": -1,
+            "bit_errors": -10,
+            "bler": -0.0078125,
+            "pre_ber": -0.0006103515625,
+            "bce": -0.00029309997114757014,
+            "nmse_db": -0.010005169088753263
+          },
+          "path_phase": {
+            "block_errors": 0,
+            "bit_errors": 5,
+            "bler": 0.0,
+            "pre_ber": 0.00030517578125,
+            "bce": 0.0013037358182936276,
+            "nmse_db": 4.110672255563941e-05
+          },
+          "spatial_irc": {
+            "block_errors": 0,
+            "bit_errors": -8,
+            "bler": 0.0,
+            "pre_ber": -0.00048828125,
+            "bce": 5.109365583194636e-05,
+            "nmse_db": 0.03753508127364391
+          },
+          "all": {
+            "block_errors": 2,
+            "bit_errors": 263,
+            "bler": 0.015625,
+            "pre_ber": 0.01605224609375,
+            "bce": 0.03463858272594475,
+            "nmse_db": 0.06127094172707892
+          }
+        }
+      },
+      "local_parity": {
+        "score_seeds": [
+          306901000
+        ],
+        "full_replay_passed": true,
+        "all_removed_fixed_check_passed": true,
+        "rows": {
+          "full": {
+            "bit_errors": 846,
+            "bits": 16384,
+            "info_errors": 72,
+            "info_bits": 8192,
+            "block_errors": 14,
+            "blocks": 128,
+            "channel_error": 999.0282251262479,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2089.008127566271,
+            "bler": 0.109375,
+            "pre_ber": 0.0516357421875,
+            "nmse_db": -13.139850566998232,
+            "bce": 0.12750293747352728
+          },
+          "cpe": {
+            "bit_errors": 851,
+            "bits": 16384,
+            "info_errors": 73,
+            "info_bits": 8192,
+            "block_errors": 15,
+            "blocks": 128,
+            "channel_error": 1009.3914411448075,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2103.759173778283,
+            "bler": 0.1171875,
+            "pre_ber": 0.05194091796875,
+            "nmse_db": -13.095031971058477,
+            "bce": 0.12840326988392842
+          },
+          "delay": {
+            "bit_errors": 919,
+            "bits": 16384,
+            "info_errors": 77,
+            "info_bits": 8192,
+            "block_errors": 17,
+            "blocks": 128,
+            "channel_error": 1086.8684689559839,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2246.8474193623015,
+            "bler": 0.1328125,
+            "pre_ber": 0.05609130859375,
+            "nmse_db": -12.77385825380784,
+            "bce": 0.13713668331068735
+          },
+          "delta_h": {
+            "bit_errors": 1056,
+            "bits": 16384,
+            "info_errors": 58,
+            "info_bits": 8192,
+            "block_errors": 11,
+            "blocks": 128,
+            "channel_error": 882.9457851714533,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2434.973902084134,
+            "bler": 0.0859375,
+            "pre_ber": 0.064453125,
+            "nmse_db": -13.676287772870513,
+            "bce": 0.1486190125783773
+          },
+          "variance": {
+            "bit_errors": 847,
+            "bits": 16384,
+            "info_errors": 70,
+            "info_bits": 8192,
+            "block_errors": 14,
+            "blocks": 128,
+            "channel_error": 998.5919137403873,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2098.723761972794,
+            "bler": 0.109375,
+            "pre_ber": 0.05169677734375,
+            "nmse_db": -13.141747700758524,
+            "bce": 0.12809593273759728
+          },
+          "pa_forward_inverse": {
+            "bit_errors": 854,
+            "bits": 16384,
+            "info_errors": 71,
+            "info_bits": 8192,
+            "block_errors": 13,
+            "blocks": 128,
+            "channel_error": 996.8037475329113,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2082.25798851335,
+            "bler": 0.1015625,
+            "pre_ber": 0.0521240234375,
+            "nmse_db": -13.149531529696237,
+            "bce": 0.12709094168172302
+          },
+          "path_phase": {
+            "bit_errors": 856,
+            "bits": 16384,
+            "info_errors": 74,
+            "info_bits": 8192,
+            "block_errors": 15,
+            "blocks": 128,
+            "channel_error": 1005.6370105706409,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2113.1322247074954,
+            "bler": 0.1171875,
+            "pre_ber": 0.05224609375,
+            "nmse_db": -13.11121566679236,
+            "bce": 0.1289753555119321
+          },
+          "spatial_irc": {
+            "bit_errors": 848,
+            "bits": 16384,
+            "info_errors": 74,
+            "info_bits": 8192,
+            "block_errors": 15,
+            "blocks": 128,
+            "channel_error": 1008.5510661351968,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2090.2950816473235,
+            "bler": 0.1171875,
+            "pre_ber": 0.0517578125,
+            "nmse_db": -13.098649222285266,
+            "bce": 0.1275814869169509
+          },
+          "all": {
+            "bit_errors": 1126,
+            "bits": 16384,
+            "info_errors": 72,
+            "info_bits": 8192,
+            "block_errors": 16,
+            "blocks": 128,
+            "channel_error": 1019.4083294458902,
+            "channel_energy": 20585.5661240831,
+            "bce_sum": 2648.302164756462,
+            "bler": 0.125,
+            "pre_ber": 0.0687255859375,
+            "nmse_db": -13.052146372113995,
+            "bce": 0.1616395364231239
+          }
+        },
+        "removed_minus_full": {
+          "cpe": {
+            "block_errors": 1,
+            "bit_errors": 5,
+            "bler": 0.0078125,
+            "pre_ber": 0.00030517578125,
+            "bce": 0.0009003324104011334,
+            "nmse_db": 0.04481859593975557
+          },
+          "delay": {
+            "block_errors": 3,
+            "bit_errors": 73,
+            "bler": 0.0234375,
+            "pre_ber": 0.00445556640625,
+            "bce": 0.009633745837160063,
+            "nmse_db": 0.36599231319039305
+          },
+          "delta_h": {
+            "block_errors": -3,
+            "bit_errors": 210,
+            "bler": -0.0234375,
+            "pre_ber": 0.0128173828125,
+            "bce": 0.02111607510485003,
+            "nmse_db": -0.5364372058722804
+          },
+          "variance": {
+            "block_errors": 0,
+            "bit_errors": 1,
+            "bler": 0.0,
+            "pre_ber": 6.103515625e-05,
+            "bce": 0.0005929952640700009,
+            "nmse_db": -0.0018971337602913252
+          },
+          "pa_forward_inverse": {
+            "block_errors": -1,
+            "bit_errors": 8,
+            "bler": -0.0078125,
+            "pre_ber": 0.00048828125,
+            "bce": -0.0004119957918042594,
+            "nmse_db": -0.009680962698004336
+          },
+          "path_phase": {
+            "block_errors": 1,
+            "bit_errors": 10,
+            "bler": 0.0078125,
+            "pre_ber": 0.0006103515625,
+            "bce": 0.0014724180384048102,
+            "nmse_db": 0.028634900205872782
+          },
+          "spatial_irc": {
+            "block_errors": 1,
+            "bit_errors": 2,
+            "bler": 0.0078125,
+            "pre_ber": 0.0001220703125,
+            "bce": 7.854944342361447e-05,
+            "nmse_db": 0.04120134471296666
+          },
+          "all": {
+            "block_errors": 2,
+            "bit_errors": 280,
+            "bler": 0.015625,
+            "pre_ber": 0.01708984375,
+            "bce": 0.034136598949596614,
+            "nmse_db": 0.0877041948842372
+          }
+        }
+      }
+    }
+  }
+}

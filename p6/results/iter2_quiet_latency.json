@@ -1,0 +1,2394 @@
+{
+  "config": {
+    "full_host_background_limit_percent": 5.0,
+    "pre_window_seconds": 0.5,
+    "time_budget_seconds_per_regime": 90.0,
+    "required_samples_per_cell": 3,
+    "forwards_per_timed_group": {
+      "1": 16,
+      "64": 2
+    },
+    "warmups_per_cell": 1,
+    "torch_threads": 1,
+    "torch_interop_threads": 1,
+    "regimes": [
+      1,
+      2,
+      3
+    ],
+    "admission": "Pre and sample windows must both pass. Wall time is excluded from admission.",
+    "incomplete": "Incomplete cells include individual admitted samples and omit the median."
+  },
+  "environment": {
+    "project_scan_before": {
+      "concurrent_project_processes": [],
+      "unreadable_python_pids": [
+        9808,
+        9816,
+        17096
+      ]
+    },
+    "baseline": {
+      "wall_s": 1.001104499999201,
+      "process_user_s": 0.0,
+      "process_system_s": 0.0,
+      "host_busy_percent": 41.753926701570684,
+      "background_percent_of_host": 41.753926701570684
+    },
+    "logical_load_percent": [
+      84.6,
+      20.6,
+      81.5,
+      8.1,
+      47.7,
+      40.0,
+      35.9,
+      27.0,
+      42.2,
+      34.4,
+      36.9,
+      45.5
+    ],
+    "candidate_cpu_sets": [
+      {
+        "logical": 0,
+        "core": 0,
+        "efficiency_class": 1,
+        "physical_core_load_sum": 84.6
+      },
+      {
+        "logical": 2,
+        "core": 2,
+        "efficiency_class": 1,
+        "physical_core_load_sum": 81.5
+      }
+    ],
+    "selected_cpu_set": {
+      "logical": 2,
+      "core": 2,
+      "efficiency_class": 1,
+      "physical_core_load_sum": 81.5
+    },
+    "initial_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "effective_affinity": [
+      2
+    ],
+    "host_logical_cpus": 12,
+    "host_physical_cores": 10
+  },
+  "implementation": "735f01242a883d6a0121e296c77f47ec88d42175ed7617165f58f111f6fdbce1",
+  "supplement_sha256": "2744d89d17e4381e4ed159db8e972707fbb353b65d9cbd73e8ebcd99f37e5e8a",
+  "environment_sha256": "aef5e73b68d29c6e50edcf52b4f46d80da666a8281f9d03c499f086b8e00f6ea",
+  "regimes": {
+    "1": {
+      "pair": 901,
+      "regime": 1,
+      "depth": 3,
+      "stream": 6,
+      "rows": {
+        "1": {
+          "parity": {
+            "complete": false,
+            "accepted": 0,
+            "samples_ms": [],
+            "median_ms": null
+          },
+          "local_parity": {
+            "complete": false,
+            "accepted": 0,
+            "samples_ms": [],
+            "median_ms": null
+          }
+        },
+        "64": {
+          "parity": {
+            "complete": false,
+            "accepted": 0,
+            "samples_ms": [],
+            "median_ms": null
+          },
+          "local_parity": {
+            "complete": false,
+            "accepted": 0,
+            "samples_ms": [],
+            "median_ms": null
+          }
+        }
+      },
+      "attempts": [
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5512049000099069,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 21.34292565947242,
+            "background_percent_of_host": 21.34292565947242,
+            "same_physical_core_logical_busy_percent": {
+              "2": 61.76470588235294
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5156297000066843,
+            "process_user_s": 0.0,
+            "process_system_s": 0.015625,
+            "host_busy_percent": 15.012722646310433,
+            "background_percent_of_host": 14.758269720101781,
+            "same_physical_core_logical_busy_percent": {
+              "2": 39.39393939393939
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5006428000051528,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 26.52519893899204,
+            "background_percent_of_host": 26.52519893899204,
+            "same_physical_core_logical_busy_percent": {
+              "2": 59.375
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5013015999866184,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 21.842105263157894,
+            "background_percent_of_host": 21.842105263157894,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5042898000101559,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 23.34293948126801,
+            "background_percent_of_host": 23.34293948126801,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5009299999946961,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 30.104712041884817,
+            "background_percent_of_host": 30.104712041884817,
+            "same_physical_core_logical_busy_percent": {
+              "2": 53.125
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5011230999953113,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 25.93582887700535,
+            "background_percent_of_host": 25.93582887700535,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.625
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.502051899995422,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 33.76623376623377,
+            "background_percent_of_host": 33.76623376623377,
+            "same_physical_core_logical_busy_percent": {
+              "2": 40.625
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5010965000110446,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 15.718157181571815,
+            "background_percent_of_host": 15.718157181571815,
+            "same_physical_core_logical_busy_percent": {
+              "2": 3.125
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5010125999979209,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 29.649595687331537,
+            "background_percent_of_host": 29.649595687331537,
+            "same_physical_core_logical_busy_percent": {
+              "2": 53.125
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5029476000054274,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 74.02597402597402,
+            "background_percent_of_host": 74.02597402597402,
+            "same_physical_core_logical_busy_percent": {
+              "2": 28.125
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.500903100008145,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 26.203208556149733,
+            "background_percent_of_host": 26.203208556149733,
+            "same_physical_core_logical_busy_percent": {
+              "2": 48.484848484848484
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5006486999918707,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 15.076923076923077,
+            "background_percent_of_host": 15.076923076923077,
+            "same_physical_core_logical_busy_percent": {
+              "2": 6.25
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5007661000126973,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 14.854111405835544,
+            "background_percent_of_host": 14.854111405835544,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5005607000057353,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 14.805194805194805,
+            "background_percent_of_host": 14.805194805194805,
+            "same_physical_core_logical_busy_percent": {
+              "2": 12.5
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.501061299990397,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 11.609498680738787,
+            "background_percent_of_host": 11.609498680738787,
+            "same_physical_core_logical_busy_percent": {
+              "2": 28.125
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5011971000058111,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 20.571428571428573,
+            "background_percent_of_host": 20.571428571428573,
+            "same_physical_core_logical_busy_percent": {
+              "2": 12.5
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5144875999976648,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 17.539267015706805,
+            "background_percent_of_host": 17.539267015706805,
+            "same_physical_core_logical_busy_percent": {
+              "2": 34.375
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5008483999990858,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 14.52991452991453,
+            "background_percent_of_host": 14.52991452991453,
+            "same_physical_core_logical_busy_percent": {
+              "2": 25.0
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5010632000048645,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 24.43820224719101,
+            "background_percent_of_host": 24.43820224719101,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5004244000010658,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 15.573770491803279,
+            "background_percent_of_host": 15.573770491803279,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.181818181818183
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5015058999997564,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 19.26605504587156,
+            "background_percent_of_host": 19.26605504587156,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.625
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5014182000013534,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 17.971014492753625,
+            "background_percent_of_host": 17.971014492753625,
+            "same_physical_core_logical_busy_percent": {
+              "2": 9.375
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5005020000098739,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 17.333333333333332,
+            "background_percent_of_host": 17.333333333333332,
+            "same_physical_core_logical_busy_percent": {
+              "2": 9.375
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5007378000009339,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 22.340425531914892,
+            "background_percent_of_host": 22.340425531914892,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5077277999953367,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 33.41836734693877,
+            "background_percent_of_host": 33.41836734693877,
+            "same_physical_core_logical_busy_percent": {
+              "2": 9.375
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5005921999982093,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 16.666666666666668,
+            "background_percent_of_host": 16.666666666666668,
+            "same_physical_core_logical_busy_percent": {
+              "2": 9.375
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5009836999961408,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 21.236559139784948,
+            "background_percent_of_host": 21.236559139784948,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.625
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5017173999949591,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 26.649076517150394,
+            "background_percent_of_host": 26.649076517150394,
+            "same_physical_core_logical_busy_percent": {
+              "2": 21.875
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5007294999959413,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 15.229885057471265,
+            "background_percent_of_host": 15.229885057471265,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.181818181818183
+            }
+          },
+          "reason": "pre_window_above_limit"
+        }
+      ],
+      "measured_search_seconds": 91.67200000000594,
+      "logical_siblings": [
+        2
+      ],
+      "concurrent_stop_reason": null,
+      "complete": false,
+      "seeds": {
+        "1": 106901950,
+        "64": 106901951
+      }
+    },
+    "2": {
+      "pair": 901,
+      "regime": 2,
+      "depth": 3,
+      "stream": 6,
+      "rows": {
+        "1": {
+          "parity": {
+            "complete": false,
+            "accepted": 0,
+            "samples_ms": [],
+            "median_ms": null
+          },
+          "local_parity": {
+            "complete": false,
+            "accepted": 0,
+            "samples_ms": [],
+            "median_ms": null
+          }
+        },
+        "64": {
+          "parity": {
+            "complete": false,
+            "accepted": 0,
+            "samples_ms": [],
+            "median_ms": null
+          },
+          "local_parity": {
+            "complete": false,
+            "accepted": 0,
+            "samples_ms": [],
+            "median_ms": null
+          }
+        }
+      },
+      "attempts": [
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5005513999931281,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 6.329113924050633,
+            "background_percent_of_host": 6.329113924050633,
+            "same_physical_core_logical_busy_percent": {
+              "2": 9.375
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5039390000019921,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 30.232558139534884,
+            "background_percent_of_host": 30.232558139534884,
+            "same_physical_core_logical_busy_percent": {
+              "2": 31.25
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.500335399992764,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 19.825072886297377,
+            "background_percent_of_host": 19.825072886297377,
+            "same_physical_core_logical_busy_percent": {
+              "2": 21.21212121212121
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5057869000011124,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 12.012012012012011,
+            "background_percent_of_host": 12.012012012012011,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5052173000003677,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 17.45562130177515,
+            "background_percent_of_host": 17.45562130177515,
+            "same_physical_core_logical_busy_percent": {
+              "2": 9.375
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": 27.62021875,
+          "forwards": 16,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5008193999965442,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 2.616279069767442,
+            "background_percent_of_host": 2.616279069767442,
+            "same_physical_core_logical_busy_percent": {
+              "2": 9.375
+            }
+          },
+          "sample_window": {
+            "wall_s": 0.4430968000087887,
+            "process_user_s": 0.40625,
+            "process_system_s": 0.03125,
+            "host_busy_percent": 22.67080745341615,
+            "background_percent_of_host": 13.975155279503106,
+            "same_physical_core_logical_busy_percent": {
+              "2": 100.0
+            }
+          },
+          "group_wall_ms": 441.9235,
+          "group_cpu_ms": 437.5,
+          "reason": "sample_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5007172000041464,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 11.142061281337048,
+            "background_percent_of_host": 11.142061281337048,
+            "same_physical_core_logical_busy_percent": {
+              "2": 12.5
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.50185600000259,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 26.330532212885153,
+            "background_percent_of_host": 26.330532212885153,
+            "same_physical_core_logical_busy_percent": {
+              "2": 21.875
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5012366000009933,
+            "process_user_s": 0.0,
+            "process_system_s": 0.015625,
+            "host_busy_percent": 10.326086956521738,
+            "background_percent_of_host": 10.054347826086957,
+            "same_physical_core_logical_busy_percent": {
+              "2": 9.375
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5010877000022447,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 20.424403183023873,
+            "background_percent_of_host": 20.424403183023873,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5012802999990527,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 28.273809523809526,
+            "background_percent_of_host": 28.273809523809526,
+            "same_physical_core_logical_busy_percent": {
+              "2": 12.5
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5021570000099018,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 29.261363636363637,
+            "background_percent_of_host": 29.261363636363637,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.625
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.500986400002148,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 18.867924528301888,
+            "background_percent_of_host": 18.867924528301888,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.501118400003179,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 14.15929203539823,
+            "background_percent_of_host": 14.15929203539823,
+            "same_physical_core_logical_busy_percent": {
+              "2": 6.25
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5028724000003422,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 23.91304347826087,
+            "background_percent_of_host": 23.91304347826087,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.625
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5010982999956468,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 12.852664576802507,
+            "background_percent_of_host": 12.852664576802507,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.500924699997995,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 15.988372093023257,
+            "background_percent_of_host": 15.988372093023257,
+            "same_physical_core_logical_busy_percent": {
+              "2": 37.5
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5006301999965217,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 16.87116564417178,
+            "background_percent_of_host": 16.87116564417178,
+            "same_physical_core_logical_busy_percent": {
+              "2": 21.875
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": 27.28734375,
+          "forwards": 16,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5005498999962583,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 3.951367781155015,
+            "background_percent_of_host": 3.951367781155015,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "sample_window": {
+            "wall_s": 0.4367002999933902,
+            "process_user_s": 0.390625,
+            "process_system_s": 0.0,
+            "host_busy_percent": 13.70262390670554,
+            "background_percent_of_host": 6.41399416909621,
+            "same_physical_core_logical_busy_percent": {
+              "2": 100.0
+            }
+          },
+          "group_wall_ms": 436.5975,
+          "group_cpu_ms": 390.625,
+          "reason": "sample_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5018090999947162,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 11.494252873563218,
+            "background_percent_of_host": 11.494252873563218,
+            "same_physical_core_logical_busy_percent": {
+              "2": 31.25
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.506057000005967,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 13.373860182370821,
+            "background_percent_of_host": 13.373860182370821,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5008135000098264,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 6.358381502890174,
+            "background_percent_of_host": 6.358381502890174,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.625
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5058681000082288,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 16.566265060240966,
+            "background_percent_of_host": 16.566265060240966,
+            "same_physical_core_logical_busy_percent": {
+              "2": 12.5
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5006353999924613,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 16.408668730650156,
+            "background_percent_of_host": 16.408668730650156,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.625
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5039834000053816,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 28.405797101449274,
+            "background_percent_of_host": 28.405797101449274,
+            "same_physical_core_logical_busy_percent": {
+              "2": 48.484848484848484
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.503412300007767,
+            "process_user_s": 0.0,
+            "process_system_s": 0.015625,
+            "host_busy_percent": 29.23076923076923,
+            "background_percent_of_host": 28.923076923076923,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.151515151515152
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5006069999944884,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 27.272727272727273,
+            "background_percent_of_host": 27.272727272727273,
+            "same_physical_core_logical_busy_percent": {
+              "2": 27.272727272727273
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5009695999906398,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 23.78223495702006,
+            "background_percent_of_host": 23.78223495702006,
+            "same_physical_core_logical_busy_percent": {
+              "2": 12.5
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5011060000106227,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 26.239067055393587,
+            "background_percent_of_host": 26.239067055393587,
+            "same_physical_core_logical_busy_percent": {
+              "2": 34.375
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5016369999939343,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 33.75796178343949,
+            "background_percent_of_host": 33.75796178343949,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5018156000005547,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 47.1875,
+            "background_percent_of_host": 47.1875,
+            "same_physical_core_logical_busy_percent": {
+              "2": 21.875
+            }
+          },
+          "reason": "pre_window_above_limit"
+        }
+      ],
+      "measured_search_seconds": 91.71899999999732,
+      "logical_siblings": [
+        2
+      ],
+      "concurrent_stop_reason": null,
+      "complete": false,
+      "seeds": {
+        "1": 206901950,
+        "64": 206901951
+      }
+    },
+    "3": {
+      "pair": 901,
+      "regime": 3,
+      "depth": 3,
+      "stream": 6,
+      "rows": {
+        "1": {
+          "parity": {
+            "complete": false,
+            "accepted": 0,
+            "samples_ms": [],
+            "median_ms": null
+          },
+          "local_parity": {
+            "complete": false,
+            "accepted": 0,
+            "samples_ms": [],
+            "median_ms": null
+          }
+        },
+        "64": {
+          "parity": {
+            "complete": false,
+            "accepted": 0,
+            "samples_ms": [],
+            "median_ms": null
+          },
+          "local_parity": {
+            "complete": false,
+            "accepted": 0,
+            "samples_ms": [],
+            "median_ms": null
+          }
+        }
+      },
+      "attempts": [
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5011761000059778,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 20.0,
+            "background_percent_of_host": 20.0,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.625
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5031043000053614,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 24.188790560471976,
+            "background_percent_of_host": 24.188790560471976,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.625
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5010916000028374,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 36.31123919308357,
+            "background_percent_of_host": 36.31123919308357,
+            "same_physical_core_logical_busy_percent": {
+              "2": 25.0
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.501671100006206,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 5.602240896358543,
+            "background_percent_of_host": 5.602240896358543,
+            "same_physical_core_logical_busy_percent": {
+              "2": 12.5
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5007899999909569,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 14.594594594594595,
+            "background_percent_of_host": 14.594594594594595,
+            "same_physical_core_logical_busy_percent": {
+              "2": 12.5
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5017463999975007,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 15.178571428571429,
+            "background_percent_of_host": 15.178571428571429,
+            "same_physical_core_logical_busy_percent": {
+              "2": 34.375
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": 22.787225,
+          "forwards": 16,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5004639999970095,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 4.117647058823529,
+            "background_percent_of_host": 4.117647058823529,
+            "same_physical_core_logical_busy_percent": {
+              "2": 12.5
+            }
+          },
+          "sample_window": {
+            "wall_s": 0.3651730999990832,
+            "process_user_s": 0.3125,
+            "process_system_s": 0.03125,
+            "host_busy_percent": 19.06614785992218,
+            "background_percent_of_host": 10.505836575875486,
+            "same_physical_core_logical_busy_percent": {
+              "2": 100.0
+            }
+          },
+          "group_wall_ms": 364.5956,
+          "group_cpu_ms": 343.75,
+          "reason": "sample_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5010024999937741,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 8.092485549132949,
+            "background_percent_of_host": 8.092485549132949,
+            "same_physical_core_logical_busy_percent": {
+              "2": 28.125
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5011555999953998,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 21.20343839541547,
+            "background_percent_of_host": 21.20343839541547,
+            "same_physical_core_logical_busy_percent": {
+              "2": 9.375
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5034419000003254,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 8.720930232558139,
+            "background_percent_of_host": 8.720930232558139,
+            "same_physical_core_logical_busy_percent": {
+              "2": 12.5
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5006266999989748,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 21.238938053097346,
+            "background_percent_of_host": 21.238938053097346,
+            "same_physical_core_logical_busy_percent": {
+              "2": 31.25
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5008441000099992,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 14.739884393063583,
+            "background_percent_of_host": 14.739884393063583,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.625
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.501111999998102,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 19.942196531791907,
+            "background_percent_of_host": 19.942196531791907,
+            "same_physical_core_logical_busy_percent": {
+              "2": 27.272727272727273
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5023036000056891,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 12.634408602150538,
+            "background_percent_of_host": 12.634408602150538,
+            "same_physical_core_logical_busy_percent": {
+              "2": 12.5
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": 1166.2869,
+          "forwards": 2,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5009566999942763,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 2.140672782874618,
+            "background_percent_of_host": 2.140672782874618,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.625
+            }
+          },
+          "sample_window": {
+            "wall_s": 2.3332461999962106,
+            "process_user_s": 1.984375,
+            "process_system_s": 0.203125,
+            "host_busy_percent": 18.97970378496983,
+            "background_percent_of_host": 11.300054854635217,
+            "same_physical_core_logical_busy_percent": {
+              "2": 100.0
+            }
+          },
+          "group_wall_ms": 2332.5738,
+          "group_cpu_ms": 2187.5,
+          "reason": "sample_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5016848999948706,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 21.09375,
+            "background_percent_of_host": 21.09375,
+            "same_physical_core_logical_busy_percent": {
+              "2": 6.25
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5017472000035923,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 36.38968481375358,
+            "background_percent_of_host": 36.38968481375358,
+            "same_physical_core_logical_busy_percent": {
+              "2": 21.875
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5023625000030734,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 36.64772727272727,
+            "background_percent_of_host": 36.64772727272727,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.151515151515152
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5059780000010505,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 29.661016949152543,
+            "background_percent_of_host": 29.661016949152543,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.181818181818183
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5020519999961834,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 44.266666666666666,
+            "background_percent_of_host": 44.266666666666666,
+            "same_physical_core_logical_busy_percent": {
+              "2": 28.125
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.501188700000057,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 25.714285714285715,
+            "background_percent_of_host": 25.714285714285715,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.625
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5015784999995958,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 17.473118279569892,
+            "background_percent_of_host": 17.473118279569892,
+            "same_physical_core_logical_busy_percent": {
+              "2": 15.625
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": 31.172075,
+          "forwards": 16,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5009178000036627,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 2.865329512893983,
+            "background_percent_of_host": 2.865329512893983,
+            "same_physical_core_logical_busy_percent": {
+              "2": 9.375
+            }
+          },
+          "sample_window": {
+            "wall_s": 0.4995268000056967,
+            "process_user_s": 0.390625,
+            "process_system_s": 0.046875,
+            "host_busy_percent": 17.223650385604113,
+            "background_percent_of_host": 10.025706940874036,
+            "same_physical_core_logical_busy_percent": {
+              "2": 100.0
+            }
+          },
+          "group_wall_ms": 498.7532,
+          "group_cpu_ms": 437.5,
+          "reason": "sample_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5020277000003261,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 17.1875,
+            "background_percent_of_host": 17.1875,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5016556000045966,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 34.51086956521739,
+            "background_percent_of_host": 34.51086956521739,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5008690999966348,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 14.285714285714286,
+            "background_percent_of_host": 14.285714285714286,
+            "same_physical_core_logical_busy_percent": {
+              "2": 9.375
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5013613000046462,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 18.71657754010695,
+            "background_percent_of_host": 18.71657754010695,
+            "same_physical_core_logical_busy_percent": {
+              "2": 9.375
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "local_parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5040870999946492,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 12.654320987654321,
+            "background_percent_of_host": 12.654320987654321,
+            "same_physical_core_logical_busy_percent": {
+              "2": 24.242424242424242
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 64,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5014228999934858,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 20.448179271708682,
+            "background_percent_of_host": 20.448179271708682,
+            "same_physical_core_logical_busy_percent": {
+              "2": 12.5
+            }
+          },
+          "reason": "pre_window_above_limit"
+        },
+        {
+          "batch": 1,
+          "arm": "parity",
+          "admitted": false,
+          "sample_ms": null,
+          "forwards": 0,
+          "unreadable_python_pids": [
+            9808,
+            9816,
+            17096
+          ],
+          "pre_window": {
+            "wall_s": 0.5017897000070661,
+            "process_user_s": 0.0,
+            "process_system_s": 0.0,
+            "host_busy_percent": 65.60846560846561,
+            "background_percent_of_host": 65.60846560846561,
+            "same_physical_core_logical_busy_percent": {
+              "2": 18.75
+            }
+          },
+          "reason": "pre_window_above_limit"
+        }
+      ],
+      "measured_search_seconds": 92.92200000000594,
+      "logical_siblings": [
+        2
+      ],
+      "concurrent_stop_reason": null,
+      "complete": false,
+      "seeds": {
+        "1": 306901950,
+        "64": 306901951
+      }
+    }
+  }
+}

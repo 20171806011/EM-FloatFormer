@@ -1,0 +1,135 @@
+{
+  "old_model_sha256": "7ce824f2d9142e21514fecf343c817489b5db8e35f959d91ccfdc65696b0b007",
+  "fixture": {
+    "regime": 1,
+    "batch": 4,
+    "snr_db": 9,
+    "seed": 22,
+    "variant": "pure",
+    "initialization": "Exact centering makes the initial receiver independent of live weight seed.",
+    "transformation": "y[:,:,-1,::2] = -y[:,:,0,::2] / obs.pilots[0,::2] * obs.pilots[-1,::2]; then transform y by g and noise_var by abs(g)**2",
+    "scored": "All grid logits, including pilot REs; positive sign = 1.",
+    "grid_logits": 2560,
+    "before_counts_source": "Captured before editing the model in the same checkout.",
+    "repair": "Choose +pi at the negative real axis within 32 float64 eps times the complex cross magnitude."
+  },
+  "cases": [
+    {
+      "gain_re": 0.36,
+      "gain_im": 0.49,
+      "old_max_abs_llr_diff": 80.1167848623206,
+      "old_flips": 394,
+      "new_max_abs_llr_diff": 5.684341886080802e-14,
+      "new_flips": 0,
+      "new_max_abs_channel_diff": 1.2947314098277875e-15
+    },
+    {
+      "gain_re": 0.3,
+      "gain_im": 0.9,
+      "old_max_abs_llr_diff": 80.11678486232059,
+      "old_flips": 592,
+      "new_max_abs_llr_diff": 6.394884621840902e-14,
+      "new_flips": 0,
+      "new_max_abs_channel_diff": 2.0380985511143445e-15
+    },
+    {
+      "gain_re": -3.1e-36,
+      "gain_im": 5.9999999999999996e-36,
+      "old_max_abs_llr_diff": 80.1167848623206,
+      "old_flips": 584,
+      "new_max_abs_llr_diff": 5.684341886080802e-14,
+      "new_flips": 0,
+      "new_max_abs_channel_diff": 1.4432899320127035e-15
+    },
+    {
+      "gain_re": 0.0,
+      "gain_im": 2.0,
+      "old_max_abs_llr_diff": 4.263256414560601e-14,
+      "old_flips": 0,
+      "new_max_abs_llr_diff": 3.552713678800501e-14,
+      "new_flips": 0,
+      "new_max_abs_channel_diff": 1.1157603309187458e-15
+    }
+  ],
+  "r1_repair_sha256": "ff6d37e8eb7d19ff78e1d68668c5ad449915e44371590cfed930e6f151391c03",
+  "final_model_sha256": "b1c5deca8563026bf4233ffc78378d184153b40191dcadbc38b03defe8e12ee0",
+  "doppler_fixtures": [
+    {
+      "regime": 2,
+      "snr_db": 9,
+      "seed": 22,
+      "batch": 2,
+      "variant": "pure",
+      "transformation": "y[:,:,obs.pilot_mask] = obs.pilots[obs.pilot_mask]",
+      "grid_logits": 5120,
+      "cases": [
+        {
+          "gain_re": 0.36,
+          "gain_im": 0.49,
+          "old_max_abs_llr_diff": 5.6512117699416,
+          "old_flips": 151,
+          "new_max_abs_llr_diff": 4.263256414560601e-14,
+          "new_flips": 0,
+          "new_max_abs_channel_diff": 1.5423711185402538e-15
+        },
+        {
+          "gain_re": 0.3,
+          "gain_im": 0.9,
+          "old_max_abs_llr_diff": 4.973799150320701e-14,
+          "old_flips": 0,
+          "new_max_abs_llr_diff": 5.684341886080802e-14,
+          "new_flips": 0,
+          "new_max_abs_channel_diff": 8.005932084973442e-16
+        },
+        {
+          "gain_re": -3.1e-36,
+          "gain_im": 5.9999999999999996e-36,
+          "old_max_abs_llr_diff": 4.973799150320701e-14,
+          "old_flips": 0,
+          "new_max_abs_llr_diff": 4.973799150320701e-14,
+          "new_flips": 0,
+          "new_max_abs_channel_diff": 1.0934428697813141e-15
+        }
+      ]
+    },
+    {
+      "regime": 3,
+      "snr_db": 7,
+      "seed": 22,
+      "batch": 2,
+      "variant": "pure",
+      "transformation": "y[:,:,obs.pilot_mask] = obs.pilots[obs.pilot_mask]; then y[:,:,-1,::2] *= -1",
+      "grid_logits": 1280,
+      "cases": [
+        {
+          "gain_re": 0.36,
+          "gain_im": 0.49,
+          "old_max_abs_llr_diff": 157.61349305033247,
+          "old_flips": 757,
+          "new_max_abs_llr_diff": 4.973799150320701e-14,
+          "new_flips": 0,
+          "new_max_abs_channel_diff": 1.6699540590904642e-15
+        },
+        {
+          "gain_re": 0.3,
+          "gain_im": 0.9,
+          "old_max_abs_llr_diff": 22.614604280374138,
+          "old_flips": 100,
+          "new_max_abs_llr_diff": 6.394884621840902e-14,
+          "new_flips": 0,
+          "new_max_abs_channel_diff": 1.7798229048217483e-15
+        },
+        {
+          "gain_re": -3.1e-36,
+          "gain_im": 5.9999999999999996e-36,
+          "old_max_abs_llr_diff": 8.813926213854279,
+          "old_flips": 87,
+          "new_max_abs_llr_diff": 7.105427357601002e-14,
+          "new_flips": 0,
+          "new_max_abs_channel_diff": 1.4228624520802642e-15
+        }
+      ]
+    }
+  ],
+  "doppler_repair": "Choose first indistinguishable public trajectory score, with absolute power tolerance 2 sqrt(top per ray) e + e^2, where e = 64 eps sqrt(top over rays), covering projection roundoff at null taps."
+}

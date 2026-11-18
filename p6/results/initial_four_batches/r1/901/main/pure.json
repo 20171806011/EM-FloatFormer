@@ -1,0 +1,94 @@
+{
+  "regime": 1,
+  "pair": 901,
+  "design": "main",
+  "arm": "pure",
+  "snr_db": 12.0,
+  "implementation": "fe2cb0181cc8cfd0db43b165b9e9a9e0fb956a47f859cdc18b77e874ded8b1f9",
+  "wall_seconds": 7.597719299999881,
+  "config": {
+    "depth": 2,
+    "lr": 0.003,
+    "schedule": "constant",
+    "clip": 1.0,
+    "aux_nmse": 0.0
+  },
+  "parameters": 236,
+  "trace": [
+    {
+      "step": 0,
+      "validation_bce": 0.274926920580229,
+      "train_mean_bce": null,
+      "train_mean_objective": null,
+      "mean_preclip_norm": null,
+      "max_preclip_norm": null,
+      "lr": 0.003,
+      "cumulative_fit_seconds": 0.0
+    },
+    {
+      "step": 16,
+      "validation_bce": 0.27290898288296855,
+      "train_mean_bce": 0.21081364383470524,
+      "train_mean_objective": 0.21081364383470524,
+      "mean_preclip_norm": 0.4290088210454775,
+      "max_preclip_norm": 0.9094598713806179,
+      "lr": 0.003,
+      "cumulative_fit_seconds": 1.64525530001265
+    },
+    {
+      "step": 32,
+      "validation_bce": 0.24651716340440052,
+      "train_mean_bce": 0.20602487434028155,
+      "train_mean_objective": 0.20602487434028155,
+      "mean_preclip_norm": 0.33534677481498415,
+      "max_preclip_norm": 0.8510727594924292,
+      "lr": 0.003,
+      "cumulative_fit_seconds": 3.297067999985302
+    },
+    {
+      "step": 48,
+      "validation_bce": 0.26828285887428244,
+      "train_mean_bce": 0.20123023842357268,
+      "train_mean_objective": 0.20123023842357268,
+      "mean_preclip_norm": 0.22459908477159737,
+      "max_preclip_norm": 0.5096517654907091,
+      "lr": 0.003,
+      "cumulative_fit_seconds": 4.93278260002262
+    },
+    {
+      "step": 64,
+      "validation_bce": 0.24903738369226375,
+      "train_mean_bce": 0.1972499999572649,
+      "train_mean_objective": 0.1972499999572649,
+      "mean_preclip_norm": 0.3594186128525809,
+      "max_preclip_norm": 0.8140029324391529,
+      "lr": 0.003,
+      "cumulative_fit_seconds": 6.616957900041598
+    }
+  ],
+  "rows": {
+    "64": {
+      "bit_errors": 1523,
+      "bits": 16384,
+      "info_errors": 100,
+      "info_bits": 8192,
+      "block_errors": 18,
+      "blocks": 128,
+      "channel_error": 483.1182623934635,
+      "channel_energy": 5187.733261049692,
+      "bce_sum": 3544.6946482435956
+    }
+  },
+  "probe": {},
+  "fit_seconds": 6.616957900041598,
+  "train_batch": 4,
+  "init_seed": 105901900,
+  "train_seed_first": 105901000,
+  "train_seed_last": 105901063,
+  "score_seeds": [
+    106901000,
+    106901001,
+    106901002,
+    106901003
+  ]
+}

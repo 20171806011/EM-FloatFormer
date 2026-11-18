@@ -1,0 +1,4289 @@
+{
+  "sources": {
+    "operator_em_transformer.py": "b1c5deca8563026bf4233ffc78378d184153b40191dcadbc38b03defe8e12ee0",
+    "parity.py": "105b04e3d0e2a51f084d9408801986ef8f180784d6b9d0b019bdd18fb7b212b6"
+  },
+  "rows": [
+    {
+      "regime": 1,
+      "pair": 1,
+      "variant": "pure",
+      "audit_seed": 111001000,
+      "checkpoint": "results/r1/pair01/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 7.815970093361102e-14,
+            "max_relative_cfr_l2": 8.570886829461145e-16,
+            "phase_seed": 113001000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.973799150320701e-14,
+            "max_relative_cfr_l2": 4.270360453834388e-16,
+            "phase_seed": 113001001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.973799150320701e-14,
+            "max_relative_cfr_l2": 4.601883005320136e-16,
+            "phase_seed": 113001002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113001003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113001004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 1,
+      "variant": "parity",
+      "audit_seed": 111001000,
+      "checkpoint": "results/r1/pair01/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 8.526512829121202e-14,
+            "max_relative_cfr_l2": 7.45072582800632e-16,
+            "phase_seed": 113001000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 5.588947885281571e-16,
+            "phase_seed": 113001001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 5.054201124502236e-16,
+            "phase_seed": 113001002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113001003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113001004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 2,
+      "variant": "pure",
+      "audit_seed": 111002000,
+      "checkpoint": "results/r1/pair02/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 9.947598300641403e-14,
+            "max_relative_cfr_l2": 8.166057221803783e-16,
+            "phase_seed": 113002000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 3.901361408874697e-16,
+            "phase_seed": 113002001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 5.582591416085134e-16,
+            "phase_seed": 113002002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113002003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113002004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 2,
+      "variant": "parity",
+      "audit_seed": 111002000,
+      "checkpoint": "results/r1/pair02/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 1.1368683772161603e-13,
+            "max_relative_cfr_l2": 9.147776559604611e-16,
+            "phase_seed": 113002000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 4.2785868763310623e-16,
+            "phase_seed": 113002001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.973799150320701e-14,
+            "max_relative_cfr_l2": 5.784425453609673e-16,
+            "phase_seed": 113002002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113002003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113002004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 3,
+      "variant": "pure",
+      "audit_seed": 111003000,
+      "checkpoint": "results/r1/pair03/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 7.815970093361102e-14,
+            "max_relative_cfr_l2": 5.691510635233561e-16,
+            "phase_seed": 113003000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 6.561026378294543e-16,
+            "phase_seed": 113003001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.973799150320701e-14,
+            "max_relative_cfr_l2": 6.295313899977082e-16,
+            "phase_seed": 113003002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113003003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113003004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 3,
+      "variant": "parity",
+      "audit_seed": 111003000,
+      "checkpoint": "results/r1/pair03/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 7.815970093361102e-14,
+            "max_relative_cfr_l2": 7.104698216543181e-16,
+            "phase_seed": 113003000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.973799150320701e-14,
+            "max_relative_cfr_l2": 3.68342218099898e-16,
+            "phase_seed": 113003001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.618527782440651e-14,
+            "max_relative_cfr_l2": 5.900631710236575e-16,
+            "phase_seed": 113003002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113003003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113003004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 4,
+      "variant": "pure",
+      "audit_seed": 111004000,
+      "checkpoint": "results/r1/pair04/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 1.4210854715202004e-13,
+            "max_relative_cfr_l2": 8.623131077107536e-16,
+            "phase_seed": 113004000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 1.4210854715202004e-13,
+            "max_relative_cfr_l2": 5.666659339558879e-16,
+            "phase_seed": 113004001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 9.237055564881302e-14,
+            "max_relative_cfr_l2": 5.579952924052776e-16,
+            "phase_seed": 113004002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113004003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113004004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 4,
+      "variant": "parity",
+      "audit_seed": 111004000,
+      "checkpoint": "results/r1/pair04/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 1.8474111129762605e-13,
+            "max_relative_cfr_l2": 8.866735332198835e-16,
+            "phase_seed": 113004000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 1.5631940186722204e-13,
+            "max_relative_cfr_l2": 7.081375031491029e-16,
+            "phase_seed": 113004001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 8.526512829121202e-14,
+            "max_relative_cfr_l2": 6.15409851569292e-16,
+            "phase_seed": 113004002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113004003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113004004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 5,
+      "variant": "pure",
+      "audit_seed": 111005000,
+      "checkpoint": "results/r1/pair05/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 5.3290705182007514e-14,
+            "max_relative_cfr_l2": 8.150122245935706e-16,
+            "phase_seed": 113005000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.973799150320701e-14,
+            "max_relative_cfr_l2": 4.747355779038028e-16,
+            "phase_seed": 113005001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 4.741056328391351e-16,
+            "phase_seed": 113005002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113005003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113005004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 5,
+      "variant": "parity",
+      "audit_seed": 111005000,
+      "checkpoint": "results/r1/pair05/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 6.599862594808155e-16,
+            "phase_seed": 113005000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.973799150320701e-14,
+            "max_relative_cfr_l2": 4.917519865820805e-16,
+            "phase_seed": 113005001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 5.302640745870585e-16,
+            "phase_seed": 113005002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113005003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113005004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 6,
+      "variant": "pure",
+      "audit_seed": 111006000,
+      "checkpoint": "results/r1/pair06/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 7.715768874095567e-16,
+            "phase_seed": 113006000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.618527782440651e-14,
+            "max_relative_cfr_l2": 7.198586406685411e-16,
+            "phase_seed": 113006001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 5.3290705182007514e-14,
+            "max_relative_cfr_l2": 6.640598726653911e-16,
+            "phase_seed": 113006002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113006003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113006004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 6,
+      "variant": "parity",
+      "audit_seed": 111006000,
+      "checkpoint": "results/r1/pair06/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 8.526512829121202e-14,
+            "max_relative_cfr_l2": 5.598274402346551e-16,
+            "phase_seed": 113006000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 4.721307078271626e-16,
+            "phase_seed": 113006001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 6.039613253960852e-14,
+            "max_relative_cfr_l2": 5.55971171956685e-16,
+            "phase_seed": 113006002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113006003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113006004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 7,
+      "variant": "pure",
+      "audit_seed": 111007000,
+      "checkpoint": "results/r1/pair07/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 6.039613253960852e-14,
+            "max_relative_cfr_l2": 7.924802715923167e-16,
+            "phase_seed": 113007000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 3.907985046680551e-14,
+            "max_relative_cfr_l2": 4.698730253067628e-16,
+            "phase_seed": 113007001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.618527782440651e-14,
+            "max_relative_cfr_l2": 9.05615373923552e-16,
+            "phase_seed": 113007002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113007003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113007004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 7,
+      "variant": "parity",
+      "audit_seed": 111007000,
+      "checkpoint": "results/r1/pair07/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 9.388524565774613e-16,
+            "phase_seed": 113007000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 3.552713678800501e-14,
+            "max_relative_cfr_l2": 3.8348977553397106e-16,
+            "phase_seed": 113007001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 3.907985046680551e-14,
+            "max_relative_cfr_l2": 6.112326870822754e-16,
+            "phase_seed": 113007002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113007003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113007004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 8,
+      "variant": "pure",
+      "audit_seed": 111008000,
+      "checkpoint": "results/r1/pair08/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 6.679919000518083e-16,
+            "phase_seed": 113008000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 8.526512829121202e-14,
+            "max_relative_cfr_l2": 6.012392055292284e-16,
+            "phase_seed": 113008001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 4.871514298398938e-16,
+            "phase_seed": 113008002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113008003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113008004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 8,
+      "variant": "parity",
+      "audit_seed": 111008000,
+      "checkpoint": "results/r1/pair08/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 6.715937172063262e-16,
+            "phase_seed": 113008000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.973799150320701e-14,
+            "max_relative_cfr_l2": 4.0525485297733933e-16,
+            "phase_seed": 113008001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 9.036827271859344e-16,
+            "phase_seed": 113008002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113008003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113008004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 9,
+      "variant": "pure",
+      "audit_seed": 111009000,
+      "checkpoint": "results/r1/pair09/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 7.815970093361102e-14,
+            "max_relative_cfr_l2": 8.028715000913217e-16,
+            "phase_seed": 113009000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.973799150320701e-14,
+            "max_relative_cfr_l2": 5.223999163894781e-16,
+            "phase_seed": 113009001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.263256414560601e-14,
+            "max_relative_cfr_l2": 5.255797209141401e-16,
+            "phase_seed": 113009002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113009003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113009004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 9,
+      "variant": "parity",
+      "audit_seed": 111009000,
+      "checkpoint": "results/r1/pair09/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 6.876119095399282e-16,
+            "phase_seed": 113009000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.263256414560601e-14,
+            "max_relative_cfr_l2": 4.893310803567841e-16,
+            "phase_seed": 113009001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 3.907985046680551e-14,
+            "max_relative_cfr_l2": 6.057645789406299e-16,
+            "phase_seed": 113009002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113009003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113009004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 10,
+      "variant": "pure",
+      "audit_seed": 111010000,
+      "checkpoint": "results/r1/pair10/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 9.237055564881302e-14,
+            "max_relative_cfr_l2": 5.069430017193554e-16,
+            "phase_seed": 113010000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 6.51089630737987e-16,
+            "phase_seed": 113010001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 5.163457655882292e-16,
+            "phase_seed": 113010002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113010003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113010004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 1,
+      "pair": 10,
+      "variant": "parity",
+      "audit_seed": 111010000,
+      "checkpoint": "results/r1/pair10/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 1.0658141036401503e-13,
+            "max_relative_cfr_l2": 7.513384963494413e-16,
+            "phase_seed": 113010000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 1.0302869668521453e-13,
+            "max_relative_cfr_l2": 7.755268447316342e-16,
+            "phase_seed": 113010001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 4.937216839683924e-16,
+            "phase_seed": 113010002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113010003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 113010004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 1,
+      "variant": "pure",
+      "audit_seed": 211001000,
+      "checkpoint": "results/r2/pair01/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 124416,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 6.311120072352631e-16,
+            "phase_seed": 213001000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 6.039613253960852e-14,
+            "max_relative_cfr_l2": 4.7492415634465e-16,
+            "phase_seed": 213001001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 6.46768685897786e-16,
+            "phase_seed": 213001002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213001003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213001004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 1,
+      "variant": "parity",
+      "audit_seed": 211001000,
+      "checkpoint": "results/r2/pair01/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 124416,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 6.507980312252035e-16,
+            "phase_seed": 213001000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 3.6009791987988523e-16,
+            "phase_seed": 213001001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 6.039613253960852e-14,
+            "max_relative_cfr_l2": 4.705357151657394e-16,
+            "phase_seed": 213001002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213001003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213001004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 2,
+      "variant": "pure",
+      "audit_seed": 211002000,
+      "checkpoint": "results/r2/pair02/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 124416,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 4.918201777161122e-16,
+            "phase_seed": 213002000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 4.482815128841045e-16,
+            "phase_seed": 213002001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 4.263256414560601e-14,
+            "max_relative_cfr_l2": 5.535045015978045e-16,
+            "phase_seed": 213002002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213002003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213002004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 2,
+      "variant": "parity",
+      "audit_seed": 211002000,
+      "checkpoint": "results/r2/pair02/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 124416,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 5.969540152331469e-16,
+            "phase_seed": 213002000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 4.458751992515994e-16,
+            "phase_seed": 213002001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 5.395585339691877e-16,
+            "phase_seed": 213002002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213002003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213002004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 3,
+      "variant": "pure",
+      "audit_seed": 211003000,
+      "checkpoint": "results/r2/pair03/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 124416,
+            "max_grid_llr_diff": 7.460698725481052e-14,
+            "max_relative_cfr_l2": 8.655748460900864e-16,
+            "phase_seed": 213003000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 4.463780411197388e-16,
+            "phase_seed": 213003001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 6.38060361362348e-16,
+            "phase_seed": 213003002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213003003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213003004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 3,
+      "variant": "parity",
+      "audit_seed": 211003000,
+      "checkpoint": "results/r2/pair03/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 124416,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 5.410447562769128e-16,
+            "phase_seed": 213003000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 4.1266099682607786e-16,
+            "phase_seed": 213003001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 3.6370295802761466e-16,
+            "phase_seed": 213003002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213003003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213003004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 4,
+      "variant": "pure",
+      "audit_seed": 211004000,
+      "checkpoint": "results/r2/pair04/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 124416,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 6.796951216575506e-16,
+            "phase_seed": 213004000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 4.973799150320701e-14,
+            "max_relative_cfr_l2": 5.063201536088609e-16,
+            "phase_seed": 213004001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 4.263256414560601e-14,
+            "max_relative_cfr_l2": 7.704269088245706e-16,
+            "phase_seed": 213004002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213004003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213004004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 4,
+      "variant": "parity",
+      "audit_seed": 211004000,
+      "checkpoint": "results/r2/pair04/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 124416,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 6.995693168783139e-16,
+            "phase_seed": 213004000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 5.15375503762311e-16,
+            "phase_seed": 213004001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 4.449587186209477e-16,
+            "phase_seed": 213004002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213004003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213004004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 5,
+      "variant": "pure",
+      "audit_seed": 211005000,
+      "checkpoint": "results/r2/pair05/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 124416,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 5.789366392160374e-16,
+            "phase_seed": 213005000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 4.973799150320701e-14,
+            "max_relative_cfr_l2": 4.588878959937034e-16,
+            "phase_seed": 213005001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 4.2556791289222264e-16,
+            "phase_seed": 213005002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213005003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213005004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 2,
+      "pair": 5,
+      "variant": "parity",
+      "audit_seed": 211005000,
+      "checkpoint": "results/r2/pair05/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 124416,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 4.888749832043352e-16,
+            "phase_seed": 213005000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 5.3290705182007514e-14,
+            "max_relative_cfr_l2": 4.228650375447951e-16,
+            "phase_seed": 213005001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 4.458498317114002e-16,
+            "phase_seed": 213005002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213005003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 13824,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 213005004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 1,
+      "variant": "pure",
+      "audit_seed": 311001000,
+      "checkpoint": "results/r3/pair01/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 1.0658141036401503e-13,
+            "max_relative_cfr_l2": 6.277493443126366e-16,
+            "phase_seed": 313001000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 9.947598300641403e-14,
+            "max_relative_cfr_l2": 7.873920325846208e-16,
+            "phase_seed": 313001001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 8.506604014425009e-16,
+            "phase_seed": 313001002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313001003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313001004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 1,
+      "variant": "parity",
+      "audit_seed": 311001000,
+      "checkpoint": "results/r3/pair01/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 9.237055564881302e-14,
+            "max_relative_cfr_l2": 7.126175144978619e-16,
+            "phase_seed": 313001000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.973799150320701e-14,
+            "max_relative_cfr_l2": 8.168690612895328e-16,
+            "phase_seed": 313001001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 8.526512829121202e-14,
+            "max_relative_cfr_l2": 7.012870277801983e-16,
+            "phase_seed": 313001002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313001003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313001004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 2,
+      "variant": "pure",
+      "audit_seed": 311002000,
+      "checkpoint": "results/r3/pair02/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 9.393964495955182e-16,
+            "phase_seed": 313002000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 7.085068207110621e-16,
+            "phase_seed": 313002001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 7.105427357601002e-14,
+            "max_relative_cfr_l2": 6.506509538729389e-16,
+            "phase_seed": 313002002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313002003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313002004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 2,
+      "variant": "parity",
+      "audit_seed": 311002000,
+      "checkpoint": "results/r3/pair02/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 1.0055914960266512e-15,
+            "phase_seed": 313002000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 8.526512829121202e-14,
+            "max_relative_cfr_l2": 8.27075409591611e-16,
+            "phase_seed": 313002001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.618527782440651e-14,
+            "max_relative_cfr_l2": 7.131556988970112e-16,
+            "phase_seed": 313002002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313002003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313002004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 3,
+      "variant": "pure",
+      "audit_seed": 311003000,
+      "checkpoint": "results/r3/pair03/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 4.618527782440651e-14,
+            "max_relative_cfr_l2": 8.803722516496588e-16,
+            "phase_seed": 313003000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 2.842170943040401e-14,
+            "max_relative_cfr_l2": 7.922325286470202e-16,
+            "phase_seed": 313003001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.973799150320701e-14,
+            "max_relative_cfr_l2": 7.476641212587823e-16,
+            "phase_seed": 313003002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313003003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313003004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 3,
+      "variant": "parity",
+      "audit_seed": 311003000,
+      "checkpoint": "results/r3/pair03/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 5.3290705182007514e-14,
+            "max_relative_cfr_l2": 8.421983980590899e-16,
+            "phase_seed": 313003000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 3.197442310920451e-14,
+            "max_relative_cfr_l2": 6.370059395421562e-16,
+            "phase_seed": 313003001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 3.375077994860476e-14,
+            "max_relative_cfr_l2": 7.098461579062214e-16,
+            "phase_seed": 313003002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313003003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313003004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 4,
+      "variant": "pure",
+      "audit_seed": 311004000,
+      "checkpoint": "results/r3/pair04/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 8.526512829121202e-14,
+            "max_relative_cfr_l2": 7.685883427512375e-16,
+            "phase_seed": 313004000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 7.815970093361102e-14,
+            "max_relative_cfr_l2": 8.940338044229525e-16,
+            "phase_seed": 313004001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 9.947598300641403e-14,
+            "max_relative_cfr_l2": 7.041854728883433e-16,
+            "phase_seed": 313004002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313004003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313004004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 4,
+      "variant": "parity",
+      "audit_seed": 311004000,
+      "checkpoint": "results/r3/pair04/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 9.947598300641403e-14,
+            "max_relative_cfr_l2": 6.808999298261909e-16,
+            "phase_seed": 313004000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 8.423422241089546e-16,
+            "phase_seed": 313004001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 8.526512829121202e-14,
+            "max_relative_cfr_l2": 7.603546324486842e-16,
+            "phase_seed": 313004002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313004003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313004004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 5,
+      "variant": "pure",
+      "audit_seed": 311005000,
+      "checkpoint": "results/r3/pair05/pure.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 4.973799150320701e-14,
+            "max_relative_cfr_l2": 8.084293823379663e-16,
+            "phase_seed": 313005000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 3.197442310920451e-14,
+            "max_relative_cfr_l2": 7.045778662665617e-16,
+            "phase_seed": 313005001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 5.684341886080802e-14,
+            "max_relative_cfr_l2": 8.391484228247958e-16,
+            "phase_seed": 313005002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313005003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313005004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    },
+    {
+      "regime": 3,
+      "pair": 5,
+      "variant": "parity",
+      "audit_seed": 311005000,
+      "checkpoint": "results/r3/pair05/parity.pt",
+      "gauge": {
+        "conditions": {
+          "intact": {
+            "coded_flips": 0,
+            "decisions": 27648,
+            "max_grid_llr_diff": 6.394884621840902e-14,
+            "max_relative_cfr_l2": 1.024704938729492e-15,
+            "phase_seed": 313005000,
+            "scales": [
+              1e-35,
+              0.000244140625,
+              0.00048828125,
+              0.0009765625,
+              0.001953125,
+              0.00390625,
+              0.0078125,
+              0.015625,
+              0.03125,
+              0.0625,
+              0.125,
+              0.25,
+              0.5,
+              1.0,
+              2.0,
+              4.0,
+              8.0,
+              16.0,
+              32.0,
+              64.0,
+              128.0,
+              256.0,
+              512.0,
+              1024.0,
+              2048.0,
+              4096.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "first_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 4.263256414560601e-14,
+            "max_relative_cfr_l2": 7.376412572325911e-16,
+            "phase_seed": 313005001,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "last_pilot_row": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 3.907985046680551e-14,
+            "max_relative_cfr_l2": 6.620285972285186e-16,
+            "phase_seed": 313005002,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "all_pilots": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313005003,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          },
+          "whole_field": {
+            "coded_flips": 0,
+            "decisions": 3072,
+            "max_grid_llr_diff": 0.0,
+            "max_relative_cfr_l2": 0.0,
+            "phase_seed": 313005004,
+            "scales": [
+              1e-35,
+              1.0,
+              1e+20
+            ],
+            "finite": true,
+            "passed": true
+          }
+        },
+        "exact_zero_with_and_without_noise": true,
+        "passed": true
+      }
+    }
+  ],
+  "passed": true
+}

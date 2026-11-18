@@ -1,0 +1,69 @@
+{
+  "verification": "passed",
+  "records": 20,
+  "strict_checkpoint_loads": 80,
+  "training_traces": 80,
+  "raw_csv_rows": 165,
+  "aggregate_rows": 24,
+  "paired_tests_by_family": {
+    "primary": 3,
+    "ablation": 12,
+    "kernel": 2
+  },
+  "latency_groups": 48,
+  "validated_seed_partition": {
+    "unique_outer_seeds": 4165,
+    "unique_simulator_frame_seeds": 4140,
+    "unique_frame_substream_seeds": 20700
+  },
+  "calibration": {
+    "1": {
+      "snr_db": 12,
+      "errors": 84,
+      "blocks": 384,
+      "bler": 0.21875
+    },
+    "2": {
+      "snr_db": 9,
+      "errors": 447,
+      "blocks": 1728,
+      "bler": 0.2586805555555556
+    },
+    "3": {
+      "snr_db": 7,
+      "errors": 57,
+      "blocks": 384,
+      "bler": 0.1484375
+    }
+  },
+  "held_out_reference_waterfall": {
+    "1": {
+      "reference": "nominal_idd_pa",
+      "errors": 675,
+      "blocks": 3200,
+      "bler": 0.2109375,
+      "in_5_to_35_percent": true
+    },
+    "2": {
+      "reference": "waveform_dd",
+      "errors": 1777,
+      "blocks": 7200,
+      "bler": 0.24680555555555556,
+      "in_5_to_35_percent": true
+    },
+    "3": {
+      "reference": "waveform_dd",
+      "errors": 265,
+      "blocks": 1600,
+      "bler": 0.165625,
+      "in_5_to_35_percent": true
+    }
+  },
+  "verified_source_sha256": {
+    "PROTOCOL.md": "1cd16c58a6549b0acd2e706d0b8f8050afcc19c718d161bb9d911e13e62a88b7",
+    "study.py": "df1c4aae5eb0e533dbf857faff884bef319f07fce61be3b6c72740ea1cb0d685",
+    "classical.py": "f8642b071690b7d121eb08e72b76c923aa21182bd3a53fabf58c347d3738175a",
+    "wavefield_sim.py": "e0a071daf28e6a1d53db500aba90ec1e74020d69438b01a36e3f4c891f0b9069",
+    "unrolled_em_transformer.py": "c5ec06a6d2394f237f68e7ed834aad45312ab5b76994c240bd844193e53a2b25"
+  }
+}

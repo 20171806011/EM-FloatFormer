@@ -1,0 +1,2407 @@
+{
+  "sources": {
+    "iter5_audit.py": "317abcde046feac83d414ba6ef6b356cad9490cc9a48270cab931c6eec1e18f9",
+    "iter5_dev.py": "1b67b2693d56b21bd3e49646c0a3dc10a15bc073710d45beceed909cb3f8bed0",
+    "axial_operator.py": "63fa698838122ea78522ba36a5769117617e5787f9aa0c20694134f95fc0ac27",
+    "axial_em_transformer.py": "ac8cc4c6424a912c22f3d0a06643c49a75d7c51aea2af22d21f7e39ad3da66d3",
+    "parity.py": "9278e4925faa2bbfce6e590adbcf230cf099a5e0c9bf849eca0bb6498eed4a3e",
+    "training_iter3.py": "19df87b5fe470da15ddba8a0ecbe7e7a12387f8de670dd84dde4e247d9ef5d5a",
+    "data.py": "85ebeb49bdc56a7dcc4961eb16d414c175478ba5640ea742d0d32a95b63aa6b1",
+    "extended_audit.py": "bd65ad6bd186a159c089a68718f7a09557a4f72f4f88e959e11924088e9ba5e7",
+    "diagnostics.py": "4889d88c1c7d04e00ca9c8bda2fa3a2211057d4ba12e6bffefa127443ba88744"
+  },
+  "steps": 48,
+  "cue": 0.0,
+  "defer": false,
+  "reuse_receipts": {
+    "audit_first.json": "36894ff94622e5dc6a71d5368fffea0b50041899fc0488ab082c85c897ab3d77"
+  },
+  "rows": [
+    {
+      "regime": 1,
+      "pair": 901,
+      "arm": "pure",
+      "seed": 105901000,
+      "objective": 0.17618587446354594,
+      "global_grad_norm": 1.3500143938449274,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 4.493062608559493,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 1,
+      "pair": 901,
+      "arm": "local",
+      "seed": 105901000,
+      "objective": 0.17618587446354594,
+      "global_grad_norm": 1.3647551835685128,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 4.6694414357915655,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 1,
+      "pair": 901,
+      "arm": "parity",
+      "seed": 105901000,
+      "objective": 0.1598580385838857,
+      "global_grad_norm": 0.1695910024468184,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 3.206154857315738,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 1,
+      "pair": 901,
+      "arm": "local_parity",
+      "seed": 105901000,
+      "objective": 0.1598580385838857,
+      "global_grad_norm": 0.17025321946013436,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 3.2887552887353486,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 1,
+      "pair": 901,
+      "arm": "no_gauge",
+      "seed": 105901000,
+      "objective": 0.17618587446354594,
+      "global_grad_norm": 1.4133422619510498,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 4.121996519106954,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 1,
+      "pair": 902,
+      "arm": "pure",
+      "seed": 105902000,
+      "objective": 0.20256041852549925,
+      "global_grad_norm": 0.8238593356190876,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 9.849370706424033,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 1,
+      "pair": 902,
+      "arm": "local",
+      "seed": 105902000,
+      "objective": 0.20256041852549925,
+      "global_grad_norm": 0.8481667840750409,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 11.283056402337962,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 1,
+      "pair": 902,
+      "arm": "parity",
+      "seed": 105902000,
+      "objective": 0.18534267586528794,
+      "global_grad_norm": 0.1729678048132441,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 12.728521736037507,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 1,
+      "pair": 902,
+      "arm": "local_parity",
+      "seed": 105902000,
+      "objective": 0.18534267586528794,
+      "global_grad_norm": 0.17209013866000758,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 12.037973244020492,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 1,
+      "pair": 902,
+      "arm": "no_gauge",
+      "seed": 105902000,
+      "objective": 0.20256041852549925,
+      "global_grad_norm": 1.1015913696147426,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 7.785526957186029,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 1,
+      "pair": 903,
+      "arm": "pure",
+      "seed": 105903000,
+      "objective": 0.20635042606410134,
+      "global_grad_norm": 1.7342620919262934,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 6.596489438769147,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 1,
+      "pair": 903,
+      "arm": "local",
+      "seed": 105903000,
+      "objective": 0.20635042606410134,
+      "global_grad_norm": 1.7438716721802583,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 6.67303460701185,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 1,
+      "pair": 903,
+      "arm": "parity",
+      "seed": 105903000,
+      "objective": 0.17501798535708474,
+      "global_grad_norm": 0.3169681287613685,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 2.7542477220656636,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 1,
+      "pair": 903,
+      "arm": "local_parity",
+      "seed": 105903000,
+      "objective": 0.17501798535708474,
+      "global_grad_norm": 0.31811796047857144,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 2.8994164095698487,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 1,
+      "pair": 903,
+      "arm": "no_gauge",
+      "seed": 105903000,
+      "objective": 0.20635042606410134,
+      "global_grad_norm": 1.501399739786769,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 4.536792922778524,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 901,
+      "arm": "pure",
+      "seed": 205901000,
+      "objective": 0.26030587844260783,
+      "global_grad_norm": 0.1596642054927152,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 4.213063316591306,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 901,
+      "arm": "local",
+      "seed": 205901000,
+      "objective": 0.26030587844260783,
+      "global_grad_norm": 0.1859465429350146,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 5.970794521243079,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 901,
+      "arm": "parity",
+      "seed": 205901000,
+      "objective": 0.24619296867591428,
+      "global_grad_norm": 0.13729046211266716,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 3.9198844499736527,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 901,
+      "arm": "local_parity",
+      "seed": 205901000,
+      "objective": 0.24619296867591428,
+      "global_grad_norm": 0.15863975675979017,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 5.46889642951508,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 901,
+      "arm": "no_gauge",
+      "seed": 205901000,
+      "objective": 0.26030587844260783,
+      "global_grad_norm": 0.17544168069598745,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 4.7871372731014965,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 902,
+      "arm": "pure",
+      "seed": 205902000,
+      "objective": 0.25812872152503585,
+      "global_grad_norm": 0.21677546278886048,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 8.64908189036532,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 902,
+      "arm": "local",
+      "seed": 205902000,
+      "objective": 0.25812872152503585,
+      "global_grad_norm": 0.23681975912810765,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 9.660370979747032,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 902,
+      "arm": "parity",
+      "seed": 205902000,
+      "objective": 0.246108460737154,
+      "global_grad_norm": 0.21163870569047485,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 7.629756821830497,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 902,
+      "arm": "local_parity",
+      "seed": 205902000,
+      "objective": 0.246108460737154,
+      "global_grad_norm": 0.23105434482641116,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 8.36908169043457,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 902,
+      "arm": "no_gauge",
+      "seed": 205902000,
+      "objective": 0.25812872152503585,
+      "global_grad_norm": 0.246841646760945,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 9.115640768884973,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 903,
+      "arm": "pure",
+      "seed": 205903000,
+      "objective": 0.27896920054713253,
+      "global_grad_norm": 0.5187494306851644,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 4.471615033212089,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 903,
+      "arm": "local",
+      "seed": 205903000,
+      "objective": 0.27896920054713253,
+      "global_grad_norm": 0.5926894006649204,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 4.837140920628066,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 903,
+      "arm": "parity",
+      "seed": 205903000,
+      "objective": 0.2579597668332538,
+      "global_grad_norm": 0.37528440939247654,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 3.739898407388125,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 903,
+      "arm": "local_parity",
+      "seed": 205903000,
+      "objective": 0.2579597668332538,
+      "global_grad_norm": 0.4384513049237289,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 4.913919014180781,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 2,
+      "pair": 903,
+      "arm": "no_gauge",
+      "seed": 205903000,
+      "objective": 0.27896920054713253,
+      "global_grad_norm": 0.5367057533763037,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 4.703300826457573,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 901,
+      "arm": "pure",
+      "seed": 305901000,
+      "objective": 0.25633444188465687,
+      "global_grad_norm": 0.37942065639321837,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 0.40568072158555424,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 901,
+      "arm": "local",
+      "seed": 305901000,
+      "objective": 0.25633444188465687,
+      "global_grad_norm": 0.40430012576138064,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 0.3811153567005974,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 901,
+      "arm": "parity",
+      "seed": 305901000,
+      "objective": 0.23959042423692037,
+      "global_grad_norm": 0.33612811173127666,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 0.23543658809875012,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 901,
+      "arm": "local_parity",
+      "seed": 305901000,
+      "objective": 0.23959042423692037,
+      "global_grad_norm": 0.3618906708182274,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 0.25259440208880335,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 901,
+      "arm": "no_gauge",
+      "seed": 305901000,
+      "objective": 0.25633444188465687,
+      "global_grad_norm": 0.3557317863644962,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 0.3520798782983192,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 902,
+      "arm": "pure",
+      "seed": 305902000,
+      "objective": 0.24922550289158193,
+      "global_grad_norm": 0.11717068296857024,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 1.3675422479971786,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 902,
+      "arm": "local",
+      "seed": 305902000,
+      "objective": 0.24922550289158193,
+      "global_grad_norm": 0.1234425117702335,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 1.491999191524613,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 902,
+      "arm": "parity",
+      "seed": 305902000,
+      "objective": 0.23337808322891787,
+      "global_grad_norm": 0.10121733532117139,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 1.2720454106582082,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 902,
+      "arm": "local_parity",
+      "seed": 305902000,
+      "objective": 0.23337808322891787,
+      "global_grad_norm": 0.10800174244328413,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 1.3967876476772005,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 902,
+      "arm": "no_gauge",
+      "seed": 305902000,
+      "objective": 0.24922550289158193,
+      "global_grad_norm": 0.08484164718042472,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 1.3904732112381097,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 903,
+      "arm": "pure",
+      "seed": 305903000,
+      "objective": 0.1309622706083039,
+      "global_grad_norm": 0.13810616818753305,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 0.42734627204583475,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 903,
+      "arm": "local",
+      "seed": 305903000,
+      "objective": 0.1309622706083039,
+      "global_grad_norm": 0.14003055765780434,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 0.45046693388064085,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 903,
+      "arm": "parity",
+      "seed": 305903000,
+      "objective": 0.11429564791610772,
+      "global_grad_norm": 0.11723833376618606,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 0.4000706761155719,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 903,
+      "arm": "local_parity",
+      "seed": 305903000,
+      "objective": 0.11429564791610772,
+      "global_grad_norm": 0.11864957875316814,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 0.4270325544728095,
+      "all_real_gradients_live": true,
+      "passed": true
+    },
+    {
+      "regime": 3,
+      "pair": 903,
+      "arm": "no_gauge",
+      "seed": 305903000,
+      "objective": 0.1309622706083039,
+      "global_grad_norm": 0.12979909206476412,
+      "anchor": {
+        "steps": 3,
+        "p6_bit_exact": true,
+        "fixed_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "archived_max_llr_cfr": [
+          0.0,
+          0.0
+        ],
+        "passed": true
+      },
+      "matched_init": true,
+      "gradients": {
+        "head.embed": {
+          "total": 144,
+          "nonzero": 144,
+          "finite": true
+        },
+        "head.project": {
+          "total": 384,
+          "nonzero": 384,
+          "finite": true
+        },
+        "head.kernel": {
+          "total": 24,
+          "nonzero": 24,
+          "finite": true
+        },
+        "head.mix": {
+          "total": 256,
+          "nonzero": 256,
+          "finite": true
+        },
+        "head.read": {
+          "total": 48,
+          "nonzero": 48,
+          "finite": true
+        }
+      },
+      "parameters": 856,
+      "post_update_max_llr_change": 0.3509329901619509,
+      "all_real_gradients_live": true,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

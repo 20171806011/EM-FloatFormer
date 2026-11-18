@@ -1,0 +1,99 @@
+{
+  "purpose": "Single agreed frame-partition provenance check. Baseline only.",
+  "batch_size": 32,
+  "batches_per_pair": 1,
+  "stream": 6,
+  "model": "p5b.OperatorEMTransformer physics_parity depth2",
+  "results": {
+    "1": {
+      "per_pair": {
+        "901": {
+          "errors": 9,
+          "blocks": 128,
+          "seed": 106901000
+        },
+        "902": {
+          "errors": 18,
+          "blocks": 128,
+          "seed": 106902000
+        },
+        "903": {
+          "errors": 5,
+          "blocks": 128,
+          "seed": 106903000
+        }
+      },
+      "pooled": {
+        "bit_errors": 4124,
+        "bits": 49152,
+        "info_errors": 154,
+        "info_bits": 24576,
+        "block_errors": 32,
+        "blocks": 384,
+        "channel_error": 1445.3820212680741,
+        "channel_energy": 15361.778143626949,
+        "bce_sum": 9602.44271659558
+      }
+    },
+    "2": {
+      "per_pair": {
+        "901": {
+          "errors": 166,
+          "blocks": 576,
+          "seed": 206901000
+        },
+        "902": {
+          "errors": 131,
+          "blocks": 576,
+          "seed": 206902000
+        },
+        "903": {
+          "errors": 142,
+          "blocks": 576,
+          "seed": 206903000
+        }
+      },
+      "pooled": {
+        "bit_errors": 25657,
+        "bits": 221184,
+        "info_errors": 1672,
+        "info_bits": 110592,
+        "block_errors": 439,
+        "blocks": 1728,
+        "channel_error": 928.0619030395053,
+        "channel_energy": 61594.721364528865,
+        "bce_sum": 56220.882920510725
+      }
+    },
+    "3": {
+      "per_pair": {
+        "901": {
+          "errors": 16,
+          "blocks": 128,
+          "seed": 306901000
+        },
+        "902": {
+          "errors": 25,
+          "blocks": 128,
+          "seed": 306902000
+        },
+        "903": {
+          "errors": 25,
+          "blocks": 128,
+          "seed": 306903000
+        }
+      },
+      "pooled": {
+        "bit_errors": 3902,
+        "bits": 49152,
+        "info_errors": 446,
+        "info_bits": 24576,
+        "block_errors": 66,
+        "blocks": 384,
+        "channel_error": 3002.1802348205183,
+        "channel_energy": 57955.98759736867,
+        "bce_sum": 9039.907329550264
+      }
+    }
+  }
+}

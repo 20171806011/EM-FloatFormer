@@ -1,0 +1,520 @@
+{
+  "p6_tests": 13,
+  "p5_tests": 15,
+  "p5b_tests": 13,
+  "p4_verifier": "python -B -m publication.verify_p4\n230 previous checkout files, 116 original frozen files and one redacted archive verified.\n150 coded rows, ten final weight hashes, both Holm families and both test receipts verified.\nExit code 0.\n",
+  "development_fixture_draws": [
+    [
+      1,
+      5,
+      901,
+      0
+    ],
+    [
+      1,
+      5,
+      902,
+      400
+    ],
+    [
+      1,
+      5,
+      902,
+      401
+    ],
+    [
+      1,
+      5,
+      902,
+      402
+    ],
+    [
+      1,
+      5,
+      902,
+      404
+    ],
+    [
+      1,
+      5,
+      902,
+      405
+    ],
+    [
+      1,
+      5,
+      902,
+      406
+    ],
+    [
+      1,
+      5,
+      902,
+      408
+    ],
+    [
+      1,
+      5,
+      902,
+      409
+    ],
+    [
+      1,
+      6,
+      901,
+      0
+    ],
+    [
+      2,
+      5,
+      901,
+      0
+    ],
+    [
+      2,
+      5,
+      902,
+      400
+    ],
+    [
+      2,
+      5,
+      902,
+      401
+    ],
+    [
+      2,
+      5,
+      902,
+      402
+    ],
+    [
+      2,
+      5,
+      902,
+      404
+    ],
+    [
+      2,
+      5,
+      902,
+      405
+    ],
+    [
+      2,
+      5,
+      902,
+      407
+    ],
+    [
+      2,
+      5,
+      902,
+      409
+    ],
+    [
+      2,
+      5,
+      902,
+      411
+    ],
+    [
+      2,
+      6,
+      901,
+      0
+    ],
+    [
+      3,
+      5,
+      901,
+      0
+    ],
+    [
+      3,
+      5,
+      902,
+      400
+    ],
+    [
+      3,
+      5,
+      902,
+      401
+    ],
+    [
+      3,
+      5,
+      902,
+      403
+    ],
+    [
+      3,
+      5,
+      902,
+      404
+    ],
+    [
+      3,
+      5,
+      902,
+      405
+    ],
+    [
+      3,
+      5,
+      902,
+      409
+    ],
+    [
+      3,
+      5,
+      902,
+      410
+    ],
+    [
+      3,
+      5,
+      902,
+      412
+    ],
+    [
+      3,
+      6,
+      901,
+      0
+    ]
+  ],
+  "preflight": {
+    "regime_arm_cells": 15,
+    "gradient_directions": 75,
+    "active_real_per_cell": [
+      856,
+      856,
+      856,
+      856,
+      856,
+      856,
+      856,
+      856,
+      856,
+      856,
+      856,
+      856,
+      856,
+      856,
+      856
+    ],
+    "min_live_real": 856,
+    "max_finite_difference_absolute_error": 3.726432183659423e-09,
+    "worst_archived_anchor": 0.0,
+    "exact_anchors": 30,
+    "anchors_checked": 30,
+    "matched_capacity": true
+  },
+  "trained_gauge": {
+    "checks": 360,
+    "passed": 360,
+    "coded_flips": 0,
+    "coded_decisions": 4313088,
+    "max_abs_llr": 3.197442310920451e-13,
+    "worst": {
+      "regime": 1,
+      "pair": 902,
+      "arm": "pure",
+      "condition": "last_pilot_row"
+    },
+    "max_rel_cfr": 2.888731254006124e-15,
+    "failures": [],
+    "files": [
+      "trained_r1_901.json",
+      "trained_r1_902.json",
+      "trained_r1_903.json",
+      "trained_r2_901.json",
+      "trained_r2_902.json",
+      "trained_r2_903.json",
+      "trained_r3_901.json",
+      "trained_r3_902.json",
+      "trained_r3_903.json"
+    ],
+    "pairwise_physical_estimation": [
+      {
+        "regime": 2,
+        "pair": 901,
+        "arms": {
+          "parity": {
+            "units": "radians",
+            "trajectory": "per-path sample rotation; excludes common phase",
+            "mean_absolute_wrapped_row_error_initial_then_steps": [
+              0.1571099643479897,
+              0.1560387776096989,
+              0.15076176945606296,
+              0.14986495727756585
+            ],
+            "phase_reference": "one freely fitted constant phase per burst and ray",
+            "steps": [
+              {
+                "max_increment_rad": 0.08975803816784589,
+                "max_accumulated_rad": 0.08975803816784589,
+                "p95_accumulated_rad": 0.030091227221005733,
+                "fraction_over_half_rad": 0.0
+              },
+              {
+                "max_increment_rad": 0.14395930596765527,
+                "max_accumulated_rad": 0.17555173349720157,
+                "p95_accumulated_rad": 0.08056824418527352,
+                "fraction_over_half_rad": 0.0
+              },
+              {
+                "max_increment_rad": 0.0921230161815299,
+                "max_accumulated_rad": 0.2676747496787315,
+                "p95_accumulated_rad": 0.12125707864886374,
+                "fraction_over_half_rad": 0.0
+              }
+            ]
+          },
+          "local_parity": {
+            "units": "radians",
+            "trajectory": "per-path sample rotation; excludes common phase",
+            "mean_absolute_wrapped_row_error_initial_then_steps": [
+              0.1571099643479897,
+              0.15596608847488,
+              0.14963645510051166,
+              0.14925834870125526
+            ],
+            "phase_reference": "one freely fitted constant phase per burst and ray",
+            "steps": [
+              {
+                "max_increment_rad": 0.11870975537669398,
+                "max_accumulated_rad": 0.11870975537669398,
+                "p95_accumulated_rad": 0.04045193573557347,
+                "fraction_over_half_rad": 0.0
+              },
+              {
+                "max_increment_rad": 0.1684143771173729,
+                "max_accumulated_rad": 0.19988300016186167,
+                "p95_accumulated_rad": 0.0997945028971331,
+                "fraction_over_half_rad": 0.0
+              },
+              {
+                "max_increment_rad": 0.10571909211706122,
+                "max_accumulated_rad": 0.3056020922789229,
+                "p95_accumulated_rad": 0.14831591713604533,
+                "fraction_over_half_rad": 0.0
+              }
+            ]
+          }
+        }
+      },
+      {
+        "regime": 2,
+        "pair": 902,
+        "arms": {
+          "parity": {
+            "units": "radians",
+            "trajectory": "per-path sample rotation; excludes common phase",
+            "mean_absolute_wrapped_row_error_initial_then_steps": [
+              0.13909731280423046,
+              0.1364707632615684,
+              0.13237068268311925,
+              0.13285816953494736
+            ],
+            "phase_reference": "one freely fitted constant phase per burst and ray",
+            "steps": [
+              {
+                "max_increment_rad": 0.07562311823324282,
+                "max_accumulated_rad": 0.07562311823324282,
+                "p95_accumulated_rad": 0.043635890660844716,
+                "fraction_over_half_rad": 0.0
+              },
+              {
+                "max_increment_rad": 0.11912131146602775,
+                "max_accumulated_rad": 0.1783595403969453,
+                "p95_accumulated_rad": 0.09453737628403923,
+                "fraction_over_half_rad": 0.0
+              },
+              {
+                "max_increment_rad": 0.1020403421667217,
+                "max_accumulated_rad": 0.2549374079865255,
+                "p95_accumulated_rad": 0.13702477980216174,
+                "fraction_over_half_rad": 0.0
+              }
+            ]
+          },
+          "local_parity": {
+            "units": "radians",
+            "trajectory": "per-path sample rotation; excludes common phase",
+            "mean_absolute_wrapped_row_error_initial_then_steps": [
+              0.13909731280423046,
+              0.13533810393725582,
+              0.13112537292339904,
+              0.1323674624166474
+            ],
+            "phase_reference": "one freely fitted constant phase per burst and ray",
+            "steps": [
+              {
+                "max_increment_rad": 0.10014444703109414,
+                "max_accumulated_rad": 0.10014444703109414,
+                "p95_accumulated_rad": 0.044126730364937375,
+                "fraction_over_half_rad": 0.0
+              },
+              {
+                "max_increment_rad": 0.14904465401344996,
+                "max_accumulated_rad": 0.18599155766930578,
+                "p95_accumulated_rad": 0.1022365208732457,
+                "fraction_over_half_rad": 0.0
+              },
+              {
+                "max_increment_rad": 0.11940897031161778,
+                "max_accumulated_rad": 0.2748546036928884,
+                "p95_accumulated_rad": 0.13802638274624354,
+                "fraction_over_half_rad": 0.0
+              }
+            ]
+          }
+        }
+      },
+      {
+        "regime": 2,
+        "pair": 903,
+        "arms": {
+          "parity": {
+            "units": "radians",
+            "trajectory": "per-path sample rotation; excludes common phase",
+            "mean_absolute_wrapped_row_error_initial_then_steps": [
+              0.11923164227844373,
+              0.1170507225146064,
+              0.11279120555355564,
+              0.11582565249160388
+            ],
+            "phase_reference": "one freely fitted constant phase per burst and ray",
+            "steps": [
+              {
+                "max_increment_rad": 0.09746448787240619,
+                "max_accumulated_rad": 0.09746448787240619,
+                "p95_accumulated_rad": 0.04471588681580507,
+                "fraction_over_half_rad": 0.0
+              },
+              {
+                "max_increment_rad": 0.17057942130230075,
+                "max_accumulated_rad": 0.2545463426413687,
+                "p95_accumulated_rad": 0.11052877854993355,
+                "fraction_over_half_rad": 0.0
+              },
+              {
+                "max_increment_rad": 0.11708805088108708,
+                "max_accumulated_rad": 0.36185004052598,
+                "p95_accumulated_rad": 0.15121127765901932,
+                "fraction_over_half_rad": 0.0
+              }
+            ]
+          },
+          "local_parity": {
+            "units": "radians",
+            "trajectory": "per-path sample rotation; excludes common phase",
+            "mean_absolute_wrapped_row_error_initial_then_steps": [
+              0.11923164227844373,
+              0.11637142813461505,
+              0.11217053971151113,
+              0.11613263352689612
+            ],
+            "phase_reference": "one freely fitted constant phase per burst and ray",
+            "steps": [
+              {
+                "max_increment_rad": 0.11865503985843975,
+                "max_accumulated_rad": 0.11865503985843975,
+                "p95_accumulated_rad": 0.05683385125324184,
+                "fraction_over_half_rad": 0.0
+              },
+              {
+                "max_increment_rad": 0.19367161418431392,
+                "max_accumulated_rad": 0.31232665404275367,
+                "p95_accumulated_rad": 0.12801110723111916,
+                "fraction_over_half_rad": 0.0
+              },
+              {
+                "max_increment_rad": 0.1369342797690078,
+                "max_accumulated_rad": 0.44926093381176146,
+                "p95_accumulated_rad": 0.17181662176548276,
+                "fraction_over_half_rad": 0.0
+              }
+            ]
+          }
+        }
+      },
+      {
+        "regime": 3,
+        "pair": 901,
+        "arms": {
+          "parity": {
+            "units": "Nyquist samples; mean over movable rays",
+            "nominal_mae": 0.07243452894777348,
+            "fitted_mae_by_step": [
+              0.06153919576399567,
+              0.04554202928459078,
+              0.05280993832844718
+            ]
+          },
+          "local_parity": {
+            "units": "Nyquist samples; mean over movable rays",
+            "nominal_mae": 0.07243452894777348,
+            "fitted_mae_by_step": [
+              0.06027522837238277,
+              0.043971517431057705,
+              0.05207443997002346
+            ]
+          }
+        }
+      },
+      {
+        "regime": 3,
+        "pair": 902,
+        "arms": {
+          "parity": {
+            "units": "Nyquist samples; mean over movable rays",
+            "nominal_mae": 0.06977348768945707,
+            "fitted_mae_by_step": [
+              0.05522448913537346,
+              0.0457724350932488,
+              0.05152891016853004
+            ]
+          },
+          "local_parity": {
+            "units": "Nyquist samples; mean over movable rays",
+            "nominal_mae": 0.06977348768945707,
+            "fitted_mae_by_step": [
+              0.05642143730029173,
+              0.04557351768948481,
+              0.052748945669695985
+            ]
+          }
+        }
+      },
+      {
+        "regime": 3,
+        "pair": 903,
+        "arms": {
+          "parity": {
+            "units": "Nyquist samples; mean over movable rays",
+            "nominal_mae": 0.08040280263398834,
+            "fitted_mae_by_step": [
+              0.06447301967884018,
+              0.05713766110294838,
+              0.05862547983777786
+            ]
+          },
+          "local_parity": {
+            "units": "Nyquist samples; mean over movable rays",
+            "nominal_mae": 0.08040280263398834,
+            "fitted_mae_by_step": [
+              0.063930725966019,
+              0.05586274884749418,
+              0.05814192660661962
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "passed": true
+}

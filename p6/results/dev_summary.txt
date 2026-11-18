@@ -1,0 +1,98 @@
+﻿R1: method, block errors/blocks, BLER, pre-BER, NMSE dB, BCE
+  physics                  39/384  10.1562%  9.1736%  -10.25  0.22150
+  physics_parity           32/384  8.3333%  8.3903%  -10.26  0.19536
+  nominal_bussgang_lmmse   94/384  24.4792%  10.8724%  -11.63  0.25730
+  nominal_idd_pa           81/384  21.0938%  10.6405%  -11.72  0.27372
+  pilot_cpe_dd             40/384  10.4167%  9.1675%  -10.24  0.22261
+  genie_pa                 38/384  9.8958%  9.0983%  -11.53  0.21814
+  pure                     44/384  11.4583%  9.0719%  -10.39  0.21050
+  local                    47/384  12.2396%  9.1593%  -10.41  0.21118
+  parity                   32/384  8.3333%  7.8593%  -10.14  0.18432
+  local_parity             31/384  8.0729%  7.8491%  -10.19  0.18442
+  no_gauge                 43/384  11.1979%  9.1329%  -10.43  0.21047
+R2: method, block errors/blocks, BLER, pre-BER, NMSE dB, BCE
+  physics                  547/1728  31.6551%  12.0199%  -15.58  0.26775
+  physics_parity           439/1728  25.4051%  11.5998%  -18.22  0.25418
+  tap_phase_slope          1727/1728  99.9421%  42.2381%  2.61  2.63391
+  lmmse_2d                 1220/1728  70.6019%  15.6698%  -10.77  0.33416
+  waveform_dd              446/1728  25.8102%  11.5420%  -18.49  0.25433
+  pure                     430/1728  24.8843%  11.5524%  -19.13  0.25221
+  local                    447/1728  25.8681%  11.6360%  -18.73  0.25389
+  parity                   425/1728  24.5949%  10.2471%  -18.86  0.23274
+  local_parity             427/1728  24.7106%  10.2295%  -18.78  0.23266
+  no_gauge                 439/1728  25.4051%  11.6057%  -19.03  0.25267
+R3: method, block errors/blocks, BLER, pre-BER, NMSE dB, BCE
+  physics                  72/384  18.7500%  8.5063%  -12.53  0.20063
+  physics_parity           66/384  17.1875%  7.9386%  -12.86  0.18392
+  lmmse_2d                 83/384  21.6146%  9.4666%  -10.25  0.21338
+  waveform_dd              65/384  16.9271%  7.9651%  -12.89  0.18231
+  pure                     62/384  16.1458%  8.0566%  -13.09  0.18278
+  local                    59/384  15.3646%  8.0343%  -13.10  0.18190
+  parity                   55/384  14.3229%  6.1849%  -12.92  0.14832
+  local_parity             57/384  14.8438%  6.1157%  -12.96  0.14839
+  no_gauge                 62/384  16.1458%  8.1095%  -13.07  0.18328
+R1 parity / matched local at each budget, ordered as block errors, pooled BCE, mean fit seconds per pair
+  main      64    32/384, 0.18432, 5.2s | 31/384, 0.18442, 4.5s
+  main      96    28/384, 0.18181, 7.8s | 26/384, 0.18135, 6.7s
+  main     128    33/384, 0.18484, 10.8s | 35/384, 0.18331, 8.6s
+  depth3    64    26/384, 0.17830, 10.5s | 25/384, 0.17836, 9.3s
+  Pair 901 optimizer contrasts, parity / local block errors
+  main_901_only    11/128, BCE 0.18927 | 10/128, BCE 0.18968
+  lr005            9/128, BCE 0.18518 | 9/128, BCE 0.18553
+  warmcos          10/128, BCE 0.19206 | 10/128, BCE 0.19224
+  aux              11/128, BCE 0.18919 | 10/128, BCE 0.18962
+  unclipped        11/128, BCE 0.18927 | 10/128, BCE 0.18968
+  Receiver latency in ms (B1 / B64)
+  main/pure              41.32 / 277.18
+  main/local             35.62 / 285.09
+  main/parity            38.83 / 291.61
+  main/local_parity      31.88 / 309.90
+  depth3/parity          61.91 / 473.93
+  depth3/local_parity    50.80 / 388.88
+R2 parity / matched local at each budget, ordered as block errors, pooled BCE, mean fit seconds per pair
+  main      64    425/1728, 0.23274, 11.9s | 427/1728, 0.23266, 10.1s
+  main      96    430/1728, 0.22777, 17.7s | 422/1728, 0.22845, 15.2s
+  main     128    443/1728, 0.22530, 23.7s | 441/1728, 0.22630, 20.3s
+  depth3    64    418/1728, 0.23090, 19.1s | 418/1728, 0.23067, 16.1s
+  Pair 901 optimizer contrasts, parity / local block errors
+  main_901_only    170/576, BCE 0.24294 | 172/576, BCE 0.24366
+  lr005            165/576, BCE 0.23800 | 175/576, BCE 0.23966
+  warmcos          162/576, BCE 0.24818 | 162/576, BCE 0.24869
+  aux              171/576, BCE 0.24299 | 171/576, BCE 0.24369
+  unclipped        170/576, BCE 0.24294 | 172/576, BCE 0.24366
+  Receiver latency in ms (B1 / B64)
+  main/pure              47.40 / 1287.39
+  main/local             33.18 / 875.94
+  main/parity            45.40 / 1316.25
+  main/local_parity      31.94 / 1064.25
+  depth3/parity          60.43 / 1824.84
+  depth3/local_parity    45.47 / 1633.29
+R3 parity / matched local at each budget, ordered as block errors, pooled BCE, mean fit seconds per pair
+  main      64    55/384, 0.14832, 14.7s | 57/384, 0.14839, 12.5s
+  main      96    55/384, 0.14517, 22.2s | 53/384, 0.14550, 18.8s
+  main     128    56/384, 0.14325, 29.7s | 54/384, 0.14421, 25.0s
+  depth3    64    57/384, 0.14428, 24.4s | 57/384, 0.14432, 20.2s
+  Pair 901 optimizer contrasts, parity / local block errors
+  main_901_only    14/128, BCE 0.12700 | 14/128, BCE 0.12750
+  lr005            15/128, BCE 0.12591 | 15/128, BCE 0.12535
+  warmcos          13/128, BCE 0.12985 | 14/128, BCE 0.13026
+  aux              14/128, BCE 0.12710 | 14/128, BCE 0.12761
+  unclipped        14/128, BCE 0.12700 | 14/128, BCE 0.12750
+  Receiver latency in ms (B1 / B64)
+  main/pure              68.28 / 1460.88
+  main/local             62.00 / 1215.37
+  main/parity            73.12 / 1515.50
+  main/local_parity      59.99 / 1042.81
+  depth3/parity          96.74 / 2393.68
+  depth3/local_parity    81.71 / 1804.82
+R3 pure Pearson, initial / trained / shuffled trained
+  joint        0.02403 / 0.01918 / 0.00017
+  spatial      0.01819 / 0.01565 / -0.00077
+  time         -0.00704 / -0.00654 / 0.00078
+  frequency    0.02945 / 0.03127 / 0.00188
+R3 parity Pearson, initial / trained / shuffled trained
+  joint        0.02356 / 0.02546 / 0.00079
+  spatial      0.01929 / 0.01384 / -0.00075
+  time         -0.00651 / -0.00659 / 0.00119
+  frequency    0.02744 / 0.04892 / 0.00225
+Wrote p6/results/dev_iter1.json

@@ -1,0 +1,95 @@
+{
+  "recipe": {
+    "chirp": "fisher",
+    "bridge": false,
+    "differential": false,
+    "irc": false,
+    "ula": true,
+    "loss": "bce",
+    "steps": 48
+  },
+  "regime": 2,
+  "pair": 903,
+  "arm": "parity",
+  "score": {
+    "bit_errors": 7798,
+    "bits": 73728,
+    "info_errors": 356,
+    "info_bits": 36864,
+    "block_errors": 103,
+    "blocks": 576,
+    "channel_error": 110.15051968007009,
+    "channel_energy": 21068.487338177452,
+    "bce_sum": 17189.157403830417
+  },
+  "source": {
+    "axial_em_transformer.py": "96b1bf9b2fb619bd5a3e416446a75347e53dd5eed2565b5c86c968496b15d14a",
+    "axial_operator.py": "63fa698838122ea78522ba36a5769117617e5787f9aa0c20694134f95fc0ac27",
+    "parity.py": "9278e4925faa2bbfce6e590adbcf230cf099a5e0c9bf849eca0bb6498eed4a3e",
+    "data.py": "85ebeb49bdc56a7dcc4961eb16d414c175478ba5640ea742d0d32a95b63aa6b1",
+    "math_training.py": "be31797139203a069185728bb839604d41a0a9c53a841f51cab0b3ec38b730af",
+    "training_iter3.py": "19df87b5fe470da15ddba8a0ecbe7e7a12387f8de670dd84dde4e247d9ef5d5a",
+    "experiment.py": "b0b2d85d5330b26c681a4ead41217712ab22368c5d6c444b48f8f49d7fc43efc",
+    "math_dev.py": "f0316632c8fbe0417f6ecde3d0470eccc74ddca73dad8bca0fe5d86c4312682a",
+    "math_pa.py": "31cb90735f7d40d5603354a7c330d08fd6160b2f6fb72ea3a7aa0f9de3ce8b74",
+    "math_chirp.py": "d5e4377de04bd0503b7fb61129dacaa5e4c7fd9f6e8f1abef2f6c4e61499ff8f",
+    "math_chirp_fisher.py": "f38d40bda4d19f485da8be5ce85ab4c71e94c1ba2f2d1de44aad7e02ed54c268",
+    "math_spatial.py": "e989e92489710980e8e959062c12ba5efc2b6b75216a1467f1f1813831722172"
+  },
+  "checkpoint_sha256": "823a08e1e194642cb38566f5891fe7c25baca8777464429390ee9e38e557ee01",
+  "initial_sha": "46ddf8f20b04ad26618dad97bf38f837c1b73f6886664f2bd847361e1a7205b5",
+  "anchor": {
+    "steps": 3,
+    "p6_bit_exact": true,
+    "fixed_max_llr_cfr": [
+      0.0,
+      0.0
+    ],
+    "archived_max_llr_cfr": [
+      0.0,
+      0.0
+    ],
+    "passed": true
+  },
+  "gradients": {
+    "embed": {
+      "active": 144,
+      "size": 144,
+      "finite": true
+    },
+    "project": {
+      "active": 384,
+      "size": 384,
+      "finite": true
+    },
+    "kernel": {
+      "active": 24,
+      "size": 24,
+      "finite": true
+    },
+    "mix": {
+      "active": 256,
+      "size": 256,
+      "finite": true
+    },
+    "read": {
+      "active": 48,
+      "size": 48,
+      "finite": true
+    }
+  },
+  "parameters": 856,
+  "signs": {
+    "burst_rays": 96,
+    "initial_wrong": 2,
+    "final_wrong": 0,
+    "initial_zero_slope": 0,
+    "final_zero_slope": 0,
+    "repaired": 2,
+    "regressed": 0,
+    "initial_net_slope_mae": 0.026893531559875356,
+    "final_net_slope_mae": 0.0051906336768862875,
+    "initial_aligned_phase_mae_rad": 0.11921466177546236,
+    "final_aligned_phase_mae_rad": 0.05963521069686092
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "recipe": {
+    "chirp": "baseline",
+    "bridge": false,
+    "differential": false,
+    "irc": false,
+    "loss": "brier",
+    "steps": 48
+  },
+  "regime": 1,
+  "pair": 902,
+  "arm": "parity",
+  "score": {
+    "bit_errors": 1384,
+    "bits": 16384,
+    "info_errors": 63,
+    "info_bits": 8192,
+    "block_errors": 13,
+    "blocks": 128,
+    "channel_error": 656.5514726620382,
+    "channel_energy": 5323.122490022824,
+    "bce_sum": 3203.304687505735
+  },
+  "checkpoint_sha256": "fb1230533f31c1f8804ae89387bea76573ba5c3b7072fecf5edc710247db017f",
+  "initial_sha": "4ed267edd0e07cb90ce06c33387af52fdeb45ac66f8647253fa01a24a62e7627",
+  "anchor": {
+    "steps": 3,
+    "p6_bit_exact": true,
+    "fixed_max_llr_cfr": [
+      0.0,
+      0.0
+    ],
+    "archived_max_llr_cfr": [
+      0.0,
+      0.0
+    ],
+    "passed": true
+  },
+  "gradients": {
+    "embed": {
+      "active": 144,
+      "size": 144,
+      "finite": true
+    },
+    "project": {
+      "active": 384,
+      "size": 384,
+      "finite": true
+    },
+    "kernel": {
+      "active": 24,
+      "size": 24,
+      "finite": true
+    },
+    "mix": {
+      "active": 256,
+      "size": 256,
+      "finite": true
+    },
+    "read": {
+      "active": 48,
+      "size": 48,
+      "finite": true
+    }
+  },
+  "parameters": 856
+}
