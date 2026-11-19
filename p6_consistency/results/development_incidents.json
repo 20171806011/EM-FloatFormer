@@ -1,0 +1,14 @@
+{
+  "incidents": [
+    {
+      "kind": "test_process_cache_contamination",
+      "evidence": "tests_initial.json",
+      "new_tests_passed": 41,
+      "inherited_tests": 38,
+      "inherited_errors": 8,
+      "reason": "Running new inference-mode tests before archived gradient tests in one process populated inherited lru caches with inference tensors that cannot be saved for backward.",
+      "resolution": "Run the unchanged archived P6 suite in a separate fresh process. No source or model in historical directories was changed.",
+      "fresh_data_used": false
+    }
+  ]
+}
