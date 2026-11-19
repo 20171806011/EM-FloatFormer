@@ -56,18 +56,18 @@ def observed_taps(received, rows):
     return pilot_ls @ BASIS[:, EVEN].conj().T / len(EVEN)
 
 
-def update(state, rows, tap_obs):
+def update(state, rows, tap_obs, row_noise=TAP_NOISE):
     if np.shape(tap_obs) != (len(rows), len(DELAYS)):
         raise ValueError("Expected one complex observation per pilot row and tap")
     signatures = evolution(state.epoch)[:, list(rows)].mean(axis=-1).T
     mean, variance, log_weight = state.mean, state.variance, state.log_weight
-    for u, z in zip(signatures, tap_obs):
+    for u, z, noise in zip(signatures, tap_obs, np.broadcast_to(row_noise, (len(rows),))):
         innovation = z[:, None] - u * mean
-        total = TAP_NOISE + abs(u)**2 * variance
+        total = noise + abs(u)**2 * variance
         log_weight = log_weight - np.log(total) - abs(innovation)**2 / total
         log_weight -= logsumexp(log_weight, axis=1, keepdims=True)
         mean = mean + variance * u.conj() * innovation / total
-        variance = variance * TAP_NOISE / total
+        variance = variance * noise / total
     return State(state.epoch, log_weight, mean, variance)
 
 
@@ -98,6 +98,10 @@ def probe_moments(state, weights, by_ray, second):
 
 def readout(state, received, rows):
     """Predict withheld pilots and return data LLRs using data-bin observations only."""
+    return readout_mask(state, received, row_mask((*rows, PROBE_ROW)))
+
+
+def readout_mask(state, received, mask):
     weights = np.exp(state.log_weight)
     second = abs(state.mean)**2 + state.variance
     mean_rotation = ((weights * state.mean) @ evolution(state.epoch).reshape(len(FREQ), -1))
@@ -109,14 +113,13 @@ def readout(state, received, rows):
     by_ray = ici[:, :, DIFF] * BASIS[:, None, None, :]
     prediction, pred_var = probe_moments(state, weights, by_ray, second)
     g = by_ray.sum(axis=0)
-    mask = row_mask((*rows, PROBE_ROW))
     pilots = np.where(mask, PILOTS, 0.)
     pilot_rx = (g @ pilots[..., None])[..., 0]
     llrs = np.zeros((T, N, 4))
-    # Pilot-bearing and data-only rows each share one observed submatrix shape.
-    for has_pilots in (False, True):
-        times = np.flatnonzero(mask.any(axis=1) == has_pilots)
-        data = np.arange(1, N, 2) if has_pilots else np.arange(N)
+    # Rows with the same comb share one observed submatrix shape.
+    for pattern in np.unique(mask, axis=0):
+        times = np.flatnonzero(np.all(mask == pattern, axis=1))
+        data = np.flatnonzero(~pattern)
         design = g[times][:, data][:, :, data]
         observations = (received[np.ix_(times, data)] - pilot_rx[np.ix_(times, data)])[..., None]
         hermitian = design.conj().swapaxes(-1, -2) / effective_noise[times, None, None]

@@ -21,13 +21,15 @@ def history(y):
     return advance(update(prior(), PILOT_ROWS, observed_taps(y, PILOT_ROWS)), FRAME_DURATION)
 
 
-def score(llrs, prediction, variance, target, clean, words, rows):
+def score(llrs, prediction, variance, target, clean, words, rows, *, pilot_mask=None):
     payload = llrs[CORE].reshape(18, 128)
     wrong = decode(payload) != words.info[:18]
     error = abs(target - prediction)**2
     if not all(np.isfinite(x).all() for x in (llrs, prediction, variance)) or (variance <= 0).any():
         raise ValueError("Nonfinite output or nonpositive probe variance")
-    extra = (~CORE) & ~row_mask((*rows, PROBE_ROW))
+    if pilot_mask is None:
+        pilot_mask = row_mask((*rows, PROBE_ROW))
+    extra = (~CORE) & ~pilot_mask
     extra_errors = 0
     if extra.any():
         extra_errors = int(np.any(decode(llrs[extra]) != words.info[18]))
@@ -65,9 +67,9 @@ def evaluate(job):
     return dict(cluster=cluster, link=link, seed=seed, budgets=metrics)
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=RESULTS / "links.jsonl")
+def run_cohort(evaluator, default_output, description):
+    parser = argparse.ArgumentParser(description=description)
+    parser.add_argument("--output", type=Path, default=default_output)
     parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--clusters", nargs="+", type=int, default=list(range(1, CLUSTERS+1)))
     args = parser.parse_args()
@@ -78,7 +80,7 @@ def main():
     args.output.parent.mkdir(parents=True, exist_ok=True)
     temporary = args.output.with_suffix(".partial")
     with ProcessPoolExecutor(args.workers) as pool, temporary.open("w", encoding="utf-8") as out:
-        for record in pool.map(evaluate, jobs, chunksize=4):
+        for record in pool.map(evaluator, jobs, chunksize=4):
             out.write(json.dumps(record, allow_nan=False, separators=(",", ":")) + "\n")
             if record["link"] == LINKS - 1:
                 print(f"Scored cluster {record['cluster']}", flush=True)
@@ -86,4 +88,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    run_cohort(evaluate, RESULTS / "links.jsonl", __doc__)

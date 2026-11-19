@@ -87,7 +87,12 @@ def traffic(rng):
 
 
 def tx_grid(words, rows):
-    pilot_mask = row_mask(rows)
+    return map_traffic(words, row_mask(rows))
+
+
+def map_traffic(words, pilot_mask):
+    if np.any(pilot_mask & CORE):
+        raise ValueError("Acquisition pilots must be on reserved cells")
     grid = np.zeros((T, N), dtype=complex)
     grid[pilot_mask] = PILOTS[pilot_mask]
     grid[CORE] = words.symbols[:18].ravel()
@@ -112,15 +117,15 @@ class Pair:
     donor_a: np.ndarray
 
 
-def simulate(seed):
+def simulate(seed, acquisition_masks=None):
     channel = draw_channel(stream(seed, 0))
     a = propagate(tx_grid(traffic(stream(seed, 1)), PILOT_ROWS), channel) + noise(stream(seed, 2))
     words = traffic(stream(seed, 3))
     b_noise = noise(stream(seed, 4))
-    clean = {
-        budget: propagate(tx_grid(words, (*rows, PROBE_ROW)), channel, start_row=T)
-        for budget, rows in B_ROWS.items()
-    }
+    if acquisition_masks is None:
+        acquisition_masks = {key: row_mask(rows) for key, rows in B_ROWS.items()}
+    clean = {key: propagate(map_traffic(words, mask | PROBES), channel, start_row=T)
+             for key, mask in acquisition_masks.items()}
     donor_channel = draw_channel(stream(seed, 5))
     donor_grid = tx_grid(traffic(stream(seed, 6)), PILOT_ROWS)
     donor = propagate(donor_grid, donor_channel) + noise(stream(seed, 7))
