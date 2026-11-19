@@ -1,0 +1,266 @@
+{
+  "created_utc": "2026-11-19T20:33:19.923359+00:00",
+  "registration": "within-session prospective freeze before formal scoring; not external public preregistration",
+  "design": {
+    "base_commit": "a4e6684830f68e6dfe715470dafb4ff95972e508",
+    "p6_main_commit": "63ad2ec5b22027ea3d6f15aa50619a9caf6bbcd1",
+    "regime": 2,
+    "snr_db": 9,
+    "seed_base": 702611190000,
+    "formal_pairs": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "train_recipe": {
+      "steps": 40,
+      "lr": 0.004,
+      "min_lr_ratio": 0.1,
+      "warmup": 4,
+      "lambda_hold": 0.05,
+      "lambda_nmse": 0.005,
+      "anchor_l2": 5e-05,
+      "batch_size": 8,
+      "grad_clip": 1.0,
+      "conditions": [
+        "C0_intact",
+        "C1_row9_erased",
+        "C2_row0_erased",
+        "C3_scattered_half",
+        "C4a_roving_window"
+      ]
+    },
+    "eval_batches": 4,
+    "eval_batch_size": 8,
+    "conditions": [
+      "C0_intact",
+      "C1_row9_erased",
+      "C2_row0_erased",
+      "C3_scattered_half",
+      "C4a_roving_window",
+      "C5_holdout_update"
+    ],
+    "pilot_audit_conditions": [
+      "C0_intact",
+      "C1_row9_erased",
+      "C2_row0_erased",
+      "C3_scattered_half",
+      "C4a_roving_window"
+    ],
+    "arms": [
+      "EM7-Axial",
+      "EM7-Local",
+      "EM7-Fixed",
+      "EM7-SingleHyp-Axial",
+      "P6-Aware-Consistent",
+      "Waveform-DD"
+    ],
+    "p6_pair_offset": 5,
+    "init_seeds": {
+      "1": 702612090001,
+      "2": 702612090002,
+      "3": 702612090003,
+      "4": 702612090004,
+      "5": 702612090005,
+      "6": 702612090006,
+      "7": 702612090007,
+      "8": 702612090008,
+      "9": 702612090009,
+      "10": 702612090010
+    },
+    "mask_seed_bases": {
+      "1": 702611391000,
+      "2": 702611392000,
+      "3": 702611393000,
+      "4": 702611394000,
+      "5": 702611395000,
+      "6": 702611396000,
+      "7": 702611397000,
+      "8": 702611398000,
+      "9": 702611399000,
+      "10": 702611400000
+    },
+    "eval_seeds": {
+      "1": [
+        702611691000,
+        702611691001,
+        702611691002,
+        702611691003
+      ],
+      "2": [
+        702611692000,
+        702611692001,
+        702611692002,
+        702611692003
+      ],
+      "3": [
+        702611693000,
+        702611693001,
+        702611693002,
+        702611693003
+      ],
+      "4": [
+        702611694000,
+        702611694001,
+        702611694002,
+        702611694003
+      ],
+      "5": [
+        702611695000,
+        702611695001,
+        702611695002,
+        702611695003
+      ],
+      "6": [
+        702611696000,
+        702611696001,
+        702611696002,
+        702611696003
+      ],
+      "7": [
+        702611697000,
+        702611697001,
+        702611697002,
+        702611697003
+      ],
+      "8": [
+        702611698000,
+        702611698001,
+        702611698002,
+        702611698003
+      ],
+      "9": [
+        702611699000,
+        702611699001,
+        702611699002,
+        702611699003
+      ],
+      "10": [
+        702611700000,
+        702611700001,
+        702611700002,
+        702611700003
+      ]
+    },
+    "cond_seeds": {
+      "1": [
+        702611891000,
+        702611891001,
+        702611891002,
+        702611891003
+      ],
+      "2": [
+        702611892000,
+        702611892001,
+        702611892002,
+        702611892003
+      ],
+      "3": [
+        702611893000,
+        702611893001,
+        702611893002,
+        702611893003
+      ],
+      "4": [
+        702611894000,
+        702611894001,
+        702611894002,
+        702611894003
+      ],
+      "5": [
+        702611895000,
+        702611895001,
+        702611895002,
+        702611895003
+      ],
+      "6": [
+        702611896000,
+        702611896001,
+        702611896002,
+        702611896003
+      ],
+      "7": [
+        702611897000,
+        702611897001,
+        702611897002,
+        702611897003
+      ],
+      "8": [
+        702611898000,
+        702611898001,
+        702611898002,
+        702611898003
+      ],
+      "9": [
+        702611899000,
+        702611899001,
+        702611899002,
+        702611899003
+      ],
+      "10": [
+        702611900000,
+        702611900001,
+        702611900002,
+        702611900003
+      ]
+    }
+  },
+  "sources": {
+    "p7/__init__.py": "7c000381a3f38a41898ea204f67da83c9b1e31ba379bf81bd905f4e81531ba21",
+    "p7/audit_gauge.py": "979c6116d4b88323fe3afe8495f60be6603e9c69beceb074c43620664a2321ba",
+    "p7/conditions.py": "013821d5d790febe248a98b731b2005b204d11902e57d78403b24face5e3bf95",
+    "p7/dev_study.py": "f26894ac68f880e48b5ff218c8139334b24729dd214ac6150b4b5cc5b3358063",
+    "p7/diag_miscalibration.py": "e2c8b0d59d2529b922e41af6d1010084681033ef8dd8ac9c78746d715fdda0a1",
+    "p7/eval_utils.py": "cac5f34ea2dd0a5f2b7e6c976434d9b6eadb5fefcc0c507ecf09fe2deab80a66",
+    "p7/formal_study.py": "d5fb87e3f1f6d27ed8baaeb1de7f4f747c7ded910a71c13d5a432c1503a5f875",
+    "p7/freeze.py": "69a9ac414b62ac62c98fd8a404e66e45a5463af2d9f44e04685d2b4c28afb6c1",
+    "p7/hypotheses.py": "eb273dcc172ef9428d5de072ce039bbe0999b246a3cdb9377fc4843915d8f456",
+    "p7/latency.py": "bc4d74f258f381c80f8c95c76d25c97d69ee979b2c45add0ea4f5fc403945fbe",
+    "p7/metrics.py": "311bd977a2b659877102c4343bc7f6acf427b05d2438e0a97b480b905bb5bc9f",
+    "p7/model.py": "49336ed3da0ac44c4346634a3621bc73c8eebf94dc4987d58cd0460e75da8988",
+    "p7/replay.py": "80c363abbc062ddc7e20085cf37691d51ff9311da8987198ae7609562e24ced3",
+    "p7/report.py": "444e322c3d506a255f9655715b1ba770a7053f32dba231c7b7c422f78816097c",
+    "p7/routing_operator.py": "379f76c5d745f1f909f119df19825c05cda9c9e100b78645c118948631ce7edf",
+    "p7/statistics.py": "c8595d3a4ca767069f43df62b057941cb150a92a12705b37d0cee714d74d6f9d",
+    "p7/tests/__init__.py": "9ab3b14e8cc297a8551e0e4b1ee907cbd23d4fc078845cd83c210668c62d83b8",
+    "p7/tests/test_p7_invariants.py": "9daad5fc850f5c5d51feb44645280d2a37cb66158cb096acbd8bbb7d73b9341e",
+    "p7/train.py": "f8276c5dea4683e8c9d244cc2d5f08a1f0c7fa652c9fb66dfaaf7de68125ee37",
+    "p7/PROTOCOL.md": "f2190f0844a0f291e7a9734f908cd593f9bf04ffb72ec5f2bfbdc23fedfa17e5",
+    "p7/results/dev_gate.json": "80c6ffbd874eef31df4288500776f195f837eb836e9971193dfbbd5becb7a0c8"
+  },
+  "p6_checkpoints": {
+    "p6/results/formal/A/r2/pair06/parity.pt": "dd617af9a7b64b6de13d4482bb493034aa2268ff769d8f651deb99a7257f4fa6",
+    "p6/results/formal/A/r2/pair07/parity.pt": "15bf6e0f513df36be1912e299367aa82435ebeea91282b12bf1dbc473b53d33b",
+    "p6/results/formal/A/r2/pair08/parity.pt": "19a07436597668d3e4446c792bccd30b0cd3b6aab53c51a8bfc2443303dae884",
+    "p6/results/formal/A/r2/pair09/parity.pt": "3a19efd5bfd58a54544ca8a2e397baa2e6daa6096cb092c86af3ed00484cc8a8",
+    "p6/results/formal/A/r2/pair10/parity.pt": "b67b273e1f48f1d8b4a92cf19ed768ef9ed79d4d89a760caa9695cf4d56b616b",
+    "p6/results/formal/A/r2/pair11/parity.pt": "cb977eb927ca39a229d2edcb76c509b662ce2f39230c43743841eef34a3e6317",
+    "p6/results/formal/A/r2/pair12/parity.pt": "83dfbf84d934fa541314fc8086c586081d94f7d12128c63548f3cf05d3e478b7",
+    "p6/results/formal/A/r2/pair13/parity.pt": "ff93c0b0929b94fcfa2dff0707e1305e831b53de664bd02f59703deeda996bf7",
+    "p6/results/formal/A/r2/pair14/parity.pt": "ec1c532f1dde49d7304865443d03f4aba5c72986e1febc3afd3bc67f1196a6c9",
+    "p6/results/formal/A/r2/pair15/parity.pt": "7078bf68dfd63d199df6839e10e09e058f594862a4b5d3f1da3b874e6aa7f372"
+  },
+  "environment": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+    "torch": "2.12.1+cpu",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "numba": "0.60.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+    "cpu_count": 12,
+    "threads": 1,
+    "interop_threads": 10,
+    "deterministic": true,
+    "precision": "float64/complex128",
+    "device": "cpu"
+  }
+}
