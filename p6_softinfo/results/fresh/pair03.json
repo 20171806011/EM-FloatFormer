@@ -1,0 +1,6601 @@
+{
+  "kind": "fresh_inference_only",
+  "index": 3,
+  "checkpoint_pair": 8,
+  "freeze_sha256": "8c24075adea35afba386f864a54acf4c74d1b4ea0ccf639f0d0a2ce7110c792f",
+  "checkpoints": {
+    "parity": {
+      "path": "p6/results/formal/A/r2/pair08/parity.pt",
+      "sha256": "19a07436597668d3e4446c792bccd30b0cd3b6aab53c51a8bfc2443303dae884",
+      "stored_implementation": "a2fc3cf10567c6dc393b367c1d0f6bf0f688ce76fdb4f14381bae895897115b4"
+    },
+    "local_parity": {
+      "path": "p6/results/formal/A/r2/pair08/local_parity.pt",
+      "sha256": "be806ba1311d20d9db38e7c761b020fd85bd83e41280f13743de7d14183dfc1a",
+      "stored_implementation": "a2fc3cf10567c6dc393b367c1d0f6bf0f688ce76fdb4f14381bae895897115b4"
+    }
+  },
+  "frames": [
+    {
+      "seed": 713611193000,
+      "batch_size": 8,
+      "y_sha256": "d6ce50785c72388d7827ea87be7d2edc1dbb51f87876380256f5362b877156fc",
+      "bits_sha256": "f32993a16b813ef9571d24be87b4cb0c34a86c1029707eb5de1024b6b3e5c598"
+    },
+    {
+      "seed": 713611193001,
+      "batch_size": 8,
+      "y_sha256": "fad7f5337ea12bc626414be7db7f7ad0995aea920a13f3e3da30c76f03471d08",
+      "bits_sha256": "a2ea6fcea6fe68082af7f7be0085a3c45f84c78371e40cc73ee91fb2bd3c6bd0"
+    },
+    {
+      "seed": 713611193002,
+      "batch_size": 8,
+      "y_sha256": "2da7f4cfe8c466b9a4ebd5008180beaa13f18166ad45dcddeebfd36b5817e042",
+      "bits_sha256": "7f83ac06a08a27f4f55c919618620aab2a7b12a1c62d773c3e72f03b2a3827d6"
+    },
+    {
+      "seed": 713611193003,
+      "batch_size": 8,
+      "y_sha256": "40edf0438257d00b5949142d36c3ed16a76f699c8568f628d932efb3c08d3bf5",
+      "bits_sha256": "081250ab759214bf16d6d9d49313a6721fd411a08d775f28ff23c786297f2ba4"
+    }
+  ],
+  "rows": [
+    {
+      "batch_index": 0,
+      "condition": "intact",
+      "method": "trust",
+      "score": {
+        "bit_errors": 2066,
+        "bits": 18432,
+        "info_errors": 105,
+        "info_bits": 9216,
+        "block_errors": 35,
+        "blocks": 144,
+        "channel_error": 26.61564772340121,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "intact",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 2066,
+        "bits": 18432,
+        "info_errors": 105,
+        "info_bits": 9216,
+        "block_errors": 35,
+        "blocks": 144,
+        "channel_error": 26.61564772340121,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "intact",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2119,
+        "bits": 18432,
+        "info_errors": 108,
+        "info_bits": 9216,
+        "block_errors": 31,
+        "blocks": 144,
+        "channel_error": 18.9885339301605,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1368577582573421,
+            "covariance_trace_mean": 262.7668958540969
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.09435627609238624,
+            "covariance_trace_mean": 181.16405009738162
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.08958979855192216,
+            "covariance_trace_mean": 172.0124132196906
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "intact",
+      "method": "profile",
+      "score": {
+        "bit_errors": 2057,
+        "bits": 18432,
+        "info_errors": 106,
+        "info_bits": 9216,
+        "block_errors": 34,
+        "blocks": 144,
+        "channel_error": 26.71382219099287,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            49.47028968288408,
+            44.801006805733465,
+            41.52442646442671,
+            44.873449249306745,
+            46.475551130015745,
+            42.80355934548571,
+            44.76366639030875,
+            42.47218173518592
+          ],
+          "objective_after": [
+            49.439692480656646,
+            44.67725913101263,
+            41.425271472322166,
+            44.771811483239986,
+            46.45403195410133,
+            42.73080618255841,
+            44.737558203675626,
+            42.4259292166898
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.05240763487944584,
+            0.10942256639563389,
+            0.15870134793680687,
+            0.0523581736005539,
+            0.03808916934194869,
+            0.10417131527028974,
+            0.04394976726773058,
+            0.0755034902210344
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "intact",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2110,
+        "bits": 18432,
+        "info_errors": 108,
+        "info_bits": 9216,
+        "block_errors": 30,
+        "blocks": 144,
+        "channel_error": 18.75640400778449,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1368577582573421,
+            "covariance_trace_mean": 262.7668958540969
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.09435627609238624,
+            "covariance_trace_mean": 181.16405009738162
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.08958979855192216,
+            "covariance_trace_mean": 172.0124132196906
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            87.56702029485699,
+            76.95869328019069,
+            64.6377491413424,
+            84.95356736218494,
+            78.23996335536914,
+            63.52201053967729,
+            78.13810400900402,
+            77.01058573657181
+          ],
+          "objective_after": [
+            87.53446674958383,
+            76.81354510389755,
+            64.38161680403338,
+            84.84923632399023,
+            78.20722339533486,
+            63.41897055774444,
+            78.1007303185427,
+            76.91568497210292
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.04249781621972437,
+            0.11198486059192178,
+            0.4452625819894297,
+            0.14284100415734632,
+            0.041938931513748286,
+            0.11907630731650959,
+            0.05075221511305839,
+            0.06964712232073847
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "intact",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 2058,
+        "bits": 18432,
+        "info_errors": 104,
+        "info_bits": 9216,
+        "block_errors": 34,
+        "blocks": 144,
+        "channel_error": 28.22087138987724,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "intact",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2157,
+        "bits": 18432,
+        "info_errors": 189,
+        "info_bits": 9216,
+        "block_errors": 47,
+        "blocks": 144,
+        "channel_error": 69.40637794405572,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "intact",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2186,
+        "bits": 18432,
+        "info_errors": 191,
+        "info_bits": 9216,
+        "block_errors": 46,
+        "blocks": 144,
+        "channel_error": 77.65452189657854,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "intact",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 3056,
+        "bits": 18432,
+        "info_errors": 912,
+        "info_bits": 9216,
+        "block_errors": 108,
+        "blocks": 144,
+        "channel_error": 503.2276022393263,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_attenuated",
+      "method": "trust",
+      "score": {
+        "bit_errors": 2069,
+        "bits": 18432,
+        "info_errors": 105,
+        "info_bits": 9216,
+        "block_errors": 34,
+        "blocks": 144,
+        "channel_error": 25.9788371730723,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_attenuated",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 2073,
+        "bits": 18432,
+        "info_errors": 105,
+        "info_bits": 9216,
+        "block_errors": 34,
+        "blocks": 144,
+        "channel_error": 20.719316090306435,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_attenuated",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2125,
+        "bits": 18432,
+        "info_errors": 109,
+        "info_bits": 9216,
+        "block_errors": 33,
+        "blocks": 144,
+        "channel_error": 32.000497763961874,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1596855801240653,
+            "covariance_trace_mean": 306.59631383820533
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.10262333243012971,
+            "covariance_trace_mean": 197.0367982658491
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09295752030317918,
+            "covariance_trace_mean": 178.47843898210402
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_attenuated",
+      "method": "profile",
+      "score": {
+        "bit_errors": 2071,
+        "bits": 18432,
+        "info_errors": 107,
+        "info_bits": 9216,
+        "block_errors": 33,
+        "blocks": 144,
+        "channel_error": 26.008545410352937,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            68.62752841349561,
+            60.77290005009109,
+            59.22059178810405,
+            60.04840712981333,
+            65.20086695365038,
+            63.21464081460271,
+            62.34167560287242,
+            60.99545013596665
+          ],
+          "objective_after": [
+            68.50708679510642,
+            60.75579192747682,
+            59.141388119693744,
+            60.03648466896213,
+            65.17919626213758,
+            63.11174074351544,
+            62.32010004776395,
+            60.95835633831086
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.037445725209735665,
+            0.058597038323751974,
+            0.19099080444230312,
+            0.06502445338299115,
+            0.013698154951650497,
+            0.109175891604525,
+            0.038703250539842186,
+            0.048889069493405615
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_attenuated",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2118,
+        "bits": 18432,
+        "info_errors": 108,
+        "info_bits": 9216,
+        "block_errors": 32,
+        "blocks": 144,
+        "channel_error": 31.70193683791354,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1596855801240653,
+            "covariance_trace_mean": 306.59631383820533
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.10262333243012971,
+            "covariance_trace_mean": 197.0367982658491
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09295752030317918,
+            "covariance_trace_mean": 178.47843898210402
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            117.77382613416373,
+            100.61275177971547,
+            89.43382038275743,
+            108.46294879462057,
+            107.13155023719428,
+            91.21311513413289,
+            105.13678746053898,
+            108.20893647868763
+          ],
+          "objective_after": [
+            117.66707159017696,
+            100.59583389653397,
+            89.20006867327616,
+            108.44715525573517,
+            107.08737683341198,
+            91.07221826883773,
+            105.09962045670915,
+            108.11755061892413
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.041166385337184794,
+            0.032288620879701385,
+            0.4481895728208459,
+            0.04026028991392187,
+            0.021163196406076796,
+            0.11641445451056624,
+            0.06201525555772918,
+            0.06228957149277984
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_attenuated",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 2059,
+        "bits": 18432,
+        "info_errors": 107,
+        "info_bits": 9216,
+        "block_errors": 32,
+        "blocks": 144,
+        "channel_error": 27.036758106406985,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_attenuated",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2160,
+        "bits": 18432,
+        "info_errors": 167,
+        "info_bits": 9216,
+        "block_errors": 45,
+        "blocks": 144,
+        "channel_error": 55.79476409704671,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_attenuated",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2136,
+        "bits": 18432,
+        "info_errors": 160,
+        "info_bits": 9216,
+        "block_errors": 45,
+        "blocks": 144,
+        "channel_error": 52.682423140428696,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_attenuated",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 3196,
+        "bits": 18432,
+        "info_errors": 976,
+        "info_bits": 9216,
+        "block_errors": 105,
+        "blocks": 144,
+        "channel_error": 699.0570126317849,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_erased",
+      "method": "trust",
+      "score": {
+        "bit_errors": 2434,
+        "bits": 18432,
+        "info_errors": 413,
+        "info_bits": 9216,
+        "block_errors": 54,
+        "blocks": 144,
+        "channel_error": 270.9970625961204,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_erased",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 2406,
+        "bits": 18432,
+        "info_errors": 408,
+        "info_bits": 9216,
+        "block_errors": 57,
+        "blocks": 144,
+        "channel_error": 231.62055101992485,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_erased",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2444,
+        "bits": 18432,
+        "info_errors": 378,
+        "info_bits": 9216,
+        "block_errors": 50,
+        "blocks": 144,
+        "channel_error": 252.27984321385773,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.13464693803356478,
+            "covariance_trace_mean": 258.5221210244444
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.10170795555584153,
+            "covariance_trace_mean": 195.27927466721576
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09825461014381999,
+            "covariance_trace_mean": 188.64885147613438
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_erased",
+      "method": "profile",
+      "score": {
+        "bit_errors": 2465,
+        "bits": 18432,
+        "info_errors": 439,
+        "info_bits": 9216,
+        "block_errors": 58,
+        "blocks": 144,
+        "channel_error": 286.6052286092902,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            87.195933087524,
+            74.75566918157173,
+            77.8311839804727,
+            72.48760632070582,
+            86.27375696700247,
+            99.26437338566744,
+            79.54675006672564,
+            99.78197818620835
+          ],
+          "objective_after": [
+            87.13815237021683,
+            74.68372498853421,
+            77.53559486512016,
+            72.3531853024895,
+            85.64850103994308,
+            98.38272430421851,
+            79.3450056364382,
+            99.50292548256058
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.10915740032710557,
+            0.08578615244231405,
+            0.18582817514902966,
+            0.1609036933979868,
+            0.07179227820799627,
+            0.11254903678929722,
+            0.05322528533690612,
+            0.21260185707816057
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_erased",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2462,
+        "bits": 18432,
+        "info_errors": 400,
+        "info_bits": 9216,
+        "block_errors": 53,
+        "blocks": 144,
+        "channel_error": 263.85443135984406,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.13464693803356478,
+            "covariance_trace_mean": 258.5221210244444
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.10170795555584153,
+            "covariance_trace_mean": 195.27927466721576
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09825461014381999,
+            "covariance_trace_mean": 188.64885147613438
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            144.50933161457883,
+            117.11674567945354,
+            118.11436377186641,
+            122.52249685204724,
+            133.65339720838315,
+            131.63096527034745,
+            126.73097234985624,
+            159.58046205379313
+          ],
+          "objective_after": [
+            144.4373632891636,
+            117.05841342817122,
+            117.71796120986872,
+            122.4358573465933,
+            132.913863924189,
+            130.0346693241995,
+            126.43859004789974,
+            159.03493508105493
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.11113823095707091,
+            0.04644823604295635,
+            0.43435419023344324,
+            0.03786015029679608,
+            0.0688826574110779,
+            0.13371270203638522,
+            0.08246351164125629,
+            0.3053454670848375
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_erased",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 2443,
+        "bits": 18432,
+        "info_errors": 416,
+        "info_bits": 9216,
+        "block_errors": 55,
+        "blocks": 144,
+        "channel_error": 269.4222384217616,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_erased",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2835,
+        "bits": 18432,
+        "info_errors": 705,
+        "info_bits": 9216,
+        "block_errors": 79,
+        "blocks": 144,
+        "channel_error": 565.2371586428824,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_erased",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2846,
+        "bits": 18432,
+        "info_errors": 705,
+        "info_bits": 9216,
+        "block_errors": 78,
+        "blocks": 144,
+        "channel_error": 570.4801523697924,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "first_erased",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 3605,
+        "bits": 18432,
+        "info_errors": 1314,
+        "info_bits": 9216,
+        "block_errors": 110,
+        "blocks": 144,
+        "channel_error": 1102.0868991711864,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "interior_erased",
+      "method": "trust",
+      "score": {
+        "bit_errors": 2245,
+        "bits": 18432,
+        "info_errors": 287,
+        "info_bits": 9216,
+        "block_errors": 48,
+        "blocks": 144,
+        "channel_error": 140.438385233531,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "interior_erased",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 2243,
+        "bits": 18432,
+        "info_errors": 288,
+        "info_bits": 9216,
+        "block_errors": 47,
+        "blocks": 144,
+        "channel_error": 139.10310722030047,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "interior_erased",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2302,
+        "bits": 18432,
+        "info_errors": 274,
+        "info_bits": 9216,
+        "block_errors": 45,
+        "blocks": 144,
+        "channel_error": 137.1037519823302,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.13475579794207043,
+            "covariance_trace_mean": 258.73113204877524
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.0972345109937474,
+            "covariance_trace_mean": 186.69026110799504
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09261727174214203,
+            "covariance_trace_mean": 177.82516174491272
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "interior_erased",
+      "method": "profile",
+      "score": {
+        "bit_errors": 2248,
+        "bits": 18432,
+        "info_errors": 288,
+        "info_bits": 9216,
+        "block_errors": 47,
+        "blocks": 144,
+        "channel_error": 140.5821962594202,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            82.17308251547725,
+            77.00827811531337,
+            71.01157217106535,
+            80.25735072541517,
+            117.71772824346803,
+            76.81507795412091,
+            81.74867550353898,
+            69.19341859250353
+          ],
+          "objective_after": [
+            82.1120785992523,
+            76.89857305365784,
+            70.86715330360869,
+            80.17039725327014,
+            117.62812736703728,
+            76.6777382557094,
+            81.7113302878209,
+            69.13815336982636
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.04939251960636037,
+            0.0850001723042616,
+            0.21034895602938755,
+            0.0543981412071184,
+            0.06669176318221211,
+            0.0887305954162969,
+            0.05673522757393094,
+            0.07093336640143384
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "interior_erased",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2289,
+        "bits": 18432,
+        "info_errors": 272,
+        "info_bits": 9216,
+        "block_errors": 46,
+        "blocks": 144,
+        "channel_error": 136.67138015071404,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.13475579794207043,
+            "covariance_trace_mean": 258.73113204877524
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.0972345109937474,
+            "covariance_trace_mean": 186.69026110799504
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09261727174214203,
+            "covariance_trace_mean": 177.82516174491272
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            130.52004413454654,
+            118.79242288207922,
+            101.17658192255415,
+            134.18773201503194,
+            172.14055436354116,
+            105.0445515800853,
+            126.97162442259274,
+            110.66863602306961
+          ],
+          "objective_after": [
+            130.44661126174927,
+            118.67817955599928,
+            100.78704197737788,
+            134.08924259705367,
+            172.025504304084,
+            104.86854118544173,
+            126.90418585141259,
+            110.56350001118992
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.057323439343908135,
+            0.08648908749592644,
+            0.4528329155146105,
+            0.14850666599139176,
+            0.08456741745989323,
+            0.09478610471589564,
+            0.07836172048581408,
+            0.07472889573128944
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "interior_erased",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 2239,
+        "bits": 18432,
+        "info_errors": 286,
+        "info_bits": 9216,
+        "block_errors": 48,
+        "blocks": 144,
+        "channel_error": 141.94097858395742,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "interior_erased",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2373,
+        "bits": 18432,
+        "info_errors": 350,
+        "info_bits": 9216,
+        "block_errors": 58,
+        "blocks": 144,
+        "channel_error": 185.33836653304303,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "interior_erased",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2384,
+        "bits": 18432,
+        "info_errors": 396,
+        "info_bits": 9216,
+        "block_errors": 58,
+        "blocks": 144,
+        "channel_error": 217.83492343484525,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "interior_erased",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 6024,
+        "bits": 18432,
+        "info_errors": 2951,
+        "info_bits": 9216,
+        "block_errors": 143,
+        "blocks": 144,
+        "channel_error": 4499.10053293837,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "scattered_erased",
+      "method": "trust",
+      "score": {
+        "bit_errors": 2095,
+        "bits": 18432,
+        "info_errors": 131,
+        "info_bits": 9216,
+        "block_errors": 39,
+        "blocks": 144,
+        "channel_error": 24.21989929938721,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "scattered_erased",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 2095,
+        "bits": 18432,
+        "info_errors": 131,
+        "info_bits": 9216,
+        "block_errors": 39,
+        "blocks": 144,
+        "channel_error": 24.21989929938721,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "scattered_erased",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2181,
+        "bits": 18432,
+        "info_errors": 139,
+        "info_bits": 9216,
+        "block_errors": 41,
+        "blocks": 144,
+        "channel_error": 65.57730037042279,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.2573735711602856,
+            "covariance_trace_mean": 494.1572566277483
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.13248525798195707,
+            "covariance_trace_mean": 254.37169532535756
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.10601802244221321,
+            "covariance_trace_mean": 203.55460308904938
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "scattered_erased",
+      "method": "profile",
+      "score": {
+        "bit_errors": 2107,
+        "bits": 18432,
+        "info_errors": 124,
+        "info_bits": 9216,
+        "block_errors": 37,
+        "blocks": 144,
+        "channel_error": 25.591610537620824,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            171.33230498714843,
+            132.06629361666506,
+            140.4386670265574,
+            137.21702938491205,
+            149.3241988900247,
+            148.92209152621194,
+            149.55585310768137,
+            148.7862963000355
+          ],
+          "objective_after": [
+            171.23823984168075,
+            131.71579177689173,
+            140.27908759797694,
+            136.68307176004402,
+            149.27651452136664,
+            148.48471043040945,
+            149.52039409857724,
+            148.6804051765533
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.0237441849840934,
+            0.14675548376597222,
+            0.14797194700108154,
+            0.17542497576182348,
+            0.08902705117260719,
+            0.16417878792623883,
+            0.07895387910258278,
+            0.037899013934095664
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "scattered_erased",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2170,
+        "bits": 18432,
+        "info_errors": 137,
+        "info_bits": 9216,
+        "block_errors": 40,
+        "blocks": 144,
+        "channel_error": 66.73977445172757,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.2573735711602856,
+            "covariance_trace_mean": 494.1572566277483
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.13248525798195707,
+            "covariance_trace_mean": 254.37169532535756
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.10601802244221321,
+            "covariance_trace_mean": 203.55460308904938
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            260.33100947476686,
+            196.66021158901188,
+            192.92672305565623,
+            215.14683370479366,
+            223.80060119454384,
+            196.61117887713962,
+            225.80577354460456,
+            224.47749605735115
+          ],
+          "objective_after": [
+            260.0771640837347,
+            196.32331140085233,
+            192.54363825617514,
+            214.56447081319595,
+            223.7167492069712,
+            196.26336469028604,
+            225.71030296331676,
+            224.2282551401142
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.06821991789320984,
+            0.1146588519045626,
+            0.40337135564839344,
+            0.23451126786541762,
+            0.08240082143616131,
+            0.15313312008273455,
+            0.13651928750411657,
+            0.048034821585932946
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 0,
+      "condition": "scattered_erased",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 2095,
+        "bits": 18432,
+        "info_errors": 126,
+        "info_bits": 9216,
+        "block_errors": 40,
+        "blocks": 144,
+        "channel_error": 25.022184253193245,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "scattered_erased",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2320,
+        "bits": 18432,
+        "info_errors": 280,
+        "info_bits": 9216,
+        "block_errors": 58,
+        "blocks": 144,
+        "channel_error": 122.21289596934764,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "scattered_erased",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2324,
+        "bits": 18432,
+        "info_errors": 303,
+        "info_bits": 9216,
+        "block_errors": 65,
+        "blocks": 144,
+        "channel_error": 126.99203083624406,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 0,
+      "condition": "scattered_erased",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 3833,
+        "bits": 18432,
+        "info_errors": 1695,
+        "info_bits": 9216,
+        "block_errors": 140,
+        "blocks": 144,
+        "channel_error": 1750.530499577533,
+        "channel_energy": 4844.448487043606
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "intact",
+      "method": "trust",
+      "score": {
+        "bit_errors": 1940,
+        "bits": 18432,
+        "info_errors": 106,
+        "info_bits": 9216,
+        "block_errors": 31,
+        "blocks": 144,
+        "channel_error": 29.511307213748804,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "intact",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 1940,
+        "bits": 18432,
+        "info_errors": 106,
+        "info_bits": 9216,
+        "block_errors": 31,
+        "blocks": 144,
+        "channel_error": 29.511307213748804,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "intact",
+      "method": "variance",
+      "score": {
+        "bit_errors": 1942,
+        "bits": 18432,
+        "info_errors": 92,
+        "info_bits": 9216,
+        "block_errors": 28,
+        "blocks": 144,
+        "channel_error": 13.975607112477327,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.12664853618793998,
+            "covariance_trace_mean": 243.16518948084473
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.08345692092301675,
+            "covariance_trace_mean": 160.23728817219217
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.07882927738648171,
+            "covariance_trace_mean": 151.3522125820449
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "intact",
+      "method": "profile",
+      "score": {
+        "bit_errors": 1938,
+        "bits": 18432,
+        "info_errors": 103,
+        "info_bits": 9216,
+        "block_errors": 31,
+        "blocks": 144,
+        "channel_error": 29.113101998138198,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            41.6882409977516,
+            50.369724270554016,
+            47.16646656465134,
+            41.39751905837777,
+            41.473288158418725,
+            45.38435656909073,
+            50.83676496584913,
+            47.130283374308874
+          ],
+          "objective_after": [
+            41.53147794967805,
+            50.23514679659176,
+            47.05115844364288,
+            41.36210079595557,
+            41.44014451351351,
+            45.36099574238057,
+            50.7526032549782,
+            47.11431168699344
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.10932656887689218,
+            0.46139487531426926,
+            0.4785790583898966,
+            0.047256575361059726,
+            0.0723125684795685,
+            0.0396989618080589,
+            0.08692187002780875,
+            0.027543623916089673
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "intact",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 1940,
+        "bits": 18432,
+        "info_errors": 92,
+        "info_bits": 9216,
+        "block_errors": 28,
+        "blocks": 144,
+        "channel_error": 13.407470073713167,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.12664853618793998,
+            "covariance_trace_mean": 243.16518948084473
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.08345692092301675,
+            "covariance_trace_mean": 160.23728817219217
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.07882927738648171,
+            "covariance_trace_mean": 151.3522125820449
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            66.5762284108779,
+            87.67690078805558,
+            78.47642537060707,
+            64.47302130645913,
+            68.05885067113431,
+            83.30521479319106,
+            90.26990561330896,
+            78.07960088326574
+          ],
+          "objective_after": [
+            66.40366109229694,
+            87.4950969038115,
+            78.32813240481788,
+            64.43166793700746,
+            68.03225802500945,
+            83.26809272127662,
+            90.18527572750668,
+            78.05004906817047
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.10350082822478299,
+            0.5,
+            0.4810839357807401,
+            0.042313605136739554,
+            0.04443417655595152,
+            0.06288087988461014,
+            0.06835969861371469,
+            0.040773319537641475
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "intact",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 1932,
+        "bits": 18432,
+        "info_errors": 107,
+        "info_bits": 9216,
+        "block_errors": 31,
+        "blocks": 144,
+        "channel_error": 30.38038509628585,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "intact",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2078,
+        "bits": 18432,
+        "info_errors": 127,
+        "info_bits": 9216,
+        "block_errors": 37,
+        "blocks": 144,
+        "channel_error": 80.04569719744217,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "intact",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2092,
+        "bits": 18432,
+        "info_errors": 121,
+        "info_bits": 9216,
+        "block_errors": 40,
+        "blocks": 144,
+        "channel_error": 75.48818521123728,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "intact",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 2915,
+        "bits": 18432,
+        "info_errors": 887,
+        "info_bits": 9216,
+        "block_errors": 106,
+        "blocks": 144,
+        "channel_error": 445.08798884685854,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_attenuated",
+      "method": "trust",
+      "score": {
+        "bit_errors": 1934,
+        "bits": 18432,
+        "info_errors": 96,
+        "info_bits": 9216,
+        "block_errors": 28,
+        "blocks": 144,
+        "channel_error": 29.314716228986306,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_attenuated",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 1937,
+        "bits": 18432,
+        "info_errors": 101,
+        "info_bits": 9216,
+        "block_errors": 31,
+        "blocks": 144,
+        "channel_error": 24.366633626006017,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_attenuated",
+      "method": "variance",
+      "score": {
+        "bit_errors": 1942,
+        "bits": 18432,
+        "info_errors": 94,
+        "info_bits": 9216,
+        "block_errors": 29,
+        "blocks": 144,
+        "channel_error": 25.873715938346066,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.14901308559145035,
+            "covariance_trace_mean": 286.1051243355846
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.0917345134126891,
+            "covariance_trace_mean": 176.13026575236307
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.08214713910320479,
+            "covariance_trace_mean": 157.7225070781532
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_attenuated",
+      "method": "profile",
+      "score": {
+        "bit_errors": 1926,
+        "bits": 18432,
+        "info_errors": 97,
+        "info_bits": 9216,
+        "block_errors": 29,
+        "blocks": 144,
+        "channel_error": 29.110555662782552,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            58.15031399706746,
+            71.14885534802171,
+            61.87358500226874,
+            57.83541879093496,
+            57.181721221233865,
+            62.077427228829094,
+            67.7583524655527,
+            67.01944497205308
+          ],
+          "objective_after": [
+            58.11476499936005,
+            71.09639925017642,
+            61.827933230517054,
+            57.79043237785319,
+            57.15104998053325,
+            62.059055932696154,
+            67.6872728354965,
+            66.92074551335551
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.035754172852753396,
+            0.3592155710334194,
+            0.43687569066822485,
+            0.046118742703073055,
+            0.02804280100559715,
+            0.0528581591410053,
+            0.03783521510825723,
+            0.04763277911402156
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_attenuated",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 1942,
+        "bits": 18432,
+        "info_errors": 95,
+        "info_bits": 9216,
+        "block_errors": 29,
+        "blocks": 144,
+        "channel_error": 25.607296923341913,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.14901308559145035,
+            "covariance_trace_mean": 286.1051243355846
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.0917345134126891,
+            "covariance_trace_mean": 176.13026575236307
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.08214713910320479,
+            "covariance_trace_mean": 157.7225070781532
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            89.36991522433058,
+            121.01608192458707,
+            99.75909314814484,
+            88.05838460264212,
+            90.03724996009431,
+            108.82080317823477,
+            117.8223469385239,
+            108.20590225107276
+          ],
+          "objective_after": [
+            89.31803476392608,
+            120.94225378409877,
+            99.71450621545667,
+            88.01445963997833,
+            90.00381003099503,
+            108.78281038547595,
+            117.7523777324974,
+            108.09034251936514
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.04227154772190488,
+            0.49813827835851,
+            0.4441480731583701,
+            0.03908500227067069,
+            0.020067166830137543,
+            0.07526827431113883,
+            0.0253669198734528,
+            0.06257143070618616
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_attenuated",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 1937,
+        "bits": 18432,
+        "info_errors": 95,
+        "info_bits": 9216,
+        "block_errors": 29,
+        "blocks": 144,
+        "channel_error": 29.629900147702557,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_attenuated",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2057,
+        "bits": 18432,
+        "info_errors": 121,
+        "info_bits": 9216,
+        "block_errors": 37,
+        "blocks": 144,
+        "channel_error": 66.92457985294796,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_attenuated",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2045,
+        "bits": 18432,
+        "info_errors": 102,
+        "info_bits": 9216,
+        "block_errors": 36,
+        "blocks": 144,
+        "channel_error": 58.865495833292144,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_attenuated",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 3087,
+        "bits": 18432,
+        "info_errors": 988,
+        "info_bits": 9216,
+        "block_errors": 108,
+        "blocks": 144,
+        "channel_error": 654.6312947538611,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_erased",
+      "method": "trust",
+      "score": {
+        "bit_errors": 2151,
+        "bits": 18432,
+        "info_errors": 281,
+        "info_bits": 9216,
+        "block_errors": 39,
+        "blocks": 144,
+        "channel_error": 181.44679178401304,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_erased",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 2157,
+        "bits": 18432,
+        "info_errors": 254,
+        "info_bits": 9216,
+        "block_errors": 40,
+        "blocks": 144,
+        "channel_error": 152.37396060073615,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_erased",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2158,
+        "bits": 18432,
+        "info_errors": 257,
+        "info_bits": 9216,
+        "block_errors": 40,
+        "blocks": 144,
+        "channel_error": 151.87783265606907,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1254396141957577,
+            "covariance_trace_mean": 240.84405925585475
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.09186659680244849,
+            "covariance_trace_mean": 176.38386586070112
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.08585983258878063,
+            "covariance_trace_mean": 164.8508785704588
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_erased",
+      "method": "profile",
+      "score": {
+        "bit_errors": 2165,
+        "bits": 18432,
+        "info_errors": 287,
+        "info_bits": 9216,
+        "block_errors": 40,
+        "blocks": 144,
+        "channel_error": 189.44534094911708,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            74.00028422976635,
+            89.93580693893574,
+            75.49100675015133,
+            80.38593518557519,
+            71.74044508857389,
+            79.99607582504149,
+            84.41487303830252,
+            91.16050513394529
+          ],
+          "objective_after": [
+            73.81224231749897,
+            89.63817984642161,
+            75.33305072025006,
+            80.02673186073729,
+            71.50982033253108,
+            79.81084007603441,
+            84.26311917944818,
+            90.89563641371252
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.08810881388766488,
+            0.22058894361359346,
+            0.4750653451918751,
+            0.10542976021689626,
+            0.07458718421068657,
+            0.10368018008496928,
+            0.19583486298491248,
+            0.10727208820626738
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_erased",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2170,
+        "bits": 18432,
+        "info_errors": 269,
+        "info_bits": 9216,
+        "block_errors": 38,
+        "blocks": 144,
+        "channel_error": 162.1725622898144,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1254396141957577,
+            "covariance_trace_mean": 240.84405925585475
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.09186659680244849,
+            "covariance_trace_mean": 176.38386586070112
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.08585983258878063,
+            "covariance_trace_mean": 164.8508785704588
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            106.673129522053,
+            142.2208448340282,
+            115.3114458017711,
+            117.80739707807226,
+            106.35063409004727,
+            130.62467239173594,
+            138.5422464927616,
+            140.16236750668145
+          ],
+          "objective_after": [
+            106.4774452712689,
+            142.0287408605826,
+            115.10334776170367,
+            117.27276911399304,
+            106.12562127569467,
+            130.4152857955423,
+            138.36713938960503,
+            139.75915802573843
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.08371499578952882,
+            0.3780361851046177,
+            0.3862075745772446,
+            0.10743638436329675,
+            0.0805577762389428,
+            0.10162760743355019,
+            0.04136034877593798,
+            0.09431394484530876
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_erased",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 2162,
+        "bits": 18432,
+        "info_errors": 299,
+        "info_bits": 9216,
+        "block_errors": 40,
+        "blocks": 144,
+        "channel_error": 186.59707378437736,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_erased",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2520,
+        "bits": 18432,
+        "info_errors": 516,
+        "info_bits": 9216,
+        "block_errors": 63,
+        "blocks": 144,
+        "channel_error": 371.3550695801773,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_erased",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2910,
+        "bits": 18432,
+        "info_errors": 805,
+        "info_bits": 9216,
+        "block_errors": 77,
+        "blocks": 144,
+        "channel_error": 682.0985703557959,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "first_erased",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 3548,
+        "bits": 18432,
+        "info_errors": 1341,
+        "info_bits": 9216,
+        "block_errors": 119,
+        "blocks": 144,
+        "channel_error": 1039.9720865751874,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "interior_erased",
+      "method": "trust",
+      "score": {
+        "bit_errors": 2159,
+        "bits": 18432,
+        "info_errors": 337,
+        "info_bits": 9216,
+        "block_errors": 42,
+        "blocks": 144,
+        "channel_error": 252.97496855397233,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "interior_erased",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 2152,
+        "bits": 18432,
+        "info_errors": 334,
+        "info_bits": 9216,
+        "block_errors": 43,
+        "blocks": 144,
+        "channel_error": 253.7975771693989,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "interior_erased",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2196,
+        "bits": 18432,
+        "info_errors": 322,
+        "info_bits": 9216,
+        "block_errors": 40,
+        "blocks": 144,
+        "channel_error": 221.4976220361598,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1239364360369039,
+            "covariance_trace_mean": 237.9579571908555
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.08868370791940042,
+            "covariance_trace_mean": 170.2727192052488
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.08308686560014533,
+            "covariance_trace_mean": 159.52678195227904
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "interior_erased",
+      "method": "profile",
+      "score": {
+        "bit_errors": 2168,
+        "bits": 18432,
+        "info_errors": 336,
+        "info_bits": 9216,
+        "block_errors": 43,
+        "blocks": 144,
+        "channel_error": 252.9927310197079,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            73.77697181028154,
+            77.36478769153965,
+            78.61789632257445,
+            137.15013391330345,
+            77.07886846043074,
+            79.19180570327532,
+            85.51591362881292,
+            74.41790888468746
+          ],
+          "objective_after": [
+            73.68401875792566,
+            77.16678156550218,
+            78.47428796484431,
+            136.95193876148323,
+            77.05114346996369,
+            79.16140500744204,
+            85.38029686006774,
+            74.40483562948656
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.06395911199241668,
+            0.4999999999999999,
+            0.33620443640638764,
+            0.11419316052069167,
+            0.06885134603987601,
+            0.05057368153661849,
+            0.07887522478356111,
+            0.024649532701633607
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "interior_erased",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2185,
+        "bits": 18432,
+        "info_errors": 325,
+        "info_bits": 9216,
+        "block_errors": 41,
+        "blocks": 144,
+        "channel_error": 221.22451775718184,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1239364360369039,
+            "covariance_trace_mean": 237.9579571908555
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.08868370791940042,
+            "covariance_trace_mean": 170.2727192052488
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.08308686560014533,
+            "covariance_trace_mean": 159.52678195227904
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            105.94142238702428,
+            121.36935354677291,
+            119.25557779793893,
+            188.37673178254715,
+            112.65962752522091,
+            129.94568027415085,
+            139.10063058353975,
+            111.8652594515564
+          ],
+          "objective_after": [
+            105.82878539336357,
+            121.17245515873306,
+            119.07956388643011,
+            188.05552994134428,
+            112.63721192078154,
+            129.89827923283903,
+            139.01047008727102,
+            111.84703260869344
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.07105131765774989,
+            0.5,
+            0.3375885717915692,
+            0.11787675367270788,
+            0.07138580792113308,
+            0.06362798465692507,
+            0.063040815770309,
+            0.03706694586846722
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "interior_erased",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 2163,
+        "bits": 18432,
+        "info_errors": 340,
+        "info_bits": 9216,
+        "block_errors": 43,
+        "blocks": 144,
+        "channel_error": 256.4615648664556,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "interior_erased",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2313,
+        "bits": 18432,
+        "info_errors": 379,
+        "info_bits": 9216,
+        "block_errors": 51,
+        "blocks": 144,
+        "channel_error": 317.2157639530267,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "interior_erased",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2330,
+        "bits": 18432,
+        "info_errors": 396,
+        "info_bits": 9216,
+        "block_errors": 52,
+        "blocks": 144,
+        "channel_error": 350.56336103988394,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "interior_erased",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 6226,
+        "bits": 18432,
+        "info_errors": 3121,
+        "info_bits": 9216,
+        "block_errors": 144,
+        "blocks": 144,
+        "channel_error": 4652.718031813756,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "scattered_erased",
+      "method": "trust",
+      "score": {
+        "bit_errors": 1976,
+        "bits": 18432,
+        "info_errors": 106,
+        "info_bits": 9216,
+        "block_errors": 32,
+        "blocks": 144,
+        "channel_error": 32.48611731673225,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "scattered_erased",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 1976,
+        "bits": 18432,
+        "info_errors": 106,
+        "info_bits": 9216,
+        "block_errors": 32,
+        "blocks": 144,
+        "channel_error": 32.48611731673225,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "scattered_erased",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2003,
+        "bits": 18432,
+        "info_errors": 114,
+        "info_bits": 9216,
+        "block_errors": 34,
+        "blocks": 144,
+        "channel_error": 58.842295235089345,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.24122024569266717,
+            "covariance_trace_mean": 463.142871729921
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.11953939037366448,
+            "covariance_trace_mean": 229.51562951743577
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09398585362999723,
+            "covariance_trace_mean": 180.4528389695947
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "scattered_erased",
+      "method": "profile",
+      "score": {
+        "bit_errors": 1968,
+        "bits": 18432,
+        "info_errors": 106,
+        "info_bits": 9216,
+        "block_errors": 31,
+        "blocks": 144,
+        "channel_error": 32.049874939020654,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            134.02534461740916,
+            145.25891080784228,
+            147.04270848297563,
+            141.95152573425688,
+            135.45542938829323,
+            136.86611326990854,
+            142.94059993294013,
+            154.95118844419764
+          ],
+          "objective_after": [
+            133.7030909906463,
+            145.18658373783876,
+            146.9866980987345,
+            141.89151786299976,
+            135.33612563726996,
+            136.81763777318665,
+            142.82809501388763,
+            154.84625350484788
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.10447294913732258,
+            0.49999999999999994,
+            0.5,
+            0.04478730313179111,
+            0.08944447316750467,
+            0.06564456989597275,
+            0.05043201139010767,
+            0.05373936994997036
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "scattered_erased",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2004,
+        "bits": 18432,
+        "info_errors": 111,
+        "info_bits": 9216,
+        "block_errors": 32,
+        "blocks": 144,
+        "channel_error": 58.43587150735296,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.24122024569266717,
+            "covariance_trace_mean": 463.142871729921
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.11953939037366448,
+            "covariance_trace_mean": 229.51562951743577
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09398585362999723,
+            "covariance_trace_mean": 180.4528389695947
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            185.3693489211108,
+            221.11987912471852,
+            224.08129774504846,
+            196.3265185844544,
+            188.864575083377,
+            208.59287239573564,
+            218.48294621483018,
+            223.43823365291897
+          ],
+          "objective_after": [
+            184.8158300828025,
+            220.99268224570483,
+            223.7519547032355,
+            196.2896911963024,
+            188.7951611676565,
+            208.4994613386835,
+            218.28846991294517,
+            223.26672514236589
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.11717404411812081,
+            0.49999999999999994,
+            0.49999999999999994,
+            0.037644208896563586,
+            0.025571120800869096,
+            0.07671296411161875,
+            0.06206286578448275,
+            0.08270419965624409
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 1,
+      "condition": "scattered_erased",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 1970,
+        "bits": 18432,
+        "info_errors": 110,
+        "info_bits": 9216,
+        "block_errors": 33,
+        "blocks": 144,
+        "channel_error": 31.835323214320496,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "scattered_erased",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2228,
+        "bits": 18432,
+        "info_errors": 243,
+        "info_bits": 9216,
+        "block_errors": 55,
+        "blocks": 144,
+        "channel_error": 141.30485025129596,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "scattered_erased",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2220,
+        "bits": 18432,
+        "info_errors": 246,
+        "info_bits": 9216,
+        "block_errors": 50,
+        "blocks": 144,
+        "channel_error": 145.3648690479879,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 1,
+      "condition": "scattered_erased",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 3611,
+        "bits": 18432,
+        "info_errors": 1478,
+        "info_bits": 9216,
+        "block_errors": 133,
+        "blocks": 144,
+        "channel_error": 1534.0693744873392,
+        "channel_energy": 4664.7521925440615
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "intact",
+      "method": "trust",
+      "score": {
+        "bit_errors": 1906,
+        "bits": 18432,
+        "info_errors": 103,
+        "info_bits": 9216,
+        "block_errors": 30,
+        "blocks": 144,
+        "channel_error": 30.282426060517835,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "intact",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 1906,
+        "bits": 18432,
+        "info_errors": 103,
+        "info_bits": 9216,
+        "block_errors": 30,
+        "blocks": 144,
+        "channel_error": 30.282426060517835,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "intact",
+      "method": "variance",
+      "score": {
+        "bit_errors": 1926,
+        "bits": 18432,
+        "info_errors": 88,
+        "info_bits": 9216,
+        "block_errors": 29,
+        "blocks": 144,
+        "channel_error": 20.548794916735964,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1323790117838508,
+            "covariance_trace_mean": 254.16770262499352
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.08762305727666415,
+            "covariance_trace_mean": 168.23626997119518
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.08207832994104935,
+            "covariance_trace_mean": 157.59039348681475
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "intact",
+      "method": "profile",
+      "score": {
+        "bit_errors": 1907,
+        "bits": 18432,
+        "info_errors": 100,
+        "info_bits": 9216,
+        "block_errors": 29,
+        "blocks": 144,
+        "channel_error": 30.56490620460704,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            42.861627813791564,
+            44.13439354365373,
+            48.238950787129276,
+            44.571682929849196,
+            43.688990250218396,
+            37.07536621694472,
+            45.695845267411705,
+            43.80948399390021
+          ],
+          "objective_after": [
+            42.75727173791106,
+            44.09794576319466,
+            48.1929002609136,
+            44.52839933337093,
+            43.65490270201304,
+            37.04267827009543,
+            45.65993533154558,
+            43.71952072842818
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.08316692206447669,
+            0.05060826705528041,
+            0.09323478419212582,
+            0.051390974250300675,
+            0.12232597493658087,
+            0.03268701644075349,
+            0.05413773519600186,
+            0.038792857076713844
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "intact",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 1917,
+        "bits": 18432,
+        "info_errors": 88,
+        "info_bits": 9216,
+        "block_errors": 26,
+        "blocks": 144,
+        "channel_error": 20.69109967088483,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1323790117838508,
+            "covariance_trace_mean": 254.16770262499352
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.08762305727666415,
+            "covariance_trace_mean": 168.23626997119518
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.08207832994104935,
+            "covariance_trace_mean": 157.59039348681475
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            71.76938442764207,
+            78.0172305657328,
+            86.53506195013604,
+            77.07320033220574,
+            77.3573445864237,
+            52.784965692927486,
+            79.2364864483026,
+            66.71688425738688
+          ],
+          "objective_after": [
+            71.6725337467753,
+            77.98311529101771,
+            86.4307519223139,
+            76.99482201610516,
+            77.3174146646563,
+            52.74454367291539,
+            79.19317544930217,
+            66.53768753773079
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.061112593869772046,
+            0.054447335500978654,
+            0.05543308017064055,
+            0.056850188069973405,
+            0.13170895917197392,
+            0.028693195698238378,
+            0.050976010775669774,
+            0.05744306533469205
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "intact",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 1904,
+        "bits": 18432,
+        "info_errors": 105,
+        "info_bits": 9216,
+        "block_errors": 31,
+        "blocks": 144,
+        "channel_error": 31.053286757709266,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "intact",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2041,
+        "bits": 18432,
+        "info_errors": 167,
+        "info_bits": 9216,
+        "block_errors": 40,
+        "blocks": 144,
+        "channel_error": 76.04253007939424,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "intact",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2033,
+        "bits": 18432,
+        "info_errors": 157,
+        "info_bits": 9216,
+        "block_errors": 38,
+        "blocks": 144,
+        "channel_error": 72.32782875816841,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "intact",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 2780,
+        "bits": 18432,
+        "info_errors": 659,
+        "info_bits": 9216,
+        "block_errors": 97,
+        "blocks": 144,
+        "channel_error": 403.0374470874341,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_attenuated",
+      "method": "trust",
+      "score": {
+        "bit_errors": 1908,
+        "bits": 18432,
+        "info_errors": 99,
+        "info_bits": 9216,
+        "block_errors": 32,
+        "blocks": 144,
+        "channel_error": 29.447551874042006,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_attenuated",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 1893,
+        "bits": 18432,
+        "info_errors": 99,
+        "info_bits": 9216,
+        "block_errors": 27,
+        "blocks": 144,
+        "channel_error": 24.047445073960038,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_attenuated",
+      "method": "variance",
+      "score": {
+        "bit_errors": 1943,
+        "bits": 18432,
+        "info_errors": 91,
+        "info_bits": 9216,
+        "block_errors": 27,
+        "blocks": 144,
+        "channel_error": 33.05545574134099,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1561444959013751,
+            "covariance_trace_mean": 299.79743213064023
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.09572402436933176,
+            "covariance_trace_mean": 183.79012678911698
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.085416526351447,
+            "covariance_trace_mean": 163.99973059477824
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_attenuated",
+      "method": "profile",
+      "score": {
+        "bit_errors": 1901,
+        "bits": 18432,
+        "info_errors": 97,
+        "info_bits": 9216,
+        "block_errors": 31,
+        "blocks": 144,
+        "channel_error": 29.293766189703376,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            63.88041405689388,
+            58.60102400731215,
+            65.82998936587968,
+            63.074846877664804,
+            58.99714684635215,
+            53.58437167620333,
+            64.1124028708588,
+            60.67111112069938
+          ],
+          "objective_after": [
+            63.812143840675795,
+            58.57642283476116,
+            65.80909234742028,
+            63.022253248551706,
+            58.97869373741065,
+            53.514641164867925,
+            64.07398312271972,
+            60.58499728697601
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.058061974853034395,
+            0.046545147964028206,
+            0.09010650530911687,
+            0.028491870142927752,
+            0.09006760937125646,
+            0.04132353322677047,
+            0.038053505242010816,
+            0.043432922250064385
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_attenuated",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 1935,
+        "bits": 18432,
+        "info_errors": 92,
+        "info_bits": 9216,
+        "block_errors": 27,
+        "blocks": 144,
+        "channel_error": 32.93116586866759,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1561444959013751,
+            "covariance_trace_mean": 299.79743213064023
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.09572402436933176,
+            "covariance_trace_mean": 183.79012678911698
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.085416526351447,
+            "covariance_trace_mean": 163.99973059477824
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            103.22081226525093,
+            100.78591817091629,
+            114.71103492269435,
+            105.26240443032862,
+            101.00307536496112,
+            73.84766660538752,
+            108.19082184588268,
+            89.1011520686294
+          ],
+          "objective_after": [
+            103.14856176552884,
+            100.74269419737865,
+            114.66183190923611,
+            105.13611286797637,
+            100.97851433796762,
+            73.76117955246669,
+            108.14568071584563,
+            88.94036146534506
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.04210844183413111,
+            0.07697395705399397,
+            0.05955315180630551,
+            0.06286323082542908,
+            0.09027558338541791,
+            0.034123971772777116,
+            0.02977617709796798,
+            0.06316907867332508
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_attenuated",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 1895,
+        "bits": 18432,
+        "info_errors": 101,
+        "info_bits": 9216,
+        "block_errors": 32,
+        "blocks": 144,
+        "channel_error": 29.680992084721368,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_attenuated",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2049,
+        "bits": 18432,
+        "info_errors": 150,
+        "info_bits": 9216,
+        "block_errors": 38,
+        "blocks": 144,
+        "channel_error": 62.56096253910801,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_attenuated",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 1996,
+        "bits": 18432,
+        "info_errors": 146,
+        "info_bits": 9216,
+        "block_errors": 36,
+        "blocks": 144,
+        "channel_error": 54.51220819806886,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_attenuated",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 3012,
+        "bits": 18432,
+        "info_errors": 905,
+        "info_bits": 9216,
+        "block_errors": 110,
+        "blocks": 144,
+        "channel_error": 616.2367370291927,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_erased",
+      "method": "trust",
+      "score": {
+        "bit_errors": 2545,
+        "bits": 18432,
+        "info_errors": 610,
+        "info_bits": 9216,
+        "block_errors": 59,
+        "blocks": 144,
+        "channel_error": 493.9996727833711,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_erased",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 2494,
+        "bits": 18432,
+        "info_errors": 588,
+        "info_bits": 9216,
+        "block_errors": 55,
+        "blocks": 144,
+        "channel_error": 436.9629679647683,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_erased",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2543,
+        "bits": 18432,
+        "info_errors": 592,
+        "info_bits": 9216,
+        "block_errors": 54,
+        "blocks": 144,
+        "channel_error": 455.32834745095397,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1325595522166721,
+            "covariance_trace_mean": 254.51434025601046
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.10167191730923128,
+            "covariance_trace_mean": 195.21008123372408
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09708002244572207,
+            "covariance_trace_mean": 186.3936430957864
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_erased",
+      "method": "profile",
+      "score": {
+        "bit_errors": 2568,
+        "bits": 18432,
+        "info_errors": 635,
+        "info_bits": 9216,
+        "block_errors": 59,
+        "blocks": 144,
+        "channel_error": 519.4586930915315,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            94.630429006441,
+            79.46693822643958,
+            85.28116708015925,
+            80.20107661735003,
+            82.3913436190797,
+            75.73693651705787,
+            92.84259766014752,
+            84.67224332191574
+          ],
+          "objective_after": [
+            94.49388035367944,
+            79.3349549143859,
+            84.69912385956265,
+            80.12883900296569,
+            82.1576052892255,
+            75.10221073196482,
+            92.4356062199903,
+            84.38283369160806
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.06637288945697077,
+            0.24056526220922977,
+            0.07480490687866542,
+            0.06941142393420383,
+            0.11896892682790687,
+            0.10122037680844698,
+            0.1505126377474559,
+            0.043548608919148336
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_erased",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2578,
+        "bits": 18432,
+        "info_errors": 614,
+        "info_bits": 9216,
+        "block_errors": 55,
+        "blocks": 144,
+        "channel_error": 479.77806905658304,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1325595522166721,
+            "covariance_trace_mean": 254.51434025601046
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.10167191730923128,
+            "covariance_trace_mean": 195.21008123372408
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09708002244572207,
+            "covariance_trace_mean": 186.3936430957864
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            149.37592912043655,
+            129.1599291441292,
+            140.98881112974652,
+            123.30511391718682,
+            129.31474648502007,
+            103.4569573396041,
+            149.09833416700494,
+            122.44324340579698
+          ],
+          "objective_after": [
+            149.27433383331302,
+            129.05643558869053,
+            140.31053994556612,
+            123.18432601665094,
+            129.08419036168584,
+            102.58035313932805,
+            148.6030766296527,
+            122.09004061778546
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.049446681852727395,
+            0.12640985450859094,
+            0.08330411643742246,
+            0.09633741425158122,
+            0.038678315492782576,
+            0.1234911577685664,
+            0.13712186980766508,
+            0.08497710170427665
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_erased",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 2543,
+        "bits": 18432,
+        "info_errors": 602,
+        "info_bits": 9216,
+        "block_errors": 57,
+        "blocks": 144,
+        "channel_error": 497.8504917141548,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_erased",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2934,
+        "bits": 18432,
+        "info_errors": 840,
+        "info_bits": 9216,
+        "block_errors": 78,
+        "blocks": 144,
+        "channel_error": 769.4245668092724,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_erased",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2933,
+        "bits": 18432,
+        "info_errors": 853,
+        "info_bits": 9216,
+        "block_errors": 87,
+        "blocks": 144,
+        "channel_error": 714.5369109552063,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "first_erased",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 3453,
+        "bits": 18432,
+        "info_errors": 1332,
+        "info_bits": 9216,
+        "block_errors": 118,
+        "blocks": 144,
+        "channel_error": 1031.624243969257,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "interior_erased",
+      "method": "trust",
+      "score": {
+        "bit_errors": 2032,
+        "bits": 18432,
+        "info_errors": 178,
+        "info_bits": 9216,
+        "block_errors": 41,
+        "blocks": 144,
+        "channel_error": 106.28766346381488,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "interior_erased",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 1933,
+        "bits": 18432,
+        "info_errors": 120,
+        "info_bits": 9216,
+        "block_errors": 31,
+        "blocks": 144,
+        "channel_error": 46.00943483559176,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "interior_erased",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2051,
+        "bits": 18432,
+        "info_errors": 191,
+        "info_bits": 9216,
+        "block_errors": 36,
+        "blocks": 144,
+        "channel_error": 111.28708025571588,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.13260741346286792,
+            "covariance_trace_mean": 254.60623384870638
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.09442398989111198,
+            "covariance_trace_mean": 181.29406059093503
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.08853643831550947,
+            "covariance_trace_mean": 169.98996156577817
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "interior_erased",
+      "method": "profile",
+      "score": {
+        "bit_errors": 2030,
+        "bits": 18432,
+        "info_errors": 177,
+        "info_bits": 9216,
+        "block_errors": 41,
+        "blocks": 144,
+        "channel_error": 105.85056298527401,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            130.19621825311606,
+            75.45448315841564,
+            85.51769101877683,
+            68.75037762767722,
+            78.11774514757992,
+            64.37469873394568,
+            81.66519945794457,
+            81.73028941768395
+          ],
+          "objective_after": [
+            129.92176924203,
+            75.4009274153289,
+            85.4311369947512,
+            68.69630876118853,
+            78.07163691960854,
+            64.35770524769784,
+            81.58719184278849,
+            81.61368539551773
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.5,
+            0.05038619299692859,
+            0.10986674489641957,
+            0.041978439638373166,
+            0.09664041023245032,
+            0.01535033417275294,
+            0.0491536362852753,
+            0.05760003463141822
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "interior_erased",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2047,
+        "bits": 18432,
+        "info_errors": 191,
+        "info_bits": 9216,
+        "block_errors": 37,
+        "blocks": 144,
+        "channel_error": 110.73989457600663,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.13260741346286792,
+            "covariance_trace_mean": 254.60623384870638
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.09442398989111198,
+            "covariance_trace_mean": 181.29406059093503
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.08853643831550947,
+            "covariance_trace_mean": 169.98996156577817
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            187.3076760444321,
+            120.03775232291557,
+            135.8059762408961,
+            107.74510081804931,
+            123.44942784757325,
+            84.69873416258841,
+            126.43703870043814,
+            113.23142581102697
+          ],
+          "objective_after": [
+            187.00522924626495,
+            119.97289411158113,
+            135.58572433045583,
+            107.66397494667895,
+            123.39709516187202,
+            84.67664951485204,
+            126.36921447057051,
+            112.99826070386669
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.5000000000000001,
+            0.07720071808160135,
+            0.08064093970246952,
+            0.04257616260606669,
+            0.10094774225289332,
+            0.02789118325566333,
+            0.03919691172188327,
+            0.07839568401050157
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "interior_erased",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 2025,
+        "bits": 18432,
+        "info_errors": 189,
+        "info_bits": 9216,
+        "block_errors": 41,
+        "blocks": 144,
+        "channel_error": 107.02817419262482,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "interior_erased",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2202,
+        "bits": 18432,
+        "info_errors": 260,
+        "info_bits": 9216,
+        "block_errors": 50,
+        "blocks": 144,
+        "channel_error": 160.75844920174865,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "interior_erased",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2163,
+        "bits": 18432,
+        "info_errors": 268,
+        "info_bits": 9216,
+        "block_errors": 45,
+        "blocks": 144,
+        "channel_error": 165.2806115988439,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "interior_erased",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 6126,
+        "bits": 18432,
+        "info_errors": 3121,
+        "info_bits": 9216,
+        "block_errors": 143,
+        "blocks": 144,
+        "channel_error": 4797.240887397062,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "scattered_erased",
+      "method": "trust",
+      "score": {
+        "bit_errors": 1946,
+        "bits": 18432,
+        "info_errors": 91,
+        "info_bits": 9216,
+        "block_errors": 28,
+        "blocks": 144,
+        "channel_error": 35.60612177020871,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "scattered_erased",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 1946,
+        "bits": 18432,
+        "info_errors": 91,
+        "info_bits": 9216,
+        "block_errors": 28,
+        "blocks": 144,
+        "channel_error": 35.60612177020871,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "scattered_erased",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2016,
+        "bits": 18432,
+        "info_errors": 111,
+        "info_bits": 9216,
+        "block_errors": 33,
+        "blocks": 144,
+        "channel_error": 70.65208859155008,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.2465135937533463,
+            "covariance_trace_mean": 473.3061000064249
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.12395781884221246,
+            "covariance_trace_mean": 237.99901217704792
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09748045513185473,
+            "covariance_trace_mean": 187.16247385316106
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "scattered_erased",
+      "method": "profile",
+      "score": {
+        "bit_errors": 1941,
+        "bits": 18432,
+        "info_errors": 94,
+        "info_bits": 9216,
+        "block_errors": 26,
+        "blocks": 144,
+        "channel_error": 35.568439391212934,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            145.4265556366724,
+            123.85781353630502,
+            157.22929606755739,
+            127.71257149632888,
+            130.469376436138,
+            132.82328881363009,
+            129.26206719356864,
+            149.07224536177955
+          ],
+          "objective_after": [
+            145.2541829349338,
+            123.82340162740746,
+            157.00054686720992,
+            127.68918875458634,
+            130.4350479311482,
+            132.58070539494852,
+            129.1667368297632,
+            148.89112065135737
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.07065745108589232,
+            0.07662089240889167,
+            0.1299091072584721,
+            0.04315566169670451,
+            0.041534199834336774,
+            0.04480319119412985,
+            0.07744301739496129,
+            0.09408362908141603
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "scattered_erased",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2016,
+        "bits": 18432,
+        "info_errors": 112,
+        "info_bits": 9216,
+        "block_errors": 34,
+        "blocks": 144,
+        "channel_error": 70.4220404017929,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.2465135937533463,
+            "covariance_trace_mean": 473.3061000064249
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.12395781884221246,
+            "covariance_trace_mean": 237.99901217704792
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09748045513185473,
+            "covariance_trace_mean": 187.16247385316106
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            211.71378839247598,
+            187.75783164570544,
+            243.9091885937886,
+            190.09776547481277,
+            197.76599030481515,
+            171.34112803793874,
+            191.62629341087302,
+            200.43243691635774
+          ],
+          "objective_after": [
+            211.53250591398822,
+            187.73569601963564,
+            243.69939344852108,
+            189.9517410147635,
+            197.68788375481793,
+            171.10621833570625,
+            191.503642160524,
+            200.06829421794276
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.06438357816670315,
+            0.03754441753120055,
+            0.10664950671455842,
+            0.09702838077004057,
+            0.08649469562958213,
+            0.045647962392268655,
+            0.06983413397998404,
+            0.10172765106999714
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 2,
+      "condition": "scattered_erased",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 1933,
+        "bits": 18432,
+        "info_errors": 94,
+        "info_bits": 9216,
+        "block_errors": 30,
+        "blocks": 144,
+        "channel_error": 35.24138367719591,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "scattered_erased",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2079,
+        "bits": 18432,
+        "info_errors": 158,
+        "info_bits": 9216,
+        "block_errors": 40,
+        "blocks": 144,
+        "channel_error": 86.63303790583961,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "scattered_erased",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2066,
+        "bits": 18432,
+        "info_errors": 158,
+        "info_bits": 9216,
+        "block_errors": 43,
+        "blocks": 144,
+        "channel_error": 82.2340901572544,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 2,
+      "condition": "scattered_erased",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 3598,
+        "bits": 18432,
+        "info_errors": 1495,
+        "info_bits": 9216,
+        "block_errors": 136,
+        "blocks": 144,
+        "channel_error": 1626.5654438966762,
+        "channel_energy": 5003.9845997294005
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "intact",
+      "method": "trust",
+      "score": {
+        "bit_errors": 2039,
+        "bits": 18432,
+        "info_errors": 53,
+        "info_bits": 9216,
+        "block_errors": 19,
+        "blocks": 144,
+        "channel_error": 24.06239601144913,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "intact",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 2039,
+        "bits": 18432,
+        "info_errors": 53,
+        "info_bits": 9216,
+        "block_errors": 19,
+        "blocks": 144,
+        "channel_error": 24.06239601144913,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "intact",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2031,
+        "bits": 18432,
+        "info_errors": 48,
+        "info_bits": 9216,
+        "block_errors": 17,
+        "blocks": 144,
+        "channel_error": 16.164413182622525,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1386152933038694,
+            "covariance_trace_mean": 266.14136314342926
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.09413941173572493,
+            "covariance_trace_mean": 180.74767053259183
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09134476104956563,
+            "covariance_trace_mean": 175.381941215166
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "intact",
+      "method": "profile",
+      "score": {
+        "bit_errors": 2042,
+        "bits": 18432,
+        "info_errors": 56,
+        "info_bits": 9216,
+        "block_errors": 18,
+        "blocks": 144,
+        "channel_error": 23.881716860379434,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            32.918211354401144,
+            33.54362581568114,
+            38.9879687093149,
+            37.18052508062836,
+            42.33109188658403,
+            37.533799000172515,
+            40.6112547837795,
+            38.94563297136073
+          ],
+          "objective_after": [
+            32.9057215685243,
+            33.41190237665377,
+            38.96024220454416,
+            37.11981835974827,
+            42.22044401750314,
+            37.48122892878123,
+            40.57549835184859,
+            38.87243729785467
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.03544206682113211,
+            0.056251697733937546,
+            0.028774305311552215,
+            0.13640277364230816,
+            0.10662400901674329,
+            0.024453028372890602,
+            0.022362327700531363,
+            0.03433541239161275
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "intact",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2034,
+        "bits": 18432,
+        "info_errors": 46,
+        "info_bits": 9216,
+        "block_errors": 16,
+        "blocks": 144,
+        "channel_error": 15.999656654882346,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1386152933038694,
+            "covariance_trace_mean": 266.14136314342926
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.09413941173572493,
+            "covariance_trace_mean": 180.74767053259183
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09134476104956563,
+            "covariance_trace_mean": 175.381941215166
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            45.44746181882315,
+            48.684458259107075,
+            62.31858672998279,
+            59.437398919104055,
+            77.957825375612,
+            62.23711680157341,
+            61.771714519828116,
+            60.36082524191717
+          ],
+          "objective_after": [
+            45.42071844946558,
+            48.52766690646126,
+            62.28201627296491,
+            59.37563829426621,
+            77.84557377114339,
+            62.1554235988812,
+            61.685267115902526,
+            60.30947625495712
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.0784883161859633,
+            0.09323414335289142,
+            0.053277889728423816,
+            0.13893386407920674,
+            0.13272037418022753,
+            0.037119241791158275,
+            0.032037035888623465,
+            0.02676945351094507
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "intact",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 2026,
+        "bits": 18432,
+        "info_errors": 55,
+        "info_bits": 9216,
+        "block_errors": 20,
+        "blocks": 144,
+        "channel_error": 24.86463145274486,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "intact",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2148,
+        "bits": 18432,
+        "info_errors": 72,
+        "info_bits": 9216,
+        "block_errors": 22,
+        "blocks": 144,
+        "channel_error": 50.507283138815545,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "intact",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2077,
+        "bits": 18432,
+        "info_errors": 56,
+        "info_bits": 9216,
+        "block_errors": 22,
+        "blocks": 144,
+        "channel_error": 40.8477183855349,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "intact",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 3188,
+        "bits": 18432,
+        "info_errors": 930,
+        "info_bits": 9216,
+        "block_errors": 105,
+        "blocks": 144,
+        "channel_error": 678.0311826984159,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_attenuated",
+      "method": "trust",
+      "score": {
+        "bit_errors": 2033,
+        "bits": 18432,
+        "info_errors": 53,
+        "info_bits": 9216,
+        "block_errors": 19,
+        "blocks": 144,
+        "channel_error": 25.139591093428507,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_attenuated",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 2047,
+        "bits": 18432,
+        "info_errors": 46,
+        "info_bits": 9216,
+        "block_errors": 19,
+        "blocks": 144,
+        "channel_error": 20.122259732697845,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_attenuated",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2035,
+        "bits": 18432,
+        "info_errors": 55,
+        "info_bits": 9216,
+        "block_errors": 20,
+        "blocks": 144,
+        "channel_error": 27.535756617153844,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1589274772058082,
+            "covariance_trace_mean": 305.1407562351518
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.10131530007085002,
+            "covariance_trace_mean": 194.52537613603198
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09419396569657992,
+            "covariance_trace_mean": 180.85241413743344
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_attenuated",
+      "method": "profile",
+      "score": {
+        "bit_errors": 2036,
+        "bits": 18432,
+        "info_errors": 57,
+        "info_bits": 9216,
+        "block_errors": 19,
+        "blocks": 144,
+        "channel_error": 24.588882193643112,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            46.966479488663445,
+            47.01307207937928,
+            50.838448672584896,
+            51.999472037332716,
+            57.76611054722347,
+            53.499361989870465,
+            55.56136436974604,
+            55.353674577133525
+          ],
+          "objective_after": [
+            46.93457506386335,
+            46.87096358421237,
+            50.81746174407621,
+            51.91212194869958,
+            57.733292227096634,
+            53.41137380731961,
+            55.494998007846974,
+            55.28099862184361
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.04296287265176703,
+            0.10983783777593138,
+            0.033513674945685426,
+            0.14495078235041123,
+            0.16165923391021397,
+            0.03627856998796052,
+            0.035081043904810975,
+            0.029867032651530397
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_attenuated",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2032,
+        "bits": 18432,
+        "info_errors": 52,
+        "info_bits": 9216,
+        "block_errors": 18,
+        "blocks": 144,
+        "channel_error": 27.084972775000224,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1589274772058082,
+            "covariance_trace_mean": 305.1407562351518
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.10131530007085002,
+            "covariance_trace_mean": 194.52537613603198
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.09419396569657992,
+            "covariance_trace_mean": 180.85241413743344
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            62.52065235025001,
+            65.46284357349835,
+            78.2379491026523,
+            80.47756027422155,
+            101.48612389380041,
+            85.24626536675268,
+            82.5812884625532,
+            83.91417832772817
+          ],
+          "objective_after": [
+            62.47227127153287,
+            65.30263845151795,
+            78.20821601527607,
+            80.38496623136521,
+            101.42889488084643,
+            85.10985200847925,
+            82.46085953221923,
+            83.85529838043257
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.08072717306955386,
+            0.14860927831105103,
+            0.055327692689296354,
+            0.15638769939524935,
+            0.10905121268767676,
+            0.04742383329735338,
+            0.04046967771251529,
+            0.026420020561516266
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_attenuated",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 2033,
+        "bits": 18432,
+        "info_errors": 52,
+        "info_bits": 9216,
+        "block_errors": 21,
+        "blocks": 144,
+        "channel_error": 25.499882306355136,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_attenuated",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2140,
+        "bits": 18432,
+        "info_errors": 67,
+        "info_bits": 9216,
+        "block_errors": 24,
+        "blocks": 144,
+        "channel_error": 43.56636235677464,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_attenuated",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2064,
+        "bits": 18432,
+        "info_errors": 58,
+        "info_bits": 9216,
+        "block_errors": 20,
+        "blocks": 144,
+        "channel_error": 36.216273757185796,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_attenuated",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 3462,
+        "bits": 18432,
+        "info_errors": 1231,
+        "info_bits": 9216,
+        "block_errors": 115,
+        "blocks": 144,
+        "channel_error": 968.0597348432967,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_erased",
+      "method": "trust",
+      "score": {
+        "bit_errors": 2524,
+        "bits": 18432,
+        "info_errors": 476,
+        "info_bits": 9216,
+        "block_errors": 54,
+        "blocks": 144,
+        "channel_error": 456.7410860221105,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_erased",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 2501,
+        "bits": 18432,
+        "info_errors": 450,
+        "info_bits": 9216,
+        "block_errors": 51,
+        "blocks": 144,
+        "channel_error": 404.1924824316504,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_erased",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2481,
+        "bits": 18432,
+        "info_errors": 442,
+        "info_bits": 9216,
+        "block_errors": 50,
+        "blocks": 144,
+        "channel_error": 413.69008426088106,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.13380079681387702,
+            "covariance_trace_mean": 256.8975298826439
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.10086543256058911,
+            "covariance_trace_mean": 193.6616305163311
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.10135459210487081,
+            "covariance_trace_mean": 194.60081684135196
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_erased",
+      "method": "profile",
+      "score": {
+        "bit_errors": 2554,
+        "bits": 18432,
+        "info_errors": 488,
+        "info_bits": 9216,
+        "block_errors": 54,
+        "blocks": 144,
+        "channel_error": 486.0214252478403,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            74.44847410145722,
+            66.39480019477878,
+            72.47062207164312,
+            68.76589576305167,
+            73.8791863933203,
+            73.61733790039327,
+            70.79214946252512,
+            86.99021770718474
+          ],
+          "objective_after": [
+            74.13246102749343,
+            66.01796077465308,
+            72.03699703744127,
+            68.51651942420138,
+            73.77190653733345,
+            73.12242238678236,
+            70.74799696318283,
+            86.35098185835061
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.056473159312883936,
+            0.07591344074092289,
+            0.09411491631658733,
+            0.07217870427180563,
+            0.10528188022582582,
+            0.08616354477682142,
+            0.039379819949096305,
+            0.07886622111371022
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_erased",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2493,
+        "bits": 18432,
+        "info_errors": 459,
+        "info_bits": 9216,
+        "block_errors": 53,
+        "blocks": 144,
+        "channel_error": 441.62898235119934,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.13380079681387702,
+            "covariance_trace_mean": 256.8975298826439
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.10086543256058911,
+            "covariance_trace_mean": 193.6616305163311
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.10135459210487081,
+            "covariance_trace_mean": 194.60081684135196
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            99.0495537539659,
+            92.8280035511975,
+            105.568612682158,
+            100.67715664716107,
+            119.39702131693305,
+            110.00455420325372,
+            99.44083032332719,
+            124.80179515826855
+          ],
+          "objective_after": [
+            98.72561727378093,
+            92.43510519409043,
+            104.73921891122555,
+            100.3458815935901,
+            119.27984562473273,
+            109.49074004502774,
+            99.35400236274184,
+            123.57565141990219
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.08486816739360939,
+            0.07740784839442878,
+            0.11938821342756416,
+            0.08212851618891037,
+            0.10719549276828072,
+            0.10218131138938781,
+            0.05106756588661184,
+            0.10374510625848961
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_erased",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 2499,
+        "bits": 18432,
+        "info_errors": 473,
+        "info_bits": 9216,
+        "block_errors": 51,
+        "blocks": 144,
+        "channel_error": 462.744742736262,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_erased",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2942,
+        "bits": 18432,
+        "info_errors": 709,
+        "info_bits": 9216,
+        "block_errors": 69,
+        "blocks": 144,
+        "channel_error": 795.4907687384679,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_erased",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 3287,
+        "bits": 18432,
+        "info_errors": 1000,
+        "info_bits": 9216,
+        "block_errors": 73,
+        "blocks": 144,
+        "channel_error": 1259.9563920065452,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "first_erased",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 3900,
+        "bits": 18432,
+        "info_errors": 1623,
+        "info_bits": 9216,
+        "block_errors": 121,
+        "blocks": 144,
+        "channel_error": 1453.3804181472806,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "interior_erased",
+      "method": "trust",
+      "score": {
+        "bit_errors": 3239,
+        "bits": 18432,
+        "info_errors": 965,
+        "info_bits": 9216,
+        "block_errors": 68,
+        "blocks": 144,
+        "channel_error": 1991.861367878648,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "interior_erased",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 3265,
+        "bits": 18432,
+        "info_errors": 965,
+        "info_bits": 9216,
+        "block_errors": 68,
+        "blocks": 144,
+        "channel_error": 1986.0562941996004,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "interior_erased",
+      "method": "variance",
+      "score": {
+        "bit_errors": 3237,
+        "bits": 18432,
+        "info_errors": 942,
+        "info_bits": 9216,
+        "block_errors": 67,
+        "blocks": 144,
+        "channel_error": 1845.2171918115932,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1329071758730968,
+            "covariance_trace_mean": 255.18177767634592
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.10642820204161671,
+            "covariance_trace_mean": 204.34214791990408
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.10252169058562263,
+            "covariance_trace_mean": 196.8416459243955
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "interior_erased",
+      "method": "profile",
+      "score": {
+        "bit_errors": 3249,
+        "bits": 18432,
+        "info_errors": 955,
+        "info_bits": 9216,
+        "block_errors": 67,
+        "blocks": 144,
+        "channel_error": 1991.1053206352938,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            61.21331088200448,
+            101.34810729562608,
+            64.93351571406944,
+            65.1594186326443,
+            66.88781235958506,
+            103.21899374782156,
+            118.57787507231616,
+            71.15672644085333
+          ],
+          "objective_after": [
+            61.20931980164466,
+            101.28980500187637,
+            64.87876498842185,
+            65.10900028219172,
+            66.7692148162097,
+            103.0311404040984,
+            118.51054010897882,
+            71.09093300067454
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.009279900767302628,
+            0.03374270809464785,
+            0.0426617683539664,
+            0.11276109844639348,
+            0.03667164811279917,
+            0.11757125819907005,
+            0.05099005393044026,
+            0.03694833928090451
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "interior_erased",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 3233,
+        "bits": 18432,
+        "info_errors": 943,
+        "info_bits": 9216,
+        "block_errors": 66,
+        "blocks": 144,
+        "channel_error": 1844.0384736101043,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.1329071758730968,
+            "covariance_trace_mean": 255.18177767634592
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.10642820204161671,
+            "covariance_trace_mean": 204.34214791990408
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.10252169058562263,
+            "covariance_trace_mean": 196.8416459243955
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            77.88397784141065,
+            139.29630012665626,
+            94.16403146729954,
+            94.05008613553396,
+            109.89890728766652,
+            148.417024526267,
+            168.12733094525672,
+            99.82238614668745
+          ],
+          "objective_after": [
+            77.86979016168766,
+            139.24979561434063,
+            94.09144368657826,
+            94.0032588346369,
+            109.78734725124164,
+            148.14823048898398,
+            168.03500693685683,
+            99.7840357078164
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.03849931292303875,
+            0.10402157773450245,
+            0.07523513368868429,
+            0.12149581346073511,
+            0.06875654775043794,
+            0.172150835023189,
+            0.05285098049406589,
+            0.02768538272515714
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "interior_erased",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 3242,
+        "bits": 18432,
+        "info_errors": 968,
+        "info_bits": 9216,
+        "block_errors": 68,
+        "blocks": 144,
+        "channel_error": 1988.1182440027744,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "interior_erased",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 3396,
+        "bits": 18432,
+        "info_errors": 1035,
+        "info_bits": 9216,
+        "block_errors": 73,
+        "blocks": 144,
+        "channel_error": 2100.816864197479,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "interior_erased",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 3409,
+        "bits": 18432,
+        "info_errors": 1060,
+        "info_bits": 9216,
+        "block_errors": 74,
+        "blocks": 144,
+        "channel_error": 2160.642704548324,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "interior_erased",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 6121,
+        "bits": 18432,
+        "info_errors": 3070,
+        "info_bits": 9216,
+        "block_errors": 142,
+        "blocks": 144,
+        "channel_error": 5802.405268741801,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "scattered_erased",
+      "method": "trust",
+      "score": {
+        "bit_errors": 2076,
+        "bits": 18432,
+        "info_errors": 49,
+        "info_bits": 9216,
+        "block_errors": 20,
+        "blocks": 144,
+        "channel_error": 30.44156351757873,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "scattered_erased",
+      "method": "smooth",
+      "score": {
+        "bit_errors": 2076,
+        "bits": 18432,
+        "info_errors": 49,
+        "info_bits": 9216,
+        "block_errors": 20,
+        "blocks": 144,
+        "channel_error": 30.44156351757873,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "scattered_erased",
+      "method": "variance",
+      "score": {
+        "bit_errors": 2105,
+        "bits": 18432,
+        "info_errors": 72,
+        "info_bits": 9216,
+        "block_errors": 27,
+        "blocks": 144,
+        "channel_error": 62.56003973812443,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.25107236445289005,
+            "covariance_trace_mean": 482.0589397495489
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.1331278436324471,
+            "covariance_trace_mean": 255.60545977429848
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.1073677541879368,
+            "covariance_trace_mean": 206.14608804083866
+          }
+        ],
+        "profile": null
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "scattered_erased",
+      "method": "profile",
+      "score": {
+        "bit_errors": 2072,
+        "bits": 18432,
+        "info_errors": 52,
+        "info_bits": 9216,
+        "block_errors": 21,
+        "blocks": 144,
+        "channel_error": 30.71212710599556,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [],
+        "profile": {
+          "objective_before": [
+            120.16933047057294,
+            123.70255191275358,
+            125.77425533097768,
+            134.2426082638174,
+            141.80192924805561,
+            131.9155742342709,
+            137.93084259197508,
+            140.1616740785708
+          ],
+          "objective_after": [
+            119.98697381827598,
+            123.55052345781566,
+            125.70236796307971,
+            133.99192131222844,
+            141.47764207034197,
+            131.73161645879645,
+            137.7321109828973,
+            140.05674741542595
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.060714727526787485,
+            0.0782220663519369,
+            0.07828807649271878,
+            0.2816518817946353,
+            0.14322127040562269,
+            0.04198525043662398,
+            0.059075873951397254,
+            0.029076355506060234
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "scattered_erased",
+      "method": "variance_profile",
+      "score": {
+        "bit_errors": 2102,
+        "bits": 18432,
+        "info_errors": 69,
+        "info_bits": 9216,
+        "block_errors": 26,
+        "blocks": 144,
+        "channel_error": 62.80986199876901,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": {
+        "moments": [
+          {
+            "step": 0,
+            "mean_variance": 0.25107236445289005,
+            "covariance_trace_mean": 482.0589397495489
+          },
+          {
+            "step": 1,
+            "mean_variance": 0.1331278436324471,
+            "covariance_trace_mean": 255.60545977429848
+          },
+          {
+            "step": 2,
+            "mean_variance": 0.1073677541879368,
+            "covariance_trace_mean": 206.14608804083866
+          }
+        ],
+        "profile": {
+          "objective_before": [
+            147.3034483536073,
+            158.97581128810702,
+            174.54087302816555,
+            190.71580831174825,
+            221.8142617797601,
+            185.97863516686334,
+            187.48478558786437,
+            189.99195935670093
+          ],
+          "objective_after": [
+            147.10102370578727,
+            158.81512849888455,
+            174.42746810123006,
+            190.50752558311808,
+            221.40109431999144,
+            185.6977666572078,
+            187.25393390173275,
+            189.87127572070884
+          ],
+          "accepted_steps": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "candidate_evaluations": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "used_pinv": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "invalid_curvature": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "max_total_phase_change": [
+            0.07656529903949488,
+            0.12501695703319535,
+            0.07812608682847128,
+            0.24982515948501602,
+            0.12268727470364672,
+            0.05896588045537627,
+            0.057525063148575764,
+            0.027458224216774872
+          ]
+        }
+      }
+    },
+    {
+      "batch_index": 3,
+      "condition": "scattered_erased",
+      "method": "local_parity",
+      "score": {
+        "bit_errors": 2063,
+        "bits": 18432,
+        "info_errors": 51,
+        "info_bits": 9216,
+        "block_errors": 20,
+        "blocks": 144,
+        "channel_error": 30.713607191567824,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "scattered_erased",
+      "method": "fixed_parity",
+      "score": {
+        "bit_errors": 2282,
+        "bits": 18432,
+        "info_errors": 134,
+        "info_bits": 9216,
+        "block_errors": 35,
+        "blocks": 144,
+        "channel_error": 122.46617757356132,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "scattered_erased",
+      "method": "waveform_dd",
+      "score": {
+        "bit_errors": 2249,
+        "bits": 18432,
+        "info_errors": 134,
+        "info_bits": 9216,
+        "block_errors": 36,
+        "blocks": 144,
+        "channel_error": 125.48316702901369,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    },
+    {
+      "batch_index": 3,
+      "condition": "scattered_erased",
+      "method": "lmmse_2d",
+      "score": {
+        "bit_errors": 3874,
+        "bits": 18432,
+        "info_errors": 1667,
+        "info_bits": 9216,
+        "block_errors": 141,
+        "blocks": 144,
+        "channel_error": 1964.7430573517634,
+        "channel_energy": 5785.493684041144
+      },
+      "diagnostics": null
+    }
+  ],
+  "seconds": 24.450318147006328,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "torch": "2.12.1+cpu",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "numba": "0.60.0",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "threads": 1,
+    "interop_threads": 1,
+    "deterministic": true,
+    "precision": "float64/complex128",
+    "device": "cpu"
+  }
+}
