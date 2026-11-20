@@ -1,0 +1,394 @@
+{
+  "created_utc": "2026-11-20T00:52:13.088203+00:00",
+  "registration": "within-session prospective freeze before formal scoring; not external public preregistration",
+  "design": {
+    "base_commit": "4dab1ac9ee15b4f1a7f78ae05486c55a2dc3bd72",
+    "snr_db": 15.0,
+    "seed_base": 802611190000,
+    "formal_pairs": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "model_config": {
+      "d_model": 8,
+      "n_layers": 1,
+      "n_heads": 2,
+      "em_steps": 2,
+      "n_hyp": 4,
+      "gamma_init": 10.0
+    },
+    "train_recipe": {
+      "steps": 60,
+      "lr": 0.0035,
+      "min_lr_ratio": 0.1,
+      "warmup": 5,
+      "lambda_hold": 0.08,
+      "lambda_nmse": 0.01,
+      "lambda_ici": 0.05,
+      "lambda_cal": 0.02,
+      "anchor_l2": 0.0001,
+      "probe_weight": 0.1,
+      "batch_size": 8,
+      "grad_clip": 1.0,
+      "conditions": [
+        "O0_random_sparse",
+        "O1_roving_island",
+        "O2_blind_burst_erasure",
+        "O3_holdout_sequential"
+      ]
+    },
+    "eval_batches": 4,
+    "eval_batch_size": 8,
+    "conditions": [
+      "O0_random_sparse",
+      "O1_roving_island",
+      "O2_blind_burst_erasure",
+      "O3_holdout_sequential"
+    ],
+    "audit_conditions": [
+      "O1_roving_island",
+      "O2_blind_burst_erasure",
+      "O3_holdout_sequential"
+    ],
+    "arms": [
+      "EM8-Transport",
+      "EM8-AbsNoTransport",
+      "EM8-Local",
+      "EM8-SingleHyp",
+      "EM8-Fixed",
+      "OffGrid-2D-LMMSE"
+    ],
+    "init_seeds": {
+      "1": 802612090001,
+      "2": 802612090002,
+      "3": 802612090003,
+      "4": 802612090004,
+      "5": 802612090005,
+      "6": 802612090006,
+      "7": 802612090007,
+      "8": 802612090008,
+      "9": 802612090009,
+      "10": 802612090010
+    },
+    "train_seed_bases": {
+      "1": 802611300000,
+      "2": 802611310000,
+      "3": 802611320000,
+      "4": 802611330000,
+      "5": 802611340000,
+      "6": 802611350000,
+      "7": 802611360000,
+      "8": 802611370000,
+      "9": 802611380000,
+      "10": 802611390000
+    },
+    "eval_seeds": {
+      "1": {
+        "O0_random_sparse": [
+          802611700000,
+          802611700001,
+          802611700002,
+          802611700003
+        ],
+        "O1_roving_island": [
+          802611700100,
+          802611700101,
+          802611700102,
+          802611700103
+        ],
+        "O2_blind_burst_erasure": [
+          802611700200,
+          802611700201,
+          802611700202,
+          802611700203
+        ],
+        "O3_holdout_sequential": [
+          802611700300,
+          802611700301,
+          802611700302,
+          802611700303
+        ]
+      },
+      "2": {
+        "O0_random_sparse": [
+          802611710000,
+          802611710001,
+          802611710002,
+          802611710003
+        ],
+        "O1_roving_island": [
+          802611710100,
+          802611710101,
+          802611710102,
+          802611710103
+        ],
+        "O2_blind_burst_erasure": [
+          802611710200,
+          802611710201,
+          802611710202,
+          802611710203
+        ],
+        "O3_holdout_sequential": [
+          802611710300,
+          802611710301,
+          802611710302,
+          802611710303
+        ]
+      },
+      "3": {
+        "O0_random_sparse": [
+          802611720000,
+          802611720001,
+          802611720002,
+          802611720003
+        ],
+        "O1_roving_island": [
+          802611720100,
+          802611720101,
+          802611720102,
+          802611720103
+        ],
+        "O2_blind_burst_erasure": [
+          802611720200,
+          802611720201,
+          802611720202,
+          802611720203
+        ],
+        "O3_holdout_sequential": [
+          802611720300,
+          802611720301,
+          802611720302,
+          802611720303
+        ]
+      },
+      "4": {
+        "O0_random_sparse": [
+          802611730000,
+          802611730001,
+          802611730002,
+          802611730003
+        ],
+        "O1_roving_island": [
+          802611730100,
+          802611730101,
+          802611730102,
+          802611730103
+        ],
+        "O2_blind_burst_erasure": [
+          802611730200,
+          802611730201,
+          802611730202,
+          802611730203
+        ],
+        "O3_holdout_sequential": [
+          802611730300,
+          802611730301,
+          802611730302,
+          802611730303
+        ]
+      },
+      "5": {
+        "O0_random_sparse": [
+          802611740000,
+          802611740001,
+          802611740002,
+          802611740003
+        ],
+        "O1_roving_island": [
+          802611740100,
+          802611740101,
+          802611740102,
+          802611740103
+        ],
+        "O2_blind_burst_erasure": [
+          802611740200,
+          802611740201,
+          802611740202,
+          802611740203
+        ],
+        "O3_holdout_sequential": [
+          802611740300,
+          802611740301,
+          802611740302,
+          802611740303
+        ]
+      },
+      "6": {
+        "O0_random_sparse": [
+          802611750000,
+          802611750001,
+          802611750002,
+          802611750003
+        ],
+        "O1_roving_island": [
+          802611750100,
+          802611750101,
+          802611750102,
+          802611750103
+        ],
+        "O2_blind_burst_erasure": [
+          802611750200,
+          802611750201,
+          802611750202,
+          802611750203
+        ],
+        "O3_holdout_sequential": [
+          802611750300,
+          802611750301,
+          802611750302,
+          802611750303
+        ]
+      },
+      "7": {
+        "O0_random_sparse": [
+          802611760000,
+          802611760001,
+          802611760002,
+          802611760003
+        ],
+        "O1_roving_island": [
+          802611760100,
+          802611760101,
+          802611760102,
+          802611760103
+        ],
+        "O2_blind_burst_erasure": [
+          802611760200,
+          802611760201,
+          802611760202,
+          802611760203
+        ],
+        "O3_holdout_sequential": [
+          802611760300,
+          802611760301,
+          802611760302,
+          802611760303
+        ]
+      },
+      "8": {
+        "O0_random_sparse": [
+          802611770000,
+          802611770001,
+          802611770002,
+          802611770003
+        ],
+        "O1_roving_island": [
+          802611770100,
+          802611770101,
+          802611770102,
+          802611770103
+        ],
+        "O2_blind_burst_erasure": [
+          802611770200,
+          802611770201,
+          802611770202,
+          802611770203
+        ],
+        "O3_holdout_sequential": [
+          802611770300,
+          802611770301,
+          802611770302,
+          802611770303
+        ]
+      },
+      "9": {
+        "O0_random_sparse": [
+          802611780000,
+          802611780001,
+          802611780002,
+          802611780003
+        ],
+        "O1_roving_island": [
+          802611780100,
+          802611780101,
+          802611780102,
+          802611780103
+        ],
+        "O2_blind_burst_erasure": [
+          802611780200,
+          802611780201,
+          802611780202,
+          802611780203
+        ],
+        "O3_holdout_sequential": [
+          802611780300,
+          802611780301,
+          802611780302,
+          802611780303
+        ]
+      },
+      "10": {
+        "O0_random_sparse": [
+          802611790000,
+          802611790001,
+          802611790002,
+          802611790003
+        ],
+        "O1_roving_island": [
+          802611790100,
+          802611790101,
+          802611790102,
+          802611790103
+        ],
+        "O2_blind_burst_erasure": [
+          802611790200,
+          802611790201,
+          802611790202,
+          802611790203
+        ],
+        "O3_holdout_sequential": [
+          802611790300,
+          802611790301,
+          802611790302,
+          802611790303
+        ]
+      }
+    }
+  },
+  "sources": {
+    "p8_manifold/__init__.py": "05be4eb49862caf6135923714f1a4c42877bf92d6fa227623d347612a9831a49",
+    "p8_manifold/audit_gauge.py": "f7cd80adc9238657ae4ea03056ed2dabf18cab7c6a65f00aeb6934d7b90b3f6c",
+    "p8_manifold/dev_study.py": "473bcff08518907abb8f899afeb4770a48934521b773e71c2f6f88cf8d3d06b6",
+    "p8_manifold/eval_utils.py": "8a8e903e41660bf3dfb020f94147f5b96b32f75bb5cf66e9f8b055b206dc4111",
+    "p8_manifold/formal_study.py": "eec46970c454e0938bb63ca1ee50f30c4327cbf21059165ed3ac5bda0dcac10b",
+    "p8_manifold/freeze.py": "070c564b7a7375e80dd44a66e2f177052bda973786dcb8c837ca7e0c0ad4fd9a",
+    "p8_manifold/latency.py": "e23fde4d7a5f76df61b3cfe836689c00fbf99c28521ab0d2b42bf2d6286da98a",
+    "p8_manifold/manifold_charts.py": "d81cb37626d2d65aa93dba541006120cc54260ec1ded6e33e0fa40b6afd74dc7",
+    "p8_manifold/model.py": "c0b6b2af6e0deb662982e53c67228a599433e63481c55f7b126691b0bae024dd",
+    "p8_manifold/offgrid_sim.py": "f1450ab407a837965a037fe3faa140877b40a3da35e392ded14518bfe81c586e",
+    "p8_manifold/r2_fixes.py": "a16a0582da3a6922517aa00135ed9b6d1965dab497bc63b5e65b716794dbe3c2",
+    "p8_manifold/replay.py": "3a0eeb4a69fe1b08661d44845f820685d5792bad07af53d36b14bb27ad359291",
+    "p8_manifold/report.py": "7eeb51ce80fdfd78c696908b108fd02136dd62c157d8c9f1d9b1e6b5b4a744d4",
+    "p8_manifold/scaling_ladder.py": "4d7f840e3b7486e36b4e3e32193bc432c963193d574791dca2df416e61462e69",
+    "p8_manifold/tests/__init__.py": "3d68469f23dbab06bc833ccffb6d9cff67534dd1915ad022feb41508abbdc533",
+    "p8_manifold/tests/test_p8_invariants.py": "c61de0b9f349f30ca6ff8303006132afff75cb67da32027ca6a7733f35eed87b",
+    "p8_manifold/train.py": "0f6955b302cf22912751fcea1f5516732e6062157bd7615cc4cacd86872ae22a",
+    "p8_manifold/transport_attention.py": "815789dee048114dfe74fe70bdfc7cf953fac1a94a98479cf4feb65545e10ea3",
+    "p8_manifold/PROTOCOL.md": "d3012257bc79850b648f121f3afa7866ecc07b3a5a334ebe2473adfa50d051a9",
+    "p8_manifold/results/dev_gate.json": "96dd1bc72e2ef593cff93afd030dc55aedd281c05db2c4b18cc062b0a6c65850"
+  },
+  "environment": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+    "torch": "2.12.1+cpu",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "numba": "0.60.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+    "cpu_count": 12,
+    "threads": 1,
+    "interop_threads": 10,
+    "deterministic": true,
+    "precision": "float64/complex128",
+    "device": "cpu"
+  }
+}

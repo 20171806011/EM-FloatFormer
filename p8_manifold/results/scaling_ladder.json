@@ -1,0 +1,380 @@
+{
+  "config": {
+    "pairs": [
+      901,
+      902,
+      903
+    ],
+    "steps": 40,
+    "lr": 0.0035,
+    "eval_batches": 4,
+    "batch_size": 8,
+    "snr_db": 15.0
+  },
+  "elapsed_seconds": 2310.5287490459996,
+  "rungs": {
+    "Small": {
+      "config": {
+        "name": "Small",
+        "d_model": 8,
+        "n_layers": 1,
+        "n_heads": 2
+      },
+      "real_parameters": 2063,
+      "train_seconds_mean": {
+        "EM8-Transport": 86.74650296766656,
+        "EM8-Local": 60.5271865499999
+      },
+      "conditions": {
+        "O0_random_sparse": {
+          "EM8-Transport": {
+            "block_errors": 990,
+            "blocks": 1728,
+            "bler": 0.5729166666666666,
+            "bce": 0.32996759238874207,
+            "nmse": 0.16690155462481254,
+            "bin0_ratio": 1.6535718256205412
+          },
+          "EM8-Local": {
+            "block_errors": 982,
+            "blocks": 1728,
+            "bler": 0.5682870370370371,
+            "bce": 0.33051946531928705,
+            "nmse": 0.16168239357103809,
+            "bin0_ratio": 2.463478948294399
+          }
+        },
+        "O1_roving_island": {
+          "EM8-Transport": {
+            "block_errors": 1420,
+            "blocks": 1728,
+            "bler": 0.8217592592592593,
+            "bce": 0.4476599761844263,
+            "nmse": 0.36649367638825114,
+            "bin0_ratio": 1.6916137464433956
+          },
+          "EM8-Local": {
+            "block_errors": 1446,
+            "blocks": 1728,
+            "bler": 0.8368055555555556,
+            "bce": 0.45102968872064697,
+            "nmse": 0.36764902045274184,
+            "bin0_ratio": 1.7108766834409679
+          }
+        },
+        "O2_blind_burst_erasure": {
+          "EM8-Transport": {
+            "block_errors": 1356,
+            "blocks": 1728,
+            "bler": 0.7847222222222222,
+            "bce": 0.3868621606785543,
+            "nmse": 0.2541738423990346,
+            "bin0_ratio": 1.6167624171339516
+          },
+          "EM8-Local": {
+            "block_errors": 1343,
+            "blocks": 1728,
+            "bler": 0.7771990740740741,
+            "bce": 0.3877159614330688,
+            "nmse": 0.2519098357766095,
+            "bin0_ratio": 2.5011532195520574
+          }
+        },
+        "O3_holdout_sequential": {
+          "EM8-Transport": {
+            "block_errors": 1371,
+            "blocks": 1728,
+            "bler": 0.7934027777777778,
+            "bce": 0.45782293492640774,
+            "nmse": 0.3828632305967392,
+            "bin0_ratio": 1.7951741427367562,
+            "holdout_nll": 3.5700774827585082,
+            "delta_block_errors": 12
+          },
+          "EM8-Local": {
+            "block_errors": 1385,
+            "blocks": 1728,
+            "bler": 0.8015046296296297,
+            "bce": 0.4603102599170213,
+            "nmse": 0.38710985050123803,
+            "bin0_ratio": 2.3085924690985653,
+            "holdout_nll": 3.5651571060841376,
+            "delta_block_errors": 13
+          }
+        }
+      }
+    },
+    "Medium": {
+      "config": {
+        "name": "Medium",
+        "d_model": 16,
+        "n_layers": 2,
+        "n_heads": 4
+      },
+      "real_parameters": 12847,
+      "train_seconds_mean": {
+        "EM8-Transport": 254.49267695266644,
+        "EM8-Local": 127.40863529033292
+      },
+      "conditions": {
+        "O0_random_sparse": {
+          "EM8-Transport": {
+            "block_errors": 1177,
+            "blocks": 1728,
+            "bler": 0.6811342592592593,
+            "bce": 0.343469256673571,
+            "nmse": 0.19219355135879787,
+            "bin0_ratio": 2.1214390751469483
+          },
+          "EM8-Local": {
+            "block_errors": 1132,
+            "blocks": 1728,
+            "bler": 0.6550925925925926,
+            "bce": 0.341871006788249,
+            "nmse": 0.18147147323631158,
+            "bin0_ratio": 3.736609982608782
+          }
+        },
+        "O1_roving_island": {
+          "EM8-Transport": {
+            "block_errors": 1501,
+            "blocks": 1728,
+            "bler": 0.8686342592592593,
+            "bce": 0.44744256638383173,
+            "nmse": 0.3589616873120501,
+            "bin0_ratio": 2.1426756699374065
+          },
+          "EM8-Local": {
+            "block_errors": 1483,
+            "blocks": 1728,
+            "bler": 0.8582175925925926,
+            "bce": 0.4570824297069883,
+            "nmse": 0.3910912077204874,
+            "bin0_ratio": 3.4481328618960534
+          }
+        },
+        "O2_blind_burst_erasure": {
+          "EM8-Transport": {
+            "block_errors": 1423,
+            "blocks": 1728,
+            "bler": 0.8234953703703703,
+            "bce": 0.39236338701030754,
+            "nmse": 0.26996833139244925,
+            "bin0_ratio": 1.654869912496476
+          },
+          "EM8-Local": {
+            "block_errors": 1417,
+            "blocks": 1728,
+            "bler": 0.8200231481481481,
+            "bce": 0.3959298175620714,
+            "nmse": 0.2699330931724109,
+            "bin0_ratio": 3.8351041809279485
+          }
+        },
+        "O3_holdout_sequential": {
+          "EM8-Transport": {
+            "block_errors": 1467,
+            "blocks": 1728,
+            "bler": 0.8489583333333334,
+            "bce": 0.45951368492678774,
+            "nmse": 0.38037042452680403,
+            "bin0_ratio": 3.0836485492561723,
+            "holdout_nll": 3.745232825653123,
+            "delta_block_errors": 4
+          },
+          "EM8-Local": {
+            "block_errors": 1446,
+            "blocks": 1728,
+            "bler": 0.8368055555555556,
+            "bce": 0.4692935346107869,
+            "nmse": 0.4300764750325961,
+            "bin0_ratio": 4.975322864252071,
+            "holdout_nll": 3.75980953902654,
+            "delta_block_errors": -8
+          }
+        }
+      }
+    },
+    "Large": {
+      "config": {
+        "name": "Large",
+        "d_model": 24,
+        "n_layers": 3,
+        "n_heads": 4
+      },
+      "real_parameters": 40003,
+      "train_seconds_mean": {
+        "EM8-Transport": 386.15972385066624,
+        "EM8-Local": 238.89046607566647
+      },
+      "conditions": {
+        "O0_random_sparse": {
+          "EM8-Transport": {
+            "block_errors": 1487,
+            "blocks": 1728,
+            "bler": 0.8605324074074074,
+            "bce": 0.4114034498399405,
+            "nmse": 0.2852570649422405,
+            "bin0_ratio": 4.00512846945921
+          },
+          "EM8-Local": {
+            "block_errors": 1580,
+            "blocks": 1728,
+            "bler": 0.9143518518518519,
+            "bce": 0.48782563656644534,
+            "nmse": 0.3903692606537529,
+            "bin0_ratio": 4.190318981604485
+          }
+        },
+        "O1_roving_island": {
+          "EM8-Transport": {
+            "block_errors": 1640,
+            "blocks": 1728,
+            "bler": 0.9490740740740741,
+            "bce": 0.49956122726435453,
+            "nmse": 0.4700075003894564,
+            "bin0_ratio": 3.470240791462846
+          },
+          "EM8-Local": {
+            "block_errors": 1677,
+            "blocks": 1728,
+            "bler": 0.9704861111111112,
+            "bce": 0.549656324105986,
+            "nmse": 0.5449403773338161,
+            "bin0_ratio": 4.201799573376977
+          }
+        },
+        "O2_blind_burst_erasure": {
+          "EM8-Transport": {
+            "block_errors": 1616,
+            "blocks": 1728,
+            "bler": 0.9351851851851852,
+            "bce": 0.44931200619995404,
+            "nmse": 0.35880420710962135,
+            "bin0_ratio": 4.057642795533291
+          },
+          "EM8-Local": {
+            "block_errors": 1654,
+            "blocks": 1728,
+            "bler": 0.9571759259259259,
+            "bce": 0.5143651728418865,
+            "nmse": 0.45403293141981566,
+            "bin0_ratio": 7.283191761668108
+          }
+        },
+        "O3_holdout_sequential": {
+          "EM8-Transport": {
+            "block_errors": 1620,
+            "blocks": 1728,
+            "bler": 0.9375,
+            "bce": 0.5059630764245949,
+            "nmse": 0.46741837508494694,
+            "bin0_ratio": 4.368752852858506,
+            "holdout_nll": 4.052450094317974,
+            "delta_block_errors": 8
+          },
+          "EM8-Local": {
+            "block_errors": 1661,
+            "blocks": 1728,
+            "bler": 0.9612268518518519,
+            "bce": 0.555227901229319,
+            "nmse": 0.5636907286482779,
+            "bin0_ratio": 9.223039250368045,
+            "holdout_nll": 4.536561079089917,
+            "delta_block_errors": 14
+          }
+        }
+      }
+    }
+  },
+  "scaling_slopes": {
+    "O0_random_sparse": {
+      "EM8-Transport": {
+        "bler_slope": 0.13319022711054773,
+        "bce_slope": 0.06944509320569879,
+        "nmse_slope": 0.1709981053988787
+      },
+      "EM8-Local": {
+        "bler_slope": 0.15260426615724562,
+        "bce_slope": 0.12065016373285037,
+        "nmse_slope": 0.27519701683643943
+      },
+      "local_minus_transport_bler": [
+        -0.004629629629629539,
+        -0.02604166666666674,
+        0.05381944444444442
+      ],
+      "local_minus_transport_bce": [
+        0.0005518729305449832,
+        -0.0015982498853219784,
+        0.07642218672650486
+      ]
+    },
+    "O1_roving_island": {
+      "EM8-Transport": {
+        "bler_slope": 0.04685987617570155,
+        "bce_slope": 0.033480902589293295,
+        "nmse_slope": 0.07491228646804672
+      },
+      "EM8-Local": {
+        "bler_slope": 0.046572757901464076,
+        "bce_slope": 0.06109272274735284,
+        "nmse_slope": 0.12339771626675865
+      },
+      "local_minus_transport_bler": [
+        0.01504629629629628,
+        -0.01041666666666674,
+        0.02141203703703709
+      ],
+      "local_minus_transport_bce": [
+        0.003369712536220648,
+        0.009639863323156583,
+        0.05009509684163144
+      ]
+    },
+    "O2_blind_burst_erasure": {
+      "EM8-Transport": {
+        "bler_slope": 0.056069166128369714,
+        "bce_slope": 0.04643829822455987,
+        "nmse_slope": 0.10841658581336788
+      },
+      "EM8-Local": {
+        "bler_slope": 0.06639009070198643,
+        "bce_slope": 0.0874190794666421,
+        "nmse_slope": 0.1835038369700968
+      },
+      "local_minus_transport_bler": [
+        -0.00752314814814814,
+        -0.00347222222222221,
+        0.0219907407407407
+      ],
+      "local_minus_transport_bce": [
+        0.0008538007545145221,
+        0.003566430551763866,
+        0.0650531666419325
+      ]
+    },
+    "O3_holdout_sequential": {
+      "EM8-Transport": {
+        "bler_slope": 0.05446823131642098,
+        "bce_slope": 0.030728903903648602,
+        "nmse_slope": 0.06061304506297884
+      },
+      "EM8-Local": {
+        "bler_slope": 0.05773026240091693,
+        "bce_slope": 0.05826172881799179,
+        "nmse_slope": 0.12021878241850525
+      },
+      "local_minus_transport_bler": [
+        0.00810185185185186,
+        -0.01215277777777779,
+        0.02372685185185186
+      ],
+      "local_minus_transport_bce": [
+        0.0024873249906135486,
+        0.009779849683999142,
+        0.04926482480472405
+      ]
+    }
+  }
+}
