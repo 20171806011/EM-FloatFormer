@@ -1,0 +1,178 @@
+{
+  "created_utc": "2026-11-20T23:34:38.516730+00:00",
+  "registration": "within-session prospective freeze before formal P11 closed-book evaluation",
+  "git": {
+    "head": "cec54bfd7835f0b586cde2863174830c2d619838",
+    "branch": "research/p11-wavefront-payload-assimilation",
+    "main_head": "63ad2ec5b22027ea3d6f15aa50619a9caf6bbcd1",
+    "p10_baseline_commit": "9e9d93bcbf6345b8645314b223cd954b2f31e63a",
+    "p9_baseline_commit": "faeea639727aab72740cdd0a719106f83824226e",
+    "p8c_baseline_commit": "ce2ff50e81f6b529ec0311393da0013b0a85b801",
+    "p8_manifold_commit": "e76c61eef26151985963460b0ab03684cd562e3e",
+    "non_p11_diff_vs_9e9d93b": [],
+    "allow_dirty_agents": true
+  },
+  "design": {
+    "p10_baseline_commit": "9e9d93bcbf6345b8645314b223cd954b2f31e63a",
+    "p9_baseline_commit": "faeea639727aab72740cdd0a719106f83824226e",
+    "p8c_baseline_commit": "ce2ff50e81f6b529ec0311393da0013b0a85b801",
+    "p8_manifold_commit": "e76c61eef26151985963460b0ab03684cd562e3e",
+    "main_baseline_commit": "63ad2ec5b22027ea3d6f15aa50619a9caf6bbcd1",
+    "primary_snr_db": 9.0,
+    "snr_grid_db": [
+      6.0,
+      9.0,
+      12.0,
+      15.0
+    ],
+    "regimes_id": [
+      "continuous",
+      "partial_shift",
+      "full_reset"
+    ],
+    "regimes_ood": [
+      "ood_strong_shift",
+      "ood_midframe_shift"
+    ],
+    "regimes_sanity": [
+      "donor_mismatch"
+    ],
+    "offgrid_regimes_id": [
+      "offgrid_continuous",
+      "offgrid_partial_shift",
+      "offgrid_midframe_shift",
+      "offgrid_full_reset"
+    ],
+    "offgrid_regimes_ood": [
+      "offgrid_ood_burst_and_shift",
+      "offgrid_ood_five_ray_fast"
+    ],
+    "formal_clusters": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "links_per_cluster_id": 32,
+    "links_per_cluster_ood": 16,
+    "offgrid_links_per_cluster_id": 16,
+    "offgrid_links_per_cluster_ood": 16,
+    "replay_clusters": [
+      1,
+      16
+    ],
+    "seed_bases": {
+      "dev": 1110000000000,
+      "train": 1120000000000,
+      "formal_id": 1130000000000,
+      "formal_ood": 1140000000000,
+      "e2e": 1150000000000
+    },
+    "decoder_config": {
+      "list_size": "large",
+      "bp_iters": 20,
+      "turbo_pic": true,
+      "pic_scale": 0.75
+    },
+    "offgrid_config": {
+      "variants": [
+        "em10_transport_attn",
+        "em10_abs_no_transport",
+        "em10_local",
+        "em10_no_history"
+      ],
+      "seeds": [
+        1001,
+        1002,
+        1003
+      ],
+      "d_model": 12,
+      "d_scalar": 12,
+      "n_heads": 4,
+      "n_layers": 1,
+      "d_ff": 12,
+      "real_parameters": 3153,
+      "ensemble_rule": "equal_weight_mean_logit"
+    },
+    "holm_families": {
+      "primary": [
+        "chained_vs_p9_jt",
+        "chained_vs_payload_only"
+      ],
+      "secondary": [
+        "transport_attn_vs_abs_no_transport",
+        "transport_attn_vs_local",
+        "transport_attn_vs_no_history"
+      ]
+    },
+    "noninferiority_margin": 0.01
+  },
+  "sources": {
+    "p11/.gitattributes": "06ba2d5db36c4f5334da5d4234d3a5034b1d926b17d2c517cd134ce4d9ce5235",
+    "p11/__init__.py": "fd9828d9045153c9f8d6d73d5323261db78f618cdfe51e95382530e12a7af8fc",
+    "p11/audit.py": "92a69c33f693cf0b68f9f4b95aa126bf8e740c66737fb097e395927225b6e01b",
+    "p11/contract.py": "624b41aeee308f0a3bcfb5e85f9c26688630b80a952c3eae033c4f4cefb9cf3e",
+    "p11/formal_study.py": "d13b5126a232717e2efb151d1fa0420019e1e45f92f37f21ab782c2abce67a84",
+    "p11/freeze.py": "9d2979b00bc535a9ac11c0c7519078cda3fbd3434261e97145fd131a7cb432f5",
+    "p11/independent_ref.py": "8a917da5ded13b077a6c8c940dd80d0b3b4ce36563cb337e06f4abfc24c8db73",
+    "p11/manifold_gate.py": "c5e0cf76e260dacb36a8e009011341cbfbb633991dd6e9b4fb0d349e571af084",
+    "p11/math_verification.md": "8be75b4c44adf62f901dc30180310280fe0f12876ef87c0a2c004cfa38d21033",
+    "p11/offgrid_channel.py": "8cb505a69b510265f5f2d6fea26c86d361941750c67200a90f0814e0c784015b",
+    "p11/p11_dev.py": "fbacda8d420e9590f29b2ac1c209d3e44cdd8354ed407e6d566bea1a9b634dcf",
+    "p11/payload_rebuild.py": "8052cae9bf17e048cc87d143b4dc82eee06fbfa7592b87e143e4ec947601e4c3",
+    "p11/report.py": "0d0353057c426211a874e17988774b71ec84116c3bb9873d776167a87b32d1c3",
+    "p11/results/p11_dev.json": "794309b25bb750f5ab7577320ea3db9feda10ded29cefe0d062a040dc29ccf16",
+    "p11/tests/__init__.py": "9acfe7a3ce8fffa06895b23aa312ebf5bd6aa138db5e51274662d85755970297",
+    "p11/tests/e2e/__init__.py": "ffc4bf43d2ca76b22ae3ccc9f2a916114e55ce114e2e971291c58482aa74810c",
+    "p11/tests/e2e/conftest.py": "b2093c929e4a0dd1113c44bf747cf93cde954c207c17cb85c7801f91416e8e51",
+    "p11/tests/e2e/test_tier1_features.py": "c8a6904dfc7aa5da87bb749d6c23ff6afb1dccdf46ecbfe9fd666335b8b6471b",
+    "p11/tests/e2e/test_tier2_boundaries.py": "0eccd05635ff43ffec9f713597303d01c777f24807e0639ff80e21e1ef16c103",
+    "p11/tests/e2e/test_tier3_cross_feature.py": "6ff6489d07ae28ceb9133c65c3d85b637692f279ba0a3d2d884e0492f2b7842b",
+    "p11/tests/e2e/test_tier4_scenarios.py": "0970b2133f9623108442038b4b33d9b839987410f223bf72a4bb9b275c67d0dd",
+    "p11/tests/e2e/test_tier5_adversarial.py": "147f82201c5f3eb9a952f46a9760aaf46696fa683049e6bce909ec9bf0f67bb2",
+    "p11/tests/test_p11_audit.py": "d78c49abe806346fd79ff67ce0237cba53f7d0741ac8b635ae01f97655f52c85",
+    "p11/tests/test_p11_contract.py": "b32a09461018293b23325bfa0ae05c39ed2e898af40bb32fe4985eb7e5d4896c",
+    "p11/tests/test_p11_offgrid.py": "dddfe951c63e376295284e2c87b88a65a4800d6f6bdc3d4344b7ceec34ae8185",
+    "p11/tests/test_p11_primary.py": "9d4eb824fc28ada3f85dc6de8d71e212581411afeab8fe2a0cd76e60b2456e0c",
+    "p11/wavefront_pipeline.py": "c009823ca35e52f5ea764f4da3292b7da326e7374f6e892343f2af41bc42f9ca"
+  },
+  "checkpoints": {
+    "p11/ckpts/p10b_dev_ckpts/em10_transport_attn_seed1001.pt": "0dc4f2ab45eb1e5d589adb2a4a25b13fe98d1cc87ee561b7e96749aaa4f7c4de",
+    "p11/ckpts/p10b_dev_ckpts/em10_transport_attn_seed1002.pt": "9a00eddda556e49756db37a8def8a9f57ecdc4cb3750d59f10aee7f216b2c740",
+    "p11/ckpts/p10b_dev_ckpts/em10_transport_attn_seed1003.pt": "b671efe4e95bf1c40d5bc3e2a17974538eabf9a7fc27f765e40ded4efbfba0d1",
+    "p11/ckpts/p10b_dev_ckpts/em10_abs_no_transport_seed1001.pt": "283e83ca0ef58fbe54baf9df3c878b06ced5fb5bd754651c7b253f24e736a386",
+    "p11/ckpts/p10b_dev_ckpts/em10_abs_no_transport_seed1002.pt": "25efbb58964554587dd1c8dde5902c848210afd7c1236ed107150f86f8f867e7",
+    "p11/ckpts/p10b_dev_ckpts/em10_abs_no_transport_seed1003.pt": "b57d1a8dc486d02782382fa95053a4a581d9e4b0fe2b00b2c5895de59d6b38d8",
+    "p11/ckpts/p10b_dev_ckpts/em10_local_seed1001.pt": "4e72265f58ea29e4d52efcafdfff5875c1bdf499302537b0594dcab441495a45",
+    "p11/ckpts/p10b_dev_ckpts/em10_local_seed1002.pt": "d7651ec1ec7870dac7516be5f2a68ff0dbd867ed76cf6dadd8a448750e283a0b",
+    "p11/ckpts/p10b_dev_ckpts/em10_local_seed1003.pt": "70dba0d40470bb6fa9f44f55c114abc7416459ddfa19c34fb4bf3100b784582e",
+    "p11/ckpts/p10b_dev_ckpts/em10_no_history_seed1001.pt": "a67e920ad4b9574cb6d66406ffe16c8c8d8f1638e82e4a704f3d8003c0840d97",
+    "p11/ckpts/p10b_dev_ckpts/em10_no_history_seed1002.pt": "1497473c127396dc09fdf5fae46f7357bcf14452972f18d3ca42da3be0d0ef8d",
+    "p11/ckpts/p10b_dev_ckpts/em10_no_history_seed1003.pt": "703a5f4b3fced7aabe8d57ece6d072ad27a7520ab246887293a6dd5c79f392e5"
+  },
+  "environment": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "numba": "0.60.0",
+    "torch": "2.12.1+cpu",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "cpu_count": 12,
+    "torch_threads": 1,
+    "deterministic": true,
+    "precision": "float64/complex128"
+  }
+}
