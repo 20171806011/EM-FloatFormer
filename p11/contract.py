@@ -8,7 +8,6 @@ precision, deterministic runtime guards, and zero hardcoded N0.
 from __future__ import annotations
 
 from dataclasses import dataclass
-import math
 import os
 from typing import Any, Optional
 
@@ -77,11 +76,17 @@ P11_SEED_RANGES: dict[str, tuple[int, int]] = {
 # Half-open [lo, hi) intervals covering all historical seeds across P1..P10
 HISTORICAL_SEED_RANGES: dict[str, tuple[int, int]] = {
     "p1_to_p4_legacy": (0, 10_000_000),
+    "p1_to_p4_extended": (10_000_000, 88_000_000),
     "p8_manifold_dev_ladder": (88_000_000, 100_000_000),
     "p5_p6": (100_000_000, 400_000_000),
+    "p3_and_exploratory": (400_000_000, 2_147_483_648),
+    "p3b_data_seed": (5_220_000_000, 5_221_000_000),
+    "p6_followup": (602_611_000_000, 602_621_000_000),
     "p7": (702_611_000_000, 702_621_000_000),
+    "p6_softinfo": (713_611_000_000, 713_621_000_000),
     "p8_manifold": (802_611_000_000, 802_621_000_000),
     "p8_prefix": (812_611_000_000, 812_621_000_000),
+    "p6_consistency": (813_611_000_000, 814_621_000_000),
     "p8c": (822_611_000_000, 822_621_000_000),
     "p9_dev": (SEED_P9_DEV, SEED_P9_DEV + 10_000_000_000),
     "p9_train": (SEED_P9_TRAIN, SEED_P9_TRAIN + 10_000_000_000),
@@ -124,15 +129,15 @@ def enforce_determinism(require_env: bool = True) -> dict[str, Any]:
             if val != "1":
                 bad.append(f"{var}={val!r} (expected '1')")
         mkl_val = os.environ.get("MKL_NUM_THREADS")
-        if mkl_val is None:
-            os.environ["MKL_NUM_THREADS"] = "1"
-        elif mkl_val != "1":
+        if mkl_val is not None and mkl_val != "1":
             bad.append(f"MKL_NUM_THREADS={mkl_val!r} (expected '1')")
         if bad:
             raise RuntimeError(
                 "Deterministic execution requires single-threaded BLAS/OMP env vars: "
                 + ", ".join(bad)
             )
+        if mkl_val is None:
+            os.environ["MKL_NUM_THREADS"] = "1"
     else:
         os.environ["OPENBLAS_NUM_THREADS"] = "1"
         os.environ["OMP_NUM_THREADS"] = "1"
@@ -220,6 +225,34 @@ def unitary_dft_matrix(n: int = N) -> np.ndarray:
     return _DFT_UNITARY_CACHE[n_int]
 
 
+def _check_no_bool_or_complex_obj(obj: Any) -> None:
+    if isinstance(obj, (bool, np.bool_, complex, np.complexfloating)):
+        raise ValueError(f"delay must contain only finite real values, got {type(obj).__name__}")
+    if isinstance(obj, (list, tuple)):
+        for item in obj:
+            _check_no_bool_or_complex_obj(item)
+
+
+def _coerce_real_delay_array(delay: Any) -> np.ndarray:
+    """Validate and coerce scalar or array-like real delays to finite float64."""
+    _check_no_bool_or_complex_obj(delay)
+    raw = np.asarray(delay)
+    if raw.dtype == np.bool_ or raw.dtype.kind == "b":
+        raise ValueError("delay must contain only finite real values, not bool")
+    if np.issubdtype(raw.dtype, np.complexfloating) or raw.dtype.kind == "c":
+        raise ValueError("delay must contain only finite real values, not complex")
+    if raw.dtype == np.object_:
+        for elem in raw.flat:
+            _check_no_bool_or_complex_obj(elem)
+    try:
+        d = np.asarray(raw, dtype=REAL_DTYPE)
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"delay must contain only finite real values, got {delay!r}") from exc
+    if not np.all(np.isfinite(d)):
+        raise ValueError("delay must contain only finite real values")
+    return d
+
+
 def fractional_delay_freq_response(delay: float | np.ndarray, n: int = N) -> np.ndarray:
     """Exact unitary OFDM subcarrier response exp(-2j*pi*k_signed*delay/N).
 
@@ -227,11 +260,7 @@ def fractional_delay_freq_response(delay: float | np.ndarray, n: int = N) -> np.
     """
     n_int = _validate_n(n)
     k_s = signed_subcarrier_indices(n_int)
-    if isinstance(delay, bool):
-        raise ValueError("delay must be a finite real scalar or array, not bool")
-    d = np.asarray(delay, dtype=REAL_DTYPE)
-    if not np.all(np.isfinite(d)):
-        raise ValueError("delay must contain only finite real values")
+    d = _coerce_real_delay_array(delay)
     if d.ndim == 0:
         return np.exp(-2j * np.pi * k_s * float(d) / float(n_int)).astype(COMPLEX_DTYPE)
     return np.exp(-2j * np.pi * d[..., None] * k_s[None, :] / float(n_int)).astype(COMPLEX_DTYPE)
@@ -240,14 +269,10 @@ def fractional_delay_freq_response(delay: float | np.ndarray, n: int = N) -> np.
 def fractional_delay_matrix(delay: float, n: int = N) -> np.ndarray:
     """Exact unitary N x N cyclic fractional-delay operator D_N(delay) = F^H diag(e^{-2j*pi*k_s*delay/N}) F."""
     n_int = _validate_n(n)
-    if isinstance(delay, bool):
-        raise ValueError("delay must be a finite real scalar, not bool")
-    d_arr = np.asarray(delay)
-    if d_arr.ndim != 0:
-        raise ValueError(f"delay must be a scalar, got shape {d_arr.shape}")
-    d_val = float(delay)
-    if not math.isfinite(d_val):
-        raise ValueError(f"delay must be finite, got {delay!r}")
+    d = _coerce_real_delay_array(delay)
+    if d.ndim != 0:
+        raise ValueError(f"delay must be a scalar, got shape {d.shape}")
+    d_val = float(d)
     f_mat = unitary_dft_matrix(n_int)
     phase = fractional_delay_freq_response(d_val, n_int)
     return np.asarray((f_mat.conj().T * phase[None, :]) @ f_mat, dtype=COMPLEX_DTYPE)
@@ -266,13 +291,11 @@ def build_offgrid_sc_channel_matrix(
     """Exact N x N time-varying CP-SC channel matrix for continuous off-grid delays."""
     n_int = _validate_n(n)
     g = np.asarray(ray_gains_row, dtype=COMPLEX_DTYPE)
-    d = np.asarray(delays, dtype=REAL_DTYPE)
+    d = _coerce_real_delay_array(delays)
     if g.ndim != 2 or g.shape[1] != n_int or d.ndim != 1 or g.shape[0] != d.shape[0]:
         raise ValueError(f"Expected ray_gains_row [P, {n_int}] and delays [P], got {g.shape} and {d.shape}")
     if not np.all(np.isfinite(g)):
         raise ValueError("ray_gains_row must contain only finite complex numbers")
-    if not np.all(np.isfinite(d)):
-        raise ValueError("delays must contain only finite real numbers")
     h_mat = np.zeros((n_int, n_int), dtype=COMPLEX_DTYPE)
     for l_idx in range(d.shape[0]):
         d_mat = fractional_delay_matrix(float(d[l_idx]), n=n_int)
@@ -295,9 +318,11 @@ def apply_fractional_sc_operator(
     delays: np.ndarray,
     n: int = N,
 ) -> np.ndarray:
-    """Apply the exact time-varying fractional-delay SC channel operator without materializing [N, N] if batched.
+    """Apply the exact time-varying fractional-delay SC channel operator ray-by-ray.
 
-    Matches `H_r @ x` for 1D `[N]` and `(H_r @ x.T).T` for `[..., N]` complex128 inputs.
+    Accumulates `sum_l g_l * (x @ D_N(tau_l).T)` directly across rays without forming
+    the combined `[N, N]` channel matrix `H_r`, matching `H_r @ x` for 1D `[N]` and
+    `x @ H_r.T` along the trailing axis for `[..., N]` complex128 inputs.
     """
     n_int = _validate_n(n)
     x_arr = np.asarray(x, dtype=COMPLEX_DTYPE)
@@ -307,13 +332,11 @@ def apply_fractional_sc_operator(
         raise ValueError("x must contain only finite complex values")
 
     g = np.asarray(ray_gains_row, dtype=COMPLEX_DTYPE)
-    d = np.asarray(delays, dtype=REAL_DTYPE)
+    d = _coerce_real_delay_array(delays)
     if g.ndim != 2 or g.shape[1] != n_int or d.ndim != 1 or g.shape[0] != d.shape[0]:
         raise ValueError(f"Expected ray_gains_row [P, {n_int}] and delays [P], got {g.shape} and {d.shape}")
     if not np.all(np.isfinite(g)):
         raise ValueError("ray_gains_row must contain only finite complex numbers")
-    if not np.all(np.isfinite(d)):
-        raise ValueError("delays must contain only finite real numbers")
 
     out = np.zeros_like(x_arr, dtype=COMPLEX_DTYPE)
     for l_idx in range(d.shape[0]):

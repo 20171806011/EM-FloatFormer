@@ -170,12 +170,45 @@ class TestP11SeedDisjointness(unittest.TestCase):
             (42, "p1_to_p4_legacy"),
             (74001, "p1_to_p4_legacy"),
             (912512, "p1_to_p4_legacy"),
+            (10_000_000, "p1_to_p4_extended"),
+            (10_102_026, "p1_to_p4_extended"),
+            (10_104_040, "p1_to_p4_extended"),
+            (17_261_119, "p1_to_p4_extended"),
+            (20_261_120, "p1_to_p4_extended"),
+            (28_161_119, "p1_to_p4_extended"),
+            (78_321_000, "p1_to_p4_extended"),
+            (84_001_000, "p1_to_p4_extended"),
+            (84_300_000, "p1_to_p4_extended"),
+            (87_999_999, "p1_to_p4_extended"),
             (88_000_000, "p8_manifold_dev_ladder"),
             (105_001_000, "p5_p6"),
+            (400_000_000, "p3_and_exploratory"),
+            (438_100_000, "p3_and_exploratory"),
+            (467_000_000, "p3_and_exploratory"),
+            (603_000_000, "p3_and_exploratory"),
+            (700_400_000, "p3_and_exploratory"),
+            (709_100_000, "p3_and_exploratory"),
+            (731_000_000, "p3_and_exploratory"),
+            (911_000_000, "p3_and_exploratory"),
+            (970_000_000, "p3_and_exploratory"),
+            (990_000_000, "p3_and_exploratory"),
+            (1_190_000_000, "p3_and_exploratory"),
+            (1_299_999_999, "p3_and_exploratory"),
+            (2_147_483_647, "p3_and_exploratory"),
+            (5_220_100_000, "p3b_data_seed"),
+            (5_220_599_999, "p3b_data_seed"),
+            (602_611_190_000, "p6_followup"),
+            (602_611_193_170, "p6_followup"),
+            (602_612_090_001, "p6_followup"),
             (702_611_190_000, "p7"),
+            (713_611_190_000, "p6_softinfo"),
+            (713_611_200_003, "p6_softinfo"),
             (802_611_190_000, "p8_manifold"),
             (802_611_790_303, "p8_manifold"),
             (812_611_190_000, "p8_prefix"),
+            (813_611_190_071, "p6_consistency"),
+            (814_611_190_000, "p6_consistency"),
+            (814_611_200_003, "p6_consistency"),
             (822_611_190_000, "p8c"),
             (910_000_000_000, "p9_dev"),
             (920_000_000_000, "p9_train"),
@@ -195,8 +228,27 @@ class TestP11SeedDisjointness(unittest.TestCase):
         for seed, expected_key in cases:
             self.assertEqual(is_historical_seed(seed), expected_key)
 
+    def test_historical_ranges_pairwise_disjoint_and_endpoints(self) -> None:
+        items = list(HISTORICAL_SEED_RANGES.items())
+        self.assertEqual(len(items), 24)
+        for idx, (name_a, (lo_a, hi_a)) in enumerate(items):
+            self.assertGreaterEqual(lo_a, 0)
+            self.assertLess(lo_a, hi_a)
+            self.assertEqual(is_historical_seed(lo_a), name_a)
+            self.assertEqual(is_historical_seed(hi_a - 1), name_a)
+            for name_b, (lo_b, hi_b) in items[idx + 1 :]:
+                self.assertFalse(
+                    max(lo_a, lo_b) < min(hi_a, hi_b),
+                    f"Historical intervals overlap: {name_a} and {name_b}",
+                )
+        self.assertIsNone(is_historical_seed(-1))
+        self.assertIsNone(is_historical_seed(2_147_483_648))
+        self.assertEqual(is_historical_seed(np.int64(602_611_190_000)), "p6_followup")
+        with self.assertRaises(TypeError):
+            is_historical_seed(np.bool_(True))  # type: ignore[arg-type]
+
     def test_is_historical_seed_rejects_bool_and_float(self) -> None:
-        for bad in (True, False, 1.5, "42"):
+        for bad in (True, False, np.bool_(True), np.bool_(False), 1.5, "42"):
             with self.assertRaises(TypeError):
                 is_historical_seed(bad)  # type: ignore[arg-type]
 
@@ -256,8 +308,38 @@ class TestP11Determinism(unittest.TestCase):
         ]
         for env in invalid_envs:
             with self._patched_thread_env(env):
+                before = dict(os.environ)
                 with self.assertRaises(RuntimeError):
                     enforce_determinism(require_env=True)
+                self.assertEqual(dict(os.environ), before)
+                self.assertEqual(os.environ.get("MKL_NUM_THREADS"), env.get("MKL_NUM_THREADS"))
+
+        clean_env = {k: v for k, v in os.environ.items() if k not in self._THREAD_VARS}
+        clean_env["OMP_NUM_THREADS"] = "1"
+        proc = subprocess.run(
+            [
+                sys.executable,
+                "-B",
+                "-c",
+                (
+                    "import os, sys, p11.contract as c; "
+                    "raised = False\n"
+                    "try:\n"
+                    "    c.enforce_determinism(require_env=True)\n"
+                    "except RuntimeError:\n"
+                    "    raised = True\n"
+                    "assert raised\n"
+                    "assert 'MKL_NUM_THREADS' not in os.environ\n"
+                    "assert 'torch' not in sys.modules\n"
+                ),
+            ],
+            cwd=str(REPO_ROOT),
+            env=clean_env,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(proc.returncode, 0, msg=f"Subprocess check failed: {proc.stderr}")
 
     def test_permissive_mode_sets_env_and_torch(self) -> None:
         with self._patched_thread_env({"OPENBLAS_NUM_THREADS": "8", "MKL_NUM_THREADS": "4"}):
@@ -342,11 +424,53 @@ class TestFractionalDelayOperators(unittest.TestCase):
                 signed_subcarrier_indices(bad_n)  # type: ignore[arg-type]
             with self.assertRaises(ValueError):
                 fractional_delay_matrix(1.0, n=bad_n)  # type: ignore[arg-type]
-        for bad_delay in (math.nan, math.inf, -math.inf, True):
+        for bad_delay in (
+            math.nan,
+            math.inf,
+            -math.inf,
+            True,
+            False,
+            np.bool_(True),
+            np.bool_(False),
+            1.0 + 2.0j,
+            1.0 + 0.0j,
+            np.complex128(0.5 + 0j),
+        ):
             with self.assertRaises(ValueError):
                 fractional_delay_matrix(bad_delay)  # type: ignore[arg-type]
             with self.assertRaises(ValueError):
                 fractional_delay_freq_response(bad_delay)  # type: ignore[arg-type]
+        for bad_scalar in ([1.0], np.array([1.0, 2.0])):
+            with self.assertRaises(ValueError):
+                fractional_delay_matrix(bad_scalar)  # type: ignore[arg-type]
+        for bad_delay_arr in (
+            [True],
+            [False, True],
+            [1.0, True],
+            np.array([True, False], dtype=np.bool_),
+            [1.0 + 2.0j],
+            np.array([1.0 + 0j]),
+            np.array([1.0, True], dtype=object),
+            np.array([1.0 + 0j], dtype=object),
+            np.array([0.0, math.nan]),
+        ):
+            with self.assertRaises(ValueError):
+                fractional_delay_freq_response(bad_delay_arr)  # type: ignore[arg-type]
+        for bad_delays in (
+            np.array([True, False], dtype=np.bool_),
+            np.array([1.0 + 0j, 2.0 + 0j]),
+        ):
+            with self.assertRaises(ValueError):
+                build_offgrid_sc_channel_matrix(
+                    np.zeros((2, N), dtype=COMPLEX_DTYPE),
+                    bad_delays,  # type: ignore[arg-type]
+                )
+            with self.assertRaises(ValueError):
+                apply_fractional_sc_operator(
+                    np.zeros(N, dtype=COMPLEX_DTYPE),
+                    np.zeros((2, N), dtype=COMPLEX_DTYPE),
+                    bad_delays,  # type: ignore[arg-type]
+                )
         with self.assertRaises(ValueError):
             build_offgrid_sc_channel_matrix(np.zeros((2, N), dtype=COMPLEX_DTYPE), np.zeros(3, dtype=REAL_DTYPE))
         with self.assertRaises(ValueError):
