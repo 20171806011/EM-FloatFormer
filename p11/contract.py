@@ -105,10 +105,12 @@ HISTORICAL_SEED_RANGES: dict[str, tuple[int, int]] = {
 def is_historical_seed(seed: int) -> Optional[str]:
     """Return matching historical seed namespace key if `seed` falls inside a historical range, else None.
 
-    Rejects booleans with TypeError to avoid Python's bool-as-int pitfall.
+    Rejects booleans, timedelta64, and datetime64 with TypeError to avoid Python/NumPy integer-subclass pitfalls.
     """
-    if isinstance(seed, bool) or not isinstance(seed, (int, np.integer)):
-        raise TypeError(f"seed must be an integer (not bool), got {type(seed).__name__}")
+    if isinstance(seed, (bool, np.bool_, np.timedelta64, np.datetime64)) or not isinstance(seed, (int, np.integer)):
+        raise TypeError(
+            f"seed must be an integer (not bool, timedelta64, or datetime64), got {type(seed).__name__}"
+        )
     s = int(seed)
     for name, (lo, hi) in HISTORICAL_SEED_RANGES.items():
         if lo <= s < hi:
@@ -198,9 +200,20 @@ _SIGNED_K_CACHE: dict[int, np.ndarray] = {}
 _DFT_UNITARY_CACHE: dict[int, np.ndarray] = {}
 
 
+def _safe_repr(val: Any, max_len: int = 200) -> str:
+    """Return a bounded repr(val) without propagating exceptions from pathological __repr__ implementations."""
+    try:
+        text = repr(val)
+    except Exception as exc:
+        return f"<{type(val).__name__} (repr failed: {type(exc).__name__})>"
+    if len(text) > max_len:
+        return text[: max_len - 3] + "..."
+    return text
+
+
 def _validate_n(n: int) -> int:
     if isinstance(n, (bool, np.bool_, np.timedelta64, np.datetime64)) or not isinstance(n, (int, np.integer)):
-        raise ValueError(f"n must be a positive integer, got {n!r}")
+        raise ValueError(f"n must be a positive integer, got {_safe_repr(n)}")
     n_int = int(n)
     if n_int < 1:
         raise ValueError(f"n must be >= 1, got {n_int}")
@@ -295,7 +308,7 @@ def _coerce_numeric_array(val: Any, *, allow_complex: bool, name: str) -> np.nda
     target_dtype = COMPLEX_DTYPE if allow_complex else REAL_DTYPE
     try:
         _validate_numeric_obj(val, allow_complex=allow_complex, name=name)
-        raw = np.asarray(val)
+        raw = np.asanyarray(val)
         if isinstance(raw, np.ma.MaskedArray):
             raise ValueError(f"{name} must contain only {kind_desc} values, not MaskedArray")
         if raw.dtype.kind not in allowed_kinds and raw.dtype.kind != "O":
@@ -307,7 +320,7 @@ def _coerce_numeric_array(val: Any, *, allow_complex: bool, name: str) -> np.nda
                 _validate_numeric_obj(elem, allow_complex=allow_complex, name=name)
         out = np.asarray(raw, dtype=target_dtype)
     except (TypeError, ValueError, OverflowError, RecursionError, RuntimeError) as exc:
-        raise ValueError(f"{name} must contain only {kind_desc} values, got {val!r}") from exc
+        raise ValueError(f"{name} must contain only {kind_desc} values, got {_safe_repr(val)}") from exc
     if not np.all(np.isfinite(out)):
         raise ValueError(f"{name} must contain only {kind_desc} values")
     return out

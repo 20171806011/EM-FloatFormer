@@ -4,6 +4,7 @@ from __future__ import annotations
 import ast
 from dataclasses import FrozenInstanceError
 from decimal import Decimal
+import enum
 from fractions import Fraction
 import math
 import os
@@ -254,6 +255,55 @@ class TestP11SeedDisjointness(unittest.TestCase):
         for bad in (True, False, np.bool_(True), np.bool_(False), 1.5, "42"):
             with self.assertRaises(TypeError):
                 is_historical_seed(bad)  # type: ignore[arg-type]
+
+    def test_is_historical_seed_rejects_timedelta64_and_non_integer_types(self) -> None:
+        all_units = (None, "Y", "M", "W", "D", "h", "m", "s", "ms", "us", "ns", "ps", "fs", "as")
+        bad_cases: list[tuple[str, object]] = []
+        for unit in all_units:
+            for val in (42, SEED_P11_DEV):
+                td = np.timedelta64(val) if unit is None else np.timedelta64(val, unit)
+                bad_cases.append((f"timedelta64_{unit}_{val}", td))
+        bad_cases.extend(
+            [
+                ("timedelta64_nat_unitless", np.timedelta64("NaT")),
+                ("timedelta64_nat_ns", np.timedelta64("NaT", "ns")),
+                ("timedelta64_nat_s", np.timedelta64("NaT", "s")),
+                ("timedelta64_p11_dev_ns", np.timedelta64(1_110_000_000_000, "ns")),
+                ("timedelta64_zero_ns", np.timedelta64(0, "ns")),
+                ("timedelta64_neg1_ns", np.timedelta64(-1, "ns")),
+                ("datetime64_date", np.datetime64("2026-01-01")),
+                ("datetime64_ns", np.datetime64("2026-01-01T00:00:00", "ns")),
+                ("datetime64_nat", np.datetime64("NaT")),
+                ("0d_ndarray_int", np.array(42)),
+                ("0d_ndarray_int64", np.array(42, dtype=np.int64)),
+                ("0d_ndarray_bool_true", np.array(True)),
+                ("0d_ndarray_bool_false", np.array(False, dtype=np.bool_)),
+                ("np_bool_true", np.bool_(True)),
+                ("np_bool_false", np.bool_(False)),
+                ("none", None),
+            ]
+        )
+        for label, bad_seed in bad_cases:
+            with self.subTest(case=label):
+                with self.assertRaises(TypeError) as ctx:
+                    is_historical_seed(bad_seed)  # type: ignore[arg-type]
+                self.assertIn("seed must be an integer", str(ctx.exception))
+                self.assertNotIn("int() argument", str(ctx.exception))
+
+        class _SeedIntEnum(enum.IntEnum):
+            LEGACY = 42
+            P11_DEV = SEED_P11_DEV
+
+        class _SeedIntFlag(enum.IntFlag):
+            HIGH = 40
+            LOW = 2
+
+        self.assertEqual(is_historical_seed(_SeedIntEnum.LEGACY), "p1_to_p4_legacy")
+        self.assertIsNone(is_historical_seed(_SeedIntEnum.P11_DEV))
+        self.assertEqual(is_historical_seed(_SeedIntFlag.HIGH | _SeedIntFlag.LOW), "p1_to_p4_legacy")
+        self.assertIsNone(is_historical_seed(np.uint64(2**63)))  # type: ignore[arg-type]
+        self.assertEqual(is_historical_seed(np.uint64(9_102_379_953_802)), "p4_stage3_link_genie_literal")  # type: ignore[arg-type]
+        self.assertIsNone(is_historical_seed(-1))
 
 
 class TestP11Determinism(unittest.TestCase):
@@ -885,6 +935,90 @@ class TestFractionalDelayOperators(unittest.TestCase):
         )
         self.assertEqual(y_real_inputs.shape, (n_test,))
         self.assertEqual(y_real_inputs.dtype, COMPLEX_DTYPE)
+
+    def test_coerce_numeric_array_broken_repr_raises_safe_value_error(self) -> None:
+        class _BrokenRepr:
+            def __repr__(self) -> str:
+                raise RuntimeError("broken repr")
+
+        class _BrokenReprValueError:
+            def __repr__(self) -> str:
+                raise ValueError("broken repr value error")
+
+        class _BrokenReprOverflowInt(int):
+            def __repr__(self) -> str:
+                raise RuntimeError("broken int repr")
+
+        class _HugeRepr:
+            def __repr__(self) -> str:
+                return "X" * 500
+
+        class _EvilListMasked(list):
+            def __array__(self, dtype: object = None) -> np.ndarray:
+                return np.ma.masked_array([1.0], mask=[True])
+
+        # _validate_n guards broken repr on all n-accepting entrypoints
+        for bad_n in (_BrokenRepr(), _BrokenReprValueError()):
+            for fn_name, fn in (
+                ("_validate_n", lambda b=bad_n: p11_contract._validate_n(b)),  # type: ignore[arg-type]
+                ("signed_subcarrier_indices", lambda b=bad_n: signed_subcarrier_indices(b)),  # type: ignore[arg-type]
+                ("unitary_dft_matrix", lambda b=bad_n: unitary_dft_matrix(b)),  # type: ignore[arg-type]
+                ("fractional_delay_matrix", lambda b=bad_n: fractional_delay_matrix(0.5, n=b)),  # type: ignore[arg-type]
+                ("fractional_delay_freq_response", lambda b=bad_n: fractional_delay_freq_response(0.5, n=b)),  # type: ignore[arg-type]
+            ):
+                with self.subTest(validate_n_target=fn_name, bad_n=type(bad_n).__name__):
+                    with self.assertRaises(ValueError) as ctx:
+                        fn()
+                    self.assertIn("n must be a positive integer", str(ctx.exception))
+                    self.assertIn("repr failed:", str(ctx.exception))
+
+        # Bounded repr truncation on huge repr
+        with self.assertRaises(ValueError) as huge_ctx:
+            signed_subcarrier_indices(_HugeRepr())  # type: ignore[arg-type]
+        self.assertLessEqual(len(str(huge_ctx.exception)), 260)
+        self.assertTrue(str(huge_ctx.exception).endswith("..."))
+
+        direct_and_container_cases: list[tuple[str, object]] = [
+            ("broken_repr_scalar", _BrokenRepr()),
+            ("broken_repr_list", [_BrokenRepr()]),
+            ("broken_repr_mixed_list", [1.0, _BrokenRepr()]),
+            ("broken_repr_tuple", (_BrokenRepr(),)),
+            ("broken_repr_nested_list", [[_BrokenRepr()]]),
+            ("broken_repr_obj_1d", np.array([_BrokenRepr()], dtype=object)),
+            ("broken_repr_obj_0d", np.array(_BrokenRepr(), dtype=object)),
+            ("broken_repr_valerr_scalar", _BrokenReprValueError()),
+            ("broken_repr_valerr_list", [_BrokenReprValueError()]),
+            ("broken_repr_overflow_int", _BrokenReprOverflowInt(10**400)),
+            ("broken_repr_overflow_int_list", [_BrokenReprOverflowInt(10**400)]),
+            ("evil_list_masked", _EvilListMasked([1.0])),
+        ]
+        for allow_complex in (False, True):
+            for label, bad_val in direct_and_container_cases:
+                with self.subTest(allow_complex=allow_complex, case=label):
+                    with self.assertRaises(ValueError) as ctx:
+                        p11_contract._coerce_numeric_array(
+                            bad_val,
+                            allow_complex=allow_complex,
+                            name="delay",
+                        )
+                    self.assertIn("delay must contain only", str(ctx.exception))
+
+        n_test = 4
+        gains_ok = np.ones((1, n_test), dtype=COMPLEX_DTYPE)
+        delays_1 = np.array([0.5], dtype=REAL_DTYPE)
+        for op_name, fn in (
+            ("fractional_delay_freq_response", lambda: fractional_delay_freq_response(_BrokenRepr(), n=n_test)),  # type: ignore[arg-type]
+            ("fractional_delay_matrix", lambda: fractional_delay_matrix(_BrokenRepr(), n=n_test)),  # type: ignore[arg-type]
+            ("fractional_delay_kernel", lambda: fractional_delay_kernel(_BrokenRepr(), n=n_test)),  # type: ignore[arg-type]
+            ("build_offgrid_sc_channel_matrix_delays", lambda: build_offgrid_sc_channel_matrix(gains_ok, [_BrokenRepr()], n=n_test)),  # type: ignore[list-item]
+            ("build_fractional_sc_matrix_gains", lambda: build_fractional_sc_matrix([[_BrokenRepr(), 1.0, 2.0, 3.0]], delays_1, n=n_test)),  # type: ignore[arg-type]
+            ("apply_fractional_sc_operator_x", lambda: apply_fractional_sc_operator([_BrokenRepr(), 1.0, 2.0, 3.0], gains_ok, delays_1, n=n_test)),  # type: ignore[arg-type]
+            ("fractional_delay_freq_response_evil_masked", lambda: fractional_delay_freq_response(_EvilListMasked([1.0]), n=n_test)),  # type: ignore[arg-type]
+            ("build_offgrid_sc_channel_matrix_evil_masked", lambda: build_offgrid_sc_channel_matrix(gains_ok, _EvilListMasked([1.0]), n=n_test)),  # type: ignore[arg-type]
+        ):
+            with self.subTest(op=op_name):
+                with self.assertRaises(ValueError):
+                    fn()
 
 
 class TestP11DataclassesAndStaticAST(unittest.TestCase):
