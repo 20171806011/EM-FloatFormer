@@ -286,6 +286,8 @@ def _validate_numeric_obj(
             return
         raise ValueError(f"{name} must contain only {kind_desc} values, got ndarray with dtype {obj.dtype}")
     if isinstance(obj, (list, tuple)):
+        if len(obj) == 0:
+            raise ValueError(f"{name} must contain only {kind_desc} values, got empty sequence")
         if _seen is None:
             _seen = set()
         obj_id = id(obj)

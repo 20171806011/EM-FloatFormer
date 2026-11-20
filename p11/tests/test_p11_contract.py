@@ -695,6 +695,8 @@ class TestFractionalDelayOperators(unittest.TestCase):
             ("obj_none_p1", 1, np.array([None], dtype=object)),
             ("obj_mixed_none_p2", 2, np.array([1.0, None], dtype=object)),
             ("obj_empty_p0", 0, np.array([], dtype=object)),
+            ("empty_list_p0", 0, []),
+            ("empty_tuple_p0", 0, ()),
             # Cat 10: complex
             ("list_complex_p1", 1, [1.0 + 2.0j]),
             ("list_mixed_complex_p2", 2, [1.0, 2.0 + 0j]),
@@ -899,8 +901,6 @@ class TestFractionalDelayOperators(unittest.TestCase):
             (2, [np.array(0.5, dtype=REAL_DTYPE), np.array(1, dtype=np.int64)]),
             (2, np.array([0.0, 1.5], dtype=np.float32)),
             (2, np.array([1, 2], dtype=np.int64)),
-            (0, []),
-            (0, ()),
             (0, np.empty(0, dtype=REAL_DTYPE)),
         ]
         for p_len, delays_val in vec_valid:
