@@ -3,12 +3,15 @@ from __future__ import annotations
 
 import ast
 from dataclasses import FrozenInstanceError
+from decimal import Decimal
+from fractions import Fraction
 import math
 import os
 from pathlib import Path
 import subprocess
 import sys
 import unittest
+import warnings
 
 import numpy as np
 
@@ -351,6 +354,14 @@ class TestP11Determinism(unittest.TestCase):
             self.assertEqual(torch.get_num_threads(), 1)
             self.assertTrue(torch.are_deterministic_algorithms_enabled())
 
+    def test_require_env_rejects_non_bool(self) -> None:
+        for bad_req in ("false", "true", 1, 0, None, [True], np.array([True])):
+            with self.assertRaises(TypeError):
+                enforce_determinism(require_env=bad_req)  # type: ignore[arg-type]
+        with self._patched_thread_env({"OPENBLAS_NUM_THREADS": "1", "OMP_NUM_THREADS": "1"}):
+            status = enforce_determinism(require_env=np.bool_(True))  # type: ignore[arg-type]
+            self.assertIs(status["require_env"], True)
+
 
 class TestFractionalDelayOperators(unittest.TestCase):
     def test_unitarity_adjointness_group_duality_and_parseval(self) -> None:
@@ -479,6 +490,401 @@ class TestFractionalDelayOperators(unittest.TestCase):
                 np.zeros((2, N), dtype=COMPLEX_DTYPE),
                 np.zeros(2, dtype=REAL_DTYPE),
             )
+
+    def test_delay_validation_rejects_all_bypass_categories_across_all_operators(self) -> None:
+        class _CustomFloat:
+            def __float__(self) -> float:
+                return 1.5
+
+        class _CustomArray:
+            def __array__(self, dtype: object = None) -> np.ndarray:
+                return np.array([0.5, 1.5], dtype=REAL_DTYPE if dtype is None else dtype)
+
+        cyclic_list: list[object] = []
+        cyclic_list.append(cyclic_list)
+        cyclic_obj = np.empty(1, dtype=object)
+        cyclic_obj[0] = cyclic_obj
+
+        n_test = 4
+        x1 = np.ones(n_test, dtype=COMPLEX_DTYPE)
+        x2 = np.ones((2, n_test), dtype=COMPLEX_DTYPE)
+        gains_by_p = {p: np.ones((p, n_test), dtype=COMPLEX_DTYPE) for p in (0, 1, 2)}
+
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", RuntimeWarning)
+            longdouble_inf = np.longdouble("1e500")
+
+        # Scalar / 0-D malformed cases across all 11 categories + custom/buffer/overflow cases
+        scalar_0d_cases: list[tuple[str, object]] = [
+            ("0d_bool_true", np.array(True, dtype=np.bool_)),
+            ("0d_bool_false", np.array(False, dtype=np.bool_)),
+            ("0d_obj_0d_bool", np.array(np.array(True, dtype=np.bool_), dtype=object)),
+            ("py_bool_true", True),
+            ("py_bool_false", False),
+            ("np_bool_true", np.bool_(True)),
+            ("np_bool_false", np.bool_(False)),
+            ("str_1_5", "1.5"),
+            ("str_0_0", "0.0"),
+            ("str_nan", "nan"),
+            ("str_inf", "inf"),
+            ("np_str_0d", np.array("1.5")),
+            ("obj_str_0d", np.array("1.5", dtype=object)),
+            ("bytes_1_5", b"1.5"),
+            ("bytes_0_0", b"0.0"),
+            ("np_bytes_0d", np.array(b"1.5")),
+            ("obj_bytes_0d", np.array(b"1.5", dtype=object)),
+            ("bytearray", bytearray(b"1.5")),
+            ("memoryview", memoryview(b"123")),
+            ("timedelta_1s", np.timedelta64(1, "s")),
+            ("timedelta_5ms", np.timedelta64(5, "ms")),
+            ("timedelta_nat", np.timedelta64("NaT", "s")),
+            ("obj_timedelta_0d", np.array(np.timedelta64(1, "s"), dtype=object)),
+            ("datetime_day", np.datetime64("2026-01-01")),
+            ("datetime_nat", np.datetime64("NaT")),
+            ("obj_datetime_0d", np.array(np.datetime64("2026-01-01"), dtype=object)),
+            ("void_scalar", np.array([(1.0,)], dtype=[("x", "f8")])[0]),
+            ("obj_void_0d", np.array(np.array([(1.0,)], dtype=[("x", "f8")])[0], dtype=object)),
+            ("masked_0d_true", np.ma.masked_array(1.5, mask=True)),
+            ("masked_0d_false", np.ma.masked_array(1.5, mask=False)),
+            ("ma_masked_const", np.ma.masked),
+            ("none", None),
+            ("obj_none_0d", np.array(None, dtype=object)),
+            ("dict", {"a": 1.0}),
+            ("set", {1.0, 2.0}),
+            ("complex_real", 1.0 + 0.0j),
+            ("complex_imag", 1.0 + 2.0j),
+            ("np_complex64", np.complex64(0.5 + 0j)),
+            ("np_complex128", np.complex128(0.5 + 1j)),
+            ("0d_complex_arr", np.array(1.0 + 0j, dtype=np.complex128)),
+            ("obj_complex_0d", np.array(1.0 + 0j, dtype=object)),
+            ("py_nan", math.nan),
+            ("py_inf", math.inf),
+            ("py_neg_inf", -math.inf),
+            ("f16_nan", np.float16("nan")),
+            ("f32_ninf", np.float32("-inf")),
+            ("f64_nan", np.float64("nan")),
+            ("f64_inf", np.float64("inf")),
+            ("0d_nan_arr", np.array(math.nan)),
+            ("int_overflow_10e400", 10**400),
+            ("longdouble_inf", longdouble_inf),
+            ("decimal_1_5", Decimal("1.5")),
+            ("fraction_3_2", Fraction(3, 2)),
+            ("custom_float", _CustomFloat()),
+            ("custom_array", _CustomArray()),
+            ("torch_0d_bool", torch.tensor(True)),
+        ]
+
+        # 1-D malformed cases paired with exact length P in {0, 1, 2}
+        vec_1d_cases: list[tuple[str, int, object]] = [
+            # Cat 1: 0-D bool ndarray inside lists/tuples/object arrays
+            ("mixed_list_0d_bool_p2", 2, [1.0, np.array(True, dtype=np.bool_)]),
+            ("mixed_tuple_0d_bool_p2", 2, (1.0, np.array(False, dtype=np.bool_))),
+            ("list_0d_bool_p1", 1, [np.array(True, dtype=np.bool_)]),
+            ("tuple_0d_bool_p1", 1, (np.array(False, dtype=np.bool_),)),
+            ("obj_0d_bool_p1", 1, np.array([np.array(True, dtype=np.bool_)], dtype=object)),
+            ("obj_mixed_0d_bool_p2", 2, np.array([1.0, np.array(True, dtype=np.bool_)], dtype=object)),
+            ("obj_nested_tuple_0d_bool_p1", 1, np.array([(1.0, np.array(False, dtype=np.bool_))], dtype=object)),
+            # Cat 2: bool / np.bool_ / 1-D bool ndarray
+            ("list_bool_p1", 1, [True]),
+            ("list_mixed_bool_p2", 2, [1.0, True]),
+            ("tuple_mixed_np_bool_p2", 2, (1.0, np.bool_(False))),
+            ("bool_arr_p1", 1, np.array([True], dtype=np.bool_)),
+            ("bool_arr_p2", 2, np.array([True, False], dtype=np.bool_)),
+            ("bool_arr_p0", 0, np.array([], dtype=np.bool_)),
+            ("obj_bool_p2", 2, np.array([1.0, True], dtype=object)),
+            ("obj_np_bool_p2", 2, np.array([1.0, np.bool_(False)], dtype=object)),
+            ("obj_nested_bool_p1", 1, np.array([(1.0, True)], dtype=object)),
+            ("obj_1d_bool_p1", 1, np.array([np.array([True], dtype=np.bool_)], dtype=object)),
+            # Cat 3: str
+            ("list_str_p1", 1, ["1.5"]),
+            ("list_str_p2", 2, ["1.5", "2.5"]),
+            ("tuple_str_p2", 2, ("1.0", "2.0")),
+            ("list_mixed_str_p2", 2, [1.0, "1.5"]),
+            ("str_arr_p1", 1, np.array(["1.5"])),
+            ("str_arr_p2", 2, np.array(["1.5", "2.5"])),
+            ("str_arr_p0", 0, np.array([], dtype="<U1")),
+            ("obj_str_p1", 1, np.array(["1.0"], dtype=object)),
+            ("obj_mixed_str_p2", 2, np.array([1.0, "1.5"], dtype=object)),
+            # Cat 4: bytes / bytearray / memoryview
+            ("list_bytes_p1", 1, [b"1.5"]),
+            ("list_bytes_p2", 2, [b"1.5", b"2.5"]),
+            ("list_mixed_bytes_p2", 2, [1.0, b"1.5"]),
+            ("bytes_arr_p1", 1, np.array([b"1.5"])),
+            ("bytes_arr_p2", 2, np.array([b"1.5", b"2.5"])),
+            ("bytes_arr_p0", 0, np.array([], dtype="|S1")),
+            ("obj_bytes_p1", 1, np.array([b"1.5"], dtype=object)),
+            ("list_bytearray_p1", 1, [bytearray(b"1.5")]),
+            ("list_memoryview_p1", 1, [memoryview(b"12")]),
+            # Cat 5: timedelta64
+            ("list_timedelta_p1", 1, [np.timedelta64(1, "s")]),
+            ("timedelta_arr_p1", 1, np.array([np.timedelta64(1, "s")])),
+            ("timedelta_arr_p2", 2, np.array([np.timedelta64(1, "s"), np.timedelta64(2, "s")])),
+            ("obj_timedelta_p1", 1, np.array([np.timedelta64(1, "s")], dtype=object)),
+            # Cat 6: datetime64
+            ("list_datetime_p1", 1, [np.datetime64("2026-01-01")]),
+            ("datetime_arr_p1", 1, np.array([np.datetime64("2026-01-01")])),
+            ("datetime_arr_p2", 2, np.array([np.datetime64("2026-01-01"), np.datetime64("2026-01-02")])),
+            ("obj_datetime_p1", 1, np.array([np.datetime64("2026-01-01")], dtype=object)),
+            # Cat 7: structured void
+            ("void_arr_p1", 1, np.array([(1.0,)], dtype=[("x", "f8")])),
+            ("void_arr_p2", 2, np.array([(1.0,), (2.0,)], dtype=[("x", "f8")])),
+            ("void_arr_two_fields_p1", 1, np.array([(1.0, 2.0)], dtype=[("x", "f8"), ("y", "f8")])),
+            ("obj_void_p1", 1, np.array([np.array([(1.0,)], dtype=[("x", "f8")])[0]], dtype=object)),
+            # Cat 8: MaskedArray
+            ("masked_arr_p1_true", 1, np.ma.masked_array([1.5], mask=[True])),
+            ("masked_arr_p1_false", 1, np.ma.masked_array([1.5], mask=[False])),
+            ("masked_arr_p2_partial", 2, np.ma.masked_array([1.0, 2.0], mask=[False, True])),
+            ("masked_arr_p2_unmasked", 2, np.ma.masked_array([1.0, 2.0], mask=[False, False])),
+            ("masked_arr_p0", 0, np.ma.masked_array([], mask=[], dtype=REAL_DTYPE)),
+            ("obj_masked_p1", 1, np.array([np.ma.masked], dtype=object)),
+            ("list_masked_p1", 1, [np.ma.masked_array(1.5, mask=True)]),
+            # Cat 9: None & empty object array
+            ("list_none_p1", 1, [None]),
+            ("list_mixed_none_p2", 2, [1.0, None]),
+            ("tuple_mixed_none_p2", 2, (1.0, None)),
+            ("obj_none_p1", 1, np.array([None], dtype=object)),
+            ("obj_mixed_none_p2", 2, np.array([1.0, None], dtype=object)),
+            ("obj_empty_p0", 0, np.array([], dtype=object)),
+            # Cat 10: complex
+            ("list_complex_p1", 1, [1.0 + 2.0j]),
+            ("list_mixed_complex_p2", 2, [1.0, 2.0 + 0j]),
+            ("list_mixed_0d_complex_p2", 2, [1.0, np.array(1.0 + 0j, dtype=COMPLEX_DTYPE)]),
+            ("complex64_arr_p1", 1, np.array([0.5 + 0j], dtype=np.complex64)),
+            ("complex128_arr_p2", 2, np.array([0.5 + 0j, 1.0 - 2j], dtype=COMPLEX_DTYPE)),
+            ("complex128_arr_p0", 0, np.array([], dtype=COMPLEX_DTYPE)),
+            ("obj_complex_p2", 2, np.array([1.0, 2.0 + 0j], dtype=object)),
+            ("obj_0d_complex_p1", 1, np.array([np.array(1.0 + 0j, dtype=COMPLEX_DTYPE)], dtype=object)),
+            # Cat 11: nan / inf
+            ("list_nan_p1", 1, [math.nan]),
+            ("list_nan_p2", 2, [0.0, math.nan]),
+            ("list_inf_p2", 2, [0.0, math.inf]),
+            ("arr_nan_p2", 2, np.array([0.0, np.nan])),
+            ("arr_inf_p2", 2, np.array([0.0, np.inf])),
+            ("arr_ninf_p2", 2, np.array([0.0, -np.inf])),
+            ("obj_nan_p2", 2, np.array([1.0, float("nan")], dtype=object)),
+            # Extra overflow / Decimal / Fraction / torch / cyclic
+            ("list_overflow_p1", 1, [10**400]),
+            ("list_decimal_p1", 1, [Decimal("1.5")]),
+            ("list_fraction_p1", 1, [Fraction(3, 2)]),
+            ("list_torch_bool_p2", 2, [1.0, torch.tensor(True)]),
+            ("obj_torch_bool_p1", 1, np.array([torch.tensor(True)], dtype=object)),
+            ("torch_req_grad_p2", 2, torch.tensor([0.5, 1.5], requires_grad=True)),
+            ("cyclic_obj_p1", 1, cyclic_obj),
+        ]
+
+        # Nested / 2-D / non-rectangular cases
+        nested_cases: list[tuple[str, object]] = [
+            ("nested_tuple_0d_bool_1", ((1.0, (2.0, np.array(False, dtype=np.bool_))),)),
+            ("nested_list_0d_bool_2", [(1.0, [np.array(True, dtype=np.bool_)])]),
+            ("2d_obj_0d_bool", np.array([[1.0], [np.array(True, dtype=np.bool_)]], dtype=object)),
+            ("nested_tuple_bool_1", ((True,),)),
+            ("nested_tuple_bool_2", ((1.0, (2.0, False)),)),
+            ("nested_list_np_bool", [(1.0, [np.bool_(True)])]),
+            ("nested_tuple_complex", ((1.0, (0.0 + 0.0j,)),)),
+            ("obj_empty_bool_child", np.array([np.empty(0, dtype=np.bool_)], dtype=object)),
+            ("ragged_list", [[1.0, 2.0], [3.0]]),
+            ("mixed_scalar_and_1d_arr", [1.0, np.array([2.0])]),
+            ("cyclic_list", cyclic_list),
+        ]
+
+        # 1. fractional_delay_freq_response on ALL cases
+        for label, bad in (
+            scalar_0d_cases
+            + [(lbl, val) for lbl, _, val in vec_1d_cases]
+            + nested_cases
+        ):
+            with self.subTest(op="fractional_delay_freq_response", case=label):
+                with self.assertRaises(ValueError):
+                    fractional_delay_freq_response(bad, n=n_test)  # type: ignore[arg-type]
+
+        # 2. fractional_delay_matrix and fractional_delay_kernel on ALL 0-D cases + representative 1-D/nested
+        for op_name, op_fn in (
+            ("fractional_delay_matrix", fractional_delay_matrix),
+            ("fractional_delay_kernel", fractional_delay_kernel),
+        ):
+            for label, bad in scalar_0d_cases:
+                with self.subTest(op=op_name, case=label):
+                    with self.assertRaises(ValueError) as ctx:
+                        op_fn(bad, n=n_test)  # type: ignore[arg-type]
+                    self.assertNotIn("delay must be a scalar", str(ctx.exception))
+            for label, bad in (
+                ("mixed_list_0d_bool", [1.0, np.array(True, dtype=np.bool_)]),
+                ("obj_0d_bool", np.array([np.array(True, dtype=np.bool_)], dtype=object)),
+                ("list_str", ["1.5"]),
+                ("masked_1d", np.ma.masked_array([1.5], mask=[True])),
+                ("cyclic_list", cyclic_list),
+            ):
+                with self.subTest(op=op_name, case=label):
+                    with self.assertRaises(ValueError):
+                        op_fn(bad, n=n_test)  # type: ignore[arg-type]
+
+        # 3. All 3 SC operators with shape-matched ray_gains_row
+        for label, p_len, bad in vec_1d_cases:
+            gains_p = gains_by_p[p_len]
+            for op_name, call_fn in (
+                ("build_offgrid_sc_channel_matrix", lambda g, d: build_offgrid_sc_channel_matrix(g, d, n=n_test)),
+                ("build_fractional_sc_matrix", lambda g, d: build_fractional_sc_matrix(g, d, n=n_test)),
+                ("apply_fractional_sc_operator_1d", lambda g, d: apply_fractional_sc_operator(x1, g, d, n=n_test)),
+            ):
+                with self.subTest(op=op_name, case=label):
+                    with self.assertRaises(ValueError) as ctx:
+                        call_fn(gains_p, bad)
+                    self.assertNotIn("Expected ray_gains_row", str(ctx.exception))
+
+        # 0-D and nested cases on SC operators also fail delay validation before shape check
+        gains_1 = gains_by_p[1]
+        for label, bad in scalar_0d_cases + nested_cases:
+            for op_name, call_fn in (
+                ("build_offgrid_sc_channel_matrix", lambda g, d: build_offgrid_sc_channel_matrix(g, d, n=n_test)),
+                ("build_fractional_sc_matrix", lambda g, d: build_fractional_sc_matrix(g, d, n=n_test)),
+                ("apply_fractional_sc_operator_1d", lambda g, d: apply_fractional_sc_operator(x1, g, d, n=n_test)),
+            ):
+                with self.subTest(op=op_name, case=label):
+                    with self.assertRaises(ValueError) as ctx:
+                        call_fn(gains_1, bad)
+                    self.assertNotIn("Expected ray_gains_row", str(ctx.exception))
+
+        # Representative 2-D batch x2 on apply_fractional_sc_operator
+        for label, p_len, bad in (
+            ("mixed_list_0d_bool_p2", 2, [1.0, np.array(True, dtype=np.bool_)]),
+            ("datetime_arr_p1", 1, np.array([np.datetime64("2026-01-01")])),
+            ("bytes_p1", 1, [b"1.5"]),
+            ("masked_p2", 2, np.ma.masked_array([1.0, 2.0], mask=[False, True])),
+        ):
+            with self.subTest(op="apply_fractional_sc_operator_2d", case=label):
+                with self.assertRaises(ValueError) as ctx:
+                    apply_fractional_sc_operator(x2, gains_by_p[p_len], bad, n=n_test)  # type: ignore[arg-type]
+                self.assertNotIn("Expected ray_gains_row", str(ctx.exception))
+
+    def test_ray_gains_and_x_reject_malformed_inputs(self) -> None:
+        n_test = 4
+        x_ok = np.ones(n_test, dtype=COMPLEX_DTYPE)
+        gains_ok = np.ones((1, n_test), dtype=COMPLEX_DTYPE)
+        delays_1 = np.array([0.5], dtype=REAL_DTYPE)
+
+        bad_gains_cases: list[tuple[str, object]] = [
+            ("bool_arr_2d", np.ones((1, n_test), dtype=np.bool_)),
+            ("nested_bool_list", [[True, False, True, False]]),
+            ("mixed_0d_bool_list", [[1.0, np.array(True, dtype=np.bool_), 0.0, 0.0]]),
+            ("obj_0d_bool_2d", np.array([[np.array(True, dtype=np.bool_), 1.0, 2.0, 3.0]], dtype=object)),
+            ("str_2d", [["1+2j", "2", "3", "4"]]),
+            ("bytes_2d", [[b"1.0", b"2.0", b"3.0", b"4.0"]]),
+            ("bytearray", bytearray(b"1234")),
+            ("memoryview", memoryview(b"1234")),
+            ("masked_2d", np.ma.masked_array(np.ones((1, n_test)), mask=[[False, True, False, False]])),
+            ("masked_2d_false", np.ma.masked_array(np.ones((1, n_test)), mask=False)),
+            ("datetime_2d", np.array([[np.datetime64("2026-01-01")] * n_test])),
+            ("timedelta_2d", np.array([[np.timedelta64(1, "s")] * n_test])),
+            ("void_2d", np.array([[(1.0,)] * n_test], dtype=[("x", "f8")])),
+            ("dict", {"a": 1.0}),
+            ("torch_bool", torch.ones((1, n_test), dtype=torch.bool)),
+            ("torch_req_grad", torch.ones((1, n_test), requires_grad=True)),
+            ("nan_2d", [[1.0, 2.0, 3.0, math.nan]]),
+            ("complex_inf_2d", [[1.0 + math.inf * 1j, 0.0, 0.0, 0.0]]),
+        ]
+        for label, bad_g in bad_gains_cases:
+            for op_name, call_fn in (
+                ("build_offgrid_sc_channel_matrix", lambda g: build_offgrid_sc_channel_matrix(g, delays_1, n=n_test)),
+                ("build_fractional_sc_matrix", lambda g: build_fractional_sc_matrix(g, delays_1, n=n_test)),
+                ("apply_fractional_sc_operator", lambda g: apply_fractional_sc_operator(x_ok, g, delays_1, n=n_test)),
+            ):
+                with self.subTest(op=op_name, bad_gains=label):
+                    with self.assertRaises(ValueError) as ctx:
+                        call_fn(bad_g)
+                    self.assertNotIn("Expected ray_gains_row", str(ctx.exception))
+
+        bad_x_cases: list[tuple[str, object]] = [
+            ("bool_arr_1d", np.ones(n_test, dtype=np.bool_)),
+            ("bool_list", [True, False, True, False]),
+            ("mixed_0d_bool_list", [1.0, np.array(True, dtype=np.bool_), 0.0, 0.0]),
+            ("obj_0d_bool_1d", np.array([np.array(True, dtype=np.bool_), 1.0, 2.0, 3.0], dtype=object)),
+            ("str_1d", ["1+2j", "2", "3", "4"]),
+            ("bytes_1d", [b"1.0", b"2.0", b"3.0", b"4.0"]),
+            ("bytearray", bytearray(b"1234")),
+            ("memoryview", memoryview(b"1234")),
+            ("masked_1d", np.ma.masked_array(np.ones(n_test), mask=[False, True, False, False])),
+            ("datetime_1d", np.array([np.datetime64("2026-01-01")] * n_test)),
+            ("timedelta_1d", np.array([np.timedelta64(1, "s")] * n_test)),
+            ("void_1d", np.array([(1.0,)] * n_test, dtype=[("x", "f8")])),
+            ("dict", {"a": 1.0}),
+            ("torch_bool", torch.ones(n_test, dtype=torch.bool)),
+            ("torch_req_grad", torch.ones(n_test, requires_grad=True)),
+            ("nan_1d", [1.0, 2.0, 3.0, math.nan]),
+        ]
+        for label, bad_x in bad_x_cases:
+            with self.subTest(bad_x=label):
+                with self.assertRaises(ValueError) as ctx:
+                    apply_fractional_sc_operator(bad_x, gains_ok, delays_1, n=n_test)  # type: ignore[arg-type]
+                self.assertNotIn("Expected x with trailing dimension", str(ctx.exception))
+
+    def test_delay_validation_accepts_valid_real_numeric_inputs(self) -> None:
+        n_test = 4
+        scalar_valid = (
+            0,
+            -2,
+            1.5,
+            np.int32(2),
+            np.int64(-1),
+            np.uint8(3),
+            np.float16(0.5),
+            np.float32(1.25),
+            np.float64(-0.75),
+            np.array(1.5, dtype=REAL_DTYPE),
+            np.array(2, dtype=np.int64),
+        )
+        for val in scalar_valid:
+            fr = fractional_delay_freq_response(val, n=n_test)
+            dm = fractional_delay_matrix(val, n=n_test)
+            dk = fractional_delay_kernel(val, n=n_test)
+            self.assertEqual(fr.shape, (n_test,))
+            self.assertEqual(fr.dtype, COMPLEX_DTYPE)
+            self.assertEqual(dm.shape, (n_test, n_test))
+            self.assertEqual(dm.dtype, COMPLEX_DTYPE)
+            self.assertTrue(np.array_equal(dm, dk))
+
+        x_valid = np.ones(n_test, dtype=COMPLEX_DTYPE)
+        vec_valid: list[tuple[int, object]] = [
+            (3, [0, 1.5, np.float32(2.5)]),
+            (3, (0.0, 1, np.int64(2))),
+            (2, [np.array(0.5, dtype=REAL_DTYPE), np.array(1, dtype=np.int64)]),
+            (2, np.array([0.0, 1.5], dtype=np.float32)),
+            (2, np.array([1, 2], dtype=np.int64)),
+            (0, []),
+            (0, ()),
+            (0, np.empty(0, dtype=REAL_DTYPE)),
+        ]
+        for p_len, delays_val in vec_valid:
+            gains_p = np.ones((p_len, n_test), dtype=COMPLEX_DTYPE)
+            fr = fractional_delay_freq_response(delays_val, n=n_test)  # type: ignore[arg-type]
+            h_mat = build_offgrid_sc_channel_matrix(gains_p, delays_val, n=n_test)  # type: ignore[arg-type]
+            h_alias = build_fractional_sc_matrix(gains_p, delays_val, n=n_test)  # type: ignore[arg-type]
+            y_op = apply_fractional_sc_operator(x_valid, gains_p, delays_val, n=n_test)  # type: ignore[arg-type]
+            self.assertEqual(fr.shape, (p_len, n_test))
+            self.assertEqual(fr.dtype, COMPLEX_DTYPE)
+            self.assertEqual(h_mat.shape, (n_test, n_test))
+            self.assertEqual(h_mat.dtype, COMPLEX_DTYPE)
+            self.assertTrue(np.array_equal(h_mat, h_alias))
+            self.assertEqual(y_op.shape, (n_test,))
+            self.assertEqual(y_op.dtype, COMPLEX_DTYPE)
+
+        # Empty-batch x and real/float32/complex64 ray_gains_row & x compatibility
+        y_empty_batch = apply_fractional_sc_operator(
+            np.ones((0, n_test), dtype=COMPLEX_DTYPE),
+            np.ones((1, n_test), dtype=np.complex64),
+            np.array([0.5], dtype=np.float32),
+            n=n_test,
+        )
+        self.assertEqual(y_empty_batch.shape, (0, n_test))
+        self.assertEqual(y_empty_batch.dtype, COMPLEX_DTYPE)
+
+        y_real_inputs = apply_fractional_sc_operator(
+            [1, 2, 3, 4],
+            [[0.5, 1.0, 1.5, 2.0]],
+            [0.5],
+            n=n_test,
+        )
+        self.assertEqual(y_real_inputs.shape, (n_test,))
+        self.assertEqual(y_real_inputs.dtype, COMPLEX_DTYPE)
 
 
 class TestP11DataclassesAndStaticAST(unittest.TestCase):

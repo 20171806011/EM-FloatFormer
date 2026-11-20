@@ -122,6 +122,10 @@ def enforce_determinism(require_env: bool = True) -> dict[str, Any]:
     PyTorch is imported lazily inside this function so pure-NumPy/SciPy audit modules
     importing `p11.contract` do not import `torch` at module load time.
     """
+    if not isinstance(require_env, (bool, np.bool_)):
+        raise TypeError(f"require_env must be a bool, got {type(require_env).__name__}")
+    require_env = bool(require_env)
+
     if require_env:
         bad: list[str] = []
         for var in ("OPENBLAS_NUM_THREADS", "OMP_NUM_THREADS"):
@@ -195,7 +199,7 @@ _DFT_UNITARY_CACHE: dict[int, np.ndarray] = {}
 
 
 def _validate_n(n: int) -> int:
-    if isinstance(n, bool) or not isinstance(n, (int, np.integer)):
+    if isinstance(n, (bool, np.bool_, np.timedelta64, np.datetime64)) or not isinstance(n, (int, np.integer)):
         raise ValueError(f"n must be a positive integer, got {n!r}")
     n_int = int(n)
     if n_int < 1:
@@ -225,32 +229,93 @@ def unitary_dft_matrix(n: int = N) -> np.ndarray:
     return _DFT_UNITARY_CACHE[n_int]
 
 
-def _check_no_bool_or_complex_obj(obj: Any) -> None:
-    if isinstance(obj, (bool, np.bool_, complex, np.complexfloating)):
-        raise ValueError(f"delay must contain only finite real values, got {type(obj).__name__}")
+_REAL_DTYPES_KINDS = frozenset({"i", "u", "f"})
+_COMPLEX_DTYPES_KINDS = frozenset({"i", "u", "f", "c"})
+
+
+def _validate_numeric_obj(
+    obj: Any,
+    *,
+    allow_complex: bool,
+    name: str,
+    _seen: Optional[set[int]] = None,
+) -> None:
+    allowed_kinds = _COMPLEX_DTYPES_KINDS if allow_complex else _REAL_DTYPES_KINDS
+    kind_desc = "finite real or complex" if allow_complex else "finite real"
+    if isinstance(obj, np.ma.MaskedArray):
+        raise ValueError(f"{name} must contain only {kind_desc} values, not MaskedArray")
+    if isinstance(obj, (bool, np.bool_, str, bytes, bytearray, memoryview, np.timedelta64, np.datetime64)):
+        raise ValueError(f"{name} must contain only {kind_desc} values, got {type(obj).__name__}")
+    if not allow_complex and isinstance(obj, (complex, np.complexfloating)):
+        raise ValueError(f"{name} must contain only {kind_desc} values, not complex")
+    if isinstance(obj, (int, float, np.integer, np.floating)):
+        return
+    if allow_complex and isinstance(obj, (complex, np.complexfloating)):
+        return
+    if isinstance(obj, np.ndarray):
+        kind = obj.dtype.kind
+        if kind in allowed_kinds:
+            return
+        if kind == "O":
+            if obj.size == 0:
+                raise ValueError(f"{name} must contain only {kind_desc} values, got empty object array")
+            if _seen is None:
+                _seen = set()
+            obj_id = id(obj)
+            if obj_id in _seen:
+                raise ValueError(f"{name} must not contain cyclic object array references")
+            _seen.add(obj_id)
+            try:
+                for elem in obj.flat:
+                    _validate_numeric_obj(elem, allow_complex=allow_complex, name=name, _seen=_seen)
+            finally:
+                _seen.remove(obj_id)
+            return
+        raise ValueError(f"{name} must contain only {kind_desc} values, got ndarray with dtype {obj.dtype}")
     if isinstance(obj, (list, tuple)):
-        for item in obj:
-            _check_no_bool_or_complex_obj(item)
+        if _seen is None:
+            _seen = set()
+        obj_id = id(obj)
+        if obj_id in _seen:
+            raise ValueError(f"{name} must not contain cyclic sequence references")
+        _seen.add(obj_id)
+        try:
+            for item in obj:
+                _validate_numeric_obj(item, allow_complex=allow_complex, name=name, _seen=_seen)
+        finally:
+            _seen.remove(obj_id)
+        return
+    raise ValueError(f"{name} must contain only {kind_desc} values, got {type(obj).__name__}")
+
+
+def _coerce_numeric_array(val: Any, *, allow_complex: bool, name: str) -> np.ndarray:
+    """Validate and coerce scalar or array-like numeric values to finite float64 or complex128."""
+    allowed_kinds = _COMPLEX_DTYPES_KINDS if allow_complex else _REAL_DTYPES_KINDS
+    kind_desc = "finite real or complex" if allow_complex else "finite real"
+    target_dtype = COMPLEX_DTYPE if allow_complex else REAL_DTYPE
+    try:
+        _validate_numeric_obj(val, allow_complex=allow_complex, name=name)
+        raw = np.asarray(val)
+        if isinstance(raw, np.ma.MaskedArray):
+            raise ValueError(f"{name} must contain only {kind_desc} values, not MaskedArray")
+        if raw.dtype.kind not in allowed_kinds and raw.dtype.kind != "O":
+            raise ValueError(f"{name} must contain only {kind_desc} values, got dtype {raw.dtype}")
+        if raw.dtype.kind == "O":
+            if raw.size == 0:
+                raise ValueError(f"{name} must contain only {kind_desc} values, got empty object array")
+            for elem in raw.flat:
+                _validate_numeric_obj(elem, allow_complex=allow_complex, name=name)
+        out = np.asarray(raw, dtype=target_dtype)
+    except (TypeError, ValueError, OverflowError, RecursionError, RuntimeError) as exc:
+        raise ValueError(f"{name} must contain only {kind_desc} values, got {val!r}") from exc
+    if not np.all(np.isfinite(out)):
+        raise ValueError(f"{name} must contain only {kind_desc} values")
+    return out
 
 
 def _coerce_real_delay_array(delay: Any) -> np.ndarray:
     """Validate and coerce scalar or array-like real delays to finite float64."""
-    _check_no_bool_or_complex_obj(delay)
-    raw = np.asarray(delay)
-    if raw.dtype == np.bool_ or raw.dtype.kind == "b":
-        raise ValueError("delay must contain only finite real values, not bool")
-    if np.issubdtype(raw.dtype, np.complexfloating) or raw.dtype.kind == "c":
-        raise ValueError("delay must contain only finite real values, not complex")
-    if raw.dtype == np.object_:
-        for elem in raw.flat:
-            _check_no_bool_or_complex_obj(elem)
-    try:
-        d = np.asarray(raw, dtype=REAL_DTYPE)
-    except (TypeError, ValueError) as exc:
-        raise ValueError(f"delay must contain only finite real values, got {delay!r}") from exc
-    if not np.all(np.isfinite(d)):
-        raise ValueError("delay must contain only finite real values")
-    return d
+    return _coerce_numeric_array(delay, allow_complex=False, name="delay")
 
 
 def fractional_delay_freq_response(delay: float | np.ndarray, n: int = N) -> np.ndarray:
@@ -290,12 +355,10 @@ def build_offgrid_sc_channel_matrix(
 ) -> np.ndarray:
     """Exact N x N time-varying CP-SC channel matrix for continuous off-grid delays."""
     n_int = _validate_n(n)
-    g = np.asarray(ray_gains_row, dtype=COMPLEX_DTYPE)
+    g = _coerce_numeric_array(ray_gains_row, allow_complex=True, name="ray_gains_row")
     d = _coerce_real_delay_array(delays)
     if g.ndim != 2 or g.shape[1] != n_int or d.ndim != 1 or g.shape[0] != d.shape[0]:
         raise ValueError(f"Expected ray_gains_row [P, {n_int}] and delays [P], got {g.shape} and {d.shape}")
-    if not np.all(np.isfinite(g)):
-        raise ValueError("ray_gains_row must contain only finite complex numbers")
     h_mat = np.zeros((n_int, n_int), dtype=COMPLEX_DTYPE)
     for l_idx in range(d.shape[0]):
         d_mat = fractional_delay_matrix(float(d[l_idx]), n=n_int)
@@ -325,18 +388,14 @@ def apply_fractional_sc_operator(
     `x @ H_r.T` along the trailing axis for `[..., N]` complex128 inputs.
     """
     n_int = _validate_n(n)
-    x_arr = np.asarray(x, dtype=COMPLEX_DTYPE)
+    x_arr = _coerce_numeric_array(x, allow_complex=True, name="x")
     if x_arr.ndim < 1 or x_arr.shape[-1] != n_int:
         raise ValueError(f"Expected x with trailing dimension {n_int}, got shape {x_arr.shape}")
-    if not np.all(np.isfinite(x_arr)):
-        raise ValueError("x must contain only finite complex values")
 
-    g = np.asarray(ray_gains_row, dtype=COMPLEX_DTYPE)
+    g = _coerce_numeric_array(ray_gains_row, allow_complex=True, name="ray_gains_row")
     d = _coerce_real_delay_array(delays)
     if g.ndim != 2 or g.shape[1] != n_int or d.ndim != 1 or g.shape[0] != d.shape[0]:
         raise ValueError(f"Expected ray_gains_row [P, {n_int}] and delays [P], got {g.shape} and {d.shape}")
-    if not np.all(np.isfinite(g)):
-        raise ValueError("ray_gains_row must contain only finite complex numbers")
 
     out = np.zeros_like(x_arr, dtype=COMPLEX_DTYPE)
     for l_idx in range(d.shape[0]):
