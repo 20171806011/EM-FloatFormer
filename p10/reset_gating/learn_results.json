@@ -1,0 +1,4129 @@
+{
+  "result": {
+    "partial_shift": {
+      "links": 128,
+      "blocks": 1408,
+      "arms": {
+        "p9": {
+          "block_errors": 1258,
+          "bler": 0.8934659090909091,
+          "accepted": 0
+        },
+        "v1": {
+          "block_errors": 856,
+          "bler": 0.6079545454545454,
+          "accepted": 92
+        },
+        "linear": {
+          "block_errors": 870,
+          "bler": 0.6178977272727273,
+          "accepted": 88,
+          "brier": 0.11264736542764692,
+          "logloss": 0.3403418621995957
+        },
+        "mlp": {
+          "block_errors": 860,
+          "bler": 0.6107954545454546,
+          "accepted": 91,
+          "brier": 0.0896246596278667,
+          "logloss": 0.29657437703189793
+        },
+        "attention": {
+          "block_errors": 866,
+          "bler": 0.6150568181818182,
+          "accepted": 89,
+          "brier": 0.09461253611894782,
+          "logloss": 0.278233842231361
+        },
+        "mechanism_oracle": {
+          "block_errors": 856,
+          "bler": 0.6079545454545454,
+          "accepted": 92
+        },
+        "utility_oracle": {
+          "block_errors": 855,
+          "bler": 0.6072443181818182,
+          "accepted": 85
+        }
+      }
+    },
+    "continuous": {
+      "links": 128,
+      "blocks": 1408,
+      "arms": {
+        "p9": {
+          "block_errors": 730,
+          "bler": 0.5184659090909091,
+          "accepted": 0
+        },
+        "v1": {
+          "block_errors": 739,
+          "bler": 0.5248579545454546,
+          "accepted": 3
+        },
+        "linear": {
+          "block_errors": 730,
+          "bler": 0.5184659090909091,
+          "accepted": 0,
+          "brier": 0.06518232304668668,
+          "logloss": 0.21948776819186894
+        },
+        "mlp": {
+          "block_errors": 730,
+          "bler": 0.5184659090909091,
+          "accepted": 0,
+          "brier": 0.0788370920678553,
+          "logloss": 0.2569453201785735
+        },
+        "attention": {
+          "block_errors": 730,
+          "bler": 0.5184659090909091,
+          "accepted": 0,
+          "brier": 0.041495194800942,
+          "logloss": 0.15993794762103808
+        },
+        "mechanism_oracle": {
+          "block_errors": 730,
+          "bler": 0.5184659090909091,
+          "accepted": 0
+        },
+        "utility_oracle": {
+          "block_errors": 730,
+          "bler": 0.5184659090909091,
+          "accepted": 0
+        }
+      }
+    },
+    "full_reset": {
+      "links": 128,
+      "blocks": 1408,
+      "arms": {
+        "p9": {
+          "block_errors": 1269,
+          "bler": 0.9012784090909091,
+          "accepted": 0
+        },
+        "v1": {
+          "block_errors": 1274,
+          "bler": 0.9048295454545454,
+          "accepted": 11
+        },
+        "linear": {
+          "block_errors": 1269,
+          "bler": 0.9012784090909091,
+          "accepted": 0,
+          "brier": 0.008417955344608766,
+          "logloss": 0.03484959542214629
+        },
+        "mlp": {
+          "block_errors": 1271,
+          "bler": 0.9026988636363636,
+          "accepted": 1,
+          "brier": 0.026224225142350642,
+          "logloss": 0.07899292103868194
+        },
+        "attention": {
+          "block_errors": 1269,
+          "bler": 0.9012784090909091,
+          "accepted": 1,
+          "brier": 0.023323796962179247,
+          "logloss": 0.0760908635078287
+        },
+        "mechanism_oracle": {
+          "block_errors": 1269,
+          "bler": 0.9012784090909091,
+          "accepted": 0
+        },
+        "utility_oracle": {
+          "block_errors": 1269,
+          "bler": 0.9012784090909091,
+          "accepted": 0
+        }
+      }
+    },
+    "equal_weight": {
+      "links": 384,
+      "blocks": 4224,
+      "arms": {
+        "p9": {
+          "block_errors": 3257,
+          "bler": 0.7710700757575758,
+          "accepted": 0
+        },
+        "v1": {
+          "block_errors": 2869,
+          "bler": 0.6792140151515151,
+          "accepted": 106
+        },
+        "linear": {
+          "block_errors": 2869,
+          "bler": 0.6792140151515151,
+          "accepted": 88,
+          "brier": 0.06208254793964746,
+          "logloss": 0.19822640860453697
+        },
+        "mlp": {
+          "block_errors": 2861,
+          "bler": 0.6773200757575758,
+          "accepted": 92,
+          "brier": 0.06489532561269087,
+          "logloss": 0.21083753941638447
+        },
+        "attention": {
+          "block_errors": 2865,
+          "bler": 0.6782670454545454,
+          "accepted": 90,
+          "brier": 0.05314384262735636,
+          "logloss": 0.17142088445340922
+        },
+        "mechanism_oracle": {
+          "block_errors": 2855,
+          "bler": 0.6758996212121212,
+          "accepted": 92
+        },
+        "utility_oracle": {
+          "block_errors": 2854,
+          "bler": 0.6756628787878788,
+          "accepted": 85
+        }
+      }
+    }
+  },
+  "paired_seed_intervals": {
+    "partial_shift": {
+      "v1_minus_attention": {
+        "gain": -0.007102272727272727,
+        "percentile_95": [
+          -0.017755681818181816,
+          0.0
+        ]
+      },
+      "linear_minus_attention": {
+        "gain": 0.002840909090909091,
+        "percentile_95": [
+          0.0,
+          0.008522727272727272
+        ]
+      },
+      "mlp_minus_attention": {
+        "gain": -0.004261363636363636,
+        "percentile_95": [
+          -0.012784090909090908,
+          0.0
+        ]
+      }
+    },
+    "continuous": {
+      "v1_minus_attention": {
+        "gain": 0.006392045454545454,
+        "percentile_95": [
+          0.0,
+          0.016335227272727272
+        ]
+      },
+      "linear_minus_attention": {
+        "gain": 0.0,
+        "percentile_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "mlp_minus_attention": {
+        "gain": 0.0,
+        "percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "full_reset": {
+      "v1_minus_attention": {
+        "gain": 0.003551136363636364,
+        "percentile_95": [
+          0.0007102272727272727,
+          0.0078125
+        ]
+      },
+      "linear_minus_attention": {
+        "gain": 0.0,
+        "percentile_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "mlp_minus_attention": {
+        "gain": 0.0014204545454545455,
+        "percentile_95": [
+          0.0,
+          0.004261363636363636
+        ]
+      }
+    },
+    "equal_weight": {
+      "v1_minus_attention": {
+        "gain": 0.0009469696969696972,
+        "percentile_95": [
+          -0.0035511363636363635,
+          0.005208333333333334
+        ]
+      },
+      "linear_minus_attention": {
+        "gain": 0.000946969696969697,
+        "percentile_95": [
+          0.0,
+          0.002840909090909091
+        ]
+      },
+      "mlp_minus_attention": {
+        "gain": -0.000946969696969697,
+        "percentile_95": [
+          -0.004024621212121212,
+          0.0011837121212121212
+        ]
+      }
+    }
+  },
+  "probabilities": [
+    {
+      "seed": 971120030000,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.028376683589425144,
+        "mlp": 0.1271382664638146,
+        "attention": 0.05353214019522501
+      }
+    },
+    {
+      "seed": 971120030000,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9865853568405878,
+        "mlp": 0.9999870079484123,
+        "attention": 0.9999267186211598
+      }
+    },
+    {
+      "seed": 971120030000,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 7.827087090803883e-06,
+        "mlp": 2.4414935435931366e-05,
+        "attention": 3.901358438558298e-06
+      }
+    },
+    {
+      "seed": 971120030001,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.08454150091462961,
+        "mlp": 0.06705216716679617,
+        "attention": 0.01854850730992188
+      }
+    },
+    {
+      "seed": 971120030001,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.7157527205272962,
+        "mlp": 0.9493829929492519,
+        "attention": 0.8148567870652874
+      }
+    },
+    {
+      "seed": 971120030001,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 5.011442814067804e-07,
+        "mlp": 1.7021028853845845e-05,
+        "attention": 3.188266540828303e-06
+      }
+    },
+    {
+      "seed": 971120030002,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0004486122539618539,
+        "mlp": 0.0014999253059222867,
+        "attention": 0.0012728380759634487
+      }
+    },
+    {
+      "seed": 971120030002,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999819860826455,
+        "mlp": 0.9996244013780591,
+        "attention": 0.9999999799565069
+      }
+    },
+    {
+      "seed": 971120030002,
+      "regime": "full_reset",
+      "used": true,
+      "prob": {
+        "linear": 0.43544391739969734,
+        "mlp": 0.48511686941074994,
+        "attention": 0.6548252571991012
+      }
+    },
+    {
+      "seed": 971120030003,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.3848434052185605,
+        "mlp": 0.21291947765210872,
+        "attention": 0.16829189710977338
+      }
+    },
+    {
+      "seed": 971120030003,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9995845926621728,
+        "mlp": 0.9999926083169917,
+        "attention": 0.9999999633021912
+      }
+    },
+    {
+      "seed": 971120030003,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.014907530158281555,
+        "mlp": 1.0378267817073468e-05,
+        "attention": 0.9728186495542783
+      }
+    },
+    {
+      "seed": 971120030004,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.030546880238589015,
+        "mlp": 0.011311827777679933,
+        "attention": 0.01370813605153379
+      }
+    },
+    {
+      "seed": 971120030004,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.10759887309845523,
+        "mlp": 0.17753610920842966,
+        "attention": 0.1473774946406709
+      }
+    },
+    {
+      "seed": 971120030004,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.12171919022885465,
+        "mlp": 3.6717554482716576e-07,
+        "attention": 0.013821807281010396
+      }
+    },
+    {
+      "seed": 971120030005,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.16371730614950367,
+        "mlp": 0.003992466245283402,
+        "attention": 0.03032834678155118
+      }
+    },
+    {
+      "seed": 971120030005,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9549954300110433,
+        "mlp": 0.9934614021889231,
+        "attention": 0.9974694581442505
+      }
+    },
+    {
+      "seed": 971120030005,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0063553867994042825,
+        "mlp": 2.2971590624956153e-05,
+        "attention": 4.575106832381335e-05
+      }
+    },
+    {
+      "seed": 971120030006,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.37463636010279333,
+        "mlp": 0.21527075520301797,
+        "attention": 0.28510995923973104
+      }
+    },
+    {
+      "seed": 971120030006,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.9753702261567931,
+        "mlp": 0.9998398137912283,
+        "attention": 0.9992506456102132
+      }
+    },
+    {
+      "seed": 971120030006,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.00013401242938305188,
+        "mlp": 0.00236051221443208,
+        "attention": 5.1242032346444643e-05
+      }
+    },
+    {
+      "seed": 971120030007,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.06529374092254023,
+        "mlp": 0.02354517575809202,
+        "attention": 0.009013147773490689
+      }
+    },
+    {
+      "seed": 971120030007,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9998584988390418,
+        "mlp": 0.9996607319902718,
+        "attention": 0.9999996190267894
+      }
+    },
+    {
+      "seed": 971120030007,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0008327941869632543,
+        "mlp": 0.004201606657704487,
+        "attention": 0.0018564777747758696
+      }
+    },
+    {
+      "seed": 971120030008,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.016806154414273876,
+        "mlp": 0.004615906720829561,
+        "attention": 0.03320595475090204
+      }
+    },
+    {
+      "seed": 971120030008,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.999704620754261,
+        "mlp": 0.9998192270085434,
+        "attention": 0.9999991141475495
+      }
+    },
+    {
+      "seed": 971120030008,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 5.578461930809884e-08,
+        "mlp": 0.002079795419866105,
+        "attention": 5.072385566826857e-10
+      }
+    },
+    {
+      "seed": 971120030009,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0208190523867959,
+        "mlp": 0.0010026413048092376,
+        "attention": 0.014145796340298993
+      }
+    },
+    {
+      "seed": 971120030009,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.8603905512184835,
+        "mlp": 0.9990632854897397,
+        "attention": 0.9511889920023079
+      }
+    },
+    {
+      "seed": 971120030009,
+      "regime": "full_reset",
+      "used": true,
+      "prob": {
+        "linear": 0.016104238544264654,
+        "mlp": 0.6753644886870748,
+        "attention": 1.5206258376620798e-05
+      }
+    },
+    {
+      "seed": 971120030010,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.21432401981017782,
+        "mlp": 0.016280426871245948,
+        "attention": 0.057300358930759576
+      }
+    },
+    {
+      "seed": 971120030010,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9908023299126307,
+        "mlp": 0.9986888483224704,
+        "attention": 0.9999581047970377
+      }
+    },
+    {
+      "seed": 971120030010,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0007462964563382267,
+        "mlp": 7.019272749463343e-05,
+        "attention": 6.879632286093177e-05
+      }
+    },
+    {
+      "seed": 971120030011,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.20298909754166478,
+        "mlp": 0.4062874660730857,
+        "attention": 0.3564791265397799
+      }
+    },
+    {
+      "seed": 971120030011,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.8640065486860433,
+        "mlp": 0.997439157670204,
+        "attention": 0.9896286247736424
+      }
+    },
+    {
+      "seed": 971120030011,
+      "regime": "full_reset",
+      "used": true,
+      "prob": {
+        "linear": 0.1009120624699723,
+        "mlp": 0.000306977274644142,
+        "attention": 0.01617841961427239
+      }
+    },
+    {
+      "seed": 971120030012,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0010182159363215468,
+        "mlp": 0.013104966161881424,
+        "attention": 0.006951192469593764
+      }
+    },
+    {
+      "seed": 971120030012,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9983491005742604,
+        "mlp": 0.9905287361578636,
+        "attention": 0.9999756199941443
+      }
+    },
+    {
+      "seed": 971120030012,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 3.840626148031129e-05,
+        "mlp": 0.0004480412641951272,
+        "attention": 9.744827251921704e-05
+      }
+    },
+    {
+      "seed": 971120030013,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0007066693728568509,
+        "mlp": 0.051384002742046485,
+        "attention": 0.0025510415598649825
+      }
+    },
+    {
+      "seed": 971120030013,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9932942154317859,
+        "mlp": 0.999306346846001,
+        "attention": 0.9999816753657872
+      }
+    },
+    {
+      "seed": 971120030013,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.000232004652359291,
+        "mlp": 0.007815211098724186,
+        "attention": 0.00020768150434355756
+      }
+    },
+    {
+      "seed": 971120030014,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.038792609310593015,
+        "mlp": 0.0005793199990853051,
+        "attention": 0.00967117230500111
+      }
+    },
+    {
+      "seed": 971120030014,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.1948653965360244,
+        "mlp": 0.6470771467629809,
+        "attention": 0.2740580473101381
+      }
+    },
+    {
+      "seed": 971120030014,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.05901034607075306,
+        "mlp": 0.013869982332983144,
+        "attention": 0.029127127208342284
+      }
+    },
+    {
+      "seed": 971120030015,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.26144174513561563,
+        "mlp": 0.005078810290345498,
+        "attention": 0.0877316997499391
+      }
+    },
+    {
+      "seed": 971120030015,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999813260857587,
+        "mlp": 0.9991287187822819,
+        "attention": 0.999999998928738
+      }
+    },
+    {
+      "seed": 971120030015,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.05722820164185061,
+        "mlp": 5.314840493764976e-06,
+        "attention": 2.040678745235502e-05
+      }
+    },
+    {
+      "seed": 971120030016,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.07618191948193641,
+        "mlp": 0.004221136385908147,
+        "attention": 0.020952520056003367
+      }
+    },
+    {
+      "seed": 971120030016,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999275666016814,
+        "mlp": 0.9959391972104081,
+        "attention": 0.9999992494214827
+      }
+    },
+    {
+      "seed": 971120030016,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 8.64305251003705e-09,
+        "mlp": 1.782050755073023e-07,
+        "attention": 1.637220099456983e-10
+      }
+    },
+    {
+      "seed": 971120030017,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.2247387135195744,
+        "mlp": 0.014915276244997808,
+        "attention": 0.00414914481076844
+      }
+    },
+    {
+      "seed": 971120030017,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9972738849912175,
+        "mlp": 0.7928671520979405,
+        "attention": 0.9999827130544647
+      }
+    },
+    {
+      "seed": 971120030017,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 3.683980972015373e-05,
+        "mlp": 0.0002783128467263221,
+        "attention": 4.253403978725881e-06
+      }
+    },
+    {
+      "seed": 971120030018,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.08871019785356134,
+        "mlp": 0.09412194880890312,
+        "attention": 0.13788093713950633
+      }
+    },
+    {
+      "seed": 971120030018,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.6653446537878289,
+        "mlp": 0.9914808477456406,
+        "attention": 0.9572452841039005
+      }
+    },
+    {
+      "seed": 971120030018,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0001960686265927615,
+        "mlp": 0.0003622707593573718,
+        "attention": 0.00042996928417715413
+      }
+    },
+    {
+      "seed": 971120030019,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.5935381728660943,
+        "mlp": 0.11925001889748395,
+        "attention": 0.5036641785314568
+      }
+    },
+    {
+      "seed": 971120030019,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9936207654745695,
+        "mlp": 0.9998557134896509,
+        "attention": 0.9993866498380402
+      }
+    },
+    {
+      "seed": 971120030019,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.035163070578272636,
+        "mlp": 0.3971824042825286,
+        "attention": 0.00941814476821277
+      }
+    },
+    {
+      "seed": 971120030020,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0022834891923741683,
+        "mlp": 0.13281657299557767,
+        "attention": 0.008770567816707786
+      }
+    },
+    {
+      "seed": 971120030020,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9947205233752376,
+        "mlp": 0.9998060711563422,
+        "attention": 0.9993319704292513
+      }
+    },
+    {
+      "seed": 971120030020,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 1.2423124577907048e-07,
+        "mlp": 6.942075814621074e-08,
+        "attention": 1.0535787451418552e-07
+      }
+    },
+    {
+      "seed": 971120030021,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.021702834964998186,
+        "mlp": 0.0033740045608081945,
+        "attention": 0.0025157441772338794
+      }
+    },
+    {
+      "seed": 971120030021,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999197402252001,
+        "mlp": 0.9996643601007392,
+        "attention": 0.9999995935722439
+      }
+    },
+    {
+      "seed": 971120030021,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0077742777777897905,
+        "mlp": 0.002276118372590302,
+        "attention": 3.5039806843213024e-05
+      }
+    },
+    {
+      "seed": 971120030022,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.016378091237195438,
+        "mlp": 0.08829952673467224,
+        "attention": 0.033188871703355
+      }
+    },
+    {
+      "seed": 971120030022,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.6473533296815956,
+        "mlp": 0.9950208405941388,
+        "attention": 0.9329034116197804
+      }
+    },
+    {
+      "seed": 971120030022,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 1.0566399374782696e-06,
+        "mlp": 1.7422176404547613e-06,
+        "attention": 6.2236602219021035e-06
+      }
+    },
+    {
+      "seed": 971120030023,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.08754814137919202,
+        "mlp": 0.008451479404336448,
+        "attention": 0.03280906832564005
+      }
+    },
+    {
+      "seed": 971120030023,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.29222736013777517,
+        "mlp": 0.01687410615100151,
+        "attention": 0.23513095180328297
+      }
+    },
+    {
+      "seed": 971120030023,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.12716523846928826,
+        "mlp": 0.002431848583107612,
+        "attention": 0.00010945479619205699
+      }
+    },
+    {
+      "seed": 971120030024,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.033644461572649956,
+        "mlp": 0.0004292655870229701,
+        "attention": 0.01240136396259944
+      }
+    },
+    {
+      "seed": 971120030024,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.2840919488016076,
+        "mlp": 0.9865615861433237,
+        "attention": 0.4692299258313623
+      }
+    },
+    {
+      "seed": 971120030024,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.00012690952424992166,
+        "mlp": 0.02316612532805049,
+        "attention": 0.00041665512750056245
+      }
+    },
+    {
+      "seed": 971120030025,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.6672379484106682,
+        "mlp": 0.25864756155403384,
+        "attention": 0.3414205487388043
+      }
+    },
+    {
+      "seed": 971120030025,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9896744007237273,
+        "mlp": 0.999880610951577,
+        "attention": 0.9983070502793554
+      }
+    },
+    {
+      "seed": 971120030025,
+      "regime": "full_reset",
+      "used": true,
+      "prob": {
+        "linear": 0.01233030148977252,
+        "mlp": 0.47054727003073094,
+        "attention": 0.09575179622406842
+      }
+    },
+    {
+      "seed": 971120030026,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.07230000174475415,
+        "mlp": 0.2444018251385909,
+        "attention": 0.07168033493369684
+      }
+    },
+    {
+      "seed": 971120030026,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9975749062169882,
+        "mlp": 0.9998961409023741,
+        "attention": 0.9998125280371367
+      }
+    },
+    {
+      "seed": 971120030026,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0007054785675642873,
+        "mlp": 0.0024415814173679193,
+        "attention": 1.7901174877790598e-07
+      }
+    },
+    {
+      "seed": 971120030027,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.03444487525177716,
+        "mlp": 0.006201836095251489,
+        "attention": 0.17772904416609162
+      }
+    },
+    {
+      "seed": 971120030027,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9682718264564755,
+        "mlp": 0.9755532984509196,
+        "attention": 0.9975919095163045
+      }
+    },
+    {
+      "seed": 971120030027,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.24856306462621655,
+        "mlp": 0.00027341082043758243,
+        "attention": 0.0002617797675329292
+      }
+    },
+    {
+      "seed": 971120030028,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.2513865375958843,
+        "mlp": 0.012117942200258521,
+        "attention": 0.009521705006170327
+      }
+    },
+    {
+      "seed": 971120030028,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.999993071546813,
+        "mlp": 0.9999744918445077,
+        "attention": 0.9999999999653328
+      }
+    },
+    {
+      "seed": 971120030028,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.00023637950931268948,
+        "mlp": 6.690021299149449e-05,
+        "attention": 7.723849669090963e-08
+      }
+    },
+    {
+      "seed": 971120030029,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.5059363174885696,
+        "mlp": 0.7263878622875992,
+        "attention": 0.5472670402617945
+      }
+    },
+    {
+      "seed": 971120030029,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.5643991894706786,
+        "mlp": 0.9943245348037049,
+        "attention": 0.6600469380766711
+      }
+    },
+    {
+      "seed": 971120030029,
+      "regime": "full_reset",
+      "used": true,
+      "prob": {
+        "linear": 0.07057857503119755,
+        "mlp": 0.2580461163589171,
+        "attention": 0.03307699162690387
+      }
+    },
+    {
+      "seed": 971120030030,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.03399746283471687,
+        "mlp": 0.02000091556018405,
+        "attention": 0.008784869669492632
+      }
+    },
+    {
+      "seed": 971120030030,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9915339908170139,
+        "mlp": 0.9999250385386017,
+        "attention": 0.9997193217016576
+      }
+    },
+    {
+      "seed": 971120030030,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0003863661430061919,
+        "mlp": 0.02549703212411311,
+        "attention": 0.004770708197768159
+      }
+    },
+    {
+      "seed": 971120030031,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.004046967489709592,
+        "mlp": 0.07569070233319311,
+        "attention": 0.0027799381574574156
+      }
+    },
+    {
+      "seed": 971120030031,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.5152394868137374,
+        "mlp": 0.9572442924447372,
+        "attention": 0.9882661493726473
+      }
+    },
+    {
+      "seed": 971120030031,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 4.4931100927636014e-05,
+        "mlp": 3.137950713768491e-05,
+        "attention": 4.9108286180934785e-06
+      }
+    },
+    {
+      "seed": 971120030032,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.2637003049127707,
+        "mlp": 0.023610426934125347,
+        "attention": 0.2247248705173047
+      }
+    },
+    {
+      "seed": 971120030032,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9870081781834755,
+        "mlp": 0.9996668504976763,
+        "attention": 0.9991582077036661
+      }
+    },
+    {
+      "seed": 971120030032,
+      "regime": "full_reset",
+      "used": true,
+      "prob": {
+        "linear": 2.8672266756613554e-07,
+        "mlp": 4.3898496639813253e-07,
+        "attention": 9.05512719723029e-10
+      }
+    },
+    {
+      "seed": 971120030033,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.29954182242303,
+        "mlp": 0.05482166091478015,
+        "attention": 0.2561550012989531
+      }
+    },
+    {
+      "seed": 971120030033,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.40926037271187254,
+        "mlp": 0.786196359164404,
+        "attention": 0.4352915979963966
+      }
+    },
+    {
+      "seed": 971120030033,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 8.597248463926838e-09,
+        "mlp": 7.18586894364403e-05,
+        "attention": 5.470851897129801e-10
+      }
+    },
+    {
+      "seed": 971120030034,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.10030808753150448,
+        "mlp": 0.011045267683817021,
+        "attention": 0.042783599944686536
+      }
+    },
+    {
+      "seed": 971120030034,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999564210908913,
+        "mlp": 0.9973591687385696,
+        "attention": 0.9999803681154485
+      }
+    },
+    {
+      "seed": 971120030034,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0003613644801392968,
+        "mlp": 7.899213567631782e-06,
+        "attention": 0.00046617569929389323
+      }
+    },
+    {
+      "seed": 971120030035,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.42483910903731087,
+        "mlp": 0.025276641791154308,
+        "attention": 0.2137319311326876
+      }
+    },
+    {
+      "seed": 971120030035,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9998778260350553,
+        "mlp": 0.9981813602333015,
+        "attention": 0.9999895984390353
+      }
+    },
+    {
+      "seed": 971120030035,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.00016098443030205302,
+        "mlp": 0.0001851515847502035,
+        "attention": 2.5017454745383586e-07
+      }
+    },
+    {
+      "seed": 971120030036,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.18542162139014878,
+        "mlp": 0.006877587463168545,
+        "attention": 0.04076186759925884
+      }
+    },
+    {
+      "seed": 971120030036,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9623782387785628,
+        "mlp": 0.9988073800761266,
+        "attention": 0.9987257577332008
+      }
+    },
+    {
+      "seed": 971120030036,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 9.937619080841261e-06,
+        "mlp": 2.1765912324442266e-07,
+        "attention": 4.3427337116789406e-08
+      }
+    },
+    {
+      "seed": 971120030037,
+      "regime": "continuous",
+      "used": true,
+      "prob": {
+        "linear": 0.22632757953527818,
+        "mlp": 0.05519766269671901,
+        "attention": 0.07307156485066765
+      }
+    },
+    {
+      "seed": 971120030037,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.8383481716044354,
+        "mlp": 0.9993121791914786,
+        "attention": 0.9912905670586282
+      }
+    },
+    {
+      "seed": 971120030037,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.00015949584519565595,
+        "mlp": 5.112159510758561e-06,
+        "attention": 3.2594985443394003e-06
+      }
+    },
+    {
+      "seed": 971120030038,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.10067586121779284,
+        "mlp": 0.0012396320902868618,
+        "attention": 0.028402013765597287
+      }
+    },
+    {
+      "seed": 971120030038,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.5241670027520122,
+        "mlp": 0.9995256229716324,
+        "attention": 0.9902824523892483
+      }
+    },
+    {
+      "seed": 971120030038,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.00035909602837818575,
+        "mlp": 0.00046594544120009555,
+        "attention": 0.0011076715893491846
+      }
+    },
+    {
+      "seed": 971120030039,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.5016438833184279,
+        "mlp": 0.35388536509707624,
+        "attention": 0.3782339677762242
+      }
+    },
+    {
+      "seed": 971120030039,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.4420446630454494,
+        "mlp": 0.24258800200545655,
+        "attention": 0.3129732896030756
+      }
+    },
+    {
+      "seed": 971120030039,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.029029192618980695,
+        "mlp": 0.001922204620010651,
+        "attention": 0.03544207348942498
+      }
+    },
+    {
+      "seed": 971120030040,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.022547963422383323,
+        "mlp": 0.05823234951920117,
+        "attention": 0.011149342817311942
+      }
+    },
+    {
+      "seed": 971120030040,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9995832222184324,
+        "mlp": 0.9996139838516633,
+        "attention": 0.9999996737396334
+      }
+    },
+    {
+      "seed": 971120030040,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.005175602541803662,
+        "mlp": 0.00853882258503871,
+        "attention": 0.02207160370915587
+      }
+    },
+    {
+      "seed": 971120030041,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.12714677004482602,
+        "mlp": 0.040347294908027666,
+        "attention": 0.03410050410295751
+      }
+    },
+    {
+      "seed": 971120030041,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9964870584868901,
+        "mlp": 0.9999705807574636,
+        "attention": 0.9999962390513607
+      }
+    },
+    {
+      "seed": 971120030041,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 8.101303998970534e-06,
+        "mlp": 8.020041334267816e-05,
+        "attention": 1.4904081882673587e-08
+      }
+    },
+    {
+      "seed": 971120030042,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0005429204864074791,
+        "mlp": 5.615906548099879e-05,
+        "attention": 0.08663884862391612
+      }
+    },
+    {
+      "seed": 971120030042,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9998587026444565,
+        "mlp": 0.9977053748063908,
+        "attention": 0.9999874462120303
+      }
+    },
+    {
+      "seed": 971120030042,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 2.3031122360042133e-05,
+        "mlp": 1.08174844695913e-06,
+        "attention": 0.00016409707615930058
+      }
+    },
+    {
+      "seed": 971120030043,
+      "regime": "continuous",
+      "used": true,
+      "prob": {
+        "linear": 0.00020701279136129853,
+        "mlp": 0.002689445606383298,
+        "attention": 0.05238692587490352
+      }
+    },
+    {
+      "seed": 971120030043,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9995059822605655,
+        "mlp": 0.999912898726238,
+        "attention": 0.9999970159159567
+      }
+    },
+    {
+      "seed": 971120030043,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.1157334479416127,
+        "mlp": 0.004967580268759911,
+        "attention": 0.02194689451993389
+      }
+    },
+    {
+      "seed": 971120030044,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.016220062138961662,
+        "mlp": 0.00464574510904148,
+        "attention": 0.007785664598276619
+      }
+    },
+    {
+      "seed": 971120030044,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.9999682780795875,
+        "mlp": 0.9990738203094536,
+        "attention": 0.9999999913598662
+      }
+    },
+    {
+      "seed": 971120030044,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 2.668744950237602e-06,
+        "mlp": 0.032045940794431085,
+        "attention": 4.76028789831533e-06
+      }
+    },
+    {
+      "seed": 971120030045,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.47097105675235423,
+        "mlp": 0.8646095718322924,
+        "attention": 0.24540495302466586
+      }
+    },
+    {
+      "seed": 971120030045,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.6439728843774843,
+        "mlp": 0.9909198994802979,
+        "attention": 0.6909796480214524
+      }
+    },
+    {
+      "seed": 971120030045,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 1.2139639107373352e-05,
+        "mlp": 2.1606202621770158e-10,
+        "attention": 0.00347512838929577
+      }
+    },
+    {
+      "seed": 971120030046,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.44109452144622513,
+        "mlp": 0.3303025212668156,
+        "attention": 0.3085450587151672
+      }
+    },
+    {
+      "seed": 971120030046,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.7920193090992215,
+        "mlp": 0.9972698621708012,
+        "attention": 0.9775814529527556
+      }
+    },
+    {
+      "seed": 971120030046,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 4.8070875085490716e-05,
+        "mlp": 2.3055100397674583e-06,
+        "attention": 2.755353273847329e-05
+      }
+    },
+    {
+      "seed": 971120030047,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.002345933782903023,
+        "mlp": 0.031856692852103234,
+        "attention": 0.15980466578488822
+      }
+    },
+    {
+      "seed": 971120030047,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9989559609041129,
+        "mlp": 0.9996944818631859,
+        "attention": 0.9999996100178281
+      }
+    },
+    {
+      "seed": 971120030047,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.002365381973359467,
+        "mlp": 0.04082106523730594,
+        "attention": 0.000499003762526919
+      }
+    },
+    {
+      "seed": 971120030048,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.39634515806236564,
+        "mlp": 0.09136773276555328,
+        "attention": 0.2784447779516565
+      }
+    },
+    {
+      "seed": 971120030048,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9847959336662903,
+        "mlp": 0.9999558619168963,
+        "attention": 0.9996928774489193
+      }
+    },
+    {
+      "seed": 971120030048,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0019883572713179616,
+        "mlp": 0.00104196735807962,
+        "attention": 0.5172220297248575
+      }
+    },
+    {
+      "seed": 971120030049,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.07423949701162459,
+        "mlp": 0.023804495495222563,
+        "attention": 0.028494464739848534
+      }
+    },
+    {
+      "seed": 971120030049,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.303089487527247,
+        "mlp": 0.9442149954735638,
+        "attention": 0.43592392981118444
+      }
+    },
+    {
+      "seed": 971120030049,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.005057280927739604,
+        "mlp": 0.0004817865299278078,
+        "attention": 0.0003838636388891633
+      }
+    },
+    {
+      "seed": 971120030050,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.012788275388346924,
+        "mlp": 5.586679574493182e-05,
+        "attention": 0.00518772914024871
+      }
+    },
+    {
+      "seed": 971120030050,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.8606398715491417,
+        "mlp": 0.9891774445290926,
+        "attention": 0.9916510501005111
+      }
+    },
+    {
+      "seed": 971120030050,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0002671328809962806,
+        "mlp": 0.0008552386705258715,
+        "attention": 0.00018526076283847652
+      }
+    },
+    {
+      "seed": 971120030051,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.020385845969091723,
+        "mlp": 0.01598946317563235,
+        "attention": 0.04987042639958129
+      }
+    },
+    {
+      "seed": 971120030051,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.8629876681713293,
+        "mlp": 0.9967541781318583,
+        "attention": 0.9960707412177967
+      }
+    },
+    {
+      "seed": 971120030051,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0003167080028407182,
+        "mlp": 0.0001452257662741172,
+        "attention": 3.767745196499698e-06
+      }
+    },
+    {
+      "seed": 971120030052,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.058824331788243304,
+        "mlp": 0.002384094154858023,
+        "attention": 0.03447324724559404
+      }
+    },
+    {
+      "seed": 971120030052,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9454643215232407,
+        "mlp": 0.9997715198425117,
+        "attention": 0.9861633040415521
+      }
+    },
+    {
+      "seed": 971120030052,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 1.7608330405467192e-05,
+        "mlp": 0.06720791501843477,
+        "attention": 4.9117819300630266e-05
+      }
+    },
+    {
+      "seed": 971120030053,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.10484480042457377,
+        "mlp": 0.07291212758585514,
+        "attention": 0.07296537051392958
+      }
+    },
+    {
+      "seed": 971120030053,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.7063154057661034,
+        "mlp": 0.9991129159441681,
+        "attention": 0.9604209729604891
+      }
+    },
+    {
+      "seed": 971120030053,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.000333997311533019,
+        "mlp": 0.0011020601174195148,
+        "attention": 1.1779339459008983e-05
+      }
+    },
+    {
+      "seed": 971120030054,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.06776212720974857,
+        "mlp": 0.0009753707889453172,
+        "attention": 0.0996777940040248
+      }
+    },
+    {
+      "seed": 971120030054,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.999469535834031,
+        "mlp": 0.9988515572110253,
+        "attention": 0.9997920447614294
+      }
+    },
+    {
+      "seed": 971120030054,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.006225704581832573,
+        "mlp": 5.748676155419869e-05,
+        "attention": 0.00030428261939121574
+      }
+    },
+    {
+      "seed": 971120030055,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0003054934561534813,
+        "mlp": 0.00021663716938897905,
+        "attention": 0.001573767858740038
+      }
+    },
+    {
+      "seed": 971120030055,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999335859526587,
+        "mlp": 0.9998291018114875,
+        "attention": 0.9999998927488143
+      }
+    },
+    {
+      "seed": 971120030055,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.00013871835822643858,
+        "mlp": 0.0034951990083263136,
+        "attention": 0.00016126370707049455
+      }
+    },
+    {
+      "seed": 971120030056,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.6048430321271433,
+        "mlp": 0.7703883660809234,
+        "attention": 0.5414623056044916
+      }
+    },
+    {
+      "seed": 971120030056,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.9999428415574635,
+        "mlp": 0.9996707861956897,
+        "attention": 0.9999999902354567
+      }
+    },
+    {
+      "seed": 971120030056,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.1602988734446863,
+        "mlp": 0.003712658670142186,
+        "attention": 0.065165284391381
+      }
+    },
+    {
+      "seed": 971120030057,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.11818831376923535,
+        "mlp": 0.011233887648030122,
+        "attention": 0.014758546273782508
+      }
+    },
+    {
+      "seed": 971120030057,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.9924225636382273,
+        "mlp": 0.9997907632539699,
+        "attention": 0.999956366030251
+      }
+    },
+    {
+      "seed": 971120030057,
+      "regime": "full_reset",
+      "used": true,
+      "prob": {
+        "linear": 0.002428526985899829,
+        "mlp": 0.04649921137278711,
+        "attention": 0.002269555577210876
+      }
+    },
+    {
+      "seed": 971120030058,
+      "regime": "continuous",
+      "used": true,
+      "prob": {
+        "linear": 0.0015477480799815765,
+        "mlp": 0.02904237232496503,
+        "attention": 0.04667458939854724
+      }
+    },
+    {
+      "seed": 971120030058,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.9533377708068487,
+        "mlp": 0.9980023890055116,
+        "attention": 0.9933585496142535
+      }
+    },
+    {
+      "seed": 971120030058,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 3.485691724641395e-05,
+        "mlp": 0.0005918776601818641,
+        "attention": 6.510736371433821e-06
+      }
+    },
+    {
+      "seed": 971120030059,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.01486100233852521,
+        "mlp": 0.03278370091067357,
+        "attention": 0.008871229969915071
+      }
+    },
+    {
+      "seed": 971120030059,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.7660718705381395,
+        "mlp": 0.9994722512984303,
+        "attention": 0.966976611936441
+      }
+    },
+    {
+      "seed": 971120030059,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 1.8632284173867464e-06,
+        "mlp": 1.1717266872029671e-07,
+        "attention": 3.1092849688134136e-05
+      }
+    },
+    {
+      "seed": 971120030060,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.007948977298672418,
+        "mlp": 0.0021885853770140613,
+        "attention": 0.02413535739111302
+      }
+    },
+    {
+      "seed": 971120030060,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9215015879541532,
+        "mlp": 0.9998740207453873,
+        "attention": 0.9980476347023136
+      }
+    },
+    {
+      "seed": 971120030060,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 8.444043656261097e-08,
+        "mlp": 2.6176907815173096e-05,
+        "attention": 7.786370174330821e-07
+      }
+    },
+    {
+      "seed": 971120030061,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.5234395103491241,
+        "mlp": 0.4874588175534229,
+        "attention": 0.3414628021668916
+      }
+    },
+    {
+      "seed": 971120030061,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9991569325329342,
+        "mlp": 0.9999229817782003,
+        "attention": 0.9999942649255473
+      }
+    },
+    {
+      "seed": 971120030061,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0004644119279553109,
+        "mlp": 0.0008502315572003078,
+        "attention": 1.4750575116783284e-05
+      }
+    },
+    {
+      "seed": 971120030062,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0005291311725086403,
+        "mlp": 0.0005191608120360911,
+        "attention": 0.003909829691141184
+      }
+    },
+    {
+      "seed": 971120030062,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9911422426151492,
+        "mlp": 0.9995731913683825,
+        "attention": 0.9998128057702963
+      }
+    },
+    {
+      "seed": 971120030062,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0006240649629980618,
+        "mlp": 2.688266427622567e-05,
+        "attention": 1.7566381105839792e-05
+      }
+    },
+    {
+      "seed": 971120030063,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.5548192570951125,
+        "mlp": 0.9298044848897147,
+        "attention": 0.46699283978225153
+      }
+    },
+    {
+      "seed": 971120030063,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.761935554676473,
+        "mlp": 0.9993516784803276,
+        "attention": 0.9822098173855323
+      }
+    },
+    {
+      "seed": 971120030063,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.024947602091915173,
+        "mlp": 0.1319333060488161,
+        "attention": 0.6036979842487026
+      }
+    },
+    {
+      "seed": 971120030064,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.1198155646509954,
+        "mlp": 0.64672791088264,
+        "attention": 0.039072910354503575
+      }
+    },
+    {
+      "seed": 971120030064,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.7550178557934762,
+        "mlp": 0.9989835851322375,
+        "attention": 0.985223020987806
+      }
+    },
+    {
+      "seed": 971120030064,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.024705496230176476,
+        "mlp": 0.0039366468657221895,
+        "attention": 0.005469897651567568
+      }
+    },
+    {
+      "seed": 971120030065,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.34901251700431574,
+        "mlp": 0.6385484793396241,
+        "attention": 0.35703000143153374
+      }
+    },
+    {
+      "seed": 971120030065,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9914420792887201,
+        "mlp": 0.9990590582254743,
+        "attention": 0.999641934562129
+      }
+    },
+    {
+      "seed": 971120030065,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 1.2290572942196393e-05,
+        "mlp": 0.00010008654739813538,
+        "attention": 2.1085299323278436e-07
+      }
+    },
+    {
+      "seed": 971120030066,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.08346154310644127,
+        "mlp": 0.06993376515813382,
+        "attention": 0.05887804160631013
+      }
+    },
+    {
+      "seed": 971120030066,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9994227109835471,
+        "mlp": 0.9999507686489805,
+        "attention": 0.9999990247962622
+      }
+    },
+    {
+      "seed": 971120030066,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.017074162134865095,
+        "mlp": 4.893119896739986e-05,
+        "attention": 0.0050231165347156695
+      }
+    },
+    {
+      "seed": 971120030067,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.2593519581846407,
+        "mlp": 0.004669493401643114,
+        "attention": 0.211453931867741
+      }
+    },
+    {
+      "seed": 971120030067,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.4260042610604596,
+        "mlp": 0.9960503647797313,
+        "attention": 0.7179682095261558
+      }
+    },
+    {
+      "seed": 971120030067,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0009993892152415636,
+        "mlp": 0.0016891945127500525,
+        "attention": 0.0005474911026594766
+      }
+    },
+    {
+      "seed": 971120030068,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.03780081871307415,
+        "mlp": 0.004444299928851318,
+        "attention": 0.1531543233582009
+      }
+    },
+    {
+      "seed": 971120030068,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999850115957087,
+        "mlp": 0.9997667266488348,
+        "attention": 0.9999999942840219
+      }
+    },
+    {
+      "seed": 971120030068,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.00038543442289855665,
+        "mlp": 0.0008955932899888597,
+        "attention": 0.0002744593296906835
+      }
+    },
+    {
+      "seed": 971120030069,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0054542529653739515,
+        "mlp": 0.031580312983305624,
+        "attention": 0.00010134978434774337
+      }
+    },
+    {
+      "seed": 971120030069,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999651269904957,
+        "mlp": 0.999243120337768,
+        "attention": 0.9999999528266905
+      }
+    },
+    {
+      "seed": 971120030069,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0003118831890617643,
+        "mlp": 0.0010370903041452288,
+        "attention": 9.008312604921208e-05
+      }
+    },
+    {
+      "seed": 971120030070,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.003349517618749673,
+        "mlp": 0.05653106774932777,
+        "attention": 0.006729466556438773
+      }
+    },
+    {
+      "seed": 971120030070,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.10097029869360098,
+        "mlp": 0.03136202392823026,
+        "attention": 0.165684064602403
+      }
+    },
+    {
+      "seed": 971120030070,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.007946844826707482,
+        "mlp": 0.010118119397910595,
+        "attention": 0.0012712816565197923
+      }
+    },
+    {
+      "seed": 971120030071,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.006322958017703288,
+        "mlp": 0.0002594283416948711,
+        "attention": 0.00018511772986066062
+      }
+    },
+    {
+      "seed": 971120030071,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9683344856443706,
+        "mlp": 0.9944280226084052,
+        "attention": 0.9997875620345794
+      }
+    },
+    {
+      "seed": 971120030071,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.018073454395809672,
+        "mlp": 0.00019511159815601117,
+        "attention": 1.2984283251969202e-07
+      }
+    },
+    {
+      "seed": 971120030072,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.015567066711437375,
+        "mlp": 0.19780873260376608,
+        "attention": 0.03635853573942252
+      }
+    },
+    {
+      "seed": 971120030072,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9995804548473597,
+        "mlp": 0.9998365111676369,
+        "attention": 0.9999997796942065
+      }
+    },
+    {
+      "seed": 971120030072,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.019241788596951342,
+        "mlp": 5.057447001681016e-05,
+        "attention": 0.002635257448615295
+      }
+    },
+    {
+      "seed": 971120030073,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.07576723977793784,
+        "mlp": 0.001427871812951494,
+        "attention": 0.027274561500262817
+      }
+    },
+    {
+      "seed": 971120030073,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.7998147352585369,
+        "mlp": 0.9966971461464861,
+        "attention": 0.9334173062252887
+      }
+    },
+    {
+      "seed": 971120030073,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.026055471566273334,
+        "mlp": 0.6613448602761095,
+        "attention": 0.0007413268399314624
+      }
+    },
+    {
+      "seed": 971120030074,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0461921991932414,
+        "mlp": 0.0010469181200691688,
+        "attention": 0.32929068368380854
+      }
+    },
+    {
+      "seed": 971120030074,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9995234316271279,
+        "mlp": 0.999463346599997,
+        "attention": 0.9999997773914564
+      }
+    },
+    {
+      "seed": 971120030074,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.002828214301792187,
+        "mlp": 5.52946296583861e-06,
+        "attention": 0.004587631509976082
+      }
+    },
+    {
+      "seed": 971120030075,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0007644631802050336,
+        "mlp": 0.049512215792081836,
+        "attention": 0.016754542718276953
+      }
+    },
+    {
+      "seed": 971120030075,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999903761451014,
+        "mlp": 0.9994010134525098,
+        "attention": 0.9999999863510387
+      }
+    },
+    {
+      "seed": 971120030075,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 1.1107852134611087e-06,
+        "mlp": 7.334395767374024e-05,
+        "attention": 9.116415016217116e-08
+      }
+    },
+    {
+      "seed": 971120030076,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.006315752567164426,
+        "mlp": 0.0008438299671885711,
+        "attention": 0.0005888226898424371
+      }
+    },
+    {
+      "seed": 971120030076,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.6376021292994566,
+        "mlp": 0.9294560278277882,
+        "attention": 0.7386379249952271
+      }
+    },
+    {
+      "seed": 971120030076,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0010165586555019002,
+        "mlp": 0.00047997585291978157,
+        "attention": 0.0011573756162181546
+      }
+    },
+    {
+      "seed": 971120030077,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.2931652697320355,
+        "mlp": 0.2117535955823344,
+        "attention": 0.3012985722580597
+      }
+    },
+    {
+      "seed": 971120030077,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.6235311039974561,
+        "mlp": 0.9964293149856718,
+        "attention": 0.8156822895769194
+      }
+    },
+    {
+      "seed": 971120030077,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 1.3654840311504047e-05,
+        "mlp": 1.7821100826895333e-05,
+        "attention": 1.668594233927595e-05
+      }
+    },
+    {
+      "seed": 971120030078,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.00014878543431719873,
+        "mlp": 0.0664446372650467,
+        "attention": 5.310011600992427e-05
+      }
+    },
+    {
+      "seed": 971120030078,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999957393200352,
+        "mlp": 0.9993473733078294,
+        "attention": 0.9999999949385072
+      }
+    },
+    {
+      "seed": 971120030078,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.005445219121049592,
+        "mlp": 4.811494555097249e-09,
+        "attention": 2.191506432961335e-06
+      }
+    },
+    {
+      "seed": 971120030079,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.14595276223417064,
+        "mlp": 0.24066453617956154,
+        "attention": 0.18698619949014997
+      }
+    },
+    {
+      "seed": 971120030079,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9326386082218414,
+        "mlp": 0.9980966198390988,
+        "attention": 0.9952737832445167
+      }
+    },
+    {
+      "seed": 971120030079,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 4.1246467761281177e-07,
+        "mlp": 5.8391154767422996e-05,
+        "attention": 1.65355649340441e-08
+      }
+    },
+    {
+      "seed": 971120030080,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.5203380980083867,
+        "mlp": 0.09160763668284029,
+        "attention": 0.13423180248306008
+      }
+    },
+    {
+      "seed": 971120030080,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9995562361370118,
+        "mlp": 0.9998103049510031,
+        "attention": 0.9999921218617912
+      }
+    },
+    {
+      "seed": 971120030080,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.004179695824613889,
+        "mlp": 0.0006695839445512884,
+        "attention": 0.00040336446623262024
+      }
+    },
+    {
+      "seed": 971120030081,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.00012987073855836952,
+        "mlp": 0.0034770356681201636,
+        "attention": 0.026897267112586436
+      }
+    },
+    {
+      "seed": 971120030081,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.999996408850659,
+        "mlp": 0.9997851888545463,
+        "attention": 0.9999999978842513
+      }
+    },
+    {
+      "seed": 971120030081,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.00010688311730089182,
+        "mlp": 0.0040845219693067284,
+        "attention": 6.141004194183146e-05
+      }
+    },
+    {
+      "seed": 971120030082,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.00851793406057111,
+        "mlp": 0.0632356672221795,
+        "attention": 0.04250550980220062
+      }
+    },
+    {
+      "seed": 971120030082,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9984654569438118,
+        "mlp": 0.9999743288953175,
+        "attention": 0.9999969893598121
+      }
+    },
+    {
+      "seed": 971120030082,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0005947352820693863,
+        "mlp": 2.4416687849142568e-05,
+        "attention": 0.001687342319914395
+      }
+    },
+    {
+      "seed": 971120030083,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.6991359916651286,
+        "mlp": 0.3379484790554526,
+        "attention": 0.5334555304892079
+      }
+    },
+    {
+      "seed": 971120030083,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999994991434833,
+        "mlp": 0.9999397106701707,
+        "attention": 0.9999999966814752
+      }
+    },
+    {
+      "seed": 971120030083,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 2.240391968864412e-05,
+        "mlp": 0.00010945518235307936,
+        "attention": 2.5836786695122194e-06
+      }
+    },
+    {
+      "seed": 971120030084,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.07548798103041629,
+        "mlp": 0.034074336856716125,
+        "attention": 0.017762237458441514
+      }
+    },
+    {
+      "seed": 971120030084,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9998398693001763,
+        "mlp": 0.999922111430429,
+        "attention": 0.9999803324245594
+      }
+    },
+    {
+      "seed": 971120030084,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.6695537351775679,
+        "mlp": 0.9351969673674501,
+        "attention": 0.8883488730053047
+      }
+    },
+    {
+      "seed": 971120030085,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 1.234356803883306e-05,
+        "mlp": 0.010898251976285236,
+        "attention": 0.0007515149138695822
+      }
+    },
+    {
+      "seed": 971120030085,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9870110988825302,
+        "mlp": 0.9946532379849728,
+        "attention": 0.9999237627557361
+      }
+    },
+    {
+      "seed": 971120030085,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 9.905205341798688e-07,
+        "mlp": 0.0011946430014056675,
+        "attention": 3.4787190829804027e-06
+      }
+    },
+    {
+      "seed": 971120030086,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.3884463719508658,
+        "mlp": 0.018163414981533274,
+        "attention": 0.3622972403141565
+      }
+    },
+    {
+      "seed": 971120030086,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.999089555499165,
+        "mlp": 0.9987357229434621,
+        "attention": 0.9994859868816784
+      }
+    },
+    {
+      "seed": 971120030086,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0011001743193346457,
+        "mlp": 5.5655551771117276e-05,
+        "attention": 1.17653312753991e-10
+      }
+    },
+    {
+      "seed": 971120030087,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.259088194481438,
+        "mlp": 0.050022998233556104,
+        "attention": 0.15534275760616473
+      }
+    },
+    {
+      "seed": 971120030087,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.36609719774397415,
+        "mlp": 0.10397777200438806,
+        "attention": 0.29724503627062077
+      }
+    },
+    {
+      "seed": 971120030087,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 8.069259922562191e-05,
+        "mlp": 0.006191608130051078,
+        "attention": 0.00014526340610266882
+      }
+    },
+    {
+      "seed": 971120030088,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.016968534835423547,
+        "mlp": 0.0007315011616933277,
+        "attention": 0.012680281811092606
+      }
+    },
+    {
+      "seed": 971120030088,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.5760529977976258,
+        "mlp": 0.8283398509708438,
+        "attention": 0.9147286611725907
+      }
+    },
+    {
+      "seed": 971120030088,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.000122804978301146,
+        "mlp": 0.0010680266378313035,
+        "attention": 4.415293611429145e-05
+      }
+    },
+    {
+      "seed": 971120030089,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.31109380338643006,
+        "mlp": 0.017619782606883422,
+        "attention": 0.0562646585018063
+      }
+    },
+    {
+      "seed": 971120030089,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.3470083299250919,
+        "mlp": 0.09797663347180052,
+        "attention": 0.155362515560706
+      }
+    },
+    {
+      "seed": 971120030089,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.02774721913009985,
+        "mlp": 0.035485168605829356,
+        "attention": 0.022648664263534277
+      }
+    },
+    {
+      "seed": 971120030090,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.7036754306700548,
+        "mlp": 0.8324730049791195,
+        "attention": 0.5540777909696317
+      }
+    },
+    {
+      "seed": 971120030090,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9348021013021602,
+        "mlp": 0.9996911392223388,
+        "attention": 0.9930961462952654
+      }
+    },
+    {
+      "seed": 971120030090,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0002648615764478679,
+        "mlp": 1.3973189511166146e-05,
+        "attention": 1.848503141801489e-05
+      }
+    },
+    {
+      "seed": 971120030091,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.2760255722208808,
+        "mlp": 0.1877405855315234,
+        "attention": 0.2556413998212652
+      }
+    },
+    {
+      "seed": 971120030091,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.3276382114613964,
+        "mlp": 0.23642022668289175,
+        "attention": 0.30352326304599797
+      }
+    },
+    {
+      "seed": 971120030091,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.014873642343419827,
+        "mlp": 0.0018720662507949897,
+        "attention": 3.200826348790579e-05
+      }
+    },
+    {
+      "seed": 971120030092,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.1059436614137115,
+        "mlp": 0.07405352052797616,
+        "attention": 0.15045993591356063
+      }
+    },
+    {
+      "seed": 971120030092,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.008884929901726145,
+        "mlp": 0.0062973166734079855,
+        "attention": 0.012662068940183463
+      }
+    },
+    {
+      "seed": 971120030092,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 4.2764085446029444e-07,
+        "mlp": 6.010163788544949e-07,
+        "attention": 3.566412676878501e-07
+      }
+    },
+    {
+      "seed": 971120030093,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.542935127730303,
+        "mlp": 0.9701336350299932,
+        "attention": 0.2947847438187233
+      }
+    },
+    {
+      "seed": 971120030093,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.8443635957826997,
+        "mlp": 0.956030259677755,
+        "attention": 0.8351590260682459
+      }
+    },
+    {
+      "seed": 971120030093,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0002135052427484881,
+        "mlp": 0.00020185611206302982,
+        "attention": 1.3686781568757762e-06
+      }
+    },
+    {
+      "seed": 971120030094,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0016043597150736534,
+        "mlp": 0.013299295569023595,
+        "attention": 0.08504312435087287
+      }
+    },
+    {
+      "seed": 971120030094,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.999712221746174,
+        "mlp": 0.9999040988283021,
+        "attention": 0.9998143223262728
+      }
+    },
+    {
+      "seed": 971120030094,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.05058027996014237,
+        "mlp": 0.026634382902921534,
+        "attention": 0.13427568740910453
+      }
+    },
+    {
+      "seed": 971120030095,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.04316305870050641,
+        "mlp": 0.7000357686293186,
+        "attention": 0.011874620193578588
+      }
+    },
+    {
+      "seed": 971120030095,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999948647320351,
+        "mlp": 0.999928270861636,
+        "attention": 0.9999985677421589
+      }
+    },
+    {
+      "seed": 971120030095,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 1.7680536055087004e-05,
+        "mlp": 9.219818721147771e-07,
+        "attention": 1.3525912741016818e-07
+      }
+    },
+    {
+      "seed": 971120030096,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0003079834879505233,
+        "mlp": 0.0022778315417443878,
+        "attention": 0.019720436378901394
+      }
+    },
+    {
+      "seed": 971120030096,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.999935296726304,
+        "mlp": 0.9981180554782744,
+        "attention": 0.9999959698787693
+      }
+    },
+    {
+      "seed": 971120030096,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.009450360602984731,
+        "mlp": 9.939027682947462e-05,
+        "attention": 0.0001273429852987043
+      }
+    },
+    {
+      "seed": 971120030097,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.1311268649603816,
+        "mlp": 0.008339640216748503,
+        "attention": 0.04396601823546789
+      }
+    },
+    {
+      "seed": 971120030097,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.6774523006080554,
+        "mlp": 0.9937107160559502,
+        "attention": 0.886305097645897
+      }
+    },
+    {
+      "seed": 971120030097,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.015150506521098082,
+        "mlp": 0.0023306078278469236,
+        "attention": 0.03291684898524608
+      }
+    },
+    {
+      "seed": 971120030098,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.3654630180515352,
+        "mlp": 0.05409105595376285,
+        "attention": 0.44211944106219386
+      }
+    },
+    {
+      "seed": 971120030098,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.583791741243764,
+        "mlp": 0.7410470953490833,
+        "attention": 0.630294683579014
+      }
+    },
+    {
+      "seed": 971120030098,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.021110705791124396,
+        "mlp": 0.0010812823765543318,
+        "attention": 0.0006395361998170378
+      }
+    },
+    {
+      "seed": 971120030099,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.02006167053044099,
+        "mlp": 0.0005788974891961183,
+        "attention": 0.017052709364920416
+      }
+    },
+    {
+      "seed": 971120030099,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9993328322620464,
+        "mlp": 0.9990627402513995,
+        "attention": 0.9999889685627175
+      }
+    },
+    {
+      "seed": 971120030099,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.021154192341845457,
+        "mlp": 0.00021153674483633778,
+        "attention": 1.8223894890728438e-07
+      }
+    },
+    {
+      "seed": 971120030100,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.33087531014279764,
+        "mlp": 0.5342443518157959,
+        "attention": 0.23374693435140934
+      }
+    },
+    {
+      "seed": 971120030100,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.998705709090369,
+        "mlp": 0.9994732405706421,
+        "attention": 0.9999985306325544
+      }
+    },
+    {
+      "seed": 971120030100,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 2.625168127104931e-05,
+        "mlp": 1.9910922844982514e-05,
+        "attention": 9.811992709103803e-07
+      }
+    },
+    {
+      "seed": 971120030101,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0008103724436363859,
+        "mlp": 0.00819444870967542,
+        "attention": 3.434840308358502e-05
+      }
+    },
+    {
+      "seed": 971120030101,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999955752483787,
+        "mlp": 0.9998838524240158,
+        "attention": 0.9999999986766022
+      }
+    },
+    {
+      "seed": 971120030101,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 9.430475617210104e-07,
+        "mlp": 5.556998604690895e-07,
+        "attention": 2.7993934925144784e-07
+      }
+    },
+    {
+      "seed": 971120030102,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.291039818832732,
+        "mlp": 0.1951036487695886,
+        "attention": 0.11906488519678711
+      }
+    },
+    {
+      "seed": 971120030102,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.355484633527523,
+        "mlp": 0.47500109396758317,
+        "attention": 0.2248131112435583
+      }
+    },
+    {
+      "seed": 971120030102,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0006920568947586626,
+        "mlp": 0.010508780352556518,
+        "attention": 0.00026484725910669413
+      }
+    },
+    {
+      "seed": 971120030103,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.01746923662364523,
+        "mlp": 0.03349055670863056,
+        "attention": 0.07056384261731029
+      }
+    },
+    {
+      "seed": 971120030103,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9998939143919344,
+        "mlp": 0.9991083174939103,
+        "attention": 0.9999972479770017
+      }
+    },
+    {
+      "seed": 971120030103,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.011610739505617505,
+        "mlp": 0.04588808699463921,
+        "attention": 0.008482660804199361
+      }
+    },
+    {
+      "seed": 971120030104,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.5293081029319304,
+        "mlp": 0.6499364448041735,
+        "attention": 0.5066366193794668
+      }
+    },
+    {
+      "seed": 971120030104,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.5709944356302549,
+        "mlp": 0.8047549834699971,
+        "attention": 0.571690673284119
+      }
+    },
+    {
+      "seed": 971120030104,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0028621866471246617,
+        "mlp": 0.00023674585923062018,
+        "attention": 0.00012482519377673306
+      }
+    },
+    {
+      "seed": 971120030105,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.04685886019815429,
+        "mlp": 0.0362434792412245,
+        "attention": 0.09770440502004533
+      }
+    },
+    {
+      "seed": 971120030105,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.864677638402877,
+        "mlp": 0.9993052284234453,
+        "attention": 0.9955761251004607
+      }
+    },
+    {
+      "seed": 971120030105,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.4335718970287581,
+        "mlp": 0.8354031672424265,
+        "attention": 0.38255855619790274
+      }
+    },
+    {
+      "seed": 971120030106,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.1267482370378498,
+        "mlp": 0.003371912296394264,
+        "attention": 0.18803587495163962
+      }
+    },
+    {
+      "seed": 971120030106,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.9884207764719481,
+        "mlp": 0.9995773662628384,
+        "attention": 0.99941256869339
+      }
+    },
+    {
+      "seed": 971120030106,
+      "regime": "full_reset",
+      "used": true,
+      "prob": {
+        "linear": 0.0529787077991552,
+        "mlp": 0.0015441088956656783,
+        "attention": 0.01331596796944827
+      }
+    },
+    {
+      "seed": 971120030107,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.11889538862636029,
+        "mlp": 0.2498949087633696,
+        "attention": 0.18255336640071754
+      }
+    },
+    {
+      "seed": 971120030107,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.3535392513631683,
+        "mlp": 0.9919948398420348,
+        "attention": 0.7048149440756519
+      }
+    },
+    {
+      "seed": 971120030107,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 3.325619491526995e-05,
+        "mlp": 1.512442462569378e-06,
+        "attention": 2.0213673331611203e-06
+      }
+    },
+    {
+      "seed": 971120030108,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.1890087848291068,
+        "mlp": 0.025001829116006638,
+        "attention": 0.14065834098062568
+      }
+    },
+    {
+      "seed": 971120030108,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.2468577949687857,
+        "mlp": 0.11579088387959435,
+        "attention": 0.25899233219514917
+      }
+    },
+    {
+      "seed": 971120030108,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.12160545709097392,
+        "mlp": 0.001376958229716383,
+        "attention": 0.05124624686612827
+      }
+    },
+    {
+      "seed": 971120030109,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 8.583650759391263e-05,
+        "mlp": 0.04687513317458455,
+        "attention": 0.0005038604185213153
+      }
+    },
+    {
+      "seed": 971120030109,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9877819466573309,
+        "mlp": 0.9998779335933968,
+        "attention": 0.9998327577446408
+      }
+    },
+    {
+      "seed": 971120030109,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.021258116139113038,
+        "mlp": 0.0008994715553424025,
+        "attention": 0.00023755415411287845
+      }
+    },
+    {
+      "seed": 971120030110,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.10130183811648279,
+        "mlp": 0.13175503233921226,
+        "attention": 0.04836832415077823
+      }
+    },
+    {
+      "seed": 971120030110,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.1571309712022697,
+        "mlp": 0.13404586480316946,
+        "attention": 0.12860509453250762
+      }
+    },
+    {
+      "seed": 971120030110,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 6.948255150190285e-07,
+        "mlp": 1.0307747471665382e-06,
+        "attention": 1.1511054184770995e-09
+      }
+    },
+    {
+      "seed": 971120030111,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.2938475575904883,
+        "mlp": 0.0635232244439751,
+        "attention": 0.30318997429869243
+      }
+    },
+    {
+      "seed": 971120030111,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9535644423473636,
+        "mlp": 0.9992131297676283,
+        "attention": 0.9956380176155628
+      }
+    },
+    {
+      "seed": 971120030111,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.001245827613524431,
+        "mlp": 0.0008831973870122355,
+        "attention": 0.0018209557407949286
+      }
+    },
+    {
+      "seed": 971120030112,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.02077454834627004,
+        "mlp": 0.0021071589122107384,
+        "attention": 0.006570347851674949
+      }
+    },
+    {
+      "seed": 971120030112,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.24228435207125676,
+        "mlp": 0.1199259930434433,
+        "attention": 0.23130690705904955
+      }
+    },
+    {
+      "seed": 971120030112,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 4.595995906476016e-05,
+        "mlp": 1.489161160152071e-05,
+        "attention": 1.7241852620651009e-06
+      }
+    },
+    {
+      "seed": 971120030113,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.7563632387869611,
+        "mlp": 0.9703734991228564,
+        "attention": 0.7609023047962605
+      }
+    },
+    {
+      "seed": 971120030113,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9994374009473062,
+        "mlp": 0.9993726742900836,
+        "attention": 0.9999997908186735
+      }
+    },
+    {
+      "seed": 971120030113,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0015549405627506498,
+        "mlp": 0.00024208012170110139,
+        "attention": 0.0002082914625508709
+      }
+    },
+    {
+      "seed": 971120030114,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.016580148323432208,
+        "mlp": 0.08852436467161696,
+        "attention": 0.01673885323115262
+      }
+    },
+    {
+      "seed": 971120030114,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.043496999199704456,
+        "mlp": 0.10275190979876712,
+        "attention": 0.04112637784100625
+      }
+    },
+    {
+      "seed": 971120030114,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 5.5091353835477565e-05,
+        "mlp": 0.00010154915880254203,
+        "attention": 0.00038706959925542385
+      }
+    },
+    {
+      "seed": 971120030115,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.0788248785337066,
+        "mlp": 0.02893020445345345,
+        "attention": 0.01561423947817532
+      }
+    },
+    {
+      "seed": 971120030115,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999081621636364,
+        "mlp": 0.9990773046516651,
+        "attention": 0.9999996239923467
+      }
+    },
+    {
+      "seed": 971120030115,
+      "regime": "full_reset",
+      "used": true,
+      "prob": {
+        "linear": 0.0012991797069590305,
+        "mlp": 0.015257006855024097,
+        "attention": 0.0006422961037205027
+      }
+    },
+    {
+      "seed": 971120030116,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.31397274208178033,
+        "mlp": 0.7867107030352526,
+        "attention": 0.27750703013180955
+      }
+    },
+    {
+      "seed": 971120030116,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9991228997883728,
+        "mlp": 0.9965032593616827,
+        "attention": 0.9999988664388397
+      }
+    },
+    {
+      "seed": 971120030116,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.004382011457505107,
+        "mlp": 0.002443621663857284,
+        "attention": 0.013197910372061463
+      }
+    },
+    {
+      "seed": 971120030117,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.11543058467867039,
+        "mlp": 0.20647701116090011,
+        "attention": 0.05590268840926877
+      }
+    },
+    {
+      "seed": 971120030117,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.4538355137146922,
+        "mlp": 0.45242901804616764,
+        "attention": 0.5720234332048497
+      }
+    },
+    {
+      "seed": 971120030117,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.000755560583510822,
+        "mlp": 6.440909077816175e-06,
+        "attention": 0.0001573190530226252
+      }
+    },
+    {
+      "seed": 971120030118,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.261048598196021,
+        "mlp": 0.026167138770379683,
+        "attention": 0.17310889930851647
+      }
+    },
+    {
+      "seed": 971120030118,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.2585360319186243,
+        "mlp": 0.029161284842187565,
+        "attention": 0.1801161235692816
+      }
+    },
+    {
+      "seed": 971120030118,
+      "regime": "full_reset",
+      "used": true,
+      "prob": {
+        "linear": 0.062304776863370305,
+        "mlp": 0.08226834887710768,
+        "attention": 0.04109741494414916
+      }
+    },
+    {
+      "seed": 971120030119,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.2067269217895557,
+        "mlp": 0.016995385782762603,
+        "attention": 0.1601920312603441
+      }
+    },
+    {
+      "seed": 971120030119,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.9981679783851879,
+        "mlp": 0.9998920912001311,
+        "attention": 0.9999961345775612
+      }
+    },
+    {
+      "seed": 971120030119,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.2549733546980528,
+        "mlp": 0.4120803574316904,
+        "attention": 0.012580132986471605
+      }
+    },
+    {
+      "seed": 971120030120,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.001643892688039095,
+        "mlp": 0.026175757764438604,
+        "attention": 0.021284811492859077
+      }
+    },
+    {
+      "seed": 971120030120,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999794670343957,
+        "mlp": 0.99992495472571,
+        "attention": 0.999999981119912
+      }
+    },
+    {
+      "seed": 971120030120,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 2.9238870097334308e-05,
+        "mlp": 6.49908062777453e-05,
+        "attention": 2.659807342836227e-06
+      }
+    },
+    {
+      "seed": 971120030121,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.048544268912099904,
+        "mlp": 0.12547474666697206,
+        "attention": 0.022735718150995777
+      }
+    },
+    {
+      "seed": 971120030121,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999627954247466,
+        "mlp": 0.9999913493618415,
+        "attention": 0.9999999122021673
+      }
+    },
+    {
+      "seed": 971120030121,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 9.224262564136618e-05,
+        "mlp": 0.003951627912674782,
+        "attention": 7.144266111882316e-05
+      }
+    },
+    {
+      "seed": 971120030122,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.12398108207468857,
+        "mlp": 0.010838480105916216,
+        "attention": 0.3146272663302025
+      }
+    },
+    {
+      "seed": 971120030122,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.9921677391002844,
+        "mlp": 0.998722799293226,
+        "attention": 0.9997269920713135
+      }
+    },
+    {
+      "seed": 971120030122,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0010445701431542893,
+        "mlp": 0.0023754134002723815,
+        "attention": 4.649596019553263e-08
+      }
+    },
+    {
+      "seed": 971120030123,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.010912588236643811,
+        "mlp": 0.009577639052903772,
+        "attention": 0.0001072436051648796
+      }
+    },
+    {
+      "seed": 971120030123,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9999967622191889,
+        "mlp": 0.9992770238410417,
+        "attention": 0.9999745056759088
+      }
+    },
+    {
+      "seed": 971120030123,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 2.5246895753819514e-06,
+        "mlp": 8.578906648279778e-07,
+        "attention": 5.931806270957824e-07
+      }
+    },
+    {
+      "seed": 971120030124,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.462929722819244,
+        "mlp": 0.1482593521193284,
+        "attention": 0.2834487825957927
+      }
+    },
+    {
+      "seed": 971120030124,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.9185015752773983,
+        "mlp": 0.9981198144469355,
+        "attention": 0.9886370060631096
+      }
+    },
+    {
+      "seed": 971120030124,
+      "regime": "full_reset",
+      "used": true,
+      "prob": {
+        "linear": 9.081059866532507e-07,
+        "mlp": 0.0018489562099270362,
+        "attention": 2.9786316136851254e-05
+      }
+    },
+    {
+      "seed": 971120030125,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.5102175471633291,
+        "mlp": 0.774118856469946,
+        "attention": 0.29431480925740144
+      }
+    },
+    {
+      "seed": 971120030125,
+      "regime": "partial_shift",
+      "used": true,
+      "prob": {
+        "linear": 0.997578429922044,
+        "mlp": 0.9995328001920143,
+        "attention": 0.9999632388541245
+      }
+    },
+    {
+      "seed": 971120030125,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0006579693707557917,
+        "mlp": 0.00026430152883315483,
+        "attention": 0.0011762113498812608
+      }
+    },
+    {
+      "seed": 971120030126,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.10869741319386259,
+        "mlp": 0.15516994073974566,
+        "attention": 0.015304689420293505
+      }
+    },
+    {
+      "seed": 971120030126,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.5047331288471368,
+        "mlp": 0.6298958909038428,
+        "attention": 0.48177936782160563
+      }
+    },
+    {
+      "seed": 971120030126,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 4.062791240612051e-07,
+        "mlp": 3.5849815934051558e-06,
+        "attention": 9.991339600397355e-08
+      }
+    },
+    {
+      "seed": 971120030127,
+      "regime": "continuous",
+      "used": false,
+      "prob": {
+        "linear": 0.03229401922659015,
+        "mlp": 0.005117876791906374,
+        "attention": 0.01090155389258261
+      }
+    },
+    {
+      "seed": 971120030127,
+      "regime": "partial_shift",
+      "used": false,
+      "prob": {
+        "linear": 0.5647652176823934,
+        "mlp": 0.9962488091725678,
+        "attention": 0.727752101859293
+      }
+    },
+    {
+      "seed": 971120030127,
+      "regime": "full_reset",
+      "used": false,
+      "prob": {
+        "linear": 0.0007275956527269254,
+        "mlp": 0.000468614640099825,
+        "attention": 6.532325488574166e-05
+      }
+    }
+  ],
+  "eval_sha256": "16964b37d08dd3988095a4b9164e8b273ffa9ac3d5133d45d215e797b34fe8da"
+}

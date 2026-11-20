@@ -1,0 +1,674 @@
+{
+  "full_reset": {
+    "counts": {
+      "blocks": 4096,
+      "common": 2666,
+      "triple": 2598,
+      "p9_wrong": 2675,
+      "p9_recover": 0,
+      "v1_wrong": 2748,
+      "v1_recover": 0,
+      "clear_wrong": 2629,
+      "clear_recover": 68,
+      "pilot_only_wrong": 2611,
+      "pilot_only_recover": 153,
+      "rebuild_wrong": 1188,
+      "rebuild_recover": 1604,
+      "default_wrong": 2686,
+      "default_recover": 0,
+      "gate_wrong": 1247,
+      "gate_recover": 1535,
+      "code_gate_wrong": 1182,
+      "code_gate_recover": 1603,
+      "rebuild_lost_if_either_correct": 126,
+      "rebuild_lost_if_both_correct": 115,
+      "both_correct": 1339,
+      "rebuild_triple_recover": 1540,
+      "pilot_to_payload_gain_subset": 1473,
+      "pilot_to_payload_loss_subset": 22,
+      "code_recover_over_incumbent": 1617,
+      "code_lose_over_incumbent": 113,
+      "rebuild_recover_over_p9": 1608,
+      "rebuild_loss_over_p9": 121
+    },
+    "metrics": {
+      "p9_wrong": {
+        "rate": 65.3076171875,
+        "ci95_percent": [
+          62.2802734375,
+          68.26171875
+        ]
+      },
+      "p9_recover": {
+        "rate": 0.0,
+        "ci95_percent": [
+          0.0,
+          0.0
+        ]
+      },
+      "v1_wrong": {
+        "rate": 67.08984375,
+        "ci95_percent": [
+          63.96484375,
+          70.0439453125
+        ]
+      },
+      "v1_recover": {
+        "rate": 0.0,
+        "ci95_percent": [
+          0.0,
+          0.0
+        ]
+      },
+      "clear_wrong": {
+        "rate": 64.1845703125,
+        "ci95_percent": [
+          61.181640625,
+          67.08984375
+        ]
+      },
+      "clear_recover": {
+        "rate": 2.550637659414854,
+        "ci95_percent": [
+          1.2039119857985054,
+          4.09531536293612
+        ]
+      },
+      "pilot_only_wrong": {
+        "rate": 63.7451171875,
+        "ci95_percent": [
+          60.693359375,
+          66.69982910156249
+        ]
+      },
+      "pilot_only_recover": {
+        "rate": 5.738934733683421,
+        "ci95_percent": [
+          4.181929063380069,
+          7.5177342456138065
+        ]
+      },
+      "rebuild_wrong": {
+        "rate": 29.00390625,
+        "ci95_percent": [
+          26.0498046875,
+          32.0556640625
+        ]
+      },
+      "rebuild_recover": {
+        "rate": 60.16504126031508,
+        "ci95_percent": [
+          56.18457897752233,
+          64.10066617320503
+        ]
+      },
+      "default_wrong": {
+        "rate": 65.576171875,
+        "ci95_percent": [
+          62.548828125,
+          68.5302734375
+        ]
+      },
+      "default_recover": {
+        "rate": 0.0,
+        "ci95_percent": [
+          0.0,
+          0.0
+        ]
+      },
+      "gate_wrong": {
+        "rate": 30.4443359375,
+        "ci95_percent": [
+          27.34375,
+          33.6181640625
+        ]
+      },
+      "gate_recover": {
+        "rate": 57.57689422355589,
+        "ci95_percent": [
+          53.304155656616814,
+          61.81425714798584
+        ]
+      },
+      "code_gate_wrong": {
+        "rate": 28.857421875,
+        "ci95_percent": [
+          25.87890625,
+          31.9091796875
+        ]
+      },
+      "code_gate_recover": {
+        "rate": 60.12753188297074,
+        "ci95_percent": [
+          56.14853791339949,
+          64.06252891376758
+        ]
+      },
+      "default_to_code_gate": {
+        "pp": 36.71875,
+        "ci95_pp": [
+          33.1787109375,
+          40.185546875
+        ]
+      },
+      "pilot_only_to_rebuild": {
+        "pp": 34.7412109375,
+        "ci95_pp": [
+          31.2744140625,
+          38.1591796875
+        ]
+      },
+      "default_to_gate": {
+        "pp": 35.1318359375,
+        "ci95_pp": [
+          31.5667724609375,
+          38.64807128906249
+        ]
+      }
+    }
+  },
+  "partial_shift": {
+    "counts": {
+      "blocks": 4096,
+      "common": 888,
+      "triple": 860,
+      "p9_wrong": 3017,
+      "p9_recover": 0,
+      "v1_wrong": 951,
+      "v1_recover": 0,
+      "clear_wrong": 3550,
+      "clear_recover": 28,
+      "pilot_only_wrong": 3539,
+      "pilot_only_recover": 30,
+      "rebuild_wrong": 3316,
+      "rebuild_recover": 71,
+      "default_wrong": 951,
+      "default_recover": 0,
+      "gate_wrong": 1060,
+      "gate_recover": 6,
+      "code_gate_wrong": 937,
+      "code_gate_recover": 2,
+      "rebuild_lost_if_either_correct": 2499,
+      "rebuild_lost_if_both_correct": 446,
+      "both_correct": 1016,
+      "rebuild_triple_recover": 56,
+      "pilot_to_payload_gain_subset": 54,
+      "pilot_to_payload_loss_subset": 13,
+      "code_recover_over_incumbent": 18,
+      "code_lose_over_incumbent": 4,
+      "rebuild_recover_over_p9": 187,
+      "rebuild_loss_over_p9": 486
+    },
+    "metrics": {
+      "p9_wrong": {
+        "rate": 73.6572265625,
+        "ci95_percent": [
+          69.8486328125,
+          77.44140625
+        ]
+      },
+      "p9_recover": {
+        "rate": 0.0,
+        "ci95_percent": [
+          0.0,
+          0.0
+        ]
+      },
+      "v1_wrong": {
+        "rate": 23.2177734375,
+        "ci95_percent": [
+          19.7265625,
+          26.7822265625
+        ]
+      },
+      "v1_recover": {
+        "rate": 0.0,
+        "ci95_percent": [
+          0.0,
+          0.0
+        ]
+      },
+      "clear_wrong": {
+        "rate": 86.669921875,
+        "ci95_percent": [
+          84.5703125,
+          88.671875
+        ]
+      },
+      "clear_recover": {
+        "rate": 3.1531531531531534,
+        "ci95_percent": [
+          1.7925621503540632,
+          4.742032710158327
+        ]
+      },
+      "pilot_only_wrong": {
+        "rate": 86.4013671875,
+        "ci95_percent": [
+          84.2041015625,
+          88.4765625
+        ]
+      },
+      "pilot_only_recover": {
+        "rate": 3.3783783783783785,
+        "ci95_percent": [
+          1.9417198652303056,
+          5.027337668284641
+        ]
+      },
+      "rebuild_wrong": {
+        "rate": 80.95703125,
+        "ci95_percent": [
+          78.1005859375,
+          83.740234375
+        ]
+      },
+      "rebuild_recover": {
+        "rate": 7.995495495495495,
+        "ci95_percent": [
+          5.568438884201646,
+          10.68637506309506
+        ]
+      },
+      "default_wrong": {
+        "rate": 23.2177734375,
+        "ci95_percent": [
+          19.7747802734375,
+          26.806640625
+        ]
+      },
+      "default_recover": {
+        "rate": 0.0,
+        "ci95_percent": [
+          0.0,
+          0.0
+        ]
+      },
+      "gate_wrong": {
+        "rate": 25.87890625,
+        "ci95_percent": [
+          22.0947265625,
+          29.7119140625
+        ]
+      },
+      "gate_recover": {
+        "rate": 0.6756756756756757,
+        "ci95_percent": [
+          0.0,
+          1.5364916773367479
+        ]
+      },
+      "code_gate_wrong": {
+        "rate": 22.8759765625,
+        "ci95_percent": [
+          19.43359375,
+          26.416015625
+        ]
+      },
+      "code_gate_recover": {
+        "rate": 0.22522522522522523,
+        "ci95_percent": [
+          0.0,
+          0.5694760820045558
+        ]
+      },
+      "default_to_code_gate": {
+        "pp": 0.341796875,
+        "ci95_pp": [
+          0.048828125,
+          0.7568359375
+        ]
+      },
+      "pilot_only_to_rebuild": {
+        "pp": 5.4443359375,
+        "ci95_pp": [
+          3.076171875,
+          7.959594726562491
+        ]
+      },
+      "default_to_gate": {
+        "pp": -2.6611328125,
+        "ci95_pp": [
+          -4.297485351562499,
+          -1.2451171875
+        ]
+      }
+    }
+  },
+  "continuous": {
+    "counts": {
+      "blocks": 4096,
+      "common": 433,
+      "triple": 356,
+      "p9_wrong": 436,
+      "p9_recover": 0,
+      "v1_wrong": 479,
+      "v1_recover": 0,
+      "clear_wrong": 2636,
+      "clear_recover": 77,
+      "pilot_only_wrong": 2596,
+      "pilot_only_recover": 81,
+      "rebuild_wrong": 1212,
+      "rebuild_recover": 184,
+      "default_wrong": 442,
+      "default_recover": 0,
+      "gate_wrong": 596,
+      "gate_recover": 46,
+      "code_gate_wrong": 428,
+      "code_gate_recover": 18,
+      "rebuild_lost_if_either_correct": 963,
+      "rebuild_lost_if_both_correct": 946,
+      "both_correct": 3614,
+      "rebuild_triple_recover": 120,
+      "pilot_to_payload_gain_subset": 117,
+      "pilot_to_payload_loss_subset": 14,
+      "code_recover_over_incumbent": 21,
+      "code_lose_over_incumbent": 7,
+      "rebuild_recover_over_p9": 185,
+      "rebuild_loss_over_p9": 961
+    },
+    "metrics": {
+      "p9_wrong": {
+        "rate": 10.64453125,
+        "ci95_percent": [
+          9.3017578125,
+          12.01171875
+        ]
+      },
+      "p9_recover": {
+        "rate": 0.0,
+        "ci95_percent": [
+          0.0,
+          0.0
+        ]
+      },
+      "v1_wrong": {
+        "rate": 11.6943359375,
+        "ci95_percent": [
+          10.107421875,
+          13.427734375
+        ]
+      },
+      "v1_recover": {
+        "rate": 0.0,
+        "ci95_percent": [
+          0.0,
+          0.0
+        ]
+      },
+      "clear_wrong": {
+        "rate": 64.35546875,
+        "ci95_percent": [
+          61.5478515625,
+          67.1630859375
+        ]
+      },
+      "clear_recover": {
+        "rate": 17.782909930715935,
+        "ci95_percent": [
+          13.33289817232376,
+          22.429906542056074
+        ]
+      },
+      "pilot_only_wrong": {
+        "rate": 63.37890625,
+        "ci95_percent": [
+          60.4248046875,
+          66.259765625
+        ]
+      },
+      "pilot_only_recover": {
+        "rate": 18.706697459584294,
+        "ci95_percent": [
+          14.117647058823529,
+          23.431035152268247
+        ]
+      },
+      "rebuild_wrong": {
+        "rate": 29.58984375,
+        "ci95_percent": [
+          26.708984375,
+          32.5439453125
+        ]
+      },
+      "rebuild_recover": {
+        "rate": 42.494226327944574,
+        "ci95_percent": [
+          36.20241627109705,
+          48.74181254949661
+        ]
+      },
+      "default_wrong": {
+        "rate": 10.791015625,
+        "ci95_percent": [
+          9.375,
+          12.255859375
+        ]
+      },
+      "default_recover": {
+        "rate": 0.0,
+        "ci95_percent": [
+          0.0,
+          0.0
+        ]
+      },
+      "gate_wrong": {
+        "rate": 14.55078125,
+        "ci95_percent": [
+          12.59765625,
+          16.650390625
+        ]
+      },
+      "gate_recover": {
+        "rate": 10.623556581986143,
+        "ci95_percent": [
+          6.1052137385717815,
+          15.75
+        ]
+      },
+      "code_gate_wrong": {
+        "rate": 10.44921875,
+        "ci95_percent": [
+          9.1064453125,
+          11.865234375
+        ]
+      },
+      "code_gate_recover": {
+        "rate": 4.157043879907621,
+        "ci95_percent": [
+          1.25,
+          7.6923076923076925
+        ]
+      },
+      "default_to_code_gate": {
+        "pp": 0.341796875,
+        "ci95_pp": [
+          0.0,
+          0.732421875
+        ]
+      },
+      "pilot_only_to_rebuild": {
+        "pp": 33.7890625,
+        "ci95_pp": [
+          30.4931640625,
+          37.1337890625
+        ]
+      },
+      "default_to_gate": {
+        "pp": -3.759765625,
+        "ci95_pp": [
+          -5.5908203125,
+          -2.099609375
+        ]
+      }
+    }
+  },
+  "equal_weight": {
+    "counts": {
+      "blocks": 12288,
+      "common": 3987,
+      "triple": 3814,
+      "p9_wrong": 6128,
+      "p9_recover": 0,
+      "v1_wrong": 4178,
+      "v1_recover": 0,
+      "clear_wrong": 8815,
+      "clear_recover": 173,
+      "pilot_only_wrong": 8746,
+      "pilot_only_recover": 264,
+      "rebuild_wrong": 5716,
+      "rebuild_recover": 1859,
+      "default_wrong": 4079,
+      "default_recover": 0,
+      "gate_wrong": 2903,
+      "gate_recover": 1587,
+      "code_gate_wrong": 2547,
+      "code_gate_recover": 1623,
+      "rebuild_lost_if_either_correct": 3588,
+      "rebuild_lost_if_both_correct": 1507,
+      "both_correct": 5969,
+      "rebuild_triple_recover": 1716,
+      "pilot_to_payload_gain_subset": 1644,
+      "pilot_to_payload_loss_subset": 49,
+      "code_recover_over_incumbent": 1656,
+      "code_lose_over_incumbent": 124,
+      "rebuild_recover_over_p9": 1980,
+      "rebuild_loss_over_p9": 1568
+    },
+    "metrics": {
+      "p9_wrong": {
+        "rate": 49.869791666666664,
+        "ci95_percent": [
+          48.201497395833336,
+          51.497395833333336
+        ]
+      },
+      "p9_recover": {
+        "rate": 0.0,
+        "ci95_percent": [
+          0.0,
+          0.0
+        ]
+      },
+      "v1_wrong": {
+        "rate": 34.000651041666664,
+        "ci95_percent": [
+          32.161458333333336,
+          35.807291666666664
+        ]
+      },
+      "v1_recover": {
+        "rate": 0.0,
+        "ci95_percent": [
+          0.0,
+          0.0
+        ]
+      },
+      "clear_wrong": {
+        "rate": 71.73665364583333,
+        "ci95_percent": [
+          69.93001302083333,
+          73.47819010416667
+        ]
+      },
+      "clear_recover": {
+        "rate": 4.339102081765739,
+        "ci95_percent": [
+          3.2094590050822775,
+          5.552940926684069
+        ]
+      },
+      "pilot_only_wrong": {
+        "rate": 71.17513020833333,
+        "ci95_percent": [
+          69.31966145833333,
+          72.98177083333333
+        ]
+      },
+      "pilot_only_recover": {
+        "rate": 6.621519939804364,
+        "ci95_percent": [
+          5.394701808955706,
+          7.981710657143576
+        ]
+      },
+      "rebuild_wrong": {
+        "rate": 46.516927083333336,
+        "ci95_percent": [
+          44.7509765625,
+          48.225911458333336
+        ]
+      },
+      "rebuild_recover": {
+        "rate": 46.626536242789065,
+        "ci95_percent": [
+          43.57123510673005,
+          49.72226784932107
+        ]
+      },
+      "default_wrong": {
+        "rate": 33.194986979166664,
+        "ci95_percent": [
+          31.4453125,
+          34.920247395833336
+        ]
+      },
+      "default_recover": {
+        "rate": 0.0,
+        "ci95_percent": [
+          0.0,
+          0.0
+        ]
+      },
+      "gate_wrong": {
+        "rate": 23.624674479166668,
+        "ci95_percent": [
+          21.769205729166668,
+          25.4638671875
+        ]
+      },
+      "gate_recover": {
+        "rate": 39.80436418359669,
+        "ci95_percent": [
+          36.56202208018233,
+          43.06553399663432
+        ]
+      },
+      "code_gate_wrong": {
+        "rate": 20.7275390625,
+        "ci95_percent": [
+          19.0185546875,
+          22.4365234375
+        ]
+      },
+      "code_gate_recover": {
+        "rate": 40.707298720842736,
+        "ci95_percent": [
+          37.64192989248458,
+          43.86393242648272
+        ]
+      },
+      "default_to_code_gate": {
+        "pp": 12.467447916666666,
+        "ci95_pp": [
+          11.279296875,
+          13.639322916666666
+        ]
+      },
+      "pilot_only_to_rebuild": {
+        "pp": 24.658203125,
+        "ci95_pp": [
+          22.672526041666668,
+          26.652018229166668
+        ]
+      },
+      "default_to_gate": {
+        "pp": 9.5703125,
+        "ci95_pp": [
+          8.121744791666666,
+          10.9619140625
+        ]
+      }
+    }
+  }
+}

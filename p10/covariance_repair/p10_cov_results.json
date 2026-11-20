@@ -1,0 +1,9587 @@
+{
+  "code_audit": {
+    "single_full_rank": 32,
+    "pair_full_rank": 496,
+    "sign_mask_syndrome_weight": 32
+  },
+  "summary": {
+    "partial_shift": {
+      "links": 64,
+      "target_blocks": 704,
+      "methods": {
+        "pilot": {
+          "nmse": 0.570986474201201,
+          "correct": 40,
+          "block_errors": 628,
+          "bler": 0.8920454545454546
+        },
+        "diagonal": {
+          "nmse": 0.5709864742012011,
+          "correct": 40,
+          "block_errors": 628,
+          "bler": 0.8920454545454546
+        },
+        "covariance": {
+          "nmse": 0.46434601964976857,
+          "correct": 54,
+          "block_errors": 577,
+          "bler": 0.8196022727272727
+        },
+        "p9_classic": {
+          "nmse": 0.6788199068686291,
+          "correct": null,
+          "block_errors": 653,
+          "bler": 0.9275568181818182
+        }
+      },
+      "bootstrap_95_reference_minus_covariance": {
+        "pilot": {
+          "nmse": [
+            0.023118546885650473,
+            0.1952228348319639
+          ],
+          "bler": [
+            0.04261363636363636,
+            0.109375
+          ]
+        },
+        "p9_classic": {
+          "nmse": [
+            0.0009399103391502846,
+            0.4166496957665235
+          ],
+          "bler": [
+            0.05823863636363637,
+            0.15767045454545453
+          ]
+        }
+      }
+    },
+    "continuous": {
+      "links": 64,
+      "target_blocks": 704,
+      "methods": {
+        "pilot": {
+          "nmse": 0.5351591192118272,
+          "correct": 14,
+          "block_errors": 655,
+          "bler": 0.9303977272727273
+        },
+        "diagonal": {
+          "nmse": 0.5351591192118275,
+          "correct": 14,
+          "block_errors": 655,
+          "bler": 0.9303977272727273
+        },
+        "covariance": {
+          "nmse": 0.44154528043611024,
+          "correct": 49,
+          "block_errors": 600,
+          "bler": 0.8522727272727273
+        },
+        "p9_classic": {
+          "nmse": 0.0959074586948412,
+          "correct": null,
+          "block_errors": 401,
+          "bler": 0.5696022727272727
+        }
+      },
+      "bootstrap_95_reference_minus_covariance": {
+        "pilot": {
+          "nmse": [
+            0.016860672643533626,
+            0.17057455095458066
+          ],
+          "bler": [
+            0.051136363636363646,
+            0.109375
+          ]
+        },
+        "p9_classic": {
+          "nmse": [
+            -0.4232962136532781,
+            -0.2733518040638894
+          ],
+          "bler": [
+            -0.33238636363636365,
+            -0.23295454545454547
+          ]
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "seed": 960261120000,
+      "regime": "partial_shift",
+      "energy": 27.817187501245026,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 6.655699591756358,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 6.655699591756357,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 6.47513540829644,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 3.827026075570683,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120001,
+      "regime": "partial_shift",
+      "energy": 28.576117497762304,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 2.3395740583029134,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 2.3395740583029125,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      "covariance": {
+        "probe_sse": 2.2934915624282386,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 8.911086860587355,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120002,
+      "regime": "partial_shift",
+      "energy": 27.400210040004602,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 4.217781417734666,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 4.217781417734666,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 5.724993075951684,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.1306460001870478,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120003,
+      "regime": "partial_shift",
+      "energy": 45.33452400361121,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 10.447434227489278,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 10.447434227489278,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 10.447434132114097,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 33.68017122718417,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120004,
+      "regime": "partial_shift",
+      "energy": 30.952557400011578,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 21.979081789881675,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 21.979081789881665,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 7.8697416506074145,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 8.374980001013355,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120005,
+      "regime": "partial_shift",
+      "energy": 33.33640808320757,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 5.476884077872912,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 5.476884077872912,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 5.533367355113143,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 5.123308792306143,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120006,
+      "regime": "partial_shift",
+      "energy": 28.46119474812368,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 3.0443399054456437,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 3.0443399054456433,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 3.026161634952485,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.5596968499497388,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120007,
+      "regime": "partial_shift",
+      "energy": 26.157293546328795,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 4.905504731661127,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 4.905504731661121,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 2.524792666816977,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 7.088828998308182,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120008,
+      "regime": "partial_shift",
+      "energy": 33.16014922497716,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 9.700642757658207,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 9.700642757658207,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 10.434760690187128,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 71.9583706093113,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120009,
+      "regime": "partial_shift",
+      "energy": 29.232336354224138,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 8.337130580151713,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 8.337130580151713,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 8.406904566206697,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 6.161814777547968,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120010,
+      "regime": "partial_shift",
+      "energy": 32.680631980467005,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 7.72747795352388,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 7.727477953523879,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 13.852413592382494,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 35.61587121191113,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120011,
+      "regime": "partial_shift",
+      "energy": 28.51042739379845,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 18.177736551179773,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 18.177736551179773,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 38.813901769372464,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 2.2355748857206414,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120012,
+      "regime": "partial_shift",
+      "energy": 34.36412717961164,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 13.68572820062902,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 13.685728200629017,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 13.20549501842633,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 28.28524804487778,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120013,
+      "regime": "partial_shift",
+      "energy": 32.07466532094789,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 5.97214570558646,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 5.97214570558646,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 5.9291826900985045,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 10.19008084159599,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120014,
+      "regime": "partial_shift",
+      "energy": 26.010246932086194,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 24.84571932637997,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 24.845719326379964,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 8.4494745533643,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.9913969719469513,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120015,
+      "regime": "partial_shift",
+      "energy": 60.15641061763595,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 28.68874150397812,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 28.68874150397812,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 33.2406812247357,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 96.08116883815748,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120016,
+      "regime": "partial_shift",
+      "energy": 41.70950959378074,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 14.299300813163892,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 14.299300813163892,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 14.212986757550897,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 8.38013041543348,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120017,
+      "regime": "partial_shift",
+      "energy": 32.999829427469436,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 22.382687301091167,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 22.382687301091426,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 15.886934086511797,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 43.05709808444547,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120018,
+      "regime": "partial_shift",
+      "energy": 30.36222490341202,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 61.62941192456294,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 61.62941192456294,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 12.499255213905021,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 53.39883764860877,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120019,
+      "regime": "partial_shift",
+      "energy": 41.22201411497918,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 4.610140875656423,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 4.610140875656423,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 4.6099684536516765,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 30.417911628473156,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120020,
+      "regime": "partial_shift",
+      "energy": 33.26378874549327,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 14.752215054566825,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 14.75221505456684,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 13.033549133886408,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 3.237762488786817,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120021,
+      "regime": "partial_shift",
+      "energy": 36.826252852329134,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 9.581550870625726,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 9.581550870625726,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 9.384629497011526,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 94.44472424845262,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120022,
+      "regime": "partial_shift",
+      "energy": 27.70683080506948,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 9.929940780829398,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 9.929940780829398,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 8.95671825426452,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 14.083000265971217,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120023,
+      "regime": "partial_shift",
+      "energy": 35.15542240034437,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 48.22146241874221,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 48.22146241874221,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 27.025492710823585,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 8.422167689835419,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120024,
+      "regime": "partial_shift",
+      "energy": 35.228172363275,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 32.62752541448358,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 32.627525414483586,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 14.445014999625982,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 3.6071851595328415,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120025,
+      "regime": "partial_shift",
+      "energy": 25.81113516818603,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 7.552141981661073,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 7.552141981661073,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 7.552141967071001,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 23.444445299635706,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120026,
+      "regime": "partial_shift",
+      "energy": 29.86039033044887,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 4.6934297846095845,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 4.693429784609583,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 4.689466817715587,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 9.910136783337823,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120027,
+      "regime": "partial_shift",
+      "energy": 27.2801587984228,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 31.090013664308096,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 31.090013664308064,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 16.012457152357513,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 4.876590696582912,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120028,
+      "regime": "partial_shift",
+      "energy": 45.66345067878314,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 34.75988140757967,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 34.75988140757966,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 35.33809688641274,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 41.32116886339227,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120029,
+      "regime": "partial_shift",
+      "energy": 28.677996092121404,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 13.33300680165787,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 13.333006801657858,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 5.827013009054241,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.0472311977593658,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120030,
+      "regime": "partial_shift",
+      "energy": 36.08012398342585,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 67.54890366140866,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 67.54890366140866,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 37.428888857694744,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 33.28476390140672,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120031,
+      "regime": "partial_shift",
+      "energy": 31.138445363095684,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 21.468123194550838,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 21.46812319455084,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 9.76843934267662,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 24.250636076294438,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120032,
+      "regime": "partial_shift",
+      "energy": 35.195938873882795,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 16.60742891483195,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 16.60742891483195,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 16.60743872284342,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 69.89380420537813,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120033,
+      "regime": "partial_shift",
+      "energy": 38.03547122311974,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 11.74381054340716,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 11.74381054340716,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 11.772446769571076,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 14.855177908751344,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120034,
+      "regime": "partial_shift",
+      "energy": 36.332118353559,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 0.8333082876841537,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 0.833308287684154,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "covariance": {
+        "probe_sse": 0.8326654117692882,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.4501171176018035,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120035,
+      "regime": "partial_shift",
+      "energy": 28.87837444282142,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 23.300346039974226,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 23.30034603997423,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 42.63373216050401,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 3.535660425495992,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120036,
+      "regime": "partial_shift",
+      "energy": 33.47953916274956,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 17.6204687643072,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 17.620468764307212,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 4.164531541768042,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 15.464335992568238,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120037,
+      "regime": "partial_shift",
+      "energy": 25.78619523233454,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 8.038507211677032,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 8.038507211677032,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 8.039008179309718,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 5.990081895398745,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120038,
+      "regime": "partial_shift",
+      "energy": 27.720872527649703,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 25.764282687739193,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 25.764282687739197,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 8.289734949980552,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 3.7829309506841104,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120039,
+      "regime": "partial_shift",
+      "energy": 29.831529282843977,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 18.67862246585588,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 18.67862246585588,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 18.59172325074328,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 2.079802514652104,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120040,
+      "regime": "partial_shift",
+      "energy": 31.73452298945267,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 20.99188644431446,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 20.99188644431441,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 9.729636156895495,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 4.845429251424873,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120041,
+      "regime": "partial_shift",
+      "energy": 33.0152426376491,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 5.547513216975167,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 5.547513216975165,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 5.742007568631173,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 8.040847614968776,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120042,
+      "regime": "partial_shift",
+      "energy": 24.56829410033599,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 4.846178782916491,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 4.846178782916491,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 4.8499585812006245,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 2.5340795320133456,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120043,
+      "regime": "partial_shift",
+      "energy": 35.33833936140553,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 50.90509148753746,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 50.90509148753746,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 28.746336388863178,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 29.743202648260215,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120044,
+      "regime": "partial_shift",
+      "energy": 35.82014281136886,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 11.62807616653206,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 11.628076166532049,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 9.421724992499488,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 14.932814327850213,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120045,
+      "regime": "partial_shift",
+      "energy": 26.431158317049416,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 7.0751818591439335,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 7.075181859143932,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 5.056967969921917,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 5.402176631634261,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120046,
+      "regime": "partial_shift",
+      "energy": 26.430907255365234,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 47.85938602438731,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 47.859386024387334,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 28.53971374924901,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 24.65431898903413,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120047,
+      "regime": "partial_shift",
+      "energy": 25.38033311838441,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 14.802630077229253,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 14.802630077229255,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 14.841906282890836,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 3.063956996494447,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120048,
+      "regime": "partial_shift",
+      "energy": 27.78458567832831,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 11.832609202837665,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 11.832609202837672,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 8.01360063311171,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 2.793812996663715,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120049,
+      "regime": "partial_shift",
+      "energy": 29.53043729084524,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 7.943144767786929,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 7.943144767786925,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 5.548279271698695,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 6.298911664366355,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120050,
+      "regime": "partial_shift",
+      "energy": 47.32067600373566,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 17.166043161304984,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 17.166043161304984,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 17.152987806930696,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 53.69697829733562,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120051,
+      "regime": "partial_shift",
+      "energy": 28.70211500210132,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 49.179958203373275,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 49.17995820337329,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 48.955709107832305,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 19.338846269471762,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120052,
+      "regime": "partial_shift",
+      "energy": 26.556499592045455,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 4.720438326745583,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 4.720438326745583,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 4.720427740515385,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 50.11860766758092,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120053,
+      "regime": "partial_shift",
+      "energy": 36.394383055826445,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 13.75268857860419,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 13.75268857860419,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 13.752595456479241,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 83.93325076437958,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120054,
+      "regime": "partial_shift",
+      "energy": 28.583646387413783,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 16.14572013233877,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 16.14572013233877,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 16.145712657128055,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 66.41869825026762,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120055,
+      "regime": "partial_shift",
+      "energy": 25.6681253305617,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 2.6097516715007814,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 2.6097516715007814,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 2.476156193431521,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 4.830099467358254,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120056,
+      "regime": "partial_shift",
+      "energy": 26.669777869738333,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 22.832474504599354,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 22.832474504599354,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 50.851144797083926,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 4.338704313121463,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120057,
+      "regime": "partial_shift",
+      "energy": 37.101339367136475,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 23.397543698311406,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 23.39754369831141,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 24.762150723741172,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 11.099346667515775,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120058,
+      "regime": "partial_shift",
+      "energy": 25.811122145985053,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 33.13723524780217,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 33.13723524780217,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 16.16493331186415,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 2.168443715665899,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120059,
+      "regime": "partial_shift",
+      "energy": 36.28584331873383,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 21.205636169041817,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 21.205636169041817,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 26.73712639965173,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 74.98896667058838,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120060,
+      "regime": "partial_shift",
+      "energy": 25.32931669771908,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 29.578151517622466,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 29.57815151762246,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 29.76860702294374,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 3.267756769905194,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120061,
+      "regime": "partial_shift",
+      "energy": 25.240833459179413,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 1.1558672761760231,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 1.1558672761760231,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 1.1558672761760231,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 61.16578867225289,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120062,
+      "regime": "partial_shift",
+      "energy": 25.36869179126291,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 45.05364990161743,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 45.053649901617405,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 46.695701700398175,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 3.297792835652074,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120063,
+      "regime": "partial_shift",
+      "energy": 29.94306744751889,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 3.8803183554345955,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 3.880318355434599,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 3.364751073235781,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 7.015598616677784,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120000,
+      "regime": "continuous",
+      "energy": 27.77100617181734,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 6.394720877887524,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 6.394720877887524,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 6.329913627115602,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 2.052212738331864,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120001,
+      "regime": "continuous",
+      "energy": 28.53092199581389,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 4.407985678260276,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 4.407985678260304,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 2.7794408655772247,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.1438759607595466,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120002,
+      "regime": "continuous",
+      "energy": 27.433257012318613,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 4.189618478371894,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 4.189618478371894,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 5.709947329717809,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.0064463198171811,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120003,
+      "regime": "continuous",
+      "energy": 45.1466471083105,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 28.428998503300203,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 28.428998503300203,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 12.169822889609579,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 3.5086136692026466,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120004,
+      "regime": "continuous",
+      "energy": 30.700161609808223,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 11.103794031283822,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 11.103794031283822,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 9.187154665886567,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 3.658170319003345,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120005,
+      "regime": "continuous",
+      "energy": 33.274583173963784,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 6.877412451996934,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 6.877412451996939,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 6.099532145567636,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 4.139482796720092,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120006,
+      "regime": "continuous",
+      "energy": 28.487807658947116,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 3.2258031072056825,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 3.225803107205679,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 3.0402546652474696,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.495150791647542,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120007,
+      "regime": "continuous",
+      "energy": 26.220434779809466,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 4.651892885213121,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 4.651892885213149,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 2.434131203876687,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 6.16432897648173,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120008,
+      "regime": "continuous",
+      "energy": 33.278086956057905,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 22.07461060714052,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 22.07461060714052,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 42.22015072113386,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 2.1815789814324775,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120009,
+      "regime": "continuous",
+      "energy": 29.006922674741293,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 19.470893102620842,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 19.470893102620835,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 7.059433555753201,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.3705349065947077,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120010,
+      "regime": "continuous",
+      "energy": 32.834499215102724,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 15.189083670114577,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 15.18908367011464,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 7.154502243799174,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.9027013785856356,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120011,
+      "regime": "continuous",
+      "energy": 28.407346056179403,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 18.710837582384734,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 18.710837582384734,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 39.209894825952404,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 3.7734275867221108,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120012,
+      "regime": "continuous",
+      "energy": 34.26691995117683,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 30.58896374448671,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 30.58896374448671,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 13.295498687405665,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.9154369902439963,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120013,
+      "regime": "continuous",
+      "energy": 32.48041448448322,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 6.00458006258991,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 6.004580062589911,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 5.92952452811132,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 2.9690659957141996,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120014,
+      "regime": "continuous",
+      "energy": 26.07167917983923,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 23.28982838152575,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 23.289828381525755,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 9.363795446851157,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.673559691736766,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120015,
+      "regime": "continuous",
+      "energy": 59.94607053504953,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 42.12547918436546,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 42.12547918436553,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 27.601601295888255,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 5.711828221854215,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120016,
+      "regime": "continuous",
+      "energy": 41.61696019150061,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 15.541452394855114,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 15.541452394855114,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 15.129725142121979,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.44939716502016924,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120017,
+      "regime": "continuous",
+      "energy": 32.5647466174113,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 8.440231052870843,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 8.440231052870843,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 8.057359273582962,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.3496504079528968,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120018,
+      "regime": "continuous",
+      "energy": 30.567667222636885,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 2.5538290658322538,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 2.553829065832254,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 2.5730632992573153,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.6287552119824005,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120019,
+      "regime": "continuous",
+      "energy": 41.667186991149336,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 22.072800499087037,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 22.072800499087037,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 8.154276767444351,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 5.2437946752923015,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120020,
+      "regime": "continuous",
+      "energy": 32.91926472468966,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 11.291617840784092,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 11.291617840784102,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 10.731099258182603,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.5442959989115317,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120021,
+      "regime": "continuous",
+      "energy": 35.96447466922827,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 17.865430824645244,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 17.865430824645244,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 51.76132005110398,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 25.46956538729806,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120022,
+      "regime": "continuous",
+      "energy": 27.729159694779945,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 8.311330201903296,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 8.311330201903294,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 15.912031116458937,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 4.17232925581312,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120023,
+      "regime": "continuous",
+      "energy": 34.78640807452851,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 49.528236803968724,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 49.528236803968724,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 27.751585673639667,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.56888340989824,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120024,
+      "regime": "continuous",
+      "energy": 35.06156363713836,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 20.419424443305907,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 20.419424443305914,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 16.914468686483385,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 2.3656721184670157,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120025,
+      "regime": "continuous",
+      "energy": 25.716750530733407,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 43.4078167605628,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 43.4078167605628,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 23.201826672093077,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.27406391417225473,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120026,
+      "regime": "continuous",
+      "energy": 29.676312587147734,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 4.770621294656444,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 4.770621294656445,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 4.716311885982493,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.2818426898333866,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120027,
+      "regime": "continuous",
+      "energy": 27.553928022878882,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 29.413092441641034,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 29.413092441641073,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 13.340491821138508,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 2.0679539151122235,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120028,
+      "regime": "continuous",
+      "energy": 45.43319410861489,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 13.370859214814793,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 13.370859214814793,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 29.617294575112588,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.21182003943367367,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120029,
+      "regime": "continuous",
+      "energy": 28.67290503148868,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 13.546130808838093,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 13.546130808838102,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 5.9366005831907,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.4044522179794486,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120030,
+      "regime": "continuous",
+      "energy": 35.83173292626739,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 14.152326614949725,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 14.152326614949725,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 16.837659921913026,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 5.43967399207462,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120031,
+      "regime": "continuous",
+      "energy": 31.37259766015684,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 6.348703591978174,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 6.348703591978184,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 7.411880193932003,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.4314201631894266,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120032,
+      "regime": "continuous",
+      "energy": 35.0972220410532,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 12.598309791400688,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 12.59830979140068,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 17.390568433522915,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.5733094680931043,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120033,
+      "regime": "continuous",
+      "energy": 38.025121123789646,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 12.689670475315499,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 12.68967047531548,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 11.128028324266698,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.829025259426953,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120034,
+      "regime": "continuous",
+      "energy": 36.28646078156865,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 0.8449048785563773,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 0.8449048785563777,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "covariance": {
+        "probe_sse": 0.8448546188187593,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.3720623987807792,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120035,
+      "regime": "continuous",
+      "energy": 28.91602495607635,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 23.22505823287287,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 23.225058232872854,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 14.595223984697157,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.24232118628939825,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120036,
+      "regime": "continuous",
+      "energy": 33.40198606509237,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 5.717719666807578,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 5.7177196668075725,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 5.236277044474876,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 5.361892712950471,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120037,
+      "regime": "continuous",
+      "energy": 26.12516620297593,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 7.17273617681305,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 7.172736176813055,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 7.670270018245021,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.20590208945461264,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120038,
+      "regime": "continuous",
+      "energy": 27.58477717852935,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 24.104750897709053,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 24.10475089770906,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 8.774058222240495,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.0455119839923908,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120039,
+      "regime": "continuous",
+      "energy": 29.89289521419202,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 18.689321144992096,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 18.689321144992096,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 17.203524178728664,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.3865375030016742,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120040,
+      "regime": "continuous",
+      "energy": 31.824825087201788,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 20.917273977186298,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 20.91727397718646,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 10.971504437027662,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 2.5019861311657268,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120041,
+      "regime": "continuous",
+      "energy": 32.93777531588717,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 13.194031622798509,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 13.194031622798512,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 10.23071558570572,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.5128846244452996,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120042,
+      "regime": "continuous",
+      "energy": 24.606881883685524,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 4.811018029949191,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 4.811018029949191,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 4.809277989974458,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 2.2978895026693023,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120043,
+      "regime": "continuous",
+      "energy": 34.72084785442176,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 5.467712228239372,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 5.467712228239373,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 3.414606892376956,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.1573607766941763,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120044,
+      "regime": "continuous",
+      "energy": 35.78803737893888,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 7.585135600727786,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 7.585135600727787,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 9.131614152516743,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.2811681584573615,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120045,
+      "regime": "continuous",
+      "energy": 26.4468080493629,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 4.780890756623067,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 4.780890756623067,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 5.162463394371855,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 3.1577068702279343,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120046,
+      "regime": "continuous",
+      "energy": 26.27204131816796,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 48.33124017958818,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 48.33124017958818,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 20.984677496195275,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 23.701269482983427,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120047,
+      "regime": "continuous",
+      "energy": 25.97424926505885,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 29.968464751921495,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 29.968464751921356,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 15.279915510404505,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.0821467646234815,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120048,
+      "regime": "continuous",
+      "energy": 27.404656410232242,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 28.038300521639222,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 28.03830052163923,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 11.124545013331655,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.104174611821921,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120049,
+      "regime": "continuous",
+      "energy": 29.45609196937893,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 8.479828384205781,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 8.479828384205923,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 4.736354508463947,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.5930949981568783,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120050,
+      "regime": "continuous",
+      "energy": 46.93801319537663,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 16.01771578949299,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 16.017715789492986,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 17.298236749349762,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 9.6260352677115,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120051,
+      "regime": "continuous",
+      "energy": 28.596166092876192,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 8.79896139143629,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 8.798961391436293,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 9.828315010049632,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 5.38957285452748,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120052,
+      "regime": "continuous",
+      "energy": 26.501399032318965,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 21.576629766671413,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 21.576629766671413,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 21.52356115457373,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.9659885306286997,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120053,
+      "regime": "continuous",
+      "energy": 36.45618845151766,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 13.578127398259362,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 13.578127398259356,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 13.632887908416151,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.745294175574198,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120054,
+      "regime": "continuous",
+      "energy": 28.666099456140635,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 18.149523775743482,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 18.14952377574348,
+        "correct_class": false,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 18.278700299655746,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 10.754293969714622,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120055,
+      "regime": "continuous",
+      "energy": 25.630492832581687,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 3.035704981671394,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 3.035704981671392,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 3.9238747837505548,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.8707489941772162,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120056,
+      "regime": "continuous",
+      "energy": 26.454604354590035,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 22.206883898877578,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 22.206883898877578,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 30.91567528310248,
+        "correct_class": true,
+        "block_errors": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 3.1555989165207867,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120057,
+      "regime": "continuous",
+      "energy": 36.995447466804436,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 30.465121897254384,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 30.4651218972543,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 23.83057333497714,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 6.01294834550348,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120058,
+      "regime": "continuous",
+      "energy": 25.93778939214042,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 33.278863389081764,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 33.278863389081764,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 14.934050789592987,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 2.456587563889001,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120059,
+      "regime": "continuous",
+      "energy": 37.18948745085438,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 11.823847296363578,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 11.823847296363581,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 14.957111322345588,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.7423120244636603,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120060,
+      "regime": "continuous",
+      "energy": 25.35284994657506,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 29.470140122061938,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 29.47014012206195,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 27.946158533456337,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 3.344261579264618,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120061,
+      "regime": "continuous",
+      "energy": 25.52439387829647,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 30.411199350842242,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 30.411199350842242,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 22.492679748278217,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.477832245333548,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "seed": 960261120062,
+      "regime": "continuous",
+      "energy": 25.391009439035592,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 44.08108001251658,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 44.081080012516566,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 40.139810078069274,
+        "correct_class": false,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 1.1006944902129931,
+        "correct_class": null,
+        "block_errors": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "seed": 960261120063,
+      "regime": "continuous",
+      "energy": 29.81005933311975,
+      "target_count": 11,
+      "pilot": {
+        "probe_sse": 2.946236290553273,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "diagonal": {
+        "probe_sse": 2.9462362905532764,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "covariance": {
+        "probe_sse": 3.493224045226411,
+        "correct_class": true,
+        "block_errors": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      "p9_classic": {
+        "probe_sse": 0.7640337668041446,
+        "correct_class": null,
+        "block_errors": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1
+        ]
+      }
+    }
+  ]
+}

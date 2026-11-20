@@ -1,0 +1,2725 @@
+{
+  "full_reset": {
+    "physical_seed_groups": 128,
+    "links": 128,
+    "blocks": 2048,
+    "common_old_failures": 1241,
+    "triple_failures": 1204,
+    "both_old_right": 762,
+    "eligible_any_old_right": 807,
+    "rebuild_used_folds": 237,
+    "rebuild_used_links": 123,
+    "code_rebuild_used_folds": 254,
+    "code_rebuild_used_links": 128,
+    "old_fold_oracle_wrong": 1245,
+    "with_rebuild_fold_oracle_wrong": 577,
+    "arm_metrics": {
+      "p9": {
+        "wrong": 1246,
+        "bler": {
+          "value": 0.6083984375,
+          "ci95": [
+            0.5654296875,
+            0.65087890625
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 0,
+        "rate_rescued_common": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 0,
+        "wrong_if_either_old_right": 5,
+        "probe_nmse": {
+          "value": 0.5191260077394609,
+          "ci95": [
+            0.45820073031508024,
+            0.5890161372961712
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "v1": {
+        "wrong": 1281,
+        "bler": {
+          "value": 0.62548828125,
+          "ci95": [
+            0.5810546875,
+            0.669921875
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 0,
+        "rate_rescued_common": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 0,
+        "wrong_if_either_old_right": 40,
+        "probe_nmse": {
+          "value": 0.5944925550949007,
+          "ci95": [
+            0.5068705260519263,
+            0.698388203995707
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "clear": {
+        "wrong": 1221,
+        "bler": {
+          "value": 0.59619140625,
+          "ci95": [
+            0.55419921875,
+            0.63818359375
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 37,
+        "rate_rescued_common": {
+          "value": 0.029814665592264304,
+          "ci95": [
+            0.010140060032781058,
+            0.05463235526301939
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 12,
+        "wrong_if_either_old_right": 17,
+        "probe_nmse": {
+          "value": 0.49202644636681225,
+          "ci95": [
+            0.44198225286946785,
+            0.5473819578754932
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "pilot_only": {
+        "wrong": 1210,
+        "bler": {
+          "value": 0.5908203125,
+          "ci95": [
+            0.546875,
+            0.634765625
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 84,
+        "rate_rescued_common": {
+          "value": 0.06768734891216761,
+          "ci95": [
+            0.043279042368290985,
+            0.09708840363421672
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 50,
+        "rate_rescued_triple": {
+          "value": 0.04152823920265781,
+          "ci95": [
+            0.02845841768694367,
+            0.05658862898598014
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 47,
+        "wrong_if_either_old_right": 53,
+        "probe_nmse": {
+          "value": 0.4841261807111987,
+          "ci95": [
+            0.4311479572067896,
+            0.5440104101250203
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "rebuild": {
+        "wrong": 616,
+        "bler": {
+          "value": 0.30078125,
+          "ci95": [
+            0.25780029296875,
+            0.345703125
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 698,
+        "rate_rescued_common": {
+          "value": 0.5624496373892023,
+          "ci95": [
+            0.5,
+            0.6232128246709503
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 664,
+        "rate_rescued_triple": {
+          "value": 0.5514950166112956,
+          "ci95": [
+            0.48800420636247144,
+            0.6143966862346365
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 68,
+        "wrong_if_either_old_right": 73,
+        "probe_nmse": {
+          "value": 0.2566156090024742,
+          "ci95": [
+            0.20689338115900624,
+            0.31536201440349176
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "default": {
+        "wrong": 1252,
+        "bler": {
+          "value": 0.611328125,
+          "ci95": [
+            0.56785888671875,
+            0.654296875
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 0,
+        "rate_rescued_common": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 0,
+        "wrong_if_either_old_right": 11,
+        "probe_nmse": {
+          "value": 0.5470669525290343,
+          "ci95": [
+            0.4742313886409847,
+            0.6338328495487212
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "gate": {
+        "wrong": 653,
+        "bler": {
+          "value": 0.31884765625,
+          "ci95": [
+            0.27490234375,
+            0.36474609375
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 656,
+        "rate_rescued_common": {
+          "value": 0.5286059629331185,
+          "ci95": [
+            0.46606489735243284,
+            0.5913906581039593
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 622,
+        "rate_rescued_triple": {
+          "value": 0.5166112956810631,
+          "ci95": [
+            0.4519458214514852,
+            0.5814157371616605
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 61,
+        "wrong_if_either_old_right": 68,
+        "probe_nmse": {
+          "value": 0.2647051975081553,
+          "ci95": [
+            0.21647027039053648,
+            0.321582120586764
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "code_gate": {
+        "wrong": 610,
+        "bler": {
+          "value": 0.2978515625,
+          "ci95": [
+            0.25439453125,
+            0.34326171875
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 698,
+        "rate_rescued_common": {
+          "value": 0.5624496373892023,
+          "ci95": [
+            0.5,
+            0.6232128246709503
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 664,
+        "rate_rescued_triple": {
+          "value": 0.5514950166112956,
+          "ci95": [
+            0.48800420636247144,
+            0.6143966862346365
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 62,
+        "wrong_if_either_old_right": 67,
+        "probe_nmse": {
+          "value": 0.25473390922274247,
+          "ci95": [
+            0.20520767929783026,
+            0.31365819885954577
+          ],
+          "valid_replicates": 10000
+        }
+      }
+    },
+    "contrasts": {
+      "rebuild_over_pilot_only": {
+        "all_blocks": {
+          "rescued": 666,
+          "lost": 72,
+          "net_rescued": 594,
+          "gain_pp": {
+            "value": 29.00390625,
+            "ci95": [
+              23.974609375,
+              34.08203125
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 625,
+          "lost": 11,
+          "net_rescued": 614,
+          "gain_pp": {
+            "value": 49.47622884770347,
+            "ci95": [
+              42.92795191722459,
+              56.03957784296445
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_clear": {
+        "all_blocks": {
+          "rescued": 674,
+          "lost": 69,
+          "net_rescued": 605,
+          "gain_pp": {
+            "value": 29.541015625,
+            "ci95": [
+              24.658203125,
+              34.47265625
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 664,
+          "lost": 3,
+          "net_rescued": 661,
+          "gain_pp": {
+            "value": 53.26349717969379,
+            "ci95": [
+              46.842991477125466,
+              59.668540863129365
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_p9": {
+        "all_blocks": {
+          "rescued": 700,
+          "lost": 70,
+          "net_rescued": 630,
+          "gain_pp": {
+            "value": 30.76171875,
+            "ci95": [
+              25.830078125,
+              35.694580078124986
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 698,
+          "lost": 0,
+          "net_rescued": 698,
+          "gain_pp": {
+            "value": 56.24496373892023,
+            "ci95": [
+              50.0,
+              62.321282467095024
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_v1": {
+        "all_blocks": {
+          "rescued": 736,
+          "lost": 71,
+          "net_rescued": 665,
+          "gain_pp": {
+            "value": 32.470703125,
+            "ci95": [
+              27.392578125,
+              37.6953125
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 698,
+          "lost": 0,
+          "net_rescued": 698,
+          "gain_pp": {
+            "value": 56.24496373892023,
+            "ci95": [
+              50.0,
+              62.321282467095024
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_default": {
+        "all_blocks": {
+          "rescued": 706,
+          "lost": 70,
+          "net_rescued": 636,
+          "gain_pp": {
+            "value": 31.0546875,
+            "ci95": [
+              26.07421875,
+              36.083984375
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 698,
+          "lost": 0,
+          "net_rescued": 698,
+          "gain_pp": {
+            "value": 56.24496373892023,
+            "ci95": [
+              50.0,
+              62.321282467095024
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "gate_over_default": {
+        "all_blocks": {
+          "rescued": 662,
+          "lost": 63,
+          "net_rescued": 599,
+          "gain_pp": {
+            "value": 29.248046875,
+            "ci95": [
+              24.267578125,
+              34.326171875
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 656,
+          "lost": 0,
+          "net_rescued": 656,
+          "gain_pp": {
+            "value": 52.86059629331184,
+            "ci95": [
+              46.60648973524328,
+              59.139065810395934
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "gate_over_p9": {
+        "all_blocks": {
+          "rescued": 656,
+          "lost": 63,
+          "net_rescued": 593,
+          "gain_pp": {
+            "value": 28.955078125,
+            "ci95": [
+              24.072265625,
+              33.984375
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 656,
+          "lost": 0,
+          "net_rescued": 656,
+          "gain_pp": {
+            "value": 52.86059629331184,
+            "ci95": [
+              46.60648973524328,
+              59.139065810395934
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "code_gate_over_default": {
+        "all_blocks": {
+          "rescued": 706,
+          "lost": 64,
+          "net_rescued": 642,
+          "gain_pp": {
+            "value": 31.34765625,
+            "ci95": [
+              26.3671875,
+              36.376953125
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 698,
+          "lost": 0,
+          "net_rescued": 698,
+          "gain_pp": {
+            "value": 56.24496373892023,
+            "ci95": [
+              50.0,
+              62.321282467095024
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "code_gate_over_gate": {
+        "all_blocks": {
+          "rescued": 50,
+          "lost": 7,
+          "net_rescued": 43,
+          "gain_pp": {
+            "value": 2.099609375,
+            "ci95": [
+              0.68359375,
+              3.80859375
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 42,
+          "lost": 0,
+          "net_rescued": 42,
+          "gain_pp": {
+            "value": 3.3843674456083805,
+            "ci95": [
+              1.289205106347697,
+              6.070166434945427
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      }
+    },
+    "phase": {
+      "clear": {
+        "rel_phase_rmse": {
+          "value": 0.79584706999524,
+          "ci95": [
+            0.7257615582493607,
+            0.8668262287739343
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.06859969407951129,
+          "ci95": [
+            0.05840034706376968,
+            0.07931488534730315
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 0.5154235371427396,
+          "ci95": [
+            0.4680764731226813,
+            0.5700564584849624
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.036166825407313516,
+          "ci95": [
+            0.031046854312460525,
+            0.041062734577811726
+          ]
+        }
+      },
+      "pilot_only": {
+        "rel_phase_rmse": {
+          "value": 0.796979939862835,
+          "ci95": [
+            0.7253918517310399,
+            0.8693317342999406
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.06771858386877304,
+          "ci95": [
+            0.05786627390636935,
+            0.07780974969656933
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 0.5143183905022961,
+          "ci95": [
+            0.4667462145157066,
+            0.5695819236500254
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.035609000485401374,
+          "ci95": [
+            0.03065556771668567,
+            0.040339478442052726
+          ]
+        }
+      },
+      "rebuild": {
+        "rel_phase_rmse": {
+          "value": 0.22381149295571773,
+          "ci95": [
+            0.20615191590081267,
+            0.2440760055760187
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.009022943990451,
+          "ci95": [
+            0.006619636086148702,
+            0.011519623808202994
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 0.33179341957858444,
+          "ci95": [
+            0.27302239004903484,
+            0.4088850534238016
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.012053710822165635,
+          "ci95": [
+            0.006332901722886143,
+            0.0184057428691847
+          ]
+        }
+      }
+    }
+  },
+  "partial_shift": {
+    "physical_seed_groups": 128,
+    "links": 128,
+    "blocks": 2048,
+    "common_old_failures": 429,
+    "triple_failures": 414,
+    "both_old_right": 565,
+    "eligible_any_old_right": 1619,
+    "rebuild_used_folds": 26,
+    "rebuild_used_links": 17,
+    "code_rebuild_used_folds": 7,
+    "code_rebuild_used_links": 5,
+    "old_fold_oracle_wrong": 431,
+    "with_rebuild_fold_oracle_wrong": 408,
+    "arm_metrics": {
+      "p9": {
+        "wrong": 1472,
+        "bler": {
+          "value": 0.71875,
+          "ci95": [
+            0.6640625,
+            0.77294921875
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 0,
+        "rate_rescued_common": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 0,
+        "wrong_if_either_old_right": 1043,
+        "probe_nmse": {
+          "value": 0.6023569427244317,
+          "ci95": [
+            0.48354819135777327,
+            0.727098489359205
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "v1": {
+        "wrong": 440,
+        "bler": {
+          "value": 0.21484375,
+          "ci95": [
+            0.169921875,
+            0.26220703125
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 0,
+        "rate_rescued_common": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 0,
+        "wrong_if_either_old_right": 11,
+        "probe_nmse": {
+          "value": 0.12939516810976287,
+          "ci95": [
+            0.10640291138553502,
+            0.15498969465782855
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "clear": {
+        "wrong": 1767,
+        "bler": {
+          "value": 0.86279296875,
+          "ci95": [
+            0.82958984375,
+            0.89306640625
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 15,
+        "rate_rescued_common": {
+          "value": 0.03496503496503497,
+          "ci95": [
+            0.017977528089887642,
+            0.05509696102036832
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 325,
+        "wrong_if_either_old_right": 1353,
+        "probe_nmse": {
+          "value": 0.9350030989073848,
+          "ci95": [
+            0.8252896921316019,
+            1.0523990948181876
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "pilot_only": {
+        "wrong": 1760,
+        "bler": {
+          "value": 0.859375,
+          "ci95": [
+            0.82470703125,
+            0.890625
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 17,
+        "rate_rescued_common": {
+          "value": 0.039627039627039624,
+          "ci95": [
+            0.021211479198767338,
+            0.061033759810773025
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 2,
+        "rate_rescued_triple": {
+          "value": 0.004830917874396135,
+          "ci95": [
+            0.0,
+            0.012316031137870208
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 318,
+        "wrong_if_either_old_right": 1348,
+        "probe_nmse": {
+          "value": 0.9470479311378982,
+          "ci95": [
+            0.8280885576450713,
+            1.0728790949046283
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "rebuild": {
+        "wrong": 1600,
+        "bler": {
+          "value": 0.78125,
+          "ci95": [
+            0.736328125,
+            0.82470703125
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 44,
+        "rate_rescued_common": {
+          "value": 0.10256410256410256,
+          "ci95": [
+            0.06550190841793803,
+            0.14593333764386396
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 32,
+        "rate_rescued_triple": {
+          "value": 0.07729468599033816,
+          "ci95": [
+            0.04488778054862843,
+            0.11628025628856192
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 227,
+        "wrong_if_either_old_right": 1215,
+        "probe_nmse": {
+          "value": 1.2756300436642094,
+          "ci95": [
+            1.108988982399417,
+            1.447136089701432
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "default": {
+        "wrong": 436,
+        "bler": {
+          "value": 0.212890625,
+          "ci95": [
+            0.1689453125,
+            0.2588012695312498
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 0,
+        "rate_rescued_common": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 0,
+        "wrong_if_either_old_right": 7,
+        "probe_nmse": {
+          "value": 0.125670820061416,
+          "ci95": [
+            0.10412935507911332,
+            0.14913399059596785
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "gate": {
+        "wrong": 506,
+        "bler": {
+          "value": 0.2470703125,
+          "ci95": [
+            0.1982421875,
+            0.2998046875
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 6,
+        "rate_rescued_common": {
+          "value": 0.013986013986013986,
+          "ci95": [
+            0.0,
+            0.031914893617021274
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 2,
+        "rate_rescued_triple": {
+          "value": 0.004830917874396135,
+          "ci95": [
+            0.0,
+            0.012987012987012988
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 22,
+        "wrong_if_either_old_right": 83,
+        "probe_nmse": {
+          "value": 0.1845877745046242,
+          "ci95": [
+            0.13376853441084344,
+            0.25072697427054325
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "code_gate": {
+        "wrong": 432,
+        "bler": {
+          "value": 0.2109375,
+          "ci95": [
+            0.16650390625,
+            0.2568359375
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 1,
+        "rate_rescued_common": {
+          "value": 0.002331002331002331,
+          "ci95": [
+            0.0,
+            0.007537688442211055
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 1,
+        "rate_rescued_triple": {
+          "value": 0.0024154589371980675,
+          "ci95": [
+            0.0,
+            0.007797270955165692
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 0,
+        "wrong_if_either_old_right": 4,
+        "probe_nmse": {
+          "value": 0.12562074880525928,
+          "ci95": [
+            0.10327426827235141,
+            0.15054734983432813
+          ],
+          "valid_replicates": 10000
+        }
+      }
+    },
+    "contrasts": {
+      "rebuild_over_pilot_only": {
+        "all_blocks": {
+          "rescued": 239,
+          "lost": 79,
+          "net_rescued": 160,
+          "gain_pp": {
+            "value": 7.8125,
+            "ci95": [
+              4.100341796875001,
+              11.572265625
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 31,
+          "lost": 4,
+          "net_rescued": 27,
+          "gain_pp": {
+            "value": 6.293706293706293,
+            "ci95": [
+              3.100720602685883,
+              10.0
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_clear": {
+        "all_blocks": {
+          "rescued": 238,
+          "lost": 71,
+          "net_rescued": 167,
+          "gain_pp": {
+            "value": 8.154296875,
+            "ci95": [
+              4.541015625,
+              11.9140625
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 32,
+          "lost": 3,
+          "net_rescued": 29,
+          "gain_pp": {
+            "value": 6.75990675990676,
+            "ci95": [
+              3.537676291214027,
+              10.514835747085831
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_p9": {
+        "all_blocks": {
+          "rescued": 102,
+          "lost": 230,
+          "net_rescued": -128,
+          "gain_pp": {
+            "value": -6.25,
+            "ci95": [
+              -9.375,
+              -3.271484375
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 44,
+          "lost": 0,
+          "net_rescued": 44,
+          "gain_pp": {
+            "value": 10.256410256410257,
+            "ci95": [
+              6.550190841793802,
+              14.593333764386397
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_v1": {
+        "all_blocks": {
+          "rescued": 52,
+          "lost": 1212,
+          "net_rescued": -1160,
+          "gain_pp": {
+            "value": -56.640625,
+            "ci95": [
+              -62.939453125,
+              -50.341796875
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 44,
+          "lost": 0,
+          "net_rescued": 44,
+          "gain_pp": {
+            "value": 10.256410256410257,
+            "ci95": [
+              6.550190841793802,
+              14.593333764386397
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_default": {
+        "all_blocks": {
+          "rescued": 49,
+          "lost": 1213,
+          "net_rescued": -1164,
+          "gain_pp": {
+            "value": -56.8359375,
+            "ci95": [
+              -62.98828125,
+              -50.732421875
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 44,
+          "lost": 0,
+          "net_rescued": 44,
+          "gain_pp": {
+            "value": 10.256410256410257,
+            "ci95": [
+              6.550190841793802,
+              14.593333764386397
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "gate_over_default": {
+        "all_blocks": {
+          "rescued": 9,
+          "lost": 79,
+          "net_rescued": -70,
+          "gain_pp": {
+            "value": -3.41796875,
+            "ci95": [
+              -6.348876953124999,
+              -1.07421875
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 6,
+          "lost": 0,
+          "net_rescued": 6,
+          "gain_pp": {
+            "value": 1.3986013986013985,
+            "ci95": [
+              0.0,
+              3.1914893617021276
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "gate_over_p9": {
+        "all_blocks": {
+          "rescued": 990,
+          "lost": 24,
+          "net_rescued": 966,
+          "gain_pp": {
+            "value": 47.16796875,
+            "ci95": [
+              40.185546875,
+              53.955078125
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 6,
+          "lost": 0,
+          "net_rescued": 6,
+          "gain_pp": {
+            "value": 1.3986013986013985,
+            "ci95": [
+              0.0,
+              3.1914893617021276
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "code_gate_over_default": {
+        "all_blocks": {
+          "rescued": 4,
+          "lost": 0,
+          "net_rescued": 4,
+          "gain_pp": {
+            "value": 0.1953125,
+            "ci95": [
+              0.0,
+              0.537109375
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 1,
+          "lost": 0,
+          "net_rescued": 1,
+          "gain_pp": {
+            "value": 0.2331002331002331,
+            "ci95": [
+              0.0,
+              0.7537688442211056
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "code_gate_over_gate": {
+        "all_blocks": {
+          "rescued": 80,
+          "lost": 6,
+          "net_rescued": 74,
+          "gain_pp": {
+            "value": 3.61328125,
+            "ci95": [
+              1.26953125,
+              6.54296875
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 1,
+          "lost": 6,
+          "net_rescued": -5,
+          "gain_pp": {
+            "value": -1.1655011655011656,
+            "ci95": [
+              -3.048813698921303,
+              0.2386634844868735
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      }
+    },
+    "phase": {
+      "clear": {
+        "rel_phase_rmse": {
+          "value": 1.6337602570950072,
+          "ci95": [
+            1.5475634064584427,
+            1.7137349447457015
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.0830477832548768,
+          "ci95": [
+            0.07393022182581965,
+            0.09295913057131946
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 1.2161778939253516,
+          "ci95": [
+            1.1262485991698004,
+            1.3048045861735746
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.04795226439492192,
+          "ci95": [
+            0.04311637961958775,
+            0.05266597963774965
+          ]
+        }
+      },
+      "pilot_only": {
+        "rel_phase_rmse": {
+          "value": 1.634013854824515,
+          "ci95": [
+            1.5485627170916305,
+            1.7135999397736033
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.08454487859665301,
+          "ci95": [
+            0.07504720923687527,
+            0.09486537911337634
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 1.216339748781635,
+          "ci95": [
+            1.1261049203692772,
+            1.3049562421549021
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.04862527403327291,
+          "ci95": [
+            0.043688695294780595,
+            0.05344927350179437
+          ]
+        }
+      },
+      "rebuild": {
+        "rel_phase_rmse": {
+          "value": 1.0793416186418137,
+          "ci95": [
+            0.9777763714191382,
+            1.181629780742521
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.05198517443723363,
+          "ci95": [
+            0.04482633362192817,
+            0.059137289988286025
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 1.1278466902972146,
+          "ci95": [
+            1.0342619626524447,
+            1.2204372648629096
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.03919034294605469,
+          "ci95": [
+            0.0329698671871483,
+            0.045841310814528066
+          ]
+        }
+      }
+    }
+  },
+  "continuous": {
+    "physical_seed_groups": 128,
+    "links": 128,
+    "blocks": 2048,
+    "common_old_failures": 227,
+    "triple_failures": 186,
+    "both_old_right": 1807,
+    "eligible_any_old_right": 1821,
+    "rebuild_used_folds": 62,
+    "rebuild_used_links": 40,
+    "code_rebuild_used_folds": 8,
+    "code_rebuild_used_links": 6,
+    "old_fold_oracle_wrong": 227,
+    "with_rebuild_fold_oracle_wrong": 172,
+    "arm_metrics": {
+      "p9": {
+        "wrong": 229,
+        "bler": {
+          "value": 0.11181640625,
+          "ci95": [
+            0.09326171875,
+            0.130859375
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 0,
+        "rate_rescued_common": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 0,
+        "wrong_if_either_old_right": 2,
+        "probe_nmse": {
+          "value": 0.08711290477970464,
+          "ci95": [
+            0.0749407894975515,
+            0.10068286938746412
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "v1": {
+        "wrong": 239,
+        "bler": {
+          "value": 0.11669921875,
+          "ci95": [
+            0.09716796875,
+            0.1376953125
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 0,
+        "rate_rescued_common": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 0,
+        "wrong_if_either_old_right": 12,
+        "probe_nmse": {
+          "value": 0.08827414367802283,
+          "ci95": [
+            0.07596095448264159,
+            0.10188849182527193
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "clear": {
+        "wrong": 1343,
+        "bler": {
+          "value": 0.65576171875,
+          "ci95": [
+            0.61572265625,
+            0.6953125
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 41,
+        "rate_rescued_common": {
+          "value": 0.18061674008810572,
+          "ci95": [
+            0.12735849056603774,
+            0.2348229444579189
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 1148,
+        "wrong_if_either_old_right": 1157,
+        "probe_nmse": {
+          "value": 0.5418316162313903,
+          "ci95": [
+            0.49217268339138404,
+            0.5946290231286911
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "pilot_only": {
+        "wrong": 1302,
+        "bler": {
+          "value": 0.6357421875,
+          "ci95": [
+            0.59375,
+            0.6767578125
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 43,
+        "rate_rescued_common": {
+          "value": 0.1894273127753304,
+          "ci95": [
+            0.13617021276595745,
+            0.24311971577621874
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 4,
+        "rate_rescued_triple": {
+          "value": 0.021505376344086023,
+          "ci95": [
+            0.005050505050505051,
+            0.04316657784883203
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 1112,
+        "wrong_if_either_old_right": 1118,
+        "probe_nmse": {
+          "value": 0.5287390383684136,
+          "ci95": [
+            0.4773287012264658,
+            0.5838217266453822
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "rebuild": {
+        "wrong": 616,
+        "bler": {
+          "value": 0.30078125,
+          "ci95": [
+            0.2626953125,
+            0.3388793945312498
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 91,
+        "rate_rescued_common": {
+          "value": 0.4008810572687225,
+          "ci95": [
+            0.3170731707317073,
+            0.4849817368276869
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 60,
+        "rate_rescued_triple": {
+          "value": 0.3225806451612903,
+          "ci95": [
+            0.2441860465116279,
+            0.4010989010989011
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 476,
+        "wrong_if_either_old_right": 480,
+        "probe_nmse": {
+          "value": 0.23775922967142907,
+          "ci95": [
+            0.2031359357430054,
+            0.2736539754207265
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "default": {
+        "wrong": 227,
+        "bler": {
+          "value": 0.11083984375,
+          "ci95": [
+            0.0927734375,
+            0.1298828125
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 0,
+        "rate_rescued_common": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 0,
+        "wrong_if_either_old_right": 0,
+        "probe_nmse": {
+          "value": 0.08626387185033264,
+          "ci95": [
+            0.0745017473076477,
+            0.09940954483957645
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "gate": {
+        "wrong": 311,
+        "bler": {
+          "value": 0.15185546875,
+          "ci95": [
+            0.12451171875,
+            0.1806640625
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 21,
+        "rate_rescued_common": {
+          "value": 0.09251101321585903,
+          "ci95": [
+            0.040722142515542806,
+            0.1554645191409897
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 14,
+        "rate_rescued_triple": {
+          "value": 0.07526881720430108,
+          "ci95": [
+            0.02731869208838204,
+            0.13259668508287292
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 103,
+        "wrong_if_either_old_right": 105,
+        "probe_nmse": {
+          "value": 0.1190095852916832,
+          "ci95": [
+            0.09960257793332006,
+            0.1408235711922924
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "code_gate": {
+        "wrong": 224,
+        "bler": {
+          "value": 0.109375,
+          "ci95": [
+            0.09130859375,
+            0.12841796875
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 6,
+        "rate_rescued_common": {
+          "value": 0.02643171806167401,
+          "ci95": [
+            0.0,
+            0.06726457399103139
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 6,
+        "rate_rescued_triple": {
+          "value": 0.03225806451612903,
+          "ci95": [
+            0.0,
+            0.08108108108108109
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 2,
+        "wrong_if_either_old_right": 3,
+        "probe_nmse": {
+          "value": 0.0854324148217412,
+          "ci95": [
+            0.07383377921888255,
+            0.09836638909805678
+          ],
+          "valid_replicates": 10000
+        }
+      }
+    },
+    "contrasts": {
+      "rebuild_over_pilot_only": {
+        "all_blocks": {
+          "rescued": 738,
+          "lost": 52,
+          "net_rescued": 686,
+          "gain_pp": {
+            "value": 33.49609375,
+            "ci95": [
+              28.759765625,
+              38.28125
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 58,
+          "lost": 10,
+          "net_rescued": 48,
+          "gain_pp": {
+            "value": 21.145374449339208,
+            "ci95": [
+              13.168724279835391,
+              28.947983275946868
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_clear": {
+        "all_blocks": {
+          "rescued": 771,
+          "lost": 44,
+          "net_rescued": 727,
+          "gain_pp": {
+            "value": 35.498046875,
+            "ci95": [
+              30.859375,
+              40.185546875
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 60,
+          "lost": 10,
+          "net_rescued": 50,
+          "gain_pp": {
+            "value": 22.026431718061673,
+            "ci95": [
+              14.163090128755364,
+              29.71698113207547
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_p9": {
+        "all_blocks": {
+          "rescued": 92,
+          "lost": 479,
+          "net_rescued": -387,
+          "gain_pp": {
+            "value": -18.896484375,
+            "ci95": [
+              -22.998046875,
+              -14.6484375
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 91,
+          "lost": 0,
+          "net_rescued": 91,
+          "gain_pp": {
+            "value": 40.08810572687225,
+            "ci95": [
+              31.70731707317073,
+              48.49817368276869
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_v1": {
+        "all_blocks": {
+          "rescued": 100,
+          "lost": 477,
+          "net_rescued": -377,
+          "gain_pp": {
+            "value": -18.408203125,
+            "ci95": [
+              -22.559814453125,
+              -14.111328125
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 91,
+          "lost": 0,
+          "net_rescued": 91,
+          "gain_pp": {
+            "value": 40.08810572687225,
+            "ci95": [
+              31.70731707317073,
+              48.49817368276869
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_default": {
+        "all_blocks": {
+          "rescued": 91,
+          "lost": 480,
+          "net_rescued": -389,
+          "gain_pp": {
+            "value": -18.994140625,
+            "ci95": [
+              -23.095703125,
+              -14.74609375
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 91,
+          "lost": 0,
+          "net_rescued": 91,
+          "gain_pp": {
+            "value": 40.08810572687225,
+            "ci95": [
+              31.70731707317073,
+              48.49817368276869
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "gate_over_default": {
+        "all_blocks": {
+          "rescued": 21,
+          "lost": 105,
+          "net_rescued": -84,
+          "gain_pp": {
+            "value": -4.1015625,
+            "ci95": [
+              -6.54296875,
+              -1.904296875
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 21,
+          "lost": 0,
+          "net_rescued": 21,
+          "gain_pp": {
+            "value": 9.251101321585903,
+            "ci95": [
+              4.07221425155428,
+              15.54645191409897
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "gate_over_p9": {
+        "all_blocks": {
+          "rescued": 22,
+          "lost": 104,
+          "net_rescued": -82,
+          "gain_pp": {
+            "value": -4.00390625,
+            "ci95": [
+              -6.494140625,
+              -1.7578125
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 21,
+          "lost": 0,
+          "net_rescued": 21,
+          "gain_pp": {
+            "value": 9.251101321585903,
+            "ci95": [
+              4.07221425155428,
+              15.54645191409897
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "code_gate_over_default": {
+        "all_blocks": {
+          "rescued": 6,
+          "lost": 3,
+          "net_rescued": 3,
+          "gain_pp": {
+            "value": 0.146484375,
+            "ci95": [
+              -0.09765625,
+              0.48828125
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 6,
+          "lost": 0,
+          "net_rescued": 6,
+          "gain_pp": {
+            "value": 2.643171806167401,
+            "ci95": [
+              0.0,
+              6.726457399103139
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "code_gate_over_gate": {
+        "all_blocks": {
+          "rescued": 103,
+          "lost": 16,
+          "net_rescued": 87,
+          "gain_pp": {
+            "value": 4.248046875,
+            "ci95": [
+              2.099609375,
+              6.689453125
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 0,
+          "lost": 15,
+          "net_rescued": -15,
+          "gain_pp": {
+            "value": -6.607929515418502,
+            "ci95": [
+              -12.06051810778028,
+              -2.4387775254270796
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      }
+    },
+    "phase": {
+      "clear": {
+        "rel_phase_rmse": {
+          "value": 0.9200988385130789,
+          "ci95": [
+            0.8205856815735979,
+            1.0256180332272846
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.07483251777090169,
+          "ci95": [
+            0.06272411769018518,
+            0.08719389648794751
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 0.568897521904364,
+          "ci95": [
+            0.5178234983573738,
+            0.623295861344624
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.03809941885432731,
+          "ci95": [
+            0.032256562167449813,
+            0.04389599301615678
+          ]
+        }
+      },
+      "pilot_only": {
+        "rel_phase_rmse": {
+          "value": 0.9163508808683701,
+          "ci95": [
+            0.8171917146512993,
+            1.0215845147156468
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.07659409312423517,
+          "ci95": [
+            0.06394751538310667,
+            0.08938162543956434
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 0.5649397758300589,
+          "ci95": [
+            0.5140306595968721,
+            0.6190114565930164
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.03891959136615532,
+          "ci95": [
+            0.03287060796422892,
+            0.04491553731108502
+          ]
+        }
+      },
+      "rebuild": {
+        "rel_phase_rmse": {
+          "value": 0.2545721606433535,
+          "ci95": [
+            0.23529278375441215,
+            0.27598961400858785
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.010863360918514612,
+          "ci95": [
+            0.008775682351058337,
+            0.012900170537811539
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 0.3047860948020464,
+          "ci95": [
+            0.27476126018269814,
+            0.33656392086702624
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.009076212781666038,
+          "ci95": [
+            0.006602922880938137,
+            0.012370681851658029
+          ]
+        }
+      }
+    }
+  },
+  "equal_weight": {
+    "physical_seed_groups": 128,
+    "links": 384,
+    "blocks": 6144,
+    "common_old_failures": 1897,
+    "triple_failures": 1804,
+    "both_old_right": 3134,
+    "eligible_any_old_right": 4247,
+    "rebuild_used_folds": 325,
+    "rebuild_used_links": 180,
+    "code_rebuild_used_folds": 269,
+    "code_rebuild_used_links": 139,
+    "old_fold_oracle_wrong": 1903,
+    "with_rebuild_fold_oracle_wrong": 1157,
+    "arm_metrics": {
+      "p9": {
+        "wrong": 2947,
+        "bler": {
+          "value": 0.4796549479166667,
+          "ci95": [
+            0.45458984375,
+            0.5047200520833334
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 0,
+        "rate_rescued_common": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 0,
+        "wrong_if_either_old_right": 1050,
+        "probe_nmse": {
+          "value": 0.40445541010939606,
+          "ci95": [
+            0.3610508240998066,
+            0.45025104817950323
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "v1": {
+        "wrong": 1960,
+        "bler": {
+          "value": 0.3190104166666667,
+          "ci95": [
+            0.2942708333333333,
+            0.3440755208333333
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 0,
+        "rate_rescued_common": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 0,
+        "wrong_if_either_old_right": 63,
+        "probe_nmse": {
+          "value": 0.27485164935564843,
+          "ci95": [
+            0.24343935182013357,
+            0.3106219753391192
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "clear": {
+        "wrong": 4331,
+        "bler": {
+          "value": 0.7049153645833334,
+          "ci95": [
+            0.67789306640625,
+            0.7306315104166666
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 93,
+        "rate_rescued_common": {
+          "value": 0.04902477596204533,
+          "ci95": [
+            0.03399872835420986,
+            0.06618093302465257
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 1485,
+        "wrong_if_either_old_right": 2527,
+        "probe_nmse": {
+          "value": 0.6542795512796036,
+          "ci95": [
+            0.6063629109922941,
+            0.7047575587324695
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "pilot_only": {
+        "wrong": 4272,
+        "bler": {
+          "value": 0.6953125,
+          "ci95": [
+            0.6668294270833334,
+            0.72249755859375
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 144,
+        "rate_rescued_common": {
+          "value": 0.07590933052187665,
+          "ci95": [
+            0.05789720821295657,
+            0.09586074650245772
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 56,
+        "rate_rescued_triple": {
+          "value": 0.031042128603104215,
+          "ci95": [
+            0.02206287920573635,
+            0.0412803880864016
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 1477,
+        "wrong_if_either_old_right": 2519,
+        "probe_nmse": {
+          "value": 0.6512396317027616,
+          "ci95": [
+            0.5996013129515207,
+            0.7055238282433591
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "rebuild": {
+        "wrong": 2832,
+        "bler": {
+          "value": 0.4609375,
+          "ci95": [
+            0.43603515625,
+            0.4851888020833333
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 833,
+        "rate_rescued_common": {
+          "value": 0.43911439114391143,
+          "ci95": [
+            0.39251313236477214,
+            0.48641194281698436
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 756,
+        "rate_rescued_triple": {
+          "value": 0.4190687361419069,
+          "ci95": [
+            0.37094686787755266,
+            0.4681342626016328
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 771,
+        "wrong_if_either_old_right": 1768,
+        "probe_nmse": {
+          "value": 0.5859783321196285,
+          "ci95": [
+            0.5281510704342575,
+            0.6456503484049742
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "default": {
+        "wrong": 1915,
+        "bler": {
+          "value": 0.3116861979166667,
+          "ci95": [
+            0.287109375,
+            0.33642578125
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 0,
+        "rate_rescued_common": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 0,
+        "rate_rescued_triple": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 0,
+        "wrong_if_either_old_right": 18,
+        "probe_nmse": {
+          "value": 0.2567529995488787,
+          "ci95": [
+            0.2305179383742342,
+            0.2876198588674547
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "gate": {
+        "wrong": 1470,
+        "bler": {
+          "value": 0.2392578125,
+          "ci95": [
+            0.21451822916666666,
+            0.2648152669270833
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 683,
+        "rate_rescued_common": {
+          "value": 0.3600421718502899,
+          "ci95": [
+            0.3143007881620899,
+            0.40802085463931864
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 638,
+        "rate_rescued_triple": {
+          "value": 0.35365853658536583,
+          "ci95": [
+            0.3058029908133774,
+            0.403010496062394
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 186,
+        "wrong_if_either_old_right": 256,
+        "probe_nmse": {
+          "value": 0.19040652162050925,
+          "ci95": [
+            0.16490119061069858,
+            0.21997528814071785
+          ],
+          "valid_replicates": 10000
+        }
+      },
+      "code_gate": {
+        "wrong": 1266,
+        "bler": {
+          "value": 0.2060546875,
+          "ci95": [
+            0.18229166666666666,
+            0.22981770833333334
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_common": 705,
+        "rate_rescued_common": {
+          "value": 0.3716394306800211,
+          "ci95": [
+            0.3262137942667457,
+            0.41863289760348577
+          ],
+          "valid_replicates": 10000
+        },
+        "rescued_triple": 671,
+        "rate_rescued_triple": {
+          "value": 0.3719512195121951,
+          "ci95": [
+            0.324133219721455,
+            0.4205515788773997
+          ],
+          "valid_replicates": 10000
+        },
+        "wrong_if_both_old_right": 64,
+        "wrong_if_either_old_right": 74,
+        "probe_nmse": {
+          "value": 0.15653739875395256,
+          "ci95": [
+            0.13714707456170627,
+            0.1784667034978193
+          ],
+          "valid_replicates": 10000
+        }
+      }
+    },
+    "contrasts": {
+      "rebuild_over_pilot_only": {
+        "all_blocks": {
+          "rescued": 1643,
+          "lost": 203,
+          "net_rescued": 1440,
+          "gain_pp": {
+            "value": 23.4375,
+            "ci95": [
+              20.572916666666668,
+              26.253255208333332
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 714,
+          "lost": 25,
+          "net_rescued": 689,
+          "gain_pp": {
+            "value": 36.32050606220348,
+            "ci95": [
+              31.464816947304087,
+              41.214842810575014
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_clear": {
+        "all_blocks": {
+          "rescued": 1683,
+          "lost": 184,
+          "net_rescued": 1499,
+          "gain_pp": {
+            "value": 24.397786458333332,
+            "ci95": [
+              21.663411458333332,
+              27.099609375
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 756,
+          "lost": 16,
+          "net_rescued": 740,
+          "gain_pp": {
+            "value": 39.00896151818661,
+            "ci95": [
+              34.2222845431964,
+              43.88534913524817
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_p9": {
+        "all_blocks": {
+          "rescued": 894,
+          "lost": 779,
+          "net_rescued": 115,
+          "gain_pp": {
+            "value": 1.8717447916666667,
+            "ci95": [
+              -0.6840006510416663,
+              4.4921875
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 833,
+          "lost": 0,
+          "net_rescued": 833,
+          "gain_pp": {
+            "value": 43.91143911439114,
+            "ci95": [
+              39.25131323647721,
+              48.64119428169844
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_v1": {
+        "all_blocks": {
+          "rescued": 888,
+          "lost": 1760,
+          "net_rescued": -872,
+          "gain_pp": {
+            "value": -14.192708333333334,
+            "ci95": [
+              -17.253011067708336,
+              -11.067301432291673
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 833,
+          "lost": 0,
+          "net_rescued": 833,
+          "gain_pp": {
+            "value": 43.91143911439114,
+            "ci95": [
+              39.25131323647721,
+              48.64119428169844
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "rebuild_over_default": {
+        "all_blocks": {
+          "rescued": 846,
+          "lost": 1763,
+          "net_rescued": -917,
+          "gain_pp": {
+            "value": -14.925130208333334,
+            "ci95": [
+              -17.936604817708336,
+              -11.848958333333334
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 833,
+          "lost": 0,
+          "net_rescued": 833,
+          "gain_pp": {
+            "value": 43.91143911439114,
+            "ci95": [
+              39.25131323647721,
+              48.64119428169844
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "gate_over_default": {
+        "all_blocks": {
+          "rescued": 692,
+          "lost": 247,
+          "net_rescued": 445,
+          "gain_pp": {
+            "value": 7.242838541666667,
+            "ci95": [
+              5.240885416666667,
+              9.228515625
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 683,
+          "lost": 0,
+          "net_rescued": 683,
+          "gain_pp": {
+            "value": 36.00421718502899,
+            "ci95": [
+              31.430078816208987,
+              40.80208546393187
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "gate_over_p9": {
+        "all_blocks": {
+          "rescued": 1668,
+          "lost": 191,
+          "net_rescued": 1477,
+          "gain_pp": {
+            "value": 24.039713541666668,
+            "ci95": [
+              21.09375,
+              26.953125
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 683,
+          "lost": 0,
+          "net_rescued": 683,
+          "gain_pp": {
+            "value": 36.00421718502899,
+            "ci95": [
+              31.430078816208987,
+              40.80208546393187
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "code_gate_over_default": {
+        "all_blocks": {
+          "rescued": 716,
+          "lost": 67,
+          "net_rescued": 649,
+          "gain_pp": {
+            "value": 10.563151041666666,
+            "ci95": [
+              8.935546875,
+              12.223307291666666
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 705,
+          "lost": 0,
+          "net_rescued": 705,
+          "gain_pp": {
+            "value": 37.16394306800211,
+            "ci95": [
+              32.62137942667457,
+              41.86328976034858
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      },
+      "code_gate_over_gate": {
+        "all_blocks": {
+          "rescued": 233,
+          "lost": 29,
+          "net_rescued": 204,
+          "gain_pp": {
+            "value": 3.3203125,
+            "ci95": [
+              2.1158854166666665,
+              4.671223958333333
+            ],
+            "valid_replicates": 10000
+          }
+        },
+        "common_old_failures": {
+          "rescued": 43,
+          "lost": 21,
+          "net_rescued": 22,
+          "gain_pp": {
+            "value": 1.1597258829731154,
+            "ci95": [
+              -0.3762388556232536,
+              2.977830343852202
+            ],
+            "valid_replicates": 10000
+          }
+        }
+      }
+    },
+    "phase": {
+      "clear": {
+        "rel_phase_rmse": {
+          "value": 1.157764329381306,
+          "ci95": [
+            1.0986477413074014,
+            1.2164541306218415
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.07533780256371445,
+          "ci95": [
+            0.06730695686093371,
+            0.08345980634543629
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 0.8271648510392567,
+          "ci95": [
+            0.7783349138545187,
+            0.8752041081529097
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.04100784655603743,
+          "ci95": [
+            0.037079507053606,
+            0.04491644220276682
+          ]
+        }
+      },
+      "pilot_only": {
+        "rel_phase_rmse": {
+          "value": 1.1572315206920658,
+          "ci95": [
+            1.098015010332473,
+            1.2159161689856448
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.0761178976991232,
+          "ci95": [
+            0.06782021263247402,
+            0.08459088770042265
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 0.8261145814062869,
+          "ci95": [
+            0.7773494967289798,
+            0.8746478059601391
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.04135405037980754,
+          "ci95": [
+            0.03729695220629174,
+            0.04541306134533135
+          ]
+        }
+      },
+      "rebuild": {
+        "rel_phase_rmse": {
+          "value": 0.636566553184229,
+          "ci95": [
+            0.5798297568766871,
+            0.6952533884016942
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.030280788218021014,
+          "ci95": [
+            0.026388437124054302,
+            0.03413207277872847
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 0.6978068122955386,
+          "ci95": [
+            0.6466088152411628,
+            0.7476618421467491
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.024132028436524736,
+          "ci95": [
+            0.020606836690146155,
+            0.02788324537075703
+          ]
+        }
+      }
+    }
+  },
+  "oracle_phase_subset": {
+    "regime": "full_reset",
+    "nlinks": 32,
+    "blocks": 512,
+    "metrics": {
+      "pilot_only": {
+        "wrong": 292,
+        "oracle_wrong": 176,
+        "rescued": 122,
+        "lost": 6,
+        "common_old": 302,
+        "oracle_rescued_common": 132
+      },
+      "rebuild": {
+        "wrong": 132,
+        "oracle_wrong": 40,
+        "rescued": 100,
+        "lost": 8,
+        "common_old": 302,
+        "oracle_rescued_common": 267
+      }
+    }
+  }
+}
