@@ -1,0 +1,214 @@
+{
+  "status": "PASS",
+  "environment": {
+    "python": "3.12.7",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1"
+  },
+  "physics_reference": {
+    "continuous_err_a_vs_p8": 6.753223014464258e-16,
+    "continuous_err_b_vs_p8c": 4.47545209131181e-16,
+    "continuous_passed": true,
+    "piecewise_doppler_shifts": {
+      "shift_row_0": {
+        "t_shift": 30.0,
+        "phase_jump_rad": 0.0,
+        "gain_jump": 1.3010426069826053e-17,
+        "reanchored_max_gain_err": 3.242535543737154e-15,
+        "serial_vs_blockwise_err_a": 6.753223014464258e-16,
+        "serial_vs_blockwise_err_b": 2.482534153247273e-16,
+        "passed": true
+      },
+      "shift_row_6": {
+        "t_shift": 39.0,
+        "phase_jump_rad": 1.7763568394002505e-15,
+        "gain_jump": 1.1060518526157679e-15,
+        "reanchored_max_gain_err": 4.010656666373001e-15,
+        "serial_vs_blockwise_err_a": 6.753223014464258e-16,
+        "serial_vs_blockwise_err_b": 4.47545209131181e-16,
+        "passed": true
+      }
+    }
+  },
+  "mini_codebook_ml_verifier": {
+    "snr_6db": {
+      "code": {
+        "n": 16,
+        "k": 8,
+        "d_min": 5,
+        "codewords": 256,
+        "qam_symbols": 4
+      },
+      "n_trials": 200,
+      "snr_db": 6.0,
+      "n0": 0.251188643150958,
+      "seed": 91001608,
+      "eps_tie": 1e-10,
+      "max_conv_err": 4.577566798522237e-16,
+      "neighbors_cert_hits": 11,
+      "subset_cert_hits": 19,
+      "full_cert_hits": 53,
+      "ml_errors": 53,
+      "decoder_errors": 108,
+      "neighbors_cert_rate": 0.055,
+      "cert_rate": 0.095,
+      "full_cert_rate": 0.265,
+      "ml_bler": 0.265,
+      "decoder_bler": 0.54,
+      "neighbors_false_positives": 0,
+      "false_positives": 0,
+      "full_false_positives": 0,
+      "inequality_holds": true,
+      "soundness_verified": true
+    },
+    "snr_9db": {
+      "code": {
+        "n": 16,
+        "k": 8,
+        "d_min": 5,
+        "codewords": 256,
+        "qam_symbols": 4
+      },
+      "n_trials": 200,
+      "snr_db": 9.0,
+      "n0": 0.12589254117941673,
+      "seed": 91001609,
+      "eps_tie": 1e-10,
+      "max_conv_err": 4.449557262054371e-16,
+      "neighbors_cert_hits": 0,
+      "subset_cert_hits": 3,
+      "full_cert_hits": 6,
+      "ml_errors": 6,
+      "decoder_errors": 40,
+      "neighbors_cert_rate": 0.0,
+      "cert_rate": 0.015,
+      "full_cert_rate": 0.03,
+      "ml_bler": 0.03,
+      "decoder_bler": 0.2,
+      "neighbors_false_positives": 0,
+      "false_positives": 0,
+      "full_false_positives": 0,
+      "inequality_holds": true,
+      "soundness_verified": true
+    }
+  },
+  "p8c_g10_crosscheck": {
+    "clusters": 10,
+    "df": 9,
+    "exact_sign_patterns": 1024,
+    "max_aggregate_diff": 0.0,
+    "max_stat_diff": 6.938893903907228e-18,
+    "max_ci95_diff": 3.716582597235174e-12,
+    "holm_exact_values": [
+      {
+        "control": "reset",
+        "metric": "bler",
+        "raw_exact": "1/512",
+        "holm_exact": "1/128",
+        "verdict": "supported"
+      },
+      {
+        "control": "reset",
+        "metric": "probe_nmse",
+        "raw_exact": "1/512",
+        "holm_exact": "1/128",
+        "verdict": "supported"
+      },
+      {
+        "control": "mismatch",
+        "metric": "bler",
+        "raw_exact": "1/512",
+        "holm_exact": "1/128",
+        "verdict": "supported"
+      },
+      {
+        "control": "mismatch",
+        "metric": "probe_nmse",
+        "raw_exact": "1/512",
+        "holm_exact": "1/128",
+        "verdict": "supported"
+      }
+    ],
+    "noninferiority": {
+      "mean_diff": 0.032421875,
+      "upper_95": 0.05151083328468054,
+      "margin": 0.01,
+      "passes": false
+    },
+    "delivery_summary": {
+      "sparse_carry_extra_delivered": 341,
+      "sparse_carry_net_bits_per_frame": 530.6,
+      "dense_reset_net_bits_per_frame": 495.6,
+      "net_extra_blocks_gain": 175
+    },
+    "passed": true
+  },
+  "p9_g16_synthetic_audit": {
+    "g16_all_positive_raw_exact": "1/32768",
+    "g16_exact_patterns": 65536,
+    "g16_single_test_ms": 3.381,
+    "g16_full_audit_ms": 238.053,
+    "opposite_sign_verdict": "refuted",
+    "clusters": 16,
+    "df": 15,
+    "links": 384,
+    "max_aggregate_diff": 0.0,
+    "max_stat_diff": 0.0,
+    "replay_all_fields_match": true,
+    "replay_exact_bytes_match": true,
+    "seed_disjointness": true,
+    "holm_verdicts": [
+      {
+        "name": "decoder",
+        "raw_exact": "1/32768",
+        "holm_exact": "1/8192",
+        "mean_diff": 0.11263020833333334,
+        "direction_aligned": true,
+        "supported": true,
+        "verdict": "supported"
+      },
+      {
+        "name": "classical_gate",
+        "raw_exact": "1/32768",
+        "holm_exact": "1/8192",
+        "mean_diff": 0.15022786458333334,
+        "direction_aligned": true,
+        "supported": true,
+        "verdict": "supported"
+      },
+      {
+        "name": "attention_vs_classical",
+        "raw_exact": "1/32768",
+        "holm_exact": "1/8192",
+        "mean_diff": 0.07291666666666667,
+        "direction_aligned": true,
+        "supported": true,
+        "verdict": "supported"
+      },
+      {
+        "name": "attention_vs_local",
+        "raw_exact": "1/8192",
+        "holm_exact": "1/8192",
+        "mean_diff": 0.07047526041666669,
+        "direction_aligned": true,
+        "supported": true,
+        "verdict": "supported"
+      }
+    ],
+    "noninferiority": {
+      "df": 15,
+      "mean_diff": -0.025716145833333336,
+      "upper_95": -0.013863556146757902,
+      "margin": 0.01,
+      "passes": true
+    },
+    "passed": true
+  },
+  "firewall_checks": {
+    "p9_modules_no_hardcoded_n0": true,
+    "legacy_p8_n0_detected_count": 4,
+    "public_observation_valid": true,
+    "clean_receiver_passed": true,
+    "planted_probe_leak_caught": true
+  }
+}

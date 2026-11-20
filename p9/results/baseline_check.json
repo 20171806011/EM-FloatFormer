@@ -1,0 +1,32 @@
+{
+  "p8c_baseline": {
+    "branch": "origin/research/p8c-ofdm-single-carrier",
+    "commit": "ce2ff50e81f6b529ec0311393da0013b0a85b801",
+    "p8_unit_tests": "9/9 OK (0.361s)",
+    "p8c_unit_tests": "7/7 OK (0.141s)",
+    "replay_clusters": [1, 10],
+    "replay_links": 64,
+    "replay_cells": 512,
+    "replay_platform": "Windows-11 Python 3.12.7 NumPy 1.26.4 SciPy 1.13.1 vs Linux Python 3.12.14 NumPy 2.3.5 SciPy 1.17.0",
+    "int_field_diffs": 0,
+    "max_float_diff": 8.527e-11,
+    "verdict": "PASSED (exact zero decision/integer divergence; pure cross-BLAS ULP)"
+  },
+  "p8_manifold_baseline": {
+    "branch": "research/p8-coherent-transport-manifold",
+    "commit": "e76c61eef26151985963460b0ab03684cd562e3e",
+    "worktree": "C:/Users/李则徐/.gemini/antigravity/scratch/EM-FloatFormer",
+    "freeze_sha256": "0ccd481df572555f0e51340d597f4b719d09be43e2c091b971424d5dd980121d",
+    "cross_phase_regression": "7/7 suites PASSED",
+    "checkpoint_replay": "40/40 PASSED",
+    "gauge_audit": "120/120 rel <1e-12, 113/120 strict abs <1e-12 (30/30 Transport/AbsNoTransport/Local), 3,240 transforms, 0 flips",
+    "key_findings": {
+      "o1_bce_transport_vs_local": "9/10 wins, +0.0026, p_holm=0.02344 (SIG)",
+      "o1_bler_transport_vs_local": "81.67% vs 81.61%, 5/10, p_holm=0.95312 (NS)",
+      "o0_double_dissociation": "Transport wins BCE (p_holm=0.01562) while AbsNoTransport wins BLER (p_holm=0.01758)",
+      "o2_blind_rejection": "143.8x rejection ratio, +24.64 pp vs LMMSE (10/10, p_holm=0.00586)",
+      "o3_assimilate": "All 6 arms positive P1->P2 BLER; Transport BCE & 4.92x selectivity 10/10 (p_holm=0.00781)",
+      "scaling_ladder": "Chinchilla fixed-budget optimum at Small 2,063 params (57.3% > Medium 68.1% > Large 86.1%)"
+    }
+  }
+}

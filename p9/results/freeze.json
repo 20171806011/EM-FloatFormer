@@ -1,0 +1,142 @@
+{
+  "created_utc": "2026-11-20T02:44:11.815277+00:00",
+  "registration": "within-session prospective freeze before formal P9 closed-book evaluation",
+  "design": {
+    "p8c_baseline_commit": "ce2ff50e81f6b529ec0311393da0013b0a85b801",
+    "p8_manifold_commit": "e76c61eef26151985963460b0ab03684cd562e3e",
+    "primary_snr_db": 9.0,
+    "snr_grid_db": [
+      6.0,
+      9.0,
+      12.0,
+      15.0
+    ],
+    "regimes_id": [
+      "continuous",
+      "partial_shift",
+      "full_reset"
+    ],
+    "regimes_ood": [
+      "ood_strong_shift",
+      "ood_midframe_shift"
+    ],
+    "regimes_sanity": [
+      "donor_mismatch"
+    ],
+    "formal_clusters": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "links_per_cluster_id": 32,
+    "links_per_cluster_ood": 16,
+    "replay_clusters": [
+      1,
+      16
+    ],
+    "seed_bases": {
+      "dev": 910000000000,
+      "train": 920000000000,
+      "formal_id": 930000000000,
+      "formal_ood": 940000000000
+    },
+    "decoder_config": {
+      "list_size": "large",
+      "bp_iters": 20,
+      "turbo_pic": true,
+      "pic_scale": 0.75
+    },
+    "neural_config": {
+      "d_model": 12,
+      "n_heads": 4,
+      "n_layers": 1,
+      "real_parameters": 2426,
+      "seeds": [
+        901,
+        902,
+        903
+      ],
+      "variants": [
+        "transport_attn",
+        "abs_no_transport",
+        "local",
+        "no_history"
+      ],
+      "ensemble_rule": "equal_weight_mean_logit"
+    },
+    "holm_family": [
+      "decoder: native_ldpc - strong_large (9 dB true_csi continuous)",
+      "classical_gate: always_inherit - jeffreys_student_t (9 dB sparse 3-ID strong_large)",
+      "attention_vs_classical: jeffreys_student_t - transport_attn (9 dB sparse 3-ID strong_large)",
+      "attention_vs_local: local - transport_attn (9 dB sparse 3-ID strong_large)"
+    ],
+    "noninferiority_margin": 0.01
+  },
+  "sources": {
+    "p9/__init__.py": "b4777e51ee912a578097d6bcf493bf695a9e323b4241636c3b95d669856af337",
+    "p9/audit.py": "ac3c78b51269d2bc2d56e13f20b5b2a5556abb6873c774f460939f1f6b5e7163",
+    "p9/channel.py": "d2cf3b28d8113c3a92bf55b8a73b3b8568b4f632e05015453376f3ff23a7b755",
+    "p9/contract.py": "4d4ddfafe709f4bdddda16305841e91972e1c33534bfb5e995e8777d6f6a1af3",
+    "p9/decoder.py": "a50e569812a34226f0a5b6591bf04a4900b386824566dce934ea7071b755b676",
+    "p9/formal_study.py": "7d518f0f750aaaa38eb1c464de1a44b792c9e20cd37b76304bfa8159226efac4",
+    "p9/freeze.py": "0a389fd77744d8b56f28b4bb45b163406e989a0fbb8af238868b5cd984d5a81b",
+    "p9/gating.py": "11f68baa58625fd3881fc908af5cd541242d8866cc119d40e33500c258aba05c",
+    "p9/independent_ref.py": "cefe4f34b7321cf864d522de4ce9f140bb92dec3d2495d4c4d49355ed1678830",
+    "p9/neural_gate.py": "098126ab864ff87dcbffd75b47814ba1d3bf536e91291619e4517c60362c5ec6",
+    "p9/p9a_study.py": "a8c40d6ae8307e666b01d1b6f752b38fa359d22381fa583f54d24f303d380d06",
+    "p9/p9b_dev.py": "a2ad94c5328cca533382094c6a652a1abfdf928c901b94a2d839062c2e8ce47f",
+    "p9/p9c_dev.py": "f3dce4d6f73463c73e7e624c382b9ff97742f4f899a9c299191f2e27764dee6d",
+    "p9/report.py": "b5acc11c9fed953a4eb52722c4cd76eafff23cd45dc57a402c1d7dae5e0a1ff9",
+    "p9/tests/__init__.py": "731d8c3b51eb9dd3003b73306ca874965fbbb950c11e7733733d251e26008c69",
+    "p9/tests/test_p9_audit.py": "c7bfe02a7a9415836db70d66028a5864d88100a62c18e0894973569b769840b0",
+    "p9/tests/test_p9a.py": "4478df41c1d043182fb96368aa92ee7dee0cd715d6fc8aa961f66a3b135f668c",
+    "p9/tests/test_p9b.py": "9283c1bb9483842c0bc50ac61b122d26999f1beb8d48d90700806a5dfaaa0dc5",
+    "p9/tests/test_p9c.py": "13256f2bc9f380ae5cd8d0ebc39b113feb685671395e4af2871ada2982d4a3d9",
+    "p9/PROTOCOL.md": "1d1b96c8e67e8b26f7a2b27e51624d4ae74ce26846bcfeff0eb58a220460b496",
+    "p9/results/baseline_check.json": "88417ffce58d785a567172dc4f7b4d1d7bda80194b69514c4dc01320893e7f85",
+    "p9/results/p9a_dev_attribution.json": "b0ecbfa1ea65465d8b9dc31bf8ab3865e3271fd25e9cef234787fb4497f26ad3",
+    "p9/results/p9b_dev_gating.json": "4539a9abd1a0eb11576718816bdc6620f11a378231bbfb332f71ca90a0fc5034",
+    "p9/results/p9c_dev_gate.json": "edd06d4aab95de1e74ecc704fc0738a35e173ef39ceded1e54f63252bce84aed",
+    "p9/results/p9_audit_selftest.json": "463ea75fbc98d50e766309d242cbc122289acba0bb04fdc769213c005717de68"
+  },
+  "checkpoints": {
+    "p9/results/p9c_dev_ckpts/transport_attn_seed901.pt": "4e5d018c4d84923bb2b690b71c2169665bf13fb8ab91db877c93cce6d5565d21",
+    "p9/results/p9c_dev_ckpts/transport_attn_seed902.pt": "c5235dfb6e9f22ec2d536b5c72948e84dd46ad585b634aea6458c30e82774548",
+    "p9/results/p9c_dev_ckpts/transport_attn_seed903.pt": "5bcb25c40e31e86c857ac51fd111db6377a84f54f68a3ac0495e86377bc41432",
+    "p9/results/p9c_dev_ckpts/abs_no_transport_seed901.pt": "453f9f66a4469b88f01723d03d46377e9dfce634fbc95365a25e1ebdf68dde70",
+    "p9/results/p9c_dev_ckpts/abs_no_transport_seed902.pt": "b3345b5e88aa4f3336b0a59bada9419959b5d98d6f4b62a58b9a953689f65ebe",
+    "p9/results/p9c_dev_ckpts/abs_no_transport_seed903.pt": "098daeb752d08ebe0e5216eadad029fd8ac883bad4d2c97c54c1d8c4d0f9fd05",
+    "p9/results/p9c_dev_ckpts/local_seed901.pt": "99d8e9a3b64d57fd99cde79726d16fc357b6b113c054effb2f8aba395ca9a188",
+    "p9/results/p9c_dev_ckpts/local_seed902.pt": "973681094359c416af53a793dcce87c07dc012b74177773f800218c3480dcaa1",
+    "p9/results/p9c_dev_ckpts/local_seed903.pt": "5d6a2f6db19b946625dcf5e0cf431c82851a245c49a9b781883ef8a68064c2da",
+    "p9/results/p9c_dev_ckpts/no_history_seed901.pt": "04bf167cf40a52bd07d37bdb477bad241d3534af370fd34f4d414f00e0fafd6a",
+    "p9/results/p9c_dev_ckpts/no_history_seed902.pt": "a8da6ea95a419642fc2a27e078ac09420ec9c1762aeaa53b348c2f867c8d19fd",
+    "p9/results/p9c_dev_ckpts/no_history_seed903.pt": "458b14e5ae657b1eda497c7a835ee76aeb0cb2f78667faa3ad9af186341d8f28"
+  },
+  "environment": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "numba": "0.60.0",
+    "torch": "2.12.1+cpu",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "cpu_count": 12,
+    "torch_threads": 1,
+    "deterministic": true,
+    "precision": "float64/complex128"
+  }
+}
