@@ -1,0 +1,37 @@
+{
+  "id": "EM-FloatFormer-math2-finite-validation-v1",
+  "description": "Locked before the validation program was run. These choices are independent of P12 formal results. Population evaluation is an exact enumeration of fresh frames, independent of calibration training frames.",
+  "true": {
+    "H_order": [1, -2],
+    "p_branch_0": "3/5",
+    "p_context_sign_correct": "7/10",
+    "p_target_amplitude_label_correct": "21/25",
+    "p_target_bpsk_sign_correct": "9/10",
+    "p_training_probe_sign_correct": "91/100",
+    "codewords_for_00_01_10_11": ["000","011","101","110"],
+    "word_prior": "uniform",
+    "context": "Z is sign of a noisy known pilot. Conditional on branch R, P(Z=R)=p_context_sign_correct. Bit 0 denotes positive sign.",
+    "target": "One block amplitude label U with P(U=R)=p_target_amplitude_label_correct. Given C,R, each sign bit T_j equals C_j xor R with probability p_target_bpsk_sign_correct. All noises mutually conditionally independent. Y=(U,T1,T2,T3). U is a shared block measurement counted once.",
+    "training": "Independent known-pilot calibration pairs (Z,V) only. Given R, independently P(V=R)=p_training_probe_sign_correct. R is latent, never supplied to the fitting routine. The target Y is never available for channel MSE."
+  },
+  "methods": {
+    "exact_soft": "True posterior P(R|Z) by Bayes from the explicit true law.",
+    "context_map_hard": "Take the MAP branch given Z once, ties choose branch 0; reuse that one branch for estimation and target likelihood.",
+    "physical_soft": "Explicit misspecified pilot-sensor model with correct branch prior, gains and target likelihood, but higher assumed sign-pilot reliability.",
+    "physical_assumed_p_context_sign_correct": "9/10",
+    "trainable_attention": "Two-dimensional one-hot queries for Z; two trainable scores in key k0 and reference key k1=(0,0), ordinary unscaled dot-product softmax over branches. Fit both keys' score differences from observable calibration probes V by constrained maximum marginal likelihood. Estimate p(V=0|Z) by frequencies, invert known probe likelihood, clip to [1/1000,999/1000], and set k0[z]=logit(fitted weight). If Z missing use weight 1/2. Values H_r and per-branch joint word/target likelihoods fixed for all policies.",
+    "fit_weight_clip": "1/1000",
+    "n_training_frames_per_seed": 1500,
+    "training_seeds": [20261121, 20261122, 20261123],
+    "rng": "Python random.Random; draw R then Z then V with three comparisons against random() per calibration frame"
+  },
+  "metrics_and_rules": {
+    "mse": "E_true[(H-estimate(Z))^2]. Real scalar embeds in complex 1x1.",
+    "ber": "Expected Hamming error on the two equiprobable information bits divided by two. Each method uses bitwise MAP from its own joint decoder scores.",
+    "bler": "Probability of incorrect two-bit message (equivalently codeword) for block MAP from the same scores.",
+    "decoding": "Use all four legal codewords. Scores are sum over retained branches of weight(R|Z) * P(C) * P(Y|R,C). Never plug channel mean into these decoders. Bit ties choose zero; equally scoring block tie chooses first in codeword order.",
+    "checks": ["exact posterior strict MSE advantage", "identical branch means and 3-branch barycentric equality", "reversed weights in noiseless two-branch example", "opposite plug-in BER and MSE in given noiseless example, full mixture decoder uses target amplitude", "complex Frobenius and Hermitian total covariance with branch-internal variation", "TV-diameter bound with value errors and exact sharp two-point case", "finite benchmark pointwise projection and comparison to hard, decision margins and common-list omission"],
+    "timing": "Report deterministic counts for complete dense scoring per (z,y) and timing separately: median over 5 passes of 1200 end-to-end float joint-score/bit/block decisions for each policy on the same cycling input sequence. Report hardware/runtime. Time is descriptive, no latency-based acceptance test.",
+    "report_all": "No seed selection, tuning, holdout sampling or significance testing. Record per-seed outputs. Auxiliary omission example restricts every model to the same first two codewords after full joint is computed."
+  }
+}

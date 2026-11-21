@@ -1,0 +1,71 @@
+{
+  "scope": "single-threaded CPython illustrative, no claim about P12; exact/physical prior weights and hard MAP use a two-entry cached Z table; attention computes dot-product softmax live; joint symbol likelihoods computed online",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "machine": "x86_64",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "iterations_per_pass": 1200,
+  "reps": 5,
+  "measurements": {
+    "exact_soft": {
+      "all_us_per_decision": [
+        11.146929161138056,
+        11.18433584148685,
+        11.922339156929715,
+        13.383265844216416,
+        10.606489995552693
+      ],
+      "median_us_per_decision": 11.18433584148685
+    },
+    "context_map_hard": {
+      "all_us_per_decision": [
+        6.640080003611122,
+        6.3686208401729045,
+        6.452923335018568,
+        7.605376667925157,
+        6.519573338058156
+      ],
+      "median_us_per_decision": 6.519573338058156
+    },
+    "physical_soft": {
+      "all_us_per_decision": [
+        11.226282501108168,
+        10.616012489966428,
+        11.248506658982174,
+        10.35710583285739,
+        10.535082498487705
+      ],
+      "median_us_per_decision": 10.616012489966428
+    },
+    "attention_seed_20261121": {
+      "all_us_per_decision": [
+        11.672471664496697,
+        11.598284169546483,
+        12.240677497175056,
+        12.077481672652842,
+        12.362535841627201
+      ],
+      "median_us_per_decision": 12.077481672652842
+    },
+    "attention_seed_20261122": {
+      "all_us_per_decision": [
+        11.719659160007723,
+        11.582978331716731,
+        11.506746668601409,
+        12.237723337117737,
+        12.187872501575233
+      ],
+      "median_us_per_decision": 11.719659160007723
+    },
+    "attention_seed_20261123": {
+      "all_us_per_decision": [
+        11.715645002065381,
+        11.706205829492925,
+        11.35150500582919,
+        11.547850008355454,
+        12.009654165012762
+      ],
+      "median_us_per_decision": 11.706205829492925
+    }
+  }
+}
