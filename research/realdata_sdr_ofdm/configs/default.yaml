@@ -1,0 +1,82 @@
+dataset:
+  name: "rikluost/sdr_ofdm_dataset_v1"
+  url: "https://raw.githubusercontent.com/rikluost/sdr_ofdm_dataset_v1/main/ofdm_valset_4_8_sdr.pth"
+  raw_filename: "ofdm_valset_4_8_sdr.pth"
+  expected_size_bytes: 27684430
+  expected_blob_sha1: "9b1aee8673ec48f42f52dc365fb01cc8b3e2b741"
+  expected_sha256: "e760079a888f37d8c33b21f327646930b4f2cb4511e8a309bcde22c6b1332058"
+  raw_dir: "/tmp/tw_realdata/data_raw"
+  proc_dir: "/tmp/tw_realdata/data_proc"
+  outputs_dir: "/tmp/tw_realdata/outputs"
+  companion_files:
+    - name: "sdr_ofdm_config.py"
+      url: "https://raw.githubusercontent.com/rikluost/sdr_ofdm_dataset_v1/main/config.py"
+    - name: "sdr_ofdm_README.md"
+      url: "https://raw.githubusercontent.com/rikluost/sdr_ofdm_dataset_v1/main/README.md"
+    - name: "plutosdr_config.py"
+      url: "https://raw.githubusercontent.com/rikluost/ofdm-plutosdr-pytorch/main/config.py"
+    - name: "OFDM_SDR_Functions_torch_v2.py"
+      url: "https://raw.githubusercontent.com/rikluost/ofdm-plutosdr-pytorch/main/OFDM_SDR_Functions_torch_v2.py"
+  backup:
+    name: "ADALM-PLUTO QPSK"
+    doi: "10.17632/k72b4pnc5g.1"
+    raw_filename: "QPSKlink.mat"
+    url: "https://data.mendeley.com/public-files/datasets/k72b4pnc5g/files/b494a472-ab2e-4d39-99ca-86866b76f159/file_downloaded"
+    expected_size_bytes: 822762822
+    expected_sha256: "c029532908f9702fea4be3ce37d0e1de9138019e12dd06e228abb1b83525f2b7"
+
+geometry:
+  S: 14
+  N_fft: 128
+  F: 102
+  FFT_offset: 13
+  CP_len: 7
+  CP_len_readme_note: 6
+  DC_active_idx: 51
+  DC_fft_bin: 64
+  Sp: 2
+  Fp: 8
+  pilot_active_indices: [0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 101]
+  Qm: 4
+  payload_re_count: 1400
+  bits_per_tti: 5600
+  scs_hz: 15000
+  fs_hz: 1920000
+  lpf_cutoff_hz: 825000
+  safe_guard_bins: [10, 11, 117, 118]
+  inner_guard_bins: [9, 10, 11, 12, 115, 116, 117, 118, 119]
+  outer_guard_bins: [0, 1, 2, 3, 4, 5, 6, 7, 8, 120, 121, 122, 123, 124, 125, 126, 127]
+
+probe:
+  probe_n: 64
+  min_tti_count: 200
+  max_ls_zf_ber: 0.40
+  min_pilot_guard_power_ratio: 2.0
+  min_pilot_coherence: 0.30
+  require_nonzero_errors: true
+
+splits:
+  seed: 20261121
+  ratios:
+    train: 0.60
+    dev: 0.15
+    test: 0.25
+  n_macro_blocks: 12
+  min_guard_frames: 4
+  max_guard_frames: 16
+  autocorr_threshold: 0.10
+  dedup_payload_sha256: true
+  heldout_pilot_eval_indices: [1, 5, 9, 12]
+
+runtime:
+  device: "cpu"
+  num_threads: 1
+  max_workers: 1
+  warmup_frames: 8
+
+stress:
+  # extra_awgn_db is added_awgn_snr_db: null = clean (sigma2_add=0.0); numeric adds sigma2_add = p_active * 10^(-extra_awgn_db/10)
+  extra_awgn_db: [null, 10.0, 5.0, 0.0]
+  cfo_norm: [0.0, 0.02, 0.05]
+  phase_drift_rad: [0.0, 0.3, 0.6]
+  seed: 20261122
