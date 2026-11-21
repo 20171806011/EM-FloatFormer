@@ -278,6 +278,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--out-dir", type=str, default="p12/results")
     parser.add_argument("--require-env", action="store_true", default=False)
+    parser.add_argument("--secondary-only", action="store_true", default=False)
     args = parser.parse_args(argv)
 
     t0 = time.perf_counter()
@@ -300,7 +301,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     assert_p12_seed_disjoint(all_seeds, expected_namespace="p12_dev")
 
     t_a0 = time.perf_counter()
-    if args.workers <= 1:
+    if args.secondary_only:
+        recs_a = []
+    elif args.workers <= 1:
         _init_primary_worker(bool(args.require_env))
         recs_a = [_eval_one_stage2a(t) for t in tasks_a]
     else:
@@ -323,13 +326,14 @@ def main(argv: Sequence[str] | None = None) -> int:
         "stage2a_wall_s": float(wall_a),
         "stage2b_wall_s": float(wall_b),
         "total_wall_s": float(time.perf_counter() - t0),
-        "stage2a_primary": _agg_stage2a(recs_a),
+        "stage2a_primary": _agg_stage2a(recs_a) if recs_a else {},
         "stage2b_secondary": _agg_stage2b(recs_b),
     }
 
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    with open(out_dir / "stage2_dev_summary.json", "w", encoding="utf-8", newline="\n") as fh:
+    out_name = "stage2b_v2_dev_summary.json" if args.secondary_only else "stage2_dev_summary.json"
+    with open(out_dir / out_name, "w", encoding="utf-8", newline="\n") as fh:
         json.dump(summary, fh, indent=2, allow_nan=False)
         fh.write("\n")
 

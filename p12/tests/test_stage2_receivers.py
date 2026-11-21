@@ -120,8 +120,14 @@ class TestP12Stage2Receivers(unittest.TestCase):
         r_anc = int(obs.training_rows[0])
 
         # 1) Zero probe-row & target-row leakage (tampering PROBE_ROW -> 0.0 diff; tampering Fold-0 targets -> 0.0 diff on Fold-0 channel!)
-        from p12.offgrid_physics import make_roving_bilateral_2fold
-        (t0, _), _ = make_roving_bilateral_2fold(r_anc, PROBE_ROW)
+        from p12.offgrid_physics import make_roving_bilateral_3fold
+        for r_a_chk in (3, 6, 10, 13, 16):
+            tf3, af3 = make_roving_bilateral_3fold(r_a_chk, PROBE_ROW)
+            self.assertEqual(sum(len(x) for x in tf3), 18)
+            self.assertEqual(len(set().union(*af3)), 15)
+            for tf_i, af_i in zip(tf3, af3):
+                self.assertTrue(set(tf_i).isdisjoint(af_i))
+        (t0, _, _), _ = make_roving_bilateral_3fold(r_anc, PROBE_ROW)
 
         res0 = run_p12_offgrid_physics(obs)
         y_t = obs.y_b.copy()

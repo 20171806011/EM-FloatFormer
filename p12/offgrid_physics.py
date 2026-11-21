@@ -839,6 +839,34 @@ def make_roving_bilateral_2fold(
     return (tuple(t0), tuple(t1)), (a0, a1)
 
 
+def make_roving_bilateral_3fold(
+    r_anchor: int,
+    probe_row: int = PROBE_ROW,
+) -> tuple[tuple[tuple[int, ...], tuple[int, ...], tuple[int, ...]], tuple[tuple[int, ...], tuple[int, ...], tuple[int, ...]]]:
+    """Generate a public-row-only symmetric bilateral 3-fold partition (6+6+6 targets, 5 disjoint AUX, 7 helpers/fold)."""
+    all_d = [r for r in range(T) if r not in (int(r_anchor), int(probe_row))]
+    # Mod-3 interleaved targets across ascending data rows -> balanced 6+6+6 across left/right of anchor
+    t_folds = tuple(tuple(all_d[i] for i in range(f, len(all_d), 3)) for f in range(3))
+
+    # Choose 5 globally disjoint AUX rows per fold (15 total of 18 rows), strictly outside own targets,
+    # while ALWAYS preserving the 2 closest bilateral rows to `r_anchor` as Wave-1 helpers for every fold!
+    # In fact, for fold f, pick AUX_f strictly inside T_{(f+1)%3} (6 rows) by dropping the row in T_{(f+1)%3}
+    # closest to r_anchor! Since T_0, T_1, T_2 are pairwise disjoint, AUX_0, AUX_1, AUX_2 are GUARANTEED
+    # globally disjoint AND strictly disjoint from own targets AND every fold gets 7 eligible helpers!
+    a_folds_list: list[tuple[int, ...]] = []
+    for f in range(3):
+        donor = list(t_folds[(f + 1) % 3])
+        # Keep donor's closest row to r_anchor available as a helper for fold f; take the other 5 as AUX_f
+        donor_sorted = sorted(donor, key=lambda r: (abs(r - r_anchor), r))
+        aux_f = tuple(sorted(donor_sorted[1:]))
+        assert len(aux_f) == 5 and set(aux_f).isdisjoint(t_folds[f])
+        a_folds_list.append(aux_f)
+
+    a_folds = (a_folds_list[0], a_folds_list[1], a_folds_list[2])
+    assert len(set(a_folds[0]) | set(a_folds[1]) | set(a_folds[2])) == 15
+    return (t_folds[0], t_folds[1], t_folds[2]), a_folds
+
+
 def offgrid_cov32_loglik(
     y_aux_u: np.ndarray,      # [R_aux, N] complex128 (normalized by sqrt(n0))
     mean_ray_u: np.ndarray,   # [K, R_aux, N] complex128 (normalized by sqrt(n0))
@@ -1380,6 +1408,7 @@ __all__ = [
     "dominant_sidelobe_spacing",
     "fit_known_trajectory_from_blocks",
     "make_roving_bilateral_2fold",
+    "make_roving_bilateral_3fold",
     "offgrid_cov32_loglik",
     "run_offgrid_cov32_and_wavefront_refit",
     "score_offgrid_channel_est",

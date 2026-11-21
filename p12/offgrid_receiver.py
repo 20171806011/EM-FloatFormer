@@ -76,7 +76,7 @@ from p11.wavefront_pipeline import (
     reliability_weight_from_margin,
 )
 from p12.contract import OFDM_PILOT_COMB
-from p12.offgrid_physics import make_roving_bilateral_2fold, offgrid_cov32_loglik
+from p12.offgrid_physics import make_roving_bilateral_2fold, make_roving_bilateral_3fold, offgrid_cov32_loglik
 
 # Extended B-only clear Doppler bank (16 ID + 4 OOD fast = 20 symmetric modes)
 _NU_CLR_EXT_POS = np.concatenate((np.linspace(0.035, 0.085, 8, dtype=REAL_DTYPE), np.array([0.105, 0.125], dtype=REAL_DTYPE)))
@@ -89,8 +89,8 @@ MID_SHIFT_POST_MAGS: tuple[float, ...] = (0.042, 0.056, 0.070, 0.084)
 # B-only delay rediscovery coarse grid & Occam log-evidence threshold
 _TAU_B_COARSE = np.linspace(OFFGRID_DELAY_MIN, OFFGRID_DELAY_MAX, 66, dtype=REAL_DTYPE)
 _D_MATS_B_COARSE: Optional[np.ndarray] = None
-DELAY_RESET_OCCAM_NATS: float = 12.0
-AUX_COV_TEMP: float = 0.50
+DELAY_RESET_OCCAM_NATS: float = 18.0
+AUX_COV_TEMP: float = 0.75
 
 
 def _get_b_coarse_delay_mats() -> np.ndarray:
@@ -494,11 +494,12 @@ def run_p12_offgrid_physics(
             mode_family[j, n_inh : n_inh + n_clr] = 1
             mode_sign_pos[j, n_inh : n_inh + n_clr] = _NU_CLR_EXT_BANK > 0.0
 
-            # Weight split between inherit / clear / piecewise-midframe (preserving classical subset evidence!)
+            # Weight split between inherit / clear / piecewise-midframe (coupled to link-level Frame-A coherence!)
             w_inh_raw = float(np.clip(bundle_a.w_ray_classical[j], 0.02, 0.98))
+            link_coherence = float(np.max(bundle_a.w_ray_classical))
             if use_piecewise_midframe:
-                # Allocate modest prior mass to piecewise midframe shift (always reachable even if anchor was pre-shift!)
-                p_mid_tot = 0.20
+                # A midframe partial shift originates from a Frame-A-coherent link; full resets have link_coherence ~ 0.
+                p_mid_tot = 0.02 + 0.18 * link_coherence
                 p_inh_tot = (1.0 - p_mid_tot) * w_inh_raw
                 p_clr_tot = (1.0 - p_mid_tot) * (1.0 - w_inh_raw)
             else:
@@ -784,8 +785,8 @@ def run_p12_offgrid_physics(
         )
         return res_union, h_modes[int(win_m)], nv_modes[int(win_m)]
 
-    # --- Step 1: Strictly Target-Excluded Roving Bilateral 2-Fold Execution ---
-    (t0_rows, t1_rows), (a0_rows, a1_rows) = make_roving_bilateral_2fold(r_anchor, probe_row=probe_row)
+    # --- Step 1: Strictly Target-Excluded Roving Bilateral 3-Fold Execution (6+6+6 targets, 5 AUX, 7 helpers/fold) ---
+    t_folds, a_folds = make_roving_bilateral_3fold(r_anchor, probe_row=probe_row)
     all_data_rows = tuple(r for r in range(T) if r not in (r_anchor, probe_row))
 
     owner_h_mix = np.zeros((T, N, N), dtype=COMPLEX_DTYPE)
@@ -798,7 +799,7 @@ def run_p12_offgrid_physics(
     ledger_records: list[dict[str, Any]] = []
     tot_acc = 0
 
-    for fold_idx, (t_rows, a_rows) in enumerate(((t0_rows, a0_rows), (t1_rows, a1_rows))):
+    for fold_idx, (t_rows, a_rows) in enumerate(zip(t_folds, a_folds)):
         # Structural zero-leakage firewall: mask all 9 target rows + probe_row to NaN!
         y_inf_u = y_b_u.copy()
         y_inf_u[list(t_rows)] = complex(np.nan, np.nan)
@@ -919,9 +920,11 @@ def run_p12_offgrid_physics(
         probe_preds.append(p_pred_f)
         probe_vars.append(p_var_f)
 
-    # Equal-weight 2-fold probe mixture (exact within + between)
-    mix_probe_pred = 0.5 * (probe_preds[0] + probe_preds[1])
-    mix_probe_var = 0.5 * (probe_vars[0] + probe_vars[1]) + 0.25 * (np.abs(probe_preds[0] - probe_preds[1]) ** 2)
+    # Equal-weight K-fold probe mixture (exact within + between)
+    p_stack = np.stack(probe_preds, axis=0)
+    pv_stack = np.stack(probe_vars, axis=0)
+    mix_probe_pred = np.mean(p_stack, axis=0)
+    mix_probe_var = np.mean(pv_stack, axis=0) + np.mean(np.abs(p_stack - mix_probe_pred[None, :]) ** 2, axis=0)
     owner_llrs[r_anchor] = 0.0
     owner_llrs[probe_row] = 0.0
 
