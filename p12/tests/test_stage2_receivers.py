@@ -157,6 +157,32 @@ class TestP12Stage2Receivers(unittest.TestCase):
         match_err = float(np.mean([np.min(np.abs(tau_b - td)) for td in tr_nr.delays]))
         self.assertLess(match_err, 0.35, f"B-only delay rediscovery failed to match new delays: {match_err}")
 
+    def test_stage2_and_formal_1link_smoke_and_audit_math(self) -> None:
+        import json
+        from p12.audit import exact_sign_flip_p, holm_adjust, verify_replay_records_exact
+        from p12.formal_study import _eval_one_primary, _eval_one_secondary
+        from p12.freeze import planned_formal_seeds
+        from p12.stage2_dev_eval import _eval_one_stage2a, _eval_one_stage2b
+
+        # Verify all 3,584 unique disjoint formal seeds
+        seeds_map = planned_formal_seeds()
+        self.assertEqual(sum(len(v) for v in seeds_map.values()), 3584)
+
+        # Verify exact 65,536-state sign-flip p = 1/32768 for 16 all-positive cluster diffs
+        st = exact_sign_flip_p([1.0] * 16)
+        self.assertAlmostEqual(st["p_two_sided"], 2.0 / 65536.0, places=12)
+        self.assertEqual(holm_adjust([0.001, 0.04]), [0.002, 0.04])
+
+        # 1-link smoke across Stage 2 & Formal runners + exact JSON & replay check
+        r2a = _eval_one_stage2a(("continuous", 0, SEED_P12_E2E + 301, 9.0))
+        r2b = _eval_one_stage2b(("offgrid_midframe_shift", 0, SEED_P12_E2E + 302, 9.0))
+        rfp = _eval_one_primary(("id", 1, "full_reset", 0, SEED_P12_E2E + 303, 9.0))
+        rfs = _eval_one_secondary(("id", 1, "offgrid_continuous", 0, SEED_P12_E2E + 304, 9.0))
+        for obj in (r2a, r2b, rfp, rfs):
+            json.dumps(obj, allow_nan=False)
+        rep_ok = verify_replay_records_exact([rfp], [rfp])
+        self.assertTrue(rep_ok["exact_pass"])
+
 
 if __name__ == "__main__":
     unittest.main()

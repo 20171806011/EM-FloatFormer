@@ -108,8 +108,8 @@ def _eval_one_stage2a(args: tuple[str, int, int, float]) -> dict[str, Any]:
     obs_dn, _ = simulate_p12_primary_link(seed, snr_db=snr_db, regime=regime, budget="dense")
 
     # Dense always_clear reference (exact P9/P11 NI comparator)
-    _, _, cand_dn = build_candidates_with_priors(obs_dn)
-    g_dn = gate_always_clear(obs_dn, cand_dn)
+    _, _, cand_inh_dn, cand_clr_dn = build_candidates_with_priors(obs_dn)
+    g_dn = gate_always_clear(cand_inh_dn, cand_clr_dn)
     y_dn_safe = _sanitize_y_b(obs_dn.y_b, PROBE_ROW)
     dn_err = 0
     for r in CORE_ROWS:
