@@ -1,0 +1,139 @@
+{
+  "design": "Fixed before running the verification. Each scenario uses fresh independent frames, with common frames across that scenario's policies. No seed or parameter selection by outcome.",
+  "trials": 32768,
+  "batch_size": 512,
+  "seed_generator": "numpy.random.Generator(numpy.random.PCG64(seed))",
+  "checks": "Report both signs of paired (attention loss minus fixed-S Bayes loss), paired one-standard-errors, matched comparisons to the model risk formulas, and exact margin probability. Sanity check tolerance 6 nominal standard errors plus 1e-12. Finite enumeration uses all (d+1)^M distance tuples if that number is <=10000. For larger tuples integrate only the one-dimensional exact margin probability, and use MC for other expectations. No hyperparameter sweep or learning.",
+  "defaults": {
+    "v0": 1.0,
+    "sigma2": 0.25,
+    "k": 2
+  },
+  "scenarios": [
+    {
+      "name": "strong",
+      "seed": 2026112101,
+      "M": 8,
+      "d": 48,
+      "rho": 0.08,
+      "gap_bits": 8,
+      "policies": [
+        "bayes",
+        "hot",
+        "reversed_cold"
+      ]
+    },
+    {
+      "name": "uncertain",
+      "seed": 2026112102,
+      "M": 8,
+      "d": 8,
+      "rho": 0.32,
+      "gap_bits": 1,
+      "policies": [
+        "bayes",
+        "cold"
+      ]
+    },
+    {
+      "name": "crowd4",
+      "seed": 2026112103,
+      "M": 4,
+      "d": 8,
+      "rho": 0.2,
+      "gap_bits": 1,
+      "policies": [
+        "bayes"
+      ]
+    },
+    {
+      "name": "crowd8",
+      "seed": 2026112104,
+      "M": 8,
+      "d": 8,
+      "rho": 0.2,
+      "gap_bits": 1,
+      "policies": [
+        "bayes"
+      ]
+    },
+    {
+      "name": "crowd32",
+      "seed": 2026112105,
+      "M": 32,
+      "d": 8,
+      "rho": 0.2,
+      "gap_bits": 1,
+      "policies": [
+        "bayes"
+      ]
+    },
+    {
+      "name": "blind",
+      "seed": 2026112106,
+      "M": 8,
+      "d": 12,
+      "rho": 0.5,
+      "gap_bits": 1,
+      "policies": [
+        "bayes",
+        "cold"
+      ]
+    },
+    {
+      "name": "enumerated",
+      "seed": 2026112107,
+      "M": 4,
+      "d": 4,
+      "rho": 0.1,
+      "gap_bits": 1,
+      "policies": [
+        "bayes",
+        "cold"
+      ]
+    },
+    {
+      "name": "full_window",
+      "seed": 2026112108,
+      "M": 4,
+      "k": 4,
+      "d": 4,
+      "rho": 0.1,
+      "gap_bits": 1,
+      "policies": [
+        "bayes"
+      ]
+    },
+    {
+      "name": "weak_value",
+      "seed": 2026112109,
+      "M": 4,
+      "d": 4,
+      "rho": 0.1,
+      "sigma2": 9999.0,
+      "gap_bits": 1,
+      "policies": [
+        "bayes"
+      ]
+    }
+  ],
+  "policies": {
+    "bayes": "Calibrated posterior, beta=d/2*log((1-rho)/rho). If rho=0.5 use equal weights.",
+    "hot": "beta=0.02, score=correlation",
+    "cold": "beta=80, score=correlation",
+    "reversed_cold": "beta=80, score=negative correlation"
+  },
+  "score": "Signed normalized bit correlation 1-2*HammingDistance/d. With reversed_cold flip its sign. Margin target Delta=2*gap_bits/d. For the blind posterior use equal weights; equivalently constant logits; positive raw margins for correlation have no sharpening effect at beta=0.",
+  "correlated_counterexample": {
+    "seed": 2026112110,
+    "M": 2,
+    "v0": 1.0,
+    "sigma2": 0.25,
+    "threshold_in_mean_powers": 1.0,
+    "rule": "Perfect observable two-key matching followed by selecting the other value if normalized power of matched value exceeds the threshold."
+  },
+  "other_comparators": {
+    "hard": "Nonlearned ML hard match via minimum Hamming distance; break ties by earliest index.",
+    "adaptive": "Read all cheap keys and then only the k largest posterior-mass values (stable earliest-index tie break); unrenormalized posterior coefficients on selected values."
+  }
+}
