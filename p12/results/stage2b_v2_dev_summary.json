@@ -1,0 +1,443 @@
+{
+  "n_links_per_regime": 32,
+  "snr_db": 9.0,
+  "stage2a_wall_s": 1.0120002116309479e-06,
+  "stage2b_wall_s": 199.37410249299865,
+  "total_wall_s": 204.12441852399934,
+  "stage2a_primary": {},
+  "stage2b_secondary": {
+    "by_regime": {
+      "offgrid_continuous": {
+        "n_links": 32,
+        "p11_classical_per_ray": {
+          "bler_pct": 60.06944444444444,
+          "errors": 346,
+          "blocks": 576,
+          "mean_rel_frob": 0.46914606902900596,
+          "mean_probe_nmse": 0.4026082172300469
+        },
+        "p11_transport_attn_ens": {
+          "bler_pct": 43.40277777777778,
+          "errors": 250,
+          "blocks": 576,
+          "mean_rel_frob": 0.36116537602501286,
+          "mean_probe_nmse": 0.33834726030921747
+        },
+        "p12_offgrid_physics": {
+          "bler_pct": 30.90277777777778,
+          "errors": 178,
+          "blocks": 576,
+          "mean_rel_frob": 0.3014898523576295,
+          "mean_probe_nmse": 0.1539264347377263,
+          "delay_reset_rate_pct": 3.125,
+          "helpers_accepted": 334,
+          "false_assim_pct": 1.1976047904191616,
+          "median_ms": 774.9278185001458
+        },
+        "p12_no_piecewise": {
+          "bler_pct": 32.11805555555556,
+          "errors": 185,
+          "blocks": 576,
+          "mean_rel_frob": 0.33006723890442546,
+          "mean_probe_nmse": 0.13134882303080087,
+          "delay_reset_rate_pct": 3.125,
+          "helpers_accepted": 328,
+          "false_assim_pct": 1.524390243902439,
+          "median_ms": 605.7596275004471
+        },
+        "p12_no_wave1_mm": {
+          "bler_pct": 30.555555555555557,
+          "errors": 176,
+          "blocks": 576,
+          "mean_rel_frob": 0.3011697264531953,
+          "mean_probe_nmse": 0.1542058651258442,
+          "delay_reset_rate_pct": 3.125,
+          "helpers_accepted": 332,
+          "false_assim_pct": 1.2048192771084338,
+          "median_ms": 736.4728765005566
+        },
+        "oracle_true_channel": {
+          "bler_pct": 3.6458333333333335,
+          "errors": 21,
+          "blocks": 576,
+          "mean_rel_frob": 0.0,
+          "mean_probe_nmse": 0.0
+        }
+      },
+      "offgrid_partial_shift": {
+        "n_links": 32,
+        "p11_classical_per_ray": {
+          "bler_pct": 73.61111111111111,
+          "errors": 424,
+          "blocks": 576,
+          "mean_rel_frob": 0.5331266934313001,
+          "mean_probe_nmse": 0.5642547076492184
+        },
+        "p11_transport_attn_ens": {
+          "bler_pct": 72.22222222222223,
+          "errors": 416,
+          "blocks": 576,
+          "mean_rel_frob": 0.5169127707119981,
+          "mean_probe_nmse": 0.5227170949162382
+        },
+        "p12_offgrid_physics": {
+          "bler_pct": 40.27777777777778,
+          "errors": 232,
+          "blocks": 576,
+          "mean_rel_frob": 0.34024990992842785,
+          "mean_probe_nmse": 0.30588214038119277,
+          "delay_reset_rate_pct": 3.125,
+          "helpers_accepted": 300,
+          "false_assim_pct": 3.6666666666666665,
+          "median_ms": 760.2759085002617
+        },
+        "p12_no_piecewise": {
+          "bler_pct": 38.888888888888886,
+          "errors": 224,
+          "blocks": 576,
+          "mean_rel_frob": 0.32866922221069705,
+          "mean_probe_nmse": 0.28064241174987803,
+          "delay_reset_rate_pct": 3.125,
+          "helpers_accepted": 313,
+          "false_assim_pct": 3.194888178913738,
+          "median_ms": 615.6692964996182
+        },
+        "p12_no_wave1_mm": {
+          "bler_pct": 40.451388888888886,
+          "errors": 233,
+          "blocks": 576,
+          "mean_rel_frob": 0.3436896888524094,
+          "mean_probe_nmse": 0.3084114539042436,
+          "delay_reset_rate_pct": 3.125,
+          "helpers_accepted": 300,
+          "false_assim_pct": 3.6666666666666665,
+          "median_ms": 735.7097359990803
+        },
+        "oracle_true_channel": {
+          "bler_pct": 6.076388888888889,
+          "errors": 35,
+          "blocks": 576,
+          "mean_rel_frob": 0.0,
+          "mean_probe_nmse": 0.0
+        }
+      },
+      "offgrid_midframe_shift": {
+        "n_links": 32,
+        "p11_classical_per_ray": {
+          "bler_pct": 75.17361111111111,
+          "errors": 433,
+          "blocks": 576,
+          "mean_rel_frob": 0.6381741912130399,
+          "mean_probe_nmse": 0.8979937088476809
+        },
+        "p11_transport_attn_ens": {
+          "bler_pct": 65.10416666666667,
+          "errors": 375,
+          "blocks": 576,
+          "mean_rel_frob": 0.5645840900127176,
+          "mean_probe_nmse": 0.7243325893937567
+        },
+        "p12_offgrid_physics": {
+          "bler_pct": 53.298611111111114,
+          "errors": 307,
+          "blocks": 576,
+          "mean_rel_frob": 0.4179129169080407,
+          "mean_probe_nmse": 0.6439533150455209,
+          "delay_reset_rate_pct": 0.0,
+          "helpers_accepted": 254,
+          "false_assim_pct": 1.5748031496062993,
+          "median_ms": 774.5993750004345
+        },
+        "p12_no_piecewise": {
+          "bler_pct": 61.80555555555556,
+          "errors": 356,
+          "blocks": 576,
+          "mean_rel_frob": 0.5702315560711516,
+          "mean_probe_nmse": 0.7613352566659735,
+          "delay_reset_rate_pct": 0.0,
+          "helpers_accepted": 221,
+          "false_assim_pct": 1.8099547511312217,
+          "median_ms": 609.1873409995969
+        },
+        "p12_no_wave1_mm": {
+          "bler_pct": 53.125,
+          "errors": 306,
+          "blocks": 576,
+          "mean_rel_frob": 0.41795536902473807,
+          "mean_probe_nmse": 0.6409434263159841,
+          "delay_reset_rate_pct": 0.0,
+          "helpers_accepted": 247,
+          "false_assim_pct": 2.0242914979757085,
+          "median_ms": 728.1453975001568
+        },
+        "oracle_true_channel": {
+          "bler_pct": 4.166666666666667,
+          "errors": 24,
+          "blocks": 576,
+          "mean_rel_frob": 0.0,
+          "mean_probe_nmse": 0.0
+        }
+      },
+      "offgrid_full_reset": {
+        "n_links": 32,
+        "p11_classical_per_ray": {
+          "bler_pct": 88.19444444444444,
+          "errors": 508,
+          "blocks": 576,
+          "mean_rel_frob": 0.7020461403560334,
+          "mean_probe_nmse": 0.7135131250557545
+        },
+        "p11_transport_attn_ens": {
+          "bler_pct": 86.97916666666667,
+          "errors": 501,
+          "blocks": 576,
+          "mean_rel_frob": 0.6959581918291494,
+          "mean_probe_nmse": 0.6927666613953548
+        },
+        "p12_offgrid_physics": {
+          "bler_pct": 74.30555555555556,
+          "errors": 428,
+          "blocks": 576,
+          "mean_rel_frob": 0.6219992003806354,
+          "mean_probe_nmse": 0.6703181887937023,
+          "delay_reset_rate_pct": 3.125,
+          "helpers_accepted": 147,
+          "false_assim_pct": 4.081632653061225,
+          "median_ms": 751.5441780005858
+        },
+        "p12_no_piecewise": {
+          "bler_pct": 72.04861111111111,
+          "errors": 415,
+          "blocks": 576,
+          "mean_rel_frob": 0.603513499193199,
+          "mean_probe_nmse": 0.66234563352477,
+          "delay_reset_rate_pct": 3.125,
+          "helpers_accepted": 146,
+          "false_assim_pct": 5.47945205479452,
+          "median_ms": 600.9126164999543
+        },
+        "p12_no_wave1_mm": {
+          "bler_pct": 75.0,
+          "errors": 432,
+          "blocks": 576,
+          "mean_rel_frob": 0.6256549519560076,
+          "mean_probe_nmse": 0.6632667592701489,
+          "delay_reset_rate_pct": 3.125,
+          "helpers_accepted": 140,
+          "false_assim_pct": 3.5714285714285716,
+          "median_ms": 728.5713615010536
+        },
+        "oracle_true_channel": {
+          "bler_pct": 6.597222222222222,
+          "errors": 38,
+          "blocks": 576,
+          "mean_rel_frob": 0.0,
+          "mean_probe_nmse": 0.0
+        }
+      },
+      "offgrid_full_reset_new_delays": {
+        "n_links": 32,
+        "p11_classical_per_ray": {
+          "bler_pct": 98.61111111111111,
+          "errors": 568,
+          "blocks": 576,
+          "mean_rel_frob": 0.875344530380261,
+          "mean_probe_nmse": 0.8860691405666983
+        },
+        "p11_transport_attn_ens": {
+          "bler_pct": 98.26388888888889,
+          "errors": 566,
+          "blocks": 576,
+          "mean_rel_frob": 0.8752862213736209,
+          "mean_probe_nmse": 0.860118408513493
+        },
+        "p12_offgrid_physics": {
+          "bler_pct": 71.18055555555556,
+          "errors": 410,
+          "blocks": 576,
+          "mean_rel_frob": 0.5534267852438821,
+          "mean_probe_nmse": 0.4986005377033892,
+          "delay_reset_rate_pct": 93.75,
+          "helpers_accepted": 124,
+          "false_assim_pct": 1.6129032258064515,
+          "median_ms": 544.6735115001502
+        },
+        "p12_no_piecewise": {
+          "bler_pct": 71.18055555555556,
+          "errors": 410,
+          "blocks": 576,
+          "mean_rel_frob": 0.5490181548908917,
+          "mean_probe_nmse": 0.489198941066355,
+          "delay_reset_rate_pct": 93.75,
+          "helpers_accepted": 125,
+          "false_assim_pct": 1.6,
+          "median_ms": 542.5901464996059
+        },
+        "p12_no_wave1_mm": {
+          "bler_pct": 71.18055555555556,
+          "errors": 410,
+          "blocks": 576,
+          "mean_rel_frob": 0.552393057513729,
+          "mean_probe_nmse": 0.4980601630283632,
+          "delay_reset_rate_pct": 93.75,
+          "helpers_accepted": 123,
+          "false_assim_pct": 1.6260162601626016,
+          "median_ms": 542.5165129991001
+        },
+        "oracle_true_channel": {
+          "bler_pct": 5.381944444444445,
+          "errors": 31,
+          "blocks": 576,
+          "mean_rel_frob": 0.0,
+          "mean_probe_nmse": 0.0
+        }
+      },
+      "offgrid_ood_burst_and_shift": {
+        "n_links": 32,
+        "p11_classical_per_ray": {
+          "bler_pct": 74.47916666666667,
+          "errors": 429,
+          "blocks": 576,
+          "mean_rel_frob": 0.5099566336637187,
+          "mean_probe_nmse": 0.5128009022181509
+        },
+        "p11_transport_attn_ens": {
+          "bler_pct": 75.86805555555556,
+          "errors": 437,
+          "blocks": 576,
+          "mean_rel_frob": 0.5054895221213989,
+          "mean_probe_nmse": 0.5137569451181333
+        },
+        "p12_offgrid_physics": {
+          "bler_pct": 48.958333333333336,
+          "errors": 282,
+          "blocks": 576,
+          "mean_rel_frob": 0.31883052272133505,
+          "mean_probe_nmse": 0.36237944312905934,
+          "delay_reset_rate_pct": 0.0,
+          "helpers_accepted": 265,
+          "false_assim_pct": 1.8867924528301887,
+          "median_ms": 735.9238555009142
+        },
+        "p12_no_piecewise": {
+          "bler_pct": 50.69444444444444,
+          "errors": 292,
+          "blocks": 576,
+          "mean_rel_frob": 0.3342069907203111,
+          "mean_probe_nmse": 0.3595569423053839,
+          "delay_reset_rate_pct": 0.0,
+          "helpers_accepted": 265,
+          "false_assim_pct": 1.509433962264151,
+          "median_ms": 614.3839429987565
+        },
+        "p12_no_wave1_mm": {
+          "bler_pct": 48.958333333333336,
+          "errors": 282,
+          "blocks": 576,
+          "mean_rel_frob": 0.31917573461914894,
+          "mean_probe_nmse": 0.36247037787284947,
+          "delay_reset_rate_pct": 0.0,
+          "helpers_accepted": 262,
+          "false_assim_pct": 1.9083969465648856,
+          "median_ms": 730.8557474998452
+        },
+        "oracle_true_channel": {
+          "bler_pct": 15.45138888888889,
+          "errors": 89,
+          "blocks": 576,
+          "mean_rel_frob": 0.0,
+          "mean_probe_nmse": 0.0
+        }
+      },
+      "offgrid_ood_five_ray_fast": {
+        "n_links": 32,
+        "p11_classical_per_ray": {
+          "bler_pct": 82.11805555555556,
+          "errors": 473,
+          "blocks": 576,
+          "mean_rel_frob": 0.620284463606774,
+          "mean_probe_nmse": 0.6916096404054045
+        },
+        "p11_transport_attn_ens": {
+          "bler_pct": 80.20833333333333,
+          "errors": 462,
+          "blocks": 576,
+          "mean_rel_frob": 0.6108835720558567,
+          "mean_probe_nmse": 0.7320444780969719
+        },
+        "p12_offgrid_physics": {
+          "bler_pct": 62.5,
+          "errors": 360,
+          "blocks": 576,
+          "mean_rel_frob": 0.5190849730156959,
+          "mean_probe_nmse": 0.6302708867974276,
+          "delay_reset_rate_pct": 0.0,
+          "helpers_accepted": 163,
+          "false_assim_pct": 2.4539877300613497,
+          "median_ms": 788.1740954999259
+        },
+        "p12_no_piecewise": {
+          "bler_pct": 61.979166666666664,
+          "errors": 357,
+          "blocks": 576,
+          "mean_rel_frob": 0.5065269900359519,
+          "mean_probe_nmse": 0.6218655368902305,
+          "delay_reset_rate_pct": 0.0,
+          "helpers_accepted": 159,
+          "false_assim_pct": 2.5157232704402515,
+          "median_ms": 603.8151669999934
+        },
+        "p12_no_wave1_mm": {
+          "bler_pct": 62.673611111111114,
+          "errors": 361,
+          "blocks": 576,
+          "mean_rel_frob": 0.5212525806275964,
+          "mean_probe_nmse": 0.6302888715331116,
+          "delay_reset_rate_pct": 0.0,
+          "helpers_accepted": 162,
+          "false_assim_pct": 2.4691358024691357,
+          "median_ms": 726.6145264993611
+        },
+        "oracle_true_channel": {
+          "bler_pct": 5.729166666666667,
+          "errors": 33,
+          "blocks": 576,
+          "mean_rel_frob": 0.0,
+          "mean_probe_nmse": 0.0
+        }
+      }
+    },
+    "pooled_4id": {
+      "p11_classical_per_ray": {
+        "bler_pct": 74.26215277777777,
+        "mean_rel_frob": 0.5856232735073448,
+        "mean_probe_nmse": 0.6445924396956751
+      },
+      "p11_transport_attn_ens": {
+        "bler_pct": 66.92708333333333,
+        "mean_rel_frob": 0.5346551071447194,
+        "mean_probe_nmse": 0.5695409015036417
+      },
+      "p12_offgrid_physics": {
+        "bler_pct": 49.69618055555556,
+        "mean_rel_frob": 0.4204129698936833,
+        "mean_probe_nmse": 0.4435200197395356
+      },
+      "p12_no_piecewise": {
+        "bler_pct": 51.21527777777778,
+        "mean_rel_frob": 0.45812037909486825,
+        "mean_probe_nmse": 0.4589180312428556
+      },
+      "p12_no_wave1_mm": {
+        "bler_pct": 49.782986111111114,
+        "mean_rel_frob": 0.4221174340715875,
+        "mean_probe_nmse": 0.44170687615405524
+      },
+      "oracle_true_channel": {
+        "bler_pct": 5.121527777777778,
+        "mean_rel_frob": 0.0,
+        "mean_probe_nmse": 0.0
+      }
+    }
+  }
+}
