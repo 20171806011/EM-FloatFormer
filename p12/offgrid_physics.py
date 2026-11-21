@@ -843,22 +843,58 @@ def make_roving_bilateral_3fold(
     r_anchor: int,
     probe_row: int = PROBE_ROW,
 ) -> tuple[tuple[tuple[int, ...], tuple[int, ...], tuple[int, ...]], tuple[tuple[int, ...], tuple[int, ...], tuple[int, ...]]]:
-    """Generate a public-row-only symmetric bilateral 3-fold partition (6+6+6 targets, 5 disjoint AUX, 7 helpers/fold)."""
-    all_d = [r for r in range(T) if r not in (int(r_anchor), int(probe_row))]
+    """Return geometry-only folds with bilateral first waves and unchanged row budgets.
+
+    Each fold has six targets, five globally disjoint AUX rows, and seven
+    eligible helpers. The receiver's nearest-two helper selection must include
+    one row on each side of the anchor; equal-distance ties use ascending rows.
+    At least two public data rows are required on each side: if a side has only
+    one row, that row's target-owning fold cannot use any helper on that side.
+    """
+    for name, row in (("r_anchor", r_anchor), ("probe_row", probe_row)):
+        if isinstance(row, (bool, np.bool_)) or not isinstance(row, (int, np.integer)):
+            raise ValueError(f"{name} must be an integer row index, got {row!r}")
+        if not 0 <= int(row) < T:
+            raise ValueError(f"{name} must be in [0, {T}), got {row!r}")
+    r_anchor, probe_row = int(r_anchor), int(probe_row)
+    if r_anchor == probe_row:
+        raise ValueError("r_anchor and probe_row must be distinct")
+
+    all_d = [r for r in range(T) if r not in (r_anchor, probe_row)]
+    n_left = sum(r < r_anchor for r in all_d)
+    n_right = sum(r > r_anchor for r in all_d)
+    if min(n_left, n_right) < 2:
+        raise ValueError(
+            "Bilateral 3-fold geometry requires at least two data rows on each side "
+            f"of r_anchor={r_anchor}; probe_row={probe_row} leaves {n_left} left and {n_right} right"
+        )
+
     # Mod-3 interleaved targets across ascending data rows -> balanced 6+6+6 across left/right of anchor
     t_folds = tuple(tuple(all_d[i] for i in range(f, len(all_d), 3)) for f in range(3))
 
-    # Choose 5 globally disjoint AUX rows per fold (15 total of 18 rows), strictly outside own targets,
-    # while ALWAYS preserving the 2 closest bilateral rows to `r_anchor` as Wave-1 helpers for every fold!
-    # In fact, for fold f, pick AUX_f strictly inside T_{(f+1)%3} (6 rows) by dropping the row in T_{(f+1)%3}
-    # closest to r_anchor! Since T_0, T_1, T_2 are pairwise disjoint, AUX_0, AUX_1, AUX_2 are GUARANTEED
-    # globally disjoint AND strictly disjoint from own targets AND every fold gets 7 eligible helpers!
+    # Keep the cyclic donor assignment: AUX_f is five rows from T_(f+1).
+    # The helpers are all six rows of T_(f+2) plus the one retained donor row.
+    # Retaining the nearest donor alone can remove every helper on one side
+    # (anchor 16, fold 1), or leave the first two helpers on the same side.
+    # Scan donor rows in the previous distance order and retain the first one
+    # that makes the actual nearest-two wave bilateral. This preserves the old
+    # AUX choice whenever it already satisfied that condition, without using
+    # observations, channel truth, or evaluation results.
     a_folds_list: list[tuple[int, ...]] = []
     for f in range(3):
         donor = list(t_folds[(f + 1) % 3])
-        # Keep donor's closest row to r_anchor available as a helper for fold f; take the other 5 as AUX_f
         donor_sorted = sorted(donor, key=lambda r: (abs(r - r_anchor), r))
-        aux_f = tuple(sorted(donor_sorted[1:]))
+        other_helpers = t_folds[(f + 2) % 3]
+        for retained in donor_sorted:
+            helpers = sorted((*other_helpers, retained), key=lambda r: (abs(r - r_anchor), r))
+            first, second = helpers[:2]
+            if min(first, second) < r_anchor < max(first, second):
+                aux_f = tuple(r for r in donor if r != retained)
+                break
+        else:
+            raise ValueError(
+                f"No bilateral first wave for anchor={r_anchor}, probe={probe_row}, fold={f}"
+            )
         assert len(aux_f) == 5 and set(aux_f).isdisjoint(t_folds[f])
         a_folds_list.append(aux_f)
 

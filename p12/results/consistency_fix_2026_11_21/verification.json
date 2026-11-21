@@ -1,0 +1,238 @@
+{
+  "kind": "consistency_fix_verification_not_formal_performance_claim",
+  "date": "2026-11-21",
+  "baseline_commit": "0d01179d43bbf02a700ce1029e613d9af1b78c8f",
+  "test_run": {
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMBA_NUM_THREADS=1 /workspace/scratch/3413e7f174fd/.venv-p12/bin/python -m pytest p12/tests -q --junitxml=/tmp/p12_consistency_tests.xml",
+    "tests": 18,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_seconds": 27.468,
+    "started_at": "2026-11-21T17:39:54.477491+00:00",
+    "cases": [
+      {
+        "id": "p12.tests.test_anchor_prior_consistency.TestAnchorPriorConsistency.test_cached_anchor_gate_weights_do_not_affect_full_receiver",
+        "duration_seconds": 0.051,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_anchor_prior_consistency.TestAnchorPriorConsistency.test_removing_bundle_keeps_public_observation_validation",
+        "duration_seconds": 0.002,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_anchor_prior_consistency.TestAnchorPriorConsistency.test_single_ray_matches_one_anchor_gaussian_integral",
+        "duration_seconds": 0.028,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_bilateral_fold_consistency.TestBilateralFoldConsistency.test_all_advertised_anchor_folds_are_deterministic",
+        "duration_seconds": 0.001,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_bilateral_fold_consistency.TestBilateralFoldConsistency.test_all_distinct_anchor_probe_layouts",
+        "duration_seconds": 0.022,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_bilateral_fold_consistency.TestBilateralFoldConsistency.test_anchor16_fold1_retains_the_only_right_helper",
+        "duration_seconds": 0.0,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_bilateral_fold_consistency.TestBilateralFoldConsistency.test_invalid_row_indices_fail_explicitly",
+        "duration_seconds": 0.001,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_stage1_diagnostics.TestP12Stage1Invariants.test_offgrid_comb_bit_parity_and_pareto_energy_parity",
+        "duration_seconds": 0.046,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_stage1_diagnostics.TestP12Stage1Invariants.test_roving_bilateral_2fold_and_symmetric_connection",
+        "duration_seconds": 0.003,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_stage1_diagnostics.TestP12Stage1Invariants.test_seed_disjointness",
+        "duration_seconds": 0.001,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_stage1_diagnostics.TestP12Stage1Invariants.test_sentinel_zero_target_leakage_and_cstar_invariance",
+        "duration_seconds": 8.217,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_stage1_diagnostics.TestP12Stage1Invariants.test_stage1_smoke_1link_json_serializable",
+        "duration_seconds": 8.792,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_stage1_diagnostics.TestP12Stage1Invariants.test_symmetric_fold_geometry_and_zero_target_leakage",
+        "duration_seconds": 0.538,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_stage2_receivers.TestP12Stage2Receivers.test_numba_offgrid_multimode_exact_numpy_parity",
+        "duration_seconds": 0.87,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_stage2_receivers.TestP12Stage2Receivers.test_offgrid_physics_zero_leakage_cstar_and_delay_reset",
+        "duration_seconds": 1.523,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_stage2_receivers.TestP12Stage2Receivers.test_primary_k3_zero_target_and_heldout_extra_leakage",
+        "duration_seconds": 1.775,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_stage2_receivers.TestP12Stage2Receivers.test_stage2_and_formal_1link_smoke_and_audit_math",
+        "duration_seconds": 5.117,
+        "status": "passed"
+      },
+      {
+        "id": "p12.tests.test_stage2_receivers.TestP12Stage2Receivers.test_validate_fold_partition_rejects_malformed_inputs",
+        "duration_seconds": 0.0,
+        "status": "passed"
+      }
+    ]
+  },
+  "paired_diagnostic": {
+    "input_truth_hash_matches": 14,
+    "links_per_arm": 14,
+    "regimes": 7,
+    "anchor_rows": [
+      3,
+      6,
+      10,
+      13,
+      16
+    ],
+    "baseline": {
+      "links": 14,
+      "blocks": 252,
+      "block_errors": 124,
+      "bler_pct": 49.20634920634921
+    },
+    "corrected": {
+      "links": 14,
+      "blocks": 252,
+      "block_errors": 133,
+      "bler_pct": 52.77777777777778
+    },
+    "delta_bler_percentage_points": 3.5714285714285694,
+    "link_outcomes": {
+      "improved": 0,
+      "tied": 10,
+      "worsened": 4
+    },
+    "by_regime": [
+      {
+        "regime": "offgrid_continuous",
+        "links_per_arm": 2,
+        "blocks_per_arm": 36,
+        "baseline_errors": 5,
+        "corrected_errors": 7,
+        "baseline_bler_pct": 13.88888888888889,
+        "corrected_bler_pct": 19.444444444444443
+      },
+      {
+        "regime": "offgrid_partial_shift",
+        "links_per_arm": 2,
+        "blocks_per_arm": 36,
+        "baseline_errors": 14,
+        "corrected_errors": 15,
+        "baseline_bler_pct": 38.888888888888886,
+        "corrected_bler_pct": 41.666666666666664
+      },
+      {
+        "regime": "offgrid_midframe_shift",
+        "links_per_arm": 2,
+        "blocks_per_arm": 36,
+        "baseline_errors": 14,
+        "corrected_errors": 15,
+        "baseline_bler_pct": 38.888888888888886,
+        "corrected_bler_pct": 41.666666666666664
+      },
+      {
+        "regime": "offgrid_full_reset",
+        "links_per_arm": 2,
+        "blocks_per_arm": 36,
+        "baseline_errors": 14,
+        "corrected_errors": 19,
+        "baseline_bler_pct": 38.888888888888886,
+        "corrected_bler_pct": 52.77777777777778
+      },
+      {
+        "regime": "offgrid_full_reset_new_delays",
+        "links_per_arm": 2,
+        "blocks_per_arm": 36,
+        "baseline_errors": 33,
+        "corrected_errors": 33,
+        "baseline_bler_pct": 91.66666666666667,
+        "corrected_bler_pct": 91.66666666666667
+      },
+      {
+        "regime": "offgrid_ood_burst_and_shift",
+        "links_per_arm": 2,
+        "blocks_per_arm": 36,
+        "baseline_errors": 21,
+        "corrected_errors": 21,
+        "baseline_bler_pct": 58.333333333333336,
+        "corrected_bler_pct": 58.333333333333336
+      },
+      {
+        "regime": "offgrid_ood_five_ray_fast",
+        "links_per_arm": 2,
+        "blocks_per_arm": 36,
+        "baseline_errors": 23,
+        "corrected_errors": 23,
+        "baseline_bler_pct": 63.888888888888886,
+        "corrected_bler_pct": 63.888888888888886
+      }
+    ],
+    "interpretation": "Exploratory paired diagnostic only. Corrected BLER is worse in this small sample. No superiority, noninferiority, statistical-significance, or population-level performance conclusion; no retuning after this result."
+  },
+  "historical_integrity": {
+    "original_result_files_unchanged": 14,
+    "original_result_sha256": {
+      "p12/results/freeze_manifest.json": "2d17b606752cd373db1906cadd3fc9c6c538c5559d6b749f9c70afe8b2d2e222",
+      "p12/results/p12_audit.json": "b75a4b3c3e50717da961f87b950a99dd2a6cefc327c6379605c71e5e7ea20a47",
+      "p12/results/p12_primary_id_links.jsonl": "0f3fe949ab1d18a04f995b092ee5ae5a9d9678b1a87930336442891594838652",
+      "p12/results/p12_primary_ood_links.jsonl": "e21cc4ad4ad04107f9e0dfaf66a7983015b81cf02e2676e714909ed807e802e6",
+      "p12/results/p12_primary_replay_links.jsonl": "70dd8f77eec3511d0095e4254cf571b24a97709dcd7bc378e456cd84bf4b8290",
+      "p12/results/p12_secondary_id_links.jsonl": "7d0599353d1e3f0334a7331a27bdfbefbe5ff14425c82b10c941e99c2a9b3514",
+      "p12/results/p12_secondary_ood_links.jsonl": "693c585d744b17549adbaab02c7060a75b6ce5355816caf16491757985ad50c4",
+      "p12/results/p12_secondary_replay_links.jsonl": "a1c7b65722627fa29e78df072e29008ebc83df60c155d8eb9b1b462221332b23",
+      "p12/results/stage1_primary_links.jsonl": "7a255a4292fc50bb7be9613eef414a21c3c7c6c0b45f381aa4eb6ba320c60516",
+      "p12/results/stage1_primary_summary.json": "09d1fb10a2bd930650803a93b20773a184db935a15e825d51876ac6065369229",
+      "p12/results/stage1_secondary_links.jsonl": "89417446ecc90759a04f154dba220fd25e2dc69a52d162614942c7244dc0c683",
+      "p12/results/stage1_secondary_summary.json": "3a7ee4a269393fac06d5d733f692044879a6138159adc7dd8d8b0d6838d63c5c",
+      "p12/results/stage2_dev_summary.json": "72c377ccffa228f9c02f9262ea33cc086b592dc6ed8703c124b0272cd14ef85a",
+      "p12/results/stage2b_v2_dev_summary.json": "31f1f54af6633b55adfbfcc7334ea651cd916247c6d5d9290d61a641761867f2"
+    },
+    "original_freeze_matches_baseline": true,
+    "original_freeze_expected_current_mismatches": [
+      "p12/offgrid_physics.py",
+      "p12/offgrid_receiver.py"
+    ],
+    "tracked_changes_outside_p12": [],
+    "formal_3584_seed_study_rerun": false
+  },
+  "diagnostic_file_sha256": {
+    "protocol.json": "1cbb24c5c5d8f2044d479b13d9725d3de84d5d40a1848962216c4e14e0832899",
+    "baseline.json": "c907deb30dbdf72c65b693a6b46aa603a4697c58053bbc99fd4d39481e9e7e90",
+    "corrected.json": "8318b3dfa03f689d1620697b557fe2bcb30efba94b1e661b6cc8c8df0f0d16d7"
+  },
+  "runner_sha256": "924d4c6c8c9348feab346f96ee85ec553076f435c116f2a22c543eb43d95427d",
+  "new_test_sha256": {
+    "p12/tests/test_anchor_prior_consistency.py": "3e5d032d2f4e9a56f63d58b9a67f3de3826080d30aabc2ab7f165c28e017aea2",
+    "p12/tests/test_bilateral_fold_consistency.py": "a884b681f3a8bd817c1e7443b5e85788b1a901dc6caf9efe762d2152fecabc89"
+  }
+}

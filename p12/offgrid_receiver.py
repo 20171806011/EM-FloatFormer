@@ -1,10 +1,10 @@
 """Phase 12 Production Secondary-Axis Off-Grid Physics Receiver (Locked Comb `(0,9,10,19)`).
 
-Implements the three Stage 2B first-principles physics upgrades diagnosed by Stage 1B & Codex ultra:
-  1. Strict single-counting evidence accounting: incremental full 32x32 continuous-delay AUX
-     payload covariance log-likelihood `delta_aux` is stored separately from Frame-A prior and
-     combined ONCE with `(anchor U accepted_helpers)` on every wavefront refit (zero anchor
-     double counting!).
+Implements the Stage 2B physics receiver with corrected evidence bookkeeping:
+  1. Fixed prospective family masses, with Frame-A-only inherited mode priors. A B-anchor
+     posterior is never recycled as the trajectory-family prior. Each wavefront refit starts
+     from the same base prior plus one fixed AUX covariance score, and conditions on the
+     unique set `(anchor U accepted_helpers)` rather than the preceding refit's posterior.
   2. Wave-1 Numba-accelerated off-grid multi-mode union decoder: partitions dominant-ray posterior
      into coherent trajectory clusters, runs Strong-L on each mode, takes the deduplicated parity-valid
      codeword union + 64 1-flips, and scores exact marginalized predictive LSE log-likelihood.
@@ -15,13 +15,20 @@ Implements the three Stage 2B first-principles physics upgrades diagnosed by Sta
          post-shift Dopplers) with exact analytic anchor phase transport from Frame A through `t_shift`!
   4. B-only continuous-delay support rediscovery (`discover_b_only_delays`): uses the known B anchor
      pilot waveform (breaking covariance's common-delay shift kernel `H -> H D(s)`) with an explicit
-     Occam / BIC evidence threshold to rescue genuine delay-reset links (`offgrid_full_reset_new_delays`)
-     without degrading preserved-delay regimes.
+     fixed empirical log-score threshold for delay resets (`offgrid_full_reset_new_delays`).
   5. Exact C*-invariant per-row excess-energy burst variance guard for `offgrid_ood_burst_and_shift`.
 
-Strict invariants:
+Scope of the bookkeeping guarantee:
+  - Conditional on retaining Frame-A support, mixed-family masses do not depend on B-anchor
+    measurements or cached P11 gate weights. The empirical reset decision can select all-clear modes.
+  - AUX uses an anchor-conditioned Gaussian quasi-likelihood; delay candidates and reset-branch
+    power scales are estimated from B. This is a plug-in receiver, not an exact joint Bayesian
+    posterior or a marginal likelihood integrating over the selected delays and power scales.
+
+Other invariants:
   - ZERO hardcoded N0 anywhere.
-  - ZERO access to `PROBE_ROW` (`y_b[19]`) or a fold's 9 target rows during inference/waves.
+  - Channel fitting excludes `PROBE_ROW` and the owning fold's target rows. Final demapping
+    and its optional burst-noise guard can use the owned target observation.
   - Pure `float64` / `complex128` arithmetic; zero `torch.inference_mode()`.
 """
 from __future__ import annotations
@@ -58,6 +65,8 @@ from p11.offgrid_channel import (
     _TIME_A_FULL,
     _TIME_B_FULL,
     _compute_all_row_llrs,
+    _strict_int,
+    _validate_n0,
     build_offgrid_branches,
     classical_per_ray_gate,
     discover_frame_a_atoms,
@@ -86,11 +95,17 @@ _NU_CLR_EXT_BANK = np.concatenate((_NU_CLR_EXT_POS, -_NU_CLR_EXT_POS))  # [20]
 MID_SHIFT_ONSET_GRID: tuple[int, ...] = (6, 8, 11, 14)
 MID_SHIFT_POST_MAGS: tuple[float, ...] = (0.042, 0.056, 0.070, 0.084)
 
-# B-only delay rediscovery coarse grid & Occam log-evidence threshold
+# B-only delay rediscovery and the existing empirical log-score threshold.
+# The legacy constant name is retained for callers; it is not a derived BIC penalty.
 _TAU_B_COARSE = np.linspace(OFFGRID_DELAY_MIN, OFFGRID_DELAY_MAX, 66, dtype=REAL_DTYPE)
 _D_MATS_B_COARSE: Optional[np.ndarray] = None
 DELAY_RESET_OCCAM_NATS: float = 18.0
 AUX_COV_TEMP: float = 0.75
+
+# Maximum-entropy prior over the available physical trajectory families. These masses are
+# prospective constants, not fitted to the old formal results or to the current B anchor.
+FAMILY_PRIOR_WITH_MIDFRAME: tuple[float, float, float] = (1.0 / 3.0,) * 3
+FAMILY_PRIOR_WITHOUT_MIDFRAME: tuple[float, float, float] = (0.5, 0.5, 0.0)
 
 
 def _get_b_coarse_delay_mats() -> np.ndarray:
@@ -231,7 +246,7 @@ def warmup_p12_offgrid_numba() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 2. B-Only Continuous-Delay Support Discovery & Occam Delay-Reset Gate
+# 2. B-Only Continuous-Delay Support Discovery & Empirical Delay-Reset Gate
 # ---------------------------------------------------------------------------
 
 
@@ -241,7 +256,12 @@ def _anchor_delay_marginal_loglik(
     delays: np.ndarray,    # [K]
     prior_ray_var_u: float,
 ) -> float:
-    """Exact marginal Gaussian log-evidence `log p(y_anc | delays)` under CN(0, prior_ray_var_u I) gains."""
+    """Gaussian gain-marginal log-score for fixed delays and gain variance.
+
+    The integral over gains is exact conditional on those inputs. The caller estimates its
+    delay candidates and power scale from this same anchor, so their selection score is
+    empirical Bayes, not a fully marginalized model evidence.
+    """
     d_mats = np.stack([fractional_delay_matrix(float(d), n=N) for d in delays], axis=0)
     u_mat = np.einsum("knm,m->nk", d_mats, pilot_b)  # [N, K]
     cov = _EYE_N + float(prior_ray_var_u) * (u_mat @ u_mat.conj().T)
@@ -338,7 +358,7 @@ def discover_b_only_delays(
 
 
 # ---------------------------------------------------------------------------
-# 3. Unified P12 Off-Grid Physics Receiver (Zero Double Counting + 57 Modes + Wave-1 Union)
+# 3. Unified P12 Off-Grid Physics Receiver (Fixed Priors + 57 Modes + Wave-1 Union)
 # ---------------------------------------------------------------------------
 
 
@@ -369,30 +389,44 @@ def run_p12_offgrid_physics(
     bp_iters: int = 20,
     pic_scale: float = 0.75,
 ) -> OffGridPhysicsResult:
-    """Run the frozen-grade P12 off-grid pure-physics receiver on locked comb `(0,9,10,19)`.
+    """Run the P12 off-grid physics receiver on locked comb `(0,9,10,19)`.
 
-    Strictly respects whole-fold exclusion on every fold: the 9 target rows and PROBE_ROW are
+    Strictly respects whole-fold exclusion on every fold: the owned target rows and PROBE_ROW are
     masked to `NaN` during AUX covariance scoring, Wave-1/2 decoding, and all channel refits.
     """
     t0 = time.perf_counter()
-    n0 = float(obs.n0)
-    if not math.isfinite(n0) or n0 <= 0.0:
-        raise ValueError(f"Expected positive finite obs.n0, got {n0}")
+    n0 = _validate_n0(obs.n0)
     s_mag = math.sqrt(n0)
     s_var = n0
-    r_anchor = int(obs.training_rows[0])
-    probe_row = int(obs.probe_row)
+    probe_row = _strict_int(obs.probe_row, "obs.probe_row")
+    training_rows = tuple(_strict_int(r, "obs.training_rows") for r in obs.training_rows)
+    if (
+        not training_rows or probe_row < 0 or probe_row >= T
+        or any(r < 0 or r >= T for r in training_rows) or probe_row in training_rows
+    ):
+        raise ValueError(f"Invalid training_rows={training_rows} with probe_row={probe_row}")
+    r_anchor = training_rows[0]
 
+    # Preserve the old bundle builder's observation validation without computing its
+    # B-conditioned posterior. The withheld probe may contain arbitrary values/NaNs.
     y_b_safe = np.array(obs.y_b, dtype=COMPLEX_DTYPE, copy=True)
+    if y_b_safe.shape != (T, N):
+        raise ValueError(f"Expected obs.y_b shape ({T}, {N}), got {y_b_safe.shape}")
     y_b_safe[probe_row] = 0.0 + 0.0j
+    if not np.all(np.isfinite(y_b_safe)):
+        raise ValueError("obs.y_b non-probe rows contain non-finite values")
+    pilot_b = np.asarray(obs.pilot_tx_b, dtype=COMPLEX_DTYPE)
+    if pilot_b.shape != (len(training_rows), N) or not np.all(np.isfinite(pilot_b)):
+        raise ValueError(f"obs.pilot_tx_b must be finite with shape ({len(training_rows)}, {N}), got {pilot_b.shape}")
     y_b_u = y_b_safe / s_mag
 
     # Frame-A blind discovery (strictly from y_a, locked comb (0,9,10,19))
     atoms_a = discover_frame_a_atoms(obs, k_hat=k_hat)
-    bundle_a = build_offgrid_branches(obs, atoms=atoms_a, k_hat=k_hat)
 
-    # Mask-matched `B-refit off` baseline mode
+    # Historical `B-refit off` control, deliberately retaining the unmodified P11 receiver.
+    # Its B-conditioned bundle must not feed the full P12 receiver's prospective prior.
     if (not use_aux_cov) and (not use_wavefront) and (not use_delay_rediscovery):
+        bundle_a = build_offgrid_branches(obs, atoms=atoms_a, k_hat=k_hat)
         cls_r = classical_per_ray_gate(obs, bundle_a)
         return OffGridPhysicsResult(
             gate_out=cls_r.gate_out,
@@ -406,7 +440,7 @@ def run_p12_offgrid_physics(
             elapsed_ms=(time.perf_counter() - t0) * 1000.0,
         )
 
-    # --- Step 0: B-only Continuous-Delay Rediscovery & Occam Gate ---
+    # --- Step 0: B-only delay rediscovery with the existing empirical selection gate ---
     delay_reset_triggered = False
     delay_ll_gain = 0.0
     p_tot_b_est = max(float(np.mean(np.abs(y_b_u[r_anchor]) ** 2)) - 1.0, 0.25)
@@ -414,7 +448,7 @@ def run_p12_offgrid_physics(
 
     if use_delay_rediscovery:
         tau_b, p_atom_b_u, p_tot_b_u = discover_b_only_delays(y_b_u[r_anchor], obs.pilot_tx_b[0], k_hat=k_hat)
-        ll_a_anc = _anchor_delay_marginal_loglik(y_b_u[r_anchor], obs.pilot_tx_b[0], bundle_a.tau_hat, prior_var_delay_test)
+        ll_a_anc = _anchor_delay_marginal_loglik(y_b_u[r_anchor], obs.pilot_tx_b[0], atoms_a.tau_hat, prior_var_delay_test)
         ll_b_anc = _anchor_delay_marginal_loglik(y_b_u[r_anchor], obs.pilot_tx_b[0], tau_b, prior_var_delay_test)
         delay_ll_gain = float(ll_b_anc - ll_a_anc)
         if delay_ll_gain > DELAY_RESET_OCCAM_NATS:
@@ -444,10 +478,12 @@ def run_p12_offgrid_physics(
         ray_power_order = np.argsort(-p_atom_b_u)
         p_atom_u = p_clear_u
     else:
-        used_delays = bundle_a.tau_hat.copy()
-        d_mats = bundle_a.d_mats
-        u_probe = bundle_a.u_probe
-        k = bundle_a.k_hat
+        # Geometry is derived directly from Frame A. Building the P11 branch bundle here
+        # would also compute B-anchor posteriors, which must not become new prior evidence.
+        used_delays = atoms_a.tau_hat.copy()
+        d_mats = np.stack([fractional_delay_matrix(float(d), n=N) for d in used_delays], axis=0)
+        u_probe = np.einsum("knm,m->kn", d_mats, SC_PILOTS[probe_row])
+        k = len(used_delays)
 
         t_a_mean = float(_TIME_A_FULL[list(OFDM_PILOT_COMB)].mean())
         t_anchor = float(_TIME_B_FULL[r_anchor].mean())
@@ -478,6 +514,9 @@ def run_p12_offgrid_physics(
         prior_logw = np.empty((k, n_tot_h), dtype=REAL_DTYPE)
 
         rot_clr = np.exp(2j * np.pi * (_NU_CLR_EXT_BANK[:, None] * dt_b_anc[None, :])).reshape(n_clr, T, N)
+        p_inh_tot, p_clr_tot, p_mid_tot = (
+            FAMILY_PRIOR_WITH_MIDFRAME if use_piecewise_midframe else FAMILY_PRIOR_WITHOUT_MIDFRAME
+        )
 
         for j in range(k):
             # Family 0: Frame-A inherit modes (21)
@@ -493,19 +532,6 @@ def run_p12_offgrid_physics(
             rot_bank[j, n_inh : n_inh + n_clr] = rot_clr
             mode_family[j, n_inh : n_inh + n_clr] = 1
             mode_sign_pos[j, n_inh : n_inh + n_clr] = _NU_CLR_EXT_BANK > 0.0
-
-            # Weight split between inherit / clear / piecewise-midframe (coupled to link-level Frame-A coherence!)
-            w_inh_raw = float(np.clip(bundle_a.w_ray_classical[j], 0.02, 0.98))
-            link_coherence = float(np.max(bundle_a.w_ray_classical))
-            if use_piecewise_midframe:
-                # A midframe partial shift originates from a Frame-A-coherent link; full resets have link_coherence ~ 0.
-                p_mid_tot = 0.02 + 0.18 * link_coherence
-                p_inh_tot = (1.0 - p_mid_tot) * w_inh_raw
-                p_clr_tot = (1.0 - p_mid_tot) * (1.0 - w_inh_raw)
-            else:
-                p_mid_tot = 0.0
-                p_inh_tot = w_inh_raw
-                p_clr_tot = 1.0 - w_inh_raw
 
             prior_mu_u[j, :n_inh] = mu_inh_anc_u[j]
             prior_var_u[j, :n_inh] = v_inh_anc_u[j]
@@ -557,14 +583,21 @@ def run_p12_offgrid_physics(
 
         ray_power_order = np.argsort(-atoms_a.p_atom_a)
 
-    # Helper: Single-counting damped Jacobi conditioning on arbitrary known/virtual blocks
+    # Refit inputs are fixed for this receiver call. Never overwrite them with a fitted
+    # posterior and then reapply the same anchor/helper measurements on the next wave.
+    for base_prior_array in (prior_mu_u, prior_var_u, prior_logw):
+        base_prior_array.setflags(write=False)
+
+    # Helper: damped Jacobi conditioning from fixed priors on known/virtual blocks.
     def _fit_jacobi_single_count(
         rows_known: Sequence[int],
         words_known: np.ndarray,    # [B, N]
         noises_u: np.ndarray,       # [B]
         y_inf_u: np.ndarray,        # [T, N] with targets & probe masked to NaN!
-        eff_prior_logw: np.ndarray, # [K, H] strictly containing ONLY Frame-A + incremental AUX delta (NO anchor!)
+        eff_prior_logw: np.ndarray, # [K, H] base log prior + fixed conditional AUX score; no recycled fit posterior
     ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        if len(set(rows_known)) != len(rows_known):
+            raise ValueError("A refit may condition on each known row only once")
         b_cnt = len(rows_known)
         m_tot = b_cnt * N
         y_k = y_inf_u[list(rows_known)].reshape(m_tot)
@@ -602,7 +635,8 @@ def run_p12_offgrid_physics(
         var_all = np.maximum(sec_all[:, None, None] - np.abs(mean_all) ** 2, 1e-12)
         return mean_all, var_all, logw_cur, mean_h, post_v
 
-    # Helper: Pure incremental full 32x32 AUX covariance log-likelihood delta (ZERO anchor evidence added!)
+    # Helper: AUX-only incremental score conditional on the anchor fit. It does not include
+    # the anchor's log-evidence as another additive term, but is not independent of anchor data.
     def _compute_incremental_aux_cov32_delta(
         aux_rows: tuple[int, ...],
         y_inf_u: np.ndarray,
@@ -612,7 +646,7 @@ def run_p12_offgrid_physics(
         mh_anc: np.ndarray,
         pv_anc: np.ndarray,
     ) -> np.ndarray:
-        """Return pure incremental `delta_aux [K, H]` from 5 AUX rows ONLY (no anchor log-evidence)."""
+        """Return `delta_aux [K, H]` from AUX rows conditional on the anchor's fitted moments."""
         y_aux_u = y_inf_u[list(aux_rows)]
         delta_aux = np.zeros((k, n_tot_h), dtype=REAL_DTYPE)
         cur_m_aux = mean_anc_u[:, list(aux_rows), :].copy()
@@ -800,7 +834,7 @@ def run_p12_offgrid_physics(
     tot_acc = 0
 
     for fold_idx, (t_rows, a_rows) in enumerate(zip(t_folds, a_folds)):
-        # Structural zero-leakage firewall: mask all 9 target rows + probe_row to NaN!
+        # Structural firewall: mask all owned target rows and probe_row to NaN.
         y_inf_u = y_b_u.copy()
         y_inf_u[list(t_rows)] = complex(np.nan, np.nan)
         y_inf_u[probe_row] = complex(np.nan, np.nan)
@@ -810,14 +844,15 @@ def run_p12_offgrid_physics(
             (r_anchor,), obs.pilot_tx_b[:1], np.array([1.0], dtype=REAL_DTYPE), y_inf_u, prior_logw
         )
 
-        # Compute pure incremental AUX covariance log-likelihood delta (ZERO anchor evidence inside!)
+        # Compute the conditional AUX score without adding the anchor log-evidence again.
         if use_aux_cov:
             delta_aux = _compute_incremental_aux_cov32_delta(
                 a_rows, y_inf_u, m_anc_u, v_anc_u, lw_anc, mh_anc, pv_anc
             )
             eff_prior_logw = prior_logw + delta_aux
             eff_prior_logw -= logsumexp(eff_prior_logw, axis=1, keepdims=True)
-            # Re-condition anchor ONCE with eff_prior_logw (zero double counting!)
+            eff_prior_logw.setflags(write=False)
+            # Recompute from the base prior plus the conditional AUX score, not lw_anc.
             m_u, v_u, lw_cur, mh_cur, pv_cur = _fit_jacobi_single_count(
                 (r_anchor,), obs.pilot_tx_b[:1], np.array([1.0], dtype=REAL_DTYPE), y_inf_u, eff_prior_logw
             )
@@ -884,7 +919,8 @@ def run_p12_offgrid_physics(
                             added = True
 
                 if added:
-                    # Single-counting refit from pure `eff_prior_logw` on `(anchor U accepted_helpers)`!
+                    # Restart from the same fixed effective prior on the unique set of known
+                    # rows; do not recycle lw_cur or append another copy of the anchor.
                     m_u, v_u, lw_cur, mh_cur, pv_cur = _fit_jacobi_single_count(
                         known_rows_list,
                         np.stack(known_words_list, axis=0),
@@ -954,6 +990,8 @@ def run_p12_offgrid_physics(
 __all__ = [
     "AUX_COV_TEMP",
     "DELAY_RESET_OCCAM_NATS",
+    "FAMILY_PRIOR_WITH_MIDFRAME",
+    "FAMILY_PRIOR_WITHOUT_MIDFRAME",
     "MID_SHIFT_ONSET_GRID",
     "MID_SHIFT_POST_MAGS",
     "OffGridPhysicsResult",

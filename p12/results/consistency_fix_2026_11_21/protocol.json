@@ -1,0 +1,25 @@
+{
+  "purpose": "Prospectively fixed small old-versus-corrected consistency diagnostic; no tuning or confirmatory performance claim",
+  "baseline_commit": "0d01179d43bbf02a700ce1029e613d9af1b78c8f",
+  "snr_db": 9.0,
+  "pilot_rows_a": [0, 9, 10, 19],
+  "seed_namespace": "p12_e2e",
+  "seed_offset": 20000000,
+  "receiver_flags": "run_p12_offgrid_physics defaults, identical in both versions",
+  "cases": [
+    {"seed": 1260020000000, "regime": "offgrid_continuous", "anchor_row": 3},
+    {"seed": 1260020000001, "regime": "offgrid_continuous", "anchor_row": 6},
+    {"seed": 1260020001000, "regime": "offgrid_partial_shift", "anchor_row": 10},
+    {"seed": 1260020001001, "regime": "offgrid_partial_shift", "anchor_row": 13},
+    {"seed": 1260020002000, "regime": "offgrid_midframe_shift", "anchor_row": 16},
+    {"seed": 1260020002001, "regime": "offgrid_midframe_shift", "anchor_row": 3},
+    {"seed": 1260020003000, "regime": "offgrid_full_reset", "anchor_row": 6},
+    {"seed": 1260020003001, "regime": "offgrid_full_reset", "anchor_row": 10},
+    {"seed": 1260020004000, "regime": "offgrid_full_reset_new_delays", "anchor_row": 13},
+    {"seed": 1260020004001, "regime": "offgrid_full_reset_new_delays", "anchor_row": 16},
+    {"seed": 1260020005000, "regime": "offgrid_ood_burst_and_shift", "anchor_row": 3},
+    {"seed": 1260020005001, "regime": "offgrid_ood_burst_and_shift", "anchor_row": 6},
+    {"seed": 1260020006000, "regime": "offgrid_ood_five_ray_fast", "anchor_row": 10},
+    {"seed": 1260020006001, "regime": "offgrid_ood_five_ray_fast", "anchor_row": 13}
+  ]
+}
