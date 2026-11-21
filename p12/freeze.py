@@ -68,6 +68,7 @@ FROZEN_CODE_FILES: tuple[str, ...] = (
     "p12/primary_receiver.py",
     "p12/offgrid_physics.py",
     "p12/offgrid_receiver.py",
+    "p12/stage1_secondary_diag.py",
     "p12/freeze.py",
     "p12/audit.py",
     "p12/formal_study.py",
@@ -75,9 +76,9 @@ FROZEN_CODE_FILES: tuple[str, ...] = (
 )
 
 FROZEN_CKPT_FILES: tuple[str, ...] = (
-    "p11/ckpts/p10b_dev_ckpts/em10_transport_attn_seed1.pt",
-    "p11/ckpts/p10b_dev_ckpts/em10_transport_attn_seed2.pt",
-    "p11/ckpts/p10b_dev_ckpts/em10_transport_attn_seed3.pt",
+    "p11/ckpts/p10b_dev_ckpts/em10_transport_attn_seed1001.pt",
+    "p11/ckpts/p10b_dev_ckpts/em10_transport_attn_seed1002.pt",
+    "p11/ckpts/p10b_dev_ckpts/em10_transport_attn_seed1003.pt",
 )
 
 
