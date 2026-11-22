@@ -1,0 +1,151 @@
+{
+  "study": "EM-FloatFormer CLI-4 P12 Stage 5: Consistent Off-Grid Posterior Fusion + Symmetric Parallel-Transport Neural Control",
+  "baseline_commit": "f566f9b8b0ddfb468a4cb3fd64588bfa46c87212",
+  "git_head_at_freeze": "codespace-staged-mirror",
+  "snr_db": 9.0,
+  "pilot_rows_a": [
+    0,
+    9,
+    10,
+    19
+  ],
+  "physics_variant": "mixture_llr_content",
+  "upgraded_phys_arm": "p12_mixture_llr_content",
+  "mix_cfg": {
+    "cos_merge_thresh": 0.92,
+    "rel_dist_merge_thresh": 0.22,
+    "max_dom_clusters": 5,
+    "enable_second_ray_split": true,
+    "second_ray_energy_ratio": 0.18,
+    "second_ray_min_mass": 0.14,
+    "max_joint_branches": 8,
+    "min_branch_mass": 0.015,
+    "obs_cov_gamma": 0.85,
+    "runner_up_beta_thresh": 0.035,
+    "max_decode_branches": 4,
+    "runner_up_list_size": "small",
+    "use_mixture_in_wave1": true,
+    "use_mixture_in_wave2": true
+  },
+  "content_cfg": {
+    "full_aux_bank": true,
+    "aux_max_rays": 4,
+    "jacobi_iters": 16,
+    "jacobi_damping": 0.72,
+    "b_power_floor_frac": 0.25,
+    "aux_cov_temp": 0.75,
+    "use_aux_content_weights": true,
+    "aux_energy_thresh": 0.42,
+    "aux_energy_penalty": 3.0,
+    "aux_kurt_thresh": 0.6,
+    "aux_kurt_penalty": 0.75,
+    "use_helper_burst_guard": true,
+    "use_target_pos_query": true,
+    "target_pos_temp": 0.45
+  },
+  "n_clusters": 16,
+  "clusters": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "replay_clusters": [
+    1,
+    16
+  ],
+  "id_regimes": [
+    "offgrid_continuous",
+    "offgrid_partial_shift",
+    "offgrid_midframe_shift",
+    "offgrid_full_reset"
+  ],
+  "ood_regimes": [
+    "offgrid_full_reset_new_delays",
+    "offgrid_ood_burst_and_shift",
+    "offgrid_ood_five_ray_fast"
+  ],
+  "links_per_cluster_id": 4,
+  "links_per_cluster_ood": 2,
+  "eval_per_seed_on_id": false,
+  "seed_ranges": {
+    "s5_dev_step1": [
+      1410000010000,
+      1410000015000
+    ],
+    "s5_dev_step2": [
+      1410000050000,
+      1410000100000
+    ],
+    "s5_train_step2": [
+      1420000100000,
+      1420000200000
+    ],
+    "s5_test_id": [
+      1430000101000,
+      1430000266003
+    ],
+    "s5_test_ood": [
+      1440000501000,
+      1440000616001
+    ]
+  },
+  "seed_counts": {
+    "formal_id": 256,
+    "formal_ood": 96
+  },
+  "total_unique_formal_seeds": 352,
+  "preregistered_holm_families": {
+    "family_physics": [
+      "mix_vs_base_4id",
+      "mix_vs_hard_4id",
+      "content_vs_base_4id",
+      "content_vs_mix_4id",
+      "upgraded_vs_base_new_delays",
+      "upgraded_vs_base_ood"
+    ],
+    "family_neural": [
+      "role_a_vs_phys_4id",
+      "role_b_vs_phys_4id",
+      "role_a_vs_role_b_4id",
+      "role_a_vs_phys_new_delays",
+      "role_a_vs_phys_ood",
+      "role_a_vs_role_b_ood"
+    ]
+  },
+  "file_sha256": {
+    "research/p12_stage5_fusion_neural/contract.py": "82b63720a18b8cede21b74e913fbba99e65e54d458ff878ed3f5aa5715eb523e",
+    "research/p12_stage5_fusion_neural/consistent_fusion_engine.py": "5dd8ec774b09c4354f567800d8c8cde7b04647722e80801b3879fc0efc36f713",
+    "research/p12_stage5_fusion_neural/neural_models.py": "7ea037d890a9bfada2cee190d2d1812032754c9f598983ea5ba61c6507a527e3",
+    "research/p12_stage5_fusion_neural/step1_dev_ablation.py": "3dd9e8d460cd7ce42501fbcaa43e3239d76229a0091221595b524786bea9a7ec",
+    "research/p12_stage5_fusion_neural/step2_train_stage5.py": "4e552fb96a4cbfdc86d5bb71c7679fca67c51480cca7e7f4946326f73467ae14",
+    "research/p12_stage5_fusion_neural/freeze.py": "cb9100fb7c32e6dc889d7129197d99e7aab9ecb9df3547ea39bbcc1744fa6856",
+    "research/p12_stage5_fusion_neural/audit.py": "d031d6c6ed5eaac2a35a014014db292c320e74b05a88b5a610920280675619b2",
+    "research/p12_stage5_fusion_neural/step3_formal_eval.py": "ae439b555cb10637414db75aef7a8f463b5c728b86c7dab01bbb9052e8d3cdaf",
+    "p12/contract.py": "2e47717ccd0df75b65542022d9ee2d93f66323bd2552ddfb638e6d52f447cedf",
+    "p12/offgrid_physics.py": "79376e5c3863c56a71662afcbd6d648cafc1a70624f45e19c2be84daeb7308f9",
+    "p12/offgrid_receiver.py": "92101bdf46b57c970bb12003cef7035e078d210c69608bd561dee8a1441ed65b",
+    "p12/results/freeze_manifest.json": "2d17b606752cd373db1906cadd3fc9c6c538c5559d6b749f9c70afe8b2d2e222"
+  },
+  "ckpt_sha256": {
+    "stage5_role_a_seed5001.pt": "13a47dd7df08bd3bd9c4b9163463fe8517798fd809a7b04a9f8e41dbdf698a82",
+    "stage5_role_a_seed5002.pt": "464b6c2bc05a182af5caf636336afa3917667a14af06dc45f55af50f80f223b0",
+    "stage5_role_a_seed5003.pt": "562b8676734a2f108df11c30da4c02fd2f017b9353e8124d3b01b0982bed93f6",
+    "stage5_role_b_seed5001.pt": "288f1093512e4bef7b3a35d07df6d59858232b1f26480cd95c24b623a06215b8",
+    "stage5_role_b_seed5002.pt": "4e80cc6bae86ed8cddd6d8968713d871f50a4a887b28c35ff29bdab6af23570c",
+    "stage5_role_b_seed5003.pt": "098c7e53e5c83a177c66c670ef368f62ccbcae2a67877d101366c5f63237104f"
+  },
+  "bundle_sha256": "b4c2d37512756ecf02e1c8806f4412c56f539fbfb4c41ee874b29de1c60aa4ff"
+}
