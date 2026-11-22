@@ -209,10 +209,14 @@ def pilot_cv_masks(
     heldout_indices: list[int] | tuple[int, ...],
 ) -> tuple[np.ndarray, np.ndarray]:
     """Split pilot_mask (14, 128) into disjoint (obs_mask_128, heldout_mask_128)."""
-    heldout_set = set(int(i) for i in heldout_indices)
-    for i in heldout_set:
-        if not (0 <= i < 14):
-            raise ValueError(f"Pilot index out of range [0, 13]: {i}")
+    heldout_set: set[int] = set()
+    for raw in heldout_indices:
+        if isinstance(raw, (bool, np.bool_)) or not isinstance(raw, (int, np.integer)):
+            raise ValueError(f"Pilot index must be an integer in [0, 13], got {raw!r}")
+        pi = int(raw)
+        if not (0 <= pi < 14):
+            raise ValueError(f"Pilot index out of range [0, 13]: {raw!r}")
+        heldout_set.add(pi)
     heldout_mask = np.zeros_like(pilot_mask, dtype=bool)
     for i in heldout_set:
         heldout_mask[PILOT_SYMBOL_IDX, PILOT_FFT_INDICES[i]] = True
@@ -258,8 +262,13 @@ def estimate_blind_n0(
     d2 = h_p[2:] - 2.0 * h_p[1:-1] + h_p[:-2]
     pilot_diff2_n0 = float(0.98 * np.mean(np.abs(d2) ** 2) / 6.0)
 
-    if guard_n0_mean > 1e-10:
-        if guard_n0_mean > 3.0 * max(guard_n0_robust, 1e-12):
+    pilot_mask, _, data_mask = build_masks()
+    active_power = float(np.mean(np.abs(grid[pilot_mask | data_mask]) ** 2))
+    guard_thresh = 1e-10 * active_power if active_power > 0.0 else 1e-10
+    robust_floor = 1e-12 * active_power if active_power > 0.0 else 1e-12
+
+    if guard_n0_mean > guard_thresh:
+        if guard_n0_mean > 3.0 * max(guard_n0_robust, robust_floor):
             n0_raw = guard_n0_robust
             n0_source = "guard_passband_median"
         else:
@@ -535,6 +544,15 @@ def compute_temporal_diagnostics(
     n = len(sinr_vals)
     if len(h_pilots) != n or len(payload_hashes) != n:
         raise ValueError("Mismatched input lengths for temporal diagnostics")
+    if n < 2:
+        raise ValueError("compute_temporal_diagnostics requires at least 2 frames")
+
+    sinr_f = np.asarray(sinr_vals, dtype=np.float64)
+    h_f = np.asarray(h_pilots, dtype=np.complex128)
+    if not np.all(np.isfinite(sinr_f)):
+        raise ValueError("sinr_vals contains non-finite (NaN/Inf) values")
+    if not np.all(np.isfinite(h_f)):
+        raise ValueError("h_pilots contains non-finite (NaN/Inf) values")
 
     hash_to_indices: dict[str, list[int]] = {}
     for idx, h in enumerate(payload_hashes):
@@ -546,8 +564,6 @@ def compute_temporal_diagnostics(
     h_envelope_lags: dict[str, float] = {}
 
     eff_max_lag = min(int(max_lag), max(1, n - 2))
-    sinr_f = np.asarray(sinr_vals, dtype=np.float64)
-    h_f = np.asarray(h_pilots, dtype=np.complex128)
     h_norms = np.linalg.norm(h_f, axis=1)
 
     for k in range(1, eff_max_lag + 1):
@@ -614,6 +630,8 @@ def build_leak_free_splits(
         heldout_pilot_eval_indices = [1, 5, 9, 12]
 
     n = len(sinr_vals)
+    sinr_vals = np.asarray(sinr_vals, dtype=np.float64)
+    h_pilots = np.asarray(h_pilots, dtype=np.complex128)
     diag = compute_temporal_diagnostics(
         sinr_vals,
         h_pilots,
@@ -870,18 +888,26 @@ def preprocess_and_save(
             mf.write(json.dumps(rec) + "\n")
 
     def _save_subset(sub_frames: list[RealOFDMFrame], out_path: Path) -> dict[str, Any]:
+        if len(sub_frames) == 0:
+            rx_grids = np.empty((0, N_SYMB, N_FFT), dtype=np.complex128)
+            tx_bits = np.empty((0, N_DATA_RES, QM), dtype=np.uint8)
+            tx_symbols = np.empty((0, N_DATA_RES), dtype=np.complex128)
+        else:
+            rx_grids = np.stack([f.rx_grid for f in sub_frames], axis=0).astype(np.complex128)
+            tx_bits = np.stack([f.tx_bits for f in sub_frames], axis=0).astype(np.uint8)
+            tx_symbols = np.stack([f.tx_symbols for f in sub_frames], axis=0).astype(np.complex128)
         np.savez(
             out_path,
             frame_ids=np.array([f.frame_id for f in sub_frames], dtype=np.int64),
-            splits=np.array([f.split for f in sub_frames]),
-            group_ids=np.array([f.group_id for f in sub_frames]),
-            rx_grids=np.stack([f.rx_grid for f in sub_frames], axis=0).astype(np.complex128),
-            tx_bits=np.stack([f.tx_bits for f in sub_frames], axis=0).astype(np.uint8),
-            tx_symbols=np.stack([f.tx_symbols for f in sub_frames], axis=0).astype(np.complex128),
+            splits=np.array([f.split for f in sub_frames], dtype=str),
+            group_ids=np.array([f.group_id for f in sub_frames], dtype=str),
+            rx_grids=rx_grids,
+            tx_bits=tx_bits,
+            tx_symbols=tx_symbols,
             reported_sinr_db=np.array([f.reported_sinr_db for f in sub_frames], dtype=np.float64),
             est_n0=np.array([f.est_n0 for f in sub_frames], dtype=np.float64),
             s0=np.array([f.meta["s0"] for f in sub_frames], dtype=np.float64),
-            meta_json=np.array([json.dumps(f.meta) for f in sub_frames]),
+            meta_json=np.array([json.dumps(f.meta) for f in sub_frames], dtype=str),
         )
         raw_bytes = out_path.read_bytes()
         return {

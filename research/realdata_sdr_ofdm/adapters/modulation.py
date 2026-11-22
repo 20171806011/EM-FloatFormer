@@ -114,9 +114,19 @@ def constellation_log_likelihood(
         raise ValueError("n0 contains non-finite values")
     if np.any(n0_arr < 0.0):
         raise ValueError("n0 must be non-negative (>= 0.0)")
-    if float(min_n0) <= 0.0 or float(max_n0) < float(min_n0):
-        raise ValueError(f"Expected 0 < min_n0 <= max_n0, got min_n0={min_n0}, max_n0={max_n0}")
-    n0_eff = np.clip(n0_arr, float(min_n0), float(max_n0))[..., None]
+    if isinstance(min_n0, (bool, np.bool_)) or isinstance(max_n0, (bool, np.bool_)):
+        raise ValueError(
+            f"min_n0 and max_n0 must not be bool, got min_n0={min_n0!r}, max_n0={max_n0!r}"
+        )
+    min_n0_f = float(min_n0)
+    max_n0_f = float(max_n0)
+    if (
+        not (np.isfinite(min_n0_f) and np.isfinite(max_n0_f))
+        or min_n0_f <= 0.0
+        or max_n0_f < min_n0_f
+    ):
+        raise ValueError(f"Expected finite 0 < min_n0 <= max_n0, got min_n0={min_n0}, max_n0={max_n0}")
+    n0_eff = np.clip(n0_arr, min_n0_f, max_n0_f)[..., None]
     pts = constellation_points(qm)
     sq_dist = np.abs(z_arr[..., None] - pts) ** 2
     ll = -sq_dist / n0_eff

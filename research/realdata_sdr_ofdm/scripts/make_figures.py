@@ -138,14 +138,22 @@ def _subblock_clusters(records: list[dict[str, Any]], target_g: int = 16) -> lis
             by_macro[gid] = []
         by_macro[gid].append(r)
     m = len(macro_order)
-    base_sub = target_g // m
-    rem = target_g % m
+    if m == 0:
+        return []
+    if int(target_g) <= m:
+        return [
+            sorted(by_macro[mgid], key=lambda x: int(x["frame_id"]))
+            for mgid in macro_order
+        ]
+    base_sub = int(target_g) // m
+    rem = int(target_g) % m
     clusters: list[list[dict[str, Any]]] = []
     for idx, mgid in enumerate(macro_order):
-        k_sub = base_sub + (1 if idx >= (m - rem) else 0)
+        k_sub = max(1, base_sub + (1 if idx >= (m - rem) else 0))
         sub = sorted(by_macro[mgid], key=lambda x: int(x["frame_id"]))
         for chunk in np.array_split(np.arange(len(sub)), k_sub):
-            clusters.append([sub[int(p)] for p in chunk])
+            if len(chunk) > 0:
+                clusters.append([sub[int(p)] for p in chunk])
     return clusters
 
 
@@ -158,6 +166,8 @@ def _cluster_boot_ci(
 ) -> tuple[float, float]:
     clusters = _subblock_clusters(records, target_g=16)
     g = len(clusters)
+    if g == 0:
+        raise ValueError(f"Cannot compute cluster bootstrap CI on empty records for metric={metric!r}")
     vals_num = np.zeros(g, dtype=np.float64)
     vals_den = np.zeros(g, dtype=np.float64)
     for idx, cl in enumerate(clusters):
@@ -182,7 +192,11 @@ def _cluster_boot_ci(
         samples = np.sum(vals_num[boot_idx], axis=1) / np.maximum(np.sum(vals_den[boot_idx], axis=1), 1.0)
     else:
         samples = np.mean(vals_num[boot_idx], axis=1)
-    return float(np.quantile(samples, 0.025)), float(np.quantile(samples, 0.975))
+    lo = float(np.quantile(samples, 0.025))
+    hi = float(np.quantile(samples, 0.975))
+    if not (np.isfinite(lo) and np.isfinite(hi)):
+        raise ValueError(f"Non-finite cluster bootstrap CI for metric={metric!r}: ({lo}, {hi})")
+    return lo, hi
 
 
 def _save_both(fig: plt.Figure, out_dir: Path, stem: str) -> None:
@@ -219,6 +233,10 @@ def make_fig1_clean_comparison(
         hi_errs = np.zeros_like(pts)
         for i, a in enumerate(ARM_ORDER):
             lo, hi = _cluster_boot_ci(per_frame_by_arm[a], m_key)
+            if not (np.isfinite(pts[i]) and np.isfinite(lo) and np.isfinite(hi)):
+                raise ValueError(
+                    f"Non-finite point or CI for {a}/{m_key}: pt={pts[i]}, ci=({lo}, {hi})"
+                )
             lo_errs[i] = max(0.0, pts[i] - lo)
             hi_errs[i] = max(0.0, hi - pts[i])
 
@@ -237,12 +255,19 @@ def make_fig1_clean_comparison(
         ref_val = getter(arms_data["lmmse_1d"])
         ax.axhline(ref_val, color="#334155", linestyle="--", linewidth=0.9, alpha=0.7, zorder=2)
 
+        y_min = min(0.0, float(np.min(pts - lo_errs)))
         y_max = float(np.max(pts + hi_errs))
-        ax.set_ylim(0.0, y_max * 1.18)
+        span = y_max - y_min
+        if span <= 0.0:
+            y_lo, y_hi = y_min, y_min + 1.0
+        else:
+            y_lo = y_min - (0.05 * span if y_min < 0.0 else 0.0)
+            y_hi = y_max + 0.18 * span
+        ax.set_ylim(y_lo, y_hi)
         for idx_b, (b, val, hi_e) in enumerate(zip(bars, pts, hi_errs)):
             ax.text(
                 b.get_x() + b.get_width() / 2.0,
-                val + hi_e + y_max * 0.02,
+                val + hi_e + max(y_hi - y_lo, 1e-6) * 0.02,
                 fmt.format(val),
                 ha="center",
                 va="bottom",
@@ -484,7 +509,8 @@ def make_fig4_sinr_and_cost(
     width = 0.16
     offsets = np.linspace(-2.0 * width, 2.0 * width, len(rep_arms))
     for off, (arm, lbl, col, _, _) in zip(offsets, rep_arms):
-        ys = [100.0 * float(sinr_strat["arms"][arm][bl]["ber"]) for bl in bin_labels]
+        arm_bins = sinr_strat["arms"].get(arm, {})
+        ys = [100.0 * float(arm_bins[bl]["ber"]) if bl in arm_bins else 0.0 for bl in bin_labels]
         ax_sinr.bar(x + off, ys, width=width, color=col, alpha=0.88, edgecolor="#1E293B", linewidth=0.5, label=lbl, zorder=3)
 
     # Find exact outlier frame (block_10, >=20 dB with BER > 0.3)
@@ -588,7 +614,7 @@ def make_fig4_sinr_and_cost(
             zorder=5,
         )
 
-    ax_cost.set_xlim(0.0, max(xs) * 1.18)
+    ax_cost.set_xlim(0.0, max(max(xs) * 1.18, 1.0))
     ax_cost.set_ylim(min(ys) - 0.18, max(ys) + 0.18)
     ax_cost.set_xlabel("Mean Inference Latency (ms / frame, 1-thread pinned)")
     ax_cost.set_ylabel("Clean Test BER (%)")

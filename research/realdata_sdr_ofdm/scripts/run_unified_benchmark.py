@@ -272,6 +272,25 @@ def _resolve_canonical_checkpoint(
     return best, ckpt_path
 
 
+def _finite_float(val: Any, default: float = 0.0) -> float:
+    import math
+
+    try:
+        f = float(val)
+        return f if math.isfinite(f) else float(default)
+    except (TypeError, ValueError):
+        return float(default)
+
+
+def _safe_int(val: Any, default: int = 0) -> int:
+    if val is None or isinstance(val, bool):
+        return int(default)
+    try:
+        return int(val)
+    except (TypeError, ValueError):
+        return int(default)
+
+
 def _build_per_frame_record(
     arm: str,
     group: str,
@@ -285,32 +304,65 @@ def _build_per_frame_record(
         PILOT_FFT_INDICES,
         PILOT_SYMBOL_IDX,
     )
+    from research.realdata_sdr_ofdm.eval.evaluator import _frame_s2_scale, _is_valid_output
 
-    be = int(np.sum(out.hard_bits != fr.tx_bits))
-    se = int(np.sum(np.any(out.hard_bits != fr.tx_bits, axis=-1)))
-    sq_err = float(np.sum(np.abs(out.eq_symbols - fr.tx_symbols) ** 2))
-    sq_sig = float(np.sum(np.abs(fr.tx_symbols) ** 2))
-    sym_mse = sq_err / float(fr.tx_symbols.size)
-    evm_pct = 100.0 * float(np.sqrt(sq_err / max(sq_sig, 1e-30)))
+    aux = (getattr(out, "aux_info", None) or {}) if out is not None else {}
+    is_timeout = bool(aux.get("timeout", False))
+    ok, err_msg = _is_valid_output(fr, out)
+    if is_timeout:
+        ok = False
+        err_msg = str(aux.get("error") or "timeout")
 
-    p_nmse = 0.0
-    p_cal = 0.0
-    p_nll = 0.0
-    if out.heldout_pilot_pred is not None and out.heldout_pilot_var is not None:
-        idx = out.aux_info.get("heldout_pilot_indices") or []
-        if len(idx) == len(out.heldout_pilot_pred) and len(idx) > 0:
-            fft_idx = [PILOT_FFT_INDICES[i] for i in idx]
-            y_p = fr.rx_grid[PILOT_SYMBOL_IDX, fft_idx]
-            p_val = fr.pilot_values[idx]
-            z_obs = y_p / p_val
-            sig2_obs = float(fr.est_n0) / (np.abs(p_val) ** 2)
-            v_eff = np.maximum(out.heldout_pilot_var + sig2_obs, 1e-30)
-            err = out.heldout_pilot_pred - z_obs
-            p_nmse = float(np.sum(np.abs(err) ** 2) / max(np.sum(np.abs(z_obs) ** 2), 1e-30))
-            p_cal = float(np.mean((np.abs(err) ** 2) / v_eff))
-            p_nll = float(np.mean(np.log(np.pi * v_eff) + (np.abs(err) ** 2) / v_eff))
+    if not ok:
+        be = 0
+        se = 0
+        sym_mse = 0.0
+        evm_pct = 0.0
+        p_nmse = 0.0
+        p_cal = 0.0
+        p_nll = 0.0
+        failed_flag = True
+        error_val = str(err_msg or "invalid output")
+    else:
+        be = int(np.sum(out.hard_bits != fr.tx_bits))
+        se = int(np.sum(np.any(out.hard_bits != fr.tx_bits, axis=-1)))
+        sq_err = float(np.sum(np.abs(out.eq_symbols - fr.tx_symbols) ** 2))
+        sq_sig = float(np.sum(np.abs(fr.tx_symbols) ** 2))
+        sym_mse = _finite_float(sq_err / float(fr.tx_symbols.size))
+        evm_pct = _finite_float(100.0 * float(np.sqrt(sq_err / max(sq_sig, 1e-30))))
 
-    aux = out.aux_info or {}
+        p_nmse = 0.0
+        p_cal = 0.0
+        p_nll = 0.0
+        if out.heldout_pilot_pred is not None and out.heldout_pilot_var is not None:
+            idx = aux.get("heldout_pilot_indices") or []
+            p_pred = np.asarray(out.heldout_pilot_pred, dtype=np.complex128).ravel()
+            p_var = np.asarray(out.heldout_pilot_var, dtype=np.float64).ravel()
+            if (
+                len(idx) == len(p_pred)
+                and len(idx) == len(p_var)
+                and len(idx) > 0
+                and all(0 <= int(i) < len(PILOT_FFT_INDICES) for i in idx)
+            ):
+                int_idx = [int(i) for i in idx]
+                fft_idx = [PILOT_FFT_INDICES[i] for i in int_idx]
+                y_p = fr.rx_grid[PILOT_SYMBOL_IDX, fft_idx]
+                p_val = fr.pilot_values[int_idx]
+                z_obs = y_p / p_val
+                sig2_obs = float(fr.est_n0) / (np.abs(p_val) ** 2)
+                s2_f = _frame_s2_scale(fr)
+                v_eff = np.maximum(p_var + sig2_obs, max(1e-30 * s2_f, 1e-300))
+                err = p_pred - z_obs
+                p_nmse = _finite_float(
+                    np.sum(np.abs(err) ** 2) / max(np.sum(np.abs(z_obs) ** 2), max(1e-30 * s2_f, 1e-300))
+                )
+                p_cal = _finite_float(np.mean((np.abs(err) ** 2) / v_eff))
+                p_nll = _finite_float(np.mean(np.log(np.pi * v_eff) + (np.abs(err) ** 2) / v_eff))
+        failed_flag = False
+        error_val = aux.get("error")
+
+    total_bits = int(fr.tx_bits.size)
+    total_syms = int(fr.tx_symbols.size)
     rec: dict[str, Any] = {
         "arm": arm,
         "group": group,
@@ -318,44 +370,50 @@ def _build_per_frame_record(
         "frame_id": int(fr.frame_id),
         "split": str(fr.split),
         "group_id": str(fr.group_id),
-        "reported_sinr_db": float(fr.reported_sinr_db),
-        "sinr_bin": _sinr_bin_label(float(fr.reported_sinr_db)),
-        "est_n0": float(fr.est_n0),
+        "reported_sinr_db": _finite_float(fr.reported_sinr_db),
+        "sinr_bin": _sinr_bin_label(_finite_float(fr.reported_sinr_db)),
+        "est_n0": _finite_float(fr.est_n0),
         "bit_errors": be,
-        "total_bits": int(fr.tx_bits.size),
-        "ber": float(be / fr.tx_bits.size),
-        "frame_error": int(be > 0),
+        "total_bits": total_bits,
+        "ber": _finite_float(be / max(total_bits, 1)),
+        "frame_error": 1 if failed_flag else int(be > 0),
         "sym_errors": se,
-        "total_syms": int(fr.tx_symbols.size),
-        "sym_mse": float(sym_mse),
-        "evm_pct": float(evm_pct),
+        "total_syms": total_syms,
+        "sym_mse": sym_mse,
+        "evm_pct": evm_pct,
         "pilot_nmse": p_nmse,
         "pilot_cal_ratio": p_cal,
         "pilot_nll": p_nll,
-        "n_candidates": int(aux.get("n_candidates", 1)),
-        "param_count": int(aux.get("param_count", param_count)),
-        "latency_ms": float(aux.get("latency_ms", 0.0)),
-        "failed": bool(aux.get("failed", False)),
-        "error": aux.get("error"),
+        "n_candidates": _safe_int(aux.get("n_candidates"), 1),
+        "param_count": _safe_int(aux.get("param_count"), param_count),
+        "latency_ms": _finite_float(aux.get("latency_ms", 0.0)),
+        "failed": failed_flag,
+        "error": error_val,
     }
     if group == "classical":
-        rec["omega_t_rad_per_sym"] = float(aux.get("omega_t_rad_per_sym", 0.0))
+        rec["omega_t_rad_per_sym"] = _finite_float(aux.get("omega_t_rad_per_sym", 0.0))
     elif group == "group_a":
-        w_arr = np.asarray(aux.get("weights", []), dtype=np.float64)
+        w_raw = aux.get("weights")
+        w_arr = np.asarray([] if w_raw is None else w_raw, dtype=np.float64)
+        w_arr = np.where(np.isfinite(w_arr), w_arr, 0.0)
         w_pos = w_arr[w_arr > 0.0]
-        rec["n_values_accessed"] = int(aux.get("n_values_accessed", 0))
-        rec["weight_entropy"] = float(-np.sum(w_pos * np.log(w_pos))) if w_pos.size > 0 else 0.0
-        rec["weight_max"] = float(np.max(w_arr)) if w_arr.size > 0 else 0.0
+        rec["n_values_accessed"] = _safe_int(aux.get("n_values_accessed"), 0)
+        rec["weight_entropy"] = _finite_float(-np.sum(w_pos * np.log(w_pos))) if w_pos.size > 0 else 0.0
+        rec["weight_max"] = _finite_float(np.max(w_arr)) if w_arr.size > 0 else 0.0
     elif group == "group_b":
-        rec["branch_entropy"] = float(aux.get("branch_entropy", 0.0))
-        rec["between_var_mean"] = float(aux.get("between_var_mean", 0.0))
-        rec["omega_t_candidates"] = list(aux.get("omega_t_candidates", [0.0]))
+        om_cands = aux.get("omega_t_candidates")
+        rec["branch_entropy"] = _finite_float(aux.get("branch_entropy", 0.0))
+        rec["between_var_mean"] = _finite_float(aux.get("between_var_mean", 0.0))
+        rec["omega_t_candidates"] = [_finite_float(x) for x in ([0.0] if om_cands is None else om_cands)]
     elif group == "group_c":
-        rec["branch_entropy"] = float(aux.get("branch_entropy", 0.0))
-        rec["between_var_mean"] = float(aux.get("between_var_mean", 0.0))
-        rec["branch_weights"] = [float(x) for x in aux.get("branch_weights", [])]
-        rec["prior_weights"] = [float(x) for x in aux.get("prior_weights", [])]
-        rec["omega_t_candidates"] = list(aux.get("omega_t_candidates", [0.0]))
+        bw_raw = aux.get("branch_weights")
+        pw_raw = aux.get("prior_weights")
+        om_cands = aux.get("omega_t_candidates")
+        rec["branch_entropy"] = _finite_float(aux.get("branch_entropy", 0.0))
+        rec["between_var_mean"] = _finite_float(aux.get("between_var_mean", 0.0))
+        rec["branch_weights"] = [_finite_float(x) for x in ([] if bw_raw is None else bw_raw)]
+        rec["prior_weights"] = [_finite_float(x) for x in ([] if pw_raw is None else pw_raw)]
+        rec["omega_t_candidates"] = [_finite_float(x) for x in ([0.0] if om_cands is None else om_cands)]
     return rec
 
 
@@ -489,6 +547,7 @@ def _run_worker_arm(args: argparse.Namespace) -> int:
             phase_drift_rad=(0.0, 0.3, 0.6),
             seed=int(args.stress_seed),
             param_count=param_count,
+            train_time_s=train_time_s,
         )
 
     payload = {
@@ -541,6 +600,11 @@ def _compute_sinr_stratified(
         lbl = _sinr_bin_label(float(fr.reported_sinr_db))
         strata_indices.setdefault(lbl, []).append(idx)
 
+    bin_specs: list[tuple[str, float, float, bool]] = list(SINR_BINS)
+    if strata_indices.get("other"):
+        other_vals = [float(test_frames[i].reported_sinr_db) for i in strata_indices["other"]]
+        bin_specs.append(("other", float(min(other_vals)), float(max(other_vals)), True))
+
     out: dict[str, Any] = {
         "bins": [
             {
@@ -550,17 +614,18 @@ def _compute_sinr_stratified(
                 "inclusive_hi": inc_hi,
                 "n_frames": len(strata_indices[label]),
             }
-            for label, lo, hi, inc_hi in SINR_BINS
+            for label, lo, hi, inc_hi in bin_specs
         ],
         "arms": {},
     }
-    for arm in ALL_ARMS:
+    arm_order = [a for a in ALL_ARMS if a in arm_pairs] + [a for a in arm_pairs if a not in ALL_ARMS]
+    for arm in arm_order:
         pairs = arm_pairs[arm]
         rss_val = float(arm_metrics[arm]["peak_rss_mb"])
         p_cnt = int(arm_metrics[arm]["param_count"])
         t_sec = float(arm_metrics[arm]["train_time_s"])
         per_bin: dict[str, Any] = {}
-        for label, _, _, _ in SINR_BINS:
+        for label, _, _, _ in bin_specs:
             idxs = strata_indices[label]
             if not idxs:
                 continue

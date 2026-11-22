@@ -65,6 +65,7 @@ from research.realdata_sdr_ofdm.receivers.classical import (
     ClassicalConfig,
     ReceiverOutput,
     _estimate_sym2_channel,
+    _validate_pilot_indices,
 )
 from research.realdata_sdr_ofdm.receivers.group_a_reference import (
     GroupAConfig,
@@ -81,6 +82,7 @@ from research.realdata_sdr_ofdm.receivers.group_b_fusion import (
     _cv_fold_normalized_inputs,
     _extract_active_slice,
     _scores_to_alpha,
+    _validate_beta,
     _validate_frame_inputs,
     fuse_candidate_branches,
 )
@@ -255,7 +257,7 @@ def _get_pool_val_estimates(
     target_active_indices: Optional[np.ndarray],
 ) -> tuple[np.ndarray, np.ndarray]:
     """Lazily compute and cache per-pool-frame unit-scale 1D LMMSE value estimates."""
-    obs_tuple = tuple(int(i) for i in obs_idx)
+    obs_tuple = tuple(sorted(set(int(i) for i in obs_idx)))
     target_tuple = (
         None if target_active_indices is None else tuple(int(x) for x in target_active_indices)
     )
@@ -309,11 +311,12 @@ def _estimate_global_branch_from_summary(
     target_active_indices: Optional[np.ndarray] = None,
 ) -> tuple[np.ndarray, np.ndarray]:
     """Compute C*-equivariant Group A global_content_attn estimate strictly from pilot-only summary."""
+    obs_sorted = sorted(set(int(i) for i in obs_idx))
     cls_cfg = group_a_cfg.to_classical_config()
     h_q, v_q, _ = _estimate_sym2_channel(
         rx_norm,
         pilot_values,
-        obs_idx,
+        obs_sorted,
         n0_norm,
         method="lmmse_1d",
         config=cls_cfg,
@@ -329,7 +332,7 @@ def _estimate_global_branch_from_summary(
 
     h_val_all, v_val_all = _get_pool_val_estimates(
         pool_summary,
-        obs_idx,
+        obs_sorted,
         group_a_cfg=group_a_cfg,
         target_active_indices=target_active_indices,
     )
@@ -337,22 +340,23 @@ def _estimate_global_branch_from_summary(
 
     if exclude_frame_id is not None and len(pool_fids) == len(h_p_unit_all):
         keep = [idx for idx, fid in enumerate(pool_fids) if int(fid) != int(exclude_frame_id)]
-        if keep:
-            h_p_unit_all = h_p_unit_all[keep]
-            h_val_all = h_val_all[keep]
-            v_val_all = v_val_all[keep]
+        if not keep:
+            return h_q, v_q
+        h_p_unit_all = h_p_unit_all[keep]
+        h_val_all = h_val_all[keep]
+        v_val_all = v_val_all[keep]
 
     m_pool = int(h_p_unit_all.shape[0])
     if m_pool == 0:
         return h_q, v_q
 
-    key_idx, _ = _partition_key_val_pilots(obs_idx)
+    key_idx, _ = _partition_key_val_pilots(obs_sorted)
     key_fft = [PILOT_FFT_INDICES[i] for i in key_idx]
-    obs_fft = [PILOT_FFT_INDICES[i] for i in obs_idx]
+    obs_fft = [PILOT_FFT_INDICES[i] for i in obs_sorted]
 
-    h_q_obs = rx_norm[PILOT_SYMBOL_IDX, obs_fft] / pilot_values[obs_idx]
+    h_q_obs = rx_norm[PILOT_SYMBOL_IDX, obs_fft] / pilot_values[obs_sorted]
     n0_q_eff = max(float(group_a_cfg.n0_scale) * float(n0_norm), 0.0)
-    sig2_q_obs = n0_q_eff / np.maximum(np.abs(pilot_values[obs_idx]) ** 2, 1e-30)
+    sig2_q_obs = n0_q_eff / np.maximum(np.abs(pilot_values[obs_sorted]) ** 2, 1e-30)
     mean_hq2 = float(np.mean(np.abs(h_q_obs) ** 2))
     if mean_hq2 <= 1e-28:
         return h_q, v_q
@@ -408,14 +412,15 @@ def _global_branch_pilot_cv_ll(
     exclude_frame_id: Optional[int] = None,
 ) -> float:
     """Compute 4-fold pilot CV log-likelihood of the global branch strictly inside obs_idx."""
-    obs_set = set(int(i) for i in obs_idx)
+    obs_sorted = sorted(set(int(i) for i in obs_idx))
+    obs_set = set(obs_sorted)
     folds = build_heldout_pilot_masks(4)
     fold_lls: list[float] = []
     for fold in folds:
         h_sub = [int(i) for i in fold["heldout_pilot_indices"] if int(i) in obs_set]
         if not h_sub:
             continue
-        o_sub = [int(i) for i in obs_idx if int(i) not in h_sub]
+        o_sub = [i for i in obs_sorted if i not in h_sub]
         if not o_sub:
             continue
         target_active = np.asarray([PILOT_ACTIVE_INDICES[i] for i in h_sub], dtype=np.int64)
@@ -457,13 +462,14 @@ def _build_group_c_bank_normalized(
 
     Returns (branches_orig_gauge, prior_logits, prior_alpha).
     """
+    obs_sorted = sorted(set(int(i) for i in obs_idx))
     branches, _ = _build_bank_normalized(
         frame,
         rx_norm,
         pilot_values,
         n0_norm,
         s_scale,
-        obs_idx,
+        obs_sorted,
         cfg=cfg.group_b_cfg,
         include_temporal_branches=include_temporal_branches,
     )
@@ -473,7 +479,7 @@ def _build_group_c_bank_normalized(
             rx_norm,
             pilot_values,
             n0_norm,
-            obs_idx,
+            obs_sorted,
             pool_summary,
             group_a_cfg=cfg.group_a_cfg,
             exclude_frame_id=exclude_frame_id,
@@ -481,7 +487,7 @@ def _build_group_c_bank_normalized(
         g_cv_ll = _global_branch_pilot_cv_ll(
             rx_norm,
             pilot_values,
-            obs_idx,
+            obs_sorted,
             n0_norm,
             pool_summary,
             group_a_cfg=cfg.group_a_cfg,
@@ -494,7 +500,7 @@ def _build_group_c_bank_normalized(
             CandidateBranch(
                 name="global_content_attn",
                 h_est=(h_2d_norm * s_scale).astype(np.complex128),
-                h_var=np.maximum(v_2d_norm * s_scale2, 1e-30 * s_scale2).astype(np.float64),
+                h_var=np.maximum(v_2d_norm * s_scale2, max(1e-30 * s_scale2, 1e-300)).astype(np.float64),
                 log_score=float(g_cv_ll),
                 omega_t=0.0,
                 pdp_params=(int(cfg.group_a_cfg.n_taps), float(cfg.group_a_cfg.tau_rms)),
@@ -503,8 +509,13 @@ def _build_group_c_bank_normalized(
         )
 
     raw_scores = np.asarray([float(br.log_score) for br in branches], dtype=np.float64)
-    beta = float(cfg.group_b_cfg.beta)
-    prior_logits = np.clip(beta * raw_scores - float(np.max(beta * raw_scores)), -700.0, 0.0)
+    if not np.all(np.isfinite(raw_scores)):
+        raise ValueError("CandidateBranch.log_score contains non-finite (NaN/Inf) values")
+    beta = _validate_beta(cfg.group_b_cfg.beta)
+    scaled_scores = beta * raw_scores
+    if not np.all(np.isfinite(scaled_scores)):
+        raise ValueError("Scaled branch log_scores overflowed to non-finite values")
+    prior_logits = np.clip(scaled_scores - float(np.max(scaled_scores)), -700.0, 0.0)
     prior_alpha = _scores_to_alpha(raw_scores, beta)
     return branches, prior_logits.astype(np.float64), prior_alpha.astype(np.float64)
 
@@ -536,7 +547,9 @@ def _extract_network_features(
     if r_count < 1:
         raise ValueError("branches must be non-empty")
 
-    obs_list = [int(i) for i in obs_idx]
+    obs_list = sorted(set(int(i) for i in obs_idx))
+    if not obs_list:
+        raise ValueError("obs_idx must be non-empty")
     obs_fft = [PILOT_FFT_INDICES[i] for i in obs_list]
     obs_act = [PILOT_ACTIVE_INDICES[i] for i in obs_list]
     pilot_coords = np.asarray(obs_act, dtype=np.float64)
@@ -565,12 +578,19 @@ def _extract_network_features(
     if prior_logits is None:
         if all(isinstance(b, CandidateBranch) for b in branches):
             raw_sc = np.asarray([float(b.log_score) for b in branches], dtype=np.float64)  # type: ignore[union-attr]
-            beta = float(cfg.group_b_cfg.beta)
-            p_logits = np.clip(beta * raw_sc - float(np.max(beta * raw_sc)), -700.0, 0.0)
+            if not np.all(np.isfinite(raw_sc)):
+                raise ValueError("CandidateBranch.log_score contains non-finite (NaN/Inf) values")
+            beta = _validate_beta(cfg.group_b_cfg.beta)
+            scaled_sc = beta * raw_sc
+            if not np.all(np.isfinite(scaled_sc)):
+                raise ValueError("Scaled branch log_scores overflowed to non-finite values")
+            p_logits = np.clip(scaled_sc - float(np.max(scaled_sc)), -700.0, 0.0)
         else:
             p_logits = np.zeros(r_count, dtype=np.float64)
     else:
         p_logits = np.asarray(prior_logits, dtype=np.float64).ravel()
+        if p_logits.shape != (r_count,) or not np.all(np.isfinite(p_logits)):
+            raise ValueError("prior_logits contains non-finite values or mismatched shape")
 
     prior_centered = p_logits - float(np.mean(p_logits))
     max_slope = max(float(cfg.group_b_cfg.phase_track_max_slope), 1e-6)
@@ -589,8 +609,16 @@ def _extract_network_features(
     for r, br in enumerate(branches):
         m_raw = _extract_active_slice(br.h_est if isinstance(br, CandidateBranch) else br[0], f"branches[{r}].h_est")
         v_raw = _extract_active_slice(br.h_var if isinstance(br, CandidateBranch) else br[1], f"branches[{r}].h_var")
+        v_raw_arr = np.asarray(v_raw)
+        if np.iscomplexobj(v_raw_arr) or v_raw_arr.dtype == object or not np.issubdtype(v_raw_arr.dtype, np.number):
+            raise ValueError(f"Branch {r} h_var must be real numeric, got dtype {v_raw_arr.dtype}")
+        v_real = np.asarray(v_raw_arr, dtype=np.float64)
+        if not np.all(np.isfinite(v_real)) or np.any(v_real < 0.0):
+            raise ValueError(f"Branch {r} h_var contains non-finite or negative values")
         m_arr = np.asarray(m_raw, dtype=np.complex128) * inv_s
-        v_arr = np.maximum(np.asarray(v_raw, dtype=np.float64) * inv_s2, 1e-12)
+        if not np.all(np.isfinite(m_arr)):
+            raise ValueError(f"Branch {r} h_est contains non-finite values")
+        v_arr = np.maximum(v_real * inv_s2, 1e-12)
 
         m_p = m_arr[PILOT_SYMBOL_IDX, obs_act]
         v_p = v_arr[PILOT_SYMBOL_IDX, obs_act]
@@ -845,8 +873,14 @@ def differentiable_mixture_llrs_torch(
     idx0_t: torch.Tensor,
 ) -> torch.Tensor:
     """Exact differentiable PyTorch mirror of Group B ``exact_mixture_likelihood`` bit LLRs."""
+    alpha_pos = alpha > 0.0
     log_alpha = torch.log(torch.clamp(alpha, min=1e-300))
-    log_terms = log_alpha[:, :, None, None] + log_g  # (B, R, D, 16)
+    safe_log_g = torch.where(alpha_pos[:, :, None, None], log_g, torch.zeros_like(log_g))
+    log_terms = torch.where(
+        alpha_pos[:, :, None, None],
+        log_alpha[:, :, None, None] + safe_log_g,
+        torch.full_like(log_g, -float("inf")),
+    )  # (B, R, D, 16)
     log_mix = torch.logsumexp(log_terms, dim=1)  # (B, D, 16)
     lse1 = torch.logsumexp(log_mix[:, :, idx1_t], dim=-1)  # (B, D, 4)
     lse0 = torch.logsumexp(log_mix[:, :, idx0_t], dim=-1)  # (B, D, 4)
@@ -1012,9 +1046,12 @@ class GroupCTrainableReceiver:
                 if not folds:
                     folds = build_heldout_pilot_masks(4)
                 for fold in folds:
-                    h_idx = [int(i) for i in fold["heldout_pilot_indices"]]
+                    h_idx = _validate_pilot_indices(fold["heldout_pilot_indices"], "heldout_pilot_indices")
+                    if not h_idx:
+                        raise ValueError("heldout_pilot_indices in fold must be non-empty")
                     h_set = set(h_idx)
-                    o_idx = [int(i) for i in fold["obs_pilot_indices"] if int(i) not in h_set]
+                    o_raw = _validate_pilot_indices(fold["obs_pilot_indices"], "obs_pilot_indices")
+                    o_idx = sorted(i for i in o_raw if i not in h_set)
                     rx_cv, n0_cv, s_cv = _cv_fold_normalized_inputs(fr, rx_grid, est_n0, o_idx)
                     cv_br, cv_pl, _ = _build_group_c_bank_normalized(
                         fr,
@@ -1322,6 +1359,7 @@ class GroupCTrainableReceiver:
             order = rng.permutation(n_train)
             ep_loss = 0.0
             n_seen = 0
+            any_step = False
             for start in range(0, n_train, batch_sz):
                 batch_idx = order[start : start + batch_sz]
                 batch_items = [train_items[int(bi)] for bi in batch_idx]
@@ -1359,13 +1397,16 @@ class GroupCTrainableReceiver:
                     if pnll_cnt > 0:
                         batch_total_loss = batch_total_loss + w_pnll * (pnll_sum / float(pnll_cnt))
 
-                batch_total_loss.backward()
-                torch.nn.utils.clip_grad_norm_(params, max_norm=1.0)
-                optimizer.step()
+                if batch_total_loss.requires_grad:
+                    batch_total_loss.backward()
+                    torch.nn.utils.clip_grad_norm_(params, max_norm=1.0)
+                    optimizer.step()
+                    any_step = True
                 ep_loss += float(batch_total_loss.item()) * total_b
                 n_seen += total_b
 
-            scheduler.step()
+            if any_step:
+                scheduler.step()
             val_m = _eval_split(val_items)
             score = (
                 float(val_m["ber"]),
@@ -1393,17 +1434,22 @@ class GroupCTrainableReceiver:
 
     train_on_splits = fit
 
+    _UNSET_POOL = object()
+
     def _compute_heldout_cv(
         self,
         frame: RealOFDMFrame,
         rx_grid: np.ndarray,
         pilot_values: np.ndarray,
         est_n0: float,
+        *,
+        pool_summary: Any = _UNSET_POOL,
     ) -> tuple[np.ndarray, np.ndarray, list[int]]:
         """Strict per-fold s_scale_cv held-out pilot CV (zero leakage from held-out REs)."""
+        eff_pool = self.pool_summary if pool_summary is self._UNSET_POOL else pool_summary
         explicit_idx = frame.meta.get("heldout_pilot_indices") if isinstance(frame.meta, dict) else None
         if explicit_idx is not None and len(explicit_idx) > 0:
-            eval_idx = [int(i) for i in explicit_idx]
+            eval_idx = _validate_pilot_indices(explicit_idx, "heldout_pilot_indices")
             eval_set = set(eval_idx)
             obs_idx = [i for i in range(14) if i not in eval_set]
             rx_cv, n0_cv, s_cv = _cv_fold_normalized_inputs(frame, rx_grid, est_n0, obs_idx)
@@ -1415,7 +1461,7 @@ class GroupCTrainableReceiver:
                 s_cv,
                 obs_idx,
                 cfg=self.config,
-                pool_summary=self.pool_summary,
+                pool_summary=eff_pool,
                 include_temporal_branches=False,
             )
             cv_sc, cv_cx, cv_coords, cv_pl_out, _, _ = _extract_network_features(
@@ -1445,9 +1491,12 @@ class GroupCTrainableReceiver:
 
         collected: dict[int, tuple[complex, float]] = {}
         for fold in folds:
-            h_idx = [int(i) for i in fold["heldout_pilot_indices"]]
+            h_idx = _validate_pilot_indices(fold["heldout_pilot_indices"], "heldout_pilot_indices")
+            if not h_idx:
+                raise ValueError("heldout_pilot_indices in fold must be non-empty")
             h_set = set(h_idx)
-            o_idx = [int(i) for i in fold["obs_pilot_indices"] if int(i) not in h_set]
+            o_raw = _validate_pilot_indices(fold["obs_pilot_indices"], "obs_pilot_indices")
+            o_idx = sorted(i for i in o_raw if i not in h_set)
             rx_cv, n0_cv, s_cv = _cv_fold_normalized_inputs(frame, rx_grid, est_n0, o_idx)
             cv_br, cv_pl, _ = _build_group_c_bank_normalized(
                 frame,
@@ -1457,7 +1506,7 @@ class GroupCTrainableReceiver:
                 s_cv,
                 o_idx,
                 cfg=self.config,
-                pool_summary=self.pool_summary,
+                pool_summary=eff_pool,
                 include_temporal_branches=False,
             )
             cv_sc, cv_cx, cv_coords, cv_pl_out, _, _ = _extract_network_features(
@@ -1484,6 +1533,9 @@ class GroupCTrainableReceiver:
                         max(float(v_agg[PILOT_SYMBOL_IDX, ai]), v_floor),
                     )
 
+        if not collected:
+            raise ValueError("heldout_pilot_folds produced no held-out pilots")
+
         eval_idx = sorted(collected.keys())
         pred = np.asarray([collected[i][0] for i in eval_idx], dtype=np.complex128)
         var = np.asarray([collected[i][1] for i in eval_idx], dtype=np.float64)
@@ -1502,6 +1554,7 @@ class GroupCTrainableReceiver:
         self.net.eval()
 
         try:
+            _validate_beta(self.config.group_b_cfg.beta)
             rx_grid, est_n0, pilot_values = _validate_frame_inputs(frame)
             active_mask = np.asarray(frame.pilot_mask | frame.data_mask, dtype=bool)
             s_rms = float(np.sqrt(np.mean(np.abs(rx_grid[active_mask]) ** 2)))
@@ -1581,7 +1634,9 @@ class GroupCTrainableReceiver:
                     return_heldout_cv=False,
                 )
                 if return_heldout_cv:
-                    pred, var, eval_idx = self._compute_heldout_cv(frame, rx_grid, pilot_values, est_n0)
+                    pred, var, eval_idx = self._compute_heldout_cv(
+                        frame, rx_grid, pilot_values, est_n0, pool_summary=active_pool
+                    )
                     if not (np.all(np.isfinite(pred)) and np.all(np.isfinite(var))):
                         raise ValueError("Held-out pilot predictions contain non-finite values")
                     out.heldout_pilot_pred = pred

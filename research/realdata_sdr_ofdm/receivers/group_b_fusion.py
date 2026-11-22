@@ -51,6 +51,7 @@ from research.realdata_sdr_ofdm.receivers.classical import (
     ReceiverOutput,
     _equalize_and_demap,
     _estimate_sym2_channel,
+    _validate_pilot_indices,
 )
 
 GROUP_B_MODES: tuple[str, ...] = (
@@ -121,6 +122,15 @@ class GroupBConfig:
         )
 
 
+def _validate_beta(beta: Any) -> float:
+    if isinstance(beta, (bool, np.bool_)):
+        raise ValueError(f"beta must be finite and > 0.0 (not bool), got {beta!r}")
+    beta_f = float(beta)
+    if not np.isfinite(beta_f) or beta_f <= 0.0:
+        raise ValueError(f"beta must be finite and > 0.0, got {beta!r}")
+    return beta_f
+
+
 def _validate_frame_inputs(frame: RealOFDMFrame) -> tuple[np.ndarray, float, np.ndarray]:
     rx_grid = np.asarray(frame.rx_grid, dtype=np.complex128)
     if rx_grid.shape != (N_SYMB, N_FFT):
@@ -162,14 +172,15 @@ def _pdp_pilot_cv_ll(
     cls_cfg: ClassicalConfig,
 ) -> float:
     """Compute averaged 4-fold held-out pilot CV log-likelihood on observable pilots only."""
-    obs_set = set(int(i) for i in obs_idx)
+    obs_sorted = sorted(set(int(i) for i in obs_idx))
+    obs_set = set(obs_sorted)
     folds = build_heldout_pilot_masks(4)
     fold_lls: list[float] = []
     for fold in folds:
         h_sub = [int(i) for i in fold["heldout_pilot_indices"] if int(i) in obs_set]
         if not h_sub:
             continue
-        o_sub = [int(i) for i in obs_idx if int(i) not in h_sub]
+        o_sub = [i for i in obs_sorted if i not in h_sub]
         if not o_sub:
             continue
         target_active = np.asarray([PILOT_ACTIVE_INDICES[i] for i in h_sub], dtype=np.int64)
@@ -310,6 +321,8 @@ def _build_bank_normalized(
     pdp_list = list(cfg.pdp_hypotheses)
     if not pdp_list:
         raise ValueError("GroupBConfig.pdp_hypotheses must be non-empty")
+    beta_f = _validate_beta(cfg.beta)
+    obs_sorted = sorted(set(int(i) for i in obs_idx))
 
     n0_cal = max(float(cfg.n0_scale) * float(n0_norm), 0.0)
     data_mask_active = np.asarray(frame.data_mask[:, ACTIVE_START:ACTIVE_END], dtype=bool)
@@ -323,12 +336,12 @@ def _build_bank_normalized(
         h_1d, v_1d, _ = _estimate_sym2_channel(
             rx_norm,
             pilot_values,
-            obs_idx,
+            obs_sorted,
             n0_norm,
             method="lmmse_1d",
             config=cls_cfg,
         )
-        cv_ll = _pdp_pilot_cv_ll(rx_norm, pilot_values, obs_idx, n0_norm, cls_cfg=cls_cfg)
+        cv_ll = _pdp_pilot_cv_ll(rx_norm, pilot_values, obs_sorted, n0_norm, cls_cfg=cls_cfg)
         pdp_h1d.append(h_1d)
         pdp_v1d.append(v_1d)
         pdp_cv_ll.append(cv_ll)
@@ -402,7 +415,12 @@ def _build_bank_normalized(
                 )
             )
 
-    scores_arr = np.asarray(raw_scores, dtype=np.float64) * float(cfg.beta)
+    raw_scores_arr = np.asarray(raw_scores, dtype=np.float64)
+    if not np.all(np.isfinite(raw_scores_arr)):
+        raise ValueError("Candidate branch log_score contains non-finite values")
+    scores_arr = raw_scores_arr * beta_f
+    if not np.all(np.isfinite(scores_arr)):
+        raise ValueError("Scaled candidate branch scores contain non-finite values")
     scores_arr -= float(np.max(scores_arr))
     scores_arr = np.clip(scores_arr, -700.0, 0.0)
     w = np.exp(scores_arr)
@@ -467,15 +485,30 @@ def _compute_heldout_cv_from_fused(
     frame: RealOFDMFrame,
     h_est: np.ndarray,
     h_var: np.ndarray,
+    *,
+    s_scale: float = 1.0,
 ) -> tuple[np.ndarray, np.ndarray, list[int]]:
     explicit_idx = frame.meta.get("heldout_pilot_indices") if isinstance(frame.meta, dict) else None
     if explicit_idx is not None and len(explicit_idx) > 0:
-        eval_idx = [int(i) for i in explicit_idx]
+        eval_idx = _validate_pilot_indices(explicit_idx, "heldout_pilot_indices")
     else:
-        eval_idx = list(range(1, 13))
+        folds = frame.meta.get("heldout_pilot_folds") if isinstance(frame.meta, dict) else None
+        if folds:
+            seen_idx: set[int] = set()
+            for fold in folds:
+                h_idx = _validate_pilot_indices(fold["heldout_pilot_indices"], "heldout_pilot_indices")
+                if not h_idx:
+                    raise ValueError("heldout_pilot_indices in fold must be non-empty")
+                seen_idx.update(h_idx)
+            if not seen_idx:
+                raise ValueError("heldout_pilot_folds produced no held-out pilots")
+            eval_idx = sorted(seen_idx)
+        else:
+            eval_idx = list(range(1, 13))
     act_idx = [PILOT_ACTIVE_INDICES[i] for i in eval_idx]
     pred = np.asarray(h_est[PILOT_SYMBOL_IDX, act_idx], dtype=np.complex128)
-    var = np.maximum(np.asarray(h_var[PILOT_SYMBOL_IDX, act_idx], dtype=np.float64), 1e-30)
+    v_floor = max(1e-30 * (float(s_scale) ** 2), 1e-300)
+    var = np.maximum(np.asarray(h_var[PILOT_SYMBOL_IDX, act_idx], dtype=np.float64), v_floor)
     return pred, var, eval_idx
 
 
@@ -488,14 +521,8 @@ def _cv_fold_normalized_inputs(
     """Compute fold-local observable normalization strictly excluding held-out pilot REs."""
     obs_pilot_mask = np.zeros_like(frame.pilot_mask, dtype=bool)
     if len(obs_idx) > 0:
-        fft_obs: list[int] = []
-        for i in obs_idx:
-            pi_int = int(i)
-            if not (0 <= pi_int < len(PILOT_FFT_INDICES)):
-                raise ValueError(
-                    f"Observed pilot index out of range [0, {len(PILOT_FFT_INDICES) - 1}]: {i!r}"
-                )
-            fft_obs.append(PILOT_FFT_INDICES[pi_int])
+        valid_obs = _validate_pilot_indices(obs_idx, "obs_pilot_indices")
+        fft_obs = [PILOT_FFT_INDICES[pi_int] for pi_int in valid_obs]
         obs_pilot_mask[PILOT_SYMBOL_IDX, fft_obs] = True
     p_mask = np.asarray(frame.pilot_mask, dtype=bool)
     d_mask = np.asarray(frame.data_mask, dtype=bool)
@@ -525,7 +552,7 @@ def _compute_heldout_cv_group_b(
     """Leak-free held-out pilot CV building candidate banks strictly on non-heldout pilots."""
     explicit_idx = frame.meta.get("heldout_pilot_indices") if isinstance(frame.meta, dict) else None
     if explicit_idx is not None and len(explicit_idx) > 0:
-        eval_idx = [int(i) for i in explicit_idx]
+        eval_idx = _validate_pilot_indices(explicit_idx, "heldout_pilot_indices")
         eval_set = set(eval_idx)
         obs_idx = [i for i in range(14) if i not in eval_set]
         rx_norm_cv, n0_norm_cv, s_scale_cv = _cv_fold_normalized_inputs(
@@ -541,7 +568,7 @@ def _compute_heldout_cv_group_b(
             cfg=cfg,
             include_temporal_branches=False,
         )
-        v_floor = 1e-30 * (s_scale_cv ** 2)
+        v_floor = max(1e-30 * (s_scale_cv ** 2), 1e-300)
         h_agg, v_agg = _aggregate_h_only(branches, alpha, mode=mode, min_var=v_floor)
         act_idx = [PILOT_ACTIVE_INDICES[i] for i in eval_idx]
         pred = np.asarray(h_agg[PILOT_SYMBOL_IDX, act_idx], dtype=np.complex128)
@@ -554,9 +581,12 @@ def _compute_heldout_cv_group_b(
 
     collected: dict[int, tuple[complex, float]] = {}
     for fold in folds:
-        h_idx = [int(i) for i in fold["heldout_pilot_indices"]]
+        h_idx = _validate_pilot_indices(fold["heldout_pilot_indices"], "heldout_pilot_indices")
+        if not h_idx:
+            raise ValueError("heldout_pilot_indices in fold must be non-empty")
         h_set = set(h_idx)
-        o_idx = [int(i) for i in fold["obs_pilot_indices"] if int(i) not in h_set]
+        o_raw = _validate_pilot_indices(fold["obs_pilot_indices"], "obs_pilot_indices")
+        o_idx = sorted(i for i in o_raw if i not in h_set)
         rx_norm_cv, n0_norm_cv, s_scale_cv = _cv_fold_normalized_inputs(
             frame, rx_grid, est_n0, o_idx
         )
@@ -570,7 +600,7 @@ def _compute_heldout_cv_group_b(
             cfg=cfg,
             include_temporal_branches=False,
         )
-        v_floor = 1e-30 * (s_scale_cv ** 2)
+        v_floor = max(1e-30 * (s_scale_cv ** 2), 1e-300)
         h_agg, v_agg = _aggregate_h_only(branches, alpha, mode=mode, min_var=v_floor)
         for pi in h_idx:
             if pi not in collected:
@@ -579,6 +609,9 @@ def _compute_heldout_cv_group_b(
                     complex(h_agg[PILOT_SYMBOL_IDX, ai]),
                     max(float(v_agg[PILOT_SYMBOL_IDX, ai]), v_floor),
                 )
+
+    if not collected:
+        raise ValueError("heldout_pilot_folds produced no held-out pilots")
 
     eval_idx = sorted(collected.keys())
     pred = np.asarray([collected[i][0] for i in eval_idx], dtype=np.complex128)
@@ -598,8 +631,10 @@ def _aggregate_h_only(
         r_star = int(np.argmax(alpha))
         br = branches[r_star]
         m_r = _extract_active_slice(br.h_est if isinstance(br, CandidateBranch) else br[0], "h_est")
-        v_r = _extract_active_slice(br.h_var if isinstance(br, CandidateBranch) else br[1], "h_var")
-        return np.asarray(m_r, dtype=np.complex128), np.maximum(np.asarray(v_r, dtype=np.float64), float(min_var))
+        v_raw = np.asarray(_extract_active_slice(br.h_var if isinstance(br, CandidateBranch) else br[1], "h_var"))
+        if np.iscomplexobj(v_raw) or v_raw.dtype == object or not np.issubdtype(v_raw.dtype, np.number):
+            raise ValueError(f"Active branch {r_star} h_var must be real numeric, got dtype {v_raw.dtype}")
+        return np.asarray(m_r, dtype=np.complex128), np.maximum(np.asarray(v_raw, dtype=np.float64), float(min_var))
 
     h_bar = np.zeros((N_SYMB, N_ACTIVE), dtype=np.complex128)
     v_within = np.zeros((N_SYMB, N_ACTIVE), dtype=np.float64)
@@ -610,11 +645,11 @@ def _aggregate_h_only(
             _extract_active_slice(br.h_est if isinstance(br, CandidateBranch) else br[0], "h_est"),
             dtype=np.complex128,
         )
+        v_raw = np.asarray(_extract_active_slice(br.h_var if isinstance(br, CandidateBranch) else br[1], "h_var"))
+        if np.iscomplexobj(v_raw) or v_raw.dtype == object or not np.issubdtype(v_raw.dtype, np.number):
+            raise ValueError(f"Active branch {r} h_var must be real numeric, got dtype {v_raw.dtype}")
         v_r = np.maximum(
-            np.asarray(
-                _extract_active_slice(br.h_var if isinstance(br, CandidateBranch) else br[1], "h_var"),
-                dtype=np.float64,
-            ),
+            np.asarray(v_raw, dtype=np.float64),
             0.0,
         )
         m_cache[r] = m_r
@@ -686,11 +721,14 @@ def fuse_candidate_branches(
             continue
         m_raw = _extract_active_slice(br.h_est if isinstance(br, CandidateBranch) else br[0], f"branches[{r}].h_est")
         v_raw = _extract_active_slice(br.h_var if isinstance(br, CandidateBranch) else br[1], f"branches[{r}].h_var")
+        v_raw_arr = np.asarray(v_raw)
+        if np.iscomplexobj(v_raw_arr) or v_raw_arr.dtype == object or not np.issubdtype(v_raw_arr.dtype, np.number):
+            raise ValueError(f"Active branch {r} h_var contains non-finite, complex, or negative values")
         m_arr = np.asarray(m_raw, dtype=np.complex128)
-        v_arr = np.asarray(v_raw, dtype=np.float64)
+        v_arr = np.asarray(v_raw_arr, dtype=np.float64)
         if not np.all(np.isfinite(m_arr)):
             raise ValueError(f"Active branch {r} h_est contains non-finite values")
-        if np.iscomplexobj(v_arr) or not np.all(np.isfinite(v_arr)) or np.any(v_arr < 0.0):
+        if not np.all(np.isfinite(v_arr)) or np.any(v_arr < 0.0):
             raise ValueError(f"Active branch {r} h_var contains non-finite, complex, or negative values")
         m_norm_active[r] = m_arr * inv_s
         v_norm_active[r] = np.maximum(v_arr * inv_s2, 0.0)
@@ -776,7 +814,7 @@ def fuse_candidate_branches(
             hard_symbols = bits_to_symbols(hard_bits, qm=QM)
 
     h_est = (h_2d_norm * s_scale).astype(np.complex128)
-    h_var = np.maximum(v_2d_norm * (s_scale ** 2), 1e-30 * (s_scale ** 2)).astype(np.float64)
+    h_var = np.maximum(v_2d_norm * (s_scale ** 2), max(1e-30 * (s_scale ** 2), 1e-300)).astype(np.float64)
     if not (np.all(np.isfinite(h_est)) and np.all(np.isfinite(h_var))):
         raise ValueError("Fused channel estimate contains non-finite values")
     if not (np.all(np.isfinite(eq_symbols)) and np.all(np.isfinite(bit_llrs))):
@@ -786,7 +824,9 @@ def fuse_candidate_branches(
     heldout_var: Optional[np.ndarray] = None
     heldout_indices: list[int] = []
     if return_heldout_cv:
-        heldout_pred, heldout_var, heldout_indices = _compute_heldout_cv_from_fused(frame, h_est, h_var)
+        heldout_pred, heldout_var, heldout_indices = _compute_heldout_cv_from_fused(
+            frame, h_est, h_var, s_scale=s_scale
+        )
 
     pos_a = alpha[alpha > 0.0]
     branch_entropy = float(-np.sum(pos_a * np.log(pos_a)))
@@ -877,6 +917,7 @@ def run_frame(
     )
 
     try:
+        _validate_beta(cfg.beta)
         if branches is not None:
             if branch_weights is None:
                 weights_use: Sequence[float] = [1.0 / float(len(branches))] * len(branches)
@@ -952,7 +993,15 @@ def run_frame(
 
 
 def _scores_to_alpha(raw_scores: np.ndarray, beta: float) -> np.ndarray:
-    s = np.asarray(raw_scores, dtype=np.float64) * float(beta)
+    beta_f = _validate_beta(beta)
+    raw_arr = np.asarray(raw_scores, dtype=np.float64)
+    if raw_arr.size == 0:
+        raise ValueError("raw_scores must be non-empty")
+    if not np.all(np.isfinite(raw_arr)):
+        raise ValueError("raw_scores contains non-finite (NaN/Inf) values")
+    s = raw_arr * beta_f
+    if not np.all(np.isfinite(s)):
+        raise ValueError("Scaled branch scores overflowed to non-finite values")
     s = s - float(np.max(s))
     s = np.clip(s, -700.0, 0.0)
     w = np.exp(s)
@@ -981,6 +1030,7 @@ def calibrate_group_b_on_dev(
             )
 
     base = GroupBConfig() if base_config is None else base_config
+    validated_betas = [_validate_beta(b) for b in betas]
     best_score = (float("inf"), float("inf"), float("inf"))
     best_cfg = base
     grid_records: list[dict[str, Any]] = []
@@ -1028,7 +1078,7 @@ def calibrate_group_b_on_dev(
                 explicit_idx = fr.meta.get("heldout_pilot_indices") if isinstance(fr.meta, dict) else None
                 cv_banks: list[tuple[list[int], list[CandidateBranch], np.ndarray, float]] = []
                 if explicit_idx is not None and len(explicit_idx) > 0:
-                    eval_idx = [int(i) for i in explicit_idx]
+                    eval_idx = _validate_pilot_indices(explicit_idx, "heldout_pilot_indices")
                     eval_set = set(eval_idx)
                     obs_idx = [i for i in range(14) if i not in eval_set]
                     rx_norm_cv, n0_norm_cv, s_scale_cv = _cv_fold_normalized_inputs(
@@ -1057,9 +1107,12 @@ def calibrate_group_b_on_dev(
                     if not folds:
                         folds = build_heldout_pilot_masks(4)
                     for fold in folds:
-                        h_idx = [int(i) for i in fold["heldout_pilot_indices"]]
+                        h_idx = _validate_pilot_indices(fold["heldout_pilot_indices"], "heldout_pilot_indices")
+                        if not h_idx:
+                            raise ValueError("heldout_pilot_indices in fold must be non-empty")
                         h_set = set(h_idx)
-                        o_idx = [int(i) for i in fold["obs_pilot_indices"] if int(i) not in h_set]
+                        o_raw = _validate_pilot_indices(fold["obs_pilot_indices"], "obs_pilot_indices")
+                        o_idx = sorted(i for i in o_raw if i not in h_set)
                         rx_norm_cv, n0_norm_cv, s_scale_cv = _cv_fold_normalized_inputs(
                             fr, rx_grid, est_n0, o_idx
                         )
@@ -1106,7 +1159,7 @@ def calibrate_group_b_on_dev(
             except Exception:  # noqa: BLE001
                 cached_items.append({"failed": True})
 
-        for beta in betas:
+        for beta in validated_betas:
             for pen in nonzero_om_penalties:
                 cand_cfg = GroupBConfig(
                     pdp_hypotheses=base.pdp_hypotheses,
@@ -1154,7 +1207,7 @@ def calibrate_group_b_on_dev(
                     collected: dict[int, tuple[complex, float]] = {}
                     for h_idx, cv_br, cv_sc, s_scale_cv in item["cv_banks"]:
                         cv_alpha = _scores_to_alpha(cv_sc, float(beta))
-                        v_floor = 1e-30 * (s_scale_cv ** 2)
+                        v_floor = max(1e-30 * (s_scale_cv ** 2), 1e-300)
                         h_agg, v_agg = _aggregate_h_only(
                             cv_br, cv_alpha, mode="exact_mixture_likelihood", min_var=v_floor
                         )
@@ -1168,7 +1221,7 @@ def calibrate_group_b_on_dev(
                     eval_idx = item["all_eval"]
                     p_pred = np.asarray([collected[i][0] for i in eval_idx], dtype=np.complex128)
                     p_var = np.asarray([collected[i][1] for i in eval_idx], dtype=np.float64)
-                    v_eff = np.maximum(p_var + item["sig2_obs"], 1e-30)
+                    v_eff = np.maximum(p_var + item["sig2_obs"], max(1e-30 * (s_scale ** 2), 1e-300))
                     err = p_pred - item["z_obs"]
                     nlls.append(float(np.mean(np.log(np.pi * v_eff) + (np.abs(err) ** 2) / v_eff)))
 

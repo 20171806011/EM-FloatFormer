@@ -50,6 +50,7 @@ from research.realdata_sdr_ofdm.receivers.classical import (
     _estimate_timing_slope,
     _exp_pdp_freq_cov,
     _track_phase_2d,
+    _validate_pilot_indices,
 )
 
 GROUP_A_MODES: tuple[str, ...] = (
@@ -183,7 +184,7 @@ def build_reference_pool(
 
 def _partition_key_val_pilots(obs_idx: Sequence[int]) -> tuple[list[int], list[int]]:
     """Strictly disjoint Section 5.1 Eq. (9) partition of observed pilots."""
-    obs = [int(i) for i in obs_idx]
+    obs = sorted(set(int(i) for i in obs_idx))
     if len(obs) == 0:
         raise ValueError("Observed pilot set must be non-empty")
     if len(obs) == 1:
@@ -237,7 +238,14 @@ def _estimate_from_hp_subset(
     target_active_indices: Optional[np.ndarray] = None,
 ) -> tuple[np.ndarray, np.ndarray, float]:
     """1D LMMSE channel estimate from pre-extracted LS pilot vector h_p."""
-    obs_tuple = tuple(int(i) for i in obs_idx)
+    obs_arr = np.asarray([int(i) for i in obs_idx], dtype=np.int64)
+    if obs_arr.size == 0:
+        raise ValueError("obs_idx must be non-empty")
+    if obs_arr.size > 1 and np.any(np.diff(obs_arr) <= 0):
+        obs_arr, uniq_idx = np.unique(obs_arr, return_index=True)
+        h_p = np.asarray(h_p, dtype=np.complex128)[uniq_idx]
+        sigma2_obs = np.asarray(sigma2_obs, dtype=np.float64)[uniq_idx]
+    obs_tuple = tuple(int(i) for i in obs_arr.tolist())
     target_tuple = (
         None
         if target_active_indices is None
@@ -327,11 +335,12 @@ def _estimate_group_a_sym2(
     Strictly reads ONLY `pilot_mask` REs of `context_pool` frames (never `data_mask`,
     `tx_bits`, `tx_symbols`, or `reported_sinr_db`) and enforces disjoint key/value pilots.
     """
-    key_idx, val_idx = _partition_key_val_pilots(obs_idx)
+    obs_sorted = sorted(set(int(i) for i in obs_idx))
+    key_idx, val_idx = _partition_key_val_pilots(obs_sorted)
     h_q, v_q, sigma_h2_q = _estimate_sym2_channel(
         rx_norm,
         pilot_values,
-        obs_idx,
+        obs_sorted,
         n0_norm,
         method="lmmse_1d",
         config=cls_cfg,
@@ -382,7 +391,7 @@ def _estimate_group_a_sym2(
         h_val_p_list.append(h_j_val_p)
 
         n0_j_eff = max(float(cfg.n0_scale) * (p_n0 * inv_s_scale2), 0.0)
-        sig2_all_j = n0_j_eff / np.maximum(np.abs(p_pv[list(obs_idx)]) ** 2, 1e-30)
+        sig2_all_j = n0_j_eff / np.maximum(np.abs(p_pv[obs_sorted]) ** 2, 1e-30)
         mean_sig2_obs[j] = float(np.mean(sig2_all_j))
         sig2_val_list.append(n0_j_eff / np.maximum(np.abs(p_pv[val_idx]) ** 2, 1e-30))
 
@@ -477,12 +486,7 @@ def _compute_cv_fold_scale(
     p_mask = np.asarray(pilot_mask, dtype=bool)
     d_mask = np.asarray(data_mask, dtype=bool)
     heldout_mask = np.zeros_like(p_mask, dtype=bool)
-    for pi in heldout_indices:
-        pi_int = int(pi)
-        if not (0 <= pi_int < len(PILOT_FFT_INDICES)):
-            raise ValueError(
-                f"Held-out pilot index out of range [0, {len(PILOT_FFT_INDICES) - 1}]: {pi!r}"
-            )
+    for pi_int in _validate_pilot_indices(heldout_indices, "heldout_pilot_indices"):
         heldout_mask[PILOT_SYMBOL_IDX, PILOT_FFT_INDICES[pi_int]] = True
     cv_active_mask = (p_mask & ~heldout_mask) | (d_mask & ~heldout_mask)
     if np.any(cv_active_mask):
@@ -510,7 +514,7 @@ def _compute_heldout_cv_group_a(
     """Leak-free held-out pilot CV masking eval_idx from both query LMMSE and key matching."""
     explicit_idx = frame.meta.get("heldout_pilot_indices") if isinstance(frame.meta, dict) else None
     if explicit_idx is not None and len(explicit_idx) > 0:
-        eval_idx = [int(i) for i in explicit_idx]
+        eval_idx = _validate_pilot_indices(explicit_idx, "heldout_pilot_indices")
         eval_set = set(eval_idx)
         obs_idx = [i for i in range(14) if i not in eval_set]
         s_scale_cv = _compute_cv_fold_scale(
@@ -534,7 +538,8 @@ def _compute_heldout_cv_group_a(
             target_active_indices=target_active,
         )
         pred = (h_pred_norm * s_scale_cv).astype(np.complex128)
-        var = np.maximum(h_var_norm * (s_scale_cv ** 2), 1e-30 * (s_scale_cv ** 2)).astype(np.float64)
+        v_floor_cv = max(1e-30 * (s_scale_cv ** 2), 1e-300)
+        var = np.maximum(h_var_norm * (s_scale_cv ** 2), v_floor_cv).astype(np.float64)
         return pred, var, eval_idx
 
     folds = frame.meta.get("heldout_pilot_folds") if isinstance(frame.meta, dict) else None
@@ -543,9 +548,12 @@ def _compute_heldout_cv_group_a(
 
     collected: dict[int, tuple[complex, float]] = {}
     for fold in folds:
-        h_idx = [int(i) for i in fold["heldout_pilot_indices"]]
+        h_idx = _validate_pilot_indices(fold["heldout_pilot_indices"], "heldout_pilot_indices")
+        if not h_idx:
+            raise ValueError("heldout_pilot_indices in fold must be non-empty")
         h_set = set(h_idx)
-        o_idx = [int(i) for i in fold["obs_pilot_indices"] if int(i) not in h_set]
+        o_raw = _validate_pilot_indices(fold["obs_pilot_indices"], "obs_pilot_indices")
+        o_idx = sorted(i for i in o_raw if i not in h_set)
         s_scale_cv = _compute_cv_fold_scale(
             rx_grid, frame.pilot_mask, frame.data_mask, est_n0, h_idx
         )
@@ -566,12 +574,16 @@ def _compute_heldout_cv_group_a(
             cls_cfg=cls_cfg,
             target_active_indices=target_active,
         )
+        v_floor_cv = max(1e-30 * (s_scale_cv ** 2), 1e-300)
         for pos, pi in enumerate(h_idx):
             if pi not in collected:
                 collected[pi] = (
                     complex(h_pred_norm[pos] * s_scale_cv),
-                    max(float(h_var_norm[pos] * (s_scale_cv ** 2)), 1e-30 * (s_scale_cv ** 2)),
+                    max(float(h_var_norm[pos] * (s_scale_cv ** 2)), v_floor_cv),
                 )
+
+    if not collected:
+        raise ValueError("heldout_pilot_folds produced no held-out pilots")
 
     eval_idx = sorted(collected.keys())
     pred = np.asarray([collected[i][0] for i in eval_idx], dtype=np.complex128)
@@ -629,15 +641,37 @@ def run_frame(
     t0 = time.perf_counter()
     canon_mode = normalize_group_a_mode(mode)
     cfg = GroupAConfig() if config is None else config
-    eff_local_k = int(cfg.local_k if local_k is None else local_k)
-    eff_temp = float(cfg.temperature if temperature is None else temperature)
     pool_len = len(context_pool) if context_pool is not None else 0
 
     try:
-        if not np.isfinite(eff_temp) or eff_temp <= 0.0:
-            raise ValueError(f"temperature must be finite and > 0, got {eff_temp!r}")
+        raw_local_k = cfg.local_k if local_k is None else local_k
+        if isinstance(raw_local_k, (bool, np.bool_)) or not isinstance(raw_local_k, (int, np.integer)):
+            raise ValueError(f"local_k must be a positive integer, got {raw_local_k!r}")
+        eff_local_k = int(raw_local_k)
         if eff_local_k < 1:
             raise ValueError(f"local_k must be >= 1, got {eff_local_k!r}")
+
+        raw_temp = cfg.temperature if temperature is None else temperature
+        if isinstance(raw_temp, (bool, np.bool_)):
+            raise ValueError(f"temperature must be finite and > 0, got {raw_temp!r}")
+        eff_temp = float(raw_temp)
+        if not np.isfinite(eff_temp) or eff_temp <= 0.0:
+            raise ValueError(f"temperature must be finite and > 0, got {eff_temp!r}")
+
+        if isinstance(cfg.prior_scale, (bool, np.bool_)):
+            raise ValueError(f"prior_scale must be finite and > 0, got {cfg.prior_scale!r}")
+        prior_scale = float(cfg.prior_scale)
+        if not np.isfinite(prior_scale) or prior_scale <= 0.0:
+            raise ValueError(f"prior_scale must be finite and > 0, got {cfg.prior_scale!r}")
+
+        if isinstance(cfg.reg_floor, (bool, np.bool_)):
+            raise ValueError(f"reg_floor must be finite and > 0, got {cfg.reg_floor!r}")
+        reg_floor = float(cfg.reg_floor)
+        if not np.isfinite(reg_floor) or reg_floor <= 0.0:
+            raise ValueError(f"reg_floor must be finite and > 0, got {cfg.reg_floor!r}")
+
+        if context_pool is not None and len(context_pool) > 0:
+            _validate_non_test_frames(context_pool, "group_a_reference.run_frame(context_pool)")
 
         rx_grid, est_n0, pilot_values = _validate_frame_inputs(frame)
         active_mask = np.asarray(frame.pilot_mask | frame.data_mask, dtype=bool)
@@ -695,7 +729,10 @@ def run_frame(
         )
 
         h_est = (h_2d_norm * s_scale).astype(np.complex128)
-        h_var = np.maximum(v_2d_norm * (s_scale ** 2), 1e-30 * (s_scale ** 2)).astype(np.float64)
+        h_var = np.maximum(
+            v_2d_norm * (s_scale ** 2),
+            max(1e-30 * (s_scale ** 2), 1e-300),
+        ).astype(np.float64)
         if not (np.all(np.isfinite(h_est)) and np.all(np.isfinite(h_var))):
             raise ValueError("Channel estimate contains non-finite (NaN/Inf) values")
         if not (np.all(np.isfinite(eq_symbols)) and np.all(np.isfinite(bit_llrs))):
@@ -814,7 +851,13 @@ def _eval_group_a_dev(
                 p_val = fr.pilot_values[idx]
                 z_obs = y_p / p_val
                 sig2_obs = float(fr.est_n0) / (np.abs(p_val) ** 2)
-                v_eff = np.maximum(out.heldout_pilot_var + sig2_obs, 1e-30)
+                act_mask = np.asarray(fr.pilot_mask | fr.data_mask, dtype=bool)
+                act_pow = float(np.mean(np.abs(fr.rx_grid[act_mask]) ** 2)) if np.any(act_mask) else 0.0
+                n0_val = float(fr.est_n0)
+                s2_scale = act_pow if (np.isfinite(act_pow) and act_pow > 0.0) else (
+                    n0_val if (np.isfinite(n0_val) and n0_val > 0.0) else 1.0
+                )
+                v_eff = np.maximum(out.heldout_pilot_var + sig2_obs, max(1e-30 * s2_scale, 1e-300))
                 err = out.heldout_pilot_pred - z_obs
                 nlls.append(float(np.mean(np.log(np.pi * v_eff) + (np.abs(err) ** 2) / v_eff)))
     ber = float(bit_err / max(tot_bits, 1))
@@ -868,11 +911,12 @@ def _prepare_sym2_components(
     target_active_indices: Optional[np.ndarray] = None,
 ) -> dict[str, Any]:
     """Precompute query & pool pilot-only components independent of (temperature, prior_scale)."""
-    key_idx, val_idx = _partition_key_val_pilots(obs_idx)
+    obs_sorted = sorted(set(int(i) for i in obs_idx))
+    key_idx, val_idx = _partition_key_val_pilots(obs_sorted)
     h_q, v_q, sigma_h2_q = _estimate_sym2_channel(
         rx_norm,
         pilot_values,
-        obs_idx,
+        obs_sorted,
         n0_norm,
         method="lmmse_1d",
         config=cls_cfg,
@@ -1032,7 +1076,7 @@ def calibrate_group_a_on_dev(
                 explicit_idx = fr.meta.get("heldout_pilot_indices") if isinstance(fr.meta, dict) else None
                 cv_folds: list[tuple[list[int], float, dict[str, Any]]] = []
                 if explicit_idx is not None and len(explicit_idx) > 0:
-                    eval_idx = [int(i) for i in explicit_idx]
+                    eval_idx = _validate_pilot_indices(explicit_idx, "heldout_pilot_indices")
                     eval_set = set(eval_idx)
                     obs_idx = [i for i in range(14) if i not in eval_set]
                     s_scale_cv = _compute_cv_fold_scale(
@@ -1063,9 +1107,12 @@ def calibrate_group_a_on_dev(
                     if not folds:
                         folds = build_heldout_pilot_masks(4)
                     for fold in folds:
-                        h_idx = [int(i) for i in fold["heldout_pilot_indices"]]
+                        h_idx = _validate_pilot_indices(fold["heldout_pilot_indices"], "heldout_pilot_indices")
+                        if not h_idx:
+                            raise ValueError("heldout_pilot_indices in fold must be non-empty")
                         h_set = set(h_idx)
-                        o_idx = [int(i) for i in fold["obs_pilot_indices"] if int(i) not in h_set]
+                        o_raw = _validate_pilot_indices(fold["obs_pilot_indices"], "obs_pilot_indices")
+                        o_idx = sorted(i for i in o_raw if i not in h_set)
                         s_scale_cv = _compute_cv_fold_scale(
                             rx_grid, fr.pilot_mask, fr.data_mask, est_n0, h_idx
                         )
@@ -1126,6 +1173,8 @@ def calibrate_group_a_on_dev(
             ps_val = float(ps)
             if not np.isfinite(t_val) or t_val <= 0.0:
                 raise ValueError(f"Candidate temperature must be positive and finite, got {tau!r}")
+            if not np.isfinite(ps_val) or ps_val <= 0.0:
+                raise ValueError(f"Candidate prior_scale must be positive and finite, got {ps!r}")
             cand_cfg = GroupAConfig(
                 **{**base.to_dict(), "prior_scale": ps_val, "temperature": t_val}
             )
@@ -1173,16 +1222,17 @@ def calibrate_group_a_on_dev(
                         hp_n, hv_n = _fuse_sym2_content_attn(
                             fold_comp, temperature=t_val, prior_scale=ps_val
                         )
+                        v_floor_cv = max(1e-30 * (s_scale_cv ** 2), 1e-300)
                         for pos, pi in enumerate(h_idx):
                             if pi not in collected:
                                 collected[pi] = (
                                     complex(hp_n[pos] * s_scale_cv),
-                                    max(float(hv_n[pos] * (s_scale_cv ** 2)), 1e-30 * (s_scale_cv ** 2)),
+                                    max(float(hv_n[pos] * (s_scale_cv ** 2)), v_floor_cv),
                                 )
                     eval_idx = item["all_eval"]
                     p_pred = np.asarray([collected[i][0] for i in eval_idx], dtype=np.complex128)
                     p_var = np.asarray([collected[i][1] for i in eval_idx], dtype=np.float64)
-                    v_eff = np.maximum(p_var + item["sig2_obs"], 1e-30)
+                    v_eff = np.maximum(p_var + item["sig2_obs"], max(1e-30 * (s_scale ** 2), 1e-300))
                     err = p_pred - item["z_obs"]
                     nlls.append(float(np.mean(np.log(np.pi * v_eff) + (np.abs(err) ** 2) / v_eff)))
 

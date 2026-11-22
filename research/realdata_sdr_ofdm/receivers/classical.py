@@ -132,8 +132,14 @@ def _estimate_timing_slope(
     """Blind $C^*$-invariant frequency phase-slope estimate from adjacent observed pilots."""
     if len(k_obs) < 2:
         return 0.0
-    dk = np.diff(k_obs).astype(np.float64)
-    diffs = h_p[1:] * np.conj(h_p[:-1])
+    k_arr = np.asarray(k_obs, dtype=np.float64)
+    h_arr = np.asarray(h_p, dtype=np.complex128)
+    if np.any(np.diff(k_arr) < 0.0):
+        order = np.argsort(k_arr, kind="mergesort")
+        k_arr = k_arr[order]
+        h_arr = h_arr[order]
+    dk = np.diff(k_arr).astype(np.float64)
+    diffs = h_arr[1:] * np.conj(h_arr[:-1])
     min_dk = float(np.min(dk))
     mask = dk <= max(min_dk, 8.0) + 1e-9
     if not np.any(mask):
@@ -162,7 +168,9 @@ def _estimate_sym2_channel(
 
     Returns (h_est_norm, h_var_norm, sigma_h2_norm).
     """
-    obs_idx = np.asarray(obs_pilot_indices, dtype=np.int64)
+    obs_idx = np.unique(np.asarray(obs_pilot_indices, dtype=np.int64))
+    if obs_idx.size == 0:
+        raise ValueError("obs_pilot_indices must be non-empty")
     k_obs = np.asarray([PILOT_ACTIVE_INDICES[i] for i in obs_idx], dtype=np.float64)
     fft_obs = [PILOT_FFT_INDICES[i] for i in obs_idx]
     y_p = rx_norm[PILOT_SYMBOL_IDX, fft_obs]
@@ -451,33 +459,89 @@ def _run_2d_core(
     return h_tracked, v_2d, omega_t
 
 
+def _validate_pilot_indices(
+    indices: Sequence[Any],
+    label: str = "heldout_pilot_indices",
+) -> list[int]:
+    """Validate pilot index sequence: unique integers strictly in [0, N_PILOTS - 1] (order-preserving)."""
+    out: list[int] = []
+    seen: set[int] = set()
+    n_pilots = len(PILOT_FFT_INDICES)
+    for raw in indices:
+        if isinstance(raw, (bool, np.bool_)) or not isinstance(raw, (int, np.integer)):
+            raise ValueError(
+                f"{label} entries must be integers in [0, {n_pilots - 1}], got {raw!r}"
+            )
+        pi = int(raw)
+        if not (0 <= pi < n_pilots):
+            raise ValueError(
+                f"{label} index out of range [0, {n_pilots - 1}]: {raw!r}"
+            )
+        if pi not in seen:
+            seen.add(pi)
+            out.append(pi)
+    return out
+
+
+def _compute_cv_fold_scale(
+    rx_grid: np.ndarray,
+    pilot_mask: np.ndarray,
+    data_mask: np.ndarray,
+    est_n0: float,
+    heldout_indices: Sequence[int],
+) -> float:
+    """Compute per-fold RMS normalization scale strictly excluding held-out pilots."""
+    p_mask = np.asarray(pilot_mask, dtype=bool)
+    d_mask = np.asarray(data_mask, dtype=bool)
+    heldout_mask = np.zeros_like(p_mask, dtype=bool)
+    for pi_int in _validate_pilot_indices(heldout_indices, "heldout_pilot_indices"):
+        heldout_mask[PILOT_SYMBOL_IDX, PILOT_FFT_INDICES[pi_int]] = True
+    cv_active_mask = (p_mask & ~heldout_mask) | (d_mask & ~heldout_mask)
+    if np.any(cv_active_mask):
+        s_rms_cv = float(np.sqrt(np.mean(np.abs(rx_grid[cv_active_mask]) ** 2)))
+        if not np.isfinite(s_rms_cv):
+            raise ValueError("Non-finite active RMS power in held-out CV")
+    else:
+        s_rms_cv = 0.0
+    return s_rms_cv if s_rms_cv > 0.0 else max(math.sqrt(est_n0), 1.0)
+
+
 def _compute_heldout_cv(
     frame: RealOFDMFrame,
-    rx_norm: np.ndarray,
-    n0_norm: float,
-    s_scale: float,
+    rx_grid: np.ndarray,
+    est_n0: float,
     *,
     method: str,
     config: ClassicalConfig,
 ) -> tuple[np.ndarray, np.ndarray, list[int]]:
-    """Compute held-out pilot predictions & strictly positive variances in original gauge."""
+    """Compute held-out pilot predictions & strictly positive variances in original gauge.
+
+    Uses per-fold observable normalization ``s_scale_cv`` excluding held-out pilot REs
+    so held-out predictions and variances have zero leakage from mutated held-out pilots.
+    """
     explicit_idx = frame.meta.get("heldout_pilot_indices") if isinstance(frame.meta, dict) else None
     if explicit_idx is not None and len(explicit_idx) > 0:
-        eval_idx = [int(i) for i in explicit_idx]
+        eval_idx = _validate_pilot_indices(explicit_idx, "heldout_pilot_indices")
         eval_set = set(eval_idx)
         obs_idx = [i for i in range(14) if i not in eval_set]
+        s_scale_cv = _compute_cv_fold_scale(
+            rx_grid, frame.pilot_mask, frame.data_mask, est_n0, eval_idx
+        )
+        rx_norm_cv = rx_grid / s_scale_cv
+        n0_norm_cv = est_n0 / (s_scale_cv ** 2)
+        v_floor_cv = max(1e-30 * (float(s_scale_cv) ** 2), 1e-300)
         target_active = np.asarray([PILOT_ACTIVE_INDICES[i] for i in eval_idx], dtype=np.int64)
         h_pred_norm, h_var_norm, _ = _estimate_sym2_channel(
-            rx_norm,
+            rx_norm_cv,
             frame.pilot_values,
             obs_idx,
-            n0_norm,
+            n0_norm_cv,
             method=method,
             config=config,
             target_active_indices=target_active,
         )
-        pred = (h_pred_norm * s_scale).astype(np.complex128)
-        var = np.maximum(h_var_norm * (s_scale ** 2), 1e-30).astype(np.float64)
+        pred = (h_pred_norm * s_scale_cv).astype(np.complex128)
+        var = np.maximum(h_var_norm * (s_scale_cv ** 2), v_floor_cv).astype(np.float64)
         return pred, var, eval_idx
 
     folds = None
@@ -488,14 +552,24 @@ def _compute_heldout_cv(
 
     collected: dict[int, tuple[complex, float]] = {}
     for fold in folds:
-        h_idx = [int(i) for i in fold["heldout_pilot_indices"]]
-        o_idx = [int(i) for i in fold["obs_pilot_indices"]]
+        h_idx = _validate_pilot_indices(fold["heldout_pilot_indices"], "heldout_pilot_indices")
+        if not h_idx:
+            raise ValueError("heldout_pilot_indices in fold must be non-empty")
+        h_set = set(h_idx)
+        o_raw = _validate_pilot_indices(fold["obs_pilot_indices"], "obs_pilot_indices")
+        o_idx = sorted(i for i in o_raw if i not in h_set)
+        s_scale_cv = _compute_cv_fold_scale(
+            rx_grid, frame.pilot_mask, frame.data_mask, est_n0, h_idx
+        )
+        rx_norm_cv = rx_grid / s_scale_cv
+        n0_norm_cv = est_n0 / (s_scale_cv ** 2)
+        v_floor_cv = max(1e-30 * (float(s_scale_cv) ** 2), 1e-300)
         target_active = np.asarray([PILOT_ACTIVE_INDICES[i] for i in h_idx], dtype=np.int64)
         h_pred_norm, h_var_norm, _ = _estimate_sym2_channel(
-            rx_norm,
+            rx_norm_cv,
             frame.pilot_values,
             o_idx,
-            n0_norm,
+            n0_norm_cv,
             method=method,
             config=config,
             target_active_indices=target_active,
@@ -503,9 +577,12 @@ def _compute_heldout_cv(
         for pos, pi in enumerate(h_idx):
             if pi not in collected:
                 collected[pi] = (
-                    complex(h_pred_norm[pos] * s_scale),
-                    max(float(h_var_norm[pos] * (s_scale ** 2)), 1e-30),
+                    complex(h_pred_norm[pos] * s_scale_cv),
+                    max(float(h_var_norm[pos] * (s_scale_cv ** 2)), v_floor_cv),
                 )
+
+    if not collected:
+        raise ValueError("heldout_pilot_folds produced no held-out pilots")
 
     eval_idx = sorted(collected.keys())
     pred = np.asarray([collected[i][0] for i in eval_idx], dtype=np.complex128)
@@ -613,7 +690,10 @@ def run_frame(
         )
 
         h_est = (h_2d_norm * s_scale).astype(np.complex128)
-        h_var = np.maximum(v_2d_norm * (s_scale ** 2), 1e-30 * (s_scale ** 2)).astype(np.float64)
+        h_var = np.maximum(
+            v_2d_norm * (s_scale ** 2),
+            max(1e-30 * (s_scale ** 2), 1e-300),
+        ).astype(np.float64)
         if not (np.all(np.isfinite(h_est)) and np.all(np.isfinite(h_var))):
             raise ValueError("Channel estimate contains non-finite (NaN/Inf) values")
         if not (np.all(np.isfinite(eq_symbols)) and np.all(np.isfinite(bit_llrs))):
@@ -625,9 +705,8 @@ def run_frame(
         if return_heldout_cv:
             heldout_pred, heldout_var, heldout_indices = _compute_heldout_cv(
                 frame,
-                rx_norm,
-                n0_norm,
-                s_scale,
+                rx_grid,
+                est_n0,
                 method=canon_method,
                 config=cfg,
             )
@@ -716,7 +795,13 @@ def _dev_objective(
                 p_val = fr.pilot_values[idx]
                 z_obs = y_p / p_val
                 sig2_obs = float(fr.est_n0) / (np.abs(p_val) ** 2)
-                v_eff = np.maximum(out.heldout_pilot_var + sig2_obs, 1e-30)
+                act_mask = np.asarray(fr.pilot_mask | fr.data_mask, dtype=bool)
+                act_pow = float(np.mean(np.abs(fr.rx_grid[act_mask]) ** 2)) if np.any(act_mask) else 0.0
+                n0_val = float(fr.est_n0)
+                s2_scale = act_pow if (np.isfinite(act_pow) and act_pow > 0.0) else (
+                    n0_val if (np.isfinite(n0_val) and n0_val > 0.0) else 1.0
+                )
+                v_eff = np.maximum(out.heldout_pilot_var + sig2_obs, max(1e-30 * s2_scale, 1e-300))
                 err = out.heldout_pilot_pred - z_obs
                 nlls.append(float(np.mean(np.log(np.pi * v_eff) + (np.abs(err) ** 2) / v_eff)))
     ber = float(bit_err / max(tot_bits, 1))

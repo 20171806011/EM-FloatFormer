@@ -42,6 +42,8 @@ from research.realdata_sdr_ofdm.adapters.sdr_ofdm_adapter import (
     load_processed_split,
 )
 from research.realdata_sdr_ofdm.eval.evaluator import (
+    _frame_s2_scale,
+    _is_valid_output,
     compare_arms,
     compare_multiple_arms,
     evaluate_receiver,
@@ -84,6 +86,14 @@ def _load_m2_anchor_configs(baseline_dir: Path | None) -> dict[str, ClassicalCon
     return defaults
 
 
+def _finite_float(val: Any, default: float = 0.0) -> float:
+    try:
+        f = float(val)
+        return f if np.isfinite(f) else float(default)
+    except (TypeError, ValueError):
+        return float(default)
+
+
 def _write_per_frame_jsonl(
     path: Path,
     pairs: list[tuple[RealOFDMFrame, ReceiverOutput]],
@@ -91,58 +101,96 @@ def _write_per_frame_jsonl(
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="\n") as fh:
         for fr, out in pairs:
-            be = int(np.sum(out.hard_bits != fr.tx_bits))
-            se = int(np.sum(np.any(out.hard_bits != fr.tx_bits, axis=-1)))
-            sq_err = float(np.sum(np.abs(out.eq_symbols - fr.tx_symbols) ** 2))
-            sq_sig = float(np.sum(np.abs(fr.tx_symbols) ** 2))
-            sym_mse = sq_err / float(fr.tx_symbols.size)
-            evm_pct = 100.0 * float(np.sqrt(sq_err / max(sq_sig, 1e-30)))
+            aux = (getattr(out, "aux_info", None) or {}) if out is not None else {}
+            is_timeout = bool(aux.get("timeout", False))
+            ok, err_msg = _is_valid_output(fr, out)
+            if is_timeout:
+                ok = False
+                err_msg = str(aux.get("error") or "timeout")
 
-            p_nmse = 0.0
-            p_cal = 0.0
-            p_nll = 0.0
-            if out.heldout_pilot_pred is not None and out.heldout_pilot_var is not None:
-                idx = out.aux_info.get("heldout_pilot_indices") or []
-                if len(idx) == len(out.heldout_pilot_pred) and len(idx) > 0:
-                    fft_idx = [PILOT_FFT_INDICES[i] for i in idx]
-                    y_p = fr.rx_grid[PILOT_SYMBOL_IDX, fft_idx]
-                    p_val = fr.pilot_values[idx]
-                    z_obs = y_p / p_val
-                    sig2_obs = float(fr.est_n0) / (np.abs(p_val) ** 2)
-                    v_eff = np.maximum(out.heldout_pilot_var + sig2_obs, 1e-30)
-                    err = out.heldout_pilot_pred - z_obs
-                    p_nmse = float(np.sum(np.abs(err) ** 2) / max(np.sum(np.abs(z_obs) ** 2), 1e-30))
-                    p_cal = float(np.mean((np.abs(err) ** 2) / v_eff))
-                    p_nll = float(np.mean(np.log(np.pi * v_eff) + (np.abs(err) ** 2) / v_eff))
+            if not ok:
+                be = 0
+                se = 0
+                sym_mse = 0.0
+                evm_pct = 0.0
+                p_nmse = 0.0
+                p_cal = 0.0
+                p_nll = 0.0
+                failed_flag = True
+                error_val = str(err_msg or "invalid output")
+            else:
+                be = int(np.sum(out.hard_bits != fr.tx_bits))
+                se = int(np.sum(np.any(out.hard_bits != fr.tx_bits, axis=-1)))
+                sq_err = float(np.sum(np.abs(out.eq_symbols - fr.tx_symbols) ** 2))
+                sq_sig = float(np.sum(np.abs(fr.tx_symbols) ** 2))
+                sym_mse = _finite_float(sq_err / float(fr.tx_symbols.size))
+                evm_pct = _finite_float(100.0 * float(np.sqrt(sq_err / max(sq_sig, 1e-30))))
 
-            w_arr = np.asarray(out.aux_info.get("weights", []), dtype=np.float64)
+                p_nmse = 0.0
+                p_cal = 0.0
+                p_nll = 0.0
+                if out.heldout_pilot_pred is not None and out.heldout_pilot_var is not None:
+                    idx = aux.get("heldout_pilot_indices") or []
+                    p_pred = np.asarray(out.heldout_pilot_pred, dtype=np.complex128).ravel()
+                    p_var = np.asarray(out.heldout_pilot_var, dtype=np.float64).ravel()
+                    if (
+                        len(idx) == len(p_pred)
+                        and len(idx) == len(p_var)
+                        and len(idx) > 0
+                        and all(0 <= int(i) < len(PILOT_FFT_INDICES) for i in idx)
+                    ):
+                        int_idx = [int(i) for i in idx]
+                        fft_idx = [PILOT_FFT_INDICES[i] for i in int_idx]
+                        y_p = fr.rx_grid[PILOT_SYMBOL_IDX, fft_idx]
+                        p_val = fr.pilot_values[int_idx]
+                        z_obs = y_p / p_val
+                        sig2_obs = float(fr.est_n0) / (np.abs(p_val) ** 2)
+                        s2_f = _frame_s2_scale(fr)
+                        v_eff = np.maximum(p_var + sig2_obs, max(1e-30 * s2_f, 1e-300))
+                        err = p_pred - z_obs
+                        p_nmse = _finite_float(
+                            np.sum(np.abs(err) ** 2) / max(np.sum(np.abs(z_obs) ** 2), max(1e-30 * s2_f, 1e-300))
+                        )
+                        p_cal = _finite_float(np.mean((np.abs(err) ** 2) / v_eff))
+                        p_nll = _finite_float(np.mean(np.log(np.pi * v_eff) + (np.abs(err) ** 2) / v_eff))
+                failed_flag = False
+                error_val = aux.get("error")
+
+            w_raw = aux.get("weights")
+            w_arr = np.asarray([] if w_raw is None else w_raw, dtype=np.float64)
+            w_arr = np.where(np.isfinite(w_arr), w_arr, 0.0)
             w_pos = w_arr[w_arr > 0.0]
-            w_ent = float(-np.sum(w_pos * np.log(w_pos))) if w_pos.size > 0 else 0.0
-            w_max = float(np.max(w_arr)) if w_arr.size > 0 else 0.0
+            w_ent = _finite_float(-np.sum(w_pos * np.log(w_pos))) if w_pos.size > 0 else 0.0
+            w_max = _finite_float(np.max(w_arr)) if w_arr.size > 0 else 0.0
+            nv_raw = aux.get("n_values_accessed")
+            try:
+                nv_val = 0 if (nv_raw is None or isinstance(nv_raw, bool)) else int(nv_raw)
+            except (TypeError, ValueError):
+                nv_val = 0
 
             rec = {
                 "frame_id": int(fr.frame_id),
                 "split": str(fr.split),
                 "group_id": str(fr.group_id),
-                "reported_sinr_db": float(fr.reported_sinr_db),
-                "est_n0": float(fr.est_n0),
+                "reported_sinr_db": _finite_float(fr.reported_sinr_db),
+                "est_n0": _finite_float(fr.est_n0),
                 "bit_errors": be,
                 "total_bits": int(fr.tx_bits.size),
-                "ber": float(be / fr.tx_bits.size),
-                "frame_error": int(be > 0),
+                "ber": _finite_float(be / max(int(fr.tx_bits.size), 1)),
+                "frame_error": 1 if failed_flag else int(be > 0),
                 "sym_errors": se,
                 "total_syms": int(fr.tx_symbols.size),
-                "sym_mse": float(sym_mse),
-                "evm_pct": float(evm_pct),
+                "sym_mse": sym_mse,
+                "evm_pct": evm_pct,
                 "pilot_nmse": p_nmse,
                 "pilot_cal_ratio": p_cal,
                 "pilot_nll": p_nll,
-                "n_values_accessed": int(out.aux_info.get("n_values_accessed", 0)),
+                "n_values_accessed": nv_val,
                 "weight_entropy": w_ent,
                 "weight_max": w_max,
-                "latency_ms": float(out.aux_info.get("latency_ms", 0.0)),
-                "failed": bool(out.aux_info.get("failed", False)),
-                "error": out.aux_info.get("error"),
+                "latency_ms": _finite_float(aux.get("latency_ms", 0.0)),
+                "failed": failed_flag,
+                "error": error_val,
             }
             fh.write(json.dumps(rec, allow_nan=False) + "\n")
 

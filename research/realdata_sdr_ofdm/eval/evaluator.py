@@ -16,6 +16,9 @@ from scipy.stats import t as student_t
 from p12.audit import exact_sign_flip_p, holm_adjust, verdict_superiority
 from p9.audit import exact_sign_flip_test
 from research.realdata_sdr_ofdm.adapters.sdr_ofdm_adapter import (
+    N_ACTIVE,
+    N_FFT,
+    N_SYMB,
     PILOT_FFT_INDICES,
     PILOT_SYMBOL_IDX,
     RealOFDMFrame,
@@ -123,10 +126,22 @@ def _resolve_heldout_indices(frame: RealOFDMFrame, out: Any, pred_len: int) -> O
     return None
 
 
+def _frame_s2_scale(frame: RealOFDMFrame) -> float:
+    """Compute observable active-power gauge scale s^2 for C*-equivariant variance floors."""
+    act_mask = np.asarray(frame.pilot_mask | frame.data_mask, dtype=bool)
+    act_pow = float(np.mean(np.abs(frame.rx_grid[act_mask]) ** 2)) if np.any(act_mask) else 0.0
+    if np.isfinite(act_pow) and act_pow > 0.0:
+        return act_pow
+    n0_val = float(getattr(frame, "est_n0", 0.0))
+    return n0_val if (np.isfinite(n0_val) and n0_val > 0.0) else 1.0
+
+
 def _is_valid_output(frame: RealOFDMFrame, out: Any) -> tuple[bool, Optional[str]]:
     aux = getattr(out, "aux_info", None) or {}
     if bool(aux.get("failed", False)):
         return False, str(aux.get("error") or "receiver marked failed=True")
+    if bool(aux.get("timeout", False)):
+        return False, str(aux.get("error") or "timeout")
 
     try:
         h_est = np.asarray(out.h_est)
@@ -146,32 +161,47 @@ def _is_valid_output(frame: RealOFDMFrame, out: Any) -> tuple[bool, Optional[str
         ("hard_bits", hard_bits),
         ("hard_symbols", hard_symbols),
     ):
+        is_num = np.issubdtype(arr.dtype, np.number) or (arr_name == "hard_bits" and arr.dtype == np.bool_)
+        if arr.dtype == object or not is_num:
+            return False, f"Non-numeric or object dtype in {arr_name}: {arr.dtype}"
         if not np.all(np.isfinite(arr)):
             return False, f"Non-finite values in {arr_name}"
 
     if np.iscomplexobj(h_var) or not np.all(h_var >= 0.0):
         return False, "Negative or complex values in h_var"
+    if h_est.shape not in ((N_SYMB, N_ACTIVE), (N_SYMB, N_FFT)):
+        return False, f"h_est shape {h_est.shape} not in {((N_SYMB, N_ACTIVE), (N_SYMB, N_FFT))}"
+    if h_var.shape != h_est.shape:
+        return False, f"h_var shape {h_var.shape} != h_est shape {h_est.shape}"
+    if np.iscomplexobj(bit_llrs):
+        return False, "Complex values in bit_llrs"
     if bit_llrs.shape != frame.tx_bits.shape:
         return False, f"bit_llrs shape {bit_llrs.shape} != {frame.tx_bits.shape}"
+    if np.iscomplexobj(hard_bits) or not np.all((hard_bits == 0) | (hard_bits == 1)):
+        return False, "Non-binary or complex values in hard_bits"
     if hard_bits.shape != frame.tx_bits.shape:
         return False, f"hard_bits shape {hard_bits.shape} != {frame.tx_bits.shape}"
     if eq_symbols.shape != frame.tx_symbols.shape:
         return False, f"eq_symbols shape {eq_symbols.shape} != {frame.tx_symbols.shape}"
+    if hard_symbols.shape != frame.tx_symbols.shape:
+        return False, f"hard_symbols shape {hard_symbols.shape} != {frame.tx_symbols.shape}"
 
     p_pred_raw = getattr(out, "heldout_pilot_pred", None)
     p_var_raw = getattr(out, "heldout_pilot_var", None)
-    if p_pred_raw is not None:
+    if (p_pred_raw is None) != (p_var_raw is None):
+        return False, "heldout_pilot_pred and heldout_pilot_var must both be provided or both None"
+    if p_pred_raw is not None and p_var_raw is not None:
         try:
             p_pred = np.asarray(p_pred_raw)
-        except Exception as exc:  # noqa: BLE001
-            return False, f"Invalid heldout_pilot_pred: {exc}"
-        if p_pred.size == 0 or not np.all(np.isfinite(p_pred)):
-            return False, "Empty or non-finite values in heldout_pilot_pred"
-    if p_var_raw is not None:
-        try:
             p_var = np.asarray(p_var_raw)
         except Exception as exc:  # noqa: BLE001
-            return False, f"Invalid heldout_pilot_var: {exc}"
+            return False, f"Invalid heldout_pilot_pred/var: {exc}"
+        if p_pred.dtype == object or not np.issubdtype(p_pred.dtype, np.number):
+            return False, f"Non-numeric or object dtype in heldout_pilot_pred: {p_pred.dtype}"
+        if p_var.dtype == object or not np.issubdtype(p_var.dtype, np.number):
+            return False, f"Non-numeric or object dtype in heldout_pilot_var: {p_var.dtype}"
+        if p_pred.size == 0 or not np.all(np.isfinite(p_pred)):
+            return False, "Empty or non-finite values in heldout_pilot_pred"
         if (
             p_var.size == 0
             or np.iscomplexobj(p_var)
@@ -179,8 +209,14 @@ def _is_valid_output(frame: RealOFDMFrame, out: Any) -> tuple[bool, Optional[str
             or not np.all(p_var >= 0.0)
         ):
             return False, "Empty, non-finite, complex, or negative values in heldout_pilot_var"
-    if p_pred_raw is not None and p_var_raw is not None and p_pred.shape != p_var.shape:
-        return False, f"heldout_pilot_pred shape {p_pred.shape} != heldout_pilot_var shape {p_var.shape}"
+        if p_pred.shape != p_var.shape:
+            return False, f"heldout_pilot_pred shape {p_pred.shape} != heldout_pilot_var shape {p_var.shape}"
+        try:
+            idx = _resolve_heldout_indices(frame, out, int(p_pred.size))
+        except Exception as exc:  # noqa: BLE001
+            return False, f"Invalid heldout_pilot_indices: {exc}"
+        if idx is not None and any(i < 0 or i >= len(PILOT_FFT_INDICES) for i in idx):
+            return False, f"Out-of-range heldout_pilot_indices: {idx}"
     return True, None
 
 
@@ -196,6 +232,8 @@ def evaluate_receiver(
 ) -> dict[str, Any]:
     """Evaluate a sequence of (RealOFDMFrame, ReceiverOutput) pairs under unified F7 metrics."""
     del warm_frames, receiver_fn
+    if metric_mode not in ("raw", "denoised"):
+        raise ValueError(f"metric_mode must be 'raw' or 'denoised', got {metric_mode!r}")
     if pairs is None or len(pairs) == 0:
         raise ValueError("pairs must be a non-empty sequence of (frame, output)")
 
@@ -216,6 +254,7 @@ def evaluate_receiver(
     pilot_sq_err = 0.0
     pilot_z_sq = 0.0
     pilot_sig2_sum = 0.0
+    pilot_s2_scales: list[float] = []
     pilot_cal_list: list[np.ndarray] = []
     pilot_nll_list: list[np.ndarray] = []
 
@@ -227,6 +266,9 @@ def evaluate_receiver(
         aux = getattr(out, "aux_info", None) or {}
         if bool(aux.get("timeout", False)):
             timeout_count += 1
+            fail_count += 1
+            errors.append({"frame_id": int(frame.frame_id), "error": str(aux.get("error") or "timeout")})
+            continue
 
         ok, err_msg = _is_valid_output(frame, out)
         if not ok:
@@ -251,11 +293,28 @@ def evaluate_receiver(
         sq_sym_err += float(np.sum(np.abs(eq - txs) ** 2))
         sq_sym_sig += float(np.sum(np.abs(txs) ** 2))
 
-        if "latency_ms" in aux and np.isfinite(float(aux["latency_ms"])):
-            latencies_ms.append(float(aux["latency_ms"]))
-        n_candidates_vals.append(int(aux.get("n_candidates", 1)))
-        if "param_count" in aux:
-            inferred_params.append(int(aux["param_count"]))
+        lat_raw = aux.get("latency_ms")
+        if lat_raw is not None:
+            try:
+                lat_val = float(lat_raw)
+                if np.isfinite(lat_val):
+                    latencies_ms.append(lat_val)
+            except (TypeError, ValueError):
+                pass
+        nc_raw = aux.get("n_candidates")
+        if nc_raw is not None and not isinstance(nc_raw, bool):
+            try:
+                n_candidates_vals.append(int(nc_raw))
+            except (TypeError, ValueError):
+                n_candidates_vals.append(1)
+        else:
+            n_candidates_vals.append(1)
+        pc_raw = aux.get("param_count")
+        if pc_raw is not None and not isinstance(pc_raw, bool):
+            try:
+                inferred_params.append(int(pc_raw))
+            except (TypeError, ValueError):
+                pass
 
         p_pred_raw = getattr(out, "heldout_pilot_pred", None)
         p_var_raw = getattr(out, "heldout_pilot_var", None)
@@ -275,12 +334,14 @@ def evaluate_receiver(
                     p_val = np.asarray(frame.pilot_values[idx], dtype=np.complex128)
                     z_obs = y_p / p_val
                     sigma2_obs = float(frame.est_n0) / (np.abs(p_val) ** 2)
-                    v_eff = np.maximum(np.maximum(p_var, 0.0) + sigma2_obs, 1e-30)
+                    s2_f = _frame_s2_scale(frame)
+                    v_eff = np.maximum(np.maximum(p_var, 0.0) + sigma2_obs, max(1e-30 * s2_f, 1e-300))
                     err = p_pred - z_obs
                     err_sq = np.abs(err) ** 2
                     pilot_sq_err += float(np.sum(err_sq))
                     pilot_z_sq += float(np.sum(np.abs(z_obs) ** 2))
                     pilot_sig2_sum += float(np.sum(sigma2_obs))
+                    pilot_s2_scales.append(s2_f)
                     pilot_cal_list.append(err_sq / v_eff)
                     pilot_nll_list.append(np.log(math.pi * v_eff) + err_sq / v_eff)
 
@@ -294,9 +355,12 @@ def evaluate_receiver(
     if pilot_cal_list:
         cal_cat = np.concatenate(pilot_cal_list)
         nll_cat = np.concatenate(pilot_nll_list)
-        pilot_nmse_raw = float(pilot_sq_err / max(pilot_z_sq, 1e-30))
+        mean_s2 = float(np.mean(pilot_s2_scales)) if pilot_s2_scales else 1.0
+        z_floor = max(1e-30 * mean_s2, 1e-300)
+        z_den_floor = max(1e-12 * mean_s2, 1e-300)
+        pilot_nmse_raw = float(pilot_sq_err / max(pilot_z_sq, z_floor))
         pilot_nmse_denoised = float(
-            max(0.0, pilot_sq_err - pilot_sig2_sum) / max(pilot_z_sq - pilot_sig2_sum, 1e-12)
+            max(0.0, pilot_sq_err - pilot_sig2_sum) / max(pilot_z_sq - pilot_sig2_sum, z_den_floor)
         )
         pilot_nmse = pilot_nmse_denoised if metric_mode == "denoised" else pilot_nmse_raw
         pilot_cal_ratio = float(np.mean(cal_cat))
@@ -424,7 +488,7 @@ def _sign_flip_stats(
             "ties": ties,
             "losses": losses,
             "p_two_sided": 1.0,
-            "p_one_sided_pos": 1.0 if obs >= -tol else 0.5,
+            "p_one_sided_pos": 0.5 if obs > (tol / 2.0) else 1.0,
             "cluster_diffs_pp": [float(x) for x in d],
         }
 
@@ -709,6 +773,7 @@ def run_stress_suite(
     phase_drift_rad: Sequence[float] = (0.0, 0.3, 0.6),
     seed: int = 20261122,
     param_count: Optional[int] = None,
+    train_time_s: float = 0.0,
 ) -> dict[str, Any]:
     """Run reproducible single-axis stress sweeps without mutating input frames."""
     if not frames:
@@ -716,7 +781,11 @@ def run_stress_suite(
 
     conditions: list[dict[str, Any]] = []
     clean_pairs = [(fr, receiver_fn(fr)) for fr in frames]
-    clean_metrics = evaluate_receiver(clean_pairs, param_count=param_count)
+    clean_metrics = evaluate_receiver(
+        clean_pairs,
+        param_count=param_count,
+        train_time_s=train_time_s,
+    )
 
     seen_specs: set[tuple[Optional[float], float, float]] = set()
     specs: list[tuple[str, Optional[float], float, float]] = []
@@ -754,6 +823,7 @@ def run_stress_suite(
             metrics = evaluate_receiver(
                 [(pf, receiver_fn(pf)) for pf in pert_frames],
                 param_count=param_count,
+                train_time_s=train_time_s,
             )
         conditions.append(
             {
