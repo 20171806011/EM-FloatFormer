@@ -1,0 +1,509 @@
+"""Run Group A (F8: Reference Scope Expansion vs. Content-Matched Selection) on SDR OFDM splits.
+
+Executes:
+1. Build strictly leak-free C=64 stratified reference pool from `train.npz` ONLY.
+2. 32-frame smoke check on `dev.npz`.
+3. Strictly dev-only calibration of `(prior_scale, temperature)` (`dev_tuning.json`).
+4. Frozen `test.npz` (138 frames) evaluation across all 4 Group A arms + pinned profiler
+   + paired statistical audits vs M2 baselines (`ls_linear_zf`, `lmmse_1d`) and
+   intra-group contrasts (`global_uniform` vs `local`, `global_content_attn`/`global_reliability`
+   vs `global_uniform`).
+5. Frozen `test.npz` controllable stress suite + 16-frame deterministic replay audit.
+"""
+
+from __future__ import annotations
+
+import os
+
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
+os.environ.setdefault("MKL_NUM_THREADS", "1")
+
+import argparse
+import csv
+import json
+import sys
+import time
+from pathlib import Path
+from typing import Any
+
+import numpy as np
+import torch
+
+try:
+    torch.set_num_threads(1)
+except RuntimeError:
+    pass
+
+from research.realdata_sdr_ofdm.adapters.sdr_ofdm_adapter import (
+    PILOT_FFT_INDICES,
+    PILOT_SYMBOL_IDX,
+    RealOFDMFrame,
+    load_processed_split,
+)
+from research.realdata_sdr_ofdm.eval.evaluator import (
+    compare_arms,
+    compare_multiple_arms,
+    evaluate_receiver,
+    profile_receiver_pinned,
+    run_stress_suite,
+    subblock_group_ids,
+)
+from research.realdata_sdr_ofdm.receivers.classical import (
+    ClassicalConfig,
+    ReceiverOutput,
+)
+from research.realdata_sdr_ofdm.receivers.classical import (
+    run_frame as run_classical_frame,
+)
+from research.realdata_sdr_ofdm.receivers.group_a_reference import (
+    GROUP_A_MODES,
+    GroupAConfig,
+    build_reference_pool,
+    calibrate_group_a_on_dev,
+    run_frame,
+)
+
+
+def _load_m2_anchor_configs(baseline_dir: Path | None) -> dict[str, ClassicalConfig]:
+    defaults = {
+        "ls_linear_zf": ClassicalConfig(n0_scale=0.7),
+        "lmmse_1d": ClassicalConfig(n_taps=11, tau_rms=1.0, n0_scale=0.7, detrend_timing=True),
+        "lmmse_2d_tracked": ClassicalConfig(
+            n_taps=11, tau_rms=1.0, n0_scale=0.7, detrend_timing=True, fd_norm=0.0, phase_track=True
+        ),
+    }
+    if baseline_dir is not None:
+        dt_path = baseline_dir / "dev_tuning.json"
+        if dt_path.exists():
+            data = json.loads(dt_path.read_text(encoding="utf-8"))
+            tuned = data.get("tuned", {})
+            for m in list(defaults.keys()):
+                if m in tuned and isinstance(tuned[m].get("config"), dict):
+                    defaults[m] = ClassicalConfig(**tuned[m]["config"])
+    return defaults
+
+
+def _write_per_frame_jsonl(
+    path: Path,
+    pairs: list[tuple[RealOFDMFrame, ReceiverOutput]],
+) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="\n") as fh:
+        for fr, out in pairs:
+            be = int(np.sum(out.hard_bits != fr.tx_bits))
+            se = int(np.sum(np.any(out.hard_bits != fr.tx_bits, axis=-1)))
+            sq_err = float(np.sum(np.abs(out.eq_symbols - fr.tx_symbols) ** 2))
+            sq_sig = float(np.sum(np.abs(fr.tx_symbols) ** 2))
+            sym_mse = sq_err / float(fr.tx_symbols.size)
+            evm_pct = 100.0 * float(np.sqrt(sq_err / max(sq_sig, 1e-30)))
+
+            p_nmse = 0.0
+            p_cal = 0.0
+            p_nll = 0.0
+            if out.heldout_pilot_pred is not None and out.heldout_pilot_var is not None:
+                idx = out.aux_info.get("heldout_pilot_indices") or []
+                if len(idx) == len(out.heldout_pilot_pred) and len(idx) > 0:
+                    fft_idx = [PILOT_FFT_INDICES[i] for i in idx]
+                    y_p = fr.rx_grid[PILOT_SYMBOL_IDX, fft_idx]
+                    p_val = fr.pilot_values[idx]
+                    z_obs = y_p / p_val
+                    sig2_obs = float(fr.est_n0) / (np.abs(p_val) ** 2)
+                    v_eff = np.maximum(out.heldout_pilot_var + sig2_obs, 1e-30)
+                    err = out.heldout_pilot_pred - z_obs
+                    p_nmse = float(np.sum(np.abs(err) ** 2) / max(np.sum(np.abs(z_obs) ** 2), 1e-30))
+                    p_cal = float(np.mean((np.abs(err) ** 2) / v_eff))
+                    p_nll = float(np.mean(np.log(np.pi * v_eff) + (np.abs(err) ** 2) / v_eff))
+
+            w_arr = np.asarray(out.aux_info.get("weights", []), dtype=np.float64)
+            w_pos = w_arr[w_arr > 0.0]
+            w_ent = float(-np.sum(w_pos * np.log(w_pos))) if w_pos.size > 0 else 0.0
+            w_max = float(np.max(w_arr)) if w_arr.size > 0 else 0.0
+
+            rec = {
+                "frame_id": int(fr.frame_id),
+                "split": str(fr.split),
+                "group_id": str(fr.group_id),
+                "reported_sinr_db": float(fr.reported_sinr_db),
+                "est_n0": float(fr.est_n0),
+                "bit_errors": be,
+                "total_bits": int(fr.tx_bits.size),
+                "ber": float(be / fr.tx_bits.size),
+                "frame_error": int(be > 0),
+                "sym_errors": se,
+                "total_syms": int(fr.tx_symbols.size),
+                "sym_mse": float(sym_mse),
+                "evm_pct": float(evm_pct),
+                "pilot_nmse": p_nmse,
+                "pilot_cal_ratio": p_cal,
+                "pilot_nll": p_nll,
+                "n_values_accessed": int(out.aux_info.get("n_values_accessed", 0)),
+                "weight_entropy": w_ent,
+                "weight_max": w_max,
+                "latency_ms": float(out.aux_info.get("latency_ms", 0.0)),
+                "failed": bool(out.aux_info.get("failed", False)),
+                "error": out.aux_info.get("error"),
+            }
+            fh.write(json.dumps(rec, allow_nan=False) + "\n")
+
+
+def _write_summary_csv(path: Path, rows: list[dict[str, Any]]) -> None:
+    if not rows:
+        return
+    fieldnames = [
+        "arm",
+        "condition",
+        "extra_awgn_db",
+        "cfo_norm",
+        "phase_drift_rad",
+        "total_frames",
+        "success_count",
+        "fail_count",
+        "coverage_pct",
+        "bit_errors",
+        "total_bits",
+        "ber",
+        "frame_errors",
+        "fer",
+        "sym_errors",
+        "ser",
+        "sym_mse",
+        "evm_pct",
+        "pilot_nmse",
+        "pilot_cal_ratio",
+        "pilot_nll",
+        "mean_ms_per_frame",
+        "median_ms_per_frame",
+        "p95_ms_per_frame",
+        "peak_rss_mb",
+        "tracemalloc_peak_mb",
+        "n_candidates",
+        "param_count",
+    ]
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=fieldnames)
+        writer.writeheader()
+        for r in rows:
+            writer.writerow({k: r.get(k) for k in fieldnames})
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Run M3 Group A reference-pool experiments.")
+    parser.add_argument("--proc-dir", type=Path, default=Path("/tmp/tw_realdata/data_proc"))
+    parser.add_argument("--out-dir", type=Path, default=Path("/tmp/tw_realdata/outputs/group_a"))
+    parser.add_argument("--baseline-dir", type=Path, default=Path("/tmp/tw_realdata/outputs/baselines"))
+    parser.add_argument("--pool-size", type=int, default=64)
+    parser.add_argument("--local-k", type=int, default=4)
+    parser.add_argument("--smoke-n", type=int, default=32)
+    parser.add_argument("--seed", type=int, default=20261122)
+    parser.add_argument("--skip-stress", action="store_true")
+    args = parser.parse_args()
+
+    out_dir: Path = args.out_dir
+    out_dir.mkdir(parents=True, exist_ok=True)
+    log_lines: list[str] = []
+
+    def log(msg: str) -> None:
+        line = f"[{time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}] {msg}"
+        print(line, flush=True)
+        log_lines.append(line)
+
+    log(f"Starting M3 Group A: proc_dir={args.proc_dir}, out_dir={out_dir}, pool_size={args.pool_size}")
+    train_frames = load_processed_split(args.proc_dir, "train")
+    dev_frames = load_processed_split(args.proc_dir, "dev")
+    test_frames = load_processed_split(args.proc_dir, "test")
+    log(f"Loaded train={len(train_frames)}, dev={len(dev_frames)}, test={len(test_frames)}")
+
+    # 1. Build leak-free train-only stratified reference pool
+    pool = build_reference_pool(train_frames, max_pool_size=args.pool_size)
+    pool_groups = sorted({str(f.group_id) for f in pool})
+    log(f"Built leak-free train pool: M={len(pool)}, groups={pool_groups}")
+
+    m2_cfgs = _load_m2_anchor_configs(args.baseline_dir)
+    lmmse_1d_cfg = m2_cfgs["lmmse_1d"]
+    base_cfg = GroupAConfig(
+        local_k=int(args.local_k),
+        max_pool_size=int(args.pool_size),
+        n_taps=int(lmmse_1d_cfg.n_taps),
+        tau_rms=float(lmmse_1d_cfg.tau_rms),
+        n0_scale=float(lmmse_1d_cfg.n0_scale),
+        diag_reg=float(lmmse_1d_cfg.diag_reg),
+        detrend_timing=bool(lmmse_1d_cfg.detrend_timing),
+        temperature=0.15,
+    )
+
+    # 2. 32-frame smoke check on dev
+    smoke_frames = dev_frames[: min(args.smoke_n, len(dev_frames))]
+    smoke_results: dict[str, Any] = {}
+    for m in GROUP_A_MODES:
+        pairs = [(fr, run_frame(fr, context_pool=pool, mode=m, config=base_cfg)) for fr in smoke_frames]
+        res = evaluate_receiver(pairs)
+        smoke_results[m] = res
+        assert res["fail_count"] == 0, f"Smoke failure in {m}: {res['errors']}"
+        log(
+            f"Smoke ({len(smoke_frames)} dev frames) {m}: "
+            f"BER={res['ber']:.5f}, FER={res['fer']:.4f}, EVM={res['evm_pct']:.2f}%, "
+            f"pilot_nll={res['pilot_nll']:.4f}, cov={res['coverage_pct']:.1f}%"
+        )
+
+    # 3. Strictly dev-only calibration
+    t_tune0 = time.perf_counter()
+    tuned_cfg, tune_details = calibrate_group_a_on_dev(
+        dev_frames,
+        pool,
+        temps=(0.05, 0.15, 0.30, 0.50, 1.0, 2.0, 5.0),
+        prior_scales=(0.5, 0.75, 1.0, 1.5, 2.0),
+        base_config=base_cfg,
+    )
+    tune_time_s = time.perf_counter() - t_tune0
+
+    dev_eval: dict[str, Any] = {}
+    for m in GROUP_A_MODES:
+        dev_eval[m] = {
+            "config": tuned_cfg.to_dict(),
+            "metrics": evaluate_receiver(
+                [(fr, run_frame(fr, context_pool=pool, mode=m, config=tuned_cfg)) for fr in dev_frames]
+            ),
+        }
+        log(
+            f"Dev tuned {m}: BER={dev_eval[m]['metrics']['ber']:.5f}, "
+            f"pilot_nmse={dev_eval[m]['metrics']['pilot_nmse']:.5f}, "
+            f"pilot_cal={dev_eval[m]['metrics']['pilot_cal_ratio']:.4f}"
+        )
+
+    dev_tuning_payload = {
+        "split_used": "dev",
+        "pool_split": "train",
+        "pool_size": len(pool),
+        "pool_groups": pool_groups,
+        "pool_frame_ids": [int(f.frame_id) for f in pool],
+        "n_dev_frames": len(dev_frames),
+        "tune_time_s": float(tune_time_s),
+        "smoke": smoke_results,
+        "calibration_details": tune_details,
+        "tuned": dev_eval,
+    }
+    (out_dir / "dev_tuning.json").write_text(
+        json.dumps(dev_tuning_payload, indent=2, allow_nan=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+    # 4. Frozen test evaluation across 4 Group A arms + M2 anchors for paired tests
+    m2_cfgs = _load_m2_anchor_configs(args.baseline_dir)
+    m2_pairs: dict[str, list[tuple[RealOFDMFrame, ReceiverOutput]]] = {
+        m: [(fr, run_classical_frame(fr, method=m, config=m2_cfgs[m])) for fr in test_frames]
+        for m in ("ls_linear_zf", "lmmse_1d", "lmmse_2d_tracked")
+    }
+
+    arm_pairs: dict[str, list[tuple[RealOFDMFrame, ReceiverOutput]]] = {}
+    clean_arms: dict[str, Any] = {}
+    clean_csv_rows: list[dict[str, Any]] = []
+
+    for m in GROUP_A_MODES:
+        pairs = [(fr, run_frame(fr, context_pool=pool, mode=m, config=tuned_cfg)) for fr in test_frames]
+        arm_pairs[m] = pairs
+        _write_per_frame_jsonl(out_dir / f"per_frame_{m}.jsonl", pairs)
+
+        prof = profile_receiver_pinned(
+            test_frames,
+            lambda f, _m=m, _c=tuned_cfg, _p=pool: run_frame(f, context_pool=_p, mode=_m, config=_c),
+            warmup_frames=8,
+            param_count=0,
+            train_time_s=0.0,
+        )
+        ev = evaluate_receiver(pairs, param_count=0, train_time_s=0.0)
+        ev["mean_ms_per_frame"] = prof["mean_ms_per_frame"]
+        ev["median_ms_per_frame"] = prof["median_ms_per_frame"]
+        ev["p95_ms_per_frame"] = prof["p95_ms_per_frame"]
+        ev["peak_rss_mb"] = prof["peak_rss_mb"]
+        ev["tracemalloc_peak_mb"] = prof["tracemalloc_peak_mb"]
+        ev["config"] = tuned_cfg.to_dict()
+        clean_arms[m] = ev
+        clean_csv_rows.append({"arm": m, "condition": "clean", **ev})
+        log(
+            f"Test clean {m} ({len(test_frames)} frames): "
+            f"BER={ev['ber']:.5f} ({ev['bit_errors']}/{ev['total_bits']}), "
+            f"FER={ev['fer']:.4f} ({ev['frame_errors']}/{ev['total_frames']}), "
+            f"SER={ev['ser']:.5f}, EVM={ev['evm_pct']:.2f}%, "
+            f"pilot_nmse={ev['pilot_nmse']:.5f}, cal={ev['pilot_cal_ratio']:.4f}, "
+            f"nll={ev['pilot_nll']:.4f}, ms/frame={ev['mean_ms_per_frame']:.2f}, "
+            f"rss_mb={ev['peak_rss_mb']:.1f}"
+        )
+
+    # Deterministic 16-frame replay check
+    replay_m = "global_content_attn"
+    max_llr_diff = 0.0
+    max_h_diff = 0.0
+    bit_mismatches = 0
+    for fr, out1 in arm_pairs[replay_m][:16]:
+        out2 = run_frame(fr, context_pool=pool, mode=replay_m, config=tuned_cfg)
+        max_llr_diff = max(max_llr_diff, float(np.max(np.abs(out1.bit_llrs - out2.bit_llrs))))
+        max_h_diff = max(max_h_diff, float(np.max(np.abs(out1.h_est - out2.h_est))))
+        bit_mismatches += int(np.sum(out1.hard_bits != out2.hard_bits))
+    replay_audit = {
+        "arm": replay_m,
+        "n_frames": min(16, len(test_frames)),
+        "max_llr_diff": max_llr_diff,
+        "max_h_diff": max_h_diff,
+        "bit_mismatches": bit_mismatches,
+        "exact_pass": bool(max_llr_diff == 0.0 and max_h_diff == 0.0 and bit_mismatches == 0),
+    }
+    log(f"Deterministic replay audit: {replay_audit}")
+
+    # Paired statistical comparisons
+    sub12_map = subblock_group_ids(test_frames, target_g=12)
+    sub16_map = subblock_group_ids(test_frames, target_g=16)
+
+    def _sub12(f: RealOFDMFrame) -> str:
+        return sub12_map[int(f.frame_id)]
+
+    def _sub16(f: RealOFDMFrame) -> str:
+        return sub16_map[int(f.frame_id)]
+
+    paired_payload: dict[str, Any] = {
+        "caveat": (
+            "Test split has G=3 independent macro-blocks (block_01, block_09, block_10; 2^3=8 states, "
+            "min two-sided p=0.25). G=12 and G=16 contiguous sub-block analyses are supplementary and "
+            "subject to residual RF channel correlation (h_pilot lag-32 corr ~0.736)."
+        ),
+        "macro_g3_vs_lmmse_1d": compare_multiple_arms(
+            {"lmmse_1d": m2_pairs["lmmse_1d"], **arm_pairs}, anchor_name="lmmse_1d", metric="ber"
+        ),
+        "subblock_g12_vs_lmmse_1d": compare_multiple_arms(
+            {"lmmse_1d": m2_pairs["lmmse_1d"], **arm_pairs},
+            anchor_name="lmmse_1d",
+            metric="ber",
+            group_fn=_sub12,
+        ),
+        "subblock_g16_vs_lmmse_1d": compare_multiple_arms(
+            {"lmmse_1d": m2_pairs["lmmse_1d"], **arm_pairs},
+            anchor_name="lmmse_1d",
+            metric="ber",
+            group_fn=_sub16,
+        ),
+        "macro_g3_vs_ls_zf": compare_multiple_arms(
+            {"ls_linear_zf": m2_pairs["ls_linear_zf"], **arm_pairs}, anchor_name="ls_linear_zf", metric="ber"
+        ),
+        "subblock_g16_vs_ls_zf": compare_multiple_arms(
+            {"ls_linear_zf": m2_pairs["ls_linear_zf"], **arm_pairs},
+            anchor_name="ls_linear_zf",
+            metric="ber",
+            group_fn=_sub16,
+        ),
+        "intra_group": {
+            "global_uniform_vs_local_g3": compare_arms(arm_pairs["local"], arm_pairs["global_uniform"], metric="ber"),
+            "global_uniform_vs_local_g16": compare_arms(
+                arm_pairs["local"], arm_pairs["global_uniform"], metric="ber", group_fn=_sub16
+            ),
+            "global_content_attn_vs_local_g3": compare_arms(
+                arm_pairs["local"], arm_pairs["global_content_attn"], metric="ber"
+            ),
+            "global_content_attn_vs_local_g16": compare_arms(
+                arm_pairs["local"], arm_pairs["global_content_attn"], metric="ber", group_fn=_sub16
+            ),
+            "global_content_attn_vs_global_uniform_g3": compare_arms(
+                arm_pairs["global_uniform"], arm_pairs["global_content_attn"], metric="ber"
+            ),
+            "global_content_attn_vs_global_uniform_g16": compare_arms(
+                arm_pairs["global_uniform"], arm_pairs["global_content_attn"], metric="ber", group_fn=_sub16
+            ),
+            "global_reliability_vs_global_uniform_g3": compare_arms(
+                arm_pairs["global_uniform"], arm_pairs["global_reliability"], metric="ber"
+            ),
+            "global_reliability_vs_global_uniform_g16": compare_arms(
+                arm_pairs["global_uniform"], arm_pairs["global_reliability"], metric="ber", group_fn=_sub16
+            ),
+        },
+    }
+    (out_dir / "paired_comparisons.json").write_text(
+        json.dumps(paired_payload, indent=2, allow_nan=False, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+    summary_clean = {
+        "split": "test",
+        "pool_split": "train",
+        "pool_size": len(pool),
+        "n_frames": len(test_frames),
+        "thread_env": {
+            "OMP_NUM_THREADS": os.environ.get("OMP_NUM_THREADS"),
+            "OPENBLAS_NUM_THREADS": os.environ.get("OPENBLAS_NUM_THREADS"),
+            "MKL_NUM_THREADS": os.environ.get("MKL_NUM_THREADS"),
+            "torch_num_threads": torch.get_num_threads(),
+        },
+        "command": " ".join(sys.argv),
+        "arms": clean_arms,
+        "replay_audit": replay_audit,
+        "paired_summary": {
+            "g3_vs_lmmse_1d": {
+                k: {kk: v[kk] for kk in ("mean_pp", "p_two_sided", "p_holm", "verdict", "wins", "ties", "losses", "error_delta")}
+                for k, v in paired_payload["macro_g3_vs_lmmse_1d"].items()
+            },
+            "g16_vs_lmmse_1d": {
+                k: {kk: v[kk] for kk in ("mean_pp", "p_two_sided", "p_holm", "verdict", "wins", "ties", "losses", "error_delta")}
+                for k, v in paired_payload["subblock_g16_vs_lmmse_1d"].items()
+            },
+        },
+    }
+    (out_dir / "summary_clean.json").write_text(
+        json.dumps(summary_clean, indent=2, allow_nan=False, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+    _write_summary_csv(out_dir / "summary_clean.csv", clean_csv_rows)
+
+    # 5. Stress suite
+    if not args.skip_stress:
+        stress_arms: dict[str, Any] = {}
+        stress_csv_rows: list[dict[str, Any]] = []
+        for m in GROUP_A_MODES:
+            suite = run_stress_suite(
+                test_frames,
+                lambda f, _m=m, _c=tuned_cfg, _p=pool: run_frame(f, context_pool=_p, mode=_m, config=_c),
+                extra_awgn_db=(None, 10.0, 5.0, 0.0),
+                cfo_norm=(0.0, 0.02, 0.05),
+                phase_drift_rad=(0.0, 0.3, 0.6),
+                seed=args.seed,
+                param_count=0,
+            )
+            stress_arms[m] = suite
+            for cond in suite["conditions"]:
+                met = cond["metrics"]
+                stress_csv_rows.append(
+                    {
+                        "arm": m,
+                        "condition": cond["condition"],
+                        "extra_awgn_db": cond["extra_awgn_db"],
+                        "cfo_norm": cond["cfo_norm"],
+                        "phase_drift_rad": cond["phase_drift_rad"],
+                        **met,
+                    }
+                )
+                log(
+                    f"Stress {m} [{cond['condition']}]: "
+                    f"BER={met['ber']:.5f}, EVM={met['evm_pct']:.2f}%, cov={met['coverage_pct']:.1f}%"
+                )
+
+        summary_stress = {
+            "split": "test",
+            "n_frames": len(test_frames),
+            "seed": int(args.seed),
+            "arms": stress_arms,
+        }
+        (out_dir / "summary_stress.json").write_text(
+            json.dumps(summary_stress, indent=2, allow_nan=False, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+            newline="\n",
+        )
+        _write_summary_csv(out_dir / "summary_stress.csv", stress_csv_rows)
+
+    (out_dir / "run_log.txt").write_text("\n".join(log_lines) + "\n", encoding="utf-8", newline="\n")
+    log("Completed M3 Group A run.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

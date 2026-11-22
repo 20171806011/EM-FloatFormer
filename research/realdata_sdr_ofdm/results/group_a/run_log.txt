@@ -1,0 +1,48 @@
+[2026-11-22T01:18:38Z] Starting M3 Group A: proc_dir=/tmp/tw_realdata/data_proc, out_dir=/tmp/tw_realdata/outputs/group_a, pool_size=64
+[2026-11-22T01:18:38Z] Loaded train=336, dev=92, test=138
+[2026-11-22T01:18:38Z] Built leak-free train pool: M=64, groups=['block_00', 'block_02', 'block_04', 'block_06', 'block_07', 'block_08', 'block_11']
+[2026-11-22T01:18:39Z] Smoke (32 dev frames) local: BER=0.05376, FER=0.7188, EVM=28.71%, pilot_nll=0.0490, cov=100.0%
+[2026-11-22T01:18:40Z] Smoke (32 dev frames) global_uniform: BER=0.05440, FER=0.7188, EVM=28.85%, pilot_nll=0.1110, cov=100.0%
+[2026-11-22T01:18:42Z] Smoke (32 dev frames) global_reliability: BER=0.05327, FER=0.7188, EVM=27.91%, pilot_nll=0.0488, cov=100.0%
+[2026-11-22T01:18:44Z] Smoke (32 dev frames) global_content_attn: BER=0.05353, FER=0.7188, EVM=28.14%, pilot_nll=0.0606, cov=100.0%
+[2026-11-22T01:18:56Z] Dev tuned local: BER=0.07267, pilot_nmse=0.11783, pilot_cal=2.0539
+[2026-11-22T01:19:01Z] Dev tuned global_uniform: BER=0.07328, pilot_nmse=0.12385, pilot_cal=2.1037
+[2026-11-22T01:19:06Z] Dev tuned global_reliability: BER=0.07115, pilot_nmse=0.11519, pilot_cal=2.0904
+[2026-11-22T01:19:12Z] Dev tuned global_content_attn: BER=0.07073, pilot_nmse=0.11610, pilot_cal=2.0729
+[2026-11-22T01:19:23Z] Test clean local (138 frames): BER=0.13054 (100881/772800), FER=0.8478 (117/138), SER=0.30460, EVM=71.59%, pilot_nmse=0.25686, cal=4.5295, nll=2.6399, ms/frame=21.60, rss_mb=475.7
+[2026-11-22T01:19:43Z] Test clean global_uniform (138 frames): BER=0.13058 (100911/772800), FER=0.8478 (117/138), SER=0.30520, EVM=70.55%, pilot_nmse=0.25964, cal=4.5273, nll=2.6643, ms/frame=57.14, rss_mb=494.5
+[2026-11-22T01:20:03Z] Test clean global_reliability (138 frames): BER=0.13182 (101870/772800), FER=0.8406 (116/138), SER=0.30476, EVM=72.49%, pilot_nmse=0.25809, cal=4.6290, nll=2.7067, ms/frame=57.02, rss_mb=512.0
+[2026-11-22T01:20:23Z] Test clean global_content_attn (138 frames): BER=0.12759 (98602/772800), FER=0.8406 (116/138), SER=0.29529, EVM=69.86%, pilot_nmse=0.25137, cal=4.4936, nll=2.5812, ms/frame=57.26, rss_mb=533.9
+[2026-11-22T01:20:24Z] Deterministic replay audit: {'arm': 'global_content_attn', 'n_frames': 16, 'max_llr_diff': 0.0, 'max_h_diff': 0.0, 'bit_mismatches': 0, 'exact_pass': True}
+[2026-11-22T01:20:50Z] Stress local [clean]: BER=0.13054, EVM=71.59%, cov=100.0%
+[2026-11-22T01:20:50Z] Stress local [awgn_10.0db]: BER=0.20770, EVM=70.04%, cov=100.0%
+[2026-11-22T01:20:50Z] Stress local [awgn_5.0db]: BER=0.28378, EVM=74.25%, cov=100.0%
+[2026-11-22T01:20:50Z] Stress local [awgn_0.0db]: BER=0.34334, EVM=86.33%, cov=100.0%
+[2026-11-22T01:20:50Z] Stress local [cfo_0.020]: BER=0.30479, EVM=100.09%, cov=100.0%
+[2026-11-22T01:20:50Z] Stress local [cfo_0.050]: BER=0.49758, EVM=148.56%, cov=100.0%
+[2026-11-22T01:20:50Z] Stress local [drift_0.30rad]: BER=0.14222, EVM=72.63%, cov=100.0%
+[2026-11-22T01:20:50Z] Stress local [drift_0.60rad]: BER=0.18611, EVM=75.88%, cov=100.0%
+[2026-11-22T01:21:52Z] Stress global_uniform [clean]: BER=0.13058, EVM=70.55%, cov=100.0%
+[2026-11-22T01:21:52Z] Stress global_uniform [awgn_10.0db]: BER=0.20637, EVM=68.38%, cov=100.0%
+[2026-11-22T01:21:52Z] Stress global_uniform [awgn_5.0db]: BER=0.28210, EVM=72.95%, cov=100.0%
+[2026-11-22T01:21:52Z] Stress global_uniform [awgn_0.0db]: BER=0.34043, EVM=84.97%, cov=100.0%
+[2026-11-22T01:21:52Z] Stress global_uniform [cfo_0.020]: BER=0.30392, EVM=98.92%, cov=100.0%
+[2026-11-22T01:21:52Z] Stress global_uniform [cfo_0.050]: BER=0.49745, EVM=147.29%, cov=100.0%
+[2026-11-22T01:21:52Z] Stress global_uniform [drift_0.30rad]: BER=0.14114, EVM=71.53%, cov=100.0%
+[2026-11-22T01:21:52Z] Stress global_uniform [drift_0.60rad]: BER=0.18444, EVM=74.74%, cov=100.0%
+[2026-11-22T01:22:55Z] Stress global_reliability [clean]: BER=0.13182, EVM=72.49%, cov=100.0%
+[2026-11-22T01:22:55Z] Stress global_reliability [awgn_10.0db]: BER=0.20826, EVM=70.68%, cov=100.0%
+[2026-11-22T01:22:55Z] Stress global_reliability [awgn_5.0db]: BER=0.28554, EVM=75.49%, cov=100.0%
+[2026-11-22T01:22:55Z] Stress global_reliability [awgn_0.0db]: BER=0.34401, EVM=87.68%, cov=100.0%
+[2026-11-22T01:22:55Z] Stress global_reliability [cfo_0.020]: BER=0.30514, EVM=99.70%, cov=100.0%
+[2026-11-22T01:22:55Z] Stress global_reliability [cfo_0.050]: BER=0.49765, EVM=146.99%, cov=100.0%
+[2026-11-22T01:22:55Z] Stress global_reliability [drift_0.30rad]: BER=0.14218, EVM=73.45%, cov=100.0%
+[2026-11-22T01:22:55Z] Stress global_reliability [drift_0.60rad]: BER=0.18557, EVM=76.54%, cov=100.0%
+[2026-11-22T01:23:59Z] Stress global_content_attn [clean]: BER=0.12759, EVM=69.86%, cov=100.0%
+[2026-11-22T01:23:59Z] Stress global_content_attn [awgn_10.0db]: BER=0.20159, EVM=68.00%, cov=100.0%
+[2026-11-22T01:23:59Z] Stress global_content_attn [awgn_5.0db]: BER=0.28038, EVM=73.14%, cov=100.0%
+[2026-11-22T01:23:59Z] Stress global_content_attn [awgn_0.0db]: BER=0.34187, EVM=86.01%, cov=100.0%
+[2026-11-22T01:23:59Z] Stress global_content_attn [cfo_0.020]: BER=0.30234, EVM=97.92%, cov=100.0%
+[2026-11-22T01:23:59Z] Stress global_content_attn [cfo_0.050]: BER=0.49723, EVM=146.31%, cov=100.0%
+[2026-11-22T01:23:59Z] Stress global_content_attn [drift_0.30rad]: BER=0.13784, EVM=70.78%, cov=100.0%
+[2026-11-22T01:23:59Z] Stress global_content_attn [drift_0.60rad]: BER=0.18153, EVM=73.92%, cov=100.0%

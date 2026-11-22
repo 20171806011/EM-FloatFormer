@@ -1,0 +1,255 @@
+{
+  "split": "test",
+  "n_frames": 138,
+  "thread_env": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "torch_num_threads": 1
+  },
+  "command": "research/realdata_sdr_ofdm/scripts/run_group_b.py --proc-dir /tmp/tw_realdata/data_proc --out-dir /tmp/tw_realdata/outputs/group_b --baseline-dir /tmp/tw_realdata/outputs/baselines",
+  "arms": {
+    "hard_map": {
+      "total_frames": 138,
+      "success_count": 138,
+      "fail_count": 0,
+      "timeout_count": 0,
+      "coverage_pct": 100.0,
+      "bit_errors": 104189,
+      "total_bits": 772800,
+      "ber": 0.13482013457556935,
+      "frame_errors": 114,
+      "fer": 0.8260869565217391,
+      "sym_errors": 60918,
+      "total_syms": 193200,
+      "ser": 0.3153105590062112,
+      "sym_mse": 0.47612892312656263,
+      "evm_pct": 69.05802260663671,
+      "pilot_nmse": 0.3571382494620961,
+      "pilot_nmse_raw": 0.3571382494620961,
+      "pilot_nmse_denoised": 0.3112366075271065,
+      "pilot_cal_ratio": 4.250286060400047,
+      "pilot_nll": 2.665002857740764,
+      "mean_ms_per_frame": 43.282536862257665,
+      "median_ms_per_frame": 42.206857499877515,
+      "p95_ms_per_frame": 50.00110819937619,
+      "peak_rss_mb": 444.7109375,
+      "n_candidates": 6,
+      "param_count": 0,
+      "train_time_s": 0.0,
+      "errors": [],
+      "tracemalloc_peak_mb": 2.4273681640625,
+      "config": {
+        "pdp_hypotheses": [
+          [
+            7,
+            0.8
+          ],
+          [
+            11,
+            1.0
+          ],
+          [
+            11,
+            2.0
+          ]
+        ],
+        "n0_scale": 0.7,
+        "diag_reg": 0.0001,
+        "detrend_timing": true,
+        "phase_track_max_slope": 0.5,
+        "phase_track_prior_weight": 2.0,
+        "beta": 0.25,
+        "nonzero_om_penalty": 8.0,
+        "omega_min_diff": 0.001,
+        "include_constellation_var": false
+      }
+    },
+    "posterior_mean_plugin": {
+      "total_frames": 138,
+      "success_count": 138,
+      "fail_count": 0,
+      "timeout_count": 0,
+      "coverage_pct": 100.0,
+      "bit_errors": 101874,
+      "total_bits": 772800,
+      "ber": 0.13182453416149068,
+      "frame_errors": 115,
+      "fer": 0.8333333333333334,
+      "sym_errors": 59677,
+      "total_syms": 193200,
+      "ser": 0.3088871635610766,
+      "sym_mse": 0.44246453669068525,
+      "evm_pct": 66.57192122548511,
+      "pilot_nmse": 0.3409112774011376,
+      "pilot_nmse_raw": 0.3409112774011376,
+      "pilot_nmse_denoised": 0.2938509965198925,
+      "pilot_cal_ratio": 3.732183093717425,
+      "pilot_nll": 2.294968478697205,
+      "mean_ms_per_frame": 43.106756384050655,
+      "median_ms_per_frame": 42.517524000686535,
+      "p95_ms_per_frame": 45.947711601002084,
+      "peak_rss_mb": 463.9609375,
+      "n_candidates": 6,
+      "param_count": 0,
+      "train_time_s": 0.0,
+      "errors": [],
+      "tracemalloc_peak_mb": 2.4714508056640625,
+      "config": {
+        "pdp_hypotheses": [
+          [
+            7,
+            0.8
+          ],
+          [
+            11,
+            1.0
+          ],
+          [
+            11,
+            2.0
+          ]
+        ],
+        "n0_scale": 0.7,
+        "diag_reg": 0.0001,
+        "detrend_timing": true,
+        "phase_track_max_slope": 0.5,
+        "phase_track_prior_weight": 2.0,
+        "beta": 0.25,
+        "nonzero_om_penalty": 8.0,
+        "omega_min_diff": 0.001,
+        "include_constellation_var": false
+      }
+    },
+    "exact_mixture_likelihood": {
+      "total_frames": 138,
+      "success_count": 138,
+      "fail_count": 0,
+      "timeout_count": 0,
+      "coverage_pct": 100.0,
+      "bit_errors": 101759,
+      "total_bits": 772800,
+      "ber": 0.13167572463768115,
+      "frame_errors": 115,
+      "fer": 0.8333333333333334,
+      "sym_errors": 59587,
+      "total_syms": 193200,
+      "ser": 0.30842132505175984,
+      "sym_mse": 0.44246453669068525,
+      "evm_pct": 66.57192122548511,
+      "pilot_nmse": 0.3409112774011376,
+      "pilot_nmse_raw": 0.3409112774011376,
+      "pilot_nmse_denoised": 0.2938509965198925,
+      "pilot_cal_ratio": 3.732183093717425,
+      "pilot_nll": 2.294968478697205,
+      "mean_ms_per_frame": 45.770539601463774,
+      "median_ms_per_frame": 45.82713349918777,
+      "p95_ms_per_frame": 47.57522714917286,
+      "peak_rss_mb": 486.2109375,
+      "n_candidates": 6,
+      "param_count": 0,
+      "train_time_s": 0.0,
+      "errors": [],
+      "tracemalloc_peak_mb": 4.3869476318359375,
+      "config": {
+        "pdp_hypotheses": [
+          [
+            7,
+            0.8
+          ],
+          [
+            11,
+            1.0
+          ],
+          [
+            11,
+            2.0
+          ]
+        ],
+        "n0_scale": 0.7,
+        "diag_reg": 0.0001,
+        "detrend_timing": true,
+        "phase_track_max_slope": 0.5,
+        "phase_track_prior_weight": 2.0,
+        "beta": 0.25,
+        "nonzero_om_penalty": 8.0,
+        "omega_min_diff": 0.001,
+        "include_constellation_var": false
+      }
+    }
+  },
+  "replay_audit": {
+    "arm": "exact_mixture_likelihood",
+    "n_frames": 16,
+    "max_llr_diff": 0.0,
+    "max_h_diff": 0.0,
+    "bit_mismatches": 0,
+    "exact_pass": true
+  },
+  "paired_summary": {
+    "g3_vs_lmmse_1d": {
+      "hard_map": {
+        "mean_pp": -0.1986283643892346,
+        "p_two_sided": 0.25,
+        "p_holm": 0.75,
+        "verdict": "证据不足",
+        "wins": 0,
+        "ties": 0,
+        "losses": 3,
+        "error_delta": 1535
+      },
+      "posterior_mean_plugin": {
+        "mean_pp": 0.10093167701863355,
+        "p_two_sided": 0.25,
+        "p_holm": 0.75,
+        "verdict": "证据不足",
+        "wins": 3,
+        "ties": 0,
+        "losses": 0,
+        "error_delta": -780
+      },
+      "exact_mixture_likelihood": {
+        "mean_pp": 0.11581262939958552,
+        "p_two_sided": 0.25,
+        "p_holm": 0.75,
+        "verdict": "证据不足",
+        "wins": 3,
+        "ties": 0,
+        "losses": 0,
+        "error_delta": -895
+      }
+    },
+    "g16_vs_lmmse_1d": {
+      "hard_map": {
+        "mean_pp": -0.17877205569727875,
+        "p_two_sided": 0.071441650390625,
+        "p_holm": 0.071441650390625,
+        "verdict": "证据不足",
+        "wins": 5,
+        "ties": 0,
+        "losses": 11,
+        "error_delta": 1535
+      },
+      "posterior_mean_plugin": {
+        "mean_pp": 0.10601571357709788,
+        "p_two_sided": 0.017486572265625,
+        "p_holm": 0.03497314453125,
+        "verdict": "支持",
+        "wins": 13,
+        "ties": 0,
+        "losses": 3,
+        "error_delta": -780
+      },
+      "exact_mixture_likelihood": {
+        "mean_pp": 0.11482913477891171,
+        "p_two_sided": 0.008514404296875,
+        "p_holm": 0.025543212890625,
+        "verdict": "支持",
+        "wins": 13,
+        "ties": 0,
+        "losses": 3,
+        "error_delta": -895
+      }
+    }
+  }
+}

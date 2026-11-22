@@ -1,0 +1,374 @@
+{
+  "split_used": "dev",
+  "n_dev_frames": 92,
+  "tune_time_s": 7.9703331849996175,
+  "smoke": {
+    "hard_map": {
+      "total_frames": 32,
+      "success_count": 32,
+      "fail_count": 0,
+      "timeout_count": 0,
+      "coverage_pct": 100.0,
+      "bit_errors": 10000,
+      "total_bits": 179200,
+      "ber": 0.05580357142857143,
+      "frame_errors": 24,
+      "fer": 0.75,
+      "sym_errors": 6705,
+      "total_syms": 44800,
+      "ser": 0.14966517857142858,
+      "sym_mse": 0.08355965653396116,
+      "evm_pct": 28.910301221516033,
+      "pilot_nmse": 0.1269446225725661,
+      "pilot_nmse_raw": 0.1269446225725661,
+      "pilot_nmse_denoised": 0.08414607252456964,
+      "pilot_cal_ratio": 1.7934287276796488,
+      "pilot_nll": -0.26361961290770547,
+      "mean_ms_per_frame": 42.28551871869968,
+      "median_ms_per_frame": 42.06148649973329,
+      "p95_ms_per_frame": 44.73853279941977,
+      "peak_rss_mb": 355.28125,
+      "n_candidates": 6,
+      "param_count": 0,
+      "train_time_s": 0.0,
+      "errors": []
+    },
+    "posterior_mean_plugin": {
+      "total_frames": 32,
+      "success_count": 32,
+      "fail_count": 0,
+      "timeout_count": 0,
+      "coverage_pct": 100.0,
+      "bit_errors": 9924,
+      "total_bits": 179200,
+      "ber": 0.05537946428571429,
+      "frame_errors": 24,
+      "fer": 0.75,
+      "sym_errors": 6645,
+      "total_syms": 44800,
+      "ser": 0.14832589285714284,
+      "sym_mse": 0.08074981006753036,
+      "evm_pct": 28.42006378743236,
+      "pilot_nmse": 0.1171135334854566,
+      "pilot_nmse_raw": 0.1171135334854566,
+      "pilot_nmse_denoised": 0.07383304796211747,
+      "pilot_cal_ratio": 1.3934625806954977,
+      "pilot_nll": -0.5182200742600799,
+      "mean_ms_per_frame": 42.44413853103879,
+      "median_ms_per_frame": 42.51960150031664,
+      "p95_ms_per_frame": 44.391664849808876,
+      "peak_rss_mb": 359.7734375,
+      "n_candidates": 6,
+      "param_count": 0,
+      "train_time_s": 0.0,
+      "errors": []
+    },
+    "exact_mixture_likelihood": {
+      "total_frames": 32,
+      "success_count": 32,
+      "fail_count": 0,
+      "timeout_count": 0,
+      "coverage_pct": 100.0,
+      "bit_errors": 9930,
+      "total_bits": 179200,
+      "ber": 0.055412946428571426,
+      "frame_errors": 24,
+      "fer": 0.75,
+      "sym_errors": 6658,
+      "total_syms": 44800,
+      "ser": 0.14861607142857142,
+      "sym_mse": 0.08074981006753036,
+      "evm_pct": 28.42006378743236,
+      "pilot_nmse": 0.1171135334854566,
+      "pilot_nmse_raw": 0.1171135334854566,
+      "pilot_nmse_denoised": 0.07383304796211747,
+      "pilot_cal_ratio": 1.3934625806954977,
+      "pilot_nll": -0.5182200742600799,
+      "mean_ms_per_frame": 45.46485687490076,
+      "median_ms_per_frame": 45.77940950002812,
+      "p95_ms_per_frame": 47.69673394912388,
+      "peak_rss_mb": 362.0234375,
+      "n_candidates": 6,
+      "param_count": 0,
+      "train_time_s": 0.0,
+      "errors": []
+    }
+  },
+  "calibration_details": {
+    "best_config": {
+      "pdp_hypotheses": [
+        [
+          7,
+          0.8
+        ],
+        [
+          11,
+          1.0
+        ],
+        [
+          11,
+          2.0
+        ]
+      ],
+      "n0_scale": 0.7,
+      "diag_reg": 0.0001,
+      "detrend_timing": true,
+      "phase_track_max_slope": 0.5,
+      "phase_track_prior_weight": 2.0,
+      "beta": 0.25,
+      "nonzero_om_penalty": 8.0,
+      "omega_min_diff": 0.001,
+      "include_constellation_var": false
+    },
+    "best_ber": 0.07585986024844721,
+    "best_sym_mse": 0.10479424040100749,
+    "best_pilot_nll": -0.26061242026324266,
+    "grid_records": [
+      {
+        "n0_scale": 0.7,
+        "beta": 0.25,
+        "nonzero_om_penalty": 2.0,
+        "ber": 0.07620729813664597,
+        "pilot_nll": -0.26061242026324266,
+        "sym_mse": 0.10529068004649635
+      },
+      {
+        "n0_scale": 0.7,
+        "beta": 0.25,
+        "nonzero_om_penalty": 4.0,
+        "ber": 0.07606560559006212,
+        "pilot_nll": -0.26061242026324266,
+        "sym_mse": 0.10511636673933182
+      },
+      {
+        "n0_scale": 0.7,
+        "beta": 0.25,
+        "nonzero_om_penalty": 8.0,
+        "ber": 0.07585986024844721,
+        "pilot_nll": -0.26061242026324266,
+        "sym_mse": 0.10479424040100749
+      },
+      {
+        "n0_scale": 0.7,
+        "beta": 0.5,
+        "nonzero_om_penalty": 2.0,
+        "ber": 0.07677406832298136,
+        "pilot_nll": -0.19302448913754403,
+        "sym_mse": 0.10640591091055622
+      },
+      {
+        "n0_scale": 0.7,
+        "beta": 0.5,
+        "nonzero_om_penalty": 4.0,
+        "ber": 0.07663237577639752,
+        "pilot_nll": -0.19302448913754403,
+        "sym_mse": 0.10619596827838491
+      },
+      {
+        "n0_scale": 0.7,
+        "beta": 0.5,
+        "nonzero_om_penalty": 8.0,
+        "ber": 0.07631017080745342,
+        "pilot_nll": -0.19302448913754403,
+        "sym_mse": 0.10580406682534366
+      },
+      {
+        "n0_scale": 0.7,
+        "beta": 1.0,
+        "nonzero_om_penalty": 2.0,
+        "ber": 0.077284549689441,
+        "pilot_nll": -0.11766312801286555,
+        "sym_mse": 0.10751345589433532
+      },
+      {
+        "n0_scale": 0.7,
+        "beta": 1.0,
+        "nonzero_om_penalty": 4.0,
+        "ber": 0.07700698757763975,
+        "pilot_nll": -0.11766312801286555,
+        "sym_mse": 0.10716972738025432
+      },
+      {
+        "n0_scale": 0.7,
+        "beta": 1.0,
+        "nonzero_om_penalty": 8.0,
+        "ber": 0.07675465838509317,
+        "pilot_nll": -0.11766312801286555,
+        "sym_mse": 0.10678905338315392
+      }
+    ]
+  },
+  "tuned": {
+    "hard_map": {
+      "config": {
+        "pdp_hypotheses": [
+          [
+            7,
+            0.8
+          ],
+          [
+            11,
+            1.0
+          ],
+          [
+            11,
+            2.0
+          ]
+        ],
+        "n0_scale": 0.7,
+        "diag_reg": 0.0001,
+        "detrend_timing": true,
+        "phase_track_max_slope": 0.5,
+        "phase_track_prior_weight": 2.0,
+        "beta": 0.25,
+        "nonzero_om_penalty": 8.0,
+        "omega_min_diff": 0.001,
+        "include_constellation_var": false
+      },
+      "metrics": {
+        "total_frames": 92,
+        "success_count": 92,
+        "fail_count": 0,
+        "timeout_count": 0,
+        "coverage_pct": 100.0,
+        "bit_errors": 40317,
+        "total_bits": 515200,
+        "ber": 0.07825504658385093,
+        "frame_errors": 78,
+        "fer": 0.8478260869565217,
+        "sym_errors": 27345,
+        "total_syms": 128800,
+        "ser": 0.212305900621118,
+        "sym_mse": 0.10996494791080613,
+        "evm_pct": 33.176009131361475,
+        "pilot_nmse": 0.1640205446013787,
+        "pilot_nmse_raw": 0.1640205446013787,
+        "pilot_nmse_denoised": 0.10988272334573193,
+        "pilot_cal_ratio": 1.7567043195896872,
+        "pilot_nll": 0.07425216985228024,
+        "mean_ms_per_frame": 42.34642698911953,
+        "median_ms_per_frame": 42.14999599935254,
+        "p95_ms_per_frame": 44.25820934948206,
+        "peak_rss_mb": 421.6484375,
+        "n_candidates": 6,
+        "param_count": 0,
+        "train_time_s": 0.0,
+        "errors": []
+      }
+    },
+    "posterior_mean_plugin": {
+      "config": {
+        "pdp_hypotheses": [
+          [
+            7,
+            0.8
+          ],
+          [
+            11,
+            1.0
+          ],
+          [
+            11,
+            2.0
+          ]
+        ],
+        "n0_scale": 0.7,
+        "diag_reg": 0.0001,
+        "detrend_timing": true,
+        "phase_track_max_slope": 0.5,
+        "phase_track_prior_weight": 2.0,
+        "beta": 0.25,
+        "nonzero_om_penalty": 8.0,
+        "omega_min_diff": 0.001,
+        "include_constellation_var": false
+      },
+      "metrics": {
+        "total_frames": 92,
+        "success_count": 92,
+        "fail_count": 0,
+        "timeout_count": 0,
+        "coverage_pct": 100.0,
+        "bit_errors": 39083,
+        "total_bits": 515200,
+        "ber": 0.07585986024844721,
+        "frame_errors": 78,
+        "fer": 0.8478260869565217,
+        "sym_errors": 26461,
+        "total_syms": 128800,
+        "ser": 0.20544254658385094,
+        "sym_mse": 0.10479424040100749,
+        "evm_pct": 32.386626477310244,
+        "pilot_nmse": 0.14341984331322333,
+        "pilot_nmse_raw": 0.14341984331322333,
+        "pilot_nmse_denoised": 0.08794792577461549,
+        "pilot_cal_ratio": 1.2600313230301097,
+        "pilot_nll": -0.26061242026324266,
+        "mean_ms_per_frame": 43.241149847883364,
+        "median_ms_per_frame": 42.40524800025014,
+        "p95_ms_per_frame": 48.96548505030296,
+        "peak_rss_mb": 421.6484375,
+        "n_candidates": 6,
+        "param_count": 0,
+        "train_time_s": 0.0,
+        "errors": []
+      }
+    },
+    "exact_mixture_likelihood": {
+      "config": {
+        "pdp_hypotheses": [
+          [
+            7,
+            0.8
+          ],
+          [
+            11,
+            1.0
+          ],
+          [
+            11,
+            2.0
+          ]
+        ],
+        "n0_scale": 0.7,
+        "diag_reg": 0.0001,
+        "detrend_timing": true,
+        "phase_track_max_slope": 0.5,
+        "phase_track_prior_weight": 2.0,
+        "beta": 0.25,
+        "nonzero_om_penalty": 8.0,
+        "omega_min_diff": 0.001,
+        "include_constellation_var": false
+      },
+      "metrics": {
+        "total_frames": 92,
+        "success_count": 92,
+        "fail_count": 0,
+        "timeout_count": 0,
+        "coverage_pct": 100.0,
+        "bit_errors": 39083,
+        "total_bits": 515200,
+        "ber": 0.07585986024844721,
+        "frame_errors": 78,
+        "fer": 0.8478260869565217,
+        "sym_errors": 26495,
+        "total_syms": 128800,
+        "ser": 0.20570652173913043,
+        "sym_mse": 0.10479424040100749,
+        "evm_pct": 32.386626477310244,
+        "pilot_nmse": 0.14341984331322333,
+        "pilot_nmse_raw": 0.14341984331322333,
+        "pilot_nmse_denoised": 0.08794792577461549,
+        "pilot_cal_ratio": 1.2600313230301097,
+        "pilot_nll": -0.26061242026324266,
+        "mean_ms_per_frame": 45.524809467283575,
+        "median_ms_per_frame": 45.62176550098229,
+        "p95_ms_per_frame": 47.89978649896511,
+        "peak_rss_mb": 421.6484375,
+        "n_candidates": 6,
+        "param_count": 0,
+        "train_time_s": 0.0,
+        "errors": []
+      }
+    }
+  }
+}
