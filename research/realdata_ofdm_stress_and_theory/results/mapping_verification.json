@@ -1,0 +1,391 @@
+{
+  "dataset_repo": "https://github.com/rikluost/sdr_ofdm_dataset_v1",
+  "dataset_commit_sha": "6f9821d6390d212884fea3d6621267ebe70c7246",
+  "pth_file": "ofdm_valset_4_8_sdr.pth",
+  "pth_size_bytes": 27684430,
+  "pth_sha256": "e760079a888f37d8c33b21f327646930b4f2cb4511e8a309bcde22c6b1332058",
+  "n_ttis": 742,
+  "sinr_db_summary": {
+    "min": 5.1,
+    "p10": 6.7,
+    "median": 13.4,
+    "mean": 14.04,
+    "p90": 22.99,
+    "max": 30.4
+  },
+  "verified_grid": {
+    "n_fft": 128,
+    "n_sym": 14,
+    "cp_len": 6,
+    "dc_sc": 64,
+    "active_non_dc_count": 101,
+    "active_range_incl_dc": [
+      13,
+      114
+    ],
+    "pilot_sym": 2,
+    "pilot_scs_14": [
+      13,
+      21,
+      29,
+      37,
+      45,
+      53,
+      61,
+      69,
+      77,
+      85,
+      93,
+      101,
+      109,
+      114
+    ],
+    "pilot_amplitude": "0.7*(+-1 +- 1j)",
+    "data_re_count": 1400,
+    "data_re_ordering": "row_major_(sym, sc)",
+    "qam16_mapping": "natural_binary: (b0,b1)->{-3,-1,+1,+3}/sqrt(10) on I, (b2,b3)->{-3,-1,+1,+3}/sqrt(10) on Q"
+  },
+  "mapping_verification": {
+    "dev_top16_natural_binary": {
+      "n_ttis": 16,
+      "sinr_min_db": 21.5,
+      "sinr_max_db": 25.7,
+      "ber_mean": 1.1160714285714286e-05,
+      "ber_median": 0.0,
+      "ser_mean": 4.464285714285714e-05,
+      "nll_mean": 4.001880396217764e-05,
+      "zero_error_ttis": 15,
+      "worst_tti": [
+        404,
+        22.2,
+        0.00017857142857142857
+      ]
+    },
+    "dev_top32_natural_binary": {
+      "n_ttis": 32,
+      "sinr_min_db": 17.3,
+      "sinr_max_db": 25.7,
+      "ber_mean": 0.0008203125000000001,
+      "ber_median": 0.0,
+      "ser_mean": 0.0027901785714285715,
+      "nll_mean": 0.00238290245369765,
+      "zero_error_ttis": 20,
+      "worst_tti": [
+        393,
+        17.3,
+        0.009464285714285715
+      ]
+    },
+    "dev_top64_natural_binary": {
+      "n_ttis": 64,
+      "sinr_min_db": 12.8,
+      "sinr_max_db": 25.7,
+      "ber_mean": 0.014754464285714287,
+      "ber_median": 0.004642857142857143,
+      "ser_mean": 0.045580357142857145,
+      "nll_mean": 0.04014351467157012,
+      "zero_error_ttis": 20,
+      "worst_tti": [
+        460,
+        13.3,
+        0.07107142857142858
+      ]
+    },
+    "dev_top32_standard_3gpp_gray_mismatch": {
+      "n_ttis": 32,
+      "sinr_min_db": 17.3,
+      "sinr_max_db": 25.7,
+      "ber_mean": 0.2493470982142857,
+      "ber_median": 0.24982142857142858,
+      "ser_mean": 0.7486160714285715,
+      "nll_mean": null,
+      "zero_error_ttis": 0,
+      "worst_tti": null
+    },
+    "full_top64_natural_binary": {
+      "n_ttis": 64,
+      "sinr_min_db": 23.5,
+      "sinr_max_db": 30.4,
+      "ber_mean": 0.007101004464285714,
+      "ber_median": 0.0,
+      "ser_mean": 0.01375,
+      "nll_mean": 0.01283324537358859,
+      "zero_error_ttis": 63,
+      "worst_tti": [
+        665,
+        29.1,
+        0.4544642857142857
+      ]
+    },
+    "full_top63_excl_tti665": {
+      "n_ttis": 63,
+      "sinr_min_db": 23.5,
+      "sinr_max_db": 30.4,
+      "ber_mean": 0.0,
+      "ber_median": 0.0,
+      "ser_mean": 0.0,
+      "nll_mean": 6.582358036665918e-07,
+      "zero_error_ttis": 63,
+      "worst_tti": [
+        670,
+        30.4,
+        0.0
+      ]
+    },
+    "dev_top32_max_constellation_centroid_error": 0.00676,
+    "dev_top32_centroids": [
+      {
+        "bits": "0000",
+        "expected": [
+          -0.94868,
+          -0.94868
+        ],
+        "empirical_mean": [
+          -0.95278,
+          -0.94656
+        ],
+        "abs_err": 0.00461
+      },
+      {
+        "bits": "0001",
+        "expected": [
+          -0.94868,
+          -0.31623
+        ],
+        "empirical_mean": [
+          -0.94949,
+          -0.31722
+        ],
+        "abs_err": 0.00128
+      },
+      {
+        "bits": "0010",
+        "expected": [
+          -0.94868,
+          0.31623
+        ],
+        "empirical_mean": [
+          -0.9482,
+          0.32241
+        ],
+        "abs_err": 0.0062
+      },
+      {
+        "bits": "0011",
+        "expected": [
+          -0.94868,
+          0.94868
+        ],
+        "empirical_mean": [
+          -0.94919,
+          0.95543
+        ],
+        "abs_err": 0.00676
+      },
+      {
+        "bits": "0100",
+        "expected": [
+          -0.31623,
+          -0.94868
+        ],
+        "empirical_mean": [
+          -0.31877,
+          -0.94516
+        ],
+        "abs_err": 0.00434
+      },
+      {
+        "bits": "0101",
+        "expected": [
+          -0.31623,
+          -0.31623
+        ],
+        "empirical_mean": [
+          -0.31886,
+          -0.31602
+        ],
+        "abs_err": 0.00264
+      },
+      {
+        "bits": "0110",
+        "expected": [
+          -0.31623,
+          0.31623
+        ],
+        "empirical_mean": [
+          -0.31486,
+          0.31736
+        ],
+        "abs_err": 0.00177
+      },
+      {
+        "bits": "0111",
+        "expected": [
+          -0.31623,
+          0.94868
+        ],
+        "empirical_mean": [
+          -0.31739,
+          0.94878
+        ],
+        "abs_err": 0.00117
+      },
+      {
+        "bits": "1000",
+        "expected": [
+          0.31623,
+          -0.94868
+        ],
+        "empirical_mean": [
+          0.31445,
+          -0.95172
+        ],
+        "abs_err": 0.00352
+      },
+      {
+        "bits": "1001",
+        "expected": [
+          0.31623,
+          -0.31623
+        ],
+        "empirical_mean": [
+          0.31414,
+          -0.31556
+        ],
+        "abs_err": 0.00219
+      },
+      {
+        "bits": "1010",
+        "expected": [
+          0.31623,
+          0.31623
+        ],
+        "empirical_mean": [
+          0.3186,
+          0.31195
+        ],
+        "abs_err": 0.00489
+      },
+      {
+        "bits": "1011",
+        "expected": [
+          0.31623,
+          0.94868
+        ],
+        "empirical_mean": [
+          0.31953,
+          0.94938
+        ],
+        "abs_err": 0.00338
+      },
+      {
+        "bits": "1100",
+        "expected": [
+          0.94868,
+          -0.94868
+        ],
+        "empirical_mean": [
+          0.94873,
+          -0.9505
+        ],
+        "abs_err": 0.00182
+      },
+      {
+        "bits": "1101",
+        "expected": [
+          0.94868,
+          -0.31623
+        ],
+        "empirical_mean": [
+          0.9485,
+          -0.32002
+        ],
+        "abs_err": 0.0038
+      },
+      {
+        "bits": "1110",
+        "expected": [
+          0.94868,
+          0.31623
+        ],
+        "empirical_mean": [
+          0.94917,
+          0.31235
+        ],
+        "abs_err": 0.00391
+      },
+      {
+        "bits": "1111",
+        "expected": [
+          0.94868,
+          0.94868
+        ],
+        "empirical_mean": [
+          0.95429,
+          0.94553
+        ],
+        "abs_err": 0.00643
+      }
+    ]
+  },
+  "temporal_coherence": {
+    "1": {
+      "raw_complex_abs_corr": 0.9317,
+      "centered_mag_corr": 0.0986,
+      "sinr_corr": 0.1709
+    },
+    "2": {
+      "raw_complex_abs_corr": 0.9356,
+      "centered_mag_corr": 0.0291,
+      "sinr_corr": 0.0387
+    },
+    "5": {
+      "raw_complex_abs_corr": 0.9354,
+      "centered_mag_corr": 0.1132,
+      "sinr_corr": 0.1574
+    },
+    "10": {
+      "raw_complex_abs_corr": 0.9191,
+      "centered_mag_corr": 0.0401,
+      "sinr_corr": 0.0696
+    },
+    "15": {
+      "raw_complex_abs_corr": 0.9143,
+      "centered_mag_corr": 0.0027,
+      "sinr_corr": 0.0237
+    },
+    "20": {
+      "raw_complex_abs_corr": 0.9097,
+      "centered_mag_corr": -0.0247,
+      "sinr_corr": -0.0149
+    },
+    "30": {
+      "raw_complex_abs_corr": 0.9116,
+      "centered_mag_corr": -0.016,
+      "sinr_corr": 0.0126
+    },
+    "50": {
+      "raw_complex_abs_corr": 0.9214,
+      "centered_mag_corr": 0.0015,
+      "sinr_corr": -0.0038
+    }
+  },
+  "detected_sync_loss_burst_ttis_pilot_dr_gt_1": [
+    76,
+    86,
+    204,
+    655,
+    656,
+    657,
+    658,
+    659,
+    660,
+    661,
+    662,
+    663,
+    664,
+    665,
+    667,
+    668
+  ]
+}
