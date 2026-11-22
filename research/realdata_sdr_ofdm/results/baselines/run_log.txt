@@ -1,0 +1,36 @@
+[2026-11-21T23:38:22Z] Starting M2 classical baselines: proc_dir=/tmp/tw_realdata/data_proc, out_dir=/tmp/tw_realdata/outputs/baselines
+[2026-11-21T23:38:22Z] Loaded dev=92 frames, test=138 frames
+[2026-11-21T23:38:22Z] Smoke (32 dev frames) ls_linear_zf: BER=0.06243, FER=0.6875, EVM=47.08%, pilot_nll=-1.1223, cov=100.0%
+[2026-11-21T23:38:22Z] Smoke (32 dev frames) lmmse_1d: BER=0.05923, FER=1.0000, EVM=29.72%, pilot_nll=0.4656, cov=100.0%
+[2026-11-21T23:38:23Z] Smoke (32 dev frames) lmmse_2d_tracked: BER=0.05956, FER=1.0000, EVM=29.39%, pilot_nll=0.4656, cov=100.0%
+[2026-11-21T23:39:25Z] Dev tuned ls_linear_zf: cfg={'tau_rms': 1.5, 'n_taps': 5, 'n0_scale': 0.7, 'diag_reg': 0.0001, 'fd_norm': 0.0, 'detrend_timing': False, 'phase_track': True, 'phase_track_max_slope': 0.5, 'phase_track_prior_weight': 2.0, 'phase_track_min_gain': 8.0, 'time_var_growth': 0.0, 'cpe_refine_alpha': 0.0} -> BER=0.08553, pilot_nmse=0.13376, pilot_cal=1.4991
+[2026-11-21T23:39:26Z] Dev tuned lmmse_1d: cfg={'tau_rms': 1.0, 'n_taps': 11, 'n0_scale': 0.7, 'diag_reg': 0.0001, 'fd_norm': 0.0, 'detrend_timing': True, 'phase_track': True, 'phase_track_max_slope': 0.5, 'phase_track_prior_weight': 2.0, 'phase_track_min_gain': 8.0, 'time_var_growth': 0.0, 'cpe_refine_alpha': 0.0} -> BER=0.07611, pilot_nmse=0.13984, pilot_cal=2.1478
+[2026-11-21T23:39:29Z] Dev tuned lmmse_2d_tracked: cfg={'tau_rms': 1.0, 'n_taps': 11, 'n0_scale': 0.7, 'diag_reg': 0.0001, 'fd_norm': 0.0, 'detrend_timing': True, 'phase_track': True, 'phase_track_max_slope': 0.5, 'phase_track_prior_weight': 2.0, 'phase_track_min_gain': 8.0, 'time_var_growth': 0.0, 'cpe_refine_alpha': 0.0} -> BER=0.07644, pilot_nmse=0.13984, pilot_cal=2.1478
+[2026-11-21T23:39:30Z] Test clean ls_linear_zf (138 frames): BER=0.13824 (106835/772800), FER=0.8043 (111/138), SER=0.32686, EVM=117.87%, pilot_nmse=0.30769, cal=5.0527, nll=3.1225, ms/frame=3.68, rss_mb=387.1
+[2026-11-21T23:39:32Z] Test clean lmmse_1d (138 frames): BER=0.13283 (102654/772800), FER=0.8478 (117/138), SER=0.31113, EVM=69.37%, pilot_nmse=0.28307, cal=4.6094, nll=2.7970, ms/frame=8.14, rss_mb=407.7
+[2026-11-21T23:39:44Z] Test clean lmmse_2d_tracked (138 frames): BER=0.13358 (103232/772800), FER=0.8406 (116/138), SER=0.31166, EVM=69.71%, pilot_nmse=0.28307, cal=4.6094, nll=2.7970, ms/frame=33.89, rss_mb=423.1
+[2026-11-21T23:39:44Z] Deterministic replay audit: {'arm': 'lmmse_2d_tracked', 'n_frames': 16, 'max_llr_diff': 0.0, 'max_h_diff': 0.0, 'bit_mismatches': 0, 'exact_pass': True}
+[2026-11-21T23:39:49Z] Stress ls_linear_zf [clean]: BER=0.13824, EVM=117.87%, cov=100.0%
+[2026-11-21T23:39:49Z] Stress ls_linear_zf [awgn_10.0db]: BER=0.22902, EVM=153.61%, cov=100.0%
+[2026-11-21T23:39:49Z] Stress ls_linear_zf [awgn_5.0db]: BER=0.31101, EVM=165.01%, cov=100.0%
+[2026-11-21T23:39:49Z] Stress ls_linear_zf [awgn_0.0db]: BER=0.38111, EVM=302.83%, cov=100.0%
+[2026-11-21T23:39:49Z] Stress ls_linear_zf [cfo_0.020]: BER=0.30758, EVM=137.52%, cov=100.0%
+[2026-11-21T23:39:49Z] Stress ls_linear_zf [cfo_0.050]: BER=0.49820, EVM=189.15%, cov=100.0%
+[2026-11-21T23:39:49Z] Stress ls_linear_zf [drift_0.30rad]: BER=0.14811, EVM=118.58%, cov=100.0%
+[2026-11-21T23:39:49Z] Stress ls_linear_zf [drift_0.60rad]: BER=0.19062, EVM=120.72%, cov=100.0%
+[2026-11-21T23:39:58Z] Stress lmmse_1d [clean]: BER=0.13283, EVM=69.37%, cov=100.0%
+[2026-11-21T23:39:58Z] Stress lmmse_1d [awgn_10.0db]: BER=0.21180, EVM=67.18%, cov=100.0%
+[2026-11-21T23:39:58Z] Stress lmmse_1d [awgn_5.0db]: BER=0.28878, EVM=72.63%, cov=100.0%
+[2026-11-21T23:39:58Z] Stress lmmse_1d [awgn_0.0db]: BER=0.35807, EVM=87.46%, cov=100.0%
+[2026-11-21T23:39:58Z] Stress lmmse_1d [cfo_0.020]: BER=0.30527, EVM=97.94%, cov=100.0%
+[2026-11-21T23:39:58Z] Stress lmmse_1d [cfo_0.050]: BER=0.49760, EVM=145.85%, cov=100.0%
+[2026-11-21T23:39:58Z] Stress lmmse_1d [drift_0.30rad]: BER=0.14357, EVM=70.42%, cov=100.0%
+[2026-11-21T23:39:58Z] Stress lmmse_1d [drift_0.60rad]: BER=0.18665, EVM=73.69%, cov=100.0%
+[2026-11-21T23:40:36Z] Stress lmmse_2d_tracked [clean]: BER=0.13358, EVM=69.71%, cov=100.0%
+[2026-11-21T23:40:36Z] Stress lmmse_2d_tracked [awgn_10.0db]: BER=0.21521, EVM=68.84%, cov=100.0%
+[2026-11-21T23:40:36Z] Stress lmmse_2d_tracked [awgn_5.0db]: BER=0.29581, EVM=75.60%, cov=100.0%
+[2026-11-21T23:40:36Z] Stress lmmse_2d_tracked [awgn_0.0db]: BER=0.36223, EVM=88.79%, cov=100.0%
+[2026-11-21T23:40:36Z] Stress lmmse_2d_tracked [cfo_0.020]: BER=0.13847, EVM=71.24%, cov=100.0%
+[2026-11-21T23:40:36Z] Stress lmmse_2d_tracked [cfo_0.050]: BER=0.14856, EVM=73.53%, cov=100.0%
+[2026-11-21T23:40:36Z] Stress lmmse_2d_tracked [drift_0.30rad]: BER=0.13352, EVM=69.51%, cov=100.0%
+[2026-11-21T23:40:36Z] Stress lmmse_2d_tracked [drift_0.60rad]: BER=0.13342, EVM=69.39%, cov=100.0%
