@@ -1,0 +1,44 @@
+[2026-11-22T03:19:21Z] Starting M5 Unified Fresh-Process Pinned Benchmark | python=3.12.3 platform=Linux-6.8.0-1070-azure-x86_64-with-glibc2.39 git_HEAD=f566f9b8b0ddfb468a4cb3fd64588bfa46c87212 git_main=63ad2ec5b22027ea3d6f15aa50619a9caf6bbcd1
+[2026-11-22T03:19:21Z] Pinned threads: OMP=1, OPENBLAS=1, MKL=1
+[2026-11-22T03:19:21Z] Paths: proc_dir=/tmp/tw_realdata/data_proc, out_dir=/tmp/tw_realdata/repo/research/realdata_sdr_ofdm/results, ckpt_dir=/tmp/tw_realdata/outputs/group_c/checkpoints, manifest_path=/tmp/tw_realdata/repo/research/realdata_sdr_ofdm/checkpoints/manifest.json, results_root=/tmp/tw_realdata/repo/research/realdata_sdr_ofdm/results
+[2026-11-22T03:19:21Z] Command: research/realdata_sdr_ofdm/scripts/run_unified_benchmark.py --proc-dir /tmp/tw_realdata/data_proc --out-dir /tmp/tw_realdata/repo/research/realdata_sdr_ofdm/results --results-root /tmp/tw_realdata/repo/research/realdata_sdr_ofdm/results --ckpt-dir /tmp/tw_realdata/outputs/group_c/checkpoints --manifest-path /tmp/tw_realdata/repo/research/realdata_sdr_ofdm/checkpoints/manifest.json
+[2026-11-22T03:19:21Z] Verified canonical ckpt group_c_branch_attn: file=group_c_branch_attn_seed20261124.pt, seed=20261124, ep=9, dev_ber=0.075316, sha256=672d4bd2e7f71c96fb7ab430255b68c47bfaabb9a1b8c1c6af086117cfd4cada
+[2026-11-22T03:19:21Z] Verified canonical ckpt group_c_hybrid_attn: file=group_c_hybrid_attn_seed20261122.pt, seed=20261122, ep=13, dev_ber=0.071908, sha256=93ef069a214286f5c872dd204798f4b630313aabd4f75b074b27196a60d284b9
+[2026-11-22T03:19:21Z] Verified canonical ckpt group_c_pilot_nll_only: file=group_c_pilot_nll_only_seed20261123.pt, seed=20261123, ep=13, dev_ber=0.071900, sha256=a17dfd77b31b254daaf8360a173a28269d6f7ad1c82486e8a5f3783bd14ba70b
+[2026-11-22T03:19:26Z] Worker [ls_linear_zf] finished subprocess in 5.6s (pkl=17989253B)
+[2026-11-22T03:19:34Z] Worker [lmmse_1d] finished subprocess in 7.9s (pkl=17989241B)
+[2026-11-22T03:20:00Z] Worker [lmmse_2d_tracked] finished subprocess in 26.3s (pkl=17989251B)
+[2026-11-22T03:20:35Z] Worker [local] finished subprocess in 35.0s (pkl=18158985B)
+[2026-11-22T03:21:58Z] Worker [global_uniform] finished subprocess in 83.0s (pkl=18159004B)
+[2026-11-22T03:23:24Z] Worker [global_reliability] finished subprocess in 85.2s (pkl=18159009B)
+[2026-11-22T03:24:47Z] Worker [global_content_attn] finished subprocess in 83.4s (pkl=18159009B)
+[2026-11-22T03:25:50Z] Worker [hard_map] finished subprocess in 62.7s (pkl=18026534B)
+[2026-11-22T03:26:53Z] Worker [posterior_mean_plugin] finished subprocess in 63.5s (pkl=18026420B)
+[2026-11-22T03:28:01Z] Worker [exact_mixture_likelihood] finished subprocess in 68.0s (pkl=18026426B)
+[2026-11-22T03:29:52Z] Worker [group_c_branch_attn] finished subprocess in 110.9s (pkl=18058526B)
+[2026-11-22T03:32:05Z] Worker [group_c_hybrid_attn] finished subprocess in 132.9s (pkl=18063787B)
+[2026-11-22T03:34:18Z] Worker [group_c_pilot_nll_only] finished subprocess in 132.9s (pkl=18063793B)
+[2026-11-22T03:34:20Z] Runtime versions: torch=2.15.0+cpu, numpy=2.5.5, scipy=1.18.1, torch_num_threads=1
+[2026-11-22T03:34:20Z] Loaded test.npz: 138 frames, 193200 symbols, 772800 bits
+[2026-11-22T03:34:20Z] Summary [ls_linear_zf]: BER=0.138244 (106835/772800) FER=0.8043 (111/138) EVM=117.87% pilot_nll=3.1225 ms=1.78 (p95=2.00) rss=367.13MB tm=1.97MB replay_exact=True
+[2026-11-22T03:34:20Z] Summary [lmmse_1d]: BER=0.132834 (102654/772800) FER=0.8478 (117/138) EVM=69.37% pilot_nll=2.7970 ms=3.40 (p95=3.63) rss=367.15MB tm=2.02MB replay_exact=True
+[2026-11-22T03:34:20Z] Summary [lmmse_2d_tracked]: BER=0.133582 (103232/772800) FER=0.8406 (116/138) EVM=69.71% pilot_nll=2.7970 ms=16.27 (p95=17.14) rss=368.14MB tm=2.02MB replay_exact=True
+[2026-11-22T03:34:20Z] Summary [local]: BER=0.130540 (100881/772800) FER=0.8478 (117/138) EVM=71.59% pilot_nll=2.6399 ms=21.14 (p95=21.57) rss=385.89MB tm=2.03MB replay_exact=True
+[2026-11-22T03:34:20Z] Summary [global_uniform]: BER=0.130578 (100911/772800) FER=0.8478 (117/138) EVM=70.55% pilot_nll=2.6643 ms=54.05 (p95=54.76) rss=386.80MB tm=2.03MB replay_exact=True
+[2026-11-22T03:34:20Z] Summary [global_reliability]: BER=0.131819 (101870/772800) FER=0.8406 (116/138) EVM=72.49% pilot_nll=2.7067 ms=55.70 (p95=56.64) rss=385.83MB tm=2.03MB replay_exact=True
+[2026-11-22T03:34:20Z] Summary [global_content_attn]: BER=0.127591 (98602/772800) FER=0.8406 (116/138) EVM=69.86% pilot_nll=2.5812 ms=54.33 (p95=54.92) rss=386.11MB tm=2.03MB replay_exact=True
+[2026-11-22T03:34:20Z] Summary [hard_map]: BER=0.134820 (104189/772800) FER=0.8261 (114/138) EVM=69.06% pilot_nll=2.6650 ms=41.22 (p95=42.40) rss=369.76MB tm=2.43MB replay_exact=True
+[2026-11-22T03:34:20Z] Summary [posterior_mean_plugin]: BER=0.131825 (101874/772800) FER=0.8333 (115/138) EVM=66.57% pilot_nll=2.2950 ms=41.69 (p95=42.94) rss=369.64MB tm=2.47MB replay_exact=True
+[2026-11-22T03:34:20Z] Summary [exact_mixture_likelihood]: BER=0.131676 (101759/772800) FER=0.8333 (115/138) EVM=66.57% pilot_nll=2.2950 ms=45.00 (p95=48.32) rss=372.51MB tm=4.39MB replay_exact=True
+[2026-11-22T03:34:20Z] Summary [group_c_branch_attn]: BER=0.130732 (101030/772800) FER=0.7971 (110/138) EVM=58.59% pilot_nll=1.1167 ms=75.07 (p95=76.86) rss=384.75MB tm=4.46MB replay_exact=True
+[2026-11-22T03:34:20Z] Summary [group_c_hybrid_attn]: BER=0.127783 (98751/772800) FER=0.7971 (110/138) EVM=59.01% pilot_nll=1.0349 ms=89.83 (p95=95.50) rss=387.76MB tm=5.09MB replay_exact=True
+[2026-11-22T03:34:20Z] Summary [group_c_pilot_nll_only]: BER=0.128420 (99243/772800) FER=0.7971 (110/138) EVM=59.51% pilot_nll=1.1344 ms=89.49 (p95=95.27) rss=387.13MB tm=5.09MB replay_exact=True
+[2026-11-22T03:34:30Z] All 13 arms completed in 909.03s. Output SHA-256 checksums:
+[2026-11-22T03:34:30Z]   summary_clean.json: bytes=47762, sha256=c38f60a3add2867f14b3abf86ed38b30e8be2a71f3f994a179aad968b37df5db
+[2026-11-22T03:34:30Z]   summary_clean.csv: bytes=4623, sha256=a8d59db081aae4e2b72ff6cd204a5a773609170d7217e52f77b61508cb75d3ea
+[2026-11-22T03:34:30Z]   paired_comparisons_all.json: bytes=526790, sha256=97cf0c96034569d891c9cb5537946db809a108b249e435c4050ccce6f4911d7a
+[2026-11-22T03:34:30Z]   per_frame_all.jsonl: bytes=1369973, sha256=1ba65b2018878991641ff7eef5605643c5456aa0f7f8d682a4b131ac09744d42
+[2026-11-22T03:34:30Z]   per_frame_summary.csv: bytes=446261, sha256=f245f4434c774bed5efdb9904920733563b9ac09744b490b6f882ab0593eeb1c
+[2026-11-22T03:34:30Z]   replay_audit_unified.json: bytes=3037, sha256=e8c18068234459d79d4e108aef4131299b8d7c8058cba3799af9b481d3817ced
+[2026-11-22T03:34:30Z]   summary_stress.json: bytes=146949, sha256=3beccc3434644632d9747125ed4496e8b4e3402bb4d18826e9d1156b768250c5
+[2026-11-22T03:34:30Z]   summary_stress.csv: bytes=32179, sha256=613aa6e30949ccd6903b457dc003b1239bd3fdb3d6d30ca38b1431943aca90bb
