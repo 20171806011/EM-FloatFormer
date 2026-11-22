@@ -1,0 +1,298 @@
+{
+  "ofdm_commit": "5f88a5be984493bcb6aa164d84253b6f29876eef",
+  "a_commit": "f566f9b8b0ddfb468a4cb3fd64588bfa46c87212",
+  "pluto_commit": "ade8333fb68126251a83e484b69b821b5d97bcea",
+  "execution": {
+    "portable": "V8, CommonJS sources; in-memory file interface for CLI",
+    "python": "Skulpt 1.3.0, Python 3 mode; executed parity.py receiver and stats; native CPython entry points unexecuted",
+    "float_comparison": "node replays may differ at floating rounding and timing, exact integer counts used when applicable",
+    "summary_entry": {
+      "s": "PASS: SHA-256 manifest, A/B exact checks, full grid, C matched heads, D rotation, E gate and Python trace.",
+      "ms": 26432
+    }
+  },
+  "completed": {
+    "A/verify.cjs": {
+      "structural_equal": true,
+      "reference": "A/reference.json",
+      "ms": 71
+    },
+    "B/mini.js": {
+      "structural_equal": true,
+      "reference": "B/mini.json",
+      "ms": 5
+    },
+    "B/fullgrid.js": {
+      "structural_equal": true,
+      "reference": "B/fullgrid.json",
+      "ms": 5706
+    },
+    "C/estimator.cjs": {
+      "structural_equal": true,
+      "reference": "C/checks.json",
+      "ms": 8239
+    },
+    "A/verify_ab.cjs": {
+      "ms": 17,
+      "status": "PASS",
+      "row_assignments_per_state": 4096,
+      "paths": 4,
+      "numeric_checks": 196,
+      "max_absolute_error": 1.0658141036401503e-14,
+      "cases": [
+        {
+          "tau": 1,
+          "full_raw": "0011",
+          "full_normalized": "1111",
+          "cavity_raw": "1111",
+          "masked_cavity_raw": "0011"
+        },
+        {
+          "tau": 6,
+          "full_raw": "0011",
+          "full_normalized": "0111",
+          "cavity_raw": "0011",
+          "masked_cavity_raw": "0011"
+        }
+      ]
+    },
+    "E/selftest.cjs": {
+      "assertions": 77,
+      "engine_equals_reference": true,
+      "scoring_body_equals_reference": true,
+      "audited_file_hashes": true
+    },
+    "experiments/physical_layers.cjs": {
+      "same_target_flat_grid_probability_comparison": [
+        {
+          "t": [
+            7,
+            45
+          ],
+          "m": "original",
+          "err": 1.1102230246251565e-15
+        },
+        {
+          "t": [
+            7,
+            45
+          ],
+          "m": "explicit",
+          "err": 6.661338147750939e-16
+        },
+        {
+          "t": [
+            7,
+            45
+          ],
+          "m": "strict",
+          "err": 5.81756864903582e-14
+        },
+        {
+          "t": [
+            2,
+            39
+          ],
+          "m": "original",
+          "err": 2.6469779601696886e-23
+        },
+        {
+          "t": [
+            2,
+            39
+          ],
+          "m": "explicit",
+          "err": 2.6469779601696886e-23
+        },
+        {
+          "t": [
+            2,
+            39
+          ],
+          "m": "strict",
+          "err": 0
+        },
+        {
+          "t": [
+            13,
+            100
+          ],
+          "m": "original",
+          "err": 6.661338147750939e-16
+        },
+        {
+          "t": [
+            13,
+            100
+          ],
+          "m": "explicit",
+          "err": 7.771561172376096e-16
+        },
+        {
+          "t": [
+            13,
+            100
+          ],
+          "m": "strict",
+          "err": 7.771561172376096e-16
+        }
+      ],
+      "runs": [
+        {
+          "condition": "synthetic_static",
+          "scope": "same_targets",
+          "paired_bits": 56
+        },
+        {
+          "condition": "synthetic_static",
+          "scope": "whole",
+          "paired_bits": 11200
+        },
+        {
+          "condition": "time_cfo_ici",
+          "scope": "same_targets",
+          "paired_bits": 56
+        },
+        {
+          "condition": "time_cfo_ici",
+          "scope": "whole",
+          "paired_bits": 11200
+        },
+        {
+          "condition": "jump45",
+          "scope": "same_targets",
+          "paired_bits": 56
+        },
+        {
+          "condition": "jump45",
+          "scope": "whole",
+          "paired_bits": 11200
+        },
+        {
+          "condition": "jump90",
+          "scope": "same_targets",
+          "paired_bits": 56
+        },
+        {
+          "condition": "jump90",
+          "scope": "whole",
+          "paired_bits": 11200
+        }
+      ],
+      "input": "B/fullgrid.js synthetic(), tau=6,stay=.8"
+    },
+    "C/synthetic.cjs": {
+      "runner": "V8, CommonJS check entry point",
+      "estimator_selftest_matches": true,
+      "matched_2x2_reference_matches": true,
+      "target_intervention_both_folds": true,
+      "zip10files_match_patch": true
+    },
+    "D/enumerate.cjs": {
+      "result_equals_reference": true,
+      "integer_state_counts": true
+    },
+    "D/verify.cjs": {
+      "rotation_pairs": 64,
+      "additional_pilot_removals": 56,
+      "bit_risks_verified": 16
+    },
+    "experiments/parity/oracle.cjs": {
+      "crc_size_verified": 673504,
+      "report_equal": true,
+      "discrete": {
+        "max_abs": {
+          "A_published_fraction": 1.1102230246251565e-16,
+          "corrected_p1": 3.3306690738754696e-16,
+          "original_p1": 5.551115123125783e-16,
+          "full": 4.440892098500626e-16,
+          "cavity": 2.220446049250313e-16,
+          "log_marginal": 1.1102230246251565e-16,
+          "branch_p1": 1.1102230246251565e-16
+        },
+        "count": 156,
+        "candidate_bits": 312,
+        "assignments": 49280
+      },
+      "qam": {
+        "max_abs": {
+          "variance": 1.7763568394002505e-15,
+          "p1": 6.5503158452884236e-15,
+          "weight": 1.4432899320127035e-15,
+          "effective": 5.551115123125783e-15,
+          "ell": 1.4210854715202004e-14,
+          "branch_p1": 5.329070518200751e-15,
+          "tau1_full_conditional_vs_cavity": 2.6645352591003757e-15
+        },
+        "candidate_bits": 6960,
+        "bit_decisions": 3480
+      },
+      "shared_fixture": {
+        "max_abs": {
+          "variance": 4.440892098500626e-16,
+          "gate": 9.992007221626409e-16,
+          "effective": 7.771561172376096e-16,
+          "p1": 1.942890293094024e-15,
+          "ell": 3.552713678800501e-15,
+          "branch_bit": 1.4432899320127035e-15,
+          "full_normalized_p1": 5.551115123125783e-16
+        },
+        "checks": 152
+      }
+    },
+    "experiments/parity/by_bit.cjs": {
+      "positions": 48,
+      "reaggregates_exact_counts_at_12_stratum_temperature_method_combinations": true,
+      "nll_reaggregation_absolute_tolerance": 1e-12
+    }
+  },
+  "historical": {
+    "b_csv_rows": 7200,
+    "c_csv_rows": 10800,
+    "conditions": 5,
+    "paired_frame_count": 240,
+    "frames_per_block": 20,
+    "bits_per_condition": 1344000,
+    "trained_seeds": [
+      20261121,
+      20261122,
+      20261123
+    ],
+    "scope": "read historical CSV and compare all metric tables to accompanying archived JSON, no new demodulation",
+    "duplicate_key_negative_test": true
+  },
+  "cfo": {
+    "dev_frames": 14,
+    "test_frames": 14,
+    "per_layer_bits": 11200,
+    "heldout_fold_mutation_test": true,
+    "all_5600_bits_uniquely_covered_per_frame": true,
+    "repeated_case": {
+      "condition": "time_cfo_ici",
+      "seed": 53001,
+      "agreement": "decoder and gate metrics per segment; timing excluded"
+    }
+  },
+  "not_run": [
+    "Real-IQ smoke, original 240-frame rerun and new paired real-IQ ablations",
+    "Native CPython/NumPy/PyTorch integration and learned-head inference",
+    "Training, Test-based retuning, independent OTA confirmation"
+  ],
+  "whole_frame_gate": {
+    "dev_fit_frames": 42,
+    "dev_select_frames": 14,
+    "evaluation_frames": 14,
+    "independent_seeds": [
+      63001,
+      63002
+    ],
+    "bit_pairs": 78400,
+    "live_llr_match": 78400,
+    "opened_frames": 5,
+    "sample_lock": "43c82e49772b98f1cd000994beffdb51d62cd570736ab4d447a8e62931bea9c4",
+    "exact_dev_and_test_inputs_sha256_true": true,
+    "precommitted_lock_matched": true,
+    "E_engine_exact_score_recomputed": true,
+    "subdirectory_manifest_matches": true
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "schema": "em-floatformer-d/v1",
+  "commit": "5f88a5be984493bcb6aa164d84253b6f29876eef",
+  "model": "ideal_noiseless_iid_uniform_uncoded_16qam_known_channel",
+  "angles_deg": [
+    -135,
+    -90,
+    -45,
+    45,
+    90,
+    135,
+    180
+  ],
+  "onsets_zero_based": [
+    5,
+    6,
+    7,
+    8
+  ],
+  "angle_prior": "1/7",
+  "onset_prior": "1/4",
+  "pilot_row": 2,
+  "extra_pilot": {
+    "row": 8,
+    "tx": [
+      0.7,
+      0.7
+    ],
+    "resource": "additional_observation"
+  },
+  "bit_order": [
+    "I_msb",
+    "I_lsb",
+    "Q_msb",
+    "Q_lsb"
+  ],
+  "classes": [
+    {
+      "angles_deg": [
+        -90,
+        90,
+        180
+      ],
+      "observations": 16,
+      "hypotheses_per_observation": 3,
+      "per_bit_error_counts": [
+        16,
+        16,
+        16,
+        16
+      ],
+      "states": 48
+    },
+    {
+      "angles_deg": [
+        -135,
+        -45,
+        45,
+        135
+      ],
+      "observations": 16,
+      "hypotheses_per_observation": 4,
+      "per_bit_error_counts": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "states": 64
+    }
+  ],
+  "by_onset": [
+    {
+      "onset": 5,
+      "post_re": 909,
+      "original_known_s_frame_ber": "2727/9800"
+    },
+    {
+      "onset": 6,
+      "post_re": 808,
+      "original_known_s_frame_ber": "303/1225"
+    },
+    {
+      "onset": 7,
+      "post_re": 707,
+      "original_known_s_frame_ber": "303/1400"
+    },
+    {
+      "onset": 8,
+      "post_re": 606,
+      "original_known_s_frame_ber": "909/4900"
+    }
+  ],
+  "conditions": [
+    {
+      "pilots": "original",
+      "onset": "known",
+      "per_bit_error_counts": [
+        145440,
+        145440,
+        145440,
+        145440
+      ],
+      "per_bit_state_position_count": 627200,
+      "per_bit_ber": [
+        "909/3920",
+        "909/3920",
+        "909/3920",
+        "909/3920"
+      ],
+      "frame_ber": "909/3920"
+    },
+    {
+      "pilots": "original_plus_post",
+      "onset": "known",
+      "per_bit_error_counts": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "per_bit_state_position_count": 627200,
+      "per_bit_ber": [
+        "0/1",
+        "0/1",
+        "0/1",
+        "0/1"
+      ],
+      "frame_ber": "0/1"
+    },
+    {
+      "pilots": "original",
+      "onset": "hidden",
+      "per_bit_error_counts": [
+        155136,
+        155136,
+        155136,
+        155136
+      ],
+      "per_bit_state_position_count": 627200,
+      "per_bit_ber": [
+        "303/1225",
+        "303/1225",
+        "303/1225",
+        "303/1225"
+      ],
+      "frame_ber": "303/1225"
+    },
+    {
+      "pilots": "original_plus_post",
+      "onset": "hidden",
+      "per_bit_error_counts": [
+        12928,
+        12928,
+        12928,
+        12928
+      ],
+      "per_bit_state_position_count": 627200,
+      "per_bit_ber": [
+        "101/4900",
+        "101/4900",
+        "101/4900",
+        "101/4900"
+      ],
+      "frame_ber": "101/4900"
+    }
+  ],
+  "post_ber_known_onset": [
+    "3/7",
+    "3/7",
+    "3/7",
+    "3/7"
+  ],
+  "data_re_by_row": [
+    101,
+    101,
+    87,
+    101,
+    101,
+    101,
+    101,
+    101,
+    101,
+    101,
+    101,
+    101,
+    101,
+    101
+  ],
+  "data_re": 1400,
+  "data_bits": 5600
+}

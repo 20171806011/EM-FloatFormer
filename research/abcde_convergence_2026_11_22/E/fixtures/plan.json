@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "alg": {
+    "frontend": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "static": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "dynamic": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "raw": "C0_raw_ota",
+  "bits": 10,
+  "block": 2,
+  "block_origin": 0,
+  "guard": 2,
+  "margin": 0.1,
+  "margin_basis": "Synthetic test tolerance; never a deployment margin",
+  "design": "historical",
+  "evidence": "",
+  "conditions": {
+    "C0_raw_ota": {
+      "weight": 0.5,
+      "primary": "r0"
+    },
+    "stress": {
+      "weight": 0.5,
+      "primary": "r0"
+    }
+  },
+  "ranges": [
+    {
+      "session": "syn",
+      "lo": 0,
+      "hi": 3,
+      "phase": "fit"
+    },
+    {
+      "session": "syn",
+      "lo": 6,
+      "hi": 7,
+      "phase": "select"
+    },
+    {
+      "session": "syn",
+      "lo": 10,
+      "hi": 11,
+      "phase": "test"
+    }
+  ]
+}

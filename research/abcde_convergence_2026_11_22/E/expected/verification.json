@@ -1,0 +1,85 @@
+{
+  "runtime": "V8; in-memory synthetic checks",
+  "engine": {
+    "synthetic_only": true,
+    "checks": 77,
+    "rejected": [
+      "test into fit",
+      "dev into score",
+      "overlapping split",
+      "guard too short",
+      "missing primary",
+      "duplicate original",
+      "changed payload",
+      "label as feature",
+      "algorithm drift",
+      "reuse confirmation session"
+    ],
+    "enumeration": {
+      "A": {
+        "bits": 40,
+        "gates": [
+          "00",
+          "01",
+          "10",
+          "11"
+        ],
+        "errors": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "oracle": 0,
+        "optimal": "00",
+        "gain": 0
+      },
+      "B": {
+        "bits": 40,
+        "gates": [
+          "00",
+          "01",
+          "10",
+          "11"
+        ],
+        "errors": [
+          10,
+          3,
+          14,
+          7
+        ],
+        "oracle": 1,
+        "optimal": "01",
+        "gain": 4
+      }
+    },
+    "staticMarginZero": {
+      "threshold": null,
+      "open": 0
+    },
+    "illustrativeMarginPointOne": {
+      "static": {
+        "U": 9,
+        "H": 2,
+        "net": 7
+      },
+      "dynamic": {
+        "U": 4,
+        "H": 0,
+        "net": 4
+      },
+      "rawHarm": 0.1,
+      "status": "DESCRIPTIVE_ONLY",
+      "uniqueHosts": 2
+    },
+    "extraTechnicalRowsExcluded": 1
+  },
+  "cli": [
+    "in_memory_cli_fit",
+    "in_memory_cli_score",
+    "untrusted_lock",
+    "lock_overwrite",
+    "changed_plan",
+    "changed_engine"
+  ]
+}

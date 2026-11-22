@@ -1,0 +1,50 @@
+{
+  "frozen_utc": "2026-11-22 19:28:30 UTC",
+  "test_seeds": [
+    53001,
+    53002
+  ],
+  "conditions": [
+    "synthetic_static",
+    "time_cfo_ici",
+    "jump45",
+    "jump90"
+  ],
+  "targets": [
+    [
+      0,
+      0
+    ],
+    [
+      2,
+      39
+    ],
+    [
+      5,
+      28
+    ],
+    [
+      6,
+      17
+    ],
+    [
+      7,
+      45
+    ],
+    [
+      9,
+      88
+    ],
+    [
+      13,
+      100
+    ]
+  ],
+  "tau": 6,
+  "stay": 0.8,
+  "train_refs": "16 identical constant pilot reference shapes, synthetic; never fitted on evaluation frames",
+  "rule": "All 1400 payload REs for original versus explicit, paired 7 predetermined REs per frame for all three incl strict. Shared LS/CA from visible pilots; rebuild all target-dependent noise and HMM scores; no learned features enter physical readout. No calibration or parameter selection. C.generate and all IQ/labels reused; HMM/full-grid physics and C fold frontends have different conditioning sets, so no cross-family subtraction.",
+  "nll": "raw natural-log mean signed softplus, also per bit position",
+  "timing": "same 7 outputs/14x128 input: end-to-end cost of each strategy, repeated fits charged to strict; generate & truth scoring excluded; scalar JS V8 ms, clock resolution 1 ms",
+  "phase": "CFO and two jump cases separated; synthetic ideal reference shapes are common across arms"
+}
