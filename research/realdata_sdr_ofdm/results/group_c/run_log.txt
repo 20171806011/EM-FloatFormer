@@ -1,0 +1,44 @@
+[2026-11-22T02:06:42Z] Starting M4 Group C: proc_dir=/tmp/tw_realdata/data_proc, out_dir=/tmp/tw_realdata/outputs/group_c, epochs=40, seeds=[20261122, 20261123, 20261124]
+[2026-11-22T02:06:42Z] Loaded train=336, dev=92, test=138
+[2026-11-22T02:06:42Z] Built M=64 stratified train pool for Group A & Group C hybrid arms.
+[2026-11-22T02:06:49Z] Smoke (32 dev frames) group_c_branch_attn: BER=0.05494, FER=0.7812, EVM=28.24%, pilot_nll=-0.6176, params=2698, cov=100.0%
+[2026-11-22T02:06:56Z] Smoke (32 dev frames) group_c_hybrid_attn: BER=0.05396, FER=0.7812, EVM=27.93%, pilot_nll=-0.6572, params=2698, cov=100.0%
+[2026-11-22T02:07:16Z] Precomputed fixed candidate banks (include_global_branch=False) in 19.94s
+[2026-11-22T02:09:50Z] Train group_c_branch_attn seed=20261122: best_ep=19/40, train_s=155.06s, dev_BER=0.07533, dev_nll=-0.3474, test_BER(posthoc)=0.13062, ckpt=77201B
+[2026-11-22T02:12:25Z] Train group_c_branch_attn seed=20261123: best_ep=14/40, train_s=157.21s, dev_BER=0.07538, dev_nll=-0.3330, test_BER(posthoc)=0.13042, ckpt=77201B
+[2026-11-22T02:15:00Z] Train group_c_branch_attn seed=20261124: best_ep=9/40, train_s=156.70s, dev_BER=0.07532, dev_nll=-0.3428, test_BER(posthoc)=0.13073, ckpt=77201B
+[2026-11-22T02:15:27Z] Precomputed fixed candidate banks (include_global_branch=True) in 26.62s
+[2026-11-22T02:18:35Z] Train group_c_hybrid_attn seed=20261122: best_ep=13/40, train_s=192.59s, dev_BER=0.07191, dev_nll=-0.4211, test_BER(posthoc)=0.12778, ckpt=100735B
+[2026-11-22T02:21:41Z] Train group_c_hybrid_attn seed=20261123: best_ep=22/40, train_s=190.77s, dev_BER=0.07223, dev_nll=-0.4221, test_BER(posthoc)=0.12811, ckpt=100735B
+[2026-11-22T02:24:49Z] Train group_c_hybrid_attn seed=20261124: best_ep=3/40, train_s=191.47s, dev_BER=0.07211, dev_nll=-0.4096, test_BER(posthoc)=0.12821, ckpt=100735B
+[2026-11-22T02:26:51Z] Train group_c_pilot_nll_only seed=20261122: best_ep=5/40, train_s=127.11s, dev_BER=0.07243, dev_nll=-0.4106, test_BER(posthoc)=0.12861, ckpt=101059B
+[2026-11-22T02:28:55Z] Train group_c_pilot_nll_only seed=20261123: best_ep=13/40, train_s=127.97s, dev_BER=0.07190, dev_nll=-0.4140, test_BER(posthoc)=0.12842, ckpt=101059B
+[2026-11-22T02:30:59Z] Train group_c_pilot_nll_only seed=20261124: best_ep=21/40, train_s=127.62s, dev_BER=0.07217, dev_nll=-0.4113, test_BER(posthoc)=0.12802, ckpt=101059B
+[2026-11-22T02:31:41Z] Test clean group_c_branch_attn (seed=20261124, 138 frames): BER=0.13073 (101030/772800), FER=0.7971 (110/138), SER=0.30597, EVM=58.59%, pilot_nmse=0.31753, cal=2.5322, nll=1.1167, params=2698, ms/frame=79.79, rss_mb=1824.8
+[2026-11-22T02:32:12Z] Test clean group_c_hybrid_attn (seed=20261122, 138 frames): BER=0.12778 (98751/772800), FER=0.7971 (110/138), SER=0.29711, EVM=59.01%, pilot_nmse=0.31325, cal=2.5299, nll=1.0349, params=2698, ms/frame=94.47, rss_mb=1824.8
+[2026-11-22T02:32:42Z] Test clean group_c_pilot_nll_only (seed=20261123, 138 frames): BER=0.12842 (99243/772800), FER=0.7971 (110/138), SER=0.29880, EVM=59.51%, pilot_nmse=0.31553, cal=2.6087, nll=1.1344, params=2698, ms/frame=95.60, rss_mb=1824.8
+[2026-11-22T02:32:44Z] Deterministic replay audit: {'arm': 'group_c_hybrid_attn', 'n_frames': 16, 'max_llr_diff': 0.0, 'max_h_diff': 0.0, 'bit_mismatches': 0, 'exact_pass': True}
+[2026-11-22T02:36:09Z] Stress group_c_branch_attn [clean]: BER=0.13073, EVM=58.59%, cov=100.0%
+[2026-11-22T02:36:09Z] Stress group_c_branch_attn [awgn_10.0db]: BER=0.20913, EVM=63.00%, cov=100.0%
+[2026-11-22T02:36:09Z] Stress group_c_branch_attn [awgn_5.0db]: BER=0.28744, EVM=70.75%, cov=100.0%
+[2026-11-22T02:36:09Z] Stress group_c_branch_attn [awgn_0.0db]: BER=0.35637, EVM=86.11%, cov=100.0%
+[2026-11-22T02:36:09Z] Stress group_c_branch_attn [cfo_0.020]: BER=0.16625, EVM=65.34%, cov=100.0%
+[2026-11-22T02:36:09Z] Stress group_c_branch_attn [cfo_0.050]: BER=0.25005, EVM=84.89%, cov=100.0%
+[2026-11-22T02:36:09Z] Stress group_c_branch_attn [drift_0.30rad]: BER=0.13306, EVM=59.33%, cov=100.0%
+[2026-11-22T02:36:09Z] Stress group_c_branch_attn [drift_0.60rad]: BER=0.13849, EVM=59.98%, cov=100.0%
+[2026-11-22T02:37:55Z] Stress group_c_hybrid_attn [clean]: BER=0.12778, EVM=59.01%, cov=100.0%
+[2026-11-22T02:37:55Z] Stress group_c_hybrid_attn [awgn_10.0db]: BER=0.20238, EVM=61.70%, cov=100.0%
+[2026-11-22T02:37:55Z] Stress group_c_hybrid_attn [awgn_5.0db]: BER=0.28046, EVM=69.00%, cov=100.0%
+[2026-11-22T02:37:55Z] Stress group_c_hybrid_attn [awgn_0.0db]: BER=0.34596, EVM=83.84%, cov=100.0%
+[2026-11-22T02:37:55Z] Stress group_c_hybrid_attn [cfo_0.020]: BER=0.17207, EVM=67.98%, cov=100.0%
+[2026-11-22T02:37:55Z] Stress group_c_hybrid_attn [cfo_0.050]: BER=0.26105, EVM=91.23%, cov=100.0%
+[2026-11-22T02:37:55Z] Stress group_c_hybrid_attn [drift_0.30rad]: BER=0.13074, EVM=59.41%, cov=100.0%
+[2026-11-22T02:37:55Z] Stress group_c_hybrid_attn [drift_0.60rad]: BER=0.13845, EVM=60.21%, cov=100.0%
+[2026-11-22T02:39:41Z] Stress group_c_pilot_nll_only [clean]: BER=0.12842, EVM=59.51%, cov=100.0%
+[2026-11-22T02:39:41Z] Stress group_c_pilot_nll_only [awgn_10.0db]: BER=0.20550, EVM=63.42%, cov=100.0%
+[2026-11-22T02:39:41Z] Stress group_c_pilot_nll_only [awgn_5.0db]: BER=0.28697, EVM=71.30%, cov=100.0%
+[2026-11-22T02:39:41Z] Stress group_c_pilot_nll_only [awgn_0.0db]: BER=0.35439, EVM=85.79%, cov=100.0%
+[2026-11-22T02:39:41Z] Stress group_c_pilot_nll_only [cfo_0.020]: BER=0.14216, EVM=62.53%, cov=100.0%
+[2026-11-22T02:39:41Z] Stress group_c_pilot_nll_only [cfo_0.050]: BER=0.15778, EVM=67.12%, cov=100.0%
+[2026-11-22T02:39:41Z] Stress group_c_pilot_nll_only [drift_0.30rad]: BER=0.13032, EVM=59.67%, cov=100.0%
+[2026-11-22T02:39:41Z] Stress group_c_pilot_nll_only [drift_0.60rad]: BER=0.13405, EVM=59.98%, cov=100.0%

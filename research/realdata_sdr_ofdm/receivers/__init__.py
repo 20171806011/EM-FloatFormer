@@ -38,6 +38,17 @@ from research.realdata_sdr_ofdm.receivers.group_b_fusion import (
 from research.realdata_sdr_ofdm.receivers.group_b_fusion import (
     run_frame as run_group_b_frame,
 )
+from research.realdata_sdr_ofdm.receivers.group_c_trainable import (
+    GROUP_C_MODES,
+    BranchWeightAttentionNet,
+    GroupCConfig,
+    GroupCReceiver,
+    GroupCTrainableReceiver,
+    differentiable_mixture_llrs_torch,
+)
+from research.realdata_sdr_ofdm.receivers.group_c_trainable import (
+    run_frame as run_group_c_frame,
+)
 
 __all__ = [
     "CLASSICAL_METHODS",
@@ -68,4 +79,11 @@ __all__ = [
     "fuse_candidate_branches",
     "normalize_group_b_mode",
     "run_group_b_frame",
+    "GROUP_C_MODES",
+    "BranchWeightAttentionNet",
+    "GroupCConfig",
+    "GroupCReceiver",
+    "GroupCTrainableReceiver",
+    "differentiable_mixture_llrs_torch",
+    "run_group_c_frame",
 ]
