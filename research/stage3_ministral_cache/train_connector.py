@@ -1,12 +1,16 @@
 """Step C.1 Smoke Verification + Step C.2 Connector Training + Dev Locking for Ministral-3-3B."""
 import argparse
+import gc
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 import random
 import time
 from typing import Dict, List, Optional, Sequence, Tuple
+
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
 import numpy as np
 import torch
@@ -156,6 +160,12 @@ def run_smoke_verification(
     t0 = time.perf_counter()
     host = MinistralCacheHost(model_id=model_id)
     load_s = time.perf_counter() - t0
+    actual_param_dtype = str(next(host.lm.parameters()).dtype)
+    model_vram_mb_after_load = (
+        float(torch.cuda.memory_allocated(host.device)) / (1024.0 ** 2)
+        if host.device.type == "cuda"
+        else 0.0
+    )
     if host.device.type == "cuda":
         torch.cuda.reset_peak_memory_stats(host.device)
 
@@ -181,6 +191,8 @@ def run_smoke_verification(
         lp_unc, ll_unc = host.score_candidates_uncached(pref, q2_grp["choices"])
         max_kv_ll_diff = float((ll_kv - ll_unc).abs().max().item())
         max_kv_prob_diff = float((lp_kv.exp() - lp_unc.exp()).abs().max().item())
+    if host.device.type == "cuda":
+        torch.cuda.empty_cache()
 
     # 2. Backward + Optimizer step gradient audit
     connector.train()
@@ -241,6 +253,8 @@ def run_smoke_verification(
         "transformers_version": host.transformers_version,
         "gpu_name": gpu_name,
         "dtype": str(host.dtype),
+        "actual_param_dtype": actual_param_dtype,
+        "model_vram_mb_after_load": round(model_vram_mb_after_load, 1),
         "load_time_s": round(load_s, 2),
         "peak_vram_mb": round(peak_vram_mb, 1),
         "frozen_host_params": host.frozen_param_count,
@@ -269,6 +283,7 @@ def train_and_lock_connectors(
     encoders: Sequence[str] = ("equivariant_b8_s17", "hand_b8", "plain_b8_s17"),
     epochs: int = 4,
     batch_size: int = 32,
+    micro_batch_size: int = 8,
     lr: float = 3.0e-3,
     train_blocks: int = 2,     # 128 mothers * 3 conds * ~20 rows -> ~7,680 train examples (T4-friendly)
     dev_blocks: int = 2,       # 128 mothers on s3_dev for early stop & tolerance lock
@@ -300,6 +315,7 @@ def train_and_lock_connectors(
         "host_sha256": host.host_sha256,
         "train_blocks": int(train_blocks),
         "dev_blocks": int(dev_blocks),
+        "micro_batch_size": int(micro_batch_size),
         "max_steps_per_epoch": int(max_steps_per_epoch) if max_steps_per_epoch is not None else None,
         "host_test_blocks_locked": int(host_test_blocks),
         "seed": int(seed),
@@ -346,24 +362,32 @@ def train_and_lock_connectors(
 
             tr_loss_sum = 0.0
             tr_cnt = 0
+            mb_step = max(1, int(micro_batch_size))
             for mb_idx in order:
                 gi, st, ed = tr_minibatches[mb_idx]
                 g = tr_groups[gi]
-                z1 = torch.tensor(g["z1"][st:ed], dtype=torch.long)
-                z2 = torch.tensor(g["z2"][st:ed], dtype=torch.long)
-                r_list = [torch.tensor(rf[st:ed], dtype=torch.float32) for rf in g["ref_feats_list"]]
-                lbls = torch.tensor(g["labels"][st:ed], device=host.device, dtype=torch.long)
+                mb_total = ed - st
 
                 opt.zero_grad(set_to_none=True)
-                pref = host.build_prefix_embeds(connector, g["prompt"], z1, z2, r_list)
-                lp, _ = host.score_candidates_kv(pref, g["choices"])
-                loss = F.nll_loss(lp, lbls)
-                loss.backward()
+                mb_loss_sum = 0.0
+                for m_st in range(st, ed, mb_step):
+                    m_ed = min(ed, m_st + mb_step)
+                    z1 = torch.tensor(g["z1"][m_st:m_ed], dtype=torch.long)
+                    z2 = torch.tensor(g["z2"][m_st:m_ed], dtype=torch.long)
+                    r_list = [torch.tensor(rf[m_st:m_ed], dtype=torch.float32) for rf in g["ref_feats_list"]]
+                    lbls = torch.tensor(g["labels"][m_st:m_ed], device=host.device, dtype=torch.long)
+
+                    pref = host.build_prefix_embeds(connector, g["prompt"], z1, z2, r_list)
+                    lp, _ = host.score_candidates_kv(pref, g["choices"])
+                    loss = F.nll_loss(lp, lbls, reduction="sum") / float(mb_total)
+                    assert torch.isfinite(loss), f"Non-finite training loss in {enc_name}!"
+                    loss.backward()
+                    mb_loss_sum += float(loss.item()) * float(mb_total)
                 torch.nn.utils.clip_grad_norm_(connector.parameters(), 2.0)
                 opt.step()
 
-                tr_loss_sum += float(loss.item()) * (ed - st)
-                tr_cnt += (ed - st)
+                tr_loss_sum += mb_loss_sum
+                tr_cnt += mb_total
             sched.step()
 
             # Evaluate on s3_dev
@@ -400,7 +424,7 @@ def train_and_lock_connectors(
         from research.stage3_ministral_cache.eval_host import evaluate_host_on_split_subset
 
         dev_res = evaluate_host_on_split_subset(
-            host, connector, enc, "s3_dev", TRAIN_CONDITIONS, max_blocks=dev_blocks, batch_size=batch_size
+            host, connector, enc, "s3_dev", TRAIN_CONDITIONS, max_blocks=dev_blocks, batch_size=16
         )
         # Measure max & p95 rotation/hold/duplicate residuals strictly on dev to lock tau_host before test!
         rot_max = max(
@@ -471,6 +495,10 @@ def train_and_lock_connectors(
             "locked_temp": best_temp,
             "checkpoint_sha256": ckpt_sha,
         }
+        del connector, best_state, tr_groups, dv_groups, dev_res
+        gc.collect()
+        if host.device.type == "cuda":
+            torch.cuda.empty_cache()
 
     host_sha_after = _compute_host_fingerprint(host.lm)
     assert host_sha_after == host.host_sha256, "Frozen host weights changed during connector training!"
@@ -492,6 +520,7 @@ if __name__ == "__main__":
     ap.add_argument("--encoders", default="equivariant_b8_s17,hand_b8,plain_b8_s17")
     ap.add_argument("--epochs", type=int, default=4)
     ap.add_argument("--batch-size", type=int, default=32)
+    ap.add_argument("--micro-batch-size", type=int, default=8)
     ap.add_argument("--lr", type=float, default=3.0e-3)
     ap.add_argument("--train-blocks", type=int, default=2)
     ap.add_argument("--dev-blocks", type=int, default=2)
@@ -509,6 +538,7 @@ if __name__ == "__main__":
             encoders=encs,
             epochs=args.epochs,
             batch_size=args.batch_size,
+            micro_batch_size=args.micro_batch_size,
             lr=args.lr,
             train_blocks=args.train_blocks,
             dev_blocks=args.dev_blocks,

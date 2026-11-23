@@ -213,15 +213,41 @@ class MinistralCacheHost:
             except Exception:
                 self.hf_sha = "unknown"
 
-            self.tokenizer = AutoTokenizer.from_pretrained(model_id)
+            try:
+                self.tokenizer = AutoTokenizer.from_pretrained(model_id, fix_mistral_regex=True)
+            except TypeError:
+                self.tokenizer = AutoTokenizer.from_pretrained(model_id)
             if self.tokenizer.pad_token_id is None:
                 self.tokenizer.pad_token_id = self.tokenizer.eos_token_id or 0
 
-            self.lm = Mistral3ForConditionalGeneration.from_pretrained(
-                model_id,
-                torch_dtype=self.dtype,
-                low_cpu_mem_usage=True,
-            ).to(self.device)
+            try:
+                lm = Mistral3ForConditionalGeneration.from_pretrained(
+                    model_id,
+                    dtype=self.dtype,
+                    low_cpu_mem_usage=True,
+                )
+            except TypeError:
+                lm = Mistral3ForConditionalGeneration.from_pretrained(
+                    model_id,
+                    torch_dtype=self.dtype,
+                    low_cpu_mem_usage=True,
+                )
+
+            # Drop unused multimodal vision weights cleanly on CPU before moving language backbone to GPU
+            if hasattr(lm, "model"):
+                if hasattr(lm.model, "vision_tower"):
+                    lm.model.vision_tower = None
+                if hasattr(lm.model, "multi_modal_projector"):
+                    lm.model.multi_modal_projector = None
+            if hasattr(lm, "vision_tower"):
+                lm.vision_tower = None
+            if hasattr(lm, "multi_modal_projector"):
+                lm.multi_modal_projector = None
+            gc.collect()
+
+            self.lm = lm.to(device=self.device, dtype=self.dtype)
+            actual_dtype = next(self.lm.parameters()).dtype
+            assert actual_dtype == self.dtype, f"Loaded dtype {actual_dtype} != {self.dtype}"
             text_cfg = getattr(self.lm.config, "text_config", self.lm.config)
             # Guard against HF Transformers Issue #43404 (tie_word_embeddings under text_config)
             if getattr(text_cfg, "tie_word_embeddings", False) and hasattr(self.lm, "lm_head"):

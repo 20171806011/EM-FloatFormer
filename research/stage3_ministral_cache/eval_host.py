@@ -1,5 +1,6 @@
 """Step C.3 Frozen Ministral-3-3B host blind evaluation across C1..C6, controls, and bootstrap CIs."""
 import argparse
+import gc
 import json
 import math
 from pathlib import Path
@@ -540,6 +541,11 @@ def run_blind_host_evaluation(
                 f"Q2_val={c_m['q2_by_arm']['valid']['acc']:.4f} "
                 f"pass={c_m['all_three_pass']} raw_dup_tv={c_m['raw_duplicate_probe_mean_tv']:.4f}"
             )
+        if enc_name != "equivariant_b8_s17":
+            del connector
+        gc.collect()
+        if host.device.type == "cuda":
+            torch.cuda.empty_cache()
 
     # Controls on primary equivariant_b8_s17
     prim_enc_name = "equivariant_b8_s17" if "equivariant_b8_s17" in encoders else encoders[0]
@@ -654,7 +660,7 @@ def run_blind_host_evaluation(
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--batch-size", type=int, default=64)
+    ap.add_argument("--batch-size", type=int, default=32)
     ap.add_argument("--test-blocks", type=int, default=None)
     args = ap.parse_args()
     run_blind_host_evaluation(batch_size=args.batch_size, test_blocks_override=args.test_blocks)
