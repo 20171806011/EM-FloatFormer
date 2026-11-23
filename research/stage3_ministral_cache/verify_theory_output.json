@@ -1,0 +1,59 @@
+{
+  "sector_equivariance": {
+    "random_points": 10000,
+    "boundary_sectors": [
+      0,
+      1,
+      1,
+      2,
+      2,
+      3,
+      3,
+      0
+    ],
+    "mc_cont_sector_max_err": 0.0012100774802721315,
+    "sector_equivariance_pass": true
+  },
+  "discrete_exact_enumeration": {
+    "max_abs_err_q1": 2.6645352591003757e-15,
+    "max_abs_err_q3_repeat": 1.3100631690576847e-14,
+    "max_abs_err_q3_indep": 0.0,
+    "max_abs_err_pre_reveal_pilot_uniform": 1.609823385706477e-15,
+    "max_abs_err_q2_post_reveal": 1.0547118733938987e-15
+  },
+  "relative_cache_counterexample_and_bounds": {
+    "snr_db": 2.0,
+    "oracle_coherent_acc": 0.8027646831630662,
+    "oracle_coherent_nll": 0.6676913648544589,
+    "full_iq_coherent_acc": 0.661925,
+    "full_iq_coherent_nll": 0.8991916270548042,
+    "rel_2bit_max_cond_k3_dev_from_uniform": 0.006369107321965911,
+    "rel_2bit_q3_nll": 1.3862943611198906,
+    "caches": {
+      "hand_b4": {
+        "acc": 0.661925,
+        "nll": 0.9626948155030998,
+        "nmse": 0.6165888787362345
+      },
+      "hand_b8": {
+        "acc": 0.661925,
+        "nll": 0.918968261732705,
+        "nmse": 0.5854069930575733
+      }
+    }
+  },
+  "continuous_quadrature_and_pilot_density": {
+    "mesh_doubling_128_vs_256_max_q3_diff": 2.220446049250313e-15,
+    "mesh_doubling_128_vs_256_max_mu3_diff": 1.340594481812864e-15,
+    "full_iq_rot01_hold_err": 2.220446049250313e-16,
+    "full_iq_rot11_roll_err": 1.5543122344752192e-15,
+    "pilot_c4_pdf_at_1_and_i_diff": 0.0,
+    "pilot_nonuniform_pdf_1_vs_0_vs_diag_vs_3": [
+      0.12580879100720413,
+      0.10340457629534337,
+      0.11183452799908751,
+      0.00015470454702568284
+    ],
+    "pre_reveal_pilot_sector_max_dev_from_0.25": 1.1102230246251565e-16
+  }
+}
