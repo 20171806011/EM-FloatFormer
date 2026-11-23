@@ -1,0 +1,821 @@
+{
+  "p10_main_table": [
+    {
+      "method": "Frozen incumbent",
+      "arm": "default",
+      "continuous": {
+        "errors": 442,
+        "blocks": 4096,
+        "bler_percent": 10.791015625
+      },
+      "partial_shift": {
+        "errors": 951,
+        "blocks": 4096,
+        "bler_percent": 23.2177734375
+      },
+      "full_reset": {
+        "errors": 2686,
+        "blocks": 4096,
+        "bler_percent": 65.576171875
+      },
+      "pooled": {
+        "errors": 4079,
+        "blocks": 12288,
+        "bler_percent": 33.194986979166664
+      }
+    },
+    {
+      "method": "Standalone payload reconstruction",
+      "arm": "rebuild",
+      "continuous": {
+        "errors": 1212,
+        "blocks": 4096,
+        "bler_percent": 29.58984375
+      },
+      "partial_shift": {
+        "errors": 3316,
+        "blocks": 4096,
+        "bler_percent": 80.95703125
+      },
+      "full_reset": {
+        "errors": 1188,
+        "blocks": 4096,
+        "bler_percent": 29.00390625
+      },
+      "pooled": {
+        "errors": 5716,
+        "blocks": 12288,
+        "bler_percent": 46.516927083333336
+      }
+    },
+    {
+      "method": "Covariance selection",
+      "arm": "gate",
+      "continuous": {
+        "errors": 596,
+        "blocks": 4096,
+        "bler_percent": 14.55078125
+      },
+      "partial_shift": {
+        "errors": 1060,
+        "blocks": 4096,
+        "bler_percent": 25.87890625
+      },
+      "full_reset": {
+        "errors": 1247,
+        "blocks": 4096,
+        "bler_percent": 30.4443359375
+      },
+      "pooled": {
+        "errors": 2903,
+        "blocks": 12288,
+        "bler_percent": 23.624674479166668
+      }
+    },
+    {
+      "method": "Codeword-validated selection",
+      "arm": "code_gate",
+      "continuous": {
+        "errors": 428,
+        "blocks": 4096,
+        "bler_percent": 10.44921875
+      },
+      "partial_shift": {
+        "errors": 937,
+        "blocks": 4096,
+        "bler_percent": 22.8759765625
+      },
+      "full_reset": {
+        "errors": 1182,
+        "blocks": 4096,
+        "bler_percent": 28.857421875
+      },
+      "pooled": {
+        "errors": 2547,
+        "blocks": 12288,
+        "bler_percent": 20.7275390625
+      }
+    }
+  ],
+  "p10_rescue": {
+    "common_failure_blocks": 2666,
+    "pilot_only_rescued": 153,
+    "payload_rescued": 1604,
+    "actual_selected_rescued": 1603,
+    "payload_rescue_ci95_percent": [
+      56.18457897752233,
+      64.10066617320503
+    ]
+  },
+  "p10_reset_physical_metrics": {
+    "original": {
+      "pilot": {
+        "rel_phase_rmse": {
+          "value": 0.796979939862835,
+          "ci95": [
+            0.7253918517310399,
+            0.8693317342999406
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.06771858386877304,
+          "ci95": [
+            0.05786627390636935,
+            0.07780974969656933
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 0.5143183905022961,
+          "ci95": [
+            0.4667462145157066,
+            0.5695819236500254
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.035609000485401374,
+          "ci95": [
+            0.03065556771668567,
+            0.040339478442052726
+          ]
+        }
+      },
+      "payload": {
+        "rel_phase_rmse": {
+          "value": 0.22381149295571773,
+          "ci95": [
+            0.20615191590081267,
+            0.2440760055760187
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.009022943990451,
+          "ci95": [
+            0.006619636086148702,
+            0.011519623808202994
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 0.33179341957858444,
+          "ci95": [
+            0.27302239004903484,
+            0.4088850534238016
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.012053710822165635,
+          "ci95": [
+            0.006332901722886143,
+            0.0184057428691847
+          ]
+        }
+      }
+    },
+    "replication": {
+      "pilot": {
+        "rel_phase_rmse": {
+          "value": 0.9986799766983587,
+          "ci95": [
+            0.9116269501195564,
+            1.087678888188291
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.08188869621092885,
+          "ci95": [
+            0.07163581386095946,
+            0.09228468831919974
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 0.5871480782585962,
+          "ci95": [
+            0.5423109434958745,
+            0.6336495107259027
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.04198228805440545,
+          "ci95": [
+            0.036114744681054606,
+            0.047879880578199835
+          ]
+        }
+      },
+      "payload": {
+        "rel_phase_rmse": {
+          "value": 0.25808314074433686,
+          "ci95": [
+            0.2346460029990676,
+            0.284830081040731
+          ]
+        },
+        "rel_freq_rmse": {
+          "value": 0.01084404900580923,
+          "ci95": [
+            0.007842032914017706,
+            0.01382309901368962
+          ]
+        },
+        "abs_phase_rmse": {
+          "value": 0.289516136623525,
+          "ci95": [
+            0.2595010251939962,
+            0.3195508589282438
+          ]
+        },
+        "abs_freq_rmse": {
+          "value": 0.007322397971621265,
+          "ci95": [
+            0.006188038141220563,
+            0.008471031763459385
+          ]
+        }
+      }
+    }
+  },
+  "p10_phase_oracle": [
+    {
+      "cohort": "Original",
+      "blocks": 512,
+      "before": 132,
+      "after": 40
+    },
+    {
+      "cohort": "Replication",
+      "blocks": 512,
+      "before": 154,
+      "after": 26
+    }
+  ],
+  "p11_main_table": [
+    {
+      "method": "Chained reconstruction and assimilation",
+      "budget": "sparse",
+      "arm": "p11_chained_wavefront",
+      "continuous": {
+        "blocks": 8192,
+        "block_errors": 654,
+        "links": 512,
+        "bler": 0.079833984375,
+        "clean_nmse": 0.04569911789758143,
+        "calibration": 1.1046055001161075,
+        "net_delivered_info_bits_per_frame": 1063.75,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 526,
+        "fold1_errors": 128,
+        "fold0_bler": 0.09339488636363637,
+        "fold1_bler": 0.05,
+        "total_assimilations": 4406,
+        "false_assimilations": 52,
+        "false_assimilation_rate": 0.011802088061733999
+      },
+      "partial_shift": {
+        "blocks": 8192,
+        "block_errors": 874,
+        "links": 512,
+        "bler": 0.106689453125,
+        "clean_nmse": 0.05424623422695003,
+        "calibration": 1.1607995607624841,
+        "net_delivered_info_bits_per_frame": 1035.375,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 678,
+        "fold1_errors": 196,
+        "fold0_bler": 0.12038352272727272,
+        "fold1_bler": 0.0765625,
+        "total_assimilations": 4278,
+        "false_assimilations": 56,
+        "false_assimilation_rate": 0.013090229079008883
+      },
+      "full_reset": {
+        "blocks": 8192,
+        "block_errors": 1638,
+        "links": 512,
+        "bler": 0.199951171875,
+        "clean_nmse": 0.10197547782647685,
+        "calibration": 0.8587282375119473,
+        "net_delivered_info_bits_per_frame": 911.75,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 1383,
+        "fold1_errors": 255,
+        "fold0_bler": 0.24556107954545456,
+        "fold1_bler": 0.099609375,
+        "total_assimilations": 3670,
+        "false_assimilations": 38,
+        "false_assimilation_rate": 0.010354223433242507
+      },
+      "pooled": {
+        "blocks": 24576,
+        "block_errors": 3166,
+        "links": 1536,
+        "bler": 0.12882486979166666,
+        "clean_nmse": 0.06724861924344985,
+        "calibration": 1.0066338529835166,
+        "net_delivered_info_bits_per_frame": 1003.625,
+        "fold0_blocks": 16896,
+        "fold1_blocks": 7680,
+        "fold0_errors": 2587,
+        "fold1_errors": 579,
+        "fold0_bler": 0.15311316287878787,
+        "fold1_bler": 0.075390625,
+        "total_assimilations": 12354,
+        "false_assimilations": 146,
+        "false_assimilation_rate": 0.011818034644649505
+      }
+    },
+    {
+      "method": "Standalone payload reconstruction",
+      "budget": "sparse",
+      "arm": "p11_payload_only",
+      "continuous": {
+        "blocks": 8192,
+        "block_errors": 2402,
+        "links": 512,
+        "bler": 0.293212890625,
+        "clean_nmse": 0.21234195974845374,
+        "calibration": 0.915661385056305,
+        "net_delivered_info_bits_per_frame": 810.5,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 1713,
+        "fold1_errors": 689,
+        "fold0_bler": 0.30415482954545453,
+        "fold1_bler": 0.269140625
+      },
+      "partial_shift": {
+        "blocks": 8192,
+        "block_errors": 6659,
+        "links": 512,
+        "bler": 0.8128662109375,
+        "clean_nmse": 1.3384039321281147,
+        "calibration": 3.6411352184065393,
+        "net_delivered_info_bits_per_frame": 237.875,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 4571,
+        "fold1_errors": 2088,
+        "fold0_bler": 0.8116122159090909,
+        "fold1_bler": 0.815625
+      },
+      "full_reset": {
+        "blocks": 8192,
+        "block_errors": 2430,
+        "links": 512,
+        "bler": 0.296630859375,
+        "clean_nmse": 0.21867905879840766,
+        "calibration": 0.9169579422411389,
+        "net_delivered_info_bits_per_frame": 806.875,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 1761,
+        "fold1_errors": 669,
+        "fold0_bler": 0.3126775568181818,
+        "fold1_bler": 0.261328125
+      },
+      "pooled": {
+        "blocks": 24576,
+        "block_errors": 11491,
+        "links": 1536,
+        "bler": 0.4675699869791667,
+        "clean_nmse": 0.5917436853086541,
+        "calibration": 1.8767910212022803,
+        "net_delivered_info_bits_per_frame": 618.4166666666666,
+        "fold0_blocks": 16896,
+        "fold1_blocks": 7680,
+        "fold0_errors": 8045,
+        "fold1_errors": 3446,
+        "fold0_bler": 0.47614820075757575,
+        "fold1_bler": 0.44869791666666664
+      }
+    },
+    {
+      "method": "Always clear",
+      "budget": "sparse",
+      "arm": "p9_always_clear",
+      "continuous": {
+        "blocks": 8192,
+        "block_errors": 5042,
+        "links": 512,
+        "bler": 0.615478515625,
+        "clean_nmse": 0.4968781380378268,
+        "calibration": 0.8858150608045898,
+        "net_delivered_info_bits_per_frame": 454.25,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 3527,
+        "fold1_errors": 1515,
+        "fold0_bler": 0.6262428977272727,
+        "fold1_bler": 0.591796875
+      },
+      "partial_shift": {
+        "blocks": 8192,
+        "block_errors": 6974,
+        "links": 512,
+        "bler": 0.851318359375,
+        "clean_nmse": 0.8868327620368859,
+        "calibration": 1.4558035295084129,
+        "net_delivered_info_bits_per_frame": 197,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 4757,
+        "fold1_errors": 2217,
+        "fold0_bler": 0.8446377840909091,
+        "fold1_bler": 0.866015625
+      },
+      "full_reset": {
+        "blocks": 8192,
+        "block_errors": 5191,
+        "links": 512,
+        "bler": 0.6336669921875,
+        "clean_nmse": 0.5112228071381201,
+        "calibration": 0.9063632340580865,
+        "net_delivered_info_bits_per_frame": 435.125,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 3612,
+        "fold1_errors": 1579,
+        "fold0_bler": 0.6413352272727273,
+        "fold1_bler": 0.616796875
+      },
+      "pooled": {
+        "blocks": 24576,
+        "block_errors": 17207,
+        "links": 1536,
+        "bler": 0.7001546223958334,
+        "clean_nmse": 0.6322990087515417,
+        "calibration": 1.0830092185951168,
+        "net_delivered_info_bits_per_frame": 362.125,
+        "fold0_blocks": 16896,
+        "fold1_blocks": 7680,
+        "fold0_errors": 11896,
+        "fold1_errors": 5311,
+        "fold0_bler": 0.7040719696969697,
+        "fold1_bler": 0.6915364583333333
+      }
+    },
+    {
+      "method": "Always inherit",
+      "budget": "sparse",
+      "arm": "p9_always_inherit",
+      "continuous": {
+        "blocks": 8192,
+        "block_errors": 835,
+        "links": 512,
+        "bler": 0.1019287109375,
+        "clean_nmse": 0.08060355515743108,
+        "calibration": 1.2658575622289685,
+        "net_delivered_info_bits_per_frame": 1040.875,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 600,
+        "fold1_errors": 235,
+        "fold0_bler": 0.10653409090909091,
+        "fold1_bler": 0.091796875
+      },
+      "partial_shift": {
+        "blocks": 8192,
+        "block_errors": 6103,
+        "links": 512,
+        "bler": 0.7449951171875,
+        "clean_nmse": 0.46193310263455517,
+        "calibration": 3.7264421949586843,
+        "net_delivered_info_bits_per_frame": 327,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 4141,
+        "fold1_errors": 1962,
+        "fold0_bler": 0.7352627840909091,
+        "fold1_bler": 0.76640625
+      },
+      "full_reset": {
+        "blocks": 8192,
+        "block_errors": 7704,
+        "links": 512,
+        "bler": 0.9404296875,
+        "clean_nmse": 1.5365353698715893,
+        "calibration": 10.374491873121999,
+        "net_delivered_info_bits_per_frame": 69.25,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 5283,
+        "fold1_errors": 2421,
+        "fold0_bler": 0.9380326704545454,
+        "fold1_bler": 0.945703125
+      },
+      "pooled": {
+        "blocks": 24576,
+        "block_errors": 14642,
+        "links": 1536,
+        "bler": 0.5957845052083334,
+        "clean_nmse": 0.6917916186836648,
+        "calibration": 5.102060557967934,
+        "net_delivered_info_bits_per_frame": 479.0416666666667,
+        "fold0_blocks": 16896,
+        "fold1_blocks": 7680,
+        "fold0_errors": 10024,
+        "fold1_errors": 4618,
+        "fold0_bler": 0.5932765151515151,
+        "fold1_bler": 0.6013020833333333
+      }
+    },
+    {
+      "method": "Jeffreys/Student-t gate",
+      "budget": "sparse",
+      "arm": "p9_jeffreys_student_t",
+      "continuous": {
+        "blocks": 8192,
+        "block_errors": 849,
+        "links": 512,
+        "bler": 0.1036376953125,
+        "clean_nmse": 0.08317135642534304,
+        "calibration": 1.2026818220463469,
+        "net_delivered_info_bits_per_frame": 1038.625,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 614,
+        "fold1_errors": 235,
+        "fold0_bler": 0.10901988636363637,
+        "fold1_bler": 0.091796875
+      },
+      "partial_shift": {
+        "blocks": 8192,
+        "block_errors": 6114,
+        "links": 512,
+        "bler": 0.746337890625,
+        "clean_nmse": 0.5799885018467934,
+        "calibration": 1.9940778841734628,
+        "net_delivered_info_bits_per_frame": 329.625,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 4158,
+        "fold1_errors": 1956,
+        "fold0_bler": 0.73828125,
+        "fold1_bler": 0.7640625
+      },
+      "full_reset": {
+        "blocks": 8192,
+        "block_errors": 5314,
+        "links": 512,
+        "bler": 0.648681640625,
+        "clean_nmse": 0.5648190923579578,
+        "calibration": 1.0132386398768922,
+        "net_delivered_info_bits_per_frame": 417.875,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 3699,
+        "fold1_errors": 1615,
+        "fold0_bler": 0.6567826704545454,
+        "fold1_bler": 0.630859375
+      },
+      "pooled": {
+        "blocks": 24576,
+        "block_errors": 12277,
+        "links": 1536,
+        "bler": 0.4995524088541667,
+        "clean_nmse": 0.4095583958823391,
+        "calibration": 1.3293424191721996,
+        "net_delivered_info_bits_per_frame": 595.375,
+        "fold0_blocks": 16896,
+        "fold1_blocks": 7680,
+        "fold0_errors": 8471,
+        "fold1_errors": 3806,
+        "fold0_bler": 0.5013612689393939,
+        "fold1_bler": 0.49557291666666664
+      }
+    },
+    {
+      "method": "Dense-pilot clear",
+      "budget": "dense",
+      "arm": "always_clear",
+      "continuous": {
+        "blocks": 8192,
+        "block_errors": 661,
+        "links": 512,
+        "bler": 0.0806884765625,
+        "clean_nmse": 0.09251595169532474,
+        "calibration": 0.9093306450806329,
+        "net_delivered_info_bits_per_frame": 941.375,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 501,
+        "fold1_errors": 160,
+        "fold0_bler": 0.08895596590909091,
+        "fold1_bler": 0.0625
+      },
+      "partial_shift": {
+        "blocks": 8192,
+        "block_errors": 5813,
+        "links": 512,
+        "bler": 0.7095947265625,
+        "clean_nmse": 0.17415449327229351,
+        "calibration": 1.376257490564779,
+        "net_delivered_info_bits_per_frame": 297.375,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 3978,
+        "fold1_errors": 1835,
+        "fold0_bler": 0.7063210227272727,
+        "fold1_bler": 0.716796875
+      },
+      "full_reset": {
+        "blocks": 8192,
+        "block_errors": 667,
+        "links": 512,
+        "bler": 0.0814208984375,
+        "clean_nmse": 0.09243159990639271,
+        "calibration": 0.9032834580536151,
+        "net_delivered_info_bits_per_frame": 940.625,
+        "fold0_blocks": 5632,
+        "fold1_blocks": 2560,
+        "fold0_errors": 501,
+        "fold1_errors": 166,
+        "fold0_bler": 0.08895596590909091,
+        "fold1_bler": 0.06484375
+      },
+      "pooled": {
+        "blocks": 24576,
+        "block_errors": 7141,
+        "links": 1536,
+        "bler": 0.2905680338541667,
+        "clean_nmse": 0.11984170032192522,
+        "calibration": 1.053746625625106,
+        "net_delivered_info_bits_per_frame": 726.4583333333334,
+        "fold0_blocks": 16896,
+        "fold1_blocks": 7680,
+        "fold0_errors": 4980,
+        "fold1_errors": 2161,
+        "fold0_bler": 0.2947443181818182,
+        "fold1_bler": 0.2813802083333333
+      }
+    }
+  ],
+  "p11_fold_table": [
+    {
+      "regime": "continuous",
+      "fold0": {
+        "errors": 526,
+        "blocks": 5632,
+        "bler_percent": 9.339488636363637
+      },
+      "fold1": {
+        "errors": 128,
+        "blocks": 2560,
+        "bler_percent": 5
+      }
+    },
+    {
+      "regime": "partial_shift",
+      "fold0": {
+        "errors": 678,
+        "blocks": 5632,
+        "bler_percent": 12.038352272727273
+      },
+      "fold1": {
+        "errors": 196,
+        "blocks": 2560,
+        "bler_percent": 7.65625
+      }
+    },
+    {
+      "regime": "full_reset",
+      "fold0": {
+        "errors": 1383,
+        "blocks": 5632,
+        "bler_percent": 24.556107954545453
+      },
+      "fold1": {
+        "errors": 255,
+        "blocks": 2560,
+        "bler_percent": 9.9609375
+      }
+    }
+  ],
+  "p11_pairwise_clusters": [
+    {
+      "cluster": 1,
+      "chained_percent": 14.388020833333334,
+      "payload_percent": 47.59114583333333,
+      "jt_percent": 51.888020833333336,
+      "dense_percent": 30.403645833333332
+    },
+    {
+      "cluster": 2,
+      "chained_percent": 12.3046875,
+      "payload_percent": 44.40104166666667,
+      "jt_percent": 46.94010416666667,
+      "dense_percent": 26.7578125
+    },
+    {
+      "cluster": 3,
+      "chained_percent": 12.239583333333332,
+      "payload_percent": 47.91666666666667,
+      "jt_percent": 54.296875,
+      "dense_percent": 29.361979166666668
+    },
+    {
+      "cluster": 4,
+      "chained_percent": 13.151041666666666,
+      "payload_percent": 47.98177083333333,
+      "jt_percent": 50.065104166666664,
+      "dense_percent": 30.208333333333332
+    },
+    {
+      "cluster": 5,
+      "chained_percent": 14.518229166666666,
+      "payload_percent": 48.6328125,
+      "jt_percent": 51.888020833333336,
+      "dense_percent": 29.622395833333332
+    },
+    {
+      "cluster": 6,
+      "chained_percent": 13.28125,
+      "payload_percent": 44.7265625,
+      "jt_percent": 48.89322916666667,
+      "dense_percent": 29.166666666666668
+    },
+    {
+      "cluster": 7,
+      "chained_percent": 10.807291666666668,
+      "payload_percent": 48.37239583333333,
+      "jt_percent": 51.106770833333336,
+      "dense_percent": 31.4453125
+    },
+    {
+      "cluster": 8,
+      "chained_percent": 12.434895833333332,
+      "payload_percent": 46.35416666666667,
+      "jt_percent": 52.734375,
+      "dense_percent": 29.427083333333332
+    },
+    {
+      "cluster": 9,
+      "chained_percent": 13.0859375,
+      "payload_percent": 48.30729166666667,
+      "jt_percent": 50.325520833333336,
+      "dense_percent": 31.966145833333332
+    },
+    {
+      "cluster": 10,
+      "chained_percent": 15.494791666666666,
+      "payload_percent": 48.17708333333333,
+      "jt_percent": 49.67447916666667,
+      "dense_percent": 28.3203125
+    },
+    {
+      "cluster": 11,
+      "chained_percent": 8.984375,
+      "payload_percent": 45.5078125,
+      "jt_percent": 48.76302083333333,
+      "dense_percent": 27.018229166666668
+    },
+    {
+      "cluster": 12,
+      "chained_percent": 12.760416666666666,
+      "payload_percent": 47.59114583333333,
+      "jt_percent": 51.171875,
+      "dense_percent": 29.427083333333332
+    },
+    {
+      "cluster": 13,
+      "chained_percent": 14.518229166666666,
+      "payload_percent": 44.46614583333333,
+      "jt_percent": 50.455729166666664,
+      "dense_percent": 30.598958333333332
+    },
+    {
+      "cluster": 14,
+      "chained_percent": 12.3046875,
+      "payload_percent": 46.41927083333333,
+      "jt_percent": 49.609375,
+      "dense_percent": 27.604166666666668
+    },
+    {
+      "cluster": 15,
+      "chained_percent": 12.5,
+      "payload_percent": 43.5546875,
+      "jt_percent": 45.5078125,
+      "dense_percent": 26.041666666666668
+    },
+    {
+      "cluster": 16,
+      "chained_percent": 13.346354166666666,
+      "payload_percent": 48.11197916666667,
+      "jt_percent": 45.96354166666667,
+      "dense_percent": 27.5390625
+    }
+  ],
+  "p11_noninferiority": {
+    "mean_difference_pp": -0.08544921875,
+    "one_sided_upper95_pp": 0.6217724093061366,
+    "margin_pp": 1,
+    "regime": "continuous"
+  },
+  "captions": {
+    "p10": "Exploratory two-batch study at 9 dB. Each mechanism contains 4,096 target blocks (256 links); pooled rates weight mechanisms equally. These observations are separate from the P11 confirmatory cohort.",
+    "p11": "Paired P11 formal ID study at 9 dB. Each mechanism contains 8,192 core blocks (512 links); all methods share each evaluation link. Statistical inference uses 16 paired cluster aggregates.",
+    "phase": "The common-phase oracle uses hidden channel truth solely for diagnosis on predesignated 32-link full-reset subsets. It is not an available receiver."
+  },
+  "source_provenance_file": "study_provenance.json"
+}
