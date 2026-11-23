@@ -93,11 +93,15 @@ def run_chat_transcript(out_dir: Path = STAGE3_DIR, enc_name: str = "equivariant
     models = load_frozen_models()
     enc = models[enc_name]
     ckpt = torch.load(out_dir / "connector_weights" / f"connector_{enc_name}.pt", map_location="cpu", weights_only=True)
-    connector = WaveformCacheConnector(
-        num_states=int(ckpt["num_states"]),
-        hidden_size=int(ckpt["hidden_size"]),
-        target_embed_std=float(ckpt["target_embed_std"]),
-    ).to(host.device)
+    conn_cfg = ckpt.get(
+        "connector_config",
+        {
+            "num_states": int(ckpt["num_states"]),
+            "hidden_size": int(ckpt["hidden_size"]),
+            "target_embed_std": float(ckpt["target_embed_std"]),
+        },
+    )
+    connector = WaveformCacheConnector(**conn_cfg).to(host.device)
     connector.load_state_dict(ckpt["state_dict"])
     connector.eval()
 

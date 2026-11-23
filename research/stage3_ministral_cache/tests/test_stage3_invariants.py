@@ -151,16 +151,18 @@ def test_connector_zero_leakage_and_gradients():
     z1 = torch.tensor([0, 17, 255, 42], dtype=torch.long)
     z2 = torch.tensor([5, 19, 128, 3], dtype=torch.long)
     w1, w2 = conn.encode_windows(z1, z2)
-    assert w1.shape == (4, 64) and w2.shape == (4, 64)
-    assert not torch.allclose(w1, w2)  # distinct role embeddings guarantee w1 != w2 even on identical z
+    assert w1.shape == (4, 4, 64) and w2.shape == (4, 4, 64)
+    assert not torch.allclose(w1, w2)  # distinct heads + inputs guarantee w1 != w2
 
     batch = generate_mothers("s3_dev", "C3_mid_pilot_cont", max_blocks=1)
     ref_feat = torch.tensor(build_ref_feature(batch.references_for_arm("valid")[0])[:4], dtype=torch.float32)
     assert ref_feat.shape == (4, 12)
     er = conn.encode_refs(ref_feat)
-    assert er.shape == (4, 64)
+    assert er.shape == (4, 4, 64)
+    hp = conn.encode_prefix(4)
+    assert hp.shape == (4, 8, 64)
 
-    loss = w1.pow(2).sum() + w2.pow(2).sum() + er.pow(2).sum()
+    loss = w1.pow(2).sum() + w2.pow(2).sum() + er.pow(2).sum() + hp.pow(2).sum()
     loss.backward()
     for name, p in conn.named_parameters():
         assert p.grad is not None and float(p.grad.abs().sum()) > 0.0, f"Zero grad in {name}"

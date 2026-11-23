@@ -71,43 +71,86 @@ class WaveformCacheConnector(nn.Module):
         num_states: int,
         hidden_size: int = 3072,
         target_embed_std: float = 0.02,
-        emb_dim: int = 64,
+        emb_dim: int = 128,
         mlp_hidden: int = 256,
+        num_win_tokens: int = 4,
+        num_ref_tokens: int = 4,
+        num_prefix_tokens: int = 8,
     ):
         super().__init__()
         self.num_states = int(num_states)
         self.hidden_size = int(hidden_size)
+        self.target_embed_std = float(target_embed_std)
         self.emb_dim = int(emb_dim)
+        self.mlp_hidden = int(mlp_hidden)
+        self.num_win_tokens = int(num_win_tokens)
+        self.num_ref_tokens = int(num_ref_tokens)
+        self.num_prefix_tokens = int(num_prefix_tokens)
 
         self.win_emb = nn.Embedding(self.num_states, emb_dim)
-        self.role_emb = nn.Embedding(2, emb_dim)
-        self.win_mlp = nn.Sequential(
-            nn.Linear(emb_dim, mlp_hidden),
+        self.pair_mlp = nn.Sequential(
+            nn.Linear(4 * emb_dim, mlp_hidden),
             nn.GELU(),
-            nn.Linear(mlp_hidden, hidden_size),
+            nn.Linear(mlp_hidden, mlp_hidden),
+            nn.GELU(),
         )
-        self.win_norm = nn.LayerNorm(hidden_size)
-        self.win_scale = nn.Parameter(torch.tensor(float(target_embed_std), dtype=torch.float32))
-
+        self.win1_head = nn.Sequential(
+            nn.Linear(emb_dim + mlp_hidden, mlp_hidden),
+            nn.GELU(),
+            nn.Linear(mlp_hidden, num_win_tokens * mlp_hidden),
+        )
+        self.win2_head = nn.Sequential(
+            nn.Linear(emb_dim + mlp_hidden, mlp_hidden),
+            nn.GELU(),
+            nn.Linear(mlp_hidden, num_win_tokens * mlp_hidden),
+        )
         self.ref_mlp = nn.Sequential(
             nn.Linear(12, mlp_hidden),
             nn.GELU(),
-            nn.Linear(mlp_hidden, hidden_size),
+            nn.Linear(mlp_hidden, num_ref_tokens * mlp_hidden),
         )
-        self.ref_norm = nn.LayerNorm(hidden_size)
-        self.ref_scale = nn.Parameter(torch.tensor(float(target_embed_std), dtype=torch.float32))
+        self.prefix_latents = nn.Parameter(torch.randn(num_prefix_tokens, mlp_hidden) * 0.02)
+        self.out_proj = nn.Linear(mlp_hidden, hidden_size)
+        self.out_norm = nn.LayerNorm(hidden_size)
+
+        init_scale = max(0.05, 2.0 * float(target_embed_std))
+        self.win_scale = nn.Parameter(torch.tensor(init_scale, dtype=torch.float32))
+        self.ref_scale = nn.Parameter(torch.tensor(init_scale, dtype=torch.float32))
+        self.prefix_scale = nn.Parameter(torch.tensor(init_scale, dtype=torch.float32))
 
     def encode_windows(self, z1: torch.Tensor, z2: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
-        """Encode ONLY discrete cache indices z1, z2 into `(B, D)` continuous host tokens."""
-        slot0 = torch.zeros_like(z1)
-        slot1 = torch.ones_like(z2)
-        h1 = self.win_norm(self.win_mlp(self.win_emb(z1) + self.role_emb(slot0))) * self.win_scale
-        h2 = self.win_norm(self.win_mlp(self.win_emb(z2) + self.role_emb(slot1))) * self.win_scale
+        """Encode ONLY discrete cache indices z1, z2 into `(B, num_win_tokens, D)` continuous host tokens."""
+        e1 = self.win_emb(z1)
+        e2 = self.win_emb(z2)
+        joint = self.pair_mlp(torch.cat([e1, e2, e1 - e2, e1 * e2], dim=-1))
+        u1 = self.win1_head(torch.cat([e1, joint], dim=-1)).view(-1, self.num_win_tokens, self.mlp_hidden)
+        u2 = self.win2_head(torch.cat([e2, joint], dim=-1)).view(-1, self.num_win_tokens, self.mlp_hidden)
+        h1 = self.out_norm(self.out_proj(u1)) * self.win_scale
+        h2 = self.out_norm(self.out_proj(u2)) * self.win_scale
         return h1, h2
 
     def encode_refs(self, ref_feats: torch.Tensor) -> torch.Tensor:
-        """Encode revealed reference tensors `(N_refs, 12)` into `(N_refs, D)` host tokens."""
-        return self.ref_norm(self.ref_mlp(ref_feats)) * self.ref_scale
+        """Encode revealed reference tensors `(N_refs, 12)` into `(N_refs, num_ref_tokens, D)` host tokens."""
+        ur = self.ref_mlp(ref_feats).view(-1, self.num_ref_tokens, self.mlp_hidden)
+        return self.out_norm(self.out_proj(ur)) * self.ref_scale
+
+    def encode_prefix(self, batch_size: int) -> torch.Tensor:
+        """Encode learnable task-calibrating soft prefix tokens `(B, num_prefix_tokens, D)`."""
+        p = self.out_norm(self.out_proj(self.prefix_latents)) * self.prefix_scale
+        return p.unsqueeze(0).expand(batch_size, -1, -1)
+
+    def connector_config(self) -> dict:
+        """Serializable constructor configuration for exact checkpoint reconstruction."""
+        return {
+            "num_states": self.num_states,
+            "hidden_size": self.hidden_size,
+            "target_embed_std": self.target_embed_std,
+            "emb_dim": self.emb_dim,
+            "mlp_hidden": self.mlp_hidden,
+            "num_win_tokens": self.num_win_tokens,
+            "num_ref_tokens": self.num_ref_tokens,
+            "num_prefix_tokens": self.num_prefix_tokens,
+        }
 
     def param_count(self) -> int:
         return sum(p.numel() for p in self.parameters() if p.requires_grad)
@@ -322,23 +365,29 @@ class MinistralCacheHost:
         batch_size = int(z1_batch.shape[0]) if z1_batch is not None else 1
 
         if text_only_mode or connector is None:
-            e_w1 = torch.zeros((batch_size, 1, self.hidden_size), device=self.device, dtype=self.dtype)
-            e_w2 = torch.zeros((batch_size, 1, self.hidden_size), device=self.device, dtype=self.dtype)
+            e_pref = torch.zeros((batch_size, 0, self.hidden_size), device=self.device, dtype=self.dtype)
+            e_w1 = torch.zeros((batch_size, 0, self.hidden_size), device=self.device, dtype=self.dtype)
+            e_w2 = torch.zeros((batch_size, 0, self.hidden_size), device=self.device, dtype=self.dtype)
             e_refs = [
-                torch.zeros((batch_size, 1, self.hidden_size), device=self.device, dtype=self.dtype)
+                torch.zeros((batch_size, 0, self.hidden_size), device=self.device, dtype=self.dtype)
                 for _ in ref_feats_list
             ]
         else:
+            e_pref = connector.encode_prefix(batch_size).to(self.dtype)
             w1, w2 = connector.encode_windows(z1_batch.to(self.device), z2_batch.to(self.device))
-            e_w1 = w1.to(self.dtype).unsqueeze(1)
-            e_w2 = w2.to(self.dtype).unsqueeze(1)
-            e_refs = [connector.encode_refs(rf.to(self.device)).to(self.dtype).unsqueeze(1) for rf in ref_feats_list]
+            e_w1 = w1.to(self.dtype)
+            e_w2 = w2.to(self.dtype)
+            e_refs = [connector.encode_refs(rf.to(self.device)).to(self.dtype) for rf in ref_feats_list]
 
         chunks: List[torch.Tensor] = []
         ref_ptr = 0
+        prefix_inserted = False
         for seg in parts:
             if seg == "<W1>":
                 if not text_only_mode:
+                    if not prefix_inserted:
+                        chunks.append(e_pref)
+                        prefix_inserted = True
                     chunks.append(e_w1)
             elif seg == "<W2>":
                 if not text_only_mode:

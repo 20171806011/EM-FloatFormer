@@ -549,11 +549,15 @@ def run_blind_host_evaluation(
         enc_lock = dev_lock["encoders"][enc_name]
         ckpt_path = weights_dir / f"connector_{enc_name}.pt"
         ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=True)
-        connector = WaveformCacheConnector(
-            num_states=int(ckpt["num_states"]),
-            hidden_size=int(ckpt["hidden_size"]),
-            target_embed_std=float(ckpt["target_embed_std"]),
-        ).to(host.device)
+        conn_cfg = ckpt.get(
+            "connector_config",
+            {
+                "num_states": int(ckpt["num_states"]),
+                "hidden_size": int(ckpt["hidden_size"]),
+                "target_embed_std": float(ckpt["target_embed_std"]),
+            },
+        )
+        connector = WaveformCacheConnector(**conn_cfg).to(host.device)
         connector.load_state_dict(ckpt["state_dict"])
         connector.eval()
         if enc_name == "equivariant_b8_s17":
@@ -604,7 +608,15 @@ def run_blind_host_evaluation(
     prim_conn = eq_connector
     if prim_conn is None:
         ckpt = torch.load(weights_dir / f"connector_{prim_enc_name}.pt", map_location="cpu", weights_only=True)
-        prim_conn = WaveformCacheConnector(int(ckpt["num_states"]), int(ckpt["hidden_size"]), float(ckpt["target_embed_std"])).to(host.device)
+        conn_cfg = ckpt.get(
+            "connector_config",
+            {
+                "num_states": int(ckpt["num_states"]),
+                "hidden_size": int(ckpt["hidden_size"]),
+                "target_embed_std": float(ckpt["target_embed_std"]),
+            },
+        )
+        prim_conn = WaveformCacheConnector(**conn_cfg).to(host.device)
         prim_conn.load_state_dict(ckpt["state_dict"])
         prim_conn.eval()
 
@@ -712,7 +724,13 @@ def run_blind_host_evaluation(
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--batch-size", type=int, default=32)
+    ap.add_argument("--batch-size", type=int, default=0)
     ap.add_argument("--test-blocks", type=int, default=None)
     args = ap.parse_args()
-    run_blind_host_evaluation(batch_size=args.batch_size, test_blocks_override=args.test_blocks)
+    bs = int(args.batch_size)
+    if bs <= 0:
+        if torch.cuda.is_available() and torch.cuda.get_device_properties(0).total_memory >= 30 * (1024 ** 3):
+            bs = 64
+        else:
+            bs = 32
+    run_blind_host_evaluation(batch_size=bs, test_blocks_override=args.test_blocks)
