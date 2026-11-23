@@ -292,23 +292,16 @@ class MinistralCacheHost:
         return audit
 
     def format_chat_parts(self, user_prompt: str, extra_history: Optional[List[dict]] = None) -> List[str]:
-        """Apply Ministral chat template (or explicit Mistral v7 delimiters if missing) and split placeholders."""
-        msgs = [{"role": "system", "content": SYSTEM_PROMPT}]
+        """Format using compact Mistral v7 official delimiters (~95 tok, avoiding ~300-tok jinja boilerplate)."""
+        chunks = [f"<s>[SYSTEM_PROMPT]{SYSTEM_PROMPT}[/SYSTEM_PROMPT]"]
         if extra_history:
-            msgs.extend(extra_history)
-        msgs.append({"role": "user", "content": user_prompt})
-        if getattr(self.tokenizer, "chat_template", None):
-            rendered = self.tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
-        else:
-            chunks = [f"<s>[SYSTEM_PROMPT]{SYSTEM_PROMPT}[/SYSTEM_PROMPT]"]
-            if extra_history:
-                for m in extra_history:
-                    if m["role"] == "user":
-                        chunks.append(f"[INST]{m['content']}[/INST]")
-                    elif m["role"] == "assistant":
-                        chunks.append(f"{m['content']}</s>")
-            chunks.append(f"[INST]{user_prompt}[/INST]")
-            rendered = "".join(chunks)
+            for m in extra_history:
+                if m["role"] == "user":
+                    chunks.append(f"[INST]{m['content']}[/INST]")
+                elif m["role"] == "assistant":
+                    chunks.append(f"{m['content']}</s>")
+        chunks.append(f"[INST]{user_prompt}[/INST]")
+        rendered = "".join(chunks)
         parts = MARKER_REGEX.split(rendered)
         return [p for p in parts if p != ""]
 

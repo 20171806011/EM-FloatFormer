@@ -158,7 +158,7 @@ def test_connector_zero_leakage_and_gradients():
     er = conn.encode_refs(ref_feat)
     assert er.shape == (4, 64)
 
-    loss = (w1.sum() + w2.sum() + er.sum())
+    loss = w1.pow(2).sum() + w2.pow(2).sum() + er.pow(2).sum()
     loss.backward()
     for name, p in conn.named_parameters():
         assert p.grad is not None and float(p.grad.abs().sum()) > 0.0, f"Zero grad in {name}"

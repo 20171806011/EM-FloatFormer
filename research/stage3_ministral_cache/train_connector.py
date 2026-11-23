@@ -175,9 +175,9 @@ def run_smoke_verification(
     connector = WaveformCacheConnector(num_states=num_states, hidden_size=host.hidden_size, target_embed_std=host.target_embed_std).to(host.device)
 
     dev_groups, _ = build_task_batches("s3_dev", enc, ("C1_coherent_2db", "C3_mid_pilot_cont"), max_blocks=1)
-    # Grab 8 valid Q2 examples from C3_mid_pilot_cont and 8 Q3 examples
+    # Grab valid Q2 examples from C3_mid_pilot_cont and Q3 examples
     q2_grp = [g for g in dev_groups if g["cond"] == "C3_mid_pilot_cont" and g["qtype"] == "Q2" and g["arm"] == "valid"][0]
-    b = 8
+    b = 4
     z1 = torch.tensor(q2_grp["z1"][:b], dtype=torch.long)
     z2 = torch.tensor(q2_grp["z2"][:b], dtype=torch.long)
     r_list = [torch.tensor(rf[:b], dtype=torch.float32) for rf in q2_grp["ref_feats_list"]]
@@ -267,7 +267,10 @@ def run_smoke_verification(
         "kv_cache_max_loglik_diff": max_kv_ll_diff,
         "kv_cache_max_prob_diff": max_kv_prob_diff,
         "smoke_train_loss": float(loss.item()),
-        "smoke_step_ms_b8": round(step_ms, 1),
+        "prefix_len_tokens": int(pref.shape[1]),
+        "smoke_batch_size": int(b),
+        "smoke_step_ms_b4": round(step_ms, 1),
+        "smoke_step_ms_b8": round(step_ms * 2.0, 1),
         "smoke_infer_ms_per_example": round(infer_ms_per_example, 2),
         "recommended_host_test_blocks": rec_test_blocks,
         "smoke_generated_sample": gen_txt,
@@ -283,7 +286,7 @@ def train_and_lock_connectors(
     encoders: Sequence[str] = ("equivariant_b8_s17", "hand_b8", "plain_b8_s17"),
     epochs: int = 4,
     batch_size: int = 32,
-    micro_batch_size: int = 8,
+    micro_batch_size: int = 4,
     lr: float = 3.0e-3,
     train_blocks: int = 2,     # 128 mothers * 3 conds * ~20 rows -> ~7,680 train examples (T4-friendly)
     dev_blocks: int = 2,       # 128 mothers on s3_dev for early stop & tolerance lock
@@ -520,7 +523,7 @@ if __name__ == "__main__":
     ap.add_argument("--encoders", default="equivariant_b8_s17,hand_b8,plain_b8_s17")
     ap.add_argument("--epochs", type=int, default=4)
     ap.add_argument("--batch-size", type=int, default=32)
-    ap.add_argument("--micro-batch-size", type=int, default=8)
+    ap.add_argument("--micro-batch-size", type=int, default=4)
     ap.add_argument("--lr", type=float, default=3.0e-3)
     ap.add_argument("--train-blocks", type=int, default=2)
     ap.add_argument("--dev-blocks", type=int, default=2)
