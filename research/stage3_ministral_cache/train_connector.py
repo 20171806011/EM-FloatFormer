@@ -315,9 +315,9 @@ def run_smoke_verification(
 def train_and_lock_connectors(
     host: MinistralCacheHost,
     encoders: Sequence[str] = ("equivariant_b8_s17", "hand_b8", "plain_b8_s17"),
-    epochs: int = 6,
+    epochs: int = 12,
     batch_size: int = 32,
-    micro_batch_size: int = 16,
+    micro_batch_size: int = 32,
     lr: float = 1.5e-3,
     train_blocks: int = 8,     # 512 mothers * 3 conds * 24 groups -> high state coverage
     dev_blocks: int = 2,       # 128 mothers on s3_dev for early stop & tolerance lock
@@ -325,6 +325,7 @@ def train_and_lock_connectors(
     max_steps_per_epoch: Optional[int] = 250,
     seed: int = 20261123,
     out_dir: Optional[Path] = None,
+    resume: bool = False,
 ) -> dict:
     """Train ONLY small connectors on s3_train, calibrate & lock tolerances STRICTLY on s3_dev."""
     out_dir = out_dir or STAGE3_DIR
@@ -333,14 +334,20 @@ def train_and_lock_connectors(
     weights_dir.mkdir(parents=True, exist_ok=True)
     res_dir.mkdir(parents=True, exist_ok=True)
 
-    # Auto-cap micro_batch_size safely to GPU VRAM headroom so we never OOM across T4/L4/A100
+    # Auto-cap micro_batch_size safely to GPU VRAM headroom so we never OOM across T4/L4/A100/G4
     eff_micro_bs = max(1, int(micro_batch_size))
+    dev_eval_bs = int(batch_size)
     if host.device.type == "cuda":
         total_vram_gb = float(torch.cuda.get_device_properties(host.device).total_memory) / (1024.0 ** 3)
         if total_vram_gb < 18.0:
             eff_micro_bs = min(eff_micro_bs, 4)
         elif total_vram_gb < 30.0:
             eff_micro_bs = min(eff_micro_bs, 8)
+        elif total_vram_gb < 65.0:
+            eff_micro_bs = min(eff_micro_bs, 16)
+        else:
+            eff_micro_bs = min(eff_micro_bs, 32)
+            dev_eval_bs = 64
 
     models = load_frozen_models()
     if host_test_blocks is None:
@@ -350,6 +357,11 @@ def train_and_lock_connectors(
         else:
             host_test_blocks = 2
 
+    prior_summaries = (
+        json.loads((res_dir / "training_summary.json").read_text(encoding="utf-8"))
+        if (resume and (res_dir / "training_summary.json").exists())
+        else {}
+    )
     train_summaries = {}
     dev_lock_records = {
         "model_id": host.model_id,
@@ -377,20 +389,51 @@ def train_and_lock_connectors(
             target_embed_std=host.target_embed_std,
         ).to(host.device)
 
+        ckpt_path = weights_dir / f"connector_{enc_name}.pt"
+        if resume and ckpt_path.exists():
+            prev_ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=True)
+            assert prev_ckpt.get("connector_config") == connector.connector_config(), (
+                f"Connector config mismatch on resume for {enc_name}"
+            )
+            connector.load_state_dict(prev_ckpt["state_dict"])
+            best_dev_nll = float(prev_ckpt.get("best_dev_nll", float("inf")))
+            best_state = {k: v.detach().cpu().clone() for k, v in prev_ckpt["state_dict"].items()}
+            best_epoch = int(prev_ckpt.get("best_epoch", 0))
+            prior_rec = prior_summaries.get(enc_name, {})
+            history = list(prior_rec.get("history", []))
+            ep_offset = len(history)
+            prior_time_s = float(prior_rec.get("train_time_s", 0.0))
+        else:
+            best_dev_nll = float("inf")
+            best_state = None
+            best_epoch = 0
+            history = []
+            ep_offset = 0
+            prior_time_s = 0.0
+
         tr_groups, _ = build_task_batches("s3_train", enc, TRAIN_CONDITIONS, max_blocks=train_blocks)
         dv_groups, _ = build_task_batches("s3_dev", enc, TRAIN_CONDITIONS, max_blocks=dev_blocks)
 
         # Build minibatches preserving pure single-group homogeneous sequence lengths (zero padding!)
         tr_minibatches = []
+        weighted_pool = []
         for gi, g in enumerate(tr_groups):
             n = len(g["labels"])
+            if g["qtype"] == "Q1" or (g["qtype"] == "Q2" and g["arm"] in ("valid", "fresh_resample")):
+                w = 3
+            elif g["qtype"] in ("Q3_repeat_x1", "Q3_after_pilot"):
+                w = 2
+            else:
+                w = 1
             for st in range(0, n, batch_size):
+                mb_idx = len(tr_minibatches)
                 tr_minibatches.append((gi, st, min(n, st + batch_size)))
+                weighted_pool.extend([mb_idx] * w)
 
         steps_per_ep = (
-            min(len(tr_minibatches), int(max_steps_per_epoch))
+            min(len(weighted_pool), int(max_steps_per_epoch))
             if (max_steps_per_epoch is not None and max_steps_per_epoch > 0)
-            else len(tr_minibatches)
+            else len(weighted_pool)
         )
         total_steps = max(1, epochs * steps_per_ep)
         warmup_steps = max(1, int(round(0.05 * total_steps)))
@@ -404,16 +447,13 @@ def train_and_lock_connectors(
         opt = torch.optim.AdamW(connector.parameters(), lr=lr, weight_decay=1e-4)
         sched = torch.optim.lr_scheduler.LambdaLR(opt, lr_lambda=_lr_lambda)
 
-        best_dev_nll = float("inf")
-        best_state = None
-        best_epoch = 0
-        history = []
         t_start = time.perf_counter()
 
         for ep in range(1, epochs + 1):
+            ep_global = ep_offset + ep
             connector.train()
-            rng_ep = random.Random(seed + ep)
-            order = list(range(len(tr_minibatches)))
+            rng_ep = random.Random(seed + ep_global)
+            order = list(weighted_pool)
             rng_ep.shuffle(order)
             order = order[:steps_per_ep]
 
@@ -447,7 +487,7 @@ def train_and_lock_connectors(
                 tr_loss_sum += mb_loss_sum
                 tr_cnt += mb_total
 
-            # Evaluate on s3_dev with detailed per-task breakdown
+            # Evaluate on unweighted s3_dev with detailed per-task breakdown
             connector.eval()
             dev_loss_sum = 0.0
             dev_cnt = 0
@@ -470,8 +510,8 @@ def train_and_lock_connectors(
                     elif g["qtype"] == "Q2" and g["arm"] == "none":
                         bkey = "q2_none"
 
-                    for st in range(0, n, batch_size):
-                        ed = min(n, st + batch_size)
+                    for st in range(0, n, dev_eval_bs):
+                        ed = min(n, st + dev_eval_bs)
                         z1 = torch.tensor(g["z1"][st:ed], dtype=torch.long)
                         z2 = torch.tensor(g["z2"][st:ed], dtype=torch.long)
                         r_list = [torch.tensor(rf[st:ed], dtype=torch.float32) for rf in g["ref_feats_list"]]
@@ -489,7 +529,7 @@ def train_and_lock_connectors(
             dev_nll = dev_loss_sum / max(1, dev_cnt)
             tr_nll = tr_loss_sum / max(1, tr_cnt)
             ep_rec = {
-                "epoch": ep,
+                "epoch": ep_global,
                 "train_nll": round(tr_nll, 5),
                 "dev_nll": round(dev_nll, 5),
                 "q1_acc": round(bkt["q1"][1] / max(1, bkt["q1"][2]), 4),
@@ -502,7 +542,7 @@ def train_and_lock_connectors(
             }
             history.append(ep_rec)
             print(
-                f"[{enc_name}] ep={ep}/{epochs} train_nll={tr_nll:.4f} dev_nll={dev_nll:.4f} | "
+                f"[{enc_name}] ep={ep_global}/{ep_offset + epochs} train_nll={tr_nll:.4f} dev_nll={dev_nll:.4f} | "
                 f"q1={ep_rec['q1_acc']:.3f}({ep_rec['q1_nll']:.3f}) "
                 f"q3r={ep_rec['q3_rep_acc']:.3f}({ep_rec['q3_rep_nll']:.3f}) "
                 f"q2v={ep_rec['q2_val_acc']:.3f}({ep_rec['q2_val_nll']:.3f}) "
@@ -511,10 +551,10 @@ def train_and_lock_connectors(
             )
             if dev_nll < best_dev_nll:
                 best_dev_nll = dev_nll
-                best_epoch = ep
+                best_epoch = ep_global
                 best_state = {k: v.detach().cpu().clone() for k, v in connector.state_dict().items()}
 
-        train_time_s = time.perf_counter() - t_start
+        train_time_s = prior_time_s + (time.perf_counter() - t_start)
         connector.load_state_dict(best_state)
         connector.eval()
 
@@ -522,7 +562,7 @@ def train_and_lock_connectors(
         from research.stage3_ministral_cache.eval_host import evaluate_host_on_split_subset
 
         dev_res = evaluate_host_on_split_subset(
-            host, connector, enc, "s3_dev", TRAIN_CONDITIONS, max_blocks=dev_blocks, batch_size=batch_size
+            host, connector, enc, "s3_dev", TRAIN_CONDITIONS, max_blocks=dev_blocks, batch_size=dev_eval_bs
         )
         # Measure max & p95 rotation/hold/duplicate residuals strictly on dev to lock tau_host before test!
         rot_max = max(
@@ -552,7 +592,6 @@ def train_and_lock_connectors(
                 best_cal_nll = nll_c
                 best_temp = cand_t
 
-        ckpt_path = weights_dir / f"connector_{enc_name}.pt"
         torch.save(
             {
                 "encoder_name": enc_name,
@@ -577,6 +616,7 @@ def train_and_lock_connectors(
 
         train_summaries[enc_name] = {
             "trainable_params": connector.param_count(),
+            "resumed_from_epoch": ep_offset,
             "best_epoch": best_epoch,
             "best_dev_nll": best_dev_nll,
             "dev_cal_temp": best_temp,
@@ -617,14 +657,15 @@ if __name__ == "__main__":
     ap.add_argument("--train", action="store_true")
     ap.add_argument("--model-id", default=MODEL_ID_DEFAULT)
     ap.add_argument("--encoders", default="equivariant_b8_s17,hand_b8,plain_b8_s17")
-    ap.add_argument("--epochs", type=int, default=6)
+    ap.add_argument("--epochs", type=int, default=12)
     ap.add_argument("--batch-size", type=int, default=32)
-    ap.add_argument("--micro-batch-size", type=int, default=16)
+    ap.add_argument("--micro-batch-size", type=int, default=32)
     ap.add_argument("--lr", type=float, default=1.5e-3)
     ap.add_argument("--train-blocks", type=int, default=8)
     ap.add_argument("--dev-blocks", type=int, default=2)
     ap.add_argument("--test-blocks", type=int, default=None)
     ap.add_argument("--max-steps-per-epoch", type=int, default=250)
+    ap.add_argument("--resume", action="store_true")
     args = ap.parse_args()
 
     if args.smoke:
@@ -643,4 +684,5 @@ if __name__ == "__main__":
             dev_blocks=args.dev_blocks,
             host_test_blocks=args.test_blocks,
             max_steps_per_epoch=args.max_steps_per_epoch,
+            resume=args.resume,
         )
