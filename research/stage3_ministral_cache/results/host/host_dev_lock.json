@@ -1,0 +1,42 @@
+{
+  "model_id": "mistralai/Ministral-3-3B-Instruct-2512-BF16",
+  "hf_sha": "b6d637bef2393152b3da2b2fde72eecdee30557e",
+  "dtype": "torch.bfloat16",
+  "host_sha256": "03876daa7c2bdd4d396d5b4055b2f87e57ad7f592a1918673da3a7b70531ece7",
+  "train_blocks": 8,
+  "dev_blocks": 2,
+  "batch_size": 32,
+  "micro_batch_size": 32,
+  "max_steps_per_epoch": 250,
+  "host_test_blocks_locked": 2,
+  "seed": 20261123,
+  "encoders": {
+    "equivariant_b8_s17": {
+      "dev_rot_hold_max_abs": 0.6563322581350803,
+      "dev_dup_max_abs": 0.0,
+      "locked_tau_rot_hold": 0.2,
+      "locked_tau_dup": 0.0001,
+      "locked_temp": 1.1,
+      "checkpoint_sha256": "597d5a779e29cba1205aca7ca0194cd934c0eed6cbf7a08e80cf8d20d4981c93"
+    },
+    "hand_b8": {
+      "dev_rot_hold_max_abs": 0.7085082195699215,
+      "dev_dup_max_abs": 0.0,
+      "locked_tau_rot_hold": 0.2,
+      "locked_tau_dup": 0.0001,
+      "locked_temp": 1.1,
+      "checkpoint_sha256": "4181ca840481802f7d3d812c05122e93ea224184a02447c22a37a28dd022e2b6"
+    },
+    "plain_b8_s17": {
+      "dev_rot_hold_max_abs": 0.9335575038567185,
+      "dev_dup_max_abs": 0.0,
+      "locked_tau_rot_hold": 0.2,
+      "locked_tau_dup": 0.0001,
+      "locked_temp": 1.1,
+      "checkpoint_sha256": "eadb110a6b5ba49f6ec7b7b68ed1244602f9a309c5ed3f48e2d2c4ea72ba70d1"
+    }
+  },
+  "host_sha256_after": "03876daa7c2bdd4d396d5b4055b2f87e57ad7f592a1918673da3a7b70531ece7",
+  "host_sha_identical": true,
+  "peak_vram_mb": 52985.8
+}
