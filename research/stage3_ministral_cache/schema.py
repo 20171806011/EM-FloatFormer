@@ -244,7 +244,7 @@ def build_query_prompt(
                 tag = "同信道" if r.shares_channel else "独立无关"
                 tok = "<REF>" if include_ref_token else ""
                 items.append(f"[编号={r.acquisition_id},状态={tag},时刻={r.t_p:.1f}]{tok}")
-            dup_note = f"（已按唯一采集编号去重，原始共{len(references)}条，去重后{len(items)}条）"
+            dup_note = f"（已按唯一采集编号去重，共{len(items)}条独立参考）"
             ref_text = "补充参考：" + "；".join(items) + dup_note + "。"
         else:
             items = []

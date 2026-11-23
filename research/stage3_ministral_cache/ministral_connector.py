@@ -119,9 +119,9 @@ def _compute_host_fingerprint(lm: nn.Module) -> str:
     for name, p in sorted(lm.named_parameters()):
         h.update(name.encode("utf-8"))
         h.update(str(tuple(p.shape)).encode("utf-8"))
-        arr = p.detach().float()
+        arr = p.detach().to(device="cpu", dtype=torch.float32)
         stats = torch.stack([arr.mean(), arr.std(unbiased=False), arr.abs().max(), arr.flatten()[0], arr.flatten()[-1]])
-        h.update(stats.cpu().numpy().tobytes())
+        h.update(stats.numpy().tobytes())
     return h.hexdigest()
 
 
@@ -199,10 +199,9 @@ class MinistralCacheHost:
 
             self.transformers_version = getattr(transformers, "__version__", "unknown")
             if dtype is None:
-                if self.device.type == "cuda" and torch.cuda.is_bf16_supported():
-                    self.dtype = torch.bfloat16
-                elif self.device.type == "cuda":
-                    self.dtype = torch.float16
+                if self.device.type == "cuda":
+                    cap_major = torch.cuda.get_device_capability(self.device)[0]
+                    self.dtype = torch.bfloat16 if cap_major >= 8 else torch.float16
                 else:
                     self.dtype = torch.float32
             else:
@@ -269,7 +268,9 @@ class MinistralCacheHost:
 
         text_cfg = getattr(self.lm.config, "text_config", self.lm.config)
         self.hidden_size = int(text_cfg.hidden_size)
-        self._supports_logits_to_keep = "logits_to_keep" in inspect.signature(self.lm.forward).parameters
+        fwd_params = inspect.signature(self.lm.forward).parameters
+        self._supports_logits_to_keep = "logits_to_keep" in fwd_params
+        self._supports_cache_position = "cache_position" in fwd_params
         embed_weight = self.lm.get_input_embeddings().weight.detach().float()
         self.target_embed_std = float(embed_weight.std().item())
         self.host_sha256 = _compute_host_fingerprint(self.lm)
@@ -388,6 +389,8 @@ class MinistralCacheHost:
         )
         if self._supports_logits_to_keep:
             pref_kwargs["logits_to_keep"] = 1
+        if self._supports_cache_position:
+            pref_kwargs["cache_position"] = torch.arange(0, pref_l, device=self.device, dtype=torch.long)
         pref_out = self.lm(**pref_kwargs)
         first_logits = F.log_softmax(pref_out.logits[:, -1, :].float(), dim=-1)  # (B, V)
 
@@ -419,13 +422,16 @@ class MinistralCacheHost:
                 .unsqueeze(0)
                 .expand(b * 4, -1)
             )
-            cand_out = self.lm(
+            cand_kwargs = dict(
                 inputs_embeds=cand_embeds,
                 past_key_values=exp_cache,
                 attention_mask=cand_attn,
                 position_ids=cand_pos,
                 use_cache=False,
             )
+            if self._supports_cache_position:
+                cand_kwargs["cache_position"] = torch.arange(pref_l, pref_l + step_len, device=self.device, dtype=torch.long)
+            cand_out = self.lm(**cand_kwargs)
             cand_lp = F.log_softmax(cand_out.logits.float(), dim=-1)  # (B*4, step_len, V)
 
             tgt_exp = tgt_ids.unsqueeze(0).expand(b, 4, step_len).reshape(b * 4, step_len, 1)

@@ -137,10 +137,12 @@ def test_dedup_and_negative_control():
     with pytest.raises(ValueError):
         dedup_references((r_ok, r_bad_samp))
 
-    # Prompt deduplication consistency: deduped prompt emits strictly 1 <REF> for duplicate_copy
+    # Prompt deduplication consistency: deduped duplicate_copy emits strictly 1 <REF> and matches valid verbatim
+    p_valid, _ = build_query_prompt("Q2", cond, ref_arm="valid", references=batch.references_for_arm("valid"), deduplicate=True)
     p_dedup, _ = build_query_prompt("Q2", cond, ref_arm="duplicate_copy", references=batch.references_for_arm("duplicate_copy"), deduplicate=True)
     p_raw, _ = build_query_prompt("Q2", cond, ref_arm="duplicate_copy", references=batch.references_for_arm("duplicate_copy"), deduplicate=False)
     assert p_dedup.count("<REF>") == 1
+    assert p_dedup == p_valid
     assert p_raw.count("<REF>") == 2
 
 

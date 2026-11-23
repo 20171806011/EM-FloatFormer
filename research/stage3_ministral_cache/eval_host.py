@@ -55,6 +55,22 @@ def _batched_score_group(
 ) -> Tuple[np.ndarray, np.ndarray]:
     """Score a homogeneous group with zero padding; returns `(probs (N,4), raw_loglik (N,4))`."""
     n = len(z1_np)
+    if text_only_mode and extra_history is None and n > 1:
+        p1, ll1 = _batched_score_group(
+            host,
+            connector,
+            prompt,
+            choices,
+            z1_np[:1],
+            z2_np[:1],
+            [rf[:1] for rf in ref_feats_list],
+            batch_size=1,
+            temperature=temperature,
+            text_only_mode=True,
+            extra_history=None,
+        )
+        return np.repeat(p1, n, axis=0), np.repeat(ll1, n, axis=0)
+
     probs_chunks = []
     ll_chunks = []
     with torch.no_grad():
@@ -154,6 +170,7 @@ def evaluate_host_on_split_subset(
     text_only_mode: bool = False,
     shuffled_z: bool = False,
     shuffle_seed: int = 99123,
+    compact_control: bool = False,
 ) -> dict:
     """Evaluate frozen host + connector across cond_names; returns metrics, checks, and arrays."""
     if connector is not None:
@@ -175,6 +192,39 @@ def evaluate_host_on_split_subset(
                 perm = rng.permutation(n_m)
                 new_map[rot] = (z1_orig[perm], z2_orig[perm])
             codes_map = new_map
+
+        if compact_control:
+            z1_0, z2_0 = codes_map[(0, 0)]
+            y_q1 = (batch.x2 - batch.x1) % 4
+            y_q2 = batch.x1 % 4
+            y_q3_rep = sector_of_complex(matched_sum(batch.y3_repeat))
+
+            p1, ch1 = build_query_prompt("Q1", cond)
+            pr1, _ = _batched_score_group(
+                host, connector, p1, ch1, z1_0, z2_0, [], batch_size=batch_size, temperature=cal_temp, text_only_mode=text_only_mode
+            )
+            p3, ch3 = build_query_prompt("Q3", cond, protocol="repeat_x1")
+            pr3, _ = _batched_score_group(
+                host, connector, p3, ch3, z1_0, z2_0, [], batch_size=batch_size, temperature=cal_temp, text_only_mode=text_only_mode
+            )
+            refs_v = batch.references_for_arm("valid", coord_rot=0)
+            p2, ch2 = build_query_prompt("Q2", cond, ref_arm="valid", references=refs_v, deduplicate=True)
+            pr2, _ = _batched_score_group(
+                host, connector, p2, ch2, z1_0, z2_0, _unique_ref_feats(refs_v), batch_size=batch_size, temperature=cal_temp, text_only_mode=text_only_mode
+            )
+            m1 = compute_classification_metrics(pr1, y_q1)
+            m3 = compute_classification_metrics(pr3, y_q3_rep)
+            m2 = compute_classification_metrics(pr2, y_q2)
+            cond_out[cname] = {
+                "condition": cname,
+                "mothers": int(n_m),
+                "elapsed_s": round(time.perf_counter() - t0, 2),
+                "compact_control": True,
+                "q1": {k: m1[k] for k in ("n", "acc", "nll", "brier", "ece")},
+                "q3_repeat": {k: m3[k] for k in ("n", "acc", "nll", "brier", "ece")},
+                "q2_by_arm": {"valid": {k: m2[k] for k in ("n", "acc", "nll", "brier", "ece")}},
+            }
+            continue
 
         preds_q1, ll_q1, labels_q1 = [], [], []
         preds_q3_rep, ll_q3_rep, labels_q3_rep = [], [], []
@@ -539,7 +589,8 @@ def run_blind_host_evaluation(
                 f"[HOST {enc_name} | {cname}] Q1={c_m['q1']['acc']:.4f} "
                 f"Q3_rep={c_m['q3_repeat']['acc']:.4f} (NLL={c_m['q3_repeat']['nll']:.4f}) "
                 f"Q2_val={c_m['q2_by_arm']['valid']['acc']:.4f} "
-                f"pass={c_m['all_three_pass']} raw_dup_tv={c_m['raw_duplicate_probe_mean_tv']:.4f}"
+                f"pass={c_m['all_three_pass']} raw_dup_tv={c_m['raw_duplicate_probe_mean_tv']:.4f}",
+                flush=True,
             )
         if enc_name != "equivariant_b8_s17":
             del connector
@@ -582,6 +633,7 @@ def run_blind_host_evaluation(
         tol_rot_hold=float(prim_lock["locked_tau_rot_hold"]),
         tol_dup=float(prim_lock["locked_tau_dup"]),
         shuffled_z=True,
+        compact_control=True,
     )
     c6_order_probe = _evaluate_question_order_probe(
         host, prim_conn, models[prim_enc_name], "s3_test", float(prim_lock["locked_temp"]), batch_size=batch_size

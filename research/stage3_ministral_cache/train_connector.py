@@ -242,10 +242,14 @@ def run_smoke_verification(
     gpu_name = torch.cuda.get_device_name(host.device) if host.device.type == "cuda" else "CPU"
 
     # Decide blind test block budget cleanly before touching s3_test:
-    # Each block = 64 mothers * ~24 unique rows * 7 conditions = ~10,752 queries.
-    # At `infer_ms_per_example`, estimate total eval wall time for 2 blocks (128 mothers) vs 4 blocks (256 mothers).
-    est_sec_4blocks = (4 * 10752 * infer_ms_per_example) / 1000.0
-    rec_test_blocks = 4 if est_sec_4blocks <= 480.0 else 2
+    # Each block = 64 mothers; across 3 encoders * ~31 groups * 7 conds = ~41,664 queries per block.
+    est_s_1blk = (41664 * infer_ms_per_example) / 1000.0
+    if 4 * est_s_1blk <= 600.0:
+        rec_test_blocks = 4
+    elif 2 * est_s_1blk <= 720.0:
+        rec_test_blocks = 2
+    else:
+        rec_test_blocks = 1
 
     smoke_report = {
         "model_id": model_id,
@@ -284,14 +288,14 @@ def run_smoke_verification(
 def train_and_lock_connectors(
     host: MinistralCacheHost,
     encoders: Sequence[str] = ("equivariant_b8_s17", "hand_b8", "plain_b8_s17"),
-    epochs: int = 4,
-    batch_size: int = 32,
+    epochs: int = 3,
+    batch_size: int = 16,
     micro_batch_size: int = 4,
     lr: float = 3.0e-3,
-    train_blocks: int = 2,     # 128 mothers * 3 conds * ~20 rows -> ~7,680 train examples (T4-friendly)
-    dev_blocks: int = 2,       # 128 mothers on s3_dev for early stop & tolerance lock
+    train_blocks: int = 2,     # 128 mothers * 3 conds * ~20 rows -> ~7,680 train examples
+    dev_blocks: int = 1,       # 64 mothers on s3_dev for early stop & tolerance lock
     host_test_blocks: Optional[int] = None,
-    max_steps_per_epoch: Optional[int] = 120,
+    max_steps_per_epoch: Optional[int] = 60,
     seed: int = 20261123,
     out_dir: Optional[Path] = None,
 ) -> dict:
@@ -413,7 +417,7 @@ def train_and_lock_connectors(
             dev_nll = dev_loss_sum / max(1, dev_cnt)
             tr_nll = tr_loss_sum / max(1, tr_cnt)
             history.append({"epoch": ep, "train_nll": round(tr_nll, 5), "dev_nll": round(dev_nll, 5)})
-            print(f"[{enc_name}] ep={ep}/{epochs} train_nll={tr_nll:.4f} dev_nll={dev_nll:.4f}")
+            print(f"[{enc_name}] ep={ep}/{epochs} train_nll={tr_nll:.4f} dev_nll={dev_nll:.4f}", flush=True)
             if dev_nll < best_dev_nll:
                 best_dev_nll = dev_nll
                 best_epoch = ep
@@ -521,14 +525,14 @@ if __name__ == "__main__":
     ap.add_argument("--train", action="store_true")
     ap.add_argument("--model-id", default=MODEL_ID_DEFAULT)
     ap.add_argument("--encoders", default="equivariant_b8_s17,hand_b8,plain_b8_s17")
-    ap.add_argument("--epochs", type=int, default=4)
-    ap.add_argument("--batch-size", type=int, default=32)
+    ap.add_argument("--epochs", type=int, default=3)
+    ap.add_argument("--batch-size", type=int, default=16)
     ap.add_argument("--micro-batch-size", type=int, default=4)
     ap.add_argument("--lr", type=float, default=3.0e-3)
     ap.add_argument("--train-blocks", type=int, default=2)
-    ap.add_argument("--dev-blocks", type=int, default=2)
+    ap.add_argument("--dev-blocks", type=int, default=1)
     ap.add_argument("--test-blocks", type=int, default=None)
-    ap.add_argument("--max-steps-per-epoch", type=int, default=120)
+    ap.add_argument("--max-steps-per-epoch", type=int, default=60)
     args = ap.parse_args()
 
     if args.smoke:
