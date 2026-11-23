@@ -1,0 +1,149 @@
+{
+  "split": "test",
+  "mothers": 1024,
+  "paired_rows": 12288,
+  "tolerance": 3e-13,
+  "arms": {
+    "none": {
+      "q1_accuracy": 0.6920572916666666,
+      "q1_nll": 0.9196090548608029,
+      "q2_accuracy": 0.25,
+      "q2_nll": 1.3862943611198253
+    },
+    "valid": {
+      "q1_accuracy": 0.6920572916666666,
+      "q1_nll": 0.9196090548608029,
+      "q2_accuracy": 0.6907552083333334,
+      "q2_nll": 0.8495748324503584
+    },
+    "independent": {
+      "q1_accuracy": 0.6920572916666666,
+      "q1_nll": 0.9196090548608029,
+      "q2_accuracy": 0.25,
+      "q2_nll": 1.3862943611198253
+    },
+    "duplicate": {
+      "q1_accuracy": 0.6920572916666666,
+      "q1_nll": 0.9196090548608029,
+      "q2_accuracy": 0.6907552083333334,
+      "q2_nll": 0.8495748324503584
+    }
+  },
+  "checks": {
+    "independent_equals_none": {
+      "rows": 3072,
+      "failed_rows": 0,
+      "max_abs": 0.0,
+      "mean_tv": 0.0
+    },
+    "independent_uniform": {
+      "rows": 3072,
+      "failed_rows": 0,
+      "max_abs": 0.0,
+      "mean_tv": 0.0
+    },
+    "duplicate_equals_valid": {
+      "rows": 3072,
+      "failed_rows": 0,
+      "max_abs": 0.0,
+      "mean_tv": 0.0
+    },
+    "coordinate_q1_invariant": {
+      "rows": 3072,
+      "failed_rows": 3072,
+      "max_abs": 0.5139722785711345,
+      "mean_tv": 0.015410238322670014
+    },
+    "coordinate_q2_invariant": {
+      "rows": 3072,
+      "failed_rows": 3072,
+      "max_abs": 0.6962487302089277,
+      "mean_tv": 0.00797132273317986
+    },
+    "q1_second_rotates": {
+      "rows": 1024,
+      "failed_rows": 1024,
+      "max_abs": 0.5138431843062061,
+      "mean_tv": 0.008704645599459975
+    },
+    "q2_second_invariant": {
+      "rows": 4096,
+      "failed_rows": 0,
+      "max_abs": 0.0,
+      "mean_tv": 0.0
+    },
+    "q1_both_invariant": {
+      "rows": 1024,
+      "failed_rows": 1024,
+      "max_abs": 0.509977710691,
+      "mean_tv": 0.014001988368625477
+    },
+    "q2_both_rotates": {
+      "rows": 4096,
+      "failed_rows": 2048,
+      "max_abs": 0.6962487302089277,
+      "mean_tv": 0.003883342283356121
+    }
+  },
+  "examples": {
+    "first_failed_pair": {
+      "mother": [
+        "test",
+        0
+      ],
+      "check": "coordinate_q1_invariant",
+      "arm": null,
+      "variant": 0,
+      "expected": [
+        0.15717077830099524,
+        0.6591871113639192,
+        0.14832788809316158,
+        0.035314222241922606
+      ],
+      "actual": [
+        0.15184591391494479,
+        0.6552467984079879,
+        0.15653657460222192,
+        0.03637071307484521
+      ]
+    },
+    "first_nonuniform_success": null
+  },
+  "three_properties": {
+    "rotate": {
+      "mothers_failed": 1024,
+      "pass": false
+    },
+    "hold": {
+      "mothers_failed": 1024,
+      "pass": false
+    },
+    "duplicate": {
+      "mothers_failed": 0,
+      "pass": true
+    }
+  },
+  "all_three": {
+    "mothers_failed": 1024,
+    "strict_vectors_pass": false,
+    "nontrivial_answers": true,
+    "pass": false
+  },
+  "valid_update": {
+    "paired_windows": 3072,
+    "corrected": 1593,
+    "new_errors": 239
+  },
+  "negative_control": {
+    "mean_tv_double_count_on_original": 0.07360326969563603,
+    "max_tv_double_count_on_original": 0.18101806250619346
+  },
+  "duplicate_max_confidence_increase": 0.0,
+  "cache": {
+    "bits": 4,
+    "cell": "uint8",
+    "packed_states_used": 16,
+    "window_states_used": 4,
+    "packed_states_allowed": 16
+  }
+}
