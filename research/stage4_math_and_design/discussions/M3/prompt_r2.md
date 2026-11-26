@@ -1,0 +1,25 @@
+# Track M3 (Round 2): Correlated Multi-Clock Pilots, Non-Double-Counting Innovations & Stage 6 Active Mixture Interface
+
+You are resuming persistent Codex session **Track M3** (`01a21948-9063-7e31-91b9-46869eeabbdc`) in `C:\Users\李则徐\.gemini\antigravity\scratch\EM-FloatFormer-stage4`. Keep edits STRICTLY inside `research/stage4_math_and_design/M3/` and run Python ONLY via `uv run --python 3.12 ...`.
+
+## 1. Cross-Track Demands on `RefSufficientPool` (From M1, M2, M4, M5, M6)
+1. **From M4 (NO DOUBLE-COUNTING & Correlated Hardware Noise/State)**:
+   - On Pluto (`15, 18` of Copy 1; sync `0:13` in baseline state $\mathcal{F}^0$) and CTTC (`126, 127` revealed pilots; `0:6` sync in $\mathcal{F}^0$), causal sync and earlier split history have ALREADY formed a causal prior state `(H_0, d_0, omega_hat, P_0, sigma_phi)`!
+   - Furthermore, real hardware pilots at nearby lags (e.g., CTTC `126, 127` adjacent symbols through `256`-tap RRC pulse / residual ISI / shared CFO error $\epsilon_\omega$) can share **estimation uncertainty or noise covariance** $K_{\text{ref}}$ AND may use known QPSK pilot roots $d_m \neq 1$!
+   - **Crucial Warning from M4**: `RefSufficientPool` MUST NOT double-count observations already conditioned inside M4's $\mathcal{F}^0$ causal state! When adding `(R_1, R_2)` onto $\mathcal{F}^0$, `RefSufficientPool` must emit the **conditional likelihood / innovation factor** given the prior state (and explicitly track which `acquisition_id`s already contributed to $\mathcal{F}^0$!).
+2. **From M1 (Unified Likelihood Interface + Shared CFO Uncertainty)**:
+   - M1 asked: can `RefSufficientPool` accept per-pilot timestamps (including **$t_p > t_3$**!), known pilot symbols $d_m$, shared CFO uncertainty $(\hat\omega, v_\omega)$ (remember CFO rate error scales phase variance as $v_\omega (t_j - t_i)^2$, creating cross-clock quadratic coupling beyond Brownian diffusion $\sigma_\phi^2 |t_j - t_i|$!), AND return joint factors `canonical_q2[4]`, `canonical_q3[4]`, and optional `joint[4,4]` relative to receiver frame $a_1$ (while keeping exact zero-influence distractors and byte-identical fixed-position prompt tokens)?
+3. **From M5 (Stage 6 Ultimate Blind Test EIG & Pre-Reveal Predictive Mixtures)**:
+   - Before revealing candidate window $a$, M5 computes $f_{ha}(x) = \int p(Y_a = x \mid u, h, z) dP(u \mid z, h)$ and $\text{EIG}(a \mid z) = I(H; Y_a \mid z)$, THEN reveals ONE sealed acquisition $(id_a, t_a, y_a)$ into `RefSufficientPool`! Notice if `RefSufficientPool` represents each candidate hypothesis / phase-node state as clean `(phase_grid, log_weights_by_turn[4, N_nodes], clock_meta)`, then BOTH M5's pre-reveal $\text{EIG}$ integral AND post-reveal Bayes update share ONE exact mathematical engine!
+4. **From M2 & M6 (Idempotence, Byte-Exact Prefix Invariance & Calibrated Comparison)**:
+   - Require exact verification that:
+     - Raw duplicate IDs, masked `shares_channel=False` distractors, padded empty slots, and permuted input ordering produce **literally byte-identical** fixed-slot tensors / prefix embeddings and `0.0` KL/TV shift;
+     - Contrast-check native host logits (`Arm 1`) vs physical+residual (`Arm 2`) vs `q2_reader` posterior under dev-locked calibration.
+
+## 2. Specific Round-2 Convergence Tasks for Track M3
+Update `research/stage4_math_and_design/M3/THEOREM_M3.md`, `verify_m3.py`, and `results_m3.json`:
+1. **Extend Theorem 2 (Joint Brownian + Latent CFO Uncertainty + Correlated Pilot Noise + Anti-Double-Counting Theorem)**:
+   - Derive the exact innovation factorization $p(\mathcal{R} \setminus \mathcal{F}^0 \mid \mathcal{F}^0, G, \boldsymbol{\phi}, \omega)$ when causal history $\mathcal{F}^0$ provides prior $(\hat\omega_0, v_\omega, P_{\phi,0})$ and new pilots have covariance $K_{\text{ref}}$: prove the **exact Schur-complement innovation sufficient statistic** and prove strictly what happens if an observation already in $\mathcal{F}^0$ is accidentally re-counted (`variance underestimation / overconfident false calibration KL`!).
+   - Derive the augmented Gaussian covariance $(B_{t_j} + \tilde\omega t_j)$ combining Brownian increments $\sigma_\phi^2 \min(t_j, t_k)$ AND shared linear CFO prior variance $v_\omega t_j t_k$ (note rank-1 rank addition cleanly solved by Sherman-Morrison or appending 1 Gaussian-Hermite quadrature node over $\tilde\omega$!).
+2. **Freeze the Unified Multi-Stage `RefSufficientPool` Schema** serving **M1 (`EquivariantEvidenceConnector`) + M4 (Pluto `15,18`, CTTC `126,127`, duplicate/missing provenance) + M5 (Stage 6 pre-reveal mixture & EIG)** simultaneously!
+3. Add deterministic CPU unit/property verifications inside `verify_m3.py` (keep total runtime concise `< 60s` or reuse cached fast quadrature; verify: (i) zero double-counting invariant against prior state, (ii) non-trivial shared CFO + Brownian multi-clock gain vs naive sum, (iii) byte-exact `uint8`/`float32` representation identity across shuffled/duplicate/distractor/padded `RefPool` inputs, and (iv) Stage 6 pre-reveal predictive marginal + post-reveal Bayes update consistency!). Run via `uv run` and report in `reply_r2.md`.

@@ -1,0 +1,3309 @@
+{
+  "track": "W4",
+  "round": 2,
+  "runtime": {
+    "python": "3.12.7",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "torch": "2.12.1+cpu",
+    "elapsed_seconds": 45.56
+  },
+  "vram_and_scaling": {
+    "static_anchors_4b": {
+      "measured_model_load_mib": 8021.9,
+      "predicted_model_load_mib": 8021.83,
+      "measured_post_step_base_mib": 8055.2,
+      "predicted_post_step_base_mib": 8055.17,
+      "analytic_vs_measured_param_count": {
+        "analytic": 4205751296,
+        "measured": 4205751296,
+        "rel_diff_pct": 0.0
+      }
+    },
+    "stage3d_calibration": [
+      {
+        "benchmark": "Q3_after_pilot_kv_mb16_train",
+        "measured_mib": 52972.5,
+        "predicted_mib": 53051.09,
+        "error_mib": 78.59,
+        "rel_error_pct": 0.148,
+        "components": {
+          "static_mib": 8055.17,
+          "cache_mib": 3850.0,
+          "logits_softmax_mib": 3182.81,
+          "activations_mib": 37963.1
+        }
+      },
+      {
+        "benchmark": "Q3_after_pilot_kv_mb8_train",
+        "measured_mib": 30514.6,
+        "predicted_mib": 30553.13,
+        "error_mib": 38.53,
+        "rel_error_pct": 0.126,
+        "components": {
+          "static_mib": 8055.17,
+          "cache_mib": 1925.0,
+          "logits_softmax_mib": 1591.41,
+          "activations_mib": 18981.55
+        }
+      },
+      {
+        "benchmark": "Q2_fresh_resample_kv_mb16_train",
+        "measured_mib": 43763.7,
+        "predicted_mib": 43764.01,
+        "error_mib": 0.31,
+        "rel_error_pct": 0.001,
+        "components": {
+          "static_mib": 8055.17,
+          "cache_mib": 3766.0,
+          "logits_softmax_mib": 1060.94,
+          "activations_mib": 30881.9
+        }
+      },
+      {
+        "benchmark": "Q2_fresh_resample_kv_mb8_train",
+        "measured_mib": 25910.3,
+        "predicted_mib": 25909.59,
+        "error_mib": -0.71,
+        "rel_error_pct": 0.003,
+        "components": {
+          "static_mib": 8055.17,
+          "cache_mib": 1883.0,
+          "logits_softmax_mib": 530.47,
+          "activations_mib": 15440.95
+        }
+      },
+      {
+        "benchmark": "Q3_repeat_batched_ckpt_mb4",
+        "measured_mib": 9910.2,
+        "predicted_mib": 9877.3,
+        "error_mib": -32.9,
+        "rel_error_pct": 0.332,
+        "components": {
+          "static_mib": 8055.17,
+          "cache_mib": 0.0,
+          "logits_softmax_mib": 0.0,
+          "activations_mib": 1822.13
+        }
+      },
+      {
+        "benchmark": "Q3_repeat_batched_ckpt_mb8",
+        "measured_mib": 11736.3,
+        "predicted_mib": 11699.43,
+        "error_mib": -36.87,
+        "rel_error_pct": 0.314,
+        "components": {
+          "static_mib": 8055.17,
+          "cache_mib": 0.0,
+          "logits_softmax_mib": 0.0,
+          "activations_mib": 3644.25
+        }
+      },
+      {
+        "benchmark": "Q3_repeat_batched_ckpt_mb16",
+        "measured_mib": 15388.6,
+        "predicted_mib": 15343.68,
+        "error_mib": -44.92,
+        "rel_error_pct": 0.292,
+        "components": {
+          "static_mib": 8055.17,
+          "cache_mib": 0.0,
+          "logits_softmax_mib": 0.0,
+          "activations_mib": 7288.5
+        }
+      },
+      {
+        "benchmark": "Q3_repeat_batched_ckpt_mb32",
+        "measured_mib": 22693.0,
+        "predicted_mib": 22632.18,
+        "error_mib": -60.82,
+        "rel_error_pct": 0.268,
+        "components": {
+          "static_mib": 8055.17,
+          "cache_mib": 0.0,
+          "logits_softmax_mib": 0.0,
+          "activations_mib": 14577.01
+        }
+      },
+      {
+        "benchmark": "Q3_after_pilot_eval_b32",
+        "measured_mib": 26728.4,
+        "predicted_mib": 26730.71,
+        "error_mib": 2.31,
+        "rel_error_pct": 0.009,
+        "components": {
+          "static_mib": 8046.84,
+          "cache_mib": 9625.0,
+          "logits_softmax_mib": 4546.88,
+          "activations_mib": 4512.0
+        }
+      },
+      {
+        "benchmark": "Q3_after_pilot_eval_b64",
+        "measured_mib": 45409.9,
+        "predicted_mib": 45414.59,
+        "error_mib": 4.69,
+        "rel_error_pct": 0.01,
+        "components": {
+          "static_mib": 8046.84,
+          "cache_mib": 19250.0,
+          "logits_softmax_mib": 9093.75,
+          "activations_mib": 9024.0
+        }
+      }
+    ],
+    "max_calibration_rel_error_pct": 0.332,
+    "scaling_matrix_4b_9b_27b": {
+      "Qwen3.5-4B": {
+        "exact_analytic_params": 4205751296,
+        "effective_params": 4205751296,
+        "mlp_param_share_pct": 53.85,
+        "bf16_weights_mib": 8021.83,
+        "lora_r8_half_layers_params": 5062656,
+        "configs": {
+          "frozen_conn_kv_train_mb16": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 0.0,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 8055.17,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 37963.1,
+            "dyn_per_ex_mib": 2812.24,
+            "peak_vram_mib": 53051.09,
+            "peak_vram_gib": 51.808,
+            "trainable_host_params": 0,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 1.9757
+          },
+          "frozen_conn_kv_train_mb8": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 0.0,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 8055.17,
+            "dyn_cache_mib": 1925.0,
+            "dyn_logits_softmax_mib": 1591.41,
+            "dyn_activations_mib": 18981.55,
+            "dyn_per_ex_mib": 2812.24,
+            "peak_vram_mib": 30553.13,
+            "peak_vram_gib": 29.837,
+            "trainable_host_params": 0,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 2.1397
+          },
+          "frozen_conn_batched_ckpt_train_mb16": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 0.0,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 8055.17,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 8507.4,
+            "dyn_per_ex_mib": 531.71,
+            "peak_vram_mib": 16562.57,
+            "peak_vram_gib": 16.174,
+            "trainable_host_params": 0,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 5.2356
+          },
+          "full_ft_fp32opt_kv_train_mb16": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 56152.84,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 64208.01,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 37963.1,
+            "dyn_per_ex_mib": 2812.24,
+            "peak_vram_mib": 109203.92,
+            "peak_vram_gib": 106.644,
+            "trainable_host_params": 4205751296,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 2.6079
+          },
+          "full_ft_fp32opt_kv_train_mb8": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 56152.84,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 64208.01,
+            "dyn_cache_mib": 1925.0,
+            "dyn_logits_softmax_mib": 1591.41,
+            "dyn_activations_mib": 18981.55,
+            "dyn_per_ex_mib": 2812.24,
+            "peak_vram_mib": 86705.97,
+            "peak_vram_gib": 84.674,
+            "trainable_host_params": 4205751296,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 2.8244
+          },
+          "full_ft_fp32opt_batched_ckpt_train_mb16": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 56152.84,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 64208.01,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 8507.4,
+            "dyn_per_ex_mib": 531.71,
+            "peak_vram_mib": 72715.41,
+            "peak_vram_gib": 71.011,
+            "trainable_host_params": 4205751296,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 6.911
+          },
+          "full_ft_bf16opt_kv_train_mb16": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 40109.17,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 48164.34,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 37963.1,
+            "dyn_per_ex_mib": 2812.24,
+            "peak_vram_mib": 93160.26,
+            "peak_vram_gib": 90.977,
+            "trainable_host_params": 4205751296,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 2.5289
+          },
+          "full_ft_8bit_batched_ckpt_train_mb16": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 32087.34,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 40142.51,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 8507.4,
+            "dyn_per_ex_mib": 531.71,
+            "peak_vram_mib": 48649.91,
+            "peak_vram_gib": 47.51,
+            "trainable_host_params": 4205751296,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 7.0681
+          },
+          "lora_bf16_kv_train_mb16_r4": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 60.33,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 8115.5,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 37966.12,
+            "dyn_per_ex_mib": 2812.43,
+            "peak_vram_mib": 53114.43,
+            "peak_vram_gib": 51.87,
+            "trainable_host_params": 3514368,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 2.2128
+          },
+          "lora_bf16_kv_train_mb16_r8": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 86.91,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 8142.08,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 37969.13,
+            "dyn_per_ex_mib": 2812.62,
+            "peak_vram_mib": 53144.02,
+            "peak_vram_gib": 51.898,
+            "trainable_host_params": 5062656,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 2.2128
+          },
+          "lora_bf16_kv_train_mb16_r16": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 140.06,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 8195.24,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 37975.16,
+            "dyn_per_ex_mib": 2813.0,
+            "peak_vram_mib": 53203.21,
+            "peak_vram_gib": 51.956,
+            "trainable_host_params": 8159232,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 2.2128
+          },
+          "lora_bf16_kv_train_mb8_r8": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 86.91,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 8142.08,
+            "dyn_cache_mib": 1925.0,
+            "dyn_logits_softmax_mib": 1591.41,
+            "dyn_activations_mib": 18984.57,
+            "dyn_per_ex_mib": 2812.62,
+            "peak_vram_mib": 30643.05,
+            "peak_vram_gib": 29.925,
+            "trainable_host_params": 5062656,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 2.3965
+          },
+          "lora_bf16_batched_ckpt_train_mb16_r8": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 86.91,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 8142.08,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 8528.77,
+            "dyn_per_ex_mib": 533.05,
+            "peak_vram_mib": 16670.85,
+            "peak_vram_gib": 16.28,
+            "trainable_host_params": 5062656,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 5.8639
+          },
+          "lora_bf16_batched_ckpt_train_mb8_r8": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 86.91,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 8142.08,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 4264.39,
+            "dyn_per_ex_mib": 533.05,
+            "peak_vram_mib": 12406.47,
+            "peak_vram_gib": 12.116,
+            "trainable_host_params": 5062656,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 6.3506
+          },
+          "lora_8bit_kv_train_mb16_r8": {
+            "static_host_weights_mib": 8021.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 57.94,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 8113.11,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 37969.13,
+            "dyn_per_ex_mib": 2812.62,
+            "peak_vram_mib": 53115.06,
+            "peak_vram_gib": 51.87,
+            "trainable_host_params": 5062656,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 2.2721
+          },
+          "qlora_nf4_kv_train_mb16_r8": {
+            "static_host_weights_mib": 3085.41,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 86.91,
+            "static_dequant_buf_mib": 135.0,
+            "static_total_mib": 3340.66,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 37969.13,
+            "dyn_per_ex_mib": 2812.62,
+            "peak_vram_mib": 48342.6,
+            "peak_vram_gib": 47.21,
+            "trainable_host_params": 5062656,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 2.7265
+          },
+          "qlora_nf4_kv_train_mb8_r8": {
+            "static_host_weights_mib": 3085.41,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 86.91,
+            "static_dequant_buf_mib": 135.0,
+            "static_total_mib": 3340.66,
+            "dyn_cache_mib": 1925.0,
+            "dyn_logits_softmax_mib": 1591.41,
+            "dyn_activations_mib": 18984.57,
+            "dyn_per_ex_mib": 2812.62,
+            "peak_vram_mib": 25841.63,
+            "peak_vram_gib": 25.236,
+            "trainable_host_params": 5062656,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 2.9528
+          },
+          "qlora_nf4_batched_ckpt_train_mb16_r8": {
+            "static_host_weights_mib": 3085.41,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 86.91,
+            "static_dequant_buf_mib": 135.0,
+            "static_total_mib": 3340.66,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 8528.77,
+            "dyn_per_ex_mib": 533.05,
+            "peak_vram_mib": 11869.43,
+            "peak_vram_gib": 11.591,
+            "trainable_host_params": 5062656,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 7.2251
+          },
+          "qlora_mixed_mlp_nf4_batched_ckpt_train_mb16_r8": {
+            "static_host_weights_mib": 4889.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 86.91,
+            "static_dequant_buf_mib": 135.0,
+            "static_total_mib": 5145.08,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 8528.77,
+            "dyn_per_ex_mib": 533.05,
+            "peak_vram_mib": 13673.85,
+            "peak_vram_gib": 13.353,
+            "trainable_host_params": 5062656,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 6.6492
+          },
+          "qlora_mixed_mlp_nf4_batched_ckpt_train_mb8_r8": {
+            "static_host_weights_mib": 4889.83,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 86.91,
+            "static_dequant_buf_mib": 135.0,
+            "static_total_mib": 5145.08,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 4264.39,
+            "dyn_per_ex_mib": 533.05,
+            "peak_vram_mib": 9409.47,
+            "peak_vram_gib": 9.189,
+            "trainable_host_params": 5062656,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 7.2012
+          }
+        }
+      },
+      "Qwen3.5-9B": {
+        "exact_analytic_params": 8953803264,
+        "effective_params": 8953803264,
+        "mlp_param_share_pct": 53.96,
+        "bf16_weights_mib": 17078.02,
+        "lora_r8_half_layers_params": 6881280,
+        "configs": {
+          "frozen_conn_kv_train_mb16": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 0.0,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 17111.36,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 44621.6,
+            "dyn_per_ex_mib": 3228.4,
+            "peak_vram_mib": 68765.78,
+            "peak_vram_gib": 67.154,
+            "trainable_host_params": 0,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 4.2062
+          },
+          "frozen_conn_kv_train_mb8": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 0.0,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 17111.36,
+            "dyn_cache_mib": 1925.0,
+            "dyn_logits_softmax_mib": 1591.41,
+            "dyn_activations_mib": 22310.8,
+            "dyn_per_ex_mib": 3228.4,
+            "peak_vram_mib": 42938.57,
+            "peak_vram_gib": 41.932,
+            "trainable_host_params": 0,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 4.5553
+          },
+          "frozen_conn_batched_ckpt_train_mb16": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 0.0,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 17111.36,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 11451.7,
+            "dyn_per_ex_mib": 715.73,
+            "peak_vram_mib": 28563.06,
+            "peak_vram_gib": 27.894,
+            "trainable_host_params": 0,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 11.1463
+          },
+          "full_ft_fp32opt_kv_train_mb16": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 119546.17,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 136657.54,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 44621.6,
+            "dyn_per_ex_mib": 3228.4,
+            "peak_vram_mib": 188311.95,
+            "peak_vram_gib": 183.898,
+            "trainable_host_params": 8953803264,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 5.5521
+          },
+          "full_ft_fp32opt_kv_train_mb8": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 119546.17,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 136657.54,
+            "dyn_cache_mib": 1925.0,
+            "dyn_logits_softmax_mib": 1591.41,
+            "dyn_activations_mib": 22310.8,
+            "dyn_per_ex_mib": 3228.4,
+            "peak_vram_mib": 162484.74,
+            "peak_vram_gib": 158.677,
+            "trainable_host_params": 8953803264,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 6.013
+          },
+          "full_ft_fp32opt_batched_ckpt_train_mb16": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 119546.17,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 136657.54,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 11451.7,
+            "dyn_per_ex_mib": 715.73,
+            "peak_vram_mib": 148109.23,
+            "peak_vram_gib": 144.638,
+            "trainable_host_params": 8953803264,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 14.7131
+          },
+          "full_ft_bf16opt_kv_train_mb16": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 85390.12,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 102501.49,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 44621.6,
+            "dyn_per_ex_mib": 3228.4,
+            "peak_vram_mib": 154155.9,
+            "peak_vram_gib": 150.543,
+            "trainable_host_params": 8953803264,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 5.3839
+          },
+          "full_ft_8bit_batched_ckpt_train_mb16": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 68312.1,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 85423.46,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 11451.7,
+            "dyn_per_ex_mib": 715.73,
+            "peak_vram_mib": 96875.16,
+            "peak_vram_gib": 94.605,
+            "trainable_host_params": 8953803264,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 15.0475
+          },
+          "lora_bf16_kv_train_mb16_r4": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 86.06,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 17197.43,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 44624.62,
+            "dyn_per_ex_mib": 3228.59,
+            "peak_vram_mib": 68854.85,
+            "peak_vram_gib": 67.241,
+            "trainable_host_params": 5013504,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 4.7109
+          },
+          "lora_bf16_kv_train_mb16_r8": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 118.12,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 17229.49,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 44627.63,
+            "dyn_per_ex_mib": 3228.78,
+            "peak_vram_mib": 68889.93,
+            "peak_vram_gib": 67.275,
+            "trainable_host_params": 6881280,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 4.7109
+          },
+          "lora_bf16_kv_train_mb16_r16": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 182.25,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 17293.61,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 44633.66,
+            "dyn_per_ex_mib": 3229.15,
+            "peak_vram_mib": 68960.09,
+            "peak_vram_gib": 67.344,
+            "trainable_host_params": 10616832,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 4.7109
+          },
+          "lora_bf16_kv_train_mb8_r8": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 118.12,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 17229.49,
+            "dyn_cache_mib": 1925.0,
+            "dyn_logits_softmax_mib": 1591.41,
+            "dyn_activations_mib": 22313.82,
+            "dyn_per_ex_mib": 3228.78,
+            "peak_vram_mib": 43059.71,
+            "peak_vram_gib": 42.05,
+            "trainable_host_params": 6881280,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 5.1019
+          },
+          "lora_bf16_batched_ckpt_train_mb16_r8": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 118.12,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 17229.49,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 11473.07,
+            "dyn_per_ex_mib": 717.07,
+            "peak_vram_mib": 28702.56,
+            "peak_vram_gib": 28.03,
+            "trainable_host_params": 6881280,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 12.4839
+          },
+          "lora_bf16_batched_ckpt_train_mb8_r8": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 118.12,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 17229.49,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 5736.54,
+            "dyn_per_ex_mib": 717.07,
+            "peak_vram_mib": 22966.03,
+            "peak_vram_gib": 22.428,
+            "trainable_host_params": 6881280,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 13.5201
+          },
+          "lora_8bit_kv_train_mb16_r8": {
+            "static_host_weights_mib": 17078.02,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 78.75,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 17190.11,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 44627.63,
+            "dyn_per_ex_mib": 3228.78,
+            "peak_vram_mib": 68850.56,
+            "peak_vram_gib": 67.237,
+            "trainable_host_params": 6881280,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 4.8371
+          },
+          "qlora_nf4_kv_train_mb16_r8": {
+            "static_host_weights_mib": 7510.01,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 118.12,
+            "static_dequant_buf_mib": 288.0,
+            "static_total_mib": 7949.47,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 44627.63,
+            "dyn_per_ex_mib": 3228.78,
+            "peak_vram_mib": 59609.91,
+            "peak_vram_gib": 58.213,
+            "trainable_host_params": 6881280,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 5.8045
+          },
+          "qlora_nf4_kv_train_mb8_r8": {
+            "static_host_weights_mib": 7510.01,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 118.12,
+            "static_dequant_buf_mib": 288.0,
+            "static_total_mib": 7949.47,
+            "dyn_cache_mib": 1925.0,
+            "dyn_logits_softmax_mib": 1591.41,
+            "dyn_activations_mib": 22313.82,
+            "dyn_per_ex_mib": 3228.78,
+            "peak_vram_mib": 33779.69,
+            "peak_vram_gib": 32.988,
+            "trainable_host_params": 6881280,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 6.2863
+          },
+          "qlora_nf4_batched_ckpt_train_mb16_r8": {
+            "static_host_weights_mib": 7510.01,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 118.12,
+            "static_dequant_buf_mib": 288.0,
+            "static_total_mib": 7949.47,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 11473.07,
+            "dyn_per_ex_mib": 717.07,
+            "peak_vram_mib": 19422.55,
+            "peak_vram_gib": 18.967,
+            "trainable_host_params": 6881280,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 15.3819
+          },
+          "qlora_mixed_mlp_nf4_batched_ckpt_train_mb16_r8": {
+            "static_host_weights_mib": 10396.42,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 118.12,
+            "static_dequant_buf_mib": 288.0,
+            "static_total_mib": 10835.89,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 11473.07,
+            "dyn_per_ex_mib": 717.07,
+            "peak_vram_mib": 22308.96,
+            "peak_vram_gib": 21.786,
+            "trainable_host_params": 6881280,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 14.1558
+          },
+          "qlora_mixed_mlp_nf4_batched_ckpt_train_mb8_r8": {
+            "static_host_weights_mib": 10396.42,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 118.12,
+            "static_dequant_buf_mib": 288.0,
+            "static_total_mib": 10835.89,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 5736.54,
+            "dyn_per_ex_mib": 717.07,
+            "peak_vram_mib": 16572.43,
+            "peak_vram_gib": 16.184,
+            "trainable_host_params": 6881280,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 15.3309
+          }
+        }
+      },
+      "Qwen3.8-27B": {
+        "exact_analytic_params": 26895998464,
+        "effective_params": 26895998464,
+        "mlp_param_share_pct": 63.63,
+        "bf16_weights_mib": 51300.05,
+        "lora_r8_half_layers_params": 21692416,
+        "configs": {
+          "frozen_conn_kv_train_mb16": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 0.0,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 51333.39,
+            "dyn_cache_mib": 10820.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 120277.6,
+            "dyn_per_ex_mib": 8392.53,
+            "peak_vram_mib": 185613.8,
+            "peak_vram_gib": 181.263,
+            "trainable_host_params": 0,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 12.6347
+          },
+          "frozen_conn_kv_train_mb8": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 0.0,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 51333.39,
+            "dyn_cache_mib": 5410.0,
+            "dyn_logits_softmax_mib": 1591.41,
+            "dyn_activations_mib": 60138.8,
+            "dyn_per_ex_mib": 8392.53,
+            "peak_vram_mib": 118473.59,
+            "peak_vram_gib": 115.697,
+            "trainable_host_params": 0,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 13.6835
+          },
+          "frozen_conn_batched_ckpt_train_mb16": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 0.0,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 51333.39,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 21739.14,
+            "dyn_per_ex_mib": 1358.7,
+            "peak_vram_mib": 73072.53,
+            "peak_vram_gib": 71.36,
+            "trainable_host_params": 0,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 33.482
+          },
+          "full_ft_fp32opt_kv_train_mb16": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 359100.32,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 410433.71,
+            "dyn_cache_mib": 10820.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 120277.6,
+            "dyn_per_ex_mib": 8392.53,
+            "peak_vram_mib": 544714.12,
+            "peak_vram_gib": 531.947,
+            "trainable_host_params": 26895998464,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 16.6778
+          },
+          "full_ft_fp32opt_kv_train_mb8": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 359100.32,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 410433.71,
+            "dyn_cache_mib": 5410.0,
+            "dyn_logits_softmax_mib": 1591.41,
+            "dyn_activations_mib": 60138.8,
+            "dyn_per_ex_mib": 8392.53,
+            "peak_vram_mib": 477573.91,
+            "peak_vram_gib": 466.381,
+            "trainable_host_params": 26895998464,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 18.0622
+          },
+          "full_ft_fp32opt_batched_ckpt_train_mb16": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 359100.32,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 410433.71,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 21739.14,
+            "dyn_per_ex_mib": 1358.7,
+            "peak_vram_mib": 432172.85,
+            "peak_vram_gib": 422.044,
+            "trainable_host_params": 26895998464,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 44.1962
+          },
+          "full_ft_bf16opt_kv_train_mb16": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 256500.23,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 307833.62,
+            "dyn_cache_mib": 10820.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 120277.6,
+            "dyn_per_ex_mib": 8392.53,
+            "peak_vram_mib": 442114.03,
+            "peak_vram_gib": 431.752,
+            "trainable_host_params": 26895998464,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 16.1724
+          },
+          "full_ft_8bit_batched_ckpt_train_mb16": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 205200.18,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 256533.57,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 21739.14,
+            "dyn_per_ex_mib": 1358.7,
+            "peak_vram_mib": 278272.71,
+            "peak_vram_gib": 271.751,
+            "trainable_host_params": 26895998464,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 45.2007
+          },
+          "lora_bf16_kv_train_mb16_r4": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 287.44,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 51620.82,
+            "dyn_cache_mib": 10820.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 120283.63,
+            "dyn_per_ex_mib": 8392.9,
+            "peak_vram_mib": 185907.27,
+            "peak_vram_gib": 181.55,
+            "trainable_host_params": 16744448,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 14.1509
+          },
+          "lora_bf16_kv_train_mb16_r8": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 372.38,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 51705.76,
+            "dyn_cache_mib": 10820.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 120289.66,
+            "dyn_per_ex_mib": 8393.28,
+            "peak_vram_mib": 185998.24,
+            "peak_vram_gib": 181.639,
+            "trainable_host_params": 21692416,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 14.1509
+          },
+          "lora_bf16_kv_train_mb16_r16": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 542.25,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 51875.64,
+            "dyn_cache_mib": 10820.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 120301.73,
+            "dyn_per_ex_mib": 8394.03,
+            "peak_vram_mib": 186180.17,
+            "peak_vram_gib": 181.817,
+            "trainable_host_params": 31588352,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 14.1509
+          },
+          "lora_bf16_kv_train_mb8_r8": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 372.38,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 51705.76,
+            "dyn_cache_mib": 5410.0,
+            "dyn_logits_softmax_mib": 1591.41,
+            "dyn_activations_mib": 60144.83,
+            "dyn_per_ex_mib": 8393.28,
+            "peak_vram_mib": 118852.0,
+            "peak_vram_gib": 116.066,
+            "trainable_host_params": 21692416,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 15.3255
+          },
+          "lora_bf16_batched_ckpt_train_mb16_r8": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 372.38,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 51705.76,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 21781.89,
+            "dyn_per_ex_mib": 1361.37,
+            "peak_vram_mib": 73487.66,
+            "peak_vram_gib": 71.765,
+            "trainable_host_params": 21692416,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 37.4998
+          },
+          "lora_bf16_batched_ckpt_train_mb8_r8": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 372.38,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 51705.76,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 10890.95,
+            "dyn_per_ex_mib": 1361.37,
+            "peak_vram_mib": 62596.71,
+            "peak_vram_gib": 61.13,
+            "trainable_host_params": 21692416,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 40.6126
+          },
+          "lora_8bit_kv_train_mb16_r8": {
+            "static_host_weights_mib": 51300.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 248.25,
+            "static_dequant_buf_mib": 0.0,
+            "static_total_mib": 51581.64,
+            "dyn_cache_mib": 10820.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 120289.66,
+            "dyn_per_ex_mib": 8393.28,
+            "peak_vram_mib": 185874.11,
+            "peak_vram_gib": 181.518,
+            "trainable_host_params": 21692416,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 14.5299
+          },
+          "qlora_nf4_kv_train_mb16_r8": {
+            "static_host_weights_mib": 17625.14,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 372.38,
+            "static_dequant_buf_mib": 510.0,
+            "static_total_mib": 18540.85,
+            "dyn_cache_mib": 10820.0,
+            "dyn_logits_softmax_mib": 3182.81,
+            "dyn_activations_mib": 120289.66,
+            "dyn_per_ex_mib": 8393.28,
+            "peak_vram_mib": 152833.33,
+            "peak_vram_gib": 149.251,
+            "trainable_host_params": 21692416,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 17.4359
+          },
+          "qlora_nf4_kv_train_mb8_r8": {
+            "static_host_weights_mib": 17625.14,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 372.38,
+            "static_dequant_buf_mib": 510.0,
+            "static_total_mib": 18540.85,
+            "dyn_cache_mib": 5410.0,
+            "dyn_logits_softmax_mib": 1591.41,
+            "dyn_activations_mib": 60144.83,
+            "dyn_per_ex_mib": 8393.28,
+            "peak_vram_mib": 85687.09,
+            "peak_vram_gib": 83.679,
+            "trainable_host_params": 21692416,
+            "fits_a100_80gb": false,
+            "fits_m6_65gib_gate": false,
+            "est_step_time_s": 18.8832
+          },
+          "qlora_nf4_batched_ckpt_train_mb16_r8": {
+            "static_host_weights_mib": 17625.14,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 372.38,
+            "static_dequant_buf_mib": 510.0,
+            "static_total_mib": 18540.85,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 21781.89,
+            "dyn_per_ex_mib": 1361.37,
+            "peak_vram_mib": 40322.75,
+            "peak_vram_gib": 39.378,
+            "trainable_host_params": 21692416,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 46.2051
+          },
+          "qlora_mixed_mlp_nf4_batched_ckpt_train_mb16_r8": {
+            "static_host_weights_mib": 27636.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 372.38,
+            "static_dequant_buf_mib": 510.0,
+            "static_total_mib": 28551.76,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 21781.89,
+            "dyn_per_ex_mib": 1361.37,
+            "peak_vram_mib": 50333.66,
+            "peak_vram_gib": 49.154,
+            "trainable_host_params": 21692416,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 42.5221
+          },
+          "qlora_mixed_mlp_nf4_batched_ckpt_train_mb8_r8": {
+            "static_host_weights_mib": 27636.05,
+            "static_connector_mib": 33.34,
+            "static_host_opt_grad_mib": 372.38,
+            "static_dequant_buf_mib": 510.0,
+            "static_total_mib": 28551.76,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_softmax_mib": 0.0,
+            "dyn_activations_mib": 10890.95,
+            "dyn_per_ex_mib": 1361.37,
+            "peak_vram_mib": 39442.71,
+            "peak_vram_gib": 38.518,
+            "trainable_host_params": 21692416,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "est_step_time_s": 46.0518
+          }
+        }
+      }
+    }
+  },
+  "exp1_gradient_shock_vs_twophase": {
+    "setup": {
+      "seeds": [
+        202611,
+        202622,
+        202633
+      ],
+      "total_steps": 240,
+      "phase_a_steps": 120,
+      "phase_b_steps": 120,
+      "frob_cap_per_layer": 0.7,
+      "gen_task_pretrained_train_nll": 0.00041,
+      "oracle_dev_acc_nll": [
+        0.50456,
+        0.99572
+      ],
+      "oracle_g1_acc_nll": [
+        0.63916,
+        0.93385
+      ],
+      "oracle_g3_acc_nll": [
+        0.6123,
+        0.97611
+      ]
+    },
+    "summary_by_arm": {
+      "frozen_only": {
+        "dev_nll_mean": 1.049463,
+        "dev_nll_sd": 0.000831,
+        "dev_host_gap_nats_mean": 0.053746,
+        "dev_host_gap_nats_sd": 0.000831,
+        "g1_acc_mean": 0.636556,
+        "g1_acc_sd": 0.002458,
+        "g1_nll_mean": 0.988316,
+        "g1_nll_sd": 0.003088,
+        "g3_acc_mean": 0.605306,
+        "g3_acc_sd": 0.002458,
+        "g3_nll_mean": 1.017254,
+        "g3_nll_sd": 0.00095,
+        "gen_kl_ungated_mean": 0.0,
+        "gen_kl_ungated_sd": 0.0,
+        "gen_kl_gated_mean": 0.0,
+        "gen_kl_gated_sd": 0.0,
+        "early_lora_grad_norm_mean_20_mean": 0.0,
+        "early_lora_grad_norm_mean_20_sd": 0.0,
+        "early_lora_grad_norm_step0_mean": 0.0,
+        "early_lora_grad_norm_step0_sd": 0.0,
+        "lora_frobenius_norm_mean": 0.0,
+        "lora_frobenius_norm_sd": 0.0
+      },
+      "cold_start_joint_unconstrained": {
+        "dev_nll_mean": 1.046106,
+        "dev_nll_sd": 0.004426,
+        "dev_host_gap_nats_mean": 0.05039,
+        "dev_host_gap_nats_sd": 0.004426,
+        "g1_acc_mean": 0.628255,
+        "g1_acc_sd": 0.005401,
+        "g1_nll_mean": 0.99761,
+        "g1_nll_sd": 0.006951,
+        "g3_acc_mean": 0.60026,
+        "g3_acc_sd": 0.000282,
+        "g3_nll_mean": 1.028249,
+        "g3_nll_sd": 0.007091,
+        "gen_kl_ungated_mean": 0.709547,
+        "gen_kl_ungated_sd": 0.056273,
+        "gen_kl_gated_mean": 0.0,
+        "gen_kl_gated_sd": 0.0,
+        "early_lora_grad_norm_mean_20_mean": 0.093788,
+        "early_lora_grad_norm_mean_20_sd": 0.007402,
+        "early_lora_grad_norm_step0_mean": 0.059753,
+        "early_lora_grad_norm_step0_sd": 0.012497,
+        "lora_frobenius_norm_mean": 7.907067,
+        "lora_frobenius_norm_sd": 0.14015
+      },
+      "cold_start_joint_frob_capped": {
+        "dev_nll_mean": 1.04958,
+        "dev_nll_sd": 0.00152,
+        "dev_host_gap_nats_mean": 0.053863,
+        "dev_host_gap_nats_sd": 0.00152,
+        "g1_acc_mean": 0.63265,
+        "g1_acc_sd": 0.001973,
+        "g1_nll_mean": 0.993845,
+        "g1_nll_sd": 0.001843,
+        "g3_acc_mean": 0.603353,
+        "g3_acc_sd": 0.001229,
+        "g3_nll_mean": 1.02371,
+        "g3_nll_sd": 0.003675,
+        "gen_kl_ungated_mean": 0.183199,
+        "gen_kl_ungated_sd": 0.029469,
+        "gen_kl_gated_mean": 0.0,
+        "gen_kl_gated_sd": 0.0,
+        "early_lora_grad_norm_mean_20_mean": 0.090272,
+        "early_lora_grad_norm_mean_20_sd": 0.00599,
+        "early_lora_grad_norm_step0_mean": 0.059753,
+        "early_lora_grad_norm_step0_sd": 0.012497,
+        "lora_frobenius_norm_mean": 1.979091,
+        "lora_frobenius_norm_sd": 0.001278
+      },
+      "two_phase_antishock": {
+        "dev_nll_mean": 1.048366,
+        "dev_nll_sd": 0.001029,
+        "dev_host_gap_nats_mean": 0.052649,
+        "dev_host_gap_nats_sd": 0.001029,
+        "g1_acc_mean": 0.637695,
+        "g1_acc_sd": 0.00297,
+        "g1_nll_mean": 0.989546,
+        "g1_nll_sd": 0.003604,
+        "g3_acc_mean": 0.608561,
+        "g3_acc_sd": 0.005701,
+        "g3_nll_mean": 1.020932,
+        "g3_nll_sd": 0.001941,
+        "gen_kl_ungated_mean": 0.072906,
+        "gen_kl_ungated_sd": 0.034524,
+        "gen_kl_gated_mean": 0.0,
+        "gen_kl_gated_sd": 0.0,
+        "early_lora_grad_norm_mean_20_mean": 0.017283,
+        "early_lora_grad_norm_mean_20_sd": 0.000857,
+        "early_lora_grad_norm_step0_mean": 0.016581,
+        "early_lora_grad_norm_step0_sd": 0.003619,
+        "lora_frobenius_norm_mean": 1.691626,
+        "lora_frobenius_norm_sd": 0.01001
+      }
+    },
+    "key_comparisons": {
+      "cold_unconstrained_vs_twophase_step0_shock_ratio": 3.604,
+      "cold_unconstrained_vs_twophase_ungated_kl_ratio": 9.732,
+      "cold_capped_vs_twophase_ungated_kl_ratio": 2.513,
+      "twophase_vs_cold_capped_g1_nll_gain_nats": 0.0043,
+      "twophase_vs_cold_capped_g3_nll_gain_nats": 0.00278,
+      "twophase_vs_frozen_g1_nll_gain_nats": -0.00123,
+      "twophase_vs_frozen_g3_nll_gain_nats": -0.00368
+    },
+    "low_gap_stay_frozen_control": {
+      "phase_a_dev_nll": 1.03354,
+      "phase_a_dev_host_gap_nats": 0.03782,
+      "phase_a_g1_acc_nll": [
+        0.62109,
+        1.00364
+      ],
+      "triggered_phase_b": true,
+      "decision": "TRIGGER_PHASE_B"
+    },
+    "per_seed": {
+      "frozen_only": [
+        {
+          "seed": 202611,
+          "dev_nll": 1.0493887662887573,
+          "dev_host_gap_nats": 0.0536723772418739,
+          "g1_acc": 0.63623046875,
+          "g1_nll": 0.9910811185836792,
+          "g3_acc": 0.60498046875,
+          "g3_nll": 1.0182698965072632,
+          "gen_kl_ungated": 0.0,
+          "gen_kl_gated": 0.0,
+          "early_lora_grad_norm_mean_20": 0.0,
+          "early_lora_grad_norm_step0": 0.0,
+          "early_text_shortcut_grad_share": 0.0,
+          "lora_frobenius_norm": 0.0
+        },
+        {
+          "seed": 202622,
+          "dev_nll": 1.0503286123275757,
+          "dev_host_gap_nats": 0.05461222328069226,
+          "g1_acc": 0.63427734375,
+          "g1_nll": 0.9888830184936523,
+          "g3_acc": 0.60302734375,
+          "g3_nll": 1.0171053409576416,
+          "gen_kl_ungated": 0.0,
+          "gen_kl_gated": 0.0,
+          "early_lora_grad_norm_mean_20": 0.0,
+          "early_lora_grad_norm_step0": 0.0,
+          "early_text_shortcut_grad_share": 0.0,
+          "lora_frobenius_norm": 0.0
+        },
+        {
+          "seed": 202633,
+          "dev_nll": 1.0486712455749512,
+          "dev_host_gap_nats": 0.05295485652806775,
+          "g1_acc": 0.63916015625,
+          "g1_nll": 0.9849838614463806,
+          "g3_acc": 0.60791015625,
+          "g3_nll": 1.0163873434066772,
+          "gen_kl_ungated": 0.0,
+          "gen_kl_gated": 0.0,
+          "early_lora_grad_norm_mean_20": 0.0,
+          "early_lora_grad_norm_step0": 0.0,
+          "early_text_shortcut_grad_share": 0.0,
+          "lora_frobenius_norm": 0.0
+        }
+      ],
+      "cold_start_joint_unconstrained": [
+        {
+          "seed": 202611,
+          "dev_nll": 1.044488787651062,
+          "dev_host_gap_nats": 0.04877239860417859,
+          "g1_acc": 0.62890625,
+          "g1_nll": 0.9913686513900757,
+          "g3_acc": 0.6005859375,
+          "g3_nll": 1.0201785564422607,
+          "gen_kl_ungated": 0.6502541303634644,
+          "gen_kl_gated": 0.0,
+          "early_lora_grad_norm_mean_20": 0.08692416118164784,
+          "early_lora_grad_norm_step0": 0.04663996941393857,
+          "g1_text_shortcut_only_nll": 1.2396328449249268,
+          "lora_frobenius_norm": 7.96654245054963
+        },
+        {
+          "seed": 202622,
+          "dev_nll": 1.051113247871399,
+          "dev_host_gap_nats": 0.055396858824515505,
+          "g1_acc": 0.63330078125,
+          "g1_nll": 0.9963597059249878,
+          "g3_acc": 0.60009765625,
+          "g3_nll": 1.0334800481796265,
+          "gen_kl_ungated": 0.7622133493423462,
+          "gen_kl_gated": 0.0,
+          "early_lora_grad_norm_mean_20": 0.09280911821594594,
+          "early_lora_grad_norm_step0": 0.061095380932522626,
+          "g1_text_shortcut_only_nll": 1.1781749725341797,
+          "lora_frobenius_norm": 8.007671730851126
+        },
+        {
+          "seed": 202633,
+          "dev_nll": 1.0427170991897583,
+          "dev_host_gap_nats": 0.04700071014287488,
+          "g1_acc": 0.62255859375,
+          "g1_nll": 1.0051008462905884,
+          "g3_acc": 0.60009765625,
+          "g3_nll": 1.0310879945755005,
+          "gen_kl_ungated": 0.7161747217178345,
+          "gen_kl_gated": 0.0,
+          "early_lora_grad_norm_mean_20": 0.10162981406061933,
+          "early_lora_grad_norm_step0": 0.07152464242964662,
+          "g1_text_shortcut_only_nll": 1.2062101364135742,
+          "lora_frobenius_norm": 7.746988234282915
+        }
+      ],
+      "cold_start_joint_frob_capped": [
+        {
+          "seed": 202611,
+          "dev_nll": 1.048356533050537,
+          "dev_host_gap_nats": 0.05264014400365369,
+          "g1_acc": 0.630859375,
+          "g1_nll": 0.9917280077934265,
+          "g3_acc": 0.603515625,
+          "g3_nll": 1.0200490951538086,
+          "gen_kl_ungated": 0.14928913116455078,
+          "gen_kl_gated": 0.0,
+          "early_lora_grad_norm_mean_20": 0.0843966032550196,
+          "early_lora_grad_norm_step0": 0.04663996941393857,
+          "g1_text_shortcut_only_nll": 1.3547065258026123,
+          "lora_frobenius_norm": 1.979757651551619
+        },
+        {
+          "seed": 202622,
+          "dev_nll": 1.0512818098068237,
+          "dev_host_gap_nats": 0.05556542075994031,
+          "g1_acc": 0.63232421875,
+          "g1_nll": 0.9950928688049316,
+          "g3_acc": 0.6044921875,
+          "g3_nll": 1.0273993015289307,
+          "gen_kl_ungated": 0.1976964771747589,
+          "gen_kl_gated": 0.0,
+          "early_lora_grad_norm_mean_20": 0.0900494855174415,
+          "early_lora_grad_norm_step0": 0.061095380932522626,
+          "g1_text_shortcut_only_nll": 1.3404560089111328,
+          "lora_frobenius_norm": 1.9776176003766819
+        },
+        {
+          "seed": 202633,
+          "dev_nll": 1.0491009950637817,
+          "dev_host_gap_nats": 0.05338460601689832,
+          "g1_acc": 0.634765625,
+          "g1_nll": 0.9947141408920288,
+          "g3_acc": 0.60205078125,
+          "g3_nll": 1.0236810445785522,
+          "gen_kl_ungated": 0.20261098444461823,
+          "gen_kl_gated": 0.0,
+          "early_lora_grad_norm_mean_20": 0.09636950049439677,
+          "early_lora_grad_norm_step0": 0.07152464242964662,
+          "g1_text_shortcut_only_nll": 1.3562147617340088,
+          "lora_frobenius_norm": 1.97989894637968
+        }
+      ],
+      "two_phase_antishock": [
+        {
+          "seed": 202611,
+          "phase_a_dev_host_gap_nats": 0.06993204749944226,
+          "triggered_phase_b": true,
+          "dev_nll": 1.0490423440933228,
+          "dev_host_gap_nats": 0.05332595504643933,
+          "g1_acc": 0.63427734375,
+          "g1_nll": 0.993667721748352,
+          "g3_acc": 0.607421875,
+          "g3_nll": 1.0219006538391113,
+          "gen_kl_ungated": 0.04188455641269684,
+          "gen_kl_gated": 0.0,
+          "early_lora_grad_norm_mean_20": 0.016295241240607456,
+          "early_lora_grad_norm_step0": 0.02056855440638201,
+          "g1_text_shortcut_only_nll": 1.4367938041687012,
+          "lora_frobenius_norm": 1.6821677415237664
+        },
+        {
+          "seed": 202622,
+          "phase_a_dev_host_gap_nats": 0.061097685469412966,
+          "triggered_phase_b": true,
+          "dev_nll": 1.0488735437393188,
+          "dev_host_gap_nats": 0.05315715469243543,
+          "g1_acc": 0.63916015625,
+          "g1_nll": 0.9879826903343201,
+          "g3_acc": 0.61474609375,
+          "g3_nll": 1.0186964273452759,
+          "gen_kl_ungated": 0.11009898781776428,
+          "gen_kl_gated": 0.0,
+          "early_lora_grad_norm_mean_20": 0.01772662093048495,
+          "early_lora_grad_norm_step0": 0.01350612097995402,
+          "g1_text_shortcut_only_nll": 1.4145599603652954,
+          "lora_frobenius_norm": 1.6906023912451709
+        },
+        {
+          "seed": 202633,
+          "phase_a_dev_host_gap_nats": 0.06167954601171033,
+          "triggered_phase_b": true,
+          "dev_nll": 1.0471808910369873,
+          "dev_host_gap_nats": 0.051464501990103884,
+          "g1_acc": 0.6396484375,
+          "g1_nll": 0.98698890209198,
+          "g3_acc": 0.603515625,
+          "g3_nll": 1.0221977233886719,
+          "gen_kl_ungated": 0.06673365086317062,
+          "gen_kl_gated": 0.0,
+          "early_lora_grad_norm_mean_20": 0.017827067812566245,
+          "early_lora_grad_norm_step0": 0.015667118089608856,
+          "g1_text_shortcut_only_nll": 1.4384441375732422,
+          "lora_frobenius_norm": 1.7021089988074602
+        }
+      ]
+    }
+  },
+  "exp2a_adapter_merging": {
+    "adapter_geometry": {
+      "cosine_similarity_dW1_dW2": -0.09083,
+      "norm_dW1": 1.875,
+      "norm_dW2": 2.5412,
+      "fisher_cross_interference_2_on_1": 2.26849,
+      "fisher_cross_interference_1_on_2": 0.22348,
+      "trainable_params": 12288
+    },
+    "merging_eval_table": {
+      "phase_a_frozen": {
+        "reg1_pluto_lowsnr_dc": {
+          "acc": 0.50537,
+          "nll": 1.11966
+        },
+        "reg2_largecfo_spur": {
+          "acc": 0.56201,
+          "nll": 1.02229
+        },
+        "heldout_mixed_unseen": {
+          "acc": 0.56406,
+          "nll": 1.1021
+        },
+        "macro_avg_nll": 1.08135,
+        "macro_avg_acc": 0.54381
+      },
+      "adapter1_pluto_lowsnr_dc": {
+        "reg1_pluto_lowsnr_dc": {
+          "acc": 0.52588,
+          "nll": 1.09249
+        },
+        "reg2_largecfo_spur": {
+          "acc": 0.48389,
+          "nll": 1.08802
+        },
+        "heldout_mixed_unseen": {
+          "acc": 0.44961,
+          "nll": 1.1409
+        },
+        "macro_avg_nll": 1.10714,
+        "macro_avg_acc": 0.48646
+      },
+      "adapter2_synth_largecfo_spur": {
+        "reg1_pluto_lowsnr_dc": {
+          "acc": 0.49365,
+          "nll": 1.28216
+        },
+        "reg2_largecfo_spur": {
+          "acc": 0.70117,
+          "nll": 0.7577
+        },
+        "heldout_mixed_unseen": {
+          "acc": 0.61602,
+          "nll": 1.06688
+        },
+        "macro_avg_nll": 1.03558,
+        "macro_avg_acc": 0.60361
+      },
+      "naive_factor_avg_gauge_pitfall": {
+        "reg1_pluto_lowsnr_dc": {
+          "acc": 0.51025,
+          "nll": 1.12629
+        },
+        "reg2_largecfo_spur": {
+          "acc": 0.61963,
+          "nll": 0.90461
+        },
+        "heldout_mixed_unseen": {
+          "acc": 0.5793,
+          "nll": 1.03822
+        },
+        "macro_avg_nll": 1.02304,
+        "macro_avg_acc": 0.56973
+      },
+      "weight_space_soup_0.5": {
+        "reg1_pluto_lowsnr_dc": {
+          "acc": 0.50391,
+          "nll": 1.16055
+        },
+        "reg2_largecfo_spur": {
+          "acc": 0.66943,
+          "nll": 0.81738
+        },
+        "heldout_mixed_unseen": {
+          "acc": 0.59336,
+          "nll": 1.00886
+        },
+        "macro_avg_nll": 0.9956,
+        "macro_avg_acc": 0.5889
+      },
+      "task_arithmetic_0.75": {
+        "reg1_pluto_lowsnr_dc": {
+          "acc": 0.50488,
+          "nll": 1.20645
+        },
+        "reg2_largecfo_spur": {
+          "acc": 0.66309,
+          "nll": 0.80137
+        },
+        "heldout_mixed_unseen": {
+          "acc": 0.57773,
+          "nll": 1.02925
+        },
+        "macro_avg_nll": 1.01236,
+        "macro_avg_acc": 0.5819
+      },
+      "task_arithmetic_1.00": {
+        "reg1_pluto_lowsnr_dc": {
+          "acc": 0.50928,
+          "nll": 1.25395
+        },
+        "reg2_largecfo_spur": {
+          "acc": 0.65137,
+          "nll": 0.8167
+        },
+        "heldout_mixed_unseen": {
+          "acc": 0.57148,
+          "nll": 1.0655
+        },
+        "macro_avg_nll": 1.04538,
+        "macro_avg_acc": 0.57738
+      },
+      "ties_trim40_scale1.0": {
+        "reg1_pluto_lowsnr_dc": {
+          "acc": 0.50439,
+          "nll": 1.21697
+        },
+        "reg2_largecfo_spur": {
+          "acc": 0.67285,
+          "nll": 0.78771
+        },
+        "heldout_mixed_unseen": {
+          "acc": 0.58789,
+          "nll": 1.02664
+        },
+        "macro_avg_nll": 1.01044,
+        "macro_avg_acc": 0.58838
+      },
+      "ties_trim50_scale1.2": {
+        "reg1_pluto_lowsnr_dc": {
+          "acc": 0.50635,
+          "nll": 1.25375
+        },
+        "reg2_largecfo_spur": {
+          "acc": 0.66797,
+          "nll": 0.7913
+        },
+        "heldout_mixed_unseen": {
+          "acc": 0.58711,
+          "nll": 1.05205
+        },
+        "macro_avg_nll": 1.03237,
+        "macro_avg_acc": 0.58714
+      }
+    },
+    "canonical_schur_cayley_merging": {
+      "geometry": {
+        "cosine_similarity_coords1_coords2": 0.08184,
+        "norm_coords1": 1.3578,
+        "norm_coords2": 2.0111,
+        "norm_ratio_2_over_1": 1.4812,
+        "fisher_cross_interference_2_on_1": 3.00813,
+        "fisher_cross_interference_1_on_2": 0.13796,
+        "directional_unit_norm_gamma_2_on_1": 1.37107,
+        "directional_unit_norm_gamma_1_on_2": 0.30269,
+        "trainable_dofs": 160,
+        "param_compression_vs_unconstrained_lora": 76.8,
+        "gauge_pitfall_present": false,
+        "max_cayley_spectral_orthogonality_defect_by_method": {
+          "canon_adapter1_pluto_lowsnr_dc": 3.595e-07,
+          "canon_adapter2_synth_largecfo_spur": 2.782e-07,
+          "canon_lie_schur_soup_0.5": 2.987e-07,
+          "canon_lie_schur_ta_0.75": 3.043e-07,
+          "canon_lie_schur_ta_1.00": 4.184e-07,
+          "canon_lie_schur_ties_trim40_scale1.0": 3.192e-07
+        }
+      },
+      "merging_eval_table": {
+        "canon_adapter1_pluto_lowsnr_dc": {
+          "reg1_pluto_lowsnr_dc": {
+            "acc": 0.51904,
+            "nll": 1.08569
+          },
+          "reg2_largecfo_spur": {
+            "acc": 0.5249,
+            "nll": 1.06006
+          },
+          "heldout_mixed_unseen": {
+            "acc": 0.53516,
+            "nll": 1.10163
+          },
+          "macro_avg_nll": 1.08246,
+          "macro_avg_acc": 0.52637
+        },
+        "canon_adapter2_synth_largecfo_spur": {
+          "reg1_pluto_lowsnr_dc": {
+            "acc": 0.52002,
+            "nll": 1.33532
+          },
+          "reg2_largecfo_spur": {
+            "acc": 0.729,
+            "nll": 0.75496
+          },
+          "heldout_mixed_unseen": {
+            "acc": 0.62344,
+            "nll": 1.07439
+          },
+          "macro_avg_nll": 1.05489,
+          "macro_avg_acc": 0.62415
+        },
+        "canon_lie_schur_soup_0.5": {
+          "reg1_pluto_lowsnr_dc": {
+            "acc": 0.52197,
+            "nll": 1.1584
+          },
+          "reg2_largecfo_spur": {
+            "acc": 0.7085,
+            "nll": 0.80252
+          },
+          "heldout_mixed_unseen": {
+            "acc": 0.62148,
+            "nll": 0.99009
+          },
+          "macro_avg_nll": 0.98367,
+          "macro_avg_acc": 0.61732
+        },
+        "canon_lie_schur_ta_0.75": {
+          "reg1_pluto_lowsnr_dc": {
+            "acc": 0.52588,
+            "nll": 1.20835
+          },
+          "reg2_largecfo_spur": {
+            "acc": 0.72314,
+            "nll": 0.76669
+          },
+          "heldout_mixed_unseen": {
+            "acc": 0.6207,
+            "nll": 1.00218
+          },
+          "macro_avg_nll": 0.99241,
+          "macro_avg_acc": 0.62324
+        },
+        "canon_lie_schur_ta_1.00": {
+          "reg1_pluto_lowsnr_dc": {
+            "acc": 0.52734,
+            "nll": 1.27493
+          },
+          "reg2_largecfo_spur": {
+            "acc": 0.72314,
+            "nll": 0.76796
+          },
+          "heldout_mixed_unseen": {
+            "acc": 0.61914,
+            "nll": 1.04569
+          },
+          "macro_avg_nll": 1.02953,
+          "macro_avg_acc": 0.62321
+        },
+        "canon_lie_schur_ties_trim40_scale1.0": {
+          "reg1_pluto_lowsnr_dc": {
+            "acc": 0.52002,
+            "nll": 1.22565
+          },
+          "reg2_largecfo_spur": {
+            "acc": 0.67383,
+            "nll": 0.83324
+          },
+          "heldout_mixed_unseen": {
+            "acc": 0.61875,
+            "nll": 1.01498
+          },
+          "macro_avg_nll": 1.02462,
+          "macro_avg_acc": 0.6042
+        }
+      },
+      "side_by_side_vs_unconstrained": {
+        "gamma_12_reduction_factor": 0.754,
+        "soup_unseen_mixed_nll_delta_nats": -0.01877,
+        "soup_unseen_mixed_acc_delta_pp": 2.812,
+        "ta_1p0_unseen_mixed_nll_delta_nats": -0.01981,
+        "ties_unseen_mixed_nll_delta_nats": -0.01166,
+        "macro_avg_nll_soup_delta_nats": -0.01193
+      }
+    }
+  },
+  "exp2b_nf4_quantization_distortion": {
+    "fundamental_quant_mse_block64": {
+      "eta_nf4": 0.008479,
+      "eta_int4": 0.011591,
+      "eta_bf16": 2.77e-06,
+      "nf4_vs_bf16_variance_ratio": 3065.8,
+      "nf4_codebook_16": [
+        -1.0,
+        -0.696193,
+        -0.525073,
+        -0.394917,
+        -0.284441,
+        -0.184773,
+        -0.09105,
+        0.0,
+        0.07958,
+        0.16093,
+        0.246112,
+        0.337915,
+        0.44071,
+        0.562617,
+        0.722957,
+        1.0
+      ]
+    },
+    "end_to_end_residual_net_distortion": {
+      "snr_2dB_pluto_synth": {
+        "L32": {
+          "fp32_centered_logit_rms": 1.1504,
+          "mean_gini_curvature_trace": 0.50465,
+          "modes": {
+            "fp32": {
+              "acc": 0.62826,
+              "nll": 0.94039,
+              "delta_nll_vs_fp32_nats": 0.0,
+              "kl_from_fp32_nats": 0.0,
+              "theory_2nd_order_kl_nats": 0.0,
+              "centered_logit_rmse_sigma_dl": 0.0,
+              "max_abs_logit_err": 0.0,
+              "ece_10bin": 0.0246,
+              "exceeds_0p05_nat_budget": false
+            },
+            "bf16": {
+              "acc": 0.62826,
+              "nll": 0.94036,
+              "delta_nll_vs_fp32_nats": -3.3e-05,
+              "kl_from_fp32_nats": 1e-06,
+              "theory_2nd_order_kl_nats": 1e-06,
+              "centered_logit_rmse_sigma_dl": 0.00164,
+              "max_abs_logit_err": 0.00405,
+              "ece_10bin": 0.0254,
+              "exceeds_0p05_nat_budget": false
+            },
+            "nf4_qlora_io_bf16": {
+              "acc": 0.63021,
+              "nll": 0.94136,
+              "delta_nll_vs_fp32_nats": 0.000963,
+              "kl_from_fp32_nats": 0.000135,
+              "theory_2nd_order_kl_nats": 0.000139,
+              "centered_logit_rmse_sigma_dl": 0.02347,
+              "max_abs_logit_err": 0.06688,
+              "ece_10bin": 0.02271,
+              "exceeds_0p05_nat_budget": false
+            },
+            "nf4_full_unprotected": {
+              "acc": 0.63021,
+              "nll": 0.94181,
+              "delta_nll_vs_fp32_nats": 0.001416,
+              "kl_from_fp32_nats": 0.002911,
+              "theory_2nd_order_kl_nats": 0.002238,
+              "centered_logit_rmse_sigma_dl": 0.09418,
+              "max_abs_logit_err": 0.22289,
+              "ece_10bin": 0.01985,
+              "exceeds_0p05_nat_budget": false
+            },
+            "int4_io_bf16": {
+              "acc": 0.63021,
+              "nll": 0.94051,
+              "delta_nll_vs_fp32_nats": 0.000122,
+              "kl_from_fp32_nats": 0.000234,
+              "theory_2nd_order_kl_nats": 0.000219,
+              "centered_logit_rmse_sigma_dl": 0.02947,
+              "max_abs_logit_err": 0.07897,
+              "ece_10bin": 0.02374,
+              "exceeds_0p05_nat_budget": false
+            },
+            "qlora_nf4_with_bf16_lora_recovery": {
+              "acc": 0.62826,
+              "nll": 0.93832,
+              "delta_nll_vs_fp32_nats": -0.002076,
+              "kl_from_fp32_nats": 0.000412,
+              "theory_2nd_order_kl_nats": 0.000406,
+              "centered_logit_rmse_sigma_dl": 0.0401,
+              "max_abs_logit_err": 0.12794,
+              "ece_10bin": 0.03014,
+              "exceeds_0p05_nat_budget": false
+            }
+          }
+        },
+        "L64": {
+          "fp32_centered_logit_rms": 1.145,
+          "mean_gini_curvature_trace": 0.50592,
+          "modes": {
+            "fp32": {
+              "acc": 0.62826,
+              "nll": 0.94054,
+              "delta_nll_vs_fp32_nats": 0.0,
+              "kl_from_fp32_nats": 0.0,
+              "theory_2nd_order_kl_nats": 0.0,
+              "centered_logit_rmse_sigma_dl": 0.0,
+              "max_abs_logit_err": 0.0,
+              "ece_10bin": 0.02155,
+              "exceeds_0p05_nat_budget": false
+            },
+            "bf16": {
+              "acc": 0.62826,
+              "nll": 0.94056,
+              "delta_nll_vs_fp32_nats": 2.1e-05,
+              "kl_from_fp32_nats": 0.0,
+              "theory_2nd_order_kl_nats": 1e-06,
+              "centered_logit_rmse_sigma_dl": 0.00142,
+              "max_abs_logit_err": 0.00351,
+              "ece_10bin": 0.0217,
+              "exceeds_0p05_nat_budget": false
+            },
+            "nf4_qlora_io_bf16": {
+              "acc": 0.62695,
+              "nll": 0.94064,
+              "delta_nll_vs_fp32_nats": 9.8e-05,
+              "kl_from_fp32_nats": 0.000177,
+              "theory_2nd_order_kl_nats": 0.000171,
+              "centered_logit_rmse_sigma_dl": 0.02602,
+              "max_abs_logit_err": 0.07395,
+              "ece_10bin": 0.02449,
+              "exceeds_0p05_nat_budget": false
+            },
+            "nf4_full_unprotected": {
+              "acc": 0.62565,
+              "nll": 0.94359,
+              "delta_nll_vs_fp32_nats": 0.003045,
+              "kl_from_fp32_nats": 0.001754,
+              "theory_2nd_order_kl_nats": 0.001476,
+              "centered_logit_rmse_sigma_dl": 0.07639,
+              "max_abs_logit_err": 0.17376,
+              "ece_10bin": 0.02147,
+              "exceeds_0p05_nat_budget": false
+            },
+            "int4_io_bf16": {
+              "acc": 0.62826,
+              "nll": 0.94081,
+              "delta_nll_vs_fp32_nats": 0.000268,
+              "kl_from_fp32_nats": 6.2e-05,
+              "theory_2nd_order_kl_nats": 6.3e-05,
+              "centered_logit_rmse_sigma_dl": 0.01578,
+              "max_abs_logit_err": 0.0401,
+              "ece_10bin": 0.02162,
+              "exceeds_0p05_nat_budget": false
+            },
+            "qlora_nf4_with_bf16_lora_recovery": {
+              "acc": 0.62826,
+              "nll": 0.93988,
+              "delta_nll_vs_fp32_nats": -0.00066,
+              "kl_from_fp32_nats": 0.000382,
+              "theory_2nd_order_kl_nats": 0.000446,
+              "centered_logit_rmse_sigma_dl": 0.04197,
+              "max_abs_logit_err": 0.10882,
+              "ece_10bin": 0.03027,
+              "exceeds_0p05_nat_budget": false
+            }
+          }
+        }
+      },
+      "snr_20dB_cttc_sharp": {
+        "L32": {
+          "fp32_centered_logit_rms": 3.0279,
+          "mean_gini_curvature_trace": 0.19698,
+          "modes": {
+            "fp32": {
+              "acc": 0.86849,
+              "nll": 0.29299,
+              "delta_nll_vs_fp32_nats": 0.0,
+              "kl_from_fp32_nats": 0.0,
+              "theory_2nd_order_kl_nats": 0.0,
+              "centered_logit_rmse_sigma_dl": 0.0,
+              "max_abs_logit_err": 0.0,
+              "ece_10bin": 0.02375,
+              "exceeds_0p05_nat_budget": false
+            },
+            "bf16": {
+              "acc": 0.86979,
+              "nll": 0.29296,
+              "delta_nll_vs_fp32_nats": -2.6e-05,
+              "kl_from_fp32_nats": 1e-06,
+              "theory_2nd_order_kl_nats": 1e-06,
+              "centered_logit_rmse_sigma_dl": 0.00265,
+              "max_abs_logit_err": 0.00668,
+              "ece_10bin": 0.02428,
+              "exceeds_0p05_nat_budget": false
+            },
+            "nf4_qlora_io_bf16": {
+              "acc": 0.86654,
+              "nll": 0.293,
+              "delta_nll_vs_fp32_nats": 1.5e-05,
+              "kl_from_fp32_nats": 8.1e-05,
+              "theory_2nd_order_kl_nats": 0.000165,
+              "centered_logit_rmse_sigma_dl": 0.04092,
+              "max_abs_logit_err": 0.10575,
+              "ece_10bin": 0.0236,
+              "exceeds_0p05_nat_budget": false
+            },
+            "nf4_full_unprotected": {
+              "acc": 0.86719,
+              "nll": 0.28991,
+              "delta_nll_vs_fp32_nats": -0.003079,
+              "kl_from_fp32_nats": 0.002142,
+              "theory_2nd_order_kl_nats": 0.001581,
+              "centered_logit_rmse_sigma_dl": 0.12671,
+              "max_abs_logit_err": 0.31768,
+              "ece_10bin": 0.01959,
+              "exceeds_0p05_nat_budget": false
+            },
+            "int4_io_bf16": {
+              "acc": 0.86719,
+              "nll": 0.29349,
+              "delta_nll_vs_fp32_nats": 0.000503,
+              "kl_from_fp32_nats": 0.000172,
+              "theory_2nd_order_kl_nats": 0.000151,
+              "centered_logit_rmse_sigma_dl": 0.03919,
+              "max_abs_logit_err": 0.08301,
+              "ece_10bin": 0.0201,
+              "exceeds_0p05_nat_budget": false
+            },
+            "qlora_nf4_with_bf16_lora_recovery": {
+              "acc": 0.875,
+              "nll": 0.28208,
+              "delta_nll_vs_fp32_nats": -0.010914,
+              "kl_from_fp32_nats": 0.005243,
+              "theory_2nd_order_kl_nats": 0.003613,
+              "centered_logit_rmse_sigma_dl": 0.19152,
+              "max_abs_logit_err": 0.6068,
+              "ece_10bin": 0.01955,
+              "exceeds_0p05_nat_budget": false
+            }
+          }
+        },
+        "L64": {
+          "fp32_centered_logit_rms": 2.9546,
+          "mean_gini_curvature_trace": 0.18519,
+          "modes": {
+            "fp32": {
+              "acc": 0.87174,
+              "nll": 0.28477,
+              "delta_nll_vs_fp32_nats": 0.0,
+              "kl_from_fp32_nats": 0.0,
+              "theory_2nd_order_kl_nats": 0.0,
+              "centered_logit_rmse_sigma_dl": 0.0,
+              "max_abs_logit_err": 0.0,
+              "ece_10bin": 0.00782,
+              "exceeds_0p05_nat_budget": false
+            },
+            "bf16": {
+              "acc": 0.87174,
+              "nll": 0.28482,
+              "delta_nll_vs_fp32_nats": 4.4e-05,
+              "kl_from_fp32_nats": 1e-06,
+              "theory_2nd_order_kl_nats": 1e-06,
+              "centered_logit_rmse_sigma_dl": 0.00278,
+              "max_abs_logit_err": 0.01025,
+              "ece_10bin": 0.00772,
+              "exceeds_0p05_nat_budget": false
+            },
+            "nf4_qlora_io_bf16": {
+              "acc": 0.87174,
+              "nll": 0.28569,
+              "delta_nll_vs_fp32_nats": 0.000916,
+              "kl_from_fp32_nats": 7.1e-05,
+              "theory_2nd_order_kl_nats": 0.00017,
+              "centered_logit_rmse_sigma_dl": 0.04281,
+              "max_abs_logit_err": 0.16685,
+              "ece_10bin": 0.00557,
+              "exceeds_0p05_nat_budget": false
+            },
+            "nf4_full_unprotected": {
+              "acc": 0.87305,
+              "nll": 0.28399,
+              "delta_nll_vs_fp32_nats": -0.000779,
+              "kl_from_fp32_nats": 0.000938,
+              "theory_2nd_order_kl_nats": 0.001781,
+              "centered_logit_rmse_sigma_dl": 0.13867,
+              "max_abs_logit_err": 0.5542,
+              "ece_10bin": 0.00552,
+              "exceeds_0p05_nat_budget": false
+            },
+            "int4_io_bf16": {
+              "acc": 0.87305,
+              "nll": 0.28482,
+              "delta_nll_vs_fp32_nats": 4.2e-05,
+              "kl_from_fp32_nats": 4.2e-05,
+              "theory_2nd_order_kl_nats": 7.5e-05,
+              "centered_logit_rmse_sigma_dl": 0.02849,
+              "max_abs_logit_err": 0.08646,
+              "ece_10bin": 0.00596,
+              "exceeds_0p05_nat_budget": false
+            },
+            "qlora_nf4_with_bf16_lora_recovery": {
+              "acc": 0.8724,
+              "nll": 0.28193,
+              "delta_nll_vs_fp32_nats": -0.002838,
+              "kl_from_fp32_nats": 0.002257,
+              "theory_2nd_order_kl_nats": 0.003886,
+              "centered_logit_rmse_sigma_dl": 0.20487,
+              "max_abs_logit_err": 0.69463,
+              "ece_10bin": 0.00853,
+              "exceeds_0p05_nat_budget": false
+            }
+          }
+        }
+      }
+    },
+    "deltanet_recurrent_gate_and_phase_probe": {
+      "t_prefix_tokens": 256,
+      "retention_ratio_std_bf16": 0.000508,
+      "retention_ratio_std_nf4": 0.026358,
+      "weight_rel_err_bf16": 0.001678,
+      "weight_rel_err_nf4": 0.092697,
+      "results": {
+        "snr_2dB": {
+          "fp32_nll": 1.46962,
+          "by_depth": {
+            "L32": {
+              "bf16_all_layers": {
+                "nll": 1.46938,
+                "delta_nll_nats": -0.00025,
+                "kl_from_fp32_nats": 1e-05,
+                "sigma_dl_nats": 0.00715,
+                "exceeds_0p05_nat_budget": false
+              },
+              "nf4_all_including_deltanet_gates": {
+                "nll": 1.50297,
+                "delta_nll_nats": 0.03335,
+                "kl_from_fp32_nats": 0.02216,
+                "sigma_dl_nats": 0.37863,
+                "exceeds_0p05_nat_budget": false
+              },
+              "mixed_mlp_nf4_deltanet_bf16": {
+                "nll": 1.46935,
+                "delta_nll_nats": -0.00027,
+                "kl_from_fp32_nats": 1e-05,
+                "sigma_dl_nats": 0.00817,
+                "exceeds_0p05_nat_budget": false
+              }
+            },
+            "L64": {
+              "bf16_all_layers": {
+                "nll": 1.4694,
+                "delta_nll_nats": -0.00022,
+                "kl_from_fp32_nats": 2e-05,
+                "sigma_dl_nats": 0.00989,
+                "exceeds_0p05_nat_budget": false
+              },
+              "nf4_all_including_deltanet_gates": {
+                "nll": 1.49461,
+                "delta_nll_nats": 0.02499,
+                "kl_from_fp32_nats": 0.04429,
+                "sigma_dl_nats": 0.5328,
+                "exceeds_0p05_nat_budget": false
+              },
+              "mixed_mlp_nf4_deltanet_bf16": {
+                "nll": 1.46938,
+                "delta_nll_nats": -0.00024,
+                "kl_from_fp32_nats": 2e-05,
+                "sigma_dl_nats": 0.01134,
+                "exceeds_0p05_nat_budget": false
+              }
+            }
+          }
+        },
+        "snr_20dB": {
+          "fp32_nll": 0.47582,
+          "by_depth": {
+            "L32": {
+              "bf16_all_layers": {
+                "nll": 0.47678,
+                "delta_nll_nats": 0.00096,
+                "kl_from_fp32_nats": 0.00014,
+                "sigma_dl_nats": 0.04495,
+                "exceeds_0p05_nat_budget": false
+              },
+              "nf4_all_including_deltanet_gates": {
+                "nll": 0.84902,
+                "delta_nll_nats": 0.3732,
+                "kl_from_fp32_nats": 0.36611,
+                "sigma_dl_nats": 2.38859,
+                "exceeds_0p05_nat_budget": true
+              },
+              "mixed_mlp_nf4_deltanet_bf16": {
+                "nll": 0.47695,
+                "delta_nll_nats": 0.00114,
+                "kl_from_fp32_nats": 0.00019,
+                "sigma_dl_nats": 0.05136,
+                "exceeds_0p05_nat_budget": false
+              }
+            },
+            "L64": {
+              "bf16_all_layers": {
+                "nll": 0.47529,
+                "delta_nll_nats": -0.00052,
+                "kl_from_fp32_nats": 0.00024,
+                "sigma_dl_nats": 0.06255,
+                "exceeds_0p05_nat_budget": false
+              },
+              "nf4_all_including_deltanet_gates": {
+                "nll": 1.20408,
+                "delta_nll_nats": 0.72827,
+                "kl_from_fp32_nats": 0.70779,
+                "sigma_dl_nats": 3.33419,
+                "exceeds_0p05_nat_budget": true
+              },
+              "mixed_mlp_nf4_deltanet_bf16": {
+                "nll": 0.47526,
+                "delta_nll_nats": -0.00056,
+                "kl_from_fp32_nats": 0.00032,
+                "sigma_dl_nats": 0.07169,
+                "exceeds_0p05_nat_budget": false
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "modal_budget_and_voi": {
+    "modal_rates": {
+      "a100_80gb_2c_16g_per_s_usd": "0.00075572",
+      "remaining_free_credits_usd": "12.88000000",
+      "phase_a_decision_gate_exposure_usd": "4.52362840"
+    },
+    "branches": {
+      "branch0_frozen_only": {
+        "branch": "branch0_frozen_only",
+        "total_stage4_usd_no_retry": "8.39064764",
+        "total_stage4_usd_with_all_retries": "9.07079564",
+        "hard_cap_usd": "9.50000000",
+        "remaining_free_credits_at_cap_usd": "3.38000000",
+        "remaining_free_credits_at_retry_usd": "3.80920436",
+        "billed_cost_usd": "0.00"
+      },
+      "branch1_replace_192": {
+        "branch": "branch1_replace_192",
+        "phase_b_train_steps": 192,
+        "includes_3regime_merge": false,
+        "paired_with_frozen_arm1": false,
+        "incremental_a100_s_no_retry": 982,
+        "incremental_usd_no_retry": "0.74211704",
+        "incremental_usd_with_retry": "0.96883304",
+        "total_stage4_usd_no_retry": "9.13276468",
+        "total_stage4_usd_with_all_retries": "10.03962868",
+        "remaining_free_credits_usd": "2.84037132",
+        "under_11p80_target": true,
+        "under_12p00_cap": true,
+        "billed_cost_usd": "0.00"
+      },
+      "branch1_paired_69": {
+        "branch": "branch1_paired_69",
+        "phase_b_train_steps": 69,
+        "includes_3regime_merge": false,
+        "paired_with_frozen_arm1": true,
+        "incremental_a100_s_no_retry": 2072,
+        "incremental_usd_no_retry": "1.56585184",
+        "incremental_usd_with_retry": "1.79256784",
+        "total_stage4_usd_no_retry": "9.95649948",
+        "total_stage4_usd_with_all_retries": "10.86336348",
+        "remaining_free_credits_usd": "2.01663652",
+        "under_11p80_target": true,
+        "under_12p00_cap": true,
+        "billed_cost_usd": "0.00"
+      },
+      "branch1_paired_192": {
+        "branch": "branch1_paired_192",
+        "phase_b_train_steps": 192,
+        "includes_3regime_merge": false,
+        "paired_with_frozen_arm1": true,
+        "incremental_a100_s_no_retry": 2416,
+        "incremental_usd_no_retry": "1.82581952",
+        "incremental_usd_with_retry": "2.16589352",
+        "total_stage4_usd_no_retry": "10.21646716",
+        "total_stage4_usd_with_all_retries": "11.23668916",
+        "remaining_free_credits_usd": "1.64331084",
+        "under_11p80_target": true,
+        "under_12p00_cap": true,
+        "billed_cost_usd": "0.00"
+      },
+      "branch1_paired_192_plus_merge": {
+        "branch": "branch1_paired_192_plus_merge",
+        "phase_b_train_steps": 192,
+        "includes_3regime_merge": true,
+        "paired_with_frozen_arm1": true,
+        "incremental_a100_s_no_retry": 3095,
+        "incremental_usd_no_retry": "2.33895340",
+        "incremental_usd_with_retry": "2.67902740",
+        "total_stage4_usd_no_retry": "10.72960104",
+        "total_stage4_usd_with_all_retries": "11.74982304",
+        "remaining_free_credits_usd": "1.13017696",
+        "under_11p80_target": true,
+        "under_12p00_cap": true,
+        "billed_cost_usd": "0.00"
+      }
+    },
+    "voi_decision_boundary": {
+      "tau_gate_nats": 0.05,
+      "tau_trigger_recommended_low_nats": 0.03,
+      "tau_low_voi_crossover_nats": 0.04,
+      "tau_high_voi_crossover_nats": 0.315,
+      "effective_phase_b_cost_with_shadow_price_usd": 2.7574,
+      "selected_curve_points": [
+        {
+          "delta_host_nats": 0.0,
+          "expected_post_lora_gap_nats": 0.0,
+          "p_pass_frozen": 1.0,
+          "p_pass_phase_b_lora": 0.99998,
+          "net_voi_usd": -2.7577,
+          "decision": "STAY_FROZEN"
+        },
+        {
+          "delta_host_nats": 0.01,
+          "expected_post_lora_gap_nats": 0.002,
+          "p_pass_frozen": 0.99997,
+          "p_pass_phase_b_lora": 0.99997,
+          "net_voi_usd": -2.7094,
+          "decision": "STAY_FROZEN"
+        },
+        {
+          "delta_host_nats": 0.02,
+          "expected_post_lora_gap_nats": 0.004,
+          "p_pass_frozen": 0.99865,
+          "p_pass_phase_b_lora": 0.99994,
+          "net_voi_usd": -2.6292,
+          "decision": "STAY_FROZEN"
+        },
+        {
+          "delta_host_nats": 0.03,
+          "expected_post_lora_gap_nats": 0.006,
+          "p_pass_frozen": 0.97725,
+          "p_pass_phase_b_lora": 0.99988,
+          "net_voi_usd": -2.0477,
+          "decision": "STAY_FROZEN"
+        },
+        {
+          "delta_host_nats": 0.035,
+          "expected_post_lora_gap_nats": 0.007,
+          "p_pass_frozen": 0.93319,
+          "p_pass_phase_b_lora": 0.99983,
+          "net_voi_usd": -0.9235,
+          "decision": "STAY_FROZEN"
+        },
+        {
+          "delta_host_nats": 0.04,
+          "expected_post_lora_gap_nats": 0.008,
+          "p_pass_frozen": 0.84134,
+          "p_pass_phase_b_lora": 0.99977,
+          "net_voi_usd": 1.3952,
+          "decision": "TRIGGER_PHASE_B"
+        },
+        {
+          "delta_host_nats": 0.05,
+          "expected_post_lora_gap_nats": 0.01,
+          "p_pass_frozen": 0.5,
+          "p_pass_phase_b_lora": 0.99957,
+          "net_voi_usd": 9.9718,
+          "decision": "TRIGGER_PHASE_B"
+        },
+        {
+          "delta_host_nats": 0.08,
+          "expected_post_lora_gap_nats": 0.016,
+          "p_pass_frozen": 0.00135,
+          "p_pass_phase_b_lora": 0.9977,
+          "net_voi_usd": 22.5344,
+          "decision": "TRIGGER_PHASE_B"
+        },
+        {
+          "delta_host_nats": 0.12,
+          "expected_post_lora_gap_nats": 0.024,
+          "p_pass_frozen": 0.0,
+          "p_pass_phase_b_lora": 0.98487,
+          "net_voi_usd": 22.4317,
+          "decision": "TRIGGER_PHASE_B"
+        },
+        {
+          "delta_host_nats": 0.2,
+          "expected_post_lora_gap_nats": 0.04,
+          "p_pass_frozen": 0.0,
+          "p_pass_phase_b_lora": 0.79767,
+          "net_voi_usd": 17.9502,
+          "decision": "TRIGGER_PHASE_B"
+        },
+        {
+          "delta_host_nats": 0.28,
+          "expected_post_lora_gap_nats": 0.056,
+          "p_pass_frozen": 0.0,
+          "p_pass_phase_b_lora": 0.30854,
+          "net_voi_usd": 5.3707,
+          "decision": "TRIGGER_PHASE_B"
+        },
+        {
+          "delta_host_nats": 0.31,
+          "expected_post_lora_gap_nats": 0.062,
+          "p_pass_frozen": 0.0,
+          "p_pass_phase_b_lora": 0.15866,
+          "net_voi_usd": 1.4451,
+          "decision": "TRIGGER_PHASE_B"
+        },
+        {
+          "delta_host_nats": 0.35,
+          "expected_post_lora_gap_nats": 0.1,
+          "p_pass_frozen": 0.0,
+          "p_pass_phase_b_lora": 2e-05,
+          "net_voi_usd": -2.757,
+          "decision": "ABORT_FIX_CPU_CONNECTOR"
+        },
+        {
+          "delta_host_nats": 0.5,
+          "expected_post_lora_gap_nats": 0.25,
+          "p_pass_frozen": 0.0,
+          "p_pass_phase_b_lora": 0.0,
+          "net_voi_usd": -2.7574,
+          "decision": "ABORT_FIX_CPU_CONNECTOR"
+        }
+      ]
+    },
+    "monte_carlo_10k_policy_comparison": {
+      "mean_cost_always_frozen_usd": 7.8253,
+      "mean_cost_always_lora_usd": 9.6663,
+      "mean_cost_adaptive_twophase_usd": 8.7492,
+      "phase_b_trigger_rate": 0.4089,
+      "pass_rate_always_frozen": 0.5109,
+      "pass_rate_adaptive_twophase": 0.8301,
+      "worst_case_cost_usd": 11.2367,
+      "strictly_under_12p88_all_trials": true
+    }
+  },
+  "r2_unified_w123_vram_and_step_time": {
+    "cayley_precision_invariance_proof": {
+      "d_model": 2560,
+      "m_complex_pairs": 1280,
+      "r_c": 4,
+      "woodbury_matrix_dim": "8x8 complex64",
+      "fp32_woodbury_unitarity_defect_spectral": 7.822e-07,
+      "fp32_woodbury_unitarity_defect_fro": 1.127e-06,
+      "block64_Q_ortho_defect_fp32": 7.696e-07,
+      "block64_Q_ortho_defect_bf16": 0.01554,
+      "block64_Q_ortho_defect_nf4": 0.01552,
+      "nf4_vs_fp32_defect_blowup_ratio": 20162.1,
+      "mandate": "Cayley O_proj MUST remain strictly FP32 (NEVER 4-bit quantized!) even under 27B Mixed MLP-NF4."
+    },
+    "models": {
+      "Qwen3.5-4B": {
+        "selected_layers": {
+          "full_attn": [
+            12,
+            16,
+            20,
+            24,
+            28
+          ],
+          "deltanet": [
+            11,
+            15,
+            19,
+            23
+          ],
+          "mode2_early_dn_exception": [
+            3,
+            7
+          ],
+          "stop_grad_cutoff_layer": 10,
+          "skipped_layers_pct": 31.25
+        },
+        "unified_param_budget": {
+          "m1_compact_connector": 488400,
+          "w1_dt_bias_warmstart": 0,
+          "w2_fp32_cayley_oproj_rc4": 102400,
+          "w2_schur_irrep_vproj_plus_readout": 173134,
+          "w13_selective_gdn_r8": 722944,
+          "mode1_host_adapter_only": 998478,
+          "mode1_cumulative_m1_w123": 1486878,
+          "mode2_early_dn_exception": 82944,
+          "mode2_cumulative_m1_w123": 1569822,
+          "mode1_cumulative_if_fullrank_ab": 1976350,
+          "under_2p20m_tier_p1_cap": true,
+          "share_of_2p185m_cap_pct": 68.05,
+          "cayley_8x8_woodbury_flops_pct": 0.00489,
+          "total_surgical_adapter_flops_pct": 0.0237
+        },
+        "mode1_vs_mode2_savings": {
+          "vram_saved_mib": 12110.52,
+          "vram_saved_gib": 11.827,
+          "step_time_saved_ms": 558.8,
+          "step_time_saved_pct": 19.82
+        },
+        "configs": {
+          "mode1_stopgrad_patternA_sub8_mb16": {
+            "phase_b_mode": "mode1_stopgrad_l10",
+            "precision": "bf16",
+            "scorer": "kv_train",
+            "micro_batch": 16,
+            "cf_pattern": "pattern_a_seq_accum",
+            "sub_pairs": 8,
+            "static_total_mib": 8094.41,
+            "static_uk_bf16_mib": 39.38,
+            "static_adapter_plus_conn_mib": 18.81,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_mib": 3182.81,
+            "dyn_activations_mib": 25861.28,
+            "peak_vram_mib": 40988.51,
+            "peak_vram_gib": 40.028,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "step_time_breakdown_ms": {
+              "primary_fwd_ms": 658.6,
+              "primary_bwd_ms": 905.5,
+              "w13_lora_plus_uk_overhead_ms": 65.2,
+              "w2_fp32_cayley_8x8_overhead_ms": 27.7,
+              "w3_token_gate_ms": 7.9,
+              "cf_margin_subbatch_ms": 449.5,
+              "mixkl_prose_subbatch_ms": 145.7,
+              "total_step_ms": 2260.0,
+              "total_step_s": 2.26,
+              "delta_vs_stage3d_1975p7ms_pct": 14.39
+            }
+          },
+          "mode1_stopgrad_patternA_sub16_mb16": {
+            "phase_b_mode": "mode1_stopgrad_l10",
+            "precision": "bf16",
+            "scorer": "kv_train",
+            "micro_batch": 16,
+            "cf_pattern": "pattern_a_seq_accum",
+            "sub_pairs": 16,
+            "static_total_mib": 8094.41,
+            "static_uk_bf16_mib": 39.38,
+            "static_adapter_plus_conn_mib": 18.81,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_mib": 3182.81,
+            "dyn_activations_mib": 25861.28,
+            "peak_vram_mib": 40988.51,
+            "peak_vram_gib": 40.028,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "step_time_breakdown_ms": {
+              "primary_fwd_ms": 658.6,
+              "primary_bwd_ms": 905.5,
+              "w13_lora_plus_uk_overhead_ms": 65.2,
+              "w2_fp32_cayley_8x8_overhead_ms": 27.7,
+              "w3_token_gate_ms": 7.9,
+              "cf_margin_subbatch_ms": 832.4,
+              "mixkl_prose_subbatch_ms": 274.7,
+              "total_step_ms": 2772.0,
+              "total_step_s": 2.772,
+              "delta_vs_stage3d_1975p7ms_pct": 40.3
+            }
+          },
+          "mode1_stopgrad_patternB_coresid_sub8_mb16": {
+            "phase_b_mode": "mode1_stopgrad_l10",
+            "precision": "bf16",
+            "scorer": "kv_train",
+            "micro_batch": 16,
+            "cf_pattern": "pattern_b_coresident",
+            "sub_pairs": 8,
+            "static_total_mib": 8094.41,
+            "static_uk_bf16_mib": 39.38,
+            "static_adapter_plus_conn_mib": 18.81,
+            "dyn_cache_mib": 5775.0,
+            "dyn_logits_mib": 4774.22,
+            "dyn_activations_mib": 38791.93,
+            "peak_vram_mib": 57435.56,
+            "peak_vram_gib": 56.089,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "step_time_breakdown_ms": {
+              "primary_fwd_ms": 658.6,
+              "primary_bwd_ms": 905.5,
+              "w13_lora_plus_uk_overhead_ms": 65.2,
+              "w2_fp32_cayley_8x8_overhead_ms": 27.7,
+              "w3_token_gate_ms": 7.9,
+              "cf_margin_subbatch_ms": 416.2,
+              "mixkl_prose_subbatch_ms": 145.7,
+              "total_step_ms": 2226.7,
+              "total_step_s": 2.2267,
+              "delta_vs_stage3d_1975p7ms_pct": 12.71
+            }
+          },
+          "mode2_cotune_patternA_sub8_mb16": {
+            "phase_b_mode": "mode2_cotune_0p15_etaA",
+            "precision": "bf16",
+            "scorer": "kv_train",
+            "micro_batch": 16,
+            "cf_pattern": "pattern_a_seq_accum",
+            "sub_pairs": 8,
+            "static_total_mib": 8101.42,
+            "static_uk_bf16_mib": 39.38,
+            "static_adapter_plus_conn_mib": 25.82,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_mib": 3182.81,
+            "dyn_activations_mib": 37964.8,
+            "peak_vram_mib": 53099.03,
+            "peak_vram_gib": 51.855,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "step_time_breakdown_ms": {
+              "primary_fwd_ms": 658.6,
+              "primary_bwd_ms": 1317.1,
+              "w13_lora_plus_uk_overhead_ms": 65.2,
+              "w2_fp32_cayley_8x8_overhead_ms": 27.7,
+              "w3_token_gate_ms": 7.9,
+              "cf_margin_subbatch_ms": 560.6,
+              "mixkl_prose_subbatch_ms": 181.7,
+              "total_step_ms": 2818.8,
+              "total_step_s": 2.8188,
+              "delta_vs_stage3d_1975p7ms_pct": 42.67
+            }
+          },
+          "mode2_cotune_patternA_sub16_mb16": {
+            "phase_b_mode": "mode2_cotune_0p15_etaA",
+            "precision": "bf16",
+            "scorer": "kv_train",
+            "micro_batch": 16,
+            "cf_pattern": "pattern_a_seq_accum",
+            "sub_pairs": 16,
+            "static_total_mib": 8101.42,
+            "static_uk_bf16_mib": 39.38,
+            "static_adapter_plus_conn_mib": 25.82,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_mib": 3182.81,
+            "dyn_activations_mib": 37964.8,
+            "peak_vram_mib": 53099.03,
+            "peak_vram_gib": 51.855,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "step_time_breakdown_ms": {
+              "primary_fwd_ms": 658.6,
+              "primary_bwd_ms": 1317.1,
+              "w13_lora_plus_uk_overhead_ms": 65.2,
+              "w2_fp32_cayley_8x8_overhead_ms": 27.7,
+              "w3_token_gate_ms": 7.9,
+              "cf_margin_subbatch_ms": 1038.2,
+              "mixkl_prose_subbatch_ms": 342.6,
+              "total_step_ms": 3457.3,
+              "total_step_s": 3.4573,
+              "delta_vs_stage3d_1975p7ms_pct": 74.99
+            }
+          },
+          "mode2_cotune_patternB_coresid_sub8_mb16": {
+            "phase_b_mode": "mode2_cotune_0p15_etaA",
+            "precision": "bf16",
+            "scorer": "kv_train",
+            "micro_batch": 16,
+            "cf_pattern": "pattern_b_coresident",
+            "sub_pairs": 8,
+            "static_total_mib": 8101.42,
+            "static_uk_bf16_mib": 39.38,
+            "static_adapter_plus_conn_mib": 25.82,
+            "dyn_cache_mib": 5775.0,
+            "dyn_logits_mib": 4774.22,
+            "dyn_activations_mib": 56947.19,
+            "peak_vram_mib": 75597.84,
+            "peak_vram_gib": 73.826,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": false,
+            "step_time_breakdown_ms": {
+              "primary_fwd_ms": 658.6,
+              "primary_bwd_ms": 1317.1,
+              "w13_lora_plus_uk_overhead_ms": 65.2,
+              "w2_fp32_cayley_8x8_overhead_ms": 27.7,
+              "w3_token_gate_ms": 7.9,
+              "cf_margin_subbatch_ms": 519.1,
+              "mixkl_prose_subbatch_ms": 181.7,
+              "total_step_ms": 2777.3,
+              "total_step_s": 2.7773,
+              "delta_vs_stage3d_1975p7ms_pct": 40.57
+            }
+          }
+        }
+      },
+      "Qwen3.5-9B": {
+        "selected_layers": {
+          "full_attn": [
+            12,
+            16,
+            20,
+            24,
+            28
+          ],
+          "deltanet": [
+            11,
+            15,
+            19,
+            23
+          ],
+          "mode2_early_dn_exception": [
+            3,
+            7
+          ],
+          "stop_grad_cutoff_layer": 10,
+          "skipped_layers_pct": 31.25
+        },
+        "unified_param_budget": {
+          "m1_compact_connector": 689616,
+          "w1_dt_bias_warmstart": 0,
+          "w2_fp32_cayley_oproj_rc4": 163840,
+          "w2_schur_irrep_vproj_plus_readout": 251470,
+          "w13_selective_gdn_r8": 919552,
+          "mode1_host_adapter_only": 1334862,
+          "mode1_cumulative_m1_w123": 2024478,
+          "mode2_early_dn_exception": 132096,
+          "mode2_cumulative_m1_w123": 2156574,
+          "mode1_cumulative_if_fullrank_ab": 2808862,
+          "under_2p20m_tier_p1_cap": true,
+          "share_of_2p185m_cap_pct": 92.65,
+          "cayley_8x8_woodbury_flops_pct": 0.00367,
+          "total_surgical_adapter_flops_pct": 0.0149
+        },
+        "mode1_vs_mode2_savings": {
+          "vram_saved_mib": 14176.36,
+          "vram_saved_gib": 13.844,
+          "step_time_saved_ms": 1189.6,
+          "step_time_saved_pct": 19.82
+        },
+        "configs": {
+          "mode1_stopgrad_patternA_sub8_mb8": {
+            "phase_b_mode": "mode1_stopgrad_l10",
+            "precision": "bf16",
+            "scorer": "kv_train",
+            "micro_batch": 8,
+            "cf_pattern": "pattern_a_seq_accum",
+            "sub_pairs": 8,
+            "static_total_mib": 17218.41,
+            "static_uk_bf16_mib": 100.76,
+            "static_adapter_plus_conn_mib": 25.23,
+            "dyn_cache_mib": 1925.0,
+            "dyn_logits_mib": 1591.41,
+            "dyn_activations_mib": 15228.55,
+            "peak_vram_mib": 35963.36,
+            "peak_vram_gib": 35.12,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "step_time_breakdown_ms": {
+              "primary_fwd_ms": 1518.4,
+              "primary_bwd_ms": 2087.8,
+              "w13_lora_plus_uk_overhead_ms": 150.3,
+              "w2_fp32_cayley_8x8_overhead_ms": 63.8,
+              "w3_token_gate_ms": 18.2,
+              "cf_margin_subbatch_ms": 1036.4,
+              "mixkl_prose_subbatch_ms": 335.9,
+              "total_step_ms": 5210.9,
+              "total_step_s": 5.2109,
+              "delta_vs_stage3d_1975p7ms_pct": null
+            }
+          },
+          "mode1_stopgrad_patternA_sub8_mb16": {
+            "phase_b_mode": "mode1_stopgrad_l10",
+            "precision": "bf16",
+            "scorer": "kv_train",
+            "micro_batch": 16,
+            "cf_pattern": "pattern_a_seq_accum",
+            "sub_pairs": 8,
+            "static_total_mib": 17218.41,
+            "static_uk_bf16_mib": 100.76,
+            "static_adapter_plus_conn_mib": 25.23,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_mib": 3182.81,
+            "dyn_activations_mib": 30457.1,
+            "peak_vram_mib": 54708.32,
+            "peak_vram_gib": 53.426,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "step_time_breakdown_ms": {
+              "primary_fwd_ms": 1402.1,
+              "primary_bwd_ms": 1927.8,
+              "w13_lora_plus_uk_overhead_ms": 138.8,
+              "w2_fp32_cayley_8x8_overhead_ms": 58.9,
+              "w3_token_gate_ms": 16.8,
+              "cf_margin_subbatch_ms": 957.0,
+              "mixkl_prose_subbatch_ms": 310.1,
+              "total_step_ms": 4811.5,
+              "total_step_s": 4.8115,
+              "delta_vs_stage3d_1975p7ms_pct": null
+            }
+          },
+          "mode2_cotune_patternA_sub8_mb8": {
+            "phase_b_mode": "mode2_cotune_0p15_etaA",
+            "precision": "bf16",
+            "scorer": "kv_train",
+            "micro_batch": 8,
+            "cf_pattern": "pattern_a_seq_accum",
+            "sub_pairs": 8,
+            "static_total_mib": 17228.57,
+            "static_uk_bf16_mib": 100.76,
+            "static_adapter_plus_conn_mib": 35.39,
+            "dyn_cache_mib": 1925.0,
+            "dyn_logits_mib": 1591.41,
+            "dyn_activations_mib": 22311.65,
+            "peak_vram_mib": 43056.62,
+            "peak_vram_gib": 42.047,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "step_time_breakdown_ms": {
+              "primary_fwd_ms": 1518.4,
+              "primary_bwd_ms": 3036.9,
+              "w13_lora_plus_uk_overhead_ms": 150.3,
+              "w2_fp32_cayley_8x8_overhead_ms": 63.8,
+              "w3_token_gate_ms": 18.2,
+              "cf_margin_subbatch_ms": 1292.7,
+              "mixkl_prose_subbatch_ms": 418.9,
+              "total_step_ms": 6499.2,
+              "total_step_s": 6.4992,
+              "delta_vs_stage3d_1975p7ms_pct": null
+            }
+          },
+          "mode2_cotune_patternA_sub8_mb16": {
+            "phase_b_mode": "mode2_cotune_0p15_etaA",
+            "precision": "bf16",
+            "scorer": "kv_train",
+            "micro_batch": 16,
+            "cf_pattern": "pattern_a_seq_accum",
+            "sub_pairs": 8,
+            "static_total_mib": 17228.57,
+            "static_uk_bf16_mib": 100.76,
+            "static_adapter_plus_conn_mib": 35.39,
+            "dyn_cache_mib": 3850.0,
+            "dyn_logits_mib": 3182.81,
+            "dyn_activations_mib": 44623.3,
+            "peak_vram_mib": 68884.68,
+            "peak_vram_gib": 67.27,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": false,
+            "step_time_breakdown_ms": {
+              "primary_fwd_ms": 1402.1,
+              "primary_bwd_ms": 2804.1,
+              "w13_lora_plus_uk_overhead_ms": 138.8,
+              "w2_fp32_cayley_8x8_overhead_ms": 58.9,
+              "w3_token_gate_ms": 16.8,
+              "cf_margin_subbatch_ms": 1193.6,
+              "mixkl_prose_subbatch_ms": 386.8,
+              "total_step_ms": 6001.1,
+              "total_step_s": 6.0011,
+              "delta_vs_stage3d_1975p7ms_pct": null
+            }
+          }
+        }
+      },
+      "Qwen3.8-27B": {
+        "selected_layers": {
+          "full_attn": [
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            48,
+            56
+          ],
+          "deltanet": [
+            19,
+            23,
+            27,
+            31,
+            35,
+            39
+          ],
+          "mode2_early_dn_exception": [
+            3,
+            7,
+            11,
+            15
+          ],
+          "stop_grad_cutoff_layer": 18,
+          "skipped_layers_pct": 28.12
+        },
+        "unified_param_budget": {
+          "m1_compact_connector": 823760,
+          "w1_dt_bias_warmstart": 0,
+          "w2_fp32_cayley_oproj_rc4": 327680,
+          "w2_schur_irrep_vproj_plus_readout": 452110,
+          "w13_selective_gdn_r8": 1774080,
+          "mode1_host_adapter_only": 2553870,
+          "mode1_cumulative_m1_w123": 3377630,
+          "mode2_early_dn_exception": 330752,
+          "mode2_cumulative_m1_w123": 3708382,
+          "mode1_cumulative_if_fullrank_ab": 5830622,
+          "under_2p20m_tier_p1_cap": false,
+          "share_of_2p185m_cap_pct": 154.59,
+          "cayley_8x8_woodbury_flops_pct": 0.00244,
+          "total_surgical_adapter_flops_pct": 0.0095
+        },
+        "mode1_vs_mode2_savings": {
+          "vram_saved_mib": 3862.6,
+          "vram_saved_gib": 3.772,
+          "step_time_saved_ms": 10056.2,
+          "step_time_saved_pct": 17.84
+        },
+        "configs": {
+          "mode1_stopgrad_bf16_ckpt_sub8_mb8": {
+            "phase_b_mode": "mode1_stopgrad_l10",
+            "precision": "bf16",
+            "scorer": "batched_ckpt_train",
+            "micro_batch": 8,
+            "cf_pattern": "pattern_a_seq_accum",
+            "sub_pairs": 8,
+            "static_total_mib": 51606.92,
+            "static_uk_bf16_mib": 245.0,
+            "static_adapter_plus_conn_mib": 46.36,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_mib": 0.0,
+            "dyn_activations_mib": 8950.5,
+            "peak_vram_mib": 60557.42,
+            "peak_vram_gib": 59.138,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "step_time_breakdown_ms": {
+              "primary_fwd_ms": 12087.1,
+              "primary_bwd_ms": 17375.2,
+              "w13_lora_plus_uk_overhead_ms": 1196.6,
+              "w2_fp32_cayley_8x8_overhead_ms": 507.7,
+              "w3_token_gate_ms": 145.0,
+              "cf_margin_subbatch_ms": 8454.1,
+              "mixkl_prose_subbatch_ms": 2739.8,
+              "total_step_ms": 42505.5,
+              "total_step_s": 42.5055,
+              "delta_vs_stage3d_1975p7ms_pct": null
+            }
+          },
+          "mode2_cotune_bf16_ckpt_sub8_mb8": {
+            "phase_b_mode": "mode2_cotune_0p15_etaA",
+            "precision": "bf16",
+            "scorer": "batched_ckpt_train",
+            "micro_batch": 8,
+            "cf_pattern": "pattern_a_seq_accum",
+            "sub_pairs": 8,
+            "static_total_mib": 51622.03,
+            "static_uk_bf16_mib": 245.0,
+            "static_adapter_plus_conn_mib": 61.46,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_mib": 0.0,
+            "dyn_activations_mib": 10874.25,
+            "peak_vram_mib": 62496.28,
+            "peak_vram_gib": 61.032,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "step_time_breakdown_ms": {
+              "primary_fwd_ms": 12087.1,
+              "primary_bwd_ms": 24174.2,
+              "w13_lora_plus_uk_overhead_ms": 1196.6,
+              "w2_fp32_cayley_8x8_overhead_ms": 507.7,
+              "w3_token_gate_ms": 145.0,
+              "cf_margin_subbatch_ms": 10289.9,
+              "mixkl_prose_subbatch_ms": 3334.7,
+              "total_step_ms": 51735.1,
+              "total_step_s": 51.7351,
+              "delta_vs_stage3d_1975p7ms_pct": null
+            }
+          },
+          "mode1_stopgrad_mixed_mlp_nf4_ckpt_sub8_mb16": {
+            "phase_b_mode": "mode1_stopgrad_l10",
+            "precision": "mixed_mlp_nf4_deltanet_bf16_cayley_fp32",
+            "scorer": "batched_ckpt_train",
+            "micro_batch": 16,
+            "cf_pattern": "pattern_a_seq_accum",
+            "sub_pairs": 8,
+            "static_total_mib": 28452.92,
+            "static_uk_bf16_mib": 245.0,
+            "static_adapter_plus_conn_mib": 46.36,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_mib": 0.0,
+            "dyn_activations_mib": 17901.0,
+            "peak_vram_mib": 46353.92,
+            "peak_vram_gib": 45.267,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "step_time_breakdown_ms": {
+              "primary_fwd_ms": 13169.6,
+              "primary_bwd_ms": 18931.3,
+              "w13_lora_plus_uk_overhead_ms": 1303.8,
+              "w2_fp32_cayley_8x8_overhead_ms": 553.1,
+              "w3_token_gate_ms": 158.0,
+              "cf_margin_subbatch_ms": 9211.3,
+              "mixkl_prose_subbatch_ms": 2985.1,
+              "total_step_ms": 46312.2,
+              "total_step_s": 46.3122,
+              "delta_vs_stage3d_1975p7ms_pct": null
+            }
+          },
+          "mode2_cotune_mixed_mlp_nf4_ckpt_sub8_mb16": {
+            "phase_b_mode": "mode2_cotune_0p15_etaA",
+            "precision": "mixed_mlp_nf4_deltanet_bf16_cayley_fp32",
+            "scorer": "batched_ckpt_train",
+            "micro_batch": 16,
+            "cf_pattern": "pattern_a_seq_accum",
+            "sub_pairs": 8,
+            "static_total_mib": 28468.03,
+            "static_uk_bf16_mib": 245.0,
+            "static_adapter_plus_conn_mib": 61.46,
+            "dyn_cache_mib": 0.0,
+            "dyn_logits_mib": 0.0,
+            "dyn_activations_mib": 21748.5,
+            "peak_vram_mib": 50216.52,
+            "peak_vram_gib": 49.04,
+            "fits_a100_80gb": true,
+            "fits_m6_65gib_gate": true,
+            "step_time_breakdown_ms": {
+              "primary_fwd_ms": 13169.6,
+              "primary_bwd_ms": 26339.1,
+              "w13_lora_plus_uk_overhead_ms": 1303.8,
+              "w2_fp32_cayley_8x8_overhead_ms": 553.1,
+              "w3_token_gate_ms": 158.0,
+              "cf_margin_subbatch_ms": 11211.4,
+              "mixkl_prose_subbatch_ms": 3633.3,
+              "total_step_ms": 56368.4,
+              "total_step_s": 56.3684,
+              "delta_vs_stage3d_1975p7ms_pct": null
+            }
+          }
+        }
+      }
+    }
+  },
+  "r2_modal_ledger_and_lemmo_parity": {
+    "step_time_assumptions_s": {
+      "mode1_stopgrad_padded_s_per_step": 2.5,
+      "mode2_cotune_padded_s_per_step": 2.96,
+      "lemmo_tier_p1_padded_s_per_step": 2.4,
+      "w3_kfac_probe_s": 25,
+      "full_1arm_blind_rows": 44812,
+      "common_support_lemmo_rows": 20480
+    },
+    "decimal_ledger": {
+      "branch0_frozen_lock": {
+        "branch": "branch0_frozen_lock",
+        "notes": "M6 R2 Frozen 4-Arm Lock (cap $9.50, $3.38 buffer at cap).",
+        "inc_surgical_a100_s": 0,
+        "inc_lemmo_a100_s": 0,
+        "total_retry_reserve_s": 900,
+        "inc_surgical_usd_no_retry": "0E-8",
+        "inc_lemmo_usd_no_retry": "0E-8",
+        "total_stage4_usd_no_retry": "8.39064764",
+        "total_stage4_usd_with_all_retries": "9.07079564",
+        "remaining_free_credits_no_retry_usd": "4.48935236",
+        "remaining_free_credits_with_retry_usd": "3.80920436",
+        "strictly_under_12p88": true,
+        "billed_cost_usd": "0.00"
+      },
+      "branch1_surgical_69_mode1": {
+        "branch": "branch1_surgical_69_mode1",
+        "notes": "69-step Mode I Stop-Grad L10 (W1+W2+W3 <=1.49M) + full 44,812 blind + text audit.",
+        "inc_surgical_a100_s": 2076,
+        "inc_lemmo_a100_s": 0,
+        "total_retry_reserve_s": 1200,
+        "inc_surgical_usd_no_retry": "1.56887472",
+        "inc_lemmo_usd_no_retry": "0E-8",
+        "total_stage4_usd_no_retry": "9.95952236",
+        "total_stage4_usd_with_all_retries": "10.86638636",
+        "remaining_free_credits_no_retry_usd": "2.92047764",
+        "remaining_free_credits_with_retry_usd": "2.01361364",
+        "strictly_under_12p88": true,
+        "billed_cost_usd": "0.00"
+      },
+      "branch1_surgical_96_mode1": {
+        "branch": "branch1_surgical_96_mode1",
+        "notes": "RECOMMENDED PRIMARY: 96-step Mode I Stop-Grad L10 + full 44,812 blind + text audit.",
+        "inc_surgical_a100_s": 2143,
+        "inc_lemmo_a100_s": 0,
+        "total_retry_reserve_s": 1200,
+        "inc_surgical_usd_no_retry": "1.61950796",
+        "inc_lemmo_usd_no_retry": "0E-8",
+        "total_stage4_usd_no_retry": "10.01015560",
+        "total_stage4_usd_with_all_retries": "10.91701960",
+        "remaining_free_credits_no_retry_usd": "2.86984440",
+        "remaining_free_credits_with_retry_usd": "1.96298040",
+        "strictly_under_12p88": true,
+        "billed_cost_usd": "0.00"
+      },
+      "branch1_surgical_96_mode2": {
+        "branch": "branch1_surgical_96_mode2",
+        "notes": "96-step Mode II Co-Tuned 0.15 eta_A (if early GDN 1-10 needs grad) + full 44,812 blind.",
+        "inc_surgical_a100_s": 2188,
+        "inc_lemmo_a100_s": 0,
+        "total_retry_reserve_s": 1200,
+        "inc_surgical_usd_no_retry": "1.65351536",
+        "inc_lemmo_usd_no_retry": "0E-8",
+        "total_stage4_usd_no_retry": "10.04416300",
+        "total_stage4_usd_with_all_retries": "10.95102700",
+        "remaining_free_credits_no_retry_usd": "2.83583700",
+        "remaining_free_credits_with_retry_usd": "1.92897300",
+        "strictly_under_12p88": true,
+        "billed_cost_usd": "0.00"
+      },
+      "branch1c_192_round1_ref": {
+        "branch": "branch1c_192_round1_ref",
+        "notes": "Round-1 reference Paired-192 generic 5.06M LoRA.",
+        "inc_surgical_a100_s": 2416,
+        "inc_lemmo_a100_s": 0,
+        "total_retry_reserve_s": 1350,
+        "inc_surgical_usd_no_retry": "1.82581952",
+        "inc_lemmo_usd_no_retry": "0E-8",
+        "total_stage4_usd_no_retry": "10.21646716",
+        "total_stage4_usd_with_all_retries": "11.23668916",
+        "remaining_free_credits_no_retry_usd": "2.66353284",
+        "remaining_free_credits_with_retry_usd": "1.64331084",
+        "strictly_under_12p88": true,
+        "billed_cost_usd": "0.00"
+      },
+      "branch0_plus_tier_p1_lemmo_384_full": {
+        "branch": "branch0_plus_tier_p1_lemmo_384_full",
+        "notes": "If Phase A stays frozen: Branch 0 + FULL 384-step & FULL 44,812-row Tier-P1 LEMMO.",
+        "inc_surgical_a100_s": 0,
+        "inc_lemmo_a100_s": 2800,
+        "total_retry_reserve_s": 1140,
+        "inc_surgical_usd_no_retry": "0E-8",
+        "inc_lemmo_usd_no_retry": "2.11601600",
+        "total_stage4_usd_no_retry": "10.50666364",
+        "total_stage4_usd_with_all_retries": "11.36818444",
+        "remaining_free_credits_no_retry_usd": "2.37333636",
+        "remaining_free_credits_with_retry_usd": "1.51181556",
+        "strictly_under_12p88": true,
+        "billed_cost_usd": "0.00"
+      },
+      "branch1_surgical_96_plus_lemmo_L1_96step_full44812": {
+        "branch": "branch1_surgical_96_plus_lemmo_L1_96step_full44812",
+        "notes": "Option L1: Surgical-96 + Matched 96-step Tier-P1 LEMMO (2.185M) on FULL 44,812 blind (1,440s retries).",
+        "inc_surgical_a100_s": 2143,
+        "inc_lemmo_a100_s": 2109,
+        "total_retry_reserve_s": 1440,
+        "inc_surgical_usd_no_retry": "1.61950796",
+        "inc_lemmo_usd_no_retry": "1.59381348",
+        "total_stage4_usd_no_retry": "11.60396908",
+        "total_stage4_usd_with_all_retries": "12.69220588",
+        "remaining_free_credits_no_retry_usd": "1.27603092",
+        "remaining_free_credits_with_retry_usd": "0.18779412",
+        "strictly_under_12p88": true,
+        "billed_cost_usd": "0.00"
+      },
+      "branch1_surgical_96_plus_lemmo_L2_384step_common20480": {
+        "branch": "branch1_surgical_96_plus_lemmo_L2_384step_common20480",
+        "notes": "Option L2 (RECOMMENDED LEMMO LOCK): Surgical-96 + FULL 384-step Tier-P1 LEMMO on 20,480 common-support rows (1,440s retries).",
+        "inc_surgical_a100_s": 2143,
+        "inc_lemmo_a100_s": 1937,
+        "total_retry_reserve_s": 1440,
+        "inc_surgical_usd_no_retry": "1.61950796",
+        "inc_lemmo_usd_no_retry": "1.46382964",
+        "total_stage4_usd_no_retry": "11.47398524",
+        "total_stage4_usd_with_all_retries": "12.56222204",
+        "remaining_free_credits_no_retry_usd": "1.40601476",
+        "remaining_free_credits_with_retry_usd": "0.31777796",
+        "strictly_under_12p88": true,
+        "billed_cost_usd": "0.00"
+      },
+      "branch1_surgical_96_plus_lemmo_L3_384step_full44812_shared_retry": {
+        "branch": "branch1_surgical_96_plus_lemmo_L3_384step_full44812_shared_retry",
+        "notes": "Option L3: Surgical-96 + FULL 384-step & FULL 44,812-row LEMMO sharing the 900s Stage-4 retry pool.",
+        "inc_surgical_a100_s": 2143,
+        "inc_lemmo_a100_s": 2800,
+        "total_retry_reserve_s": 900,
+        "inc_surgical_usd_no_retry": "1.61950796",
+        "inc_lemmo_usd_no_retry": "2.11601600",
+        "total_stage4_usd_no_retry": "12.12617160",
+        "total_stage4_usd_with_all_retries": "12.80631960",
+        "remaining_free_credits_no_retry_usd": "0.75382840",
+        "remaining_free_credits_with_retry_usd": "0.07368040",
+        "strictly_under_12p88": true,
+        "billed_cost_usd": "0.00"
+      }
+    },
+    "monte_carlo_10k_r2_controller": {
+      "trials": 10000,
+      "surgical_only_mean_usd": 8.0606,
+      "surgical_only_p99_usd": 10.6764,
+      "surgical_only_max_usd": 10.8847,
+      "surgical_plus_lemmo_mean_usd": 9.8828,
+      "surgical_plus_lemmo_p99_usd": 12.6813,
+      "surgical_plus_lemmo_max_usd": 12.8508,
+      "pct_trials_strictly_under_12p88": 100.0,
+      "billed_cost_usd_all_10k_trials": "0.00",
+      "lemmo_tier_distribution": {
+        "none_cpu_abort": 1473,
+        "L3_full_384_44812": 8267,
+        "L2_common_384_20480": 260,
+        "L1_matched_96_44812": 0
+      },
+      "pass_rate_always_frozen": 0.5093,
+      "pass_rate_r2_adaptive_w123": 0.8416,
+      "pass_rate_gain_pp": 33.23
+    }
+  },
+  "r2_voi_sigma3_reconciliation": {
+    "g1_oracle_entropy_nats": 0.92558,
+    "g1_uniform_routing_ceiling_gap_nats": 0.46072,
+    "rmsnorm_shrinkage_calibration": {
+      "s3_saturation_threshold": 0.18,
+      "calibrated_power_exponent": 3.2254,
+      "alpha_at_w1_prefix_only_0p3283_nats": 0.1375
+    },
+    "w1_sigma3_to_routing_gap_table": [
+      {
+        "w1_regime": "L_gap=0_well_conditioned",
+        "sigma3_D_answer": 0.3858,
+        "w1_gdn_retention": 1.0,
+        "implied_logit_retention_alpha": 1.0,
+        "analytic_routing_kl_gap_nats": 0.0,
+        "w1_empirical_gap_nats": null,
+        "implied_g1_bayes_acc": 0.647,
+        "regime_verdict": "STAY_FROZEN"
+      },
+      {
+        "w1_regime": "L_gap=64_w1_warmgate_dtbias",
+        "sigma3_D_answer": 0.1684,
+        "w1_gdn_retention": 0.2899,
+        "implied_logit_retention_alpha": 0.8067,
+        "analytic_routing_kl_gap_nats": 0.0127,
+        "w1_empirical_gap_nats": 0.015,
+        "implied_g1_bayes_acc": 0.647,
+        "regime_verdict": "STAY_FROZEN"
+      },
+      {
+        "w1_regime": "L_gap=64_prefix_only_collapse",
+        "sigma3_D_answer": 0.0973,
+        "w1_gdn_retention": 0.00572,
+        "implied_logit_retention_alpha": 0.1375,
+        "analytic_routing_kl_gap_nats": 0.3283,
+        "w1_empirical_gap_nats": 0.3283,
+        "implied_g1_bayes_acc": 0.647,
+        "regime_verdict": "W1_WARMGATE_FIRST_THEN_SURGICAL"
+      },
+      {
+        "w1_regime": "L_gap=64_untrained_host",
+        "sigma3_D_answer": 0.0574,
+        "w1_gdn_retention": 0.00745,
+        "implied_logit_retention_alpha": 0.0251,
+        "analytic_routing_kl_gap_nats": 0.4346,
+        "w1_empirical_gap_nats": null,
+        "implied_g1_bayes_acc": 0.647,
+        "regime_verdict": "W1_WARMGATE_FIRST_THEN_SURGICAL"
+      },
+      {
+        "w1_regime": "L_gap=128_untrained_host",
+        "sigma3_D_answer": 0.022,
+        "w1_gdn_retention": 0.0001,
+        "implied_logit_retention_alpha": 0.0011,
+        "analytic_routing_kl_gap_nats": 0.4595,
+        "w1_empirical_gap_nats": null,
+        "implied_g1_bayes_acc": 0.647,
+        "regime_verdict": "W1_WARMGATE_FIRST_THEN_SURGICAL"
+      }
+    ],
+    "voi_window_reconciliation": {
+      "branch1_surgical_96_inc_cost_w_retry_usd": 1.8462,
+      "effective_cost_with_shadow_price_usd": 2.3578,
+      "without_w1_warmgate_pure_lora": {
+        "delta_route_max_nats": 0.25,
+        "voi_window_nats": [
+          0.04,
+          0.31
+        ],
+        "peak_voi_usd": 23.1056
+      },
+      "with_w1_zero_param_warmgate_plus_w23": {
+        "delta_route_max_nats": 0.34,
+        "voi_window_nats": [
+          0.04,
+          0.4
+        ],
+        "peak_voi_usd": 23.3379,
+        "covers_w1_gap64_prefix_only_0p3283_nats": true
+      },
+      "two_probe_phase_a_disambiguation_rule": {
+        "probe_a_connector_dpi_fail": "If linear/MLP probe on E_thetaA(x) has gap > 0.030 nats -> ABORT_FIX_CPU_CONNECTOR ($0 GPU).",
+        "probe_b_gdn_decay_confirmed": "If Probe A <= 0.030 nats AND Delta_host > 0.315 nats AND sigma_3(D_answer) < 0.10 -> Apply W1 0-param dt_bias warm-start first (lifts sigma_3 1.73x), then run Mode I Surgical-96!",
+        "stay_frozen": "If Delta_host <= 0.030 nats -> STAY_FROZEN (Branch 0 + FULL Tier-P1 LEMMO)."
+      }
+    }
+  }
+}

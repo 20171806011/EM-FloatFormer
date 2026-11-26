@@ -1,0 +1,47 @@
+Running `verify_w4.py` (Round 1 + Round 2 checks) via `uv run`; waiting for completion to inspect `results_w4.json` and update `THEOREM_W4.md`.
+Checking status: Steps 1–3a completed cleanly (Step 3b NF4 probe in progress). Waiting for completion notification to inspect `results_w4.json` and optimize wall-clock runtime back under `90 s`.
+Running updated `verify_w4.py` via `uv run` with per-stage timing instrumentation; waiting for completion.
+All Round 2 instructions in [prompt_r2.md](file:///C:/Users/李则徐/.gemini/antigravity/scratch/EM-FloatFormer-stage4/research/stage4_math_and_design/discussions/W4/prompt_r2.md) have been executed verbatim strictly inside `research/stage4_math_and_design/weight_mod/W4/`.
+
+### Updated Deliverables & Verification Receipt
+- **[verify_w4.py](file:///C:/Users/李则徐/.gemini/antigravity/scratch/EM-FloatFormer-stage4/research/stage4_math_and_design/weight_mod/W4/verify_w4.py)** — Retained all Round-1 checks bit-for-bit (`0.332%` max Stage 3D VRAM calibration error, `3.604×` Cold-Start shock / `9.732×` KL drift, `3,065.8×` NF4/BF16 MSE ratio, `+0.728` nat DeltaNet NF4 failure vs `0.00032` nat Mixed MLP-NF4, Round-1 Decimal budget) and added all three Round-2 modules.
+- **[results_w4.json](file:///C:/Users/李则徐/.gemini/antigravity/scratch/EM-FloatFormer-stage4/research/stage4_math_and_design/weight_mod/W4/results_w4.json)** — Regenerated (`"round": 2`, `125,434` bytes) via:
+  ```powershell
+  uv run --python 3.12 --with numpy==2.3.5 --with scipy==1.17.0 --with torch python -B research/stage4_math_and_design/weight_mod/W4/verify_w4.py
+  ```
+  **Exit code `0`**, wall-clock **`59.24 s`** (`<= 90 s` budget).
+- **[THEOREM_W4.md](file:///C:/Users/李则徐/.gemini/antigravity/scratch/EM-FloatFormer-stage4/research/stage4_math_and_design/weight_mod/W4/THEOREM_W4.md)** — Appended Sections **§7–§11** containing the unified `W1+W2+W3+W4` Systems & Modal Master Decision Ledger (`63,164` bytes). Zero files created, modified, or deleted outside `weight_mod/W4/`.
+
+---
+
+### Exact Converged Round 2 Findings
+
+1. **Unified `W1 + W2 + W3` Stack (`<= 2.20M` Params) VRAM, FP32 Cayley & Mode I vs Mode II ([THEOREM_W4.md §7](file:///C:/Users/李则徐/.gemini/antigravity/scratch/EM-FloatFormer-stage4/research/stage4_math_and_design/weight_mod/W4/THEOREM_W4.md#L279-L333))**
+   - **Exact Parameter Budget**: On `Qwen3.5-4B` (FA `[12,16,20,24,28]`, DN `[11,15,19,23]`), **Mode I** uses **`998,478`** host adapter params (`102,400` FP32 Cayley $O_{\text{proj}}$ $r_c=4$ + `173,134` Schur-Irrep + `722,944` selective GDN $r=8$ + **`0`** W1 slow-head `dt_bias` warm-start) = **`1,486,878` (`1.487M`) cumulative including the `488,400` M1 connector (`68.05%` of Tier-P1's `2,184,964` cap; `0.0237%` host FLOPs)** (`1,569,822` with Mode II `[3,7]` early-GDN exception; `1,976,350` even with full-rank `in_proj_a/b`). `Qwen3.5-9B` stays **`2,024,478 <= 2.185M`** (`92.65%` of cap); `Qwen3.8-27B` is **`3,377,630`** (`0.0095%` FLOPs).
+   - **FP32 Cayley Invariance Mandate**: Direct PyTorch verification at `d = 2560` ($8\times 8$ `complex64` Woodbury, `0.00489%` FLOPs) confirms spectral unitarity defect **`7.822e-7 <= 10^{-6}`** (`64×64` block FP32: **`7.696e-7`** vs BF16 **`1.554e-2`** / NF4 **`1.552e-2`**, a **`20,162×` blowup**). Cayley `O_proj` MUST remain strictly FP32 even under 27B `Mixed MLP-NF4`.
+   - **Mode I (Stop-Grad Layer-10/18, $E_{\theta_A}$ Frozen) vs Mode II (Co-Tuned `0.15 η_A`)** (with BF16 $U_k$ `39.38 / 100.76 / 245.00 MiB` + CF-Margin & MixKL `sub = 8/16`):
+     - **`Qwen3.5-4B` (`kv_train mb=16`)**: **Mode I + Pattern A (Seq. Accum., `sub=8`)** = **`40,988.5 MiB` (`40.03 GiB`)**, **`2,260.0 ms/step`** (`+14.39%` vs Stage 3D's `1,975.7 ms/step`; `sub=16`: `40.03 GiB`, `2,772.0 ms/step`); **Mode I + Pattern B Co-Resident (`16+8`)** = **`57,435.6 MiB` (`56.09 GiB`)**, `2,226.7 ms/step`. **Mode II + Pattern A (`sub=8`)** = **`53,099.0 MiB` (`51.86 GiB`)**, `2,818.8 ms/step` (**Mode II + Pattern B** hits `75,597.8 MiB` $\implies$ **FAILS** M6's `65,000 MiB` gate!). Mode I saves **`11.83 GiB` VRAM** and **`558.8 ms/step` (`-19.82%`)** on 4B — and because W1's `dt_bias` warm-start is zero-param, it works natively inside Mode I!
+     - **`Qwen3.5-9B`**: Mode I saves **`13.84 GiB`** and **unlocks `mb=16` under `65,000 MiB`** (**`54,708.3 MiB` / `53.43 GiB`**, `4,811.5 ms/step`, vs Mode II `68,884.7 MiB > 65,000 MiB`).
+     - **`Qwen3.8-27B` (Stop-Grad Layer-18)**: Pure BF16 `ckpt mb=8` clears `65,000 MiB` (**`60,557.4 MiB` Mode I** / `62,496.3 MiB` Mode II); **`Mixed MLP-NF4 + DeltaNet/FA-BF16 + Cayley-FP32` `ckpt mb=16`** runs at **`46,353.9 MiB` (`45.27 GiB`, Mode I)** vs `50,216.5 MiB` (Mode II), saving **`3.77 GiB`** and **`10.06 s/step` (`-17.84%`)**.
+
+2. **Compressed `69–96`-Step Modal `$12.88` Ledger & Tier-P1 `LEMMO-Matched-LoRA` Parity ([THEOREM_W4.md §8](file:///C:/Users/李则徐/.gemini/antigravity/scratch/EM-FloatFormer-stage4/research/stage4_math_and_design/weight_mod/W4/THEOREM_W4.md#L337-L370))**
+   - Exact `Decimal` totals at `$0.00075572/s` (`Billed Cost: $0.00` across every branch):
+     - **`Branch 0` (M6 R2 Frozen Lock)**: `$8.3906` sched / **`$9.0708`** w/ 900s retry (`$9.50` cap).
+     - **`Branch 1-Surgical-69` (Mode I)**: `$9.9595` sched / **`$10.8664`** w/ 1,200s retry (`$2.01` buffer).
+     - **`Branch 1-Surgical-96` (Mode I — PRIMARY)**: **`$10.0102`** sched / **`$10.9170`** w/ 1,200s retry (`$1.96` buffer; Mode II = `$10.0442` / `$10.9510`; vs Round-1 `Branch 1c-192` `$10.2165` / `$11.2367`).
+     - **YES — Simultaneously Funds Matched Tier-P1 `LEMMO-Matched-LoRA` (`2,184,964` params) Inside `$12.88`**:
+       - **`Branch 0 + Tier-P1 LEMMO` (`384`-step, FULL `44,812` blind)**: `$10.5067` sched / **`$11.3682`** w/ 1,140s retry (`$1.51` buffer).
+       - **`Option L2` (RECOMMENDED LEMMO LOCK: `Surgical-96` + FULL `384`-step LEMMO on `20,480` common-support rows $S_{\text{ours}} \cap S_{\text{LEMMO}}$)**: **`$11.4740`** sched / **`$12.5622`** w/ ALL `1,440 s` retries (`$0.3178` buffer).
+       - **`Option L1` (`Surgical-96` + `96`-step LEMMO on FULL `44,812` blind)**: `$11.6040` sched / **`$12.6922`** w/ `1,440 s` retries (`$0.1878` buffer).
+       - **`Option L3` (`Surgical-96` + FULL `384`-step & FULL `44,812` blind, shared `900 s` retry pool)**: `$12.1262` sched / **`$12.8063`** w/ retry (`$0.0737` buffer).
+   - **10,000-Trial Monte Carlo Controller Proof**: Mean **`$9.8828`**, P99 **`$12.6813`**, worst-case **`max = $12.8508 <= $12.88` (`100.0%` of trials, `Billed Cost: $0.00`)**, executing FULL `L3` on `82.67%` of all trials (`96.95%` of GPU runs), falling back to `L2` on `2.60%`, and lifting gate pass rate **`+33.23 pp`** (`50.93% -> 84.16%`).
+
+3. **Extended Exp 2A: W2 Canonical Schur-Cayley Merging vs Unconstrained LoRA ([THEOREM_W4.md §9](file:///C:/Users/李则徐/.gemini/antigravity/scratch/EM-FloatFormer-stage4/research/stage4_math_and_design/weight_mod/W4/THEOREM_W4.md#L374-L407))**
+   - Replacing `12,288`-param unconstrained LoRA with W2's fixed-frame **Canonical Lie-Algebra Cayley ($r_c=4$) + Pure $V_1 \oplus V_2$ Schur-Irrep (`160` DOFs — `76.8×` compression!)** eliminates the $GL(r)$ factor-gauge pitfall completely, preserves exact spectral unitarity **`2.78e-7`–`4.18e-7 <= 10^{-6}`** across all merges, flips alignment positive (**`-0.0908 -> +0.0818`**), cuts directional unit-norm interference to **`1.371`** (`1.65×` drop), and improves zero-retraining generalization on the unseen mixed `Pluto-DC + CFO + Spur` capture across **every merge rule**:
+     - **Canonical Lie-Schur Soup (`0.5/0.5`)**: **`62.15% / 0.9901`** vs Unconstrained Soup `59.34% / 1.0089` (**`+2.81 pp`, `-0.0188 nats`**; macro **`61.73% / 0.9837`**).
+     - **Canonical TA `0.75`**: **`62.07% / 1.0022`** (`+4.30 pp`, `-0.0271 nats`); **Canonical TA `1.00`**: **`61.91% / 1.0457`** (`+4.76 pp`, `-0.0198 nats`); **Canonical TIES**: **`61.88% / 1.0150`** (`+3.09 pp`, `-0.0117 nats`).
+   - *Diagnostic Decomposition*: Raw unnormalized $\Gamma_{12} = 3.008$ (`1.371 × 1.481²`) isolates the residual `TA 1.00` vs `Soup 0.5` NLL gap (`1.0457` vs `0.9901`) as **physical SNR-temperature mismatch** (`5 dB` vs `2 dB` logit scale) rather than basis interference — confirming **Canonical Lie-Schur Soup + disjoint dev $T^*$** as optimal.
+
+4. **VoI Upper Cutoff $\Delta_{\text{route,max}}$ Reconciliation with W1's $\sigma_3(D_{\text{answer}})$ Bottleneck ([THEOREM_W4.md §10](file:///C:/Users/李则徐/.gemini/antigravity/scratch/EM-FloatFormer-stage4/research/stage4_math_and_design/weight_mod/W4/THEOREM_W4.md#L411-L438))**
+   - Exact softmax Bregman shrinkage ($\sigma_{3,\text{sat}} = 0.180, p = 3.2254$, `G1` ceiling `0.4607` nats) maps W1's `L_gap=64` `prefix_only` collapse ($\sigma_3 = 0.0973 \implies \mathbf{0.3283}$ nats) and zero-param `warmgate` lift ($\sigma_3 = 0.1684 \implies \mathbf{0.0127}$ nats analytic vs `0.0150` empirical!) directly onto W4's VoI curve.
+   - Pairing W1's zero-param `dt_bias` warm-start with `Branch 1-Surgical-96` (`$1.8462` w/ retry) expands recoverable routing capacity from `0.250 -> 0.340` nats and the positive-VoI window from **`[0.040, 0.310]` to `[0.040, 0.400]` nats** (strictly covering W1's `0.3283`-nat Gap-64 regime), gated by the **Two-Probe Phase-A Rule** (Probe A checks $E_{\theta_A}$ DPI `<= 0.030` nats to abort CPU bugs at `$0`; Probe B checks $\sigma_3(D_{\text{answer}}) < 0.10$ to trigger W1 `dt_bias` warmgate before Mode I Surgical-96).

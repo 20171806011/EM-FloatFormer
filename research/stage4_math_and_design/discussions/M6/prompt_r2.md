@@ -1,0 +1,24 @@
+# Track M6 (Round 2): Final Converged Tier-0/1/2 Ledger, M1/M4 Reconciliation & Master Stage 4–6 Execution DAG
+
+You are resuming persistent Codex session **Track M6** (`01a2194c-3b55-7c13-89f6-3ed11a482246`) in `C:\Users\李则徐\.gemini\antigravity\scratch\EM-FloatFormer-stage4`. Keep edits STRICTLY inside `research/stage4_math_and_design/M6/` and run Python ONLY via `uv run --python 3.12 ...`.
+
+## 1. Full Round-1 Cross-Track Picture to Synthesize & Lock
+Look across ALL 5 companion tracks (`M1..M5`) + your own Round 1 analysis:
+1. **The Reconciled Hardware & Statistical Budget Paradox (`M2` vs `M4` vs `M6`)**:
+   - **VRAM reality from Stage 3D (`M4` catch)**: Stage 3D measured **`52,972.5 MB` peak train VRAM** (microbatch 16) and **`45,409.9 MB` peak eval VRAM** (batch 64) on `A100-80GB`! Therefore putting Pluto (`2,240` frames) + CTTC (`1,440` packets) blindly onto `L4 (24 GB)` in M6's baseline cap risks kernel/batch mismatch or OOM unless a small `$0.10` L4 parity smoke passes first!
+   - **AND look at M4's A100-80GB math**: Pure **A100-80GB** across `4` matched single-seed arms (`384` steps/arm, synthetic + real) + `131,760` eval rows STILL totals only **`$8.4407`** (leaving `$4.44` below `$12.88`!). Wait — look carefully at minor rate/step differences between M4 (`A100-80GB $2.4984/h + 2c/12GiB = $0.00074684/s`, single seed `4 × 384 steps`, `2,477s` raw real, `1,229s` synth) vs M6 (`A100-80GB + 2c/16GiB = $0.00075572/s`, `173-step` pilot + `3` seeds continuation for ONE winning arm = `2,707 steps`).
+   - **AND look at M2's statistical power theorem**: `3` seeds CANNOT establish population-of-seeds generalizability anyway (`~22–30%` crossed power, requiring `>= 10` seeds!), while `1` seed or `3` frozen seeds cleanly establish **Conditional Fixed-Connector Block/Capture/Loop-Pair Statistical Claims** (PLUS counterfactual fixed-text slot interventions & physical+residual comparisons)!
+   - **Crucial Synthesis Decision Needed From M6**: Merge M4's VRAM-safe pure `A100-80GB` safety with M6's Tier-2 **1-seed pilot futility gate** (`18%` steps on disjoint dev BEFORE buying full `384`-step × `4`-arm comparison OR continuing `Arm 1 / Arm 2` to extra blocks/seeds!), keeping TOTAL worst-case cap **strictly `<= $9.50`** inside `~$12.88` remaining Modal free credits (`$0.00` net spend guard)!
+2. **Causal Isolation (`Arm 0: Zero`, `Arm 0b: Naive-Additive`, `Arm 1: Host-Pure Equivariant+Coupled`, `Arm 2: Equivariant-Physical+HostResidual`)**:
+   - M1's Round 1 showed `Arm 2` hits `64.62%` via its physical S17 prior + host residual, which M2 noted fails to isolate how much frozen Qwen contributes vs physical bypass!
+   - Update your Tier-1 CPU Gate & Stage 4 DAG to explicitly require **BOTH** `Arm 1 (Host-Pure)` AND `Arm 2 (Hybrid)` Jacobian/OOD checks AND counterfactual slot/text controls!
+3. **Dual-Cache Zero-GPU Upgrade (`4-bit s17` + `16-bit canonical` M5 Packet) + `RefSufficientPool` Non-Double-Counting (M3+M4)**:
+   - M4's CPU shard builder already runs R3 whitening & feature computation on CPU (`<$0.77` total CPU cost!), so extracting BOTH `4-bit s17` AND M5's `16-bit canonical` packet simultaneously on CPU locks zero throwaway work across **Stage 4 → Stage 5 → Stage 6**!
+   - Also integrate M4's critical causal discovery (`fast_blind_frontend` & `anchor_capture` non-causal future/whole-source correlations excluded -> strict causal filtration $\mathcal{F}^r$ + sentinel hash test + M3 non-double-counting!).
+
+## 2. Specific Round-2 Convergence Tasks for Track M6
+Update `research/stage4_math_and_design/M6/THEOREM_M6.md`, `verify_m6.py`, and `results_m6.json`:
+1. **Publish ONE Converged, Contradiction-Free Master Modal Allocation Ledger (`<= $9.50` Hard Cap, 100% A100-80GB Safe)** unifying M4's `52.97 GB / 45.41 GB` VRAM numbers, M1's 4-arm causal matrix, M2's fixed-seed conditional inference scope + dev-disjoint futility stopping, and M5's dual-cache Stage 4→6 export! Explicitly show how much budget goes to Stage 4 Pilot, Arm Comparison, Real Pluto (`2,240`), Real CTTC (`1,440` incl. held-out `f708_snr10`), and Reserve (`>= $3.38` buffer vs `$12.88`!).
+2. **Lock the Exact Numerical Tier-0 / Tier-1 / Tier-2 Go-No-Go Checklists** (ready for Antigravity to inspect and execute immediately after GitHub commit, with exact pass/fail predicates across every node `4A..6E` incorporating M1–M5 invariants!).
+3. **Cross-Host & Fair `LEMMO` Execution Law (Stage 6 Readiness)**: Explicitly verify mathematically how fixing the `16-bit canonical` cache + `RefSufficientPool` lets us swap only tiny host adapters (`4B -> 9B -> 27B`) and run exact matched-support `LEMMO` comparison with minimum redundant experiments!
+4. Run updated `verify_m6.py` via `uv run`, verifying all parity + Monte Carlo sequential cost/Type-I + converged Modal A100 ledger numbers cleanly in `results_m6.json`, and summarize in `reply_r2.md`.

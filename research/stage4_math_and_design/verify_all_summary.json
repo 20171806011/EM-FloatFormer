@@ -1,0 +1,757 @@
+{
+  "all_passed": true,
+  "scripts_passed": true,
+  "discussions_passed": true,
+  "hygiene_passed": true,
+  "total_elapsed_s": 825.702,
+  "scripts": [
+    {
+      "script": "M1/verify_m1.py",
+      "exit_code": 0,
+      "elapsed_s": 154.226,
+      "stdout_tail": [
+        "Trained the six matched CPU connectors for seed 202611",
+        "Trained the six matched CPU connectors for seed 202622",
+        "Trained the six matched CPU connectors for seed 202633",
+        "G1_main_extrap_both Arm 0=62.16%, Arm 1=64.60%, Arm 2=64.62% Arm 3=64.62%",
+        "G2_interp_both Arm 0=45.21%, Arm 1=46.81%, Arm 2=46.78% Arm 3=46.78%",
+        "G3_extrap_angle Arm 0=58.80%, Arm 1=61.91%, Arm 2=62.11% Arm 3=62.11%",
+        "G4_extrap_freq Arm 0=45.18%, Arm 1=46.97%, Arm 2=47.75% Arm 3=47.75%",
+        "C:\\Users\\李则徐\\.gemini\\antigravity\\scratch\\EM-FloatFormer-stage4\\research\\stage4_math_and_design\\M1\\results_m1.json",
+        "{\"arm1_arm2_grouped_defect_zero\": true, \"arm1_arm2_ungrouped_defect_at_most_1e_6\": true, \"host_frozen_and_same_trainable_parameter_count\": true}",
+        "{\"arm0_separate_nonquotient\": {\"G1_G3_seedmean_above_55_pct_in_both\": true, \"G1_G3_each_seed_above_55_pct_in_both\": true, \"all_cell_mean_ece_point_below_0p05\": false}, \"arm1_equivariant_host_pure\": {\"G1_G3_seedmean_above_55_pct_in_both\": true, \"G1_G3_each_seed_above_55_pct_in_both\": true, \"all_cell_mean_ece_point_below_0p05\": true}, \"arm2_equivariant_physical_residual\": {\"G1_G3_seedmean_above_55_pct_in_both\": true, \"G1_G3_each_seed_above_55_pct_in_both\": true, \"all_cell_mean_ece_point_below_0p05\": true}}"
+      ],
+      "stderr_tail": [],
+      "track_id": "M1",
+      "results_json": "M1/results_m1.json",
+      "results_json_ok": true,
+      "results_json_bytes": 344914,
+      "theorem_md": "M1/THEOREM_M1.md",
+      "theorem_md_ok": true,
+      "theorem_md_bytes": 48818,
+      "passed": true
+    },
+    {
+      "script": "M2/verify_m2.py",
+      "exit_code": 0,
+      "elapsed_s": 18.083,
+      "stdout_tail": [
+        "results_m2.json written. Maximum in-scope summary difference: 0."
+      ],
+      "stderr_tail": [],
+      "track_id": "M2",
+      "results_json": "M2/results_m2.json",
+      "results_json_ok": true,
+      "results_json_bytes": 453753,
+      "theorem_md": "M2/THEOREM_M2.md",
+      "theorem_md_ok": true,
+      "theorem_md_bytes": 67511,
+      "passed": true
+    },
+    {
+      "script": "M3/verify_m3.py",
+      "exit_code": 0,
+      "elapsed_s": 14.781,
+      "stdout_tail": [
+        "Passed Schur, provenance, and byte-identity checks.",
+        "Passed shared-CFO and Brownian verification.",
+        "Passed Stage 6 predictive and reveal verification."
+      ],
+      "stderr_tail": [],
+      "track_id": "M3",
+      "results_json": "M3/results_m3.json",
+      "results_json_ok": true,
+      "results_json_bytes": 50484,
+      "theorem_md": "M3/THEOREM_M3.md",
+      "theorem_md_ok": true,
+      "theorem_md_bytes": 45862,
+      "passed": true
+    },
+    {
+      "script": "M4/verify_m4.py",
+      "exit_code": 0,
+      "elapsed_s": 15.151,
+      "stdout_tail": [
+        "Verified frozen s17 identity and pinned Python/NumPy/SciPy",
+        "Verified static splits, historical manifests and Modal arithmetic",
+        "PASS 168 mapping cells, 32 nuisance cells, 6 dual-cache profiles, 219 causal bundles, results_m4.json"
+      ],
+      "stderr_tail": [],
+      "track_id": "M4",
+      "results_json": "M4/results_m4.json",
+      "results_json_ok": true,
+      "results_json_bytes": 1492061,
+      "theorem_md": "M4/THEOREM_M4.md",
+      "theorem_md_ok": true,
+      "theorem_md_bytes": 70113,
+      "passed": true
+    },
+    {
+      "script": "M5/verify_m5.py",
+      "exit_code": 0,
+      "elapsed_s": 241.4,
+      "stdout_tail": [
+        "flat_plus24: canonical_continuous",
+        "flat_plus24: full_iq",
+        "selective_fade: 2",
+        "selective_fade: 4_s17",
+        "selective_fade: 8",
+        "selective_fade: 12",
+        "selective_fade: 16",
+        "selective_fade: canonical_continuous",
+        "selective_fade: full_iq",
+        "Wrote results_m5.json"
+      ],
+      "stderr_tail": [],
+      "track_id": "M5",
+      "results_json": "M5/results_m5.json",
+      "results_json_ok": true,
+      "results_json_bytes": 589536,
+      "theorem_md": "M5/THEOREM_M5.md",
+      "theorem_md_ok": true,
+      "theorem_md_bytes": 57161,
+      "passed": true
+    },
+    {
+      "script": "M6/verify_m6.py",
+      "exit_code": 0,
+      "elapsed_s": 6.191,
+      "stdout_tail": [
+        "VERIFIED results_m6.json: parity max |diff|=3.56e-16, two 10,000-trial designs, A100 cap $9.50"
+      ],
+      "stderr_tail": [],
+      "track_id": "M6",
+      "results_json": "M6/results_m6.json",
+      "results_json_ok": true,
+      "results_json_bytes": 43032,
+      "theorem_md": "M6/THEOREM_M6.md",
+      "theorem_md_ok": true,
+      "theorem_md_bytes": 59819,
+      "passed": true
+    },
+    {
+      "script": "weight_mod/W1/verify_w1.py",
+      "exit_code": 0,
+      "elapsed_s": 99.863,
+      "stdout_tail": [
+        "  gap=64 | attn_lora                             | s=202622 | G1=64.36%/1.119 G5=14.75%/2.279 | Q2(v->f)=49.0->56.8% vi=35.9% dup=51.0% | OOD@128:G1=33.4%/G5=17.8% | s3=0.103 retL2=0.023 pKL=0.3628 mKL=0.3262 C4=0.0e+00 | 27.0s",
+        "  gap=64 | deltanet_attn_lora                    | s=202611 | G1=61.72%/1.166 G5= 4.79%/2.252 | Q2(v->f)=56.2->62.0% vi=35.9% dup=55.7% | OOD@128:G1=33.4%/G5=17.8% | s3=0.096 retL2=0.008 pKL=0.3458 mKL=0.3235 C4=0.0e+00 | 28.5s",
+        "  gap=64 | deltanet_attn_lora                    | s=202622 | G1=64.36%/1.116 G5=11.72%/2.329 | Q2(v->f)=49.5->63.0% vi=40.1% dup=55.2% | OOD@128:G1=33.4%/G5=17.8% | s3=0.088 retL2=0.024 pKL=0.4491 mKL=0.4081 C4=0.0e+00 | 29.3s",
+        "  gap=64 | deltanet_attn_lora_warmgate           | s=202611 | G1=63.09%/1.129 G5= 5.47%/2.171 | Q2(v->f)=56.2->63.5% vi=39.1% dup=57.3% | OOD@128:G1=33.4%/G5=17.8% | s3=0.133 retL2=0.307 pKL=0.2708 mKL=0.4800 C4=0.0e+00 | 29.0s",
+        "  gap=64 | deltanet_attn_lora_warmgate           | s=202622 | G1=64.36%/1.113 G5= 5.96%/2.305 | Q2(v->f)=57.3->65.6% vi=50.5% dup=57.8% | OOD@128:G1=33.4%/G5=17.8% | s3=0.133 retL2=0.532 pKL=0.4273 mKL=0.5854 C4=0.0e+00 | 30.2s",
+        "  gap=64 | tier1_pos_gated_deltanet_early_frozen | s=202611 | G1=64.36%/1.093 G5=10.55%/2.198 | Q2(v->f)=54.2->63.0% vi=50.5% dup=50.0% | OOD@128:G1=57.1%/G5=11.5% | s3=0.234 retL2=1.000 pKL=0.0000 mKL=0.0372 C4=0.0e+00 | 29.2s",
+        "  gap=64 | tier1_pos_gated_deltanet_early_frozen | s=202622 | G1=64.06%/1.146 G5= 9.67%/2.319 | Q2(v->f)=48.4->63.0% vi=51.6% dup=51.0% | OOD@128:G1=64.4%/G5=12.3% | s3=0.179 retL2=1.000 pKL=0.0000 mKL=0.0719 C4=0.0e+00 | 29.0s",
+        "  gap=64 | unified_w1_w2_w3_warmgate_schur       | s=202611 | G1=64.36%/0.972 G5=63.28%/1.003 | Q2(v->f)=53.1->66.1% vi=53.6% dup=54.2% | OOD@128:G1=64.4%/G5=63.3% | s3=0.130 retL2=1.000 pKL=0.0000 mKL=0.0580 C4=0.0e+00 | 34.6s",
+        "  gap=64 | unified_w1_w2_w3_warmgate_schur       | s=202622 | G1=64.36%/0.971 G5=63.28%/1.021 | Q2(v->f)=67.2->71.9% vi=65.1% dup=66.1% | OOD@128:G1=64.4%/G5=63.3% | s3=0.072 retL2=1.000 pKL=0.0000 mKL=0.0319 C4=0.0e+00 | 34.5s",
+        "[W1-R2] 5/5 Saved verified Round 2 results to C:\\Users\\李则徐\\.gemini\\antigravity\\scratch\\EM-FloatFormer-stage4\\research\\stage4_math_and_design\\weight_mod\\W1\\results_w1.json in 93.43s (target <= 150s)."
+      ],
+      "stderr_tail": [],
+      "track_id": "W1",
+      "results_json": "weight_mod/W1/results_w1.json",
+      "results_json_ok": true,
+      "results_json_bytes": 91746,
+      "theorem_md": "weight_mod/W1/THEOREM_W1.md",
+      "theorem_md_ok": true,
+      "theorem_md_bytes": 79328,
+      "passed": true
+    },
+    {
+      "script": "weight_mod/W2/verify_w2.py",
+      "exit_code": 0,
+      "elapsed_s": 85.3,
+      "stdout_tail": [
+        "  r=4_V1_plus_2V2                  | params=2566 | G1=62.96%/0.9537 | G2=46.65%/1.0395 | G3=60.12%/0.9883 | G5(pi)=59.96%/1.0019 | WorkF_gain=0.9575",
+        "  r=6_2V1_plus_2V2                 | params=2696 | G1=64.57%/0.9513 | G2=45.87%/1.0401 | G3=61.91%/0.9875 | G5(pi)=61.33%/1.0005 | WorkF_gain=0.9598",
+        "[W2] Part D (Round 2): Thm 7 Nullspace Cayley (4d) + W3 Bayes-KL & MixKL audit:",
+        "  4c_1hot_ce                           | step69 G1=64.60%±0.03% / 0.9526±0.0041 | step384 G1=64.57%/0.9491 | G5=61.33%/0.9988 | PureKL(g0/g1)=0.0e+00/0.8693 | MixKL=0.9370",
+        "  4c_bayes_kl_cf                       | step69 G1=64.62%±0.00% / 0.9418±0.0004 | step384 G1=64.62%/0.9413 | G5=61.33%/0.9935 | PureKL(g0/g1)=0.0e+00/0.2090 | MixKL=0.2207",
+        "  4d_nullspace_cayley_schur_bayes_kl   | step69 G1=64.62%±0.00% / 0.9418±0.0001 | step384 G1=64.62%/0.9414 | G5=61.33%/0.9935 | PureKL(g0/g1)=0.0e+00/0.0012 | MixKL=0.0080",
+        "[W2] Part E (Round 2): Thm 8 Multi-Regime Canonical Adapter Merging (W4 Prop 4.1):",
+        "  LoRA Unconstrained | GL(r) err=0.6141 | cos=+0.1410 | Gamma_add(12/21)=1.186/1.226 | Gamma_soup(12/21)=0.497/2.338 | UnseenMix Soup=0.9396 | G5 Soup=2.2750",
+        "  W2 Canonical 4c    | Schur err=8.9e-08 | Lie ortho=1.3e-15 (Euc=0.212) | cos(full/schur)=-0.0005/+0.6460 | Gamma_add(12/21)=0.776/0.765 | Gamma_soup(12/21)=0.391/0.138 | UnseenMix LieSoup=0.7904 | G5 LieSoup=1.0004",
+        "[W2] Completed cleanly in wall=76.48s (cpu=11.69s) -> C:\\Users\\李则徐\\.gemini\\antigravity\\scratch\\EM-FloatFormer-stage4\\research\\stage4_math_and_design\\weight_mod\\W2\\results_w2.json"
+      ],
+      "stderr_tail": [],
+      "track_id": "W2",
+      "results_json": "weight_mod/W2/results_w2.json",
+      "results_json_ok": true,
+      "results_json_bytes": 418901,
+      "theorem_md": "weight_mod/W2/THEOREM_W2.md",
+      "theorem_md_ok": true,
+      "theorem_md_bytes": 88408,
+      "passed": true
+    },
+    {
+      "script": "weight_mod/W3/verify_w3.py",
+      "exit_code": 0,
+      "elapsed_s": 130.985,
+      "stdout_tail": [
+        "        frozen_early_no_warmgate             | EarlyRet=0.00001 MidRet=0.00000 | PureKL=0.0e+00 MixKL=1.400e-03 | G1=0.5977/1.0420 | Q2g=-0.0312",
+        "        naive_early_warmgate_leaky_beta      | EarlyRet=0.68354 MidRet=0.00000 | PureKL=0.0e+00 MixKL=1.256e-01 | G1=0.5078/1.1966 | Q2g=+0.0000",
+        "        w1_w3_clean_dual_nullspace_warmgate  | EarlyRet=0.77919 MidRet=0.54417 | PureKL=0.0e+00 MixKL=1.172e-03 | G1=0.5391/1.1213 | Q2g=-0.0052",
+        "[W3-R2] Running Axis 2 (4 Loss Modes x 3 Seeds: Step-69 vs Step-96 vs Step-160)...",
+        "        hard_label_ce              ( 4.9s/sd) | s69:0.5052/1.2248 | s96:0.5356/1.1673 | s160:0.5347/1.1508 ECE=0.1174 C4max=4.3e-01 MixKL=4.129e-04 Q2g=+0.0191",
+        "        bayes_kl_only              ( 5.3s/sd) | s69:0.5564/1.1096 | s96:0.5547/1.1007 | s160:0.5642/1.0895 ECE=0.1106 C4max=4.1e-01 MixKL=4.317e-04 Q2g=+0.0660",
+        "        bayes_kl_plus_cf_cal       ( 5.8s/sd) | s69:0.5634/1.0669 | s96:0.5903/1.0553 | s160:0.5981/1.0490 ECE=0.0745 C4max=4.7e-01 MixKL=1.218e-03 Q2g=+0.0747",
+        "        bayes_kl_cf_cal_quotient   ( 5.4s/sd) | s69:0.5920/1.0575 | s96:0.6137/1.0239 | s160:0.6181/1.0167 ECE=0.0789 C4max=0.0e+00 MixKL=8.984e-04 Q2g=+0.0764",
+        "[W3-R2] Rao-Blackwell Grad Var (CE/KL): step16=5.693x, step160=16.935x",
+        "[W3-R2] ALL ASSERTIONS PASSED in 123.52s (<=160s) -> C:\\Users\\李则徐\\.gemini\\antigravity\\scratch\\EM-FloatFormer-stage4\\research\\stage4_math_and_design\\weight_mod\\W3\\results_w3.json"
+      ],
+      "stderr_tail": [],
+      "track_id": "W3",
+      "results_json": "weight_mod/W3/results_w3.json",
+      "results_json_ok": true,
+      "results_json_bytes": 153280,
+      "theorem_md": "weight_mod/W3/THEOREM_W3.md",
+      "theorem_md_ok": true,
+      "theorem_md_bytes": 47252,
+      "passed": true
+    },
+    {
+      "script": "weight_mod/W4/verify_w4.py",
+      "exit_code": 0,
+      "elapsed_s": 54.115,
+      "stdout_tail": [
+        "    Exp2B (19.17s): Quant MSE ratio NF4/BF16: 3065.8",
+        "    DeltaNet +20dB L64 probe: {\"bf16_all_layers\": {\"nll\": 0.47529, \"delta_nll_nats\": -0.00052, \"kl_from_fp32_nats\": 0.00024, \"sigma_dl_nats\": 0.06255, \"exceeds_0p05_nat_budget\": false}, \"nf4_all_including_deltanet_gates\": {\"nll\": 1.20408, \"delta_nll_nats\": 0.72827, \"kl_from_fp32_nats\": 0.70779, \"sigma_dl_nats\": 3.33419, \"exceeds_0p05_nat_budget\": true}, \"mixed_mlp_nf4_deltanet_bf16\": {\"nll\": 0.47526, \"delta_nll_nats\": -0.00056, \"kl_from_fp32_nats\": 0.00032, \"sigma_dl_nats\": 0.07169, \"exceeds_0p05_nat_budget\": false}}",
+        "[W4] 4/6 Verifying Round-1 Decimal Modal $12.88 budget & Bayesian VoI boundary...",
+        "    R1 VoI window: [0.04, 0.315] nats",
+        "[W4] 5/6 Computing Round-2 Unified W1+W2+W3 (<=2.20M) VRAM/Step-Time (Mode I vs Mode II)...",
+        "    4B Mode I Stop-Grad L10: 40.028 GiB, 2260.0 ms/step | Mode II Co-Tuned: 51.855 GiB, 2818.8 ms/step",
+        "[W4] 6/6 Verifying Round-2 Compressed 96-Step + Tier-P1 LEMMO Ledger & VoI<->sigma_3 Reconciliation...",
+        "    R2 10k MC: Surgical+LEMMO mean=$9.8828, max=$12.8508 (<=12.88: 100.0%)",
+        "    R2 VoI window (W1 warmgate+W23): [0.04, 0.4] nats",
+        "[W4] DONE in 45.56s -> wrote C:\\Users\\李则徐\\.gemini\\antigravity\\scratch\\EM-FloatFormer-stage4\\research\\stage4_math_and_design\\weight_mod\\W4\\results_w4.json"
+      ],
+      "stderr_tail": [],
+      "track_id": "W4",
+      "results_json": "weight_mod/W4/results_w4.json",
+      "results_json_ok": true,
+      "results_json_bytes": 125434,
+      "theorem_md": "weight_mod/W4/THEOREM_W4.md",
+      "theorem_md_ok": true,
+      "theorem_md_bytes": 63164,
+      "passed": true
+    }
+  ],
+  "discussions": {
+    "M1": {
+      "ok": true,
+      "files": {
+        "prompt_r1.md": {
+          "exists": true,
+          "size_bytes": 9229,
+          "ok": true
+        },
+        "round1_events.jsonl": {
+          "exists": true,
+          "size_bytes": 256965,
+          "ok": true
+        },
+        "round1_stderr.log": {
+          "exists": true,
+          "size_bytes": 2578,
+          "ok": true
+        },
+        "reply_r1.md": {
+          "exists": true,
+          "size_bytes": 2483,
+          "ok": true
+        },
+        "prompt_r2.md": {
+          "exists": true,
+          "size_bytes": 5887,
+          "ok": true
+        },
+        "round2_events.jsonl": {
+          "exists": true,
+          "size_bytes": 229924,
+          "ok": true
+        },
+        "round2_stderr.log": {
+          "exists": true,
+          "size_bytes": 0,
+          "ok": true
+        },
+        "reply_r2.md": {
+          "exists": true,
+          "size_bytes": 1829,
+          "ok": true
+        },
+        "FULL_CONVERSATION.md": {
+          "exists": true,
+          "size_bytes": 446785,
+          "ok": true
+        }
+      }
+    },
+    "M2": {
+      "ok": true,
+      "files": {
+        "prompt_r1.md": {
+          "exists": true,
+          "size_bytes": 8274,
+          "ok": true
+        },
+        "round1_events.jsonl": {
+          "exists": true,
+          "size_bytes": 451375,
+          "ok": true
+        },
+        "round1_stderr.log": {
+          "exists": true,
+          "size_bytes": 1315,
+          "ok": true
+        },
+        "reply_r1.md": {
+          "exists": true,
+          "size_bytes": 3186,
+          "ok": true
+        },
+        "prompt_r2.md": {
+          "exists": true,
+          "size_bytes": 4940,
+          "ok": true
+        },
+        "round2_events.jsonl": {
+          "exists": true,
+          "size_bytes": 249226,
+          "ok": true
+        },
+        "round2_stderr.log": {
+          "exists": true,
+          "size_bytes": 0,
+          "ok": true
+        },
+        "reply_r2.md": {
+          "exists": true,
+          "size_bytes": 2635,
+          "ok": true
+        },
+        "FULL_CONVERSATION.md": {
+          "exists": true,
+          "size_bytes": 534314,
+          "ok": true
+        }
+      }
+    },
+    "M3": {
+      "ok": true,
+      "files": {
+        "prompt_r1.md": {
+          "exists": true,
+          "size_bytes": 9062,
+          "ok": true
+        },
+        "round1_events.jsonl": {
+          "exists": true,
+          "size_bytes": 283623,
+          "ok": true
+        },
+        "round1_stderr.log": {
+          "exists": true,
+          "size_bytes": 20349,
+          "ok": true
+        },
+        "reply_r1.md": {
+          "exists": true,
+          "size_bytes": 2129,
+          "ok": true
+        },
+        "prompt_r2.md": {
+          "exists": true,
+          "size_bytes": 5119,
+          "ok": true
+        },
+        "round2_events.jsonl": {
+          "exists": true,
+          "size_bytes": 185046,
+          "ok": true
+        },
+        "round2_stderr.log": {
+          "exists": true,
+          "size_bytes": 0,
+          "ok": true
+        },
+        "reply_r2.md": {
+          "exists": true,
+          "size_bytes": 1937,
+          "ok": true
+        },
+        "FULL_CONVERSATION.md": {
+          "exists": true,
+          "size_bytes": 428570,
+          "ok": true
+        }
+      }
+    },
+    "M4": {
+      "ok": true,
+      "files": {
+        "prompt_r1.md": {
+          "exists": true,
+          "size_bytes": 9546,
+          "ok": true
+        },
+        "round1_events.jsonl": {
+          "exists": true,
+          "size_bytes": 680469,
+          "ok": true
+        },
+        "round1_stderr.log": {
+          "exists": true,
+          "size_bytes": 1853,
+          "ok": true
+        },
+        "reply_r1.md": {
+          "exists": true,
+          "size_bytes": 2575,
+          "ok": true
+        },
+        "prompt_r2.md": {
+          "exists": true,
+          "size_bytes": 5443,
+          "ok": true
+        },
+        "round2_events.jsonl": {
+          "exists": true,
+          "size_bytes": 359523,
+          "ok": true
+        },
+        "round2_stderr.log": {
+          "exists": true,
+          "size_bytes": 743,
+          "ok": true
+        },
+        "reply_r2.md": {
+          "exists": true,
+          "size_bytes": 1976,
+          "ok": true
+        },
+        "FULL_CONVERSATION.md": {
+          "exists": true,
+          "size_bytes": 977146,
+          "ok": true
+        }
+      }
+    },
+    "M5": {
+      "ok": true,
+      "files": {
+        "prompt_r1.md": {
+          "exists": true,
+          "size_bytes": 8484,
+          "ok": true
+        },
+        "round1_events.jsonl": {
+          "exists": true,
+          "size_bytes": 367374,
+          "ok": true
+        },
+        "round1_stderr.log": {
+          "exists": true,
+          "size_bytes": 1837,
+          "ok": true
+        },
+        "reply_r1.md": {
+          "exists": true,
+          "size_bytes": 2693,
+          "ok": true
+        },
+        "prompt_r2.md": {
+          "exists": true,
+          "size_bytes": 4140,
+          "ok": true
+        },
+        "round2_events.jsonl": {
+          "exists": true,
+          "size_bytes": 335237,
+          "ok": true
+        },
+        "round2_stderr.log": {
+          "exists": true,
+          "size_bytes": 0,
+          "ok": true
+        },
+        "reply_r2.md": {
+          "exists": true,
+          "size_bytes": 2044,
+          "ok": true
+        },
+        "FULL_CONVERSATION.md": {
+          "exists": true,
+          "size_bytes": 650305,
+          "ok": true
+        }
+      }
+    },
+    "M6": {
+      "ok": true,
+      "files": {
+        "prompt_r1.md": {
+          "exists": true,
+          "size_bytes": 8876,
+          "ok": true
+        },
+        "round1_events.jsonl": {
+          "exists": true,
+          "size_bytes": 498136,
+          "ok": true
+        },
+        "round1_stderr.log": {
+          "exists": true,
+          "size_bytes": 1438,
+          "ok": true
+        },
+        "reply_r1.md": {
+          "exists": true,
+          "size_bytes": 2290,
+          "ok": true
+        },
+        "prompt_r2.md": {
+          "exists": true,
+          "size_bytes": 4895,
+          "ok": true
+        },
+        "round2_events.jsonl": {
+          "exists": true,
+          "size_bytes": 294263,
+          "ok": true
+        },
+        "round2_stderr.log": {
+          "exists": true,
+          "size_bytes": 0,
+          "ok": true
+        },
+        "reply_r2.md": {
+          "exists": true,
+          "size_bytes": 2085,
+          "ok": true
+        },
+        "FULL_CONVERSATION.md": {
+          "exists": true,
+          "size_bytes": 741285,
+          "ok": true
+        }
+      }
+    },
+    "W1": {
+      "ok": true,
+      "files": {
+        "prompt_r1.md": {
+          "exists": true,
+          "size_bytes": 6995,
+          "ok": true
+        },
+        "round1_events.jsonl": {
+          "exists": true,
+          "size_bytes": 170609,
+          "ok": true
+        },
+        "round1_stderr.log": {
+          "exists": true,
+          "size_bytes": 413,
+          "ok": true
+        },
+        "reply_r1.md": {
+          "exists": true,
+          "size_bytes": 8734,
+          "ok": true
+        },
+        "prompt_r2.md": {
+          "exists": true,
+          "size_bytes": 9655,
+          "ok": true
+        },
+        "round2_events.jsonl": {
+          "exists": true,
+          "size_bytes": 233087,
+          "ok": true
+        },
+        "round2_stderr.log": {
+          "exists": true,
+          "size_bytes": 413,
+          "ok": true
+        },
+        "reply_r2.md": {
+          "exists": true,
+          "size_bytes": 11995,
+          "ok": true
+        },
+        "FULL_CONVERSATION.md": {
+          "exists": true,
+          "size_bytes": 267941,
+          "ok": true
+        }
+      }
+    },
+    "W2": {
+      "ok": true,
+      "files": {
+        "prompt_r1.md": {
+          "exists": true,
+          "size_bytes": 6111,
+          "ok": true
+        },
+        "round1_events.jsonl": {
+          "exists": true,
+          "size_bytes": 197367,
+          "ok": true
+        },
+        "round1_stderr.log": {
+          "exists": true,
+          "size_bytes": 413,
+          "ok": true
+        },
+        "reply_r1.md": {
+          "exists": true,
+          "size_bytes": 9737,
+          "ok": true
+        },
+        "prompt_r2.md": {
+          "exists": true,
+          "size_bytes": 8644,
+          "ok": true
+        },
+        "round2_events.jsonl": {
+          "exists": true,
+          "size_bytes": 215581,
+          "ok": true
+        },
+        "round2_stderr.log": {
+          "exists": true,
+          "size_bytes": 413,
+          "ok": true
+        },
+        "reply_r2.md": {
+          "exists": true,
+          "size_bytes": 9774,
+          "ok": true
+        },
+        "FULL_CONVERSATION.md": {
+          "exists": true,
+          "size_bytes": 289006,
+          "ok": true
+        }
+      }
+    },
+    "W3": {
+      "ok": true,
+      "files": {
+        "prompt_r1.md": {
+          "exists": true,
+          "size_bytes": 7014,
+          "ok": true
+        },
+        "round1_events.jsonl": {
+          "exists": true,
+          "size_bytes": 178173,
+          "ok": true
+        },
+        "round1_stderr.log": {
+          "exists": true,
+          "size_bytes": 413,
+          "ok": true
+        },
+        "reply_r1.md": {
+          "exists": true,
+          "size_bytes": 9443,
+          "ok": true
+        },
+        "prompt_r2.md": {
+          "exists": true,
+          "size_bytes": 6908,
+          "ok": true
+        },
+        "round2_events.jsonl": {
+          "exists": true,
+          "size_bytes": 253676,
+          "ok": true
+        },
+        "round2_stderr.log": {
+          "exists": true,
+          "size_bytes": 413,
+          "ok": true
+        },
+        "reply_r2.md": {
+          "exists": true,
+          "size_bytes": 10934,
+          "ok": true
+        },
+        "FULL_CONVERSATION.md": {
+          "exists": true,
+          "size_bytes": 311444,
+          "ok": true
+        }
+      }
+    },
+    "W4": {
+      "ok": true,
+      "files": {
+        "prompt_r1.md": {
+          "exists": true,
+          "size_bytes": 7614,
+          "ok": true
+        },
+        "round1_events.jsonl": {
+          "exists": true,
+          "size_bytes": 184623,
+          "ok": true
+        },
+        "round1_stderr.log": {
+          "exists": true,
+          "size_bytes": 413,
+          "ok": true
+        },
+        "reply_r1.md": {
+          "exists": true,
+          "size_bytes": 10573,
+          "ok": true
+        },
+        "prompt_r2.md": {
+          "exists": true,
+          "size_bytes": 7071,
+          "ok": true
+        },
+        "round2_events.jsonl": {
+          "exists": true,
+          "size_bytes": 127164,
+          "ok": true
+        },
+        "round2_stderr.log": {
+          "exists": true,
+          "size_bytes": 413,
+          "ok": true
+        },
+        "reply_r2.md": {
+          "exists": true,
+          "size_bytes": 9499,
+          "ok": true
+        },
+        "FULL_CONVERSATION.md": {
+          "exists": true,
+          "size_bytes": 184051,
+          "ok": true
+        }
+      }
+    }
+  },
+  "hygiene": {
+    "file_count_under_stage4_math_and_design": 134,
+    "max_file_bytes": 1492061,
+    "max_file_limit_bytes": 20971520,
+    "temp_cache_dirs": [],
+    "oversized_files": [],
+    "utf8_failures": [],
+    "base_commit": "387e7bc7",
+    "protected_trees": [
+      "research/matched_cache",
+      "research/stage3_ministral_cache",
+      "research/stage3b_math",
+      "research/stage3c",
+      "research/stage3d_qwen_signed_phase"
+    ],
+    "protected_diff": [],
+    "protected_trees_untouched": true
+  }
+}
