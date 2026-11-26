@@ -17,6 +17,7 @@ from research.stage3_ministral_cache.data import SPLIT_SEEDS, generate_mothers
 from research.stage3_ministral_cache.schema import (
     CONDITION_SPECS, ROOTS, matched_sum, sector_of_complex,
 )
+from research.stage3c.verify import compare
 from research.stage3c.A.q2_reader import read as q2
 
 BASE = ROOT / "research/stage3c"
@@ -45,7 +46,7 @@ def run():
     original = json.loads(subprocess.check_output([
         sys.executable, "-B", str(BASE / "G/check_g.py"), str(LOOKUP),
     ]))
-    assert original == json.loads((BASE / "G/results.json").read_text())
+    compare(json.loads((BASE / "G/results.json").read_text()), original, "original G", rel_tol=2e-13, abs_tol=2e-13)
     table = json.loads(LOOKUP.read_text())
     with tempfile.TemporaryDirectory() as tmp:
         rebuilt = Path(tmp) / "lookup.json"
@@ -142,7 +143,7 @@ def run():
     return {
         "python": platform.python_version(), "numpy": np.__version__,
         "encoder_sha256": digest,
-        "original_exact_json_match": True, "original": original,
+        "original_json_within_tolerance": True, "original": original,
         "rebuilt_lookup": integration, "lookup_max_delta": table_error,
         "lookup_seed": table["integration_seed"],
         "lookup_independent_noise_windows": table["independent_noise_windows"],

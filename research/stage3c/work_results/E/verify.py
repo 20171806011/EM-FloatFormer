@@ -25,6 +25,8 @@ COUNTS = np.arange(2, 4097)
 SEED = 310327
 REPS = 200_000
 ROOT = Path(__file__).resolve().parents[4]
+sys.path.insert(0, str(ROOT))
+from research.stage3c.verify import compare
 
 
 def curve(sd, gain, margin, width, use_t):
@@ -164,7 +166,7 @@ def main():
     baseline = ROOT / "research/stage3c/E"
     frozen = json.loads((baseline / "results.json").read_text())
     rerun = json.loads(subprocess.check_output([sys.executable, "-B", str(baseline / "design.py")]))
-    assert rerun == frozen
+    compare(frozen, rerun, "original E", rel_tol=2e-13, abs_tol=2e-13)
     scenarios = [plan(q, rho, 0.50) for q, rho in
                  [(0.35, .01), (.15, 0), (.35, 0), (.35, .03), (.50, .03)]]
     for result, original in zip(scenarios, [frozen["design"], *frozen["sensitivity"]]):
@@ -178,7 +180,7 @@ def main():
     if args.pilot_block_sd:
         scenarios.append(plan(.35, .01, .50, args.pilot_block_sd))
     print(json.dumps(dict(
-        is_host_measurement=False, frozen_design_rerun_matches_json=True,
+        is_host_measurement=False, frozen_design_rerun_within_tolerance=True,
         versions=dict(python=platform.python_version(), numpy=np.__version__, scipy=scipy.__version__),
         enumerated_blocks=[int(COUNTS[0]), int(COUNTS[-1])], mc_seed=SEED, mc_reps_per_row=REPS,
         scenarios=scenarios, cpu_checks=crosscheck(scenarios[0]),

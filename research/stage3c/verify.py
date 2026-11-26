@@ -9,17 +9,17 @@ import sys
 import tempfile
 
 
-def compare(expected, got, path):
+def compare(expected, got, path, rel_tol=1e-8, abs_tol=1e-10):
     if isinstance(expected, dict):
         assert isinstance(got, dict) and expected.keys() == got.keys(), path
         for key, value in expected.items():
-            compare(value, got[key], f"{path}.{key}")
+            compare(value, got[key], f"{path}.{key}", rel_tol, abs_tol)
     elif isinstance(expected, list):
         assert isinstance(got, list) and len(expected) == len(got), path
         for i, value in enumerate(expected):
-            compare(value, got[i], f"{path}[{i}]")
+            compare(value, got[i], f"{path}[{i}]", rel_tol, abs_tol)
     elif isinstance(expected, float):
-        assert math.isclose(expected, got, rel_tol=1e-8, abs_tol=1e-10), (path, expected, got)
+        assert math.isclose(expected, got, rel_tol=rel_tol, abs_tol=abs_tol), (path, expected, got)
     else:
         assert expected == got, (path, expected, got)
 

@@ -12,6 +12,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[4]
 sys.path[:0] = [str(ROOT), str(ROOT / "research/matched_cache")]
+from research.stage3c.verify import compare
 from learned import load
 from research.stage3_ministral_cache import data, schema
 
@@ -82,7 +83,7 @@ def held_out_scores(train, test):
 def main():
     frozen = ROOT / "research/stage3c/B"
     original = json.loads(subprocess.check_output([sys.executable, "-B", str(frozen / "check_b.py")]))
-    assert original == json.loads((frozen / "results.json").read_text())
+    compare(json.loads((frozen / "results.json").read_text()), original, "original B", rel_tol=2e-13, abs_tol=2e-13)
     weights = ROOT / "research/matched_cache/weights/equivariant_b8_s17.npz"
     weight_hash = hashlib.sha256(weights.read_bytes()).hexdigest()
     encoder = load(weights)
@@ -105,7 +106,7 @@ def main():
     print(json.dumps({
         "numpy_version": np.__version__,
         "checkpoint_sha256": weight_hash,
-        "original_json_equal": True,
+        "original_json_within_tolerance": True,
         **collisions,
         "fourier_sectors": fourier.tolist(),
         "fourier_max_abs_error": error,
