@@ -110,7 +110,7 @@ def independent_check(model, rules, count=131072, seed=79561):
             for idx,key in enumerate(("q1","q3"))}
 
 
-def learned_estimate(matched_dir, per_basis, seed, order):
+def learned_estimate(matched_dir, per_basis, seed, order, *, rules=None):
     """Gaussian importance integration, weighted from four cardinal proposals.
 
     Pool all exact quarter-turns of proposal records, exploiting this encoder's C4
@@ -136,7 +136,8 @@ def learned_estimate(matched_dir, per_basis, seed, order):
             freq = np.bincount(codes, weights=np.exp(log_w), minlength=16)
             rows.append(freq / freq.sum())
         return np.array(rows).reshape((*np.shape(angles), 16))
-    rules = {}
+    if rules is None:
+        rules = {}
     est = population(emission, model.table, order, rules)
     est["independent_forward"] = independent_check(model, rules)
     return est
