@@ -324,7 +324,11 @@ def assemble_and_analyze_results(
     # Historical C4 +0.35 lookup verification on H_c4_035 positive world
     c4_lookup_path = repo_root / "research" / "stage3b_math" / "A" / "c4_s17_lookup.json"
     c4_lookup = json.loads(c4_lookup_path.read_text(encoding="utf-8"))
-    q3_pos_tbl = np.asarray(c4_lookup["q3_repeat"], dtype=np.float64)
+    cells_16 = [np.asarray(c["q3"], dtype=np.float64) for c in c4_lookup["cells"]]
+    q3_pos_tbl = np.zeros((256, 4), dtype=np.float64)
+    for k in range(256):
+        z1, z2 = divmod(k, 16)
+        q3_pos_tbl[k] = np.roll(cells_16[4 * (z1 % 4) + (z2 % 4)], z1 // 4)
     h_pos_codes = q3_bundle["H_c4_035__codes"][1].reshape(-1)
     h_pos_targets = q3_bundle["H_c4_035__targets"][1].reshape(-1)
     h_lookup_probs = q3_pos_tbl[h_pos_codes]
@@ -449,3 +453,18 @@ def assemble_and_analyze_results(
     }
     (out_dir / "summary_master.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return summary
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Assemble and analyze Stage 3D GPU raw results on CPU.")
+    parser.add_argument("--raw-gpu-dir", type=Path, required=True)
+    parser.add_argument("--out-dir", type=Path, required=True)
+    parser.add_argument("--g1-blocks", type=int, default=131)
+    parser.add_argument("--repo-root", type=Path, default=REPO_ROOT)
+    args = parser.parse_args()
+    assemble_and_analyze_results(
+        raw_gpu_dir=args.raw_gpu_dir,
+        out_dir=args.out_dir,
+        g1_blocks=args.g1_blocks,
+        repo_root=args.repo_root,
+    )

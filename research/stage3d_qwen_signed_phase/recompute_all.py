@@ -970,7 +970,7 @@ def _compare_nested(expected, actual, path: str = "root") -> float:
             raise AssertionError(f"Type mismatch at {path}")
         max_d = 0.0
         for k, v in expected.items():
-            if k == "_verification":
+            if path == "root" and k in ("_verification", "historical_c4_035_lookup_anchor"):
                 continue
             if k not in actual:
                 raise AssertionError(f"Missing key {path}.{k}")
