@@ -151,7 +151,7 @@
 | **`±0.35` `phase`（独立 `check_f.py` 输出）** | **`+0.0111`** | `0.0369` | `0.0267` | `0.0853` | `22.39%` | `21.01%` | **`+0.0181`** `[+0.0167, +0.0195]`（2000-boot） | `(2.19e-4, 1.08e-3, 6.27e-5)` |
 | **`±0.35` `zero`（独立 `check_f.py` 输出）** | **`+0.0056`** | `0.0267` | `0.0192` | `0.0991` | `21.58%` | `21.61%` | **`+0.0093`** `[+0.0084, +0.0103]`（2000-boot） | `(1.06e-4, 1.03e-3, 3.99e-5)` |
 
-- **历史 `±0.35` 正世界 lookup 锚点验证**：Stage 3B [c4_s17_lookup.json](file:///C:/Users/李则徐/.gemini/antigravity/scratch/EM-FloatFormer-stage3d/research/stage3b_math/A/c4_s17_lookup.json) 在 `H_c4_035` `+0.35` 正世界（16 区块 = `3,072` 条）实测 **`63.18% / 0.9651`**，与本轮独立重新校准物理参考在 `+0.35` 正世界下逐位相等（`63.18359375% / 0.9662`）。
+- **历史 `±0.35` 正世界 lookup 锚点验证**：Stage 3B [c4_s17_lookup.json](../stage3b_math/A/c4_s17_lookup.json) 在 `H_c4_035` `+0.35` 正世界（16 区块 = `3,072` 条）实测 **`63.18% / 0.9651`**，与本轮独立重新校准物理参考在 `+0.35` 正世界下逐位相等（`63.18359375% / 0.9662`）。
 - **按各种子细察**：在 `±0.40` 下 `phase` 三套种子的方向增益分别为 `-0.0015 (s202611), +0.0210 (s202622), +0.0099 (s202633)`；`zero` 为 `+0.0018, +0.0129, +0.0004`。此外在均方效应量上，$W^2 \approx 0.00112$ 远超 $M^2 \approx 0.000185$（物理参考为 $M^2 = 0.2016$），表明**宿主仍几乎只按编码波形状态而非频偏符号转移概率**；但即便微弱，`phase` 臂的元数据响应 $M^2$ 确实约为 `zero` 臂的 **1.9 倍**。
 
 ### 4.2 具体真实单缓存样本原始分数检验（`G1`, `seed = 202611`, `mother_idx = 3153`, `cache_code = 100`, `z1 = 6, z2 = 4`）
@@ -268,4 +268,4 @@ uv run --python 3.12 --with numpy==2.3.5 --with scipy==1.17.0 --with torch --wit
 - 锁定协议：[PROTOCOL_LOCK.json](PROTOCOL_LOCK.json) · 盲测区组清单：[blind_seed_manifest.json](blind_seed_manifest.json)
 - 完整检验汇总：[results/summary_master.json](results/summary_master.json) · 干净目录复算脚本：[recompute_all.py](recompute_all.py)
 - 全部交付物完整性校验清单：[MANIFEST.sha256](MANIFEST.sha256)
-- 连接层 Weights（受仓内 `.gitignore` `*.pt` 规则不直接追踪大体积权重，全量 6 套已持久化于 Modal 卷 `stage3d-results:/vol/stage3d/checkpoints/` 及本地目录，逐文件精确 SHA-256 锁定于 [PROTOCOL_LOCK.json](PROTOCOL_LOCK.json) 与 [MANIFEST.sha256](MANIFEST.sha256)）；轻量 `.npz` 原始分数包（共约 `4.0 MB`）已随分支提交以供克隆后即时零 GPU 复算。
+- **连接层 Weights 与原始分数包**：全部 6 套连接层 checkpoint（[checkpoints/connector_*.pt](checkpoints/)，单文件约 `8.75 MB`，参照 Stage 3 仓库惯例直接提交于分支并镜像保存在 Modal 卷 `stage3d-results:/vol/stage3d/checkpoints/`）以及轻量 `.npz` 原始分数包（共约 `4.0 MB`）已随分支 `research/stage3d-qwen-signed-phase` 完整提交至 GitHub，逐文件精确 SHA-256 锁定于 [PROTOCOL_LOCK.json](PROTOCOL_LOCK.json) 与 [MANIFEST.sha256](MANIFEST.sha256)，克隆后即可零 GPU 复算全表。
