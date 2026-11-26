@@ -2,6 +2,8 @@
 
 Base: `cbf3d2c03f773731fdf1b0d695a63ec57cb62ca0`. This document specifies a future experiment. The executed work is the planning calculation and the support-grid checks.
 
+For the reviewed campaign budget, see the [independent noncentral-t calculation](../crossreviews/E.md). Under the default working assumptions and normal block means it takes **131 blocks / 8,384 mothers** to reach 95% marginal planning power with both final t-based tests. The 129-block calculations below document the original normal approximation.
+
 ## One primary comparison
 
 Within frozen Qwen3.5-4B compare matched CFO-supervised connectors with real phasors versus zeros in the same numeric input slots. Both arms receive identical text metadata, same 8-bit encoder, budgets, draws and per-seed initializations. Use the Q3 repeated-symbol task, evaluated before revealing a pilot. The primary condition is the outside-rate/outside-angle cell below at both signs, 2 dB and Brownian σ=0.1. Average the two signs and the three predefined rotations equally; never treat these rows as independent captures.
