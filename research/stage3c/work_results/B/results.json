@@ -1,0 +1,102 @@
+{
+  "numpy_version": "2.3.5",
+  "checkpoint_sha256": "e67d9fbafb90791ab19549de7789798d818286d7f52d7ac566cc39df71e78356",
+  "original_json_equal": true,
+  "unwrapped_total_collision_q1_q2": [
+    [
+      3,
+      1
+    ],
+    [
+      2,
+      2
+    ]
+  ],
+  "wrapped_total_alias_with_same_times_q1_q2": [
+    [
+      0,
+      0
+    ],
+    [
+      3,
+      2
+    ]
+  ],
+  "fourier_sectors": [
+    [
+      0.9914358235355653,
+      0.0076912012912564165,
+      8.049116928532385e-16,
+      0.0008729751731775259
+    ],
+    [
+      0.2582037790443195,
+      0.25082308485079935,
+      0.24179629116972523,
+      0.24917684493515593
+    ]
+  ],
+  "fourier_max_abs_error": 1.1102230246251565e-16,
+  "oracle_sign": {
+    "rho": 1.5848931924611136,
+    "forward": [
+      0.0932066797515452,
+      0.8027646831630662,
+      0.0932066797515452,
+      0.010821957333843502
+    ],
+    "reverse": [
+      0.0932066797515452,
+      0.010821957333843502,
+      0.09320667975154512,
+      0.8027646831630662
+    ],
+    "mixture": [
+      0.0932066797515452,
+      0.4067933202484548,
+      0.09320667975154516,
+      0.4067933202484548
+    ],
+    "known_sign_accuracy": 0.8027646831630662,
+    "unobserved_sign_accuracy": 0.4067933202484548,
+    "known_sign_logloss_nats": 0.6676913648544589,
+    "unobserved_sign_logloss_nats": 1.1741274833137578,
+    "value_of_sign_nats": 0.5064361184592989
+  },
+  "cache_only_c4": {
+    "factory_base_seeds": {
+      "s3_train": 840101,
+      "s3_test": 840303
+    },
+    "effective_rng_seeds": {
+      "s3_train": 84010103,
+      "s3_test": 84030303
+    },
+    "sign_order": [
+      1,
+      -1
+    ],
+    "train_mothers_per_sign": [
+      32768,
+      32768
+    ],
+    "test_mothers_per_sign": [
+      16384,
+      16384
+    ],
+    "observed_test_cache_states_per_sign": [
+      256,
+      256
+    ],
+    "scores": {
+      "known": {
+        "accuracy": 0.632354736328125,
+        "logloss_nats": 0.9665279504888591
+      },
+      "hidden": {
+        "accuracy": 0.337127685546875,
+        "logloss_nats": 1.3099065000525458
+      }
+    }
+  }
+}

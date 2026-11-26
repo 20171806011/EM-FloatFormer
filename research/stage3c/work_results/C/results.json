@@ -1,0 +1,668 @@
+{
+  "baseline": {
+    "conditional_hard_gradient_trace": 0.5874,
+    "independent_max_delta": 1.1102230246251565e-16,
+    "replay_max_delta": 0.0,
+    "rows": {
+      "32": {
+        "multinomial_outcomes": 6545,
+        "teachers": {
+          "close": {
+            "arms": {
+              "half": {
+                "expected_accuracy_regret": 0.019532351383580608,
+                "expected_excess_brier": 0.0047890625
+              },
+              "hard": {
+                "expected_accuracy_regret": 0.01953281193893139,
+                "expected_excess_brier": 0.01835625
+              },
+              "oracle_weight": {
+                "expected_accuracy_regret": 5.984049595888092e-05,
+                "expected_excess_brier": 0.0007665905383360522
+              },
+              "soft": {
+                "expected_accuracy_regret": 0.0,
+                "expected_excess_brier": 0.0008
+              }
+            },
+            "bias_squared": 0.0008,
+            "ce_excess_of_unrestricted_pure_soft_fit": 0.000890208354367053,
+            "oracle_alpha": 0.9582381729200653,
+            "teacher": [
+              0.46,
+              0.44,
+              0.07,
+              0.03
+            ]
+          },
+          "exact": {
+            "arms": {
+              "half": {
+                "expected_accuracy_regret": 0.015715284745660713,
+                "expected_excess_brier": 0.0045890625
+              },
+              "hard": {
+                "expected_accuracy_regret": 0.01953281193893139,
+                "expected_excess_brier": 0.01835625
+              },
+              "oracle_weight": {
+                "expected_accuracy_regret": 0.0,
+                "expected_excess_brier": 0.0
+              },
+              "soft": {
+                "expected_accuracy_regret": 0.0,
+                "expected_excess_brier": 0.0
+              }
+            },
+            "bias_squared": 0.0,
+            "ce_excess_of_unrestricted_pure_soft_fit": 0.0,
+            "oracle_alpha": 1.0,
+            "teacher": [
+              0.48,
+              0.42,
+              0.07,
+              0.03
+            ]
+          },
+          "reversed": {
+            "arms": {
+              "half": {
+                "expected_accuracy_regret": 0.058615122007180644,
+                "expected_excess_brier": 0.0311390625
+              },
+              "hard": {
+                "expected_accuracy_regret": 0.01953281193893139,
+                "expected_excess_brier": 0.01835625
+              },
+              "oracle_weight": {
+                "expected_accuracy_regret": 0.03249015128284606,
+                "expected_excess_brier": 0.0156510311606202
+              },
+              "soft": {
+                "expected_accuracy_regret": 0.06,
+                "expected_excess_brier": 0.1062
+              }
+            },
+            "bias_squared": 0.1062,
+            "ce_excess_of_unrestricted_pure_soft_fit": 0.1378233316794562,
+            "oracle_alpha": 0.14737317477043504,
+            "teacher": [
+              0.24,
+              0.64,
+              0.08,
+              0.04
+            ]
+          }
+        }
+      },
+      "8": {
+        "multinomial_outcomes": 165,
+        "teachers": {
+          "close": {
+            "arms": {
+              "half": {
+                "expected_accuracy_regret": 0.02087815607263994,
+                "expected_excess_brier": 0.01855625
+              },
+              "hard": {
+                "expected_accuracy_regret": 0.02175673420589234,
+                "expected_excess_brier": 0.073425
+              },
+              "oracle_weight": {
+                "expected_accuracy_regret": 0.0,
+                "expected_excess_brier": 0.0007913775682047827
+              },
+              "soft": {
+                "expected_accuracy_regret": 0.0,
+                "expected_excess_brier": 0.0008
+              }
+            },
+            "bias_squared": 0.0008,
+            "ce_excess_of_unrestricted_pure_soft_fit": 0.000890208354367053,
+            "oracle_alpha": 0.9892219602559784,
+            "teacher": [
+              0.46,
+              0.44,
+              0.07,
+              0.03
+            ]
+          },
+          "exact": {
+            "arms": {
+              "half": {
+                "expected_accuracy_regret": 0.02087815607263994,
+                "expected_excess_brier": 0.01835625
+              },
+              "hard": {
+                "expected_accuracy_regret": 0.02175673420589234,
+                "expected_excess_brier": 0.073425
+              },
+              "oracle_weight": {
+                "expected_accuracy_regret": 0.0,
+                "expected_excess_brier": 0.0
+              },
+              "soft": {
+                "expected_accuracy_regret": 0.0,
+                "expected_excess_brier": 0.0
+              }
+            },
+            "bias_squared": 0.0,
+            "ce_excess_of_unrestricted_pure_soft_fit": 0.0,
+            "oracle_alpha": 1.0,
+            "teacher": [
+              0.48,
+              0.42,
+              0.07,
+              0.03
+            ]
+          },
+          "reversed": {
+            "arms": {
+              "half": {
+                "expected_accuracy_regret": 0.051628219046097025,
+                "expected_excess_brier": 0.04490625
+              },
+              "hard": {
+                "expected_accuracy_regret": 0.02175673420589234,
+                "expected_excess_brier": 0.073425
+              },
+              "oracle_weight": {
+                "expected_accuracy_regret": 0.046741149969384305,
+                "expected_excess_brier": 0.043411189979123174
+              },
+              "soft": {
+                "expected_accuracy_regret": 0.06,
+                "expected_excess_brier": 0.1062
+              }
+            },
+            "bias_squared": 0.1062,
+            "ce_excess_of_unrestricted_pure_soft_fit": 0.1378233316794562,
+            "oracle_alpha": 0.40876826722338205,
+            "teacher": [
+              0.24,
+              0.64,
+              0.08,
+              0.04
+            ]
+          }
+        }
+      }
+    },
+    "specified_true_p": [
+      0.48,
+      0.42,
+      0.07,
+      0.03
+    ],
+    "truth_perturbed_example": {
+      "population_regret_above_switch": 0.06,
+      "pure_soft_excess_nll_nats": 0.1378233316794562,
+      "switch_alpha": 0.13043478260869565
+    }
+  },
+  "c4_cache": {
+    "batch": 8192,
+    "jacobian": [
+      [
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0
+      ],
+      [
+        -1.0,
+        0.5
+      ],
+      [
+        0.25,
+        -0.5
+      ]
+    ],
+    "mix": 0.5,
+    "samples_per_seed": 262144,
+    "seeds": [
+      967193,
+      967229
+    ],
+    "tasks": {
+      "q1": {
+        "counts_seed_a": [
+          [
+            27909,
+            1079,
+            679,
+            19225
+          ],
+          [
+            4320,
+            1327,
+            1210,
+            4075
+          ],
+          [
+            29721,
+            1992,
+            349,
+            3794
+          ],
+          [
+            4965,
+            356,
+            1569,
+            26864
+          ],
+          [
+            3267,
+            1369,
+            1096,
+            2784
+          ],
+          [
+            569,
+            347,
+            359,
+            606
+          ],
+          [
+            2985,
+            1265,
+            599,
+            1376
+          ],
+          [
+            1455,
+            611,
+            1123,
+            2652
+          ],
+          [
+            8864,
+            393,
+            2429,
+            9108
+          ],
+          [
+            1530,
+            534,
+            841,
+            1720
+          ],
+          [
+            9549,
+            676,
+            608,
+            4504
+          ],
+          [
+            1535,
+            292,
+            3598,
+            8995
+          ],
+          [
+            10908,
+            3390,
+            321,
+            6035
+          ],
+          [
+            1821,
+            868,
+            542,
+            1429
+          ],
+          [
+            9755,
+            4012,
+            333,
+            1141
+          ],
+          [
+            4658,
+            701,
+            515,
+            8642
+          ]
+        ],
+        "counts_seed_b": [
+          [
+            27937,
+            1006,
+            736,
+            19121
+          ],
+          [
+            4311,
+            1327,
+            1280,
+            4157
+          ],
+          [
+            29556,
+            2068,
+            346,
+            3699
+          ],
+          [
+            4841,
+            348,
+            1555,
+            26810
+          ],
+          [
+            3283,
+            1317,
+            1066,
+            2792
+          ],
+          [
+            626,
+            349,
+            344,
+            604
+          ],
+          [
+            2921,
+            1287,
+            650,
+            1378
+          ],
+          [
+            1458,
+            585,
+            1145,
+            2647
+          ],
+          [
+            8865,
+            369,
+            2403,
+            9125
+          ],
+          [
+            1527,
+            580,
+            870,
+            1787
+          ],
+          [
+            9659,
+            693,
+            535,
+            4530
+          ],
+          [
+            1602,
+            268,
+            3510,
+            8987
+          ],
+          [
+            10909,
+            3539,
+            332,
+            5975
+          ],
+          [
+            1815,
+            902,
+            531,
+            1427
+          ],
+          [
+            9741,
+            4085,
+            336,
+            1191
+          ],
+          [
+            4737,
+            662,
+            547,
+            8555
+          ]
+        ],
+        "max_covariance_delta": 1.6653345369377348e-16,
+        "max_gradient_mean_delta": 1.1102230246251565e-16,
+        "mean_conditional_hard_variance": 0.5268593175729758,
+        "mean_missing_cross_term": 0.13171482939324394,
+        "mean_mse_omitting_cross_term": 0.16464546922828102,
+        "mean_mse_with_reuse": 0.296360298621525,
+        "mean_split_projected_teacher_error2_estimate": -5.415775025322089e-06,
+        "min_pooled_cell_count": 3804,
+        "teacher_accuracy_on_pooled_mothers": 0.6054954528808594
+      },
+      "q3": {
+        "counts_seed_a": [
+          [
+            8317,
+            35394,
+            4286,
+            895
+          ],
+          [
+            1788,
+            7980,
+            967,
+            197
+          ],
+          [
+            6016,
+            26067,
+            3112,
+            661
+          ],
+          [
+            5645,
+            24462,
+            3021,
+            626
+          ],
+          [
+            2060,
+            3673,
+            1788,
+            995
+          ],
+          [
+            454,
+            840,
+            369,
+            218
+          ],
+          [
+            1554,
+            2732,
+            1281,
+            658
+          ],
+          [
+            1469,
+            2528,
+            1181,
+            663
+          ],
+          [
+            2624,
+            12073,
+            5331,
+            766
+          ],
+          [
+            607,
+            2661,
+            1198,
+            159
+          ],
+          [
+            2019,
+            8771,
+            4002,
+            545
+          ],
+          [
+            1830,
+            8323,
+            3682,
+            585
+          ],
+          [
+            6577,
+            11504,
+            1368,
+            1205
+          ],
+          [
+            1445,
+            2629,
+            318,
+            268
+          ],
+          [
+            4791,
+            8505,
+            1022,
+            923
+          ],
+          [
+            4505,
+            8176,
+            961,
+            874
+          ]
+        ],
+        "counts_seed_b": [
+          [
+            8327,
+            35274,
+            4299,
+            900
+          ],
+          [
+            1818,
+            8085,
+            993,
+            179
+          ],
+          [
+            6113,
+            25838,
+            3065,
+            653
+          ],
+          [
+            5525,
+            24424,
+            3052,
+            553
+          ],
+          [
+            2145,
+            3725,
+            1646,
+            942
+          ],
+          [
+            462,
+            834,
+            419,
+            208
+          ],
+          [
+            1543,
+            2706,
+            1236,
+            751
+          ],
+          [
+            1415,
+            2521,
+            1210,
+            689
+          ],
+          [
+            2583,
+            12027,
+            5404,
+            748
+          ],
+          [
+            597,
+            2790,
+            1190,
+            187
+          ],
+          [
+            2001,
+            8956,
+            3954,
+            506
+          ],
+          [
+            1831,
+            8334,
+            3694,
+            508
+          ],
+          [
+            6565,
+            11477,
+            1475,
+            1238
+          ],
+          [
+            1500,
+            2586,
+            328,
+            261
+          ],
+          [
+            4872,
+            8482,
+            1099,
+            900
+          ],
+          [
+            4562,
+            8065,
+            1012,
+            862
+          ]
+        ],
+        "max_covariance_delta": 2.220446049250313e-16,
+        "max_gradient_mean_delta": 2.220446049250313e-16,
+        "mean_conditional_hard_variance": 0.5753369277997042,
+        "mean_missing_cross_term": 0.1438342319499261,
+        "mean_mse_omitting_cross_term": 0.1797943673057013,
+        "mean_mse_with_reuse": 0.3236285992556274,
+        "mean_split_projected_teacher_error2_estimate": -1.1003448263999854e-05,
+        "min_pooled_cell_count": 3804,
+        "teacher_accuracy_on_pooled_mothers": 0.6340827941894531
+      }
+    },
+    "teacher_integration_seed": 41117,
+    "teacher_reuse_fraction": 0.5,
+    "teacher_table_sha256": "5d257d63f148b668b7a430f2fce37f2443bc386f275cd05c18d34f5f0355d75e",
+    "weight_sha256": "e67d9fbafb90791ab19549de7789798d818286d7f52d7ac566cc39df71e78356"
+  },
+  "counterexample": {
+    "alpha": 0.4024390243902439,
+    "blend_mse": 0.09859756097560976,
+    "blend_regret": 0.0833625,
+    "enumerated_outcomes": 4,
+    "hard_mse": 0.165,
+    "hard_regret": 0.042525,
+    "n": 3,
+    "p": [
+      0.55,
+      0.45
+    ],
+    "q": [
+      0.2,
+      0.8
+    ]
+  }
+}

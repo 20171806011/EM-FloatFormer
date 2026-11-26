@@ -2,7 +2,7 @@
 
 **结论。** 在原始 C4 工况、已知频偏、固定 s17 的 8 比特缓存及无导频条件下，独立统计检验支持已发布的两张表在全部缓存状态上都选中了贝叶斯最优类别。把这两张表作为 Q1/Q3 的判决基准。下一笔算力应优先用于检验冻结宿主能否使用有符号相位信息和新证据。这项结论针对指定模拟器的 top-1 判决；任意工况的概率校准、Q2 的最优类别、GPU 宿主收益和真实录制仍需分别评估。
 
-[七份可单独复制的中文提示词与交叉复核](work_prompts/README.md) · [最初的七题简报](PROMPTS.md) · [上一轮数学基线](https://github.com/20171806011/EM-FloatFormer/tree/cbf3d2c03f773731fdf1b0d695a63ec57cb62ca0/research/stage3b_math)
+[七份中文提示词、独立 Work 交付与复算记录](work_prompts/README.md) · [最初的七题简报](PROMPTS.md) · [上一轮数学基线](https://github.com/20171806011/EM-FloatFormer/tree/cbf3d2c03f773731fdf1b0d695a63ec57cb62ca0/research/stage3b_math)
 
 | 问题 | 结果 | 对实验的决定 |
 |---|---|---|

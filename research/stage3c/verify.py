@@ -24,15 +24,52 @@ def compare(expected, got, path):
         assert expected == got, (path, expected, got)
 
 
+def replay_work(repo, output_dir, env):
+    studies = repo / "research/stage3c/work_results"
+    tasks = [
+        ("A", "verify.py", False),
+        ("B", "check_work_b.py", False),
+        ("C", "check.py", False),
+        ("D", "audit.py", True),
+        ("E", "verify.py", False),
+        ("F", "verify_f.py", True),
+        ("G", "verify.py", False),
+    ]
+    for group, script, uses_output_file in tasks:
+        output = output_dir / f"work_{group}.json"
+        folder = studies / group
+        command = [sys.executable, "-B", folder / script]
+        if uses_output_file:
+            subprocess.run(command + ["--out", output], cwd=repo, env=env, check=True)
+            actual = json.loads(output.read_text())
+        else:
+            actual = json.loads(subprocess.check_output(command, cwd=repo, env=env))
+        expected = json.loads((folder / "results.json").read_text())
+        # Python patch versions are provenance. Validate the minor version and
+        # log both builds while retaining the original JSON for inspection.
+        for reference, observed in ((expected, actual), (expected.get("versions", {}), actual.get("versions", {}))):
+            if "python" in reference:
+                print(f"Work {group}: Python {reference['python']} recorded, {observed['python']} replay")
+                assert reference["python"].split(".")[:2] == observed["python"].split(".")[:2]
+                reference.pop("python")
+                observed.pop("python")
+        compare(expected, actual, f"Work {group}")
+        print(f"Verified Work {group}", flush=True)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", required=True, type=Path, help="checkout with the pinned Stage 3 inputs")
+    parser.add_argument("--work", action="store_true", help="replay the seven independent Work submissions")
     args = parser.parse_args()
     repo = args.repo.resolve()
     studies = Path(__file__).resolve().parent
     table = repo / "research/stage3b_math/A/c4_s17_lookup.json"
     env = dict(os.environ, OPENBLAS_NUM_THREADS="1", OMP_NUM_THREADS="1")
     with tempfile.TemporaryDirectory() as tmp:
+        if args.work:
+            replay_work(repo, Path(tmp), env)
+            return
         kernel = Path(tmp) / "kernel.json"
         runs = [
             ("A/check_q2.py", ["--repo", repo, "--export-kernel", kernel], "A/q2_results.json"),

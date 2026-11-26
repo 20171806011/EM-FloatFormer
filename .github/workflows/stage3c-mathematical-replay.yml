@@ -20,3 +20,5 @@ jobs:
       - run: python -m pip install numpy==2.3.5 scipy==1.17.0
       - name: Repeat seven studies and compare all recorded JSON fields
         run: python -B research/stage3c/verify.py --repo .
+      - name: Reproduce seven independent Work submissions
+        run: python -B research/stage3c/verify.py --repo . --work
