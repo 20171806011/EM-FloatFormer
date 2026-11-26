@@ -1,0 +1,40 @@
+name: Stage 3B CPU readout verification
+on:
+  push:
+    branches: [research/stage3b-math-optimal-readout]
+    paths:
+      - 'research/stage3b_math/**/*.py'
+      - '.github/workflows/stage3b-math-readout.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy scipy
+      - name: Rebuild the signed C4 readout and check all cache pairs
+        run: |
+          python research/stage3b_math/A/c4_lookup.py build research/matched_cache --table "$RUNNER_TEMP/c4_s17_lookup.json"
+          python research/stage3b_math/A/c4_lookup.py read 3 12 --table "$RUNNER_TEMP/c4_s17_lookup.json"
+          python -c "import os, pathlib; print('TABLE_BEGIN'+pathlib.Path(os.environ['RUNNER_TEMP'],'c4_s17_lookup.json').read_text().replace(chr(10),'')+'TABLE_END')"
+      - name: Repeat supporting CPU checks
+        run: |
+          python research/stage3b_math/B/check_b.py --repo-root .
+          python research/stage3b_math/C/check_c.py
+          python research/stage3b_math/D/check_d.py --repo . --out "$RUNNER_TEMP/d_replay.json"
+          python research/stage3b_math/E/check_e.py
+          python research/stage3b_math/F/check_f.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stage3b-cpu-readout
+          path: |
+            ${{ runner.temp }}/c4_s17_lookup.json
+            ${{ runner.temp }}/d_replay.json
