@@ -1,6 +1,6 @@
 # One model call per representative, with the quarter-turn law enforced
 
-Use the Stage 3 frozen equivariant encoder `equivariant_b8_s17`. Its index has the form `4r+i`, with a quadrant r and an inner index i. These results assume the four independent, uniform transmitted-symbol hypotheses (at each independent draw) and circular noise of the simulator. For the repeat protocol the first symbol is sent again in window three. Public oscillator parameters can be arbitrary within that model.
+Use the Stage 3 frozen equivariant encoder `equivariant_b8_s17`. Its index has the form `4r+i`, with a quadrant r and an inner index i. These results assume independent symbols in the first and second windows, each uniform over four labels, and circular receiver noise as specified by the simulator. For the repeat protocol the first symbol is sent again in window three. Public oscillator parameters can be arbitrary within that model.
 
 ## Exact reduction
 
