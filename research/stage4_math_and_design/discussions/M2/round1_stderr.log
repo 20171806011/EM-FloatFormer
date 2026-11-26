@@ -1,0 +1,14 @@
+node.exe : 2026-11-26T19:33:01.722840Z ERROR codex_core::tools::router: error=exec_command failed: CreateProcess { mess
+age: "Rejected(\"`\\\"C:\\\\\\\\WINDOWS\\\\\\\\System32\\\\\\\\WindowsPowerShell\\\\\\\\v1.0\\\\\\\\powershell.exe\\\" 
+-NoProfile -Command '$ErrorActionPreference='\\\"'Stop'\\n\\\"'$m2=(Resolve-Path -LiteralPath '\\\"'research/stage4_mat
+h_and_design/M2').Path\\n\\\"'$expected=Join-Path $m2 '\\\"'.uv-cache'\\n\\\"'$cache=(Resolve-Path -LiteralPath $expect
+ed).Path\\nif($cache -cne $expected){throw '\\\"'Unexpected cache path'}\\nif((Get-Item -LiteralPath \\\"'$cache -Force
+).Attributes -band [IO.FileAttributes]::ReparsePoint){throw '\\\"'Cache is a reparse point'}\\nRemove-Item -LiteralPath
+ \\\"'$cache -Recurse -Force\\nGet-ChildItem -LiteralPath $m2 -Force | Select-Object Name,Length\\ngit ls-files --other
+s --exclude-standard -- research/stage4_math_and_design/M2\\n'` rejected: blocked by policy\")" }
+At C:\Users\李则徐\AppData\Roaming\npm\codex.ps1:22 char:14
++ ...    $input | & "node$exe"  "$basedir/node_modules/@openai/codex/bin/co ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-11-26T19:3...by policy\")" }:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

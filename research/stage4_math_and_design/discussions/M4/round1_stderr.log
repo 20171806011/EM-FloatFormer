@@ -1,0 +1,19 @@
+node.exe : 2026-11-26T19:36:46.542546Z ERROR codex_core::tools::router: error=exec_command failed: CreateProcess { mess
+age: "Rejected(\"`\\\"C:\\\\\\\\WINDOWS\\\\\\\\System32\\\\\\\\WindowsPowerShell\\\\\\\\v1.0\\\\\\\\powershell.exe\\\" 
+-NoProfile -Command '$m4=(Resolve-Path -LiteralPath '\\\"'research/stage4_math_and_design/M4').Path; \\\"'$scratch=(Res
+olve-Path -LiteralPath '\\\"'research/stage4_math_and_design/M4/.uv-m4').Path; if (\\\"'$scratch -ne \\\"$m4'\\\"\\\\\\
+\\.uv-m4\\\\\\\") { throw 'Unexpected cache director…44 chars truncated…ath $scratch -Force -Recurse -ErrorAction Stop 
+| Where-Object { $_.Attributes -band [IO.FileAttributes]::ReparsePoint }); if ($links.Count -gt 0) { throw '\\\"'The te
+mporary cache contains a reparse point'; }; Remove-Item -LiteralPath \\\"'$scratch -Recurse -Force -ErrorAction Stop; G
+et-ChildItem -LiteralPath $m4 -Force | Select-Object Name,Length; git rev-parse HEAD; git status --short --untracked-fi
+les=normal'` rejected: blocked by policy\")" }
+At C:\Users\李则徐\AppData\Roaming\npm\codex.ps1:22 char:14
++ ...    $input | & "node$exe"  "$basedir/node_modules/@openai/codex/bin/co ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-11-26T19:3...by policy\")" }:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-11-26T19:37:01.748546Z ERROR codex_core::tools::router: error=exec_command failed: CreateProcess { message: "Rejec
+ted(\"`\\\"C:\\\\\\\\WINDOWS\\\\\\\\System32\\\\\\\\WindowsPowerShell\\\\\\\\v1.0\\\\\\\\powershell.exe\\\" -NoProfile 
+-Command \\\"Remove-Item -LiteralPath 'C:/Users/李则徐/.gemini/antigravity/scratch/EM-FloatFormer-stage4/research/stage4_m
+ath_and_design/M4/.uv-m4' -Recurse -Force -ErrorAction Stop\\\"` rejected: blocked by policy\")" }
