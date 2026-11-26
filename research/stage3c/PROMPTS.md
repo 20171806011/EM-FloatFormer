@@ -1,0 +1,17 @@
+# Stage 3C — questions to resolve before the host campaign
+
+Parent: [Stage 3B, cbf3d2c0](https://github.com/20171806011/EM-FloatFormer/tree/cbf3d2c03f773731fdf1b0d695a63ec57cb62ca0/research/stage3b_math). Finish each question with a derivation, a counterexample or scope boundary, reproducible CPU evidence and an actionable experiment decision. Use the existing frozen s17 cache. Record known channel metadata, exposure to any training-time teacher and the observation seen at test time. A single campaign is the design goal; no particular host score is assumed.
+
+## Parallel research prompts
+
+| Group | Independently executable research brief | What it decides |
+|---|---|---|
+| A · Late references | Derive the conditional distribution for the first transmitted symbol after one noisy pilot and two independently sampled pilots sharing the same phase. Audit a duplicated or unrelated reference separately. Compare the published rule to the new conditional calculation at matched access. | Which pilot readout can serve as a reference and where improvements are measurable. |
+| B · Time and frequency | Find sufficient public phase and diffusion features for changing window times, ordered or coincident pilots and signed known offsets. Give explicit collisions of incomplete features; examine an unknown-sign extension under a declared prior. | Which deterministic features belong in each input arm and which need a richer model. |
+| C · Training targets | Compare hard simulation labels, same-information Bayes probabilities and approximate teacher mixtures. Derive gradient expectation, variance and approximation bias. Check a finite counterexample and spell out a matched training comparison. | Where posterior supervision may reduce variance, where it can hurt, and how to test it. |
+| D · Numerical reference | Audit the actual released Q1/Q3 no-pilot C4 decisions using newly simulated independent mother waveforms. Certify top-1 regret or bound it with specified confidence, accounting for all cells/tasks. Report unresolved cells and scope separately from integration precision. | How close to ideal the numerical decision reference demonstrably is. |
+| E · One campaign | Pick an identifiable primary comparison, estimate the number of independent test mothers or blocks required, account for pairing, rotations, shared seeds, finite budget and multiplicity. Distinguish the target precision from an observed outcome. | How to avoid a costly yet inconclusive blind run. |
+| F · Diagnose the host | Design a paired signed-offset intervention including consistent physical worlds and metadata-only counterfactuals; define controls for ignoring or reversing the sign. Verify the statistic on known readers. | Which changes in the host's answer distinguish competing behavioral explanations. |
+| G · Guaranteed symmetry | Derive a one-call readout that respects both independent quarter turns by construction. Contrast it with group averaging and the unrestricted frozen host. Test against all released cache states and state which improvement is guaranteed. | Which known structure can be implemented once and which benefits still require measurement. |
+
+The integration step will reconcile incompatible assumptions across groups, prioritize test arms under one GPU budget, and record which tasks remain empirical. Preserve the existing train/dev/test separation. Publish to `research/stage3c-math-before-hosts` and verify the branch and CPU workflow on GitHub.
