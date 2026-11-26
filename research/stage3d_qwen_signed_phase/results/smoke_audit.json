@@ -1,0 +1,481 @@
+{
+  "model_id": "Qwen/Qwen3.5-4B",
+  "requested_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "resolved_hf_sha": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "transformers_version": "5.24.1",
+  "torch_version": "2.15.0+cu132",
+  "encoder_name": "equivariant_b8_s17",
+  "encoder_sha256": "e67d9fbafb90791ab19549de7789798d818286d7f52d7ac566cc39df71e78356",
+  "gpu_name": "NVIDIA A100-SXM4-80GB",
+  "total_vram_mb": 81179.8,
+  "dtype": "torch.bfloat16",
+  "load_time_s": 57.69,
+  "model_vram_mb_after_load": 8021.9,
+  "thinking_mode": "disabled (enable_thinking=False -> <think>\\n\\n</think>\\n\\n)",
+  "chat_template_sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+  "frozen_host_params": 4205751296,
+  "trainable_connector_params": 2184964,
+  "host_sha256_before": "f39c9e1b7a5719c1397dcdce42d221215fb20edadb881d2f81e745673636f64d",
+  "host_sha256_after": "f39c9e1b7a5719c1397dcdce42d221215fb20edadb881d2f81e745673636f64d",
+  "host_sha_identical": true,
+  "host_grads_nonzero": 0,
+  "conn_grads_all_nonzero": true,
+  "conn_grad_norms": {
+    "prefix_latents": 8.432612419128418,
+    "win_scale": 0.12688341736793518,
+    "phase_scale": 0.2958029508590698,
+    "ref_scale": 0.05220898985862732,
+    "prefix_scale": 1.2219929695129395,
+    "win_emb.weight": 0.15208184719085693,
+    "pair_mlp.0.weight": 1.1024075746536255,
+    "pair_mlp.0.bias": 0.04133753851056099,
+    "pair_mlp.2.weight": 0.7149915099143982,
+    "pair_mlp.2.bias": 0.10206101834774017,
+    "win1_head.0.weight": 3.3979573249816895,
+    "win1_head.0.bias": 0.30728796124458313,
+    "win1_head.2.weight": 2.6962199211120605,
+    "win1_head.2.bias": 0.9847625494003296,
+    "win2_head.0.weight": 3.8216593265533447,
+    "win2_head.0.bias": 0.26169195771217346,
+    "win2_head.2.weight": 3.1377921104431152,
+    "win2_head.2.bias": 0.8312321305274963,
+    "phase_mlp.0.weight": 0.10852134227752686,
+    "phase_mlp.0.bias": 0.0573057197034359,
+    "phase_mlp.2.weight": 0.7846655249595642,
+    "phase_mlp.2.bias": 0.16656240820884705,
+    "phase_mlp.4.weight": 0.8221399784088135,
+    "phase_mlp.4.bias": 0.5736289024353027,
+    "ref_mlp.0.weight": 0.6198113560676575,
+    "ref_mlp.0.bias": 0.20421013236045837,
+    "ref_mlp.2.weight": 2.9187710285186768,
+    "ref_mlp.2.bias": 0.6079283356666565,
+    "out_proj.weight": 7.014867305755615,
+    "out_proj.bias": 19.426027297973633,
+    "out_norm.weight": 0.686867356300354,
+    "out_norm.bias": 0.7118375897407532
+  },
+  "reload_max_prob_diff": 0.0,
+  "scorer_parity": {
+    "Q3_repeat": {
+      "prefix_len_tokens": 277,
+      "batched_vs_naive_max_ll_diff": 0.12313365936279297,
+      "batched_vs_naive_max_prob_diff": 0.029654890298843384,
+      "kv_vs_naive_max_ll_diff": 0.2143568992614746,
+      "kv_vs_naive_max_prob_diff": 0.031108200550079346
+    },
+    "Q2_valid": {
+      "prefix_len_tokens": 253,
+      "batched_vs_naive_max_ll_diff": 0.23457050323486328,
+      "batched_vs_naive_max_prob_diff": 0.02666187286376953,
+      "kv_vs_naive_max_ll_diff": 0.34971189498901367,
+      "kv_vs_naive_max_prob_diff": 0.020933985710144043
+    }
+  },
+  "smoke_train_loss": 1.5053681135177612,
+  "smoke_step_ms_b4_dual": 140769.8,
+  "bench_train_microbatch": {
+    "mb_4": {
+      "step_ms": 996.8,
+      "peak_vram_mb": 9910.2
+    },
+    "mb_8": {
+      "step_ms": 36901.7,
+      "peak_vram_mb": 11736.3
+    },
+    "mb_16": {
+      "step_ms": 36517.2,
+      "peak_vram_mb": 15388.6
+    },
+    "mb_32": {
+      "step_ms": 40486.6,
+      "peak_vram_mb": 22693.0
+    }
+  },
+  "bench_infer": {
+    "batched_uncached_b32": {
+      "ms_per_example": 66.36
+    },
+    "batched_uncached_b64": {
+      "ms_per_example": 66.34
+    },
+    "kv_cached_b32": {
+      "ms_per_example": 21.56
+    },
+    "kv_cached_b64": {
+      "ms_per_example": 20.99
+    }
+  },
+  "recommended_micro_batch_size": 4,
+  "smoke_generated_sample_q3": "扇区 2（+135°到 -135°）",
+  "candidate_token_audit": {
+    "sample_rendered_tail": "art|>user\n测试<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "ends_with_disabled_think": true,
+    "Q1": {
+      "choices": [
+        {
+          "physical_index": 0,
+          "text": "0圈（0°）",
+          "token_ids": [
+            15,
+            97303,
+            9616,
+            15,
+            11283,
+            7313
+          ],
+          "tokens": [
+            "0",
+            "åľĪ",
+            "ï¼Ī",
+            "0",
+            "Â°",
+            "ï¼ī"
+          ],
+          "length": 6,
+          "boundary_concat_exact": true
+        },
+        {
+          "physical_index": 1,
+          "text": "1圈（+90°）",
+          "token_ids": [
+            16,
+            97303,
+            9616,
+            10,
+            24,
+            15,
+            11283,
+            7313
+          ],
+          "tokens": [
+            "1",
+            "åľĪ",
+            "ï¼Ī",
+            "+",
+            "9",
+            "0",
+            "Â°",
+            "ï¼ī"
+          ],
+          "length": 8,
+          "boundary_concat_exact": true
+        },
+        {
+          "physical_index": 2,
+          "text": "2圈（180°）",
+          "token_ids": [
+            17,
+            97303,
+            9616,
+            16,
+            23,
+            15,
+            11283,
+            7313
+          ],
+          "tokens": [
+            "2",
+            "åľĪ",
+            "ï¼Ī",
+            "1",
+            "8",
+            "0",
+            "Â°",
+            "ï¼ī"
+          ],
+          "length": 8,
+          "boundary_concat_exact": true
+        },
+        {
+          "physical_index": 3,
+          "text": "3圈（+270°）",
+          "token_ids": [
+            18,
+            97303,
+            9616,
+            10,
+            17,
+            22,
+            15,
+            11283,
+            7313
+          ],
+          "tokens": [
+            "3",
+            "åľĪ",
+            "ï¼Ī",
+            "+",
+            "2",
+            "7",
+            "0",
+            "Â°",
+            "ï¼ī"
+          ],
+          "length": 9,
+          "boundary_concat_exact": true
+        }
+      ],
+      "max_len": 9,
+      "all_non_empty": true,
+      "all_boundary_exact": true
+    },
+    "Q2": {
+      "choices": [
+        {
+          "physical_index": 0,
+          "text": "符号0（1）",
+          "token_ids": [
+            109706,
+            15,
+            9616,
+            16,
+            7313
+          ],
+          "tokens": [
+            "ç¬¦åı·",
+            "0",
+            "ï¼Ī",
+            "1",
+            "ï¼ī"
+          ],
+          "length": 5,
+          "boundary_concat_exact": true
+        },
+        {
+          "physical_index": 1,
+          "text": "符号1（i）",
+          "token_ids": [
+            109706,
+            16,
+            9616,
+            72,
+            7313
+          ],
+          "tokens": [
+            "ç¬¦åı·",
+            "1",
+            "ï¼Ī",
+            "i",
+            "ï¼ī"
+          ],
+          "length": 5,
+          "boundary_concat_exact": true
+        },
+        {
+          "physical_index": 2,
+          "text": "符号2（-1）",
+          "token_ids": [
+            109706,
+            17,
+            9616,
+            12,
+            16,
+            7313
+          ],
+          "tokens": [
+            "ç¬¦åı·",
+            "2",
+            "ï¼Ī",
+            "-",
+            "1",
+            "ï¼ī"
+          ],
+          "length": 6,
+          "boundary_concat_exact": true
+        },
+        {
+          "physical_index": 3,
+          "text": "符号3（-i）",
+          "token_ids": [
+            109706,
+            18,
+            9616,
+            12,
+            72,
+            7313
+          ],
+          "tokens": [
+            "ç¬¦åı·",
+            "3",
+            "ï¼Ī",
+            "-",
+            "i",
+            "ï¼ī"
+          ],
+          "length": 6,
+          "boundary_concat_exact": true
+        }
+      ],
+      "max_len": 6,
+      "all_non_empty": true,
+      "all_boundary_exact": true
+    },
+    "Q3": {
+      "choices": [
+        {
+          "physical_index": 0,
+          "text": "扇区0（-45°到+45°）",
+          "token_ids": [
+            100274,
+            95969,
+            15,
+            9616,
+            12,
+            19,
+            20,
+            11283,
+            95839,
+            10,
+            19,
+            20,
+            11283,
+            7313
+          ],
+          "tokens": [
+            "æīĩ",
+            "åĮº",
+            "0",
+            "ï¼Ī",
+            "-",
+            "4",
+            "5",
+            "Â°",
+            "åĪ°",
+            "+",
+            "4",
+            "5",
+            "Â°",
+            "ï¼ī"
+          ],
+          "length": 14,
+          "boundary_concat_exact": true
+        },
+        {
+          "physical_index": 1,
+          "text": "扇区1（+45°到+135°）",
+          "token_ids": [
+            100274,
+            95969,
+            16,
+            9616,
+            10,
+            19,
+            20,
+            11283,
+            95839,
+            10,
+            16,
+            18,
+            20,
+            11283,
+            7313
+          ],
+          "tokens": [
+            "æīĩ",
+            "åĮº",
+            "1",
+            "ï¼Ī",
+            "+",
+            "4",
+            "5",
+            "Â°",
+            "åĪ°",
+            "+",
+            "1",
+            "3",
+            "5",
+            "Â°",
+            "ï¼ī"
+          ],
+          "length": 15,
+          "boundary_concat_exact": true
+        },
+        {
+          "physical_index": 2,
+          "text": "扇区2（+135°到-135°）",
+          "token_ids": [
+            100274,
+            95969,
+            17,
+            9616,
+            10,
+            16,
+            18,
+            20,
+            11283,
+            95839,
+            12,
+            16,
+            18,
+            20,
+            11283,
+            7313
+          ],
+          "tokens": [
+            "æīĩ",
+            "åĮº",
+            "2",
+            "ï¼Ī",
+            "+",
+            "1",
+            "3",
+            "5",
+            "Â°",
+            "åĪ°",
+            "-",
+            "1",
+            "3",
+            "5",
+            "Â°",
+            "ï¼ī"
+          ],
+          "length": 16,
+          "boundary_concat_exact": true
+        },
+        {
+          "physical_index": 3,
+          "text": "扇区3（-135°到-45°）",
+          "token_ids": [
+            100274,
+            95969,
+            18,
+            9616,
+            12,
+            16,
+            18,
+            20,
+            11283,
+            95839,
+            12,
+            19,
+            20,
+            11283,
+            7313
+          ],
+          "tokens": [
+            "æīĩ",
+            "åĮº",
+            "3",
+            "ï¼Ī",
+            "-",
+            "1",
+            "3",
+            "5",
+            "Â°",
+            "åĪ°",
+            "-",
+            "4",
+            "5",
+            "Â°",
+            "ï¼ī"
+          ],
+          "length": 15,
+          "boundary_concat_exact": true
+        }
+      ],
+      "max_len": 16,
+      "all_non_empty": true,
+      "all_boundary_exact": true
+    }
+  }
+}

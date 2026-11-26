@@ -1,0 +1,96 @@
+{
+  "arm": "phase",
+  "seed": 202611,
+  "trainable_params": 2184964,
+  "epochs": 8,
+  "batch_size": 32,
+  "micro_batch_size": 16,
+  "lr": 0.0015,
+  "max_steps_per_epoch": 160,
+  "train_scorer": "kv_cached",
+  "eval_scorer": "kv_cached",
+  "eval_every_epochs": 2,
+  "best_epoch": 7,
+  "best_sel_score": 1.3809686587691041,
+  "temp_q3": 0.5098932035670315,
+  "temp_q2": 3.9999830531425227,
+  "dev_q3_cal_nll": 1.375347147854539,
+  "dev_q2_cal_nll": 1.3866422230228832,
+  "train_wall_s": 2884.04,
+  "peak_vram_mb": 52972.5,
+  "host_sha256_after": "f39c9e1b7a5719c1397dcdce42d221215fb20edadb881d2f81e745673636f64d",
+  "checkpoint": "connector_phase_s202611.pt",
+  "checkpoint_sha256": "088d4ad34e1152ff000959a37bf784a8f45e326bdd2e483fdf755f82405f7866",
+  "history": [
+    {
+      "epoch": 1,
+      "train_nll": 1.5128,
+      "dev_evaluated": false
+    },
+    {
+      "epoch": 2,
+      "train_nll": 1.56753,
+      "dev_evaluated": true,
+      "dev_overall_nll": 1.40058,
+      "dev_cfo_q3_nll": 1.38733,
+      "dev_cfo_q3_acc": 0.2676,
+      "dev_q2v_nll": 1.39172,
+      "dev_q2v_acc": 0.2098,
+      "sel_score": 1.39396
+    },
+    {
+      "epoch": 3,
+      "train_nll": 1.3914,
+      "dev_evaluated": false
+    },
+    {
+      "epoch": 4,
+      "train_nll": 1.38972,
+      "dev_evaluated": true,
+      "dev_overall_nll": 1.387,
+      "dev_cfo_q3_nll": 1.38676,
+      "dev_cfo_q3_acc": 0.2721,
+      "dev_q2v_nll": 1.38731,
+      "dev_q2v_acc": 0.2589,
+      "sel_score": 1.38688
+    },
+    {
+      "epoch": 5,
+      "train_nll": 1.38759,
+      "dev_evaluated": false
+    },
+    {
+      "epoch": 6,
+      "train_nll": 1.385,
+      "dev_evaluated": true,
+      "dev_overall_nll": 1.38598,
+      "dev_cfo_q3_nll": 1.38061,
+      "dev_cfo_q3_acc": 0.2832,
+      "dev_q2v_nll": 1.39041,
+      "dev_q2v_acc": 0.2366,
+      "sel_score": 1.38329
+    },
+    {
+      "epoch": 7,
+      "train_nll": 1.38595,
+      "dev_evaluated": true,
+      "dev_overall_nll": 1.38431,
+      "dev_cfo_q3_nll": 1.37762,
+      "dev_cfo_q3_acc": 0.2962,
+      "dev_q2v_nll": 1.38957,
+      "dev_q2v_acc": 0.2612,
+      "sel_score": 1.38097
+    },
+    {
+      "epoch": 8,
+      "train_nll": 1.38378,
+      "dev_evaluated": true,
+      "dev_overall_nll": 1.38462,
+      "dev_cfo_q3_nll": 1.37997,
+      "dev_cfo_q3_acc": 0.278,
+      "dev_q2v_nll": 1.38787,
+      "dev_q2v_acc": 0.2522,
+      "sel_score": 1.38229
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "train_bench": {
+    "Q3_after_pilot_kv_mb8": {
+      "alloc_after_mb1_4_mb": [
+        8055.2,
+        8055.2,
+        8055.2,
+        8055.2
+      ],
+      "peak_vram_mb": 30514.6,
+      "steady_32ex_step_ms": 2139.7,
+      "conn_grad_sum": 24.481,
+      "host_grads": 0
+    },
+    "Q3_after_pilot_kv_mb16": {
+      "alloc_after_mb1_4_mb": [
+        8055.2,
+        8055.2,
+        8055.2,
+        8055.2
+      ],
+      "peak_vram_mb": 52972.5,
+      "steady_32ex_step_ms": 1975.7,
+      "conn_grad_sum": 14.287,
+      "host_grads": 0
+    },
+    "Q2_fresh_resample_kv_mb8": {
+      "alloc_after_mb1_4_mb": [
+        8055.2,
+        8055.2,
+        8055.2,
+        8055.2
+      ],
+      "peak_vram_mb": 25910.3,
+      "steady_32ex_step_ms": 1965.8,
+      "conn_grad_sum": 13.822,
+      "host_grads": 0
+    },
+    "Q2_fresh_resample_kv_mb16": {
+      "alloc_after_mb1_4_mb": [
+        8055.2,
+        8055.2,
+        8055.2,
+        8055.2
+      ],
+      "peak_vram_mb": 43763.7,
+      "steady_32ex_step_ms": 1656.0,
+      "conn_grad_sum": 19.913,
+      "host_grads": 0
+    }
+  },
+  "dev_eval_bench": {
+    "Q3_after_pilot_eval_b32": {
+      "peak_vram_mb": 26728.4,
+      "ms_per_ex": 24.46
+    },
+    "Q3_after_pilot_eval_b64": {
+      "peak_vram_mb": 45409.9,
+      "ms_per_ex": 23.88
+    }
+  },
+  "parity_bench": {
+    "b1_Q3_repeat_x1": {
+      "batched_vs_naive_max_ll_diff": 0.32451415061950684,
+      "batched_vs_naive_max_prob_diff": 0.027078211307525635,
+      "kv_vs_naive_max_ll_diff": 0.3533594608306885,
+      "kv_vs_naive_max_prob_diff": 0.01602950692176819
+    },
+    "b1_Q3_after_pilot": {
+      "batched_vs_naive_max_ll_diff": 0.1306014060974121,
+      "batched_vs_naive_max_prob_diff": 0.019718840718269348,
+      "kv_vs_naive_max_ll_diff": 0.12212705612182617,
+      "kv_vs_naive_max_prob_diff": 0.021901369094848633
+    },
+    "g1_direct_b64_vs_table_b64": {
+      "max_abs_ll_diff": 0.0,
+      "max_abs_prob_diff": 0.0,
+      "argmax_agreement": 1.0
+    },
+    "g1_direct_b16_vs_table_b64": {
+      "max_abs_ll_diff": 0.4816117286682129,
+      "max_abs_prob_diff": 0.05001725029437104,
+      "argmax_agreement": 1.0
+    },
+    "g1_direct_b1_vs_table_b64": {
+      "max_abs_ll_diff": 0.48299169540405273,
+      "max_abs_prob_diff": 0.034512381279745874,
+      "argmax_agreement": 1.0
+    }
+  }
+}
