@@ -1249,3 +1249,311 @@ def test_cn_sft_4layer_end_to_end_residual_and_active_mix_kl():
     finally:
         ad.remove()
 
+
+def test_colab_model_specs_and_gpu_profile():
+    from research.stage4_real_and_surgical.colab_stage6_scaling import (
+        ARTIFACT_SHA256,
+        MODEL_SPECS,
+        detect_colab_gpu_profile,
+    )
+
+    assert len(ARTIFACT_SHA256) == 9
+    assert "stage4_cn_sft_u1_s202611.pt" in ARTIFACT_SHA256
+    assert set(MODEL_SPECS.keys()) == {"4b", "9b", "27b"}
+    assert MODEL_SPECS["4b"]["model_id"] == "Qwen/Qwen3.5-4B"
+    assert MODEL_SPECS["9b"]["model_id"] == "Qwen/Qwen3.5-9B"
+    assert MODEL_SPECS["27b"]["model_id"] == "Qwen/Qwen3.8-27B"
+    assert (MODEL_SPECS["4b"]["hidden_size"], MODEL_SPECS["9b"]["hidden_size"], MODEL_SPECS["27b"]["hidden_size"]) == (
+        2560,
+        4096,
+        5120,
+    )
+    assert (MODEL_SPECS["4b"]["num_layers"], MODEL_SPECS["9b"]["num_layers"], MODEL_SPECS["27b"]["num_layers"]) == (
+        32,
+        32,
+        64,
+    )
+
+    p_t4 = detect_colab_gpu_profile(vram_gib=15.0, gpu_name="Tesla T4")
+    assert p_t4["tier"] == "t4_16g"
+    assert p_t4["models"]["4b"]["supported"] is True and p_t4["models"]["4b"]["quant"] == "mixed_nf4"
+    assert p_t4["models"]["9b"]["supported"] is False
+    assert p_t4["models"]["27b"]["supported"] is False
+
+    p_l4 = detect_colab_gpu_profile(vram_gib=24.0, gpu_name="NVIDIA L4")
+    assert p_l4["tier"] == "l4_24g"
+    assert p_l4["models"]["4b"]["quant"] == "bf16"
+    assert p_l4["models"]["9b"]["supported"] is True and p_l4["models"]["9b"]["quant"] == "mixed_nf4"
+    assert p_l4["models"]["27b"]["supported"] is False
+
+    p_a40 = detect_colab_gpu_profile(vram_gib=40.0, gpu_name="NVIDIA A100-SXM4-40GB")
+    assert p_a40["tier"] == "a100_40g"
+    assert p_a40["models"]["9b"]["quant"] == "bf16" and p_a40["models"]["9b"]["grad_ckpt"] is True
+    assert p_a40["models"]["27b"]["supported"] is True and p_a40["models"]["27b"]["quant"] == "mixed_nf4"
+
+    p_a80 = detect_colab_gpu_profile(vram_gib=80.0, gpu_name="NVIDIA A100-SXM4-80GB")
+    assert p_a80["tier"] == "a100_80g_h100"
+    assert p_a80["models"]["9b"]["run_u1_scaled"] is True and p_a80["models"]["9b"]["grad_ckpt"] is False
+    assert p_a80["models"]["27b"]["supported"] is True and p_a80["models"]["27b"]["grad_ckpt"] is True
+
+
+def test_mixed_nf4_layout_audit_enforces_w4_redline():
+    import pytest
+    from research.stage4_real_and_surgical.colab_stage6_scaling import audit_mixed_nf4_layout
+
+    def _build_dummy_hybrid():
+        root = torch.nn.Module()
+        root.model = torch.nn.Module()
+        root.model.embed_tokens = torch.nn.Embedding(32, 16)
+        root.lm_head = torch.nn.Linear(16, 32, bias=False)
+        blk = torch.nn.Module()
+        blk.input_layernorm = torch.nn.LayerNorm(16)
+        blk.post_attention_layernorm = torch.nn.LayerNorm(16)
+        blk.linear_attn = torch.nn.Module()
+        for nm in ("in_proj_qkv", "in_proj_a", "in_proj_b", "out_proj"):
+            setattr(blk.linear_attn, nm, torch.nn.Linear(16, 16, bias=False))
+        blk.self_attn = torch.nn.Module()
+        for nm in ("q_proj", "k_proj", "v_proj", "o_proj"):
+            setattr(blk.self_attn, nm, torch.nn.Linear(16, 16, bias=False))
+        blk.mlp = torch.nn.Module()
+        for nm in ("gate_proj", "up_proj", "down_proj"):
+            m_mlp = torch.nn.Linear(16, 16, bias=False)
+            m_mlp._is_4bit_nf4_mock = True
+            setattr(blk.mlp, nm, m_mlp)
+        root.model.layers = torch.nn.ModuleList([blk])
+        return root
+
+    clean = _build_dummy_hybrid()
+    rep = audit_mixed_nf4_layout(clean)
+    assert rep["passes_w4_theorem2_redline"] is True
+    assert rep["mlp_quantized_count"] == 3
+    assert rep["mlp_unquantized_count"] == 0
+    assert rep["forbidden_quantized"] == []
+
+    bad_dn = _build_dummy_hybrid()
+    bad_dn.model.layers[0].linear_attn.in_proj_a._is_4bit_nf4_mock = True
+    with pytest.raises(AssertionError):
+        audit_mixed_nf4_layout(bad_dn)
+
+    bad_attn = _build_dummy_hybrid()
+    bad_attn.model.layers[0].self_attn.q_proj._is_4bit_nf4_mock = True
+    with pytest.raises(AssertionError):
+        audit_mixed_nf4_layout(bad_attn)
+
+    bad_head = _build_dummy_hybrid()
+    bad_head.lm_head._is_4bit_nf4_mock = True
+    with pytest.raises(AssertionError):
+        audit_mixed_nf4_layout(bad_head)
+
+    bad_incomplete = _build_dummy_hybrid()
+    bad_incomplete.model.layers[0].mlp.gate_proj._is_4bit_nf4_mock = False
+    with pytest.raises(AssertionError):
+        audit_mixed_nf4_layout(bad_incomplete)
+
+
+def test_colab_stage6_cnsft_reconstruct_and_scaled_mock_e2e(tmp_path: Path):
+    from research.stage4_real_and_surgical.cn_sft_probe import run_cn_sft_4b_probe
+    from research.stage4_real_and_surgical.colab_stage6_scaling import (
+        ScaledQwenCacheHost,
+        reconstruct_cn_sft_from_checkpoint,
+        run_scaled_model_stage6,
+        run_stage6_4b_full,
+    )
+
+    work_dir = tmp_path / "colab_work"
+    res_dir = tmp_path / "colab_results"
+    ckpt_dir = work_dir / "checkpoints"
+
+    # 1. Produce tiny 2-layer CN-SFT U1 + Phase-A checkpoints & mock Real-SDR bundles
+    run_cn_sft_4b_probe(
+        REPO_ROOT,
+        work_dir / "cn_probe_out",
+        ckpt_dir,
+        seed=202611,
+        steps=2,
+        batch_size=8,
+        micro_batch_size=4,
+        g1_blocks=1,
+        eval_bs=16,
+        mock_tiny_for_test=True,
+    )
+    run_real_sdr_cpu_pipeline(
+        REPO_ROOT,
+        tmp_path / "sdr_raw",
+        work_dir / "real_sdr_cache",
+        mock_synthetic_for_test=True,
+        seed=202611,
+    )
+
+    # 2. Check reconstruct_cn_sft_from_checkpoint + Layer-0 gradient flow under disable_stop_grad=True
+    mock_host = ScaledQwenCacheHost(mock_tiny_for_test=True, mock_hidden_size=64, mock_num_layers=2)
+    cn_ckpt_p = ckpt_dir / "stage4_cn_sft_u1_s202611.pt"
+    ad_rec = reconstruct_cn_sft_from_checkpoint(mock_host, cn_ckpt_p, disable_stop_grad=True)
+    try:
+        saved_sd = torch.load(cn_ckpt_p, map_location="cpu", weights_only=False)["state_dict"]
+        for k, v in ad_rec.state_dict().items():
+            assert float((v.cpu() - saved_sd[k].cpu()).abs().max().item()) == 0.0
+        ad_rec.requires_grad_(False)
+        head_probe = Stage6ActiveHostAdapter(hidden_size=mock_host.hidden_size)
+        head_probe.train()
+        logits_p = head_probe.forward_states(
+            mock_host,
+            torch.zeros((2, 5), dtype=torch.long),
+            torch.zeros((2,), dtype=torch.long),
+            torch.tensor([1, 2, 3, 4], dtype=torch.long),
+            bits=16,
+            surgical_adapter=ad_rec,
+        )
+        logits_p.square().mean().backward()
+        assert head_probe.feat_proj.weight.grad is not None
+        assert float(head_probe.feat_proj.weight.grad.abs().max().item()) > 0.0
+    finally:
+        ad_rec.remove()
+
+    # 3. Full mock Stage 6A 4B pipeline (Real-SDR + CN-SFT Real-SDR + Stage 6 + host_cnsft_c16)
+    rep4 = run_stage6_4b_full(
+        REPO_ROOT,
+        work_dir,
+        res_dir,
+        seed=202611,
+        steps_stage6=2,
+        steps_adapt=2,
+        steps_soup=2,
+        batch_size=4,
+        micro_batch_size=2,
+        eval_bs=16,
+        grad_ckpt=False,
+        mock_tiny_for_test=True,
+    )
+    assert rep4["real_sdr_4b_cnsft"]["audit"]["passes_pure_kl_zero"] is True
+    assert rep4["stage6_4b_cnsft"]["pure_kl_audit"]["passes_pure_kl_zero"] is True
+    assert (res_dir / "stage4_real_sdr_4b_results.json").exists()
+    assert (res_dir / "stage4_real_sdr_4b_cnsft_results.json").exists()
+    assert (res_dir / "stage6_active_eig_4b_results.json").exists()
+    assert (res_dir / "stage6_active_eig_4b_cnsft_results.json").exists()
+
+    # 4. Scaled 9B (with U1) and 27B (Mixed-NF4 config + grad_ckpt) mock e2e
+    rep9 = run_scaled_model_stage6(
+        "9b",
+        REPO_ROOT,
+        work_dir,
+        res_dir,
+        seed=202611,
+        steps_stage6=2,
+        steps_u1=2,
+        g1_blocks=1,
+        eval_bs=16,
+        batch_size=8,
+        micro_batch_size=4,
+        grad_ckpt=False,
+        run_u1=True,
+        mock_tiny_for_test=True,
+    )
+    assert rep9["cn_sft_u0"]["audit"]["passes_pure_kl_zero"] is True
+    assert rep9["cn_sft_u1"]["audit"]["passes_pure_kl_zero"] is True
+    assert rep9["stage6_active_eig"]["models"]["host_cnsft_c16"]["pure_kl_audit"]["passes_pure_kl_zero"] is True
+    assert (res_dir / "stage6_scaling_9b_results.json").exists()
+
+    rep27 = run_scaled_model_stage6(
+        "27b",
+        REPO_ROOT,
+        work_dir,
+        res_dir,
+        seed=202611,
+        quant_override="mixed_nf4",
+        steps_stage6=2,
+        g1_blocks=1,
+        eval_bs=16,
+        batch_size=8,
+        micro_batch_size=4,
+        grad_ckpt=True,
+        run_u1=False,
+        mock_tiny_for_test=True,
+    )
+    assert rep27["quant_mode"] == "mixed_nf4"
+    assert rep27["cn_sft_u0"]["audit"]["passes_pure_kl_zero"] is True
+    assert rep27["stage6_active_eig"]["models"]["host_cnsft_c16"]["pure_kl_audit"]["passes_pure_kl_zero"] is True
+    for arm_name in ("physical_c16_reference", "host_frozen_c16", "host_frozen_s17_4bit", "host_cnsft_c16"):
+        for fam_res in rep27["stage6_active_eig"]["models"][arm_name]["per_family"]:
+            assert fam_res["m3_reveal_max_abs_err"] < 2e-12
+    assert (res_dir / "stage6_scaling_27b_results.json").exists()
+
+    # 5. Fast 4-layer grad_ckpt=True check (comp_layers=(1, 2, 3), _qgate_readonly at stop_layer=0)
+    from research.stage4_real_and_surgical.cn_sft_adapter import (
+        CNSFTHostAdapter,
+        GENERAL_KFAC_64_PROMPTS,
+        build_three_way_orthogonal_bus,
+        calibrate_b_align_gamma_f,
+        collect_dual_space_kfac_projectors,
+    )
+    from research.stage4_real_and_surgical.colab_stage6_scaling import _attach_readonly_qgate_hook
+
+    host4 = ScaledQwenCacheHost(mock_tiny_for_test=True, mock_hidden_size=64, mock_num_layers=4)
+    kfac4 = collect_dual_space_kfac_projectors(
+        host4, [3], [], [1], prompts=GENERAL_KFAC_64_PROMPTS[:8], stop_layer=0
+    )
+    ba4 = calibrate_b_align_gamma_f(host4)
+    eb4, _ = build_three_way_orthogonal_bus(kfac4["u_c_bus"], ba4["m_eff"], bus_dim=22, seed=202611)
+    ad4 = CNSFTHostAdapter(
+        host4.lm,
+        u_c_d=kfac4["u_c_d"],
+        u_c_o=kfac4["u_c_o"],
+        u_c_mlp=kfac4["u_c_mlp"],
+        u_c_bus=kfac4["u_c_bus"],
+        b_align_info=ba4,
+        e_bus=eb4,
+        tail_rms_medians=kfac4["tail_rms_medians"],
+        fa_layers=[3],
+        dn_layers=[],
+        mlp_tune_layers=[1],
+        stop_layer=-1,
+        arm_mode="u1_full_cnsft",
+        regime=2,
+    )
+    _attach_readonly_qgate_hook(host4.lm, ad4, 0)
+    ad4.requires_grad_(False)
+    ad4.eval()
+    try:
+        host4.set_grad_checkpointing(True)
+        head4 = Stage6ActiveHostAdapter(hidden_size=64).to(host4.device)
+        head4.train()
+        m4 = torch.cat(
+            (
+                torch.ones((2, 8), device=host4.device, dtype=torch.bool),
+                torch.zeros((2, 4), device=host4.device, dtype=torch.bool),
+            ),
+            dim=1,
+        )
+        with ad4.activate(g_em=1, m_acc_mask=m4):
+            lg4 = head4.forward_states(
+                host4,
+                torch.zeros((2, 5), dtype=torch.long),
+                torch.zeros((2,), dtype=torch.long),
+                torch.tensor([1, 2, 3, 4], dtype=torch.long),
+                bits=16,
+                surgical_adapter=ad4,
+            )
+            lg4.square().mean().backward()
+        g4 = head4.feat_proj.weight.grad
+        assert g4 is not None and torch.isfinite(g4).all() and float(g4.abs().max().item()) > 0.0
+    finally:
+        host4.set_grad_checkpointing(False)
+        ad4.remove()
+
+
+def test_stage6_colab_notebook_valid_json_and_zero_modal():
+    import json
+
+    nb_path = REPO_ROOT / "research" / "stage4_real_and_surgical" / "stage6_colab.ipynb"
+    assert nb_path.exists()
+    raw = nb_path.read_text(encoding="utf-8")
+    assert "modal run" not in raw.lower()
+    nb = json.loads(raw)
+    assert int(nb["nbformat"]) == 4
+    assert len(nb["cells"]) >= 7
+    joined_src = "\n".join("".join(c.get("source", [])) for c in nb["cells"])
+    assert "colab_stage6_runner.py" in joined_src
+    assert "stage4-4b-colab-artifacts" in joined_src
+    assert "--stage" in joined_src and "stage6_4b" in joined_src and "stage6_9b" in joined_src and "stage6_27b" in joined_src
+
+

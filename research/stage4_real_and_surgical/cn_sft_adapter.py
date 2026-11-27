@@ -176,7 +176,7 @@ def verify_rmsnorm_gamma(norm_mod: nn.Module, n_probe: int = 8) -> float:
         rms = torch.sqrt(xf.pow(2).mean(dim=-1, keepdim=True) + eps)
         expected = ((xf / rms) * gamma.to(device=w_dev)).float()
         err = float((actual - expected).abs().max().item())
-    tol = 5e-2 if w_dtype == torch.bfloat16 else 1e-4
+    tol = 5e-2 if w_dtype in (torch.bfloat16, torch.float16) else 1e-4
     assert err <= tol, f"RMSNorm gamma verification failed ({type(norm_mod).__name__}): max_err={err} > {tol}"
     return err
 
@@ -1849,7 +1849,7 @@ class CNSFTHostAdapter(nn.Module):
                 )
                 self._cached_bridge_out = self.shadow_gdn.forward_pass(carrier_only, self.m_acc_mask)
             if len(layers) < 4:
-                self._update_qgate_from_tensor(h_in)
+                self._update_qgate_from_tensor(h_in.detach())
             return args
 
         self.handles.append(layers[0].register_forward_pre_hook(_l0_pre))
@@ -1916,7 +1916,7 @@ class CNSFTHostAdapter(nn.Module):
             if self._in_mock_l0 or self.g_em == 0:
                 return args
             x = args[0]
-            bus_norm = ((x.float() @ self.e_bus[:, :13]).norm(dim=-1)) / max(1e-4, self.s_med_0)
+            bus_norm = ((x.detach().float() @ self.e_bus[:, :13]).norm(dim=-1)) / max(1e-4, self.s_med_0)
             if self.circuit_a is not None:
                 tau_lo = self.schur_readout.dz_tau.clamp(0.15, 0.45)
                 tau_hi = self.schur_readout.dz_high.clamp(0.55, 0.85)
