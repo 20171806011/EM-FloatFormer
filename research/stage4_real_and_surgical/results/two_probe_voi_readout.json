@@ -1,0 +1,50 @@
+{
+  "seed": 202611,
+  "steps": 69,
+  "probe_a": {
+    "n_train": 1008,
+    "n_test": 672,
+    "oracle_bayes_entropy_nats": 0.9284508228302002,
+    "probe_a_linear_kl_gap_nats": 0.472470223903656,
+    "probe_a_mlp_kl_gap_nats": 0.4804229140281677,
+    "probe_a_min_gap_nats": 0.472470223903656
+  },
+  "frozen_host_pure_dev_nll_all": 1.427653320133686,
+  "direct_physical_dev_nll_all": 1.0698204498205865,
+  "delta_host_all_nats": 0.3578328703130995,
+  "frozen_host_pure_dev_nll_informative": 1.3838722722870962,
+  "direct_physical_dev_nll_informative": 0.8799361007554191,
+  "delta_host_informative_nats": 0.5039361715316771,
+  "q3_repeat_cfo_nll": 1.4576985538005829,
+  "q3_repeat_cfo_phys_nll": 0.9695653915405273,
+  "delta_host_q3_cfo_nats": 0.48813316226005554,
+  "post_phaseA_jacobian": {
+    "singular_values_4": [
+      4.874157196538586,
+      3.4385049246936057,
+      1.9812317523169412,
+      0.09018097279361313
+    ],
+    "sigma_1": 4.874157196538586,
+    "sigma_2": 3.4385049246936057,
+    "sigma_3": 1.9812317523169412,
+    "kappa_3": 2.460165092164775
+  },
+  "post_phaseA_jacobian_q1": {
+    "singular_values_4": [
+      20.243432010310634,
+      11.268385523141335,
+      9.344030071271506,
+      0.20357800252580632
+    ],
+    "sigma_1": 20.243432010310634,
+    "sigma_2": 11.268385523141335,
+    "sigma_3": 9.344030071271506,
+    "kappa_3": 2.1664562138503447
+  },
+  "gate2_recommendation": {
+    "decision": "ABORT_FIX_CPU_CONNECTOR",
+    "apply_w1_w3_slowhead_highway": false,
+    "reason": "Probe A connector gap 0.4725 > 0.030 nats."
+  }
+}

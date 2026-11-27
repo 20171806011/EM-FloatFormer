@@ -1,0 +1,38 @@
+{
+  "model_id": "Qwen/Qwen3.5-4B",
+  "hf_sha": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "vocab_size": 248320,
+  "frozen_param_count": 4205751296,
+  "host_sha256_before": "f39c9e1b7a5719c1397dcdce42d221215fb20edadb881d2f81e745673636f64d",
+  "pure_kl_g_em_0": 0.0,
+  "max_logit_diff_g_em_0": 0.0,
+  "mode1_surgical_live_ok": true,
+  "jacobian_probe": {
+    "singular_values_4": [
+      23.841374869733226,
+      8.734322577906315,
+      4.369022631581651,
+      0.23353537706671293
+    ],
+    "sigma_1": 23.841374869733226,
+    "sigma_2": 8.734322577906315,
+    "sigma_3": 4.369022631581651,
+    "kappa_3": 5.456912650759672
+  },
+  "four_microbatch_alloc_mb": [
+    8103.6,
+    8103.6,
+    8103.6,
+    8103.6
+  ],
+  "peak_vram_mb": 18751.3,
+  "budget_audit": {
+    "connector_params": 488400,
+    "surgical_adapter_params": 1237537,
+    "cumulative_params": 1725937,
+    "tier_p1_cap": 2184964,
+    "under_tier_p1_cap": true,
+    "host_sha256": "f39c9e1b7a5719c1397dcdce42d221215fb20edadb881d2f81e745673636f64d"
+  },
+  "kfac_file": "kfac_4b_top256.pt"
+}

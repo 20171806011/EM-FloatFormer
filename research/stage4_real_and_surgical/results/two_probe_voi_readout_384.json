@@ -1,0 +1,100 @@
+{
+  "seed": 202611,
+  "steps": 384,
+  "probe_a": {
+    "n_train": 1008,
+    "n_test": 672,
+    "oracle_bayes_entropy_nats": 0.9284508228302002,
+    "probe_a_linear_kl_gap_nats": 0.10060503333806992,
+    "probe_a_mlp_kl_gap_nats": 0.006883812602609396,
+    "probe_a_min_gap_nats": 0.006883812602609396,
+    "per_task": {
+      "Q1": {
+        "n_train": 201,
+        "n_test": 135,
+        "oracle_bayes_entropy_nats": 0.86137855052948,
+        "probe_a_linear_kl_gap_nats": 0.00881469901651144,
+        "probe_a_mlp_kl_gap_nats": 0.0024816938675940037,
+        "probe_a_min_gap_nats": 0.0024816938675940037
+      },
+      "Q2_fresh_resample": {
+        "n_train": 201,
+        "n_test": 135,
+        "oracle_bayes_entropy_nats": 0.7166578769683838,
+        "probe_a_linear_kl_gap_nats": 0.040301207453012466,
+        "probe_a_mlp_kl_gap_nats": 0.0044792466796934605,
+        "probe_a_min_gap_nats": 0.0044792466796934605
+      },
+      "Q2_valid": {
+        "n_train": 201,
+        "n_test": 135,
+        "oracle_bayes_entropy_nats": 0.9008533358573914,
+        "probe_a_linear_kl_gap_nats": 0.034419089555740356,
+        "probe_a_mlp_kl_gap_nats": 0.00442357687279582,
+        "probe_a_min_gap_nats": 0.00442357687279582
+      },
+      "Q3_after_pilot": {
+        "n_train": 201,
+        "n_test": 135,
+        "oracle_bayes_entropy_nats": 1.0568205118179321,
+        "probe_a_linear_kl_gap_nats": 0.00855282787233591,
+        "probe_a_mlp_kl_gap_nats": 0.001135265571065247,
+        "probe_a_min_gap_nats": 0.001135265571065247
+      },
+      "Q3_repeat_x1": {
+        "n_train": 201,
+        "n_test": 135,
+        "oracle_bayes_entropy_nats": 1.0528039932250977,
+        "probe_a_linear_kl_gap_nats": 0.00876827072352171,
+        "probe_a_mlp_kl_gap_nats": 0.000936431810259819,
+        "probe_a_min_gap_nats": 0.000936431810259819
+      }
+    },
+    "per_task_linear_mean_nats": 0.020171218924224375,
+    "per_task_mlp_mean_nats": 0.00269124296028167
+  },
+  "frozen_host_pure_dev_nll_all": 1.1023254149726458,
+  "direct_physical_dev_nll_all": 1.0698204498205865,
+  "delta_host_all_nats": 0.03250496515205925,
+  "frozen_host_pure_dev_nll_informative": 0.9295756663594927,
+  "direct_physical_dev_nll_informative": 0.8799361007554191,
+  "delta_host_informative_nats": 0.046650166170937646,
+  "delta_host_informative_raw_nats": 0.04963956560407368,
+  "delta_host_informative_tempcal_nats": 0.046650166170937646,
+  "delta_cal_informative_nats": 0.0029893994331360307,
+  "opt_temp_dev": 0.9117224885582168,
+  "q3_repeat_cfo_nll": 1.0379450917243958,
+  "q3_repeat_cfo_phys_nll": 0.9695653915405273,
+  "delta_host_q3_cfo_nats": 0.06837970018386841,
+  "delta_host_q3_cfo_raw_nats": 0.06837970018386841,
+  "delta_host_q3_cfo_tempcal_nats": 0.06168566644191742,
+  "post_phaseA_jacobian": {
+    "singular_values_4": [
+      14.279084179539518,
+      8.294289701118561,
+      4.307498414035624,
+      0.14193679346959623
+    ],
+    "sigma_1": 14.279084179539518,
+    "sigma_2": 8.294289701118561,
+    "sigma_3": 4.307498414035624,
+    "kappa_3": 3.3149366075242916
+  },
+  "post_phaseA_jacobian_q1": {
+    "singular_values_4": [
+      11.195945345282293,
+      8.618158862529748,
+      6.722552981630979,
+      0.12799512555959416
+    ],
+    "sigma_1": 11.195945345282293,
+    "sigma_2": 8.618158862529748,
+    "sigma_3": 6.722552981630979,
+    "kappa_3": 1.66543058505818
+  },
+  "gate2_recommendation": {
+    "decision": "TRIGGER_MODE1_SURGICAL_96",
+    "apply_w1_w3_slowhead_highway": false,
+    "reason": "Probe A passed (0.0027 <= 0.030) and delta_host=0.0467 > 0.030 nats."
+  }
+}
