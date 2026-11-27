@@ -1555,5 +1555,131 @@ def test_stage6_colab_notebook_valid_json_and_zero_modal():
     assert "colab_stage6_runner.py" in joined_src
     assert "stage4-4b-colab-artifacts" in joined_src
     assert "--stage" in joined_src and "stage6_4b" in joined_src and "stage6_9b" in joined_src and "stage6_27b" in joined_src
+    assert "colab_bridge_worker.py" in joined_src
+
+
+def test_colab_bridge_worker_and_ctl_e2e(tmp_path: Path):
+    import json
+    import pytest
+
+    from research.stage4_real_and_surgical.colab_bridge_ctl import main as ctl_main
+    from research.stage4_real_and_surgical.colab_bridge_worker import (
+        ColabBridgeWorker,
+        resolve_within,
+    )
+
+    work_root = tmp_path / "shared_drive_root"
+    work_root.mkdir(parents=True, exist_ok=True)
+    (work_root / "stage6_live.log").write_text("line1\nline2\nline3\n", encoding="utf-8")
+
+    # 1. Path traversal / allowlist checks
+    with pytest.raises(ValueError):
+        resolve_within(work_root, "../escape.txt")
+    with pytest.raises(ValueError):
+        resolve_within(work_root, "/etc/passwd")
+
+    worker = ColabBridgeWorker(
+        work_root=work_root,
+        repo_dir=REPO_ROOT,
+        poll_s=0.5,
+        heartbeat_s=1.0,
+        verbose=False,
+    )
+    # Disallowed action and traversal payload write cleanly as error results without crashing worker
+    bad_action_job = worker.inbox_dir / "bad_action.json"
+    bad_action_job.write_text(json.dumps({"job_id": "bad_action", "action": "rm_rf"}), encoding="utf-8")
+    bad_path_job = worker.inbox_dir / "bad_path.json"
+    bad_path_job.write_text(
+        json.dumps({"job_id": "bad_path", "action": "run_python", "script": "../outside.py"}),
+        encoding="utf-8",
+    )
+    bad_tail_job = worker.inbox_dir / "bad_tail.json"
+    bad_tail_job.write_text(
+        json.dumps({"job_id": "bad_tail", "action": "tail_file", "file": "../../secret.txt"}),
+        encoding="utf-8",
+    )
+
+    # 2. Enqueue valid jobs through colab_bridge_ctl CLI (`--transport local`)
+    base = ["--transport", "local", "--local-root", str(work_root)]
+    assert ctl_main([*base, "submit", "--action", "status", "--job-id", "j_status"]) == 0
+    assert ctl_main([*base, "submit", "--action", "tail_file", "--file", "stage6_live.log", "--lines", "2", "--job-id", "j_tail"]) == 0
+    assert (
+        ctl_main(
+            [
+                *base,
+                "submit",
+                "--action",
+                "run_stage",
+                "--stage",
+                "all",
+                "--dry-run",
+                "--job-id",
+                "j_dry",
+            ]
+        )
+        == 0
+    )
+    assert ctl_main([*base, "submit", "--action", "stop_worker", "--job-id", "z_stop"]) == 0
+
+    # Seed a mock results JSON for pull-results verification
+    res_src = work_root / "results" / "mock_stage6_result.json"
+    res_src.write_text(json.dumps({"ok": True, "stage": "6_mock"}) + "\n", encoding="utf-8")
+
+    # 3. Run worker `--once` and verify all results + heartbeat + idempotency
+    assert worker.serve(once=True) == 0
+
+    hb = json.loads(worker.heartbeat_path.read_text(encoding="utf-8"))
+    assert hb["active_job_id"] is None
+    assert hb["completed_count"] == 7
+    assert any(rf["name"] == "mock_stage6_result.json" for rf in hb["results_files"])
+
+    for bad_id in ("bad_action", "bad_path", "bad_tail"):
+        r_bad = json.loads((worker.outbox_dir / f"{bad_id}.result.json").read_text(encoding="utf-8"))
+        assert r_bad["status"] == "error" and r_bad["exit_code"] == 1
+
+    r_status = json.loads((worker.outbox_dir / "j_status.result.json").read_text(encoding="utf-8"))
+    assert r_status["status"] == "ok" and r_status["exit_code"] == 0
+    assert "gpu" in r_status["details"]
+
+    r_tail = json.loads((worker.outbox_dir / "j_tail.result.json").read_text(encoding="utf-8"))
+    assert r_tail["status"] == "ok" and r_tail["details"]["lines"] == ["line2", "line3"]
+
+    r_dry = json.loads((worker.outbox_dir / "j_dry.result.json").read_text(encoding="utf-8"))
+    assert r_dry["status"] == "ok" and r_dry["exit_code"] == 0
+    dry_log = (worker.outbox_dir / "j_dry.log").read_text(encoding="utf-8")
+    assert '"dry_run": true' in dry_log and "[EXIT_CODE] 0" in dry_log
+
+    # Second pass must be a strict no-op due to `.done` idempotency markers
+    assert worker.serve(once=True) == 0
+    hb2 = json.loads(worker.heartbeat_path.read_text(encoding="utf-8"))
+    assert hb2["completed_count"] == 7
+
+    # 4. Verify `ctl status`, `ctl tail`, `ctl ls`, `ctl pull-results`, and `ctl submit --wait`
+    assert ctl_main([*base, "ls"]) == 0
+    assert ctl_main([*base, "status"]) == 0
+    assert ctl_main([*base, "tail", "--file", "stage6_live.log", "--lines", "2"]) == 0
+    assert ctl_main([*base, "tail", "--job", "j_dry", "--lines", "5"]) == 0
+
+    pull_dir = tmp_path / "pulled"
+    assert ctl_main([*base, "pull-results", "--out", str(pull_dir), "--include-logs"]) == 0
+    pulled_json = json.loads((pull_dir / "mock_stage6_result.json").read_text(encoding="utf-8"))
+    assert pulled_json == {"ok": True, "stage": "6_mock"}
+    assert (pull_dir / "logs" / "stage6_live.log").is_file()
+    assert (pull_dir / "logs" / "j_dry.log").is_file()
+
+    # 5. Live background thread + `submit --wait` end-to-end roundtrip
+    import threading
+
+    w_bg = ColabBridgeWorker(work_root=work_root, repo_dir=REPO_ROOT, poll_s=0.5, heartbeat_s=1.0, verbose=False)
+    t_bg = threading.Thread(target=w_bg.serve, kwargs={"once": False}, daemon=True)
+    t_bg.start()
+    try:
+        assert ctl_main([*base, "submit", "--action", "status", "--job-id", "j_wait_st", "--wait", "--poll-s", "0.5", "--timeout-s", "15"]) == 0
+        assert ctl_main([*base, "submit", "--action", "stop_worker", "--job-id", "j_wait_stop", "--wait", "--poll-s", "0.5", "--timeout-s", "15"]) == 0
+    finally:
+        w_bg.stop_requested = True
+        t_bg.join(timeout=5.0)
+    assert not t_bg.is_alive()
+
 
 
