@@ -56,6 +56,7 @@ image = (
             "research/stage3d_qwen_signed_phase/results",
             "research/stage4_math_and_design/discussions",
             "research/stage4_real_and_surgical/results",
+            "research/stage4_real_and_surgical/neuron_surgery",
         ],
     )
 )
@@ -81,6 +82,7 @@ sdr_cpu_image = (
             "research/stage3d_qwen_signed_phase/results",
             "research/stage4_math_and_design/discussions",
             "research/stage4_real_and_surgical/results",
+            "research/stage4_real_and_surgical/neuron_surgery",
         ],
     )
 )
@@ -399,6 +401,41 @@ def remote_real_sdr_and_stage6_4b(seed: int = 202611) -> dict:
     return {"real_sdr_4b": sdr_rep, "stage6_4b": s6_rep}
 
 
+@app.function(
+    image=image,
+    gpu="A100-80GB",
+    timeout=2400,
+    retries=0,
+    volumes={"/root/.cache/huggingface": hf_vol, "/vol/stage4": res_vol},
+)
+def remote_cn_sft_4b_probe(
+    seed: int = 202611,
+    steps: int = 96,
+    g1_blocks: int = 131,
+) -> dict:
+    _setup_remote_env()
+    res_vol.reload()
+    from research.stage4_real_and_surgical.cn_sft_probe import run_cn_sft_4b_probe
+
+    ckpt_dir = REMOTE_OUT / "checkpoints"
+    assert (ckpt_dir / f"stage4_phaseA_equivariant_host_pure_s{seed}_step384.pt").exists(), (
+        f"Missing Phase-A pure checkpoint for seed={seed}"
+    )
+    rep = run_cn_sft_4b_probe(
+        REMOTE_REPO,
+        REMOTE_OUT,
+        ckpt_dir,
+        seed=seed,
+        steps=steps,
+        g1_blocks=g1_blocks,
+        eval_bs=64,
+        scorer_mode="kv_cached",
+        on_step0_done=res_vol.commit,
+    )
+    res_vol.commit()
+    return rep
+
+
 @app.local_entrypoint()
 def main(
     mode: str = "smoke_probe",
@@ -530,6 +567,36 @@ def main(
             ),
             flush=True,
         )
+    elif mode == "cn_sft_4b_probe":
+        eff_steps = 96 if steps == 69 else steps
+        rep = remote_cn_sft_4b_probe.remote(seed=seed, steps=eff_steps, g1_blocks=g1_blocks)
+        (results_dir / "cn_sft_4b_probe_results.json").write_text(
+            json.dumps(rep, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        print(
+            json.dumps(
+                {
+                    "regime": rep.get("regime"),
+                    "early_aborted": rep.get("early_aborted"),
+                    "wall_s": rep.get("wall_s"),
+                    "step0": rep.get("step0"),
+                    "U0_audit": rep.get("U0", {}).get("audit"),
+                    "U0_blind_G1": rep.get("U0", {}).get("blind", {}).get("G1_main_extrap_both"),
+                    "U1_audit": rep.get("U1", {}).get("audit"),
+                    "U1_blind_G1": rep.get("U1", {}).get("blind", {}).get("G1_main_extrap_both"),
+                    "U1_blind_G3": rep.get("U1", {}).get("blind", {}).get("G3_extrap_angle"),
+                    "U1_Q2": rep.get("U1", {}).get("blind", {}).get("Q2_C4_blind"),
+                    "U3_gate_off_audit": rep.get("U3_gate_off_audit"),
+                    "U2_audit": rep.get("U2", {}).get("audit"),
+                    "U2_blind_G1": rep.get("U2", {}).get("blind", {}).get("G1_main_extrap_both"),
+                    "hard_pass_gates": rep.get("hard_pass_gates"),
+                    "m2_paired_stats": rep.get("m2_paired_stats"),
+                },
+                ensure_ascii=False,
+                indent=2,
+            ),
+            flush=True,
+        )
     elif mode == "real_sdr_and_stage6_4b":
         out = remote_real_sdr_and_stage6_4b.remote(seed=seed)
         (results_dir / "stage4_real_sdr_4b_results.json").write_text(
@@ -554,7 +621,7 @@ def main(
     else:
         raise ValueError(
             f"Unknown mode={mode!r}; expected 'smoke_probe', 'pilot_gate1', 'phaseA_384', "
-            f"'phaseB_and_blind', 'blind_only', 'real_sdr_cpu', or 'real_sdr_and_stage6_4b'"
+            f"'phaseB_and_blind', 'blind_only', 'real_sdr_cpu', 'real_sdr_and_stage6_4b', or 'cn_sft_4b_probe'"
         )
 
     post = _query_monthly_billing()
