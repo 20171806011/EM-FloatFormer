@@ -179,10 +179,26 @@ class _GDriveTransport(_BaseTransport):
             if not matches:
                 if not create_missing:
                     return None
-                created = self._run_gdrive_json(["mutate", "mkdir", part, "--parent", cur_id])
-                if isinstance(created, list):
+                mk_out = self._run_gdrive(["mutate", "mkdir", part, "--parent", cur_id, "--json"]).strip()
+                created = None
+                if mk_out:
+                    try:
+                        created = json.loads(mk_out)
+                    except json.JSONDecodeError:
+                        created = None
+                if isinstance(created, list) and created:
                     created = created[0]
-                cur_id = str(created["id"])
+                if isinstance(created, dict) and created.get("id"):
+                    cur_id = str(created["id"])
+                else:
+                    refetched = self._run_gdrive_json(["readonly", "ls", cur_id, "--max", "0"]) or []
+                    ref_matches = [
+                        it for it in refetched if it.get("name") == part and it.get("mimeType") == FOLDER_MIME
+                    ]
+                    if not ref_matches:
+                        raise RuntimeError(f"Failed to resolve created Drive folder {part!r}: {mk_out}")
+                    ref_matches.sort(key=lambda r: str(r.get("modifiedTime", "")), reverse=True)
+                    cur_id = str(ref_matches[0]["id"])
             else:
                 matches.sort(key=lambda r: str(r.get("modifiedTime", "")), reverse=True)
                 cur_id = str(matches[0]["id"])
@@ -235,8 +251,12 @@ class _GDriveTransport(_BaseTransport):
         with tempfile.TemporaryDirectory() as td:
             src_p = Path(td) / rel_parts[-1]
             src_p.write_bytes(data)
-            res = self._run_gdrive_json(["mutate", "upload", str(src_p), "--parent", parent_id])
-            return res[0] if isinstance(res, list) and res else (res or {"name": rel_parts[-1]})
+            out = self._run_gdrive(["mutate", "upload", str(src_p), "--parent", parent_id, "--json"]).strip()
+            try:
+                res = json.loads(out) if out else {"name": rel_parts[-1]}
+            except json.JSONDecodeError:
+                res = {"name": rel_parts[-1], "raw": out}
+            return res[0] if isinstance(res, list) and res else res
 
 
 def _build_transport(args: argparse.Namespace) -> _BaseTransport:

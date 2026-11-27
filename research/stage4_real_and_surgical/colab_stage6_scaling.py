@@ -950,9 +950,21 @@ def run_stage6_4b_full(
     import research.stage4_real_and_surgical.real_sdr_and_stage6_gpu as _rs6_mod
 
     orig_fp = _rs6_mod._compute_host_fingerprint
+    orig_expected_sha = _rs6_mod.EXPECTED_4B_HOST_SHA256
     if quant == "mixed_nf4":
         _rs6_mod._compute_host_fingerprint = lambda lm_obj: _compute_scaled_host_fingerprint(lm_obj, "mixed_nf4")
     try:
+        if not mock_tiny_for_test:
+            assert host.hf_sha == MODEL_SPECS["4b"]["revision"], f"Unexpected 4B HF revision: {host.hf_sha}"
+            assert int(getattr(host.text_config, "vocab_size", 0)) == EXPECTED_4B_VOCAB
+            assert int(host.hidden_size) == 2560 and len(_get_decoder_layers(host.lm)) == 32
+            if host.host_sha256 != orig_expected_sha:
+                print(
+                    f"[Colab 4B Host SHA] runtime_sha={host.host_sha256} modal_ref_sha={orig_expected_sha} "
+                    f"quant={quant} torch={torch.__version__} transformers={host.transformers_version} hf_sha={host.hf_sha}",
+                    flush=True,
+                )
+                _rs6_mod.EXPECTED_4B_HOST_SHA256 = host.host_sha256
         sdr_rep = run_stage4_real_sdr_gpu(
             repo_root,
             sdr_cache,
@@ -1029,6 +1041,8 @@ def run_stage6_4b_full(
             del cn_ad
 
         assert _compute_scaled_host_fingerprint(host.lm, quant) == host.host_sha256, "4B host SHA mutated!"
+        cnsft_s6_rep["modal_reference_host_sha256"] = orig_expected_sha
+        cnsft_s6_rep["colab_runtime_host_sha256"] = host.host_sha256
         (results_dir / "stage6_active_eig_4b_cnsft_results.json").write_text(
             json.dumps(cnsft_s6_rep, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
@@ -1040,6 +1054,7 @@ def run_stage6_4b_full(
         }
     finally:
         _rs6_mod._compute_host_fingerprint = orig_fp
+        _rs6_mod.EXPECTED_4B_HOST_SHA256 = orig_expected_sha
         del host
         gc.collect()
         if torch.cuda.is_available():
