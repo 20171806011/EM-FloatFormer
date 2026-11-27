@@ -919,8 +919,8 @@ def run_stage6_4b_full(
     steps_stage6: int = 240,
     steps_adapt: int = 96,
     steps_soup: int = 48,
-    batch_size: int = 32,
-    micro_batch_size: int = 16,
+    batch_size: Optional[int] = None,
+    micro_batch_size: Optional[int] = None,
     eval_bs: Optional[int] = None,
     grad_ckpt: Optional[bool] = None,
     mock_tiny_for_test: bool = False,
@@ -933,6 +933,8 @@ def run_stage6_4b_full(
     prof = detect_colab_gpu_profile() if not mock_tiny_for_test else detect_colab_gpu_profile(80.0, "CPU-Mock")
     p4 = prof["models"]["4b"]
     eff_bs = int(eval_bs if eval_bs is not None else p4.get("eval_bs", 128))
+    eff_train_bs = int(batch_size if batch_size is not None else p4.get("batch_size", 32))
+    eff_mb = int(micro_batch_size if micro_batch_size is not None else p4.get("micro_batch_size", 16))
     eff_ckpt = bool(grad_ckpt if grad_ckpt is not None else p4.get("grad_ckpt", False))
 
     host = ScaledQwenCacheHost(
@@ -960,8 +962,8 @@ def run_stage6_4b_full(
             seed=seed,
             steps_adapt=steps_adapt,
             steps_soup=steps_soup,
-            batch_size=batch_size,
-            micro_batch_size=micro_batch_size,
+            batch_size=eff_train_bs,
+            micro_batch_size=eff_mb,
             eval_bs=eff_bs,
             mock_tiny_for_test=mock_tiny_for_test,
             host=host,
@@ -984,7 +986,7 @@ def run_stage6_4b_full(
             kfac_p,
             seed=seed,
             steps=steps_stage6,
-            batch_size=batch_size,
+            batch_size=eff_train_bs,
             eval_bs=eff_bs,
             mock_tiny_for_test=mock_tiny_for_test,
             host=host,
@@ -1010,7 +1012,7 @@ def run_stage6_4b_full(
                 n_dev=n_dev,
                 n_test=n_test,
                 steps=steps_stage6,
-                batch_size=batch_size,
+                batch_size=eff_train_bs,
                 eval_bs=eff_bs,
                 bits=16,
                 seed=seed,
