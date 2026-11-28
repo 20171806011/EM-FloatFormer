@@ -88,6 +88,7 @@ from research.stage4_real_and_surgical.surgical_adapter import (
 from research.stage4_real_and_surgical.train_eval_stage4 import (
     EXPECTED_4B_VOCAB,
     build_stage4_pilot_groups,
+    collect_kfac_complex_projectors,
 )
 
 
@@ -928,6 +929,7 @@ def run_stage6_4b_full(
     """Run full 4B Stage 4 Real-SDR + CN-SFT Real-SDR + Stage 6 Active EIG (`m5-stage6-blind-v1`)."""
     work_dir = Path(work_dir)
     results_dir = Path(results_dir)
+    work_dir.mkdir(parents=True, exist_ok=True)
     results_dir.mkdir(parents=True, exist_ok=True)
 
     prof = detect_colab_gpu_profile() if not mock_tiny_for_test else detect_colab_gpu_profile(80.0, "CPU-Mock")
@@ -965,6 +967,20 @@ def run_stage6_4b_full(
                     flush=True,
                 )
                 _rs6_mod.EXPECTED_4B_HOST_SHA256 = host.host_sha256
+        if not kfac_p.exists():
+            layers_4b = _get_decoder_layers(host.lm)
+            n_l4 = len(layers_4b)
+            fa_l4 = [i for i in QWEN4B_FA_LAYERS if i < n_l4] or ([n_l4 - 1] if n_l4 >= 1 else [])
+            dn_l4 = [i for i in QWEN4B_DN_LAYERS if i < n_l4]
+            k_c4 = 256 if host.hidden_size >= 1024 else max(4, host.hidden_size // 8)
+            proj_map_4b = collect_kfac_complex_projectors(host, sorted(set(fa_l4 + dn_l4)), k_c=k_c4)
+            tmp_kp = kfac_p.parent / f".{kfac_p.name}.tmp"
+            torch.save({k: v.cpu() for k, v in proj_map_4b.items()}, tmp_kp)
+            tmp_kp.replace(kfac_p)
+            print(
+                f"[Colab 4B K-FAC] Built {kfac_p.name} ({len(proj_map_4b)} layers, k_c={k_c4})",
+                flush=True,
+            )
         sdr_rep = run_stage4_real_sdr_gpu(
             repo_root,
             sdr_cache,
