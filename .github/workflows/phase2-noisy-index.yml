@@ -1,0 +1,31 @@
+name: Phase 2 continuous side information
+on:
+  push:
+    branches: [research/phase2-noisy-index]
+    paths:
+      - 'research/late_query_cache/Phase2*.lean'
+      - 'research/late_query_cache/check_phase2.sh'
+      - '.github/workflows/phase2-noisy-index.yml'
+permissions:
+  contents: read
+jobs:
+  lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: leanprover-community/mathlib4
+          ref: f897ebcf72cd16f89ab4577d0c826cd14afaafc7
+          path: .phase2-mathlib
+          persist-credentials: false
+      - name: Install Lean 4.24.0
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/v4.1.2/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
+          sh "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain leanprover/lean4:v4.24.0 --no-modify-path
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Rebuild Phase 2 files and print axioms
+        run: bash research/late_query_cache/check_phase2.sh .phase2-mathlib
