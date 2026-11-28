@@ -93,7 +93,7 @@ $$
 
 ## 6. Lean 4 内核检查的范围
 
-Lean 4.24.0 的独立检查已通过。[运行记录与完整输出](https://github.com/20171806011/EM-FloatFormer/actions/runs/46105552719/job/140857372228)。从本目录可用以下命令重复检查，依赖仅为该版本自带的标准库。
+Lean 4.24.0 的独立检查已通过。[运行记录与完整输出](https://github.com/20171806011/EM-FloatFormer/actions/runs/46105758332/job/140858005078)。从本目录可用以下命令重复检查，依赖仅为该版本自带的标准库。
 
 ```sh
 lean -o FiniteCover.olean FiniteCover.lean
@@ -101,5 +101,5 @@ lean -o ActiveCore.olean ActiveCore.lean
 ```
 
 - [ActiveCore.lean](ActiveCore.lean) 检查有限有理分布上的平方风险分解，以及有动作间隔时控制重建误差的逐点不等式。
-- [FiniteCover.lean](FiniteCover.lean) 检查有限计数测度下的覆盖上界及覆盖不足推论。
-- 上述四个主要声明在运行日志中列出的公理仅涉及 Lean 标准的外延性、选择及商类型公理，无 `sorryAx`。连续概率测度、渐近码长和第 4 节反例由本文的书面证明覆盖，未作完整的 Lean 形式化。
+- [FiniteCover.lean](FiniteCover.lean) 检查有限计数测度下的覆盖上界、覆盖不足推论，以及用未覆盖样本数和两类代价的最小值控制总风险的下界。
+- 上述五个主要声明在运行日志中列出的公理仅涉及 Lean 标准的外延性、选择及商类型公理，无 `sorryAx`。连续概率测度、渐近码长和第 4 节反例由本文的书面证明覆盖，未作完整的 Lean 形式化。
