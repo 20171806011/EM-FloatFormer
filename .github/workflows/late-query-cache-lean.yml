@@ -1,0 +1,30 @@
+name: Late-query cache proof lemmas
+on:
+  push:
+    branches: [research/late-query-cache-dimension]
+    paths:
+      - 'research/late_query_cache/*.lean'
+      - '.github/workflows/late-query-cache-lean.yml'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install elan and select Lean 4.24.0
+        run: |
+          curl --fail --silent --show-error --location https://raw.githubusercontent.com/leanprover/elan/v4.1.2/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
+          sh "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain leanprover/lean4:v4.24.0 --no-modify-path
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Kernel-check finite covering lemmas
+        working-directory: research/late_query_cache
+        run: |
+          lean --version
+          lean -o "$RUNNER_TEMP/FiniteCover.olean" FiniteCover.lean
+      - name: Kernel-check finite squared-risk and action-gap lemmas
+        working-directory: research/late_query_cache
+        run: lean -o "$RUNNER_TEMP/ActiveCore.olean" ActiveCore.lean
