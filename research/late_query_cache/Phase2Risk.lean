@@ -67,6 +67,7 @@ theorem splitRisk (loss : Ω → ℝ) (hl : Integrable loss μ) (bad : Set Ω)
     (∫ ω, loss ω ∂μ) ≤ ∫ ω, δ^2 / 4 + bad.indicator (1 : Ω → ℝ) ω ∂μ := by
       apply integral_mono hl (hconst.add hind)
       intro ω
+      change loss ω ≤ δ^2 / 4 + bad.indicator (1 : Ω → ℝ) ω
       by_cases h : ω ∈ bad
       · simp only [indicator_of_mem h, Pi.one_apply]
         linarith [clipped ω, sq_nonneg δ]

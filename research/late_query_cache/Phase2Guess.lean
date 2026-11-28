@@ -13,6 +13,41 @@ import Mathlib.Tactic.Ring
 namespace Phase2Guess
 open scoped BigOperators
 
+/-- Generate a whole local lookup table by independently drawing every entry
+    from that context's posterior. Its probability of returning the requested
+    answer at a designated context is exactly the corresponding posterior. -/
+theorem independentTableMarginal {C A : Type*} [Fintype C] [DecidableEq C]
+    [Fintype A] [DecidableEq A] (ρ : C → A → ℝ) (hn : ∀ c, ∑ a, ρ c a = 1)
+    (c : C) (a : A) :
+    (∑ f : C → A, (∏ j, ρ j (f j)) * (if f c = a then 1 else 0)) = ρ c a := by
+  classical
+  let t : C → A → ℝ := fun j y => if j = c ∧ y ≠ a then 0 else ρ j y
+  have hr (j : C) : (∑ y, t j y) = if j = c then ρ c a else 1 := by
+    by_cases h : j = c
+    · subst j
+      rw [if_pos rfl]
+      calc
+        (∑ y, t c y) = ∑ y, if y = a then ρ c y else 0 := by
+          apply Finset.sum_congr rfl
+          intro y _
+          by_cases hy : y = a <;> simp [t, hy]
+        _ = ρ c a := by simp
+    · simp [t, h, hn]
+  calc
+    _ = ∑ f : C → A, ∏ j, t j (f j) := by
+      apply Finset.sum_congr rfl
+      intro f _
+      by_cases h : f c = a
+      · rw [if_pos h, mul_one]
+        apply Finset.prod_congr rfl
+        intro j _
+        by_cases hj : j = c <;> simp [t, hj, h]
+      · rw [if_neg h, mul_zero]
+        symm
+        exact Finset.prod_eq_zero (Finset.mem_univ c) (by simp [t, h])
+    _ = ∏ j, ∑ y, t j y := (Fintype.prod_sum t).symm
+    _ = ρ c a := by simp only [hr]; simp
+
 /-- A weighted finite log-sum inequality, allowing zero posterior masses. -/
 theorem logMassBound {W : Type*} [Fintype W] (p w : W → ℝ) (A : ℝ)
     (hA : 0 < A) (hp : ∀ x, 0 ≤ p x) (hn : ∑ x, p x = 1)
@@ -103,6 +138,7 @@ theorem confusionEntropyConverse (law : ∀ i, D i → ℝ) (hit : ∀ i, D i �
 end IndependentStrategies
 end Phase2Guess
 
+#print axioms Phase2Guess.independentTableMarginal
 #print axioms Phase2Guess.logMassBound
 #print axioms Phase2Guess.independentStrategyMass
 #print axioms Phase2Guess.confusionEntropyConverse

@@ -24,6 +24,7 @@ def sectionAt (f g : ℝ → ℝ) (r x : ℝ) : Set ℝ :=
 theorem projectHits {f g : ℝ → ℝ} {r x y z : ℝ}
     (h₁ : |z - f y| ≤ r) (h₂ : |z - x*y - g x| ≤ r) :
     y ∈ sectionAt f g r x := by
+  change |f y - g x - x*y| ≤ 2*r
   obtain ⟨h₁l, h₁u⟩ := abs_le.mp h₁
   obtain ⟨h₂l, h₂u⟩ := abs_le.mp h₂
   apply abs_le.mpr
@@ -48,7 +49,7 @@ theorem intersectionStrip {f g : ℝ → ℝ} {r x x' y : ℝ} (h : x ≠ x')
         = |(y + (g x - g x') / (x-x')) * (x-x')| := (abs_mul _ _).symm
     _ = |(x-x')*y+(g x-g x')| := by
       congr 1
-      field_simp [hd] <;> ring
+      field_simp [hd]
     _ ≤ _ := hbase
 
 /-- Lebesgue measure of the common section; no finite counting surrogate. -/
@@ -181,7 +182,7 @@ theorem expEndpointDiameter {base dk dl D r F₀ F₁ G₀ G₁ : ℝ}
   have hp : (dk/D)*(dl/D) ≤ 8*r := by linarith
   apply (le_div_iff₀ hl).mpr
   calc
-    dk*dl = (dk/D)*(dl/D)*D^2 := by field_simp [ne_of_gt hD] <;> ring
+    dk*dl = (dk/D)*(dl/D)*D^2 := by field_simp [ne_of_gt hD]
     _ ≤ (8*r)*D^2 := mul_le_mul_of_nonneg_right hp (sq_nonneg D)
 
 /-- Converts an arbitrary (even nonmeasurable) subset's diameter certificate

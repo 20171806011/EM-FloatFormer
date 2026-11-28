@@ -44,7 +44,7 @@ private theorem logWeight (p w : ℝ) (hp : 0 ≤ p) (hw : 0 < w) :
     rw [Real.log_div hw.ne' hz] at logRatio
     have scaled := mul_le_mul_of_nonneg_left logRatio hp
     have cancel : p * (w / p - 1) = w-p := by
-      field_simp [hz] <;> ring
+      field_simp [hz]
     rw [cancel] at scaled
     linarith
 
@@ -62,7 +62,7 @@ private theorem entropyPart {W : Type*} (s : Finset W) (p : W → ℝ)
     calc
       (s.card : ℝ) * (2*A)⁻¹ ≤ A * (2*A)⁻¹ :=
         mul_le_mul_of_nonneg_right cap (by positivity)
-      _ = 1/2 := by field_simp [pos.ne'] <;> ring
+      _ = 1/2 := by field_simp [pos.ne']
   calc
     _ ≤ ∑ w ∈ s, (p w * Real.log (2*A) + ((2*A)⁻¹ - p w)) :=
       Finset.sum_le_sum fun w _ => atoms w
