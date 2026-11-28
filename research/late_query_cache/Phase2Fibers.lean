@@ -1,7 +1,12 @@
 import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
 import Mathlib.MeasureTheory.Measure.Prod
 import Mathlib.MeasureTheory.Integral.MeanInequalities
-import Mathlib.Tactic
+import Mathlib.Analysis.SpecialFunctions.Exp
+import Mathlib.Tactic.FieldSimp
+import Mathlib.Tactic.FunProp
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.Ring
 
 /-! The following incidence estimate is independent of any regularity of the two
 decoder curves beyond their measurability in the Tonelli statement. -/
@@ -139,6 +144,57 @@ theorem collisionSecondMoment {α β : Type*} [MeasurableSpace α] [MeasurableSp
     (μ.prod μ) (((fun x => (x,y)) ⁻¹' s) ×ˢ ((fun x => (x,y)) ⁻¹' s))
   rw [Measure.prod_prod, pow_two]
 
+
+/-- The four-point exponential mixed increment controls both independent
+scaled displacements from below, uniformly for base exponent in [0,+∞). -/
+theorem expMixedLower {base u v : ℝ} (hb : 0 ≤ base) (hu : 0 ≤ u) (hv : 0 ≤ v) :
+    u*v ≤ Real.exp (base+u+v) - Real.exp (base+u) - Real.exp (base+v) + Real.exp base := by
+  have h₀ : 1 ≤ Real.exp base := by linarith [Real.add_one_le_exp base]
+  have h₁ : u ≤ Real.exp u-1 := by linarith [Real.add_one_le_exp u]
+  have h₂ : v ≤ Real.exp v-1 := by linarith [Real.add_one_le_exp v]
+  have hn : 0 ≤ (Real.exp u-1)*(Real.exp v-1) :=
+    mul_nonneg (hu.trans h₁) (hv.trans h₂)
+  calc
+    u*v ≤ (Real.exp u-1)*(Real.exp v-1) :=
+      mul_le_mul h₁ h₂ hv (hu.trans h₁)
+    _ ≤ Real.exp base*((Real.exp u-1)*(Real.exp v-1)) := by
+      simpa only [one_mul] using mul_le_mul_of_nonneg_right h₀ hn
+    _ = _ := by simp only [Real.exp_add]; ring
+
+/-- For one pair of actions at distance D>0, choose axes so that the four
+exponents have increasing displacements dk/D and dl/D, with the smallest
+exponent base≥0. The two arbitrary decoder functions have values F₀,F₁
+and G₀,G₁ at these coordinates. Four simultaneous hits force a k-diameter
+bound uniform in the action gap. -/
+theorem expEndpointDiameter {base dk dl D r F₀ F₁ G₀ G₁ : ℝ}
+    (hb : 0 ≤ base) (hk : 0 ≤ dk) (hl : 0 < dl) (hD : 0 < D)
+    (h₀₀ : |F₀ - G₀ - Real.exp base| ≤ 2*r)
+    (h₁₀ : |F₁ - G₀ - Real.exp (base+dk/D)| ≤ 2*r)
+    (h₀₁ : |F₀ - G₁ - Real.exp (base+dl/D)| ≤ 2*r)
+    (h₁₁ : |F₁ - G₁ - Real.exp (base+dk/D+dl/D)| ≤ 2*r) :
+    dk ≤ 8*r*D^2/dl := by
+  obtain ⟨h₀₀l,h₀₀u⟩ := abs_le.mp h₀₀
+  obtain ⟨h₁₀l,h₁₀u⟩ := abs_le.mp h₁₀
+  obtain ⟨h₀₁l,h₀₁u⟩ := abs_le.mp h₀₁
+  obtain ⟨h₁₁l,h₁₁u⟩ := abs_le.mp h₁₁
+  have h := expMixedLower hb (div_nonneg hk hD.le) (div_nonneg hl.le hD.le)
+  have hp : (dk/D)*(dl/D) ≤ 8*r := by linarith
+  apply (le_div_iff₀ hl).mpr
+  calc
+    dk*dl = (dk/D)*(dl/D)*D^2 := by field_simp [ne_of_gt hD] <;> ring
+    _ ≤ (8*r)*D^2 := mul_le_mul_of_nonneg_right hp (sq_nonneg D)
+
+/-- Converts an arbitrary (even nonmeasurable) subset's diameter certificate
+into a Lebesgue outer-measure estimate. This is the actual slice-volume step. -/
+theorem measureFromPairwise {S : Set ℝ} {w : ℝ}
+    (pairwise_bound : ∀ x ∈ S, ∀ y ∈ S, |x-y| ≤ w) :
+    volume S ≤ ENNReal.ofReal w := by
+  apply (Real.volume_le_diam S).trans
+  apply EMetric.diam_le
+  intro x hx y hy
+  rw [edist_dist, Real.dist_eq]
+  exact ENNReal.ofReal_le_ofReal (pairwise_bound x hx y hy)
+
 end Phase2Fibers
 
 #print axioms Phase2Fibers.projectHits
@@ -148,3 +204,7 @@ end Phase2Fibers
 
 #print axioms Phase2Fibers.squareMass
 #print axioms Phase2Fibers.collisionSecondMoment
+
+#print axioms Phase2Fibers.expMixedLower
+#print axioms Phase2Fibers.expEndpointDiameter
+#print axioms Phase2Fibers.measureFromPairwise

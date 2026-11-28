@@ -10,7 +10,7 @@ stage=$(mktemp -d)
 trap 'rm -rf -- "$stage"' EXIT
 cp "$src"/Phase2*.lean "$stage/"
 cd "$math"
-mapfile -t deps < <(awk '/^import Mathlib\./ {gsub(/\./,"/",$2); print $2 ".lean"}' "$stage"/*.lean | sort -u)
+mapfile -t deps < <(awk '/^import Mathlib\./ {sub(/\r$/, "", $2); gsub(/\./,"/",$2); print $2 ".lean"}' "$stage"/*.lean | sort -u)
 if [ "${#deps[@]}" -gt 0 ]; then lake exe cache get "${deps[@]}"; fi
 lake env lean --version
 failed=0
