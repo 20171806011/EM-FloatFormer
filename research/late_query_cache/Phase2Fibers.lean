@@ -1,5 +1,6 @@
 import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
 import Mathlib.MeasureTheory.Measure.Prod
+import Mathlib.MeasureTheory.Integral.MeanInequalities
 import Mathlib.Tactic
 
 /-! The following incidence estimate is independent of any regularity of the two
@@ -101,9 +102,49 @@ theorem pairIncidenceIntegral (μ : Measure (ℝ × ℝ)) {f g : ℝ → ℝ}
       fun _ hy => ⟨hy.2.1, hy.2.2⟩
     exact (measure_mono hs).trans (overlapVolume hh)
 
+
+/-- Square of an ordinary nonnegative integral on a probability space is
+bounded by its second moment, also for extended (infinite) values. -/
+theorem squareMass {β : Type*} [MeasurableSpace β] (ν : Measure β)
+    [IsProbabilityMeasure ν] {h : β → ℝ≥0∞} (hm : Measurable h) :
+    (∫⁻ y, h y ∂ν)^2 ≤ ∫⁻ y, (h y)^2 ∂ν := by
+  have hc : (∫⁻ y, h y ∂ν) ≤ (∫⁻ y, (h y)^2 ∂ν) ^ ((1:ℝ)/2) := by
+    simpa [Pi.mul_apply, ENNReal.rpow_two] using
+      (ENNReal.lintegral_mul_le_Lp_mul_Lq ν Real.HolderConjugate.two_two
+        hm.aemeasurable (g := fun _ => (1:ℝ≥0∞)) measurable_const.aemeasurable)
+  calc
+    _ ≤ ((∫⁻ y, (h y)^2 ∂ν) ^ ((1:ℝ)/2))^(2:ℕ) := pow_le_pow_left' hc 2
+    _ = _ := by
+      rw [← ENNReal.rpow_two, ← ENNReal.rpow_mul]
+      norm_num
+
+/-- Probability that two independent points are incident with a shared y
+bounds the squared probability of a single incidence, expressed directly
+as measures of product-space sets. -/
+theorem collisionSecondMoment {α β : Type*} [MeasurableSpace α] [MeasurableSpace β]
+    (μ : Measure α) (ν : Measure β) [SFinite μ] [IsProbabilityMeasure ν]
+    {s : Set (α × β)} (hs : MeasurableSet s) :
+    (μ.prod ν s)^2 ≤ ((μ.prod μ).prod ν)
+      {p : (α × α) × β | (p.1.1,p.2) ∈ s ∧ (p.1.2,p.2) ∈ s} := by
+  have hu : Measurable (fun p : (α × α) × β => (p.1.1,p.2)) := by fun_prop
+  have hv : Measurable (fun p : (α × α) × β => (p.1.2,p.2)) := by fun_prop
+  have hd : MeasurableSet {p : (α × α) × β | (p.1.1,p.2) ∈ s ∧ (p.1.2,p.2) ∈ s} :=
+    (hu hs).inter (hv hs)
+  rw [Measure.prod_apply_symm hs, Measure.prod_apply_symm hd]
+  refine (squareMass ν (measurable_measure_prodMk_right (μ := μ) hs)).trans ?_
+  apply le_of_eq
+  apply lintegral_congr
+  intro y
+  change (μ ((fun x => (x,y)) ⁻¹' s))^2 =
+    (μ.prod μ) (((fun x => (x,y)) ⁻¹' s) ×ˢ ((fun x => (x,y)) ⁻¹' s))
+  rw [Measure.prod_prod, pow_two]
+
 end Phase2Fibers
 
 #print axioms Phase2Fibers.projectHits
 #print axioms Phase2Fibers.intersectionStrip
 #print axioms Phase2Fibers.overlapVolume
 #print axioms Phase2Fibers.pairIncidenceIntegral
+
+#print axioms Phase2Fibers.squareMass
+#print axioms Phase2Fibers.collisionSecondMoment
