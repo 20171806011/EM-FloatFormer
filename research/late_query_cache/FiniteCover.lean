@@ -56,3 +56,51 @@ end LateQueryCover
 
 #print axioms LateQueryCover.smallBallBound
 #print axioms LateQueryCover.missesWhenTooFew
+
+namespace LateQueryCover
+
+def totalLoss {α : Type} (loss : α → Nat) : List α → Nat
+  | [] => 0
+  | x :: xs => loss x + totalLoss loss xs
+
+/-- Each point outside a Boolean cover incurs at least its charge. -/
+theorem chargeMisses {α : Type} (hit : α → Bool) (loss : α → Nat)
+    (charge : Nat) (xs : List α) :
+    (∀ x ∈ xs, hit x = false → charge ≤ loss x) →
+    xs.length * charge ≤ countBy hit xs * charge + totalLoss loss xs := by
+  induction xs with
+  | nil => simp [countBy, totalLoss]
+  | cons x xs ih =>
+    intro hp
+    have ht := ih (fun y hy => hp y (List.mem_cons_of_mem x hy))
+    cases hx : hit x with
+    | false =>
+      have hl := hp x (by simp) hx
+      simp [countBy, totalLoss, hx, Nat.succ_mul, Nat.add_mul] <;> omega
+    | true =>
+      simp [countBy, totalLoss, hx, Nat.succ_mul, Nat.add_mul] <;> omega
+
+/-- If a ball contains at most K data points, the uncovered part of the sample
+    pays the lesser of the wrong-action gap and the matched-action fitting cost.
+    The integer-valued loss can count units of a common rational cost scale. -/
+theorem riskBudgetConverse {α β : Type} (near : α → β → Bool)
+    (matched : α → Bool) (loss : α → Nat) (xs : List α) (cs : List β)
+    (K gap fitFloor : Nat)
+    (single : ∀ c ∈ cs, countBy (fun x => near x c) xs ≤ K)
+    (wrong : ∀ x ∈ xs, matched x = false → gap ≤ loss x)
+    (poorFit : ∀ x ∈ xs, matched x = true → covered near cs x = false →
+      fitFloor ≤ loss x) :
+    (xs.length - cs.length * K) * min gap fitFloor ≤ totalLoss loss xs := by
+  have missed : ∀ x ∈ xs, covered near cs x = false → min gap fitFloor ≤ loss x := by
+    intro x hx uncovered
+    cases hm : matched x with
+    | false => exact Nat.le_trans (Nat.min_le_left _ _) (wrong x hx hm)
+    | true => exact Nat.le_trans (Nat.min_le_right _ _) (poorFit x hx hm uncovered)
+  have costs := chargeMisses (covered near cs) loss (min gap fitFloor) xs missed
+  have bound := Nat.mul_le_mul_right (min gap fitFloor) (smallBallBound near xs K cs single)
+  rw [Nat.sub_mul]
+  omega
+
+end LateQueryCover
+
+#print axioms LateQueryCover.riskBudgetConverse
